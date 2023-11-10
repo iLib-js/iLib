@@ -30,7 +30,6 @@ module.exports.normalize_JP = {
         ilib.clearCache();
         callback();
     },
-
     testJPIDDPrefix: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("010 31 456 3453434", {locale: 'ja-JP'});
@@ -39,7 +38,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize({locale: 'ja-JP'}), expected); // 'ja-JP'
         test.done();
     },
-
     testJPIDDPrefixAlreadyPlus: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ja-JP'});
@@ -48,7 +46,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize({locale: 'ja-JP'}), expected); // 'ja-JP'
         test.done();
     },
-
     testJPWithNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
@@ -57,7 +54,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
-
     testJPNoHints: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
@@ -66,7 +62,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(), expected); // 'ja-JP'
         test.done();
     },
-
     testJPWithNoHintsNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01031 456 3453434", {locale: 'ja-JP'});
@@ -75,7 +70,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testJPLDNumberUsingJPMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
@@ -87,7 +81,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'ko-KR'
         test.done();
     },
-
     testJPLDNumberUsingJPMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
@@ -100,7 +93,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'ja-JP'
         test.done();
     },
-
     testJPLDNumberUsingJPMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -112,7 +104,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testJPAreaCodeFromHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
@@ -124,7 +115,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'ja-JP'
         test.done();
     },
-
     testJPAreaCodeIgnoreHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
@@ -136,7 +126,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'ja-JP'
         test.done();
     },
-
     testJPNoAreaCodeAndNoCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
@@ -145,7 +134,6 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testJPAssistedDialingLocalToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("32622391", {locale: 'ja-JP'});
@@ -160,7 +148,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString); // 'ja-JP'
         test.done();
     },
-
     testJPAssistedDialingLocalToLocalUMTSAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
@@ -173,7 +160,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints,{locale: 'ja-JP'}), expectedString); // 'ja-JP'
         test.done();
     },
-
     testJPAssistedDialingLocalToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
@@ -188,7 +174,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testJPAssistedDialingLocalToLocalCDMAAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+81-56-5-3111-1111", {locale: 'ja-JP'});
@@ -203,7 +188,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testJPAssistedDialingIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("31111111", {locale: 'ja-JP'});
@@ -218,7 +202,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testJPAssistedDialingIntlToLDUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
@@ -233,7 +216,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString); // 'ja-JP'
         test.done();
     },
-
     testJPAssistedDialingIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("3111-1111", {locale: 'ja-JP'});
@@ -248,7 +230,6 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString); // 'ja-JP'
         test.done();
     },
-
     testJPAssistedDialingIntlToLDCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("056-5-3111-1111", {locale: 'ja-JP'});
@@ -263,6 +244,4 @@ module.exports.normalize_JP = {
         test.equal(phone.normalize(hints), expectedString); // 'ja-JP'
         test.done();
     }
-
-
 };

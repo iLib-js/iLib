@@ -32,7 +32,6 @@ module.exports.testname_ku_Arab = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
@@ -46,11 +45,6 @@ module.exports.testname_ku_Arab = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("بەڕێز و خاتوو تاڵەبانی", {locale: 'ku-Arab-IQ'});
@@ -64,8 +58,6 @@ module.exports.testname_ku_Arab = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی کوڕ", {locale: 'ku-Arab-IQ'});
@@ -80,11 +72,6 @@ module.exports.testname_ku_Arab = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
-
-
     testParseEverything_ku_Arab: function(test) {
         test.expect(2);
         var parsed = new Name("بەڕێز جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
@@ -99,12 +86,6 @@ module.exports.testname_ku_Arab = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
@@ -123,7 +104,6 @@ module.exports.testname_ku_Arab = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
@@ -142,7 +122,6 @@ module.exports.testname_ku_Arab = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_ku_Arab: function(test) {
         test.expect(2);
         var name = new Name({
@@ -163,12 +142,4 @@ module.exports.testname_ku_Arab = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
-
-
-
-
 };

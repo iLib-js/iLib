@@ -20,7 +20,6 @@
 if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -37,7 +36,6 @@ module.exports.testdurfmtasync = {
         });
 
     },
-
     testDurFmtAsyncGetLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -51,7 +49,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncGetLocaleBogus: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -65,7 +62,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatShortText: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -89,7 +85,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatLongSingle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -113,7 +108,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatFullPlural: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -137,7 +131,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatShortDEDefaultStyle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -161,7 +154,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatFullDESingle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -186,7 +178,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatShortZHText: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -212,7 +203,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatShortZHClock: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -238,7 +228,6 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-
     testDurFmtAsyncFormatFullZH: function(test) {
         test.expect(2);
         new DurationFmt({

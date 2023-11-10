@@ -30,7 +30,6 @@ module.exports.testforce = {
         ilib.clearCache();
         callback();
     },
-
     testForceForceConstructor: function(test) {
         test.expect(1);
         var m = new ForceUnit({
@@ -41,7 +40,6 @@ module.exports.testforce = {
         test.ok(m !== null);
         test.done();
     },
-
     testForceForceConvertNtoHP: function(test) {
         test.expect(3);
         var m1 = new ForceUnit({
@@ -59,7 +57,6 @@ module.exports.testforce = {
         test.roughlyEqual(m2.getAmount(), 2e5, 1e-6);
         test.done();
     },
-
     testForceStaticConvert1: function(test) {
         test.expect(1);
         var m = ForceUnit.convert("newton", "poundal", 1);
@@ -67,7 +64,6 @@ module.exports.testforce = {
         test.roughlyEqual(m, 1.38255e-1, 1e-5);
         test.done();
     },
-
     testForceStaticConvertWithString: function(test) {
         test.expect(1);
         var m = ForceUnit.convert("poundal", "newton", "100");
@@ -75,7 +71,6 @@ module.exports.testforce = {
         test.roughlyEqual(m, 723.301, 1e-4);
         test.done();
     },
-
     testForceStaticConvert2: function(test) {
         test.expect(1);
         var m = ForceUnit.convert("pound-force", "N", 1);
@@ -83,7 +78,6 @@ module.exports.testforce = {
         test.roughlyEqual(m, 0.224809, 1e-6);
         test.done();
     },
-
     testForceStaticConvert3: function(test) {
         test.expect(1);
         var m = ForceUnit.convert("pound-force", "poundal", 1);
@@ -91,7 +85,6 @@ module.exports.testforce = {
         test.roughlyEqual(m, 0.031081, 1e-4);
         test.done();
     },
-
     testForceStaticConvert4: function(test) {
         test.expect(1);
         var m = ForceUnit.convert("N", "mN", 1);
@@ -99,7 +92,6 @@ module.exports.testforce = {
         test.roughlyEqual(m, 1e-3, 1e-7);
         test.done();
     },
-
     testForceScale1: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
@@ -112,7 +104,6 @@ module.exports.testforce = {
         test.equal(m2.unit, "newton");
         test.done();
     },
-
     testForceScale2: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
@@ -125,7 +116,6 @@ module.exports.testforce = {
         test.equal(m2.unit, "meganewton");
         test.done();
     },
-
     testForceScale3: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
@@ -138,7 +128,6 @@ module.exports.testforce = {
         test.equal(m2.unit, "kilonewton");
         test.done();
     },
-
     testForceScale4: function(test) {
         test.expect(2);
         var m1 = new ForceUnit({
@@ -151,7 +140,6 @@ module.exports.testforce = {
         test.equal(m2.unit, "giganewton");
         test.done();
     },
-
     testForceGetMeasures: function(test) {
         test.expect(1);
         var measures = ForceUnit.getMeasures();

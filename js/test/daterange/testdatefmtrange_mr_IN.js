@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_mr_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ PM – २:३० PM");
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ PM – ३१ डिसेंबर, २०११ रोजी २:३० PM");
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "२० – ३१ डिसेंबर, २०११");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "२० नोव्हेंबर – ३१ डिसेंबर, २०११");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "२० नोव्हेंबर, २०११ – ३१ जानेवारी, २०१२");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mr-IN", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_mr_IN = {
         test.equal(fmt.format(start, end), "२०११ – २०६४");
         test.done();
     }
-
 };

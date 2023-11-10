@@ -35,7 +35,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncConstructorWithParams: function(test) {
         test.expect(1);
         new AlphabeticIndex({
@@ -47,7 +46,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncgetDefaultIndexStyle: function(test) {
         test.expect(2);
         new AlphabeticIndex({
@@ -60,7 +58,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncConstructorWithUnknownLocale: function(test) {
         test.expect(1);
         new AlphabeticIndex({
@@ -72,7 +69,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncENUSGetBucket: function(test) {
         test.expect(3);
 
@@ -88,7 +84,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncENUSGetBucket2: function(test) {
         test.expect(3);
 
@@ -105,7 +100,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncENUSGetAllBuckets: function(test) {
         test.expect(2);
 
@@ -184,7 +178,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncENUSGetBucketLabels: function(test) {
         test.expect(2);
 
@@ -245,7 +238,6 @@ module.exports.testalphaindexasync = {
         });
 
     },
-
     testAlphaIndexAsyncUnknowLocaleActsLikeEnglish: function(test) {
         test.expect(2);
 
@@ -329,7 +321,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncConstructorAsync_deDE: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -341,7 +332,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncGetBucket_deDE2: function(test) {
         test.expect(7);
 
@@ -363,7 +353,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncGetBucketAccentInsensitiveSZ_deDE: function(test) {
         test.expect(2);
 
@@ -378,7 +367,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncDEDEPhonebookStyle: function(test) {
         test.expect(2);
 
@@ -451,7 +439,6 @@ module.exports.testalphaindexasync = {
         });
 
     },
-
     testAlphaIndexAsyncDEDEDictionaryStyle: function(test) {
         test.expect(2);
 
@@ -523,7 +510,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncConstructorAsync: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -535,7 +521,6 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-
     testAlphaIndexAsyncKOKRMixedScriptTest1: function(test) {
         test.expect(2);
 
@@ -623,7 +608,6 @@ module.exports.testalphaindexasync = {
         });
 
     },
-
     testAlphaIndexAsyncKOKRMixedScriptTest2: function(test) {
         test.expect(2);
 

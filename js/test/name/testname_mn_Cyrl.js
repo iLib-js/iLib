@@ -32,7 +32,6 @@ module.exports.testname_mn_Cyrl = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
@@ -46,8 +45,6 @@ module.exports.testname_mn_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseAdjunctNames_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
@@ -61,7 +58,6 @@ module.exports.testname_mn_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
@@ -75,7 +71,6 @@ module.exports.testname_mn_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
@@ -90,7 +85,6 @@ module.exports.testname_mn_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_mn_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
@@ -106,11 +100,6 @@ module.exports.testname_mn_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameFull_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -131,7 +120,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -151,7 +139,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -171,7 +158,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -191,7 +177,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -211,7 +196,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -231,7 +215,6 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_mn_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -251,10 +234,4 @@ module.exports.testname_mn_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
-
-
 };

@@ -30,9 +30,7 @@ module.exports.testlistfmt_tr = {
         ilib.clearCache();
         callback();
     },
-
     // tr-TR
-
     testListFmttrTRNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmttrTRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir ve два");
         test.done();
     },
-
     testListFmttrTRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir, два ve три");
         test.done();
     },
-
     testListFmttrTRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR"
@@ -76,7 +71,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три ve четыре");
         test.done();
     },
-
     testListFmtUnitStyletrTRNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR",
@@ -88,7 +82,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmtUnitStyletrTRNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR",
@@ -100,7 +93,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir два");
         test.done();
     },
-
     testListFmtUnitStyletrTRNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR",
@@ -112,7 +104,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir два три");
         test.done();
     },
-
     testListFmtUnitStyletrTRNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR",
@@ -124,7 +115,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir два три четыре");
         test.done();
     },
-
     testListFmtUnitStyletrTRNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "tr-TR",
@@ -151,7 +141,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmttrAMNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -163,7 +152,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir ve два");
         test.done();
     },
-
     testListFmttrAMNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -175,7 +163,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir, два ve три");
         test.done();
     },
-
     testListFmttrAMNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -187,7 +174,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три ve четыре");
         test.done();
     },
-
     testListFmtUnitStyletrAMNumberFormatOneLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -200,7 +186,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmtUnitStyletrAMNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -213,7 +198,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir два");
         test.done();
     },
-
     testListFmtUnitStyletrAMNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -226,7 +210,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir два три");
         test.done();
     },
-
     testListFmtUnitStyletrAMNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -239,7 +222,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir два три четыре");
         test.done();
     },
-
     testListFmtUnitStyletrAMNumberFormatFiveLong: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AM",
@@ -253,7 +235,6 @@ module.exports.testlistfmt_tr = {
         test.done();
     },
     // tr-AZ
-
     testListFmttrAMNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -265,7 +246,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmttrAZNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -277,7 +257,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir ve два");
         test.done();
     },
-
     testListFmttrAZNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -289,7 +268,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir, два ve три");
         test.done();
     },
-
     testListFmttrAZNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -301,7 +279,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три ve четыре");
         test.done();
     },
-
     testListFmtUnitStyletrAZNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -314,7 +291,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmtUnitStyletrAZNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -327,7 +303,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir два");
         test.done();
     },
-
     testListFmtUnitStyletrAZNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -340,7 +315,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir два три");
         test.done();
     },
-
     testListFmtUnitStyletrAZNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -353,7 +327,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir два три четыре");
         test.done();
     },
-
     testListFmtUnitStyletrAZNumberFormatFiveMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-AZ",
@@ -366,9 +339,7 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре", "пять"]), "bir два три четыре пять");
         test.done();
     },
-
     // tr-CY
-
     testListFmttrCYNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -380,7 +351,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmttrCYNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -392,7 +362,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir ve два");
         test.done();
     },
-
     testListFmttrCYNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -404,7 +373,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir, два ve три");
         test.done();
     },
-
     testListFmttrCYNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -416,7 +384,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir, два, три ve четыре");
         test.done();
     },
-
     testListFmtUnitStyletrCYNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -429,7 +396,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir"]), "bir");
         test.done();
     },
-
     testListFmtUnitStyletrCYNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -442,7 +408,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два"]), "bir два");
         test.done();
     },
-
     testListFmtUnitStyletrCYNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -455,7 +420,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три"]), "bir два три");
         test.done();
     },
-
     testListFmtUnitStyletrCYNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",
@@ -468,7 +432,6 @@ module.exports.testlistfmt_tr = {
         test.equal(fmt.format(["bir", "два", "три", "четыре"]), "bir два три четыре");
         test.done();
     },
-
     testListFmtUnitStyletrCYNumberFormatFiveMedium: function(test) {
         var fmt = new ListFmt({
             locale: "tr-CY",

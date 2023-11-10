@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_CO = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCONormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
@@ -48,7 +45,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCONoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
@@ -62,7 +58,6 @@ module.exports.testaddress_CO = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCOManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702\nARACATACA–MAGDALENA\nCOLOMBIA", {locale: 'es-CO'});
@@ -76,7 +71,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCOOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
@@ -90,7 +84,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCOSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702  \n\t\n ARACATACA–MAGDALENA\t\n\n COLOMBIA  \n  \t\t\t", {locale: 'es-CO'});
@@ -104,7 +97,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCONoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR Gabriel Garcia Marquez SOCIEDAD DE ESCRITORES COLOMBIANOS Av. 15 no 80–13 oficina 702 ARACATACA–MAGDALENA COLOMBIA", {locale: 'es-CO'});
@@ -118,7 +110,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCOSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'es-CO'});
@@ -132,7 +123,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testParseAddressCOFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel Garcia Marquez, SOCIEDAD DE ESCRITORES COLOMBIANOS, Av. 15 no 80–13 oficina 702, ARACATACA–MAGDALENA, COLOMBIA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_CO = {
         test.equal(parsedAddress.countryCode, "CO");
         test.done();
     },
-
     testFormatAddressCO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +152,6 @@ module.exports.testaddress_CO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCOFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +166,4 @@ module.exports.testaddress_CO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

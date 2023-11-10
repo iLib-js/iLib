@@ -29,7 +29,6 @@ module.exports.testdurfmt_si_LK = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtLKFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({

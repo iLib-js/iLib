@@ -42,7 +42,6 @@ module.exports.imsiasync = {
             }
         })
     },
-
     testSpecialImsi1: function(test) {
         test.expect(1);
         var imsi = "31000201234567"
@@ -60,7 +59,6 @@ module.exports.imsiasync = {
             }
         });
     },
-
     testBrokenMCC: function(test) {
         test.expect(1);
         var imsi = "32000414084567890"
@@ -79,7 +77,6 @@ module.exports.imsiasync = {
             }
         });
     },
-
     testBrokenMNC: function(test) {
         test.expect(1);
         var imsi = "31014114084567890"
@@ -98,7 +95,6 @@ module.exports.imsiasync = {
             }
         });
     },
-
     testTooShort: function(test) {
         test.expect(1);
         var imsi = "31";
@@ -110,7 +106,6 @@ module.exports.imsiasync = {
             }
         });
     },
-
     testUndefined: function(test) {
         test.expect(1);
         PhoneNumber.parseImsi(undefined, {

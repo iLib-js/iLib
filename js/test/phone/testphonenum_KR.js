@@ -29,7 +29,6 @@ module.exports.phonenum_KR = {
         ilib.clearCache();
         callback();
     },
-
     testParseKRFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02-1234-5678", {locale: "ko-KR"});
@@ -44,7 +43,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("345-6789", {locale: "ko-KR"});
@@ -57,7 +55,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("033-9467-2345", {locale: "ko-KR"});
@@ -72,7 +69,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(051) 1234-5678", {locale: "ko-KR"});
@@ -87,7 +83,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$051@1234&5678-", {locale: "ko-KR"});
@@ -102,7 +97,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("82345678", {locale: "ko-KR"});
@@ -115,7 +109,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
@@ -130,7 +123,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("030-12345678", {locale: "ko-KR"});
@@ -145,7 +137,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     /*
     no vsc in Korea?
     testParseKRWithVSC: function(test) {
@@ -163,7 +154,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     no personal numbering in Korea?
     testParseKRPersonalNumbering: function(test) {
         test.expect(2);
@@ -195,7 +185,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "ko-KR"});
@@ -211,7 +200,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00212028675309", {locale: "ko-KR"});
@@ -227,7 +215,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -243,7 +230,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKREmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("112", {locale: "ko-KR"});
@@ -269,7 +255,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "ko-KR"});
@@ -282,7 +267,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02", {locale: "ko-KR"});
@@ -408,7 +392,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ko-KR", mcc: "316"});
@@ -422,7 +405,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ko-KR", mcc: "208"});
@@ -435,7 +417,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ko-KR", mcc: "334"});
@@ -449,7 +430,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ko-KR", mcc: "262"});
@@ -462,7 +442,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ko-KR", mcc: "450"});
@@ -476,7 +455,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithTrunkAccess: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00", {locale: "ko-KR"});
@@ -490,7 +468,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithExtensionCharacter: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5551212,1234", {locale: "ko-KR"});
@@ -504,7 +481,6 @@ module.exports.phonenum_KR = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseKRWithExtensionCharacter2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("35850950777;12345", {locale: "ko-KR"});

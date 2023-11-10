@@ -32,7 +32,6 @@ module.exports.testname_mk = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ", {locale: 'mk-MK'});
@@ -46,7 +45,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleWithHiphen_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("Nikola-Kole Angelovski", {locale: 'mk-MK'});
@@ -60,9 +58,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ високи", {locale: 'mk-MK'});
@@ -77,9 +72,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин Самарџunќ", {locale: 'mk-MK'});
@@ -93,9 +85,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
@@ -109,7 +98,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_mk_MK: function(test) {
         test.expect(2);
         var parsed = new Name("г-дин Љубunша Самарџunќ", {locale: 'mk-MK'});
@@ -124,10 +112,6 @@ module.exports.testname_mk = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -146,7 +130,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -165,7 +148,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -185,9 +167,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -206,7 +185,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -227,7 +205,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -247,7 +224,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -267,7 +243,6 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_mk_MK: function(test) {
         test.expect(2);
         var name = new Name({
@@ -287,7 +262,4 @@ module.exports.testname_mk = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

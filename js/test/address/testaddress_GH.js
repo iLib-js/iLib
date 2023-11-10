@@ -32,7 +32,6 @@ module.exports.testaddress_GH = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressGHNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
@@ -46,7 +45,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
@@ -60,7 +58,6 @@ module.exports.testaddress_GH = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressGHNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA", {locale: 'en-GH'});
@@ -74,7 +71,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah\nP.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
@@ -88,7 +84,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah , P.O. Box 1234 , ACCRA , GHANA", {locale: 'en-GH'});
@@ -102,7 +97,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah\n\n\t\r\t\t\rP.O. Box 1234\r\r\n\nACCRA\t\r\n\t\rGHANA", {locale: 'en-GH'});
@@ -116,7 +110,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234 ACCRA GHANA", {locale: 'en-GH'});
@@ -130,7 +123,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testParseAddressGHFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
@@ -144,7 +136,6 @@ module.exports.testaddress_GH = {
         test.equal(parsedAddress.countryCode, "GH");
         test.done();
     },
-
     testFormatAddressGH: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_GH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressGHFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,5 +166,4 @@ module.exports.testaddress_GH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

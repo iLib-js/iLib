@@ -30,7 +30,6 @@ module.exports.testcollation_de = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorPhonebookQuatAE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -50,7 +49,6 @@ module.exports.testcollation_de = {
         test.ok("äz < af",  col.compare("äz", "af") < 0);
         test.done();
     },
-
     testJSCollatorPhonebookQuatOE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -70,7 +68,6 @@ module.exports.testcollation_de = {
         test.ok("öz < of",  col.compare("öz", "of") < 0);
         test.done();
     },
-
     testJSCollatorPhonebookQuatUE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -90,7 +87,6 @@ module.exports.testcollation_de = {
         test.ok("üz < uf",  col.compare("üz", "uf") < 0);
         test.done();
     },
-
     // differences in umlauted characters should be primary differences
 
     testJSCollatorPhonebookPrimaryAE_de: function(test) {
@@ -112,7 +108,6 @@ module.exports.testcollation_de = {
         test.ok("äz < af",  col.compare("äz", "af") < 0);
         test.done();
     },
-
     testJSCollatorPhonebookPrimaryOE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -132,7 +127,6 @@ module.exports.testcollation_de = {
         test.ok("öz < of",  col.compare("öz", "of") < 0);
         test.done();
     },
-
     testJSCollatorPhonebookPrimaryUE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -152,7 +146,6 @@ module.exports.testcollation_de = {
         test.ok("üz < uf",  col.compare("üz", "uf") < 0);
         test.done();
     },
-
     testCollatorPhonebookdeDECase: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -209,7 +202,6 @@ module.exports.testcollation_de = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPhonebookdeDEVariant: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -261,7 +253,6 @@ module.exports.testcollation_de = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testJSCollatorDictionaryQuatAE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -283,7 +274,6 @@ module.exports.testcollation_de = {
         test.ok("äa < äz", col.compare("äa", "äz") < 0);
         test.done();
     },
-
     testJSCollatorDictionaryQuatOE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -305,7 +295,6 @@ module.exports.testcollation_de = {
         test.ok("öa < öz", col.compare("öa", "öz") < 0);
         test.done();
     },
-
     testJSCollatorDictionaryQuatUE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -327,7 +316,6 @@ module.exports.testcollation_de = {
         test.ok("üa < üz", col.compare("üa", "üz") < 0);
         test.done();
     },
-
     testJSCollatorDictionaryPrimaryAE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -349,7 +337,6 @@ module.exports.testcollation_de = {
         test.ok("äa < äz", col.compare("äa", "äz") < 0);
         test.done();
     },
-
     testJSCollatorDictionaryPrimaryOE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -371,7 +358,6 @@ module.exports.testcollation_de = {
         test.ok("öa < öz", col.compare("öa", "öz") < 0);
         test.done();
     },
-
     testJSCollatorDictionaryPrimaryUE_de: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -393,7 +379,6 @@ module.exports.testcollation_de = {
         test.ok("üa < üz", col.compare("üa", "üz") < 0);
         test.done();
     },
-
     testCollatorDictionarydeDECase: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -450,7 +435,6 @@ module.exports.testcollation_de = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorDictionarydeDEPrimary: function(test) {
         test.expect(2);
         var col = new Collator({

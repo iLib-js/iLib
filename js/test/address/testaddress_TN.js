@@ -32,7 +32,6 @@ module.exports.testaddress_TN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressTNNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
@@ -46,7 +45,6 @@ module.exports.testaddress_TN = {
         test.equal(parsedAddress.countryCode, "TN");
         test.done();
     },
-
     testParseAddressTNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_TN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressTNNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ", {locale: 'ar-TN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_TN = {
         test.equal(parsedAddress.countryCode, "TN");
         test.done();
     },
-
     testParseAddressTNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nتونس\n\n\n", {locale: 'ar-TN'});
@@ -87,8 +83,6 @@ module.exports.testaddress_TN = {
         test.equal(parsedAddress.countryCode, "TN");
         test.done();
     },
-
-
     testParseAddressTNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tتونس\n\n\n", {locale: 'ar-TN'});
@@ -102,8 +96,6 @@ module.exports.testaddress_TN = {
         test.equal(parsedAddress.countryCode, "TN");
         test.done();
     },
-
-
     testParseAddressTNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia", {locale: 'en-US'});
@@ -118,7 +110,6 @@ module.exports.testaddress_TN = {
         test.equal(parsedAddress.countryCode, "TN");
         test.done();
     },
-
     testFormatAddressTN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -134,7 +125,6 @@ module.exports.testaddress_TN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressTNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -150,5 +140,4 @@ module.exports.testaddress_TN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

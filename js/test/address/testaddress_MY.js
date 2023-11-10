@@ -32,7 +32,6 @@ module.exports.testaddress_MY = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMYMYLatinNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
@@ -46,7 +45,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testParseAddressMYMYLatinNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau\nJOHOR BAHRU\nJohor\nMalaysia", {locale: 'en-MY'});
@@ -60,7 +58,6 @@ module.exports.testaddress_MY = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMYMYLatinNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR", {locale: 'en-MY'});
@@ -74,7 +71,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     /*
     testParseAddressMYMYAsianNormal: function(test) {
         test.expect(7);
@@ -89,7 +85,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testParseAddressMYMYAsianNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
@@ -103,7 +98,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testParseAddressMYMYAsianNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
@@ -132,7 +126,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testParseAddressMYMYOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau,JOHOR BAHRU,Johor,Malaysia", {locale: 'en-MY'});
@@ -146,7 +139,6 @@ module.exports.testaddress_MY = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMYMYSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t11 Jalan Budi 1\t\t\r\n\t42700 BANTING\r\t SELANGOR\t\nMalaysia\r\t\n", {locale: 'en-MY'});
@@ -160,7 +152,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testParseAddressMYMYNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1 Taman Budiman 42700 BANTING SELANGOR Malaysia", {locale: 'en-MY'});
@@ -174,7 +165,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     /*
     testParseAddressMYMYSpecialChars: function(test) {
         test.expect(7);
@@ -206,7 +196,6 @@ module.exports.testaddress_MY = {
         test.equal(parsedAddress.countryCode, "MY");
         test.done();
     },
-
     testFormatAddressMYLatin: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -223,7 +212,6 @@ module.exports.testaddress_MY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     /*
     testFormatAddressMYAsian: function(test) {
         test.expect(1);
@@ -259,5 +247,4 @@ module.exports.testaddress_MY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

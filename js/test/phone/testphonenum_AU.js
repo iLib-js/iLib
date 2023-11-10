@@ -29,7 +29,6 @@ module.exports.phonenum_AU = {
         ilib.clearCache();
         callback();
     },
-
     testParseAUFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(08) 1234 5678", {locale: "en-AU"});
@@ -43,9 +42,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAULocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("23456789", {locale: "en-AU"});
@@ -57,9 +54,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUBogusPrefix: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("09 69812345", {locale: "en-AU"});
@@ -73,9 +68,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(02) 1234-5678", {locale: "en-AU"});
@@ -89,9 +82,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$02@1234&5678-", {locale: "en-AU"});
@@ -105,9 +96,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("91234567", {locale: "en-AU"});
@@ -119,9 +108,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0198 123 456", {locale: "en-AU"});
@@ -135,9 +122,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithVSC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1831 02 2345 6789", {locale: "en-AU"});
@@ -152,9 +137,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUInternationalCarrierSelection: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0016 61 2 5678 1234", {locale: "en-AU"});
@@ -169,9 +152,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUCarrierSelectionInternational: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1441 0011 61 2 5678 1234", {locale: "en-AU"});
@@ -187,9 +168,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUCarrierSelectionDomestic: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1441 2 5678 1234", {locale: "en-AU"});
@@ -203,9 +182,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0412 345 678", {locale: "en-AU"});
@@ -219,9 +196,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "en-AU"});
@@ -236,9 +211,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("001112028675309", {locale: "en-AU"});
@@ -253,9 +226,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUInternationalDialAround: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1456 0011 1 202 867 5309", {locale: "en-AU"});
@@ -271,9 +242,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("000", {locale: "en-AU"});
@@ -285,7 +254,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUEmergencyGSM: function(test) {
         test.expect(2);
@@ -298,9 +266,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "en-AU"});
@@ -312,9 +278,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02", {locale: "en-AU"});
@@ -327,7 +291,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial3: function(test) {
         test.expect(2);
@@ -342,7 +305,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial4: function(test) {
         test.expect(2);
@@ -357,7 +319,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial5: function(test) {
         test.expect(2);
@@ -372,7 +333,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial6: function(test) {
         test.expect(2);
@@ -387,7 +347,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial7: function(test) {
         test.expect(2);
@@ -402,7 +361,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial8: function(test) {
         test.expect(2);
@@ -417,7 +375,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial9: function(test) {
         test.expect(2);
@@ -432,7 +389,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial10: function(test) {
         test.expect(2);
@@ -447,7 +403,6 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseAUPartial11: function(test) {
         test.expect(2);
@@ -463,9 +418,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02 1234 5678", {locale: "en-AU", mcc: "316"});
@@ -478,9 +431,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02 1234 5678", {locale: "en-AU", mcc: "208"});
@@ -494,9 +445,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02 1234 5678", {locale: "en-AU", mcc: "334"});
@@ -509,9 +458,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02 1234 5678", {locale: "en-AU", mcc: "262"});
@@ -525,9 +472,7 @@ module.exports.phonenum_AU = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseAUWithAUMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("02 1234 5678", {locale: "en-AU", mcc: "505"});
@@ -543,5 +488,4 @@ module.exports.phonenum_AU = {
         test.done();
 
     }
-
 };

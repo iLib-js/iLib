@@ -32,7 +32,6 @@ module.exports.testaddress_HN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressHNNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
@@ -46,7 +45,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nLAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_HN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressHNNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua", {locale: 'es-HN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
@@ -88,7 +84,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel , CM1102 , LAS LAJAS , Comayagua , HONDURAS", {locale: 'es-HN'});
@@ -102,7 +97,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\n\n\n\rCM1102\r\nLAS LAJAS\r\r\rComayagua\t\t\rHONDURAS", {locale: 'es-HN'});
@@ -116,7 +110,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel CM1102 LAS LAJAS Comayagua HONDURAS", {locale: 'es-HN'});
@@ -130,7 +123,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testParseAddressHNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
@@ -144,7 +136,6 @@ module.exports.testaddress_HN = {
         test.equal(parsedAddress.countryCode, "HN");
         test.done();
     },
-
     testFormatAddressHN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_HN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressHNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_HN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

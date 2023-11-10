@@ -87,7 +87,6 @@ module.exports.testunitfmt_lb_LU = {
         test.equal(str, "-16,666666666666668 Grad Celsius");
         test.done();
     },
-
     testUnitFormatArea1_lb_LU: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

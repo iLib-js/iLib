@@ -29,7 +29,6 @@ module.exports.testdurfmt_sw_KE = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtKEFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -199,5 +198,4 @@ module.exports.testdurfmt_sw_KE = {
             }
         });
     }
-
 };

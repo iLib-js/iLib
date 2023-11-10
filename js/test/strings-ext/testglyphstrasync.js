@@ -45,7 +45,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncCharIteratorEmpty: function(test) {
         test.expect(2);
         var s = new GlyphString("", {
@@ -59,7 +58,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncCharIteratorMultipleDecomposed: function(test) {
         test.expect(8);
         var s = new GlyphString("aẬa", { // the accented A is a decomposed char with 2 accents
@@ -79,7 +77,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncTruncateWithCombiningAccentsWholeGlyphs: function(test) {
         test.expect(1);
         var s = new GlyphString("aẬbẬcẬdẬe", { // the accented A is a decomposed char with 2 accents
@@ -90,7 +87,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncTruncateThai: function(test) {
         test.expect(1);
         var s = new GlyphString("สวัุสดีคุณเป็นอย่างไรบ้าง", {
@@ -103,7 +99,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncTruncateDevanagari1: function(test) {
         test.expect(1);
         var s = new GlyphString("हैलो, आप कैसे हैं?", {
@@ -117,7 +112,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncEllipsizeDevanagari2: function(test) {
         test.expect(1);
         var s = new GlyphString("हैलो, आप कैसे हैं?", {
@@ -128,7 +122,6 @@ module.exports.testglyphstrasync = {
             }
         });
     },
-
     testGlyphStrAsyncEllipsizeJapanese: function(test) {
         test.expect(1);
         var s = new GlyphString("ェドイン", {

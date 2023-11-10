@@ -32,7 +32,6 @@ module.exports.testaddress_MK = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMKNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
@@ -46,7 +45,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\nОХРИД\nМАКЕДОНИЈА", {locale: 'mk-MK'});
@@ -60,7 +58,6 @@ module.exports.testaddress_MK = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMKNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД", {locale: 'mk-MK'});
@@ -74,7 +71,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски\nГРАДСКИ\nПАЗАР 5\n\n6000\n\nОХРИД\n\n\nМАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
@@ -87,7 +83,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски , ГРАДСКИ , ПАЗАР 5 , 6000 , ОХРИД , МАКЕДОНИЈА", {locale: 'mk-MK'});
@@ -101,7 +96,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tСања Јанчевски\t\t\rГРАДСКИ\t\t\rПАЗАР 5\n\n6000\n\nОХРИД\n\t МАКЕДОНИЈА\n\n\n", {locale: 'mk-MK'});
@@ -115,7 +109,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5 6000 ОХРИД МАКЕДОНИЈА", {locale: 'mk-MK'});
@@ -129,7 +122,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testParseAddressMKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Сања Јанчевски ГРАДСКИ ПАЗАР 5\n6000 ОХРИД\nМАКЕДОНИЈА", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_MK = {
         test.equal(parsedAddress.countryCode, "MK");
         test.done();
     },
-
     testFormatAddressMK: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_MK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressMKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_MK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

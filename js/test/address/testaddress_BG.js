@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_BG = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBGNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
@@ -48,7 +45,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
@@ -62,7 +58,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.postalCode, "1309");
         test.done();
     },
-
     testParseAddressBGManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov\nKukush Str. 2, fl.6\n1309 SOFIA\nBULGARIA", {locale: 'bg-BG'});
@@ -76,7 +71,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
@@ -90,7 +84,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6  \n\t\n 1309 SOFIA\t\n\n BULGARIA  \n  \t\t\t", {locale: 'bg-BG'});
@@ -104,7 +97,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov Kukush Str. 2 fl.6 1309 SOFIA BULGARIA", {locale: 'bg-BG'});
@@ -118,7 +110,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Джордж Попандов, Ул. Кукуш. 2, ет.6, 1309 СОФИЯ, БЪЛГАРИЯ", {locale: 'bg-BG'});
@@ -132,7 +123,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testParseAddressBGFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_BG = {
         test.equal(parsedAddress.countryCode, "BG");
         test.done();
     },
-
     testFormatAddressBG: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +152,6 @@ module.exports.testaddress_BG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBGFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +166,4 @@ module.exports.testaddress_BG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

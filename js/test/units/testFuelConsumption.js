@@ -30,7 +30,6 @@ module.exports.testFuelConsumption = {
         ilib.clearCache();
         callback();
     },
-
     testFuelConsumptionFuelConsumptionConstructor: function(test) {
         test.expect(1);
 
@@ -42,7 +41,6 @@ module.exports.testFuelConsumption = {
         test.ok(m !== null);
         test.done();
     },
-
     testFuelConsumptionFuelConsumptionConvertKmpltoLip100km: function(test) {
         test.expect(3);
         var m1 = new FuelConsumptionUnit({
@@ -60,14 +58,12 @@ module.exports.testFuelConsumption = {
         test.roughlyEqual(m2.getAmount(), 0.02, 0.01);
         test.done();
     },
-
     testFuelConsumptionStaticConvert1: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg","km/liter", 2.0);
         test.roughlyEqual(m, 4.70429, 0.01);
         test.done();
     },
-
     testFuelConsumptionStaticConvertWithString: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg(imp)","km/liter", 2.0);
@@ -75,7 +71,6 @@ module.exports.testFuelConsumption = {
         test.equal(m, 5.64962);
         test.done();
     },
-
     testFuelConsumptionStaticConvert2: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert( "liter/100km","km/liter", 2.0);
@@ -83,7 +78,6 @@ module.exports.testFuelConsumption = {
         test.equal(m, 50);
         test.done();
     },
-
     testFuelConsumptionStaticConvert3: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg", "liter/100km", 2.0);
@@ -91,7 +85,6 @@ module.exports.testFuelConsumption = {
         test.roughlyEqual(m, 117.607, 0.01);
         test.done();
     },
-
     testFuelConsumptionStaticConvert4: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("km/liter", "liter/100km", 2.0);
@@ -99,7 +92,6 @@ module.exports.testFuelConsumption = {
         test.equal(m, 50);
         test.done();
     },
-
     testFuelConsumptionStaticConvert5: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg(imp)", "liter/100km", 2.0);
@@ -107,7 +99,6 @@ module.exports.testFuelConsumption = {
         test.roughlyEqual(m, 141.241, 0.001);
         test.done();
     },
-
     testFuelConsumptionStaticConvert6: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert( "mpg","mpg(imp)", 2.0);
@@ -129,7 +120,6 @@ module.exports.testFuelConsumption = {
         test.roughlyEqual(m, 141.241, 0.01);
         test.done();
     },
-
     testFuelConsumptionStaticConvert9: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("km/liter", "mpg",2.0);
@@ -146,7 +136,6 @@ module.exports.testFuelConsumption = {
         test.roughlyEqual(m, 2.4019, 0.001);
         test.done();
     },
-
     testFuelConsumptionStaticConvert11: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("liter/100km", "mpg",2.0);
@@ -155,7 +144,6 @@ module.exports.testFuelConsumption = {
         test.done();
 
     },
-
     testFuelConsumptionLocalize4: function(test) {
         test.expect(2);
         var m = new FuelConsumptionUnit({
@@ -169,7 +157,6 @@ module.exports.testFuelConsumption = {
         test.equal(m.unit, "mile-per-gallon");
         test.done();
     },
-
     testFuelConsumptionLocalize1: function(test) {
         test.expect(2);
         var m = new FuelConsumptionUnit({
@@ -183,7 +170,6 @@ module.exports.testFuelConsumption = {
         test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
-
     testFuelConsumptionLocalize2: function(test) {
         test.expect(2);
         var m = new FuelConsumptionUnit({
@@ -197,7 +183,6 @@ module.exports.testFuelConsumption = {
         test.equal(m.unit, "mile-per-gallon");
         test.done();
     },
-
     testFuelConsumptionLocalize3: function(test) {
         test.expect(2);
         var m = new FuelConsumptionUnit({
@@ -211,7 +196,6 @@ module.exports.testFuelConsumption = {
         test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
-
     testFuelConsumptionLocalize5: function(test) {
         test.expect(2);
         var m = new FuelConsumptionUnit({
@@ -225,7 +209,6 @@ module.exports.testFuelConsumption = {
         test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
-
     testFuelConsumptionGetMeasures: function(test) {
         test.expect(1);
         var measures = FuelConsumptionUnit.getMeasures();
@@ -240,5 +223,4 @@ module.exports.testFuelConsumption = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

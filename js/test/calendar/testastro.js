@@ -110,7 +110,6 @@ module.exports.testastro = {
         ilib.clearCache();
         callback();
     },
-
     testEphemerisCorrection: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -121,7 +120,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testJulianCenturies: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -132,7 +130,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testNutation: function(test) {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
@@ -144,7 +141,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testAberration: function(test) {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
@@ -156,7 +152,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -173,7 +168,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testNextSolarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -190,7 +184,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testLunarLongitude: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -208,7 +201,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testNewMoonTime: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -224,7 +216,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testNewMoonBefore: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -242,7 +233,6 @@ module.exports.testastro = {
         }
         test.done();
     },
-
     testNewMoonAtOrAfter: function(test) {
         var l;
         Astro.initAstro(true, undefined, undefined);
@@ -260,5 +250,4 @@ module.exports.testastro = {
         }
         test.done();
     }
-
 };

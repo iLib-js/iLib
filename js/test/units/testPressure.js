@@ -30,7 +30,6 @@ module.exports.testpressure = {
         ilib.clearCache();
         callback();
     },
-
     testPressurePressureConstructor: function(test) {
         test.expect(1);
         var m = new PressureUnit({
@@ -41,7 +40,6 @@ module.exports.testpressure = {
         test.ok(m !== null);
         test.done();
     },
-
     testPressurePressureConvertkWtoHP: function(test) {
         test.expect(3);
         var m1 = new PressureUnit({
@@ -59,7 +57,6 @@ module.exports.testpressure = {
         test.roughlyEqual(m2.getAmount(), 0.290075, 1e-6);
         test.done();
     },
-
     testPressureStaticConvert1: function(test) {
         test.expect(1);
         var m = PressureUnit.convert("psi", "Pa", 1);
@@ -67,7 +64,6 @@ module.exports.testpressure = {
         test.roughlyEqual(m, 1.45038e-4, 1e-10);
         test.done();
     },
-
     testPressureStaticConvertWithString: function(test) {
         test.expect(1);
         var m = PressureUnit.convert("MPa", "Pa", "1e6");
@@ -75,7 +71,6 @@ module.exports.testpressure = {
         test.equal(m, 1);
         test.done();
     },
-
     testPressureStaticConvert2: function(test) {
         test.expect(1);
         var m = PressureUnit.convert("bar", "kPa", 1000);
@@ -83,7 +78,6 @@ module.exports.testpressure = {
         test.equal(m, 10);
         test.done();
     },
-
     testPressureStaticConvert3: function(test) {
         test.expect(1);
         var m = PressureUnit.convert("psi", "torr", 1);
@@ -91,7 +85,6 @@ module.exports.testpressure = {
         test.roughlyEqual(m, 1.93368e-2, 1e-5);
         test.done();
     },
-
     testPressureStaticConvert4: function(test) {
         test.expect(1);
         var m = PressureUnit.convert("pound-force-per-square-inch", "atmosphere", 1);
@@ -99,7 +92,6 @@ module.exports.testpressure = {
         test.roughlyEqual(m, 14.69594877, 1e-7);
         test.done();
     },
-
     testPressureScale1: function(test) {
         test.expect(2);
         var m1 = new PressureUnit({
@@ -126,7 +118,6 @@ module.exports.testpressure = {
         test.equal(m2.unit, "millipascal");
         test.done();
     },
-
     testPressureGetMeasures: function(test) {
         test.expect(1);
         var measures = PressureUnit.getMeasures();

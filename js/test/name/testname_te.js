@@ -32,7 +32,6 @@ module.exports.testname_te = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_te_IN: function(test) {
         test.expect(2);
         var parsed = new Name("రామ్ తేజ", {locale: 'te-IN'});
@@ -46,7 +45,6 @@ module.exports.testname_te = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_te_IN: function(test) {
         test.expect(2);
         var parsed = new Name("రామ్ తేజ సీనియర్", {locale: 'te-IN'});
@@ -61,7 +59,6 @@ module.exports.testname_te = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_te_IN: function(test) {
         test.expect(2);
         var parsed = new Name("మిస్టర్ తేజ", {locale: 'te-IN'});
@@ -75,7 +72,6 @@ module.exports.testname_te = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_te_IN: function(test) {
         test.expect(2);
         var parsed = new Name("మిస్టర్ మరియు మిస్ తేజ", {locale: 'te-IN'});
@@ -89,7 +85,6 @@ module.exports.testname_te = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_te_IN: function(test) {
         test.expect(2);
         var parsed = new Name("మిస్టర్ రామ్ తేజ", {locale: 'te-IN'});
@@ -104,10 +99,6 @@ module.exports.testname_te = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -126,7 +117,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -145,7 +135,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -164,7 +153,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -183,7 +171,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -204,7 +191,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -224,7 +210,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -244,7 +229,6 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_te_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,7 +248,4 @@ module.exports.testname_te = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

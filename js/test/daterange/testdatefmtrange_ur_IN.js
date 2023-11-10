@@ -682,5 +682,4 @@ module.exports.testdatefmtrange_ur_IN = {
         test.equal(fmt.format(start, end), "‏۲۰۱۱ – ۲۰۶۴");
         test.done();
     }
-
 };

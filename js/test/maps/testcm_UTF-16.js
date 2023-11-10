@@ -20,7 +20,6 @@
 if (typeof(CharmapFactory) === "undefined") {
     var CharmapFactory = require("../../lib/CharmapFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -30,7 +29,6 @@ module.exports.testcm_UTF_16 = {
         ilib.clearCache();
         callback();
     },
-
     testCharmapUTF16LoadMap: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -40,8 +38,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.getName(), "UTF-16");
         test.done();
     },
-
-
     testCharmapUTF16MapToUnicode: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16"
@@ -56,8 +52,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
-
     testCharmapUTF16MapToUnicodeExtended2: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -77,7 +71,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâãИЯД");
         test.done();
     },
-
     testCharmapUTF16MapToUnicodeExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -94,7 +87,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "一丁圁圂");
         test.done();
     },
-
     testCharmapUTF16MapToUnicodeExtended4: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -111,8 +103,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "𠔉𠘨𠝏𠠺");
         test.done();
     },
-
-
     testCharmapUTF16MapToNative: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16"
@@ -142,7 +132,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16MapToNativeExtended2: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16"
@@ -165,7 +154,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16MapToNativeExtended3: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16"
@@ -185,7 +173,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16MapToNativeExtended4: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16"
@@ -205,7 +192,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16BEMapToUnicode: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16BE"
@@ -220,7 +206,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "This is a test");
         test.done();
     },
-
     testCharmapUTF16BEMapToUnicodeExtended2: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -240,7 +225,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "ÀÁâãИЯД");
         test.done();
     },
-
     testCharmapUTF16BEMapToUnicodeExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -257,7 +241,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "一丁圁圂");
         test.done();
     },
-
     testCharmapUTF16BEMapToUnicodeExtended4: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -274,8 +257,6 @@ module.exports.testcm_UTF_16 = {
         test.equal(cm.mapToUnicode(input), "𠔉𠘨𠝏𠠺");
         test.done();
     },
-
-
     testCharmapUTF16BEMapToNative: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16BE"
@@ -305,7 +286,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16BEMapToNativeExtended2: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16BE"
@@ -328,7 +308,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16BEMapToNativeExtended3: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16BE"
@@ -348,7 +327,6 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     },
-
     testCharmapUTF16BEMapToNativeExtended4: function(test) {
         var cm = CharmapFactory({
             name: "UTF-16BE"
@@ -368,5 +346,4 @@ module.exports.testcm_UTF_16 = {
         }
         test.done();
     }
-
 };

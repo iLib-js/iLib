@@ -30,8 +30,6 @@ module.exports.testlistfmt_nb_NO = {
         ilib.clearCache();
         callback();
     },
-
-    // nb-NO
     testListFmtnbNONumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO"
@@ -42,7 +40,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-
     testListFmtnbNONumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO"
@@ -53,7 +50,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to"]), "ett og to");
         test.done();
     },
-
     testListFmtnbNONumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO"
@@ -64,7 +60,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to", "tre"]), "ett, to og tre");
         test.done();
     },
-
     testListFmtnbNONumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO"
@@ -86,7 +81,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -98,7 +92,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to"]), "ett, to");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -110,7 +103,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to", "tre"]), "ett, to, tre");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -134,7 +126,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -147,7 +138,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to"]), "ett, to");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -160,7 +150,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to", "tre"]), "ett, to, tre");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -185,7 +174,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett"]), "ett");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -198,7 +186,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to"]), "ett og to");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",
@@ -211,7 +198,6 @@ module.exports.testlistfmt_nb_NO = {
         test.equal(fmt.format(["ett", "to", "tre"]), "ett, to og tre");
         test.done();
     },
-
     testListFmtUnitStylenbNONumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "nb-NO",

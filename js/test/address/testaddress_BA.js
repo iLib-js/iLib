@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_BA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
@@ -48,7 +45,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
@@ -62,7 +58,6 @@ module.exports.testaddress_BA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac\nul. Skenderija 60\n71000 SARAJEVO\nBOSNIA", {locale: 'bs-Latn-BA'});
@@ -76,7 +71,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
@@ -90,7 +84,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60  \n\t\n 71000 SARAJEVO\t\n\n BOSNIA  \n  \t\t\t", {locale: 'bs-Latn-BA'});
@@ -104,7 +97,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BAX 580 71000 SARAJEVO BOSNIA", {locale: 'bs-Latn-BA'});
@@ -118,7 +110,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBASpeciAMChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
@@ -132,7 +123,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testParseAddressBAFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_BA = {
         test.equal(parsedAddress.countryCode, "BA");
         test.done();
     },
-
     testFormatAddressBA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +152,6 @@ module.exports.testaddress_BA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBAFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +166,4 @@ module.exports.testaddress_BA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

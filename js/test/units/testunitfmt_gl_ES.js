@@ -87,7 +87,6 @@ module.exports.testunitfmt_gl_ES = {
         test.equal(str, "-16,666666666666668 graos Celsius");
         test.done();
     },
-
     testUnitFormatArea1_gl_ES: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

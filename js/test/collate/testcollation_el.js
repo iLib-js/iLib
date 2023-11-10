@@ -29,7 +29,6 @@ module.exports.testcollation_el = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuat_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -135,7 +134,6 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-
     testJSCollatorTer_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -241,7 +239,6 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-
     testJSCollatorSec_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -347,7 +344,6 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-
     testJSCollatorPri_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -453,7 +449,6 @@ module.exports.testcollation_el = {
         test.ok("ώ = ώ", col.compare("ώ", "ώ") === 0);
         test.done();
     },
-
     testJSCollatorQuatSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -559,7 +554,6 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-
     testJSCollatorTerSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -665,7 +659,6 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-
     testJSCollatorSecSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -771,7 +764,6 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-
     testJSCollatorPriSort_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -877,7 +869,6 @@ module.exports.testcollation_el = {
         test.ok("ώ < ώ", col.compare("ώ", "ώ") < 0);
         test.done();
     },
-
     testCollatorCase_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -945,7 +936,6 @@ module.exports.testcollation_el = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPrimary_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1017,7 +1007,6 @@ module.exports.testcollation_el = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorIgnoreStressMarks_el: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -1035,7 +1024,6 @@ module.exports.testcollation_el = {
         test.equal(comp("Αθηνά", "Αθήνα"), 0);
         test.done();
     },
-
     testJSCollatorQuatLatin_el: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -1067,7 +1055,6 @@ module.exports.testcollation_el = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-
     testCollatorPrimaryMixed_el: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1151,5 +1138,4 @@ module.exports.testcollation_el = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

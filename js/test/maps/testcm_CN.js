@@ -238,7 +238,6 @@ module.exports.testcm_CN = {
         ilib.clearCache();
         callback();
     },
-
     testCharmapCNTestAliases: function(test) {
         for (var charset in aliasesCN) {
             for (var i = 0; i < aliasesCN[charset].length; i++) {
@@ -251,7 +250,6 @@ module.exports.testcm_CN = {
         }
         test.done();
     },
-
     testCharmapCNMapToUnicode: function(test) {
         for (var charset in testDataCN) {
             var cm = CharmapFactory({
@@ -266,7 +264,6 @@ module.exports.testcm_CN = {
         }
         test.done();
     },
-
     testCharmapCNMapToNative: function(test) {
         // console.log("testCharmapCNMapToNative: called");
         for (var charset in testDataCN) {
@@ -292,6 +289,4 @@ module.exports.testcm_CN = {
         }
         test.done();
     }
-
-
 };

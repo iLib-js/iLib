@@ -70,7 +70,6 @@ module.exports.testhandate = {
         ilib.clearCache();
         callback();
     },
-
     testHanDateConstructor: function(test) {
         test.expect(1);
         var hd = new HanDate();
@@ -78,7 +77,6 @@ module.exports.testhandate = {
         test.ok(hd !== null);
         test.done();
     },
-
     testHanDateCalcYearPositive1: function(test) {
         test.expect(1);
         var hd = new HanDate({rd: 0, timezone: "Etc/UTC"});
@@ -86,7 +84,6 @@ module.exports.testhandate = {
         test.equal(hd._calcYear(1), 2697);
         test.done();
     },
-
     testHanDateCalcYearPositive2: function(test) {
         test.expect(1);
         var hd = new HanDate({rd: 0, timezone: "Etc/UTC"});
@@ -94,7 +91,6 @@ module.exports.testhandate = {
         test.equal(hd._calcYear(40), 2697);
         test.done();
     },
-
     testHanDateCalcYearPositive3: function(test) {
         test.expect(1);
         var hd = new HanDate({rd: 0, timezone: "Etc/UTC"});
@@ -158,7 +154,6 @@ module.exports.testhandate = {
         test.equal(hd._calcYear(1827), 2702);
         test.done();
     },
-
     testHanDateCalcYearNegative1: function(test) {
         test.expect(1);
         var hd = new HanDate({rd: 0, timezone: "Etc/UTC"});
@@ -201,7 +196,6 @@ module.exports.testhandate = {
         test.equal(hd._calcYear(-1426600), -1208);
         test.done();
     },
-
     testHanRataDieConstructorFromDateComponents1: function(test) {
         test.expect(2);
         var prd = new HanRataDie({
@@ -442,7 +436,6 @@ module.exports.testhandate = {
         test.equal(prd.getRataDie(), -1426612);
         test.done();
     },
-
     testHanRataDieConstructorFromDateComponentsCycle1: function(test) {
         test.expect(2);
         var prd = new HanRataDie({
@@ -681,7 +674,6 @@ module.exports.testhandate = {
         test.equal(prd.getRataDie(), -983210);
         test.done();
     },
-
     testHanDateConvert: function(test) {
         var hd;
 
@@ -703,7 +695,6 @@ module.exports.testhandate = {
         }
         test.done();
     },
-
     testHanDateGetJulianDay: function(test) {
         var hd;
 
@@ -724,7 +715,6 @@ module.exports.testhandate = {
         }
         test.done();
     },
-
     testHanDateConstructorFull: function(test) {
         test.expect(10);
         var hd = new HanDate({
@@ -751,7 +741,6 @@ module.exports.testhandate = {
         test.equal(hd.getCycleYears(), 31);
         test.done();
     },
-
     testHanDateConstructorFullWithStrings: function(test) {
         test.expect(10);
         var hd = new HanDate({
@@ -777,7 +766,6 @@ module.exports.testhandate = {
         test.equal(hd.getCycleYears(), 31);
         test.done();
     },
-
     testHanDateConstructorCopy: function(test) {
         test.expect(12);
         var hd2 = new HanDate({
@@ -807,7 +795,6 @@ module.exports.testhandate = {
         test.ok(!hd.isLeapMonth());
         test.done();
     },
-
     testHanDateConstructorCopyLeapMonth: function(test) {
         test.expect(5);
         var hd2 = new HanDate({
@@ -830,7 +817,6 @@ module.exports.testhandate = {
         test.ok(hd.isLeapMonth());
         test.done();
     },
-
     testHanDateConstructorUnixTime: function(test) {
         test.expect(12);
         var hd = new HanDate({
@@ -853,7 +839,6 @@ module.exports.testhandate = {
         test.ok(!hd.isLeapMonth());
         test.done();
     },
-
     testHanDateSetYears: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -865,7 +850,6 @@ module.exports.testhandate = {
         test.equal(hd.getYears(), 123);
         test.done();
     },
-
     testHanDateSetMonths: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -877,7 +861,6 @@ module.exports.testhandate = {
         test.equal(hd.getMonths(), 7);
         test.done();
     },
-
     testHanDateSetDays: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -889,7 +872,6 @@ module.exports.testhandate = {
         test.equal(hd.getDays(), 12);
         test.done();
     },
-
     testHanDateSetHours: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -901,7 +883,6 @@ module.exports.testhandate = {
         test.equal(hd.getHours(), 12);
         test.done();
     },
-
     testHanDateSetMinutes: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -913,7 +894,6 @@ module.exports.testhandate = {
         test.equal(hd.getMinutes(), 13);
         test.done();
     },
-
     testHanDateSetSeconds: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -925,7 +905,6 @@ module.exports.testhandate = {
         test.equal(hd.getSeconds(), 23);
         test.done();
     },
-
     testHanDateSetMilliseconds: function(test) {
         test.expect(2);
         var hd = new HanDate();
@@ -937,7 +916,6 @@ module.exports.testhandate = {
         test.equal(hd.getMilliseconds(), 123);
         test.done();
     },
-
     testGetDayOfWeek1: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -952,7 +930,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfWeek(), 5);
         test.done();
     },
-
     testGetDayOfWeekWithTime: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -970,7 +947,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfWeek(), 5);
         test.done();
     },
-
     testHanDateTestGetTimeZero: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -984,7 +960,6 @@ module.exports.testhandate = {
         test.equal(hd.getTime(), 0);
         test.done();
     },
-
     testHanDateTestGetTimeZeroJD: function(test) {
         test.expect(2);
         var hd = new HanDate({julianday: 2440587.5});
@@ -993,7 +968,6 @@ module.exports.testhandate = {
         test.equal(hd.getTime(), 0);
         test.done();
     },
-
     testHanDateTestGetTime: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1009,7 +983,6 @@ module.exports.testhandate = {
         test.equal(hd.getTime(), 30600000);
         test.done();
     },
-
     testHanDateTestGetTimeTooEarly: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1023,7 +996,6 @@ module.exports.testhandate = {
         test.equal(hd.getTime(), -1);
         test.done();
     },
-
     testHanDateTestGetTimeTooLate: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1037,7 +1009,6 @@ module.exports.testhandate = {
         test.equal(hd.getTime(), -1);
         test.done();
     },
-
     // test some of the helper functions to make sure they are producing the right thing
     testHanDateOnOrBeforeSun: function(test) {
         test.expect(3);
@@ -1056,7 +1027,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd-5);
         test.done();
     },
-
     testHanDateOnOrBeforeMon: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1073,7 +1043,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(1).getRataDie(), rd-4);
         test.done();
     },
-
     testHanDateOnOrBeforeTue: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1090,7 +1059,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(2).getRataDie(), rd-3);
         test.done();
     },
-
     testHanDateOnOrBeforeWed: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1107,7 +1075,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(3).getRataDie(), rd-2);
         test.done();
     },
-
     testHanDateOnOrBeforeThu: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1124,7 +1091,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(4).getRataDie(), rd-1);
         test.done();
     },
-
     testHanDateOnOrBeforeFri: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1141,7 +1107,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(5).getRataDie(), rd);
         test.done();
     },
-
     testHanDateOnOrBeforeSat: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1158,7 +1123,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(6).getRataDie(), rd-6);
         test.done();
     },
-
     testHanDateOnOrBeforeSunWithTime: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1178,7 +1142,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd-6);
         test.done();
     },
-
     testHanDateOnOrBeforeSunWithTimeZoneWestern1: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1199,7 +1162,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd-6);
         test.done();
     },
-
     testHanDateOnOrBeforeSunWithTimeZoneWestern2: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1220,7 +1182,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd);
         test.done();
     },
-
     testHanDateOnOrBeforeSunWithTimeZoneEastern1: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1241,7 +1202,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd);
         test.done();
     },
-
     testHanDateOnOrBeforeSunWithTimeZoneEastern2: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1262,7 +1222,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrBefore(0).getRataDie(), rd-6);
         test.done();
     },
-
     testHanDateOnOrAfterSun: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1280,7 +1239,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(0).getRataDie(), rd+2);
         test.done();
     },
-
     testHanDateOnOrAfterSunDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1300,7 +1258,6 @@ module.exports.testhandate = {
         test.equal(date.day, 24);
         test.done();
     },
-
     testHanDateOnOrAfterMon: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1317,7 +1274,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(1).getRataDie(), rd+3);
         test.done();
     },
-
     testHanDateOnOrAfterMonDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1336,7 +1292,6 @@ module.exports.testhandate = {
         test.equal(date.day, 2);
         test.done();
     },
-
     testHanDateOnOrAfterTue: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1353,7 +1308,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(2).getRataDie(), rd+4);
         test.done();
     },
-
     testHanDateOnOrAfterWed: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1370,7 +1324,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(3).getRataDie(), rd+5);
         test.done();
     },
-
     testHanDateOnOrAfterThu: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1387,7 +1340,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(4).getRataDie(), rd+6);
         test.done();
     },
-
     testHanDateOnOrAfterThuDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1406,7 +1358,6 @@ module.exports.testhandate = {
         test.equal(date.day, 5);
         test.done();
     },
-
     testHanDateOnOrAfterFri: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1423,7 +1374,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(5).getRataDie(), rd);
         test.done();
     },
-
     testHanDateOnOrAfterFriDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1442,7 +1392,6 @@ module.exports.testhandate = {
         test.equal(date.day, 29);
         test.done();
     },
-
     testHanDateOnOrAfterSat: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1459,7 +1408,6 @@ module.exports.testhandate = {
         test.equal(hd.onOrAfter(6).getRataDie(), rd+1);
         test.done();
     },
-
     testHanDateBeforeSun: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1477,7 +1425,6 @@ module.exports.testhandate = {
         test.equal(hd.before(0).getRataDie(), rd-5);
         test.done();
     },
-
     testHanDateBeforeSunDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1497,7 +1444,6 @@ module.exports.testhandate = {
         test.equal(date.day, 24);
         test.done();
     },
-
     testHanDateBeforeMon: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1514,7 +1460,6 @@ module.exports.testhandate = {
         test.equal(hd.before(1).getRataDie(), rd-4);
         test.done();
     },
-
     testHanDateBeforeTue: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1531,7 +1476,6 @@ module.exports.testhandate = {
         test.equal(hd.before(2).getRataDie(), rd-3);
         test.done();
     },
-
     testHanDateBeforeWed: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1548,7 +1492,6 @@ module.exports.testhandate = {
         test.equal(hd.before(3).getRataDie(), rd-2);
         test.done();
     },
-
     testHanDateBeforeThu: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1565,7 +1508,6 @@ module.exports.testhandate = {
         test.equal(hd.before(4).getRataDie(), rd-1);
         test.done();
     },
-
     testHanDateBeforeThuDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1585,7 +1527,6 @@ module.exports.testhandate = {
         test.equal(date.day, 28);
         test.done();
     },
-
     testHanDateBeforeFri: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1602,7 +1543,6 @@ module.exports.testhandate = {
         test.equal(hd.before(5).getRataDie(), rd-7);
         test.done();
     },
-
     testHanDateBeforeFriDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1622,7 +1562,6 @@ module.exports.testhandate = {
         test.equal(date.day, 22);
         test.done();
     },
-
     testHanDateBeforeSat: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1639,7 +1578,6 @@ module.exports.testhandate = {
         test.equal(hd.before(6).getRataDie(), rd-6);
         test.done();
     },
-
     testHanDateAfterSun: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1657,7 +1595,6 @@ module.exports.testhandate = {
         test.equal(hd.after(0).getRataDie(), rd+2);
         test.done();
     },
-
     testHanDateAfterSunDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1677,7 +1614,6 @@ module.exports.testhandate = {
         test.equal(date.day, 1);
         test.done();
     },
-
     testHanDateAfterMon: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1694,7 +1630,6 @@ module.exports.testhandate = {
         test.equal(hd.after(1).getRataDie(), rd+3);
         test.done();
     },
-
     testHanDateAfterTue: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1711,7 +1646,6 @@ module.exports.testhandate = {
         test.equal(hd.after(2).getRataDie(), rd+4);
         test.done();
     },
-
     testHanDateAfterWed: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1728,7 +1662,6 @@ module.exports.testhandate = {
         test.equal(hd.after(3).getRataDie(), rd+5);
         test.done();
     },
-
     testHanDateAfterThu: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1745,7 +1678,6 @@ module.exports.testhandate = {
         test.equal(hd.after(4).getRataDie(), rd+6);
         test.done();
     },
-
     testHanDateAfterFri: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1762,7 +1694,6 @@ module.exports.testhandate = {
         test.equal(hd.after(5).getRataDie(), rd+7);
         test.done();
     },
-
     testHanDateAfterFriDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1782,7 +1713,6 @@ module.exports.testhandate = {
         test.equal(date.day, 6);
         test.done();
     },
-
     testHanDateAfterSat: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -1799,7 +1729,6 @@ module.exports.testhandate = {
         test.equal(hd.after(6).getRataDie(), rd+1);
         test.done();
     },
-
     testHanDateAfterSatDate: function(test) {
         test.expect(5);
         var hd = new HanDate({
@@ -1819,7 +1748,6 @@ module.exports.testhandate = {
         test.equal(date.day, 30);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearThisYear: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1833,7 +1761,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 5);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearThisYear2: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1847,7 +1774,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 12);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearThisYear3: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1861,7 +1787,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 1);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearThisYearWithTime: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1879,7 +1804,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 1);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearPreviousYear: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1893,7 +1817,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 51);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular1: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1907,7 +1830,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 51);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular2: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1921,7 +1843,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 1);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular3: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1935,7 +1856,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 1);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular4: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1949,7 +1869,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 55);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular5: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1963,7 +1882,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 51);
         test.done();
     },
-
     testHanDateTestGetWeekOfYearLastWeekRegular6: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1977,7 +1895,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfYear(), 1);
         test.done();
     },
-
     testHanDateGetDayOfYearFirstDay: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -1991,7 +1908,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfYear(), 1);
         test.done();
     },
-
     testHanDateGetDayOfYearMidYear: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2005,7 +1921,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfYear(), 76);
         test.done();
     },
-
     testHanDateGetDayOfYearLastDay: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2019,7 +1934,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfYear(), 354);
         test.done();
     },
-
     testHanDateGetDayOfYearLastDayLeapYear: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2033,7 +1947,6 @@ module.exports.testhandate = {
         test.equal(hd.getDayOfYear(), 384);
         test.done();
     },
-
     testHanDateGetWeekOfMonth0: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2047,7 +1960,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonth1: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2061,7 +1973,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonth2: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2075,7 +1986,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 2);
         test.done();
     },
-
     testHanDateGetWeekOfMonth3: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2089,7 +1999,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 4);
         test.done();
     },
-
     testHanDateGetWeekOfMonth4: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2103,7 +2012,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 5);
         test.done();
     },
-
     testHanDateGetWeekOfMonth6: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2117,7 +2025,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonth7: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2131,7 +2038,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonth8: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2145,7 +2051,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonth9: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2159,7 +2064,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("en-US"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN0: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2173,7 +2077,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN1: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2187,7 +2090,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN2: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2201,7 +2103,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 2);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN3: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2215,7 +2116,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 4);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN4: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2229,7 +2129,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 5);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN6: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2243,7 +2142,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN7: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2257,7 +2155,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN8: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2271,7 +2168,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN9: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2300,7 +2196,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN11: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2314,7 +2209,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN12: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2328,7 +2222,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN13: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2342,7 +2235,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN14: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2356,7 +2248,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 1);
         test.done();
     },
-
     testHanDateGetWeekOfMonthCN: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2371,7 +2262,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("zh-Hans-CN"), 0);
         test.done();
     },
-
     testHanDateGetWeekOfMonthDE: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2387,7 +2277,6 @@ module.exports.testhandate = {
         test.equal(hd.getWeekOfMonth("de-DE"), 0);
         test.done();
     },
-
     testHanDateGetEraAP: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2401,7 +2290,6 @@ module.exports.testhandate = {
         test.equal(hd.getEra(), 1);
         test.done();
     },
-
     testHanDateGetEraBAP: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2418,7 +2306,6 @@ module.exports.testhandate = {
         test.equal(hd.getEra(), -1);
         test.done();
     },
-
     testHanDateGetEraAPYear1: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2432,7 +2319,6 @@ module.exports.testhandate = {
         test.equal(hd.getEra(), 1);
         test.done();
     },
-
     testHanDateGetEraBAPYear0: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2446,7 +2332,6 @@ module.exports.testhandate = {
         test.equal(hd.getEra(), -1);
         test.done();
     },
-
     testHanDateSetTimeZone: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -2464,7 +2349,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-
     testHanDateSetTimeZoneNotString: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -2482,7 +2366,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-
     testHanDateSetTimeZoneUndefined: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -2501,7 +2384,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "local");
         test.done();
     },
-
     testHanDateSetTimeZoneEmpty: function(test) {
         test.expect(3);
         var hd = new HanDate({
@@ -2520,7 +2402,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "local");
         test.done();
     },
-
     testHanDateInitWithUnixTimeRightTimeZone: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2531,7 +2412,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "local");
         test.done();
     },
-
     testHanDateInitWithJDRightTimeZone: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2542,7 +2422,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "local");
         test.done();
     },
-
     testHanDateInitWithRDRightTimeZone: function(test) {
         test.expect(2);
         var hd = new HanDate({
@@ -2553,7 +2432,6 @@ module.exports.testhandate = {
         test.equal(hd.getTimeZone(), "local");
         test.done();
     },
-
     testHanDateRoundTripConstruction: function(test) {
         test.expect(8);
         var hd = new HanDate({
@@ -2581,7 +2459,6 @@ module.exports.testhandate = {
         test.equal(hd2.getSeconds(), hd.getSeconds());
         test.done();
     },
-
     testHanDateRoundTripConstruction2: function(test) {
         test.expect(8);
         var hd = new HanDate({
@@ -2609,5 +2486,4 @@ module.exports.testhandate = {
         test.equal(hd2.getSeconds(), hd.getSeconds());
         test.done();
     }
-
 };

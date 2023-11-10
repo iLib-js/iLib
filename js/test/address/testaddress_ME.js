@@ -32,7 +32,6 @@ module.exports.testaddress_ME = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica\nCrna Gora", {locale: 'hr-ME'});
@@ -46,7 +45,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMESRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петар Петровић Ул. Слобода бр. 1\n81000 Подгорица\nЦрна Гора", {locale: 'sr-ME'});
@@ -60,8 +58,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
-
     testParseAddressMESQNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Z. Petar Petroviq Ul. Ka liri. 1\n81000 Podgorica\nMontenegro", {locale: 'sq-ME'});
@@ -75,7 +71,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMEBSNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Petar Petrović Ul. Sloboda ne. 1\n81000 Podgorica\nCrna Gora", {locale: 'sq-ME'});
@@ -89,9 +84,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
-
-
     testParseAddressMENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1\nPodgorica\nCrna Gora", {locale: 'hr-ME'});
@@ -105,7 +97,6 @@ module.exports.testaddress_ME = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica", {locale: 'hr-ME'});
@@ -119,7 +110,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul.\nSlobode br. 1\n\n81000 Podgorica\n\nCrna Gora\n\n\n", {locale: 'hr-ME'});
@@ -132,7 +122,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. , Slobode br. 1 , Podgorica , 81000 , Crna Gora", {locale: 'hr-ME'});
@@ -146,7 +135,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tG. Petar Petrović Ul.\t\t\rSlobode br. 1\t\n\n\nPodgorica\n\t\n81000\n\n\tCrna Gora\n\n\n", {locale: 'hr-ME'});
@@ -160,7 +148,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1 81000 Podgorica Crna Gora", {locale: 'hr-ME'});
@@ -174,7 +161,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testParseAddressMEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica\nMontenegro", {locale: 'en-US'});
@@ -190,7 +176,6 @@ module.exports.testaddress_ME = {
         test.equal(parsedAddress.countryCode, "ME");
         test.done();
     },
-
     testFormatAddressME: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -206,7 +191,6 @@ module.exports.testaddress_ME = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressMEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -222,5 +206,4 @@ module.exports.testaddress_ME = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

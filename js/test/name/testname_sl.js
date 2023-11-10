@@ -32,7 +32,6 @@ module.exports.testname_sl = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
@@ -46,7 +45,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Melania Trump upokojil", {locale: 'sl-SI'});
@@ -61,7 +59,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("G. Trump", {locale: 'sl-SI'});
@@ -75,7 +72,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("G. in Ga. Trump", {locale: 'sl-SI'});
@@ -89,7 +85,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Ga. Melania Trump", {locale: 'sl-SI'});
@@ -104,7 +99,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_sl_SI: function(test) {
         test.expect(2);
         var parsed = new Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
@@ -120,10 +114,6 @@ module.exports.testname_sl = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -142,7 +132,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -161,7 +150,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -181,9 +169,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -202,7 +187,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -223,7 +207,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -243,7 +226,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -263,7 +245,6 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_sl_SI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,7 +264,4 @@ module.exports.testname_sl = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

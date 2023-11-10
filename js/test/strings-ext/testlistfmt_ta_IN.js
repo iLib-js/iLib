@@ -30,9 +30,6 @@ module.exports.testlistfmt_ta_IN = {
         ilib.clearCache();
         callback();
     },
-
-    // ta-IN
-
     testListFmttaINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு"]), "ஒரு");
         test.done();
     },
-
     testListFmttaINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு"]), "ஒரு மற்றும் இரண்டு");
         test.done();
     },
-
     testListFmttaINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), "ஒரு, இரண்டு மற்றும் மூன்று");
         test.done();
     },
-
     testListFmttaINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு"]), "ஒரு");
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு"]), 'ஒரு, இரண்டு');
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), 'ஒரு, இரண்டு, மூன்று');
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -135,7 +126,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு"]), "ஒரு");
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -148,7 +138,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு"]), 'ஒரு, இரண்டு');
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -161,7 +150,6 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று"]), 'ஒரு, இரண்டு, மூன்று');
         test.done();
     },
-
     testListFmtUnitStyletaINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ta-IN",
@@ -174,5 +162,4 @@ module.exports.testlistfmt_ta_IN = {
         test.equal(fmt.format(["ஒரு", "இரண்டு", "மூன்று", "நான்கு"]), 'ஒரு, இரண்டு, மூன்று, நான்கு');
         test.done();
     }
-
 };

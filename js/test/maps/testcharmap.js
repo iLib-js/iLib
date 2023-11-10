@@ -20,7 +20,6 @@
 if (typeof(CharmapFactory) === "undefined") {
     var CharmapFactory = require("../../lib/CharmapFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -30,14 +29,12 @@ module.exports.testcharmap = {
         ilib.clearCache();
         callback();
     },
-
     testCharmapConstructor: function(test) {
         test.expect(1);
         var cm = CharmapFactory();
         test.ok(typeof(cm) !== "undefined");
         test.done();
     },
-
     testCharmapLoadMap: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -48,7 +45,6 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "ISO-8859-15");
         test.done();
     },
-
     testCharmapAlias: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -59,7 +55,6 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "ISO-8859-15");
         test.done();
     },
-
     testCharmapLoadAlgorithmic: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -70,5 +65,4 @@ module.exports.testcharmap = {
         test.equal(cm.getName(), "UTF-8");
         test.done();
     }
-
 };

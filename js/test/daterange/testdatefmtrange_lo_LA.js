@@ -23,7 +23,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -33,7 +32,6 @@ module.exports.testdatefmtrange_lo_LA = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtloLARangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -138,7 +136,6 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "31 ທັນວາ 2011, 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtloLARangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -243,7 +240,6 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "30 ທັນວາ 2011, 13:45 – 31 ທັນວາ 2011, 14:30");
         test.done();
     },
-
     testDateRngFmtloLARangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -348,7 +344,6 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 – 31 ທັນວາ 2011");
         test.done();
     },
-
     testDateRngFmtloLARangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -453,7 +448,6 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 ພະຈິກ – 31 ທັນວາ 2011");
         test.done();
     },
-
     testDateRngFmtloLARangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});
@@ -558,7 +552,6 @@ module.exports.testdatefmtrange_lo_LA = {
         test.equal(fmt.format(start, end), "20 ພະຈິກ 2011 – 31 ມັງກອນ 2012");
         test.done();
     },
-
     testDateRngFmtloLARangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "lo-LA", length: "short"});

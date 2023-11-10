@@ -32,7 +32,6 @@ module.exports.testaddress_BJ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBJNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
@@ -46,7 +45,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
@@ -60,7 +58,6 @@ module.exports.testaddress_BJ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBJManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000\nCOTONOU\nBENIN", {locale: 'fr-BJ'});
@@ -74,7 +71,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
@@ -88,7 +84,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000  \n\t\n COTONOU\t\n\n BENIN  \n  \t\t\t", {locale: 'fr-BJ'});
@@ -102,7 +97,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000 COTONOU BENIN", {locale: 'fr-BJ'});
@@ -116,7 +110,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
@@ -130,7 +123,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testParseAddressBJFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 BP 1000, COTONOU, BENIN", {locale: 'en-US'});
@@ -146,7 +138,6 @@ module.exports.testaddress_BJ = {
         test.equal(parsedAddress.countryCode, "BJ");
         test.done();
     },
-
     testFormatAddressBJ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,7 +153,6 @@ module.exports.testaddress_BJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBJFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_BJ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

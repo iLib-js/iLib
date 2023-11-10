@@ -44,7 +44,6 @@ module.exports.testnumfmtasync = {
         });
 
     },
-
     testNumFmtAsyncNumberFormatSimple: function(test) {
         test.expect(2);
         new NumFmt({
@@ -57,7 +56,6 @@ module.exports.testnumfmtasync = {
             }
         });
     },
-
     testNumFmtAsyncNumberStyleStringArgument: function(test) {
         test.expect(2);
         new NumFmt({
@@ -72,7 +70,6 @@ module.exports.testnumfmtasync = {
             }
         });
     },
-
     testNumFmtAsyncFormatNativeDefaultTrue: function(test) {
         test.expect(2);
         new NumFmt({
@@ -86,7 +83,6 @@ module.exports.testnumfmtasync = {
             }
         });
     },
-
     testNumFmtAsyncCurrencyFormatUS: function(test) {
         test.expect(2);
         new NumFmt({
@@ -101,7 +97,6 @@ module.exports.testnumfmtasync = {
             }
         });
     },
-
     testNumFmtAsyncCurrencyGetFractionDigitsOtherCurrency: function(test) {
         test.expect(3);
         new NumFmt({
@@ -117,7 +112,6 @@ module.exports.testnumfmtasync = {
             }
         });
     },
-
     testNumFmtAsyncPercentageFormatRegular_kn_IN: function(test) {
         test.expect(2);
         new NumFmt({

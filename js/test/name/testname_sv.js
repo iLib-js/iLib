@@ -32,7 +32,6 @@ module.exports.testname_sv = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("Maud Adams", {locale: 'sv-SE'});
@@ -46,7 +45,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("Maud Adams pension", {locale: 'sv-SE'});
@@ -61,7 +59,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("herr Adams", {locale: 'sv-SE'});
@@ -75,7 +72,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("herr och fru Adams", {locale: 'sv-SE'});
@@ -89,7 +85,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("herr Maud Adams", {locale: 'sv-SE'});
@@ -104,7 +99,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_sv_SE: function(test) {
         test.expect(2);
         var parsed = new Name("premiärminister Maud Adams pension", {locale: 'sv-SE'});
@@ -120,11 +114,6 @@ module.exports.testname_sv = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -143,7 +132,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -162,7 +150,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -182,7 +169,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -201,7 +187,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -222,7 +207,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -242,7 +226,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -262,7 +245,6 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_sv_SE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -282,7 +264,4 @@ module.exports.testname_sv = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

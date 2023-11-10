@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_fi_FI = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtFIRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "31. joulukuuta 2011 klo 13.45 – 14.30");
         test.done();
     },
-
     testDateRngFmtFIRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "30. joulukuuta 2011 klo 13.45 – 31. joulukuuta 2011 klo 14.30");
         test.done();
     },
-
     testDateRngFmtFIRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "20 – 31. joulukuuta 2011");
         test.done();
     },
-
     testDateRngFmtFIRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "20. marraskuuta – 31. joulukuuta 2011");
         test.done();
     },
-
     testDateRngFmtFIRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "20. marraskuuta 2011 – 31. tammikuuta 2012");
         test.done();
     },
-
     testDateRngFmtFIRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fi-FI", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_fi_FI = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

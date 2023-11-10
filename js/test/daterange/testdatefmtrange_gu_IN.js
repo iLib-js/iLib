@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_gu_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtguINRangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 02:30 PM');
         test.done();
     },
-
     testDateRngFmtguINRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 31 ડિસેમ્બર, 2011 એ 02:30 PM વાગ્યે');
         test.done();
     },
-
     testDateRngFmtguINRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), "20 – 31 ડિસેમ્બર, 2011");
         test.done();
     },
-
     testDateRngFmtguINRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), "20 નવેમ્બર – 31 ડિસેમ્બર, 2011");
         test.done();
     },
-
     testDateRngFmtguINRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), "20 નવેમ્બર, 2011 – 31 જાન્યુઆરી, 2012");
         test.done();
     },
-
     testDateRngFmtguINRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "gu-IN", length: "short"});
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_gu_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

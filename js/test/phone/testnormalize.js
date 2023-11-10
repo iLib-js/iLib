@@ -36,7 +36,6 @@ module.exports.normalize = {
         ilib.clearCache();
         callback();
     },
-
     testIDDPrefix: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("011 31 456 3453434", {locale: 'en-US'});
@@ -45,7 +44,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize({locale: 'en-US'}), expected); // 'en-US'
         test.done();
     },
-
     testIDDPrefixAlreadyPlus: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+31 456 3453434", {locale: 'en-US'});
@@ -54,7 +52,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize({locale: 'en-US'}), expected); // 'en-US'
         test.done();
     },
-
     testWithNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01131 456 3453434", {locale: 'en-US'});
@@ -63,7 +60,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
-
     testNoHints: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01131 456 3453434", {locale: 'en-US'});
@@ -72,7 +68,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'en-US'
         test.done();
     },
-
     testWithNoHintsNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01131 456 3453434", {locale: 'en-US'});
@@ -81,7 +76,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testLDNumberUsingUSMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("650 7654321", {locale: 'en-US'});
@@ -93,7 +87,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testLDNumberUsingUSMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("650 7654321", {locale: 'en-US'});
@@ -105,7 +98,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testLDNumberUsingDEMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -117,7 +109,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testServiceNumberUsingDEMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("0191 7654321", {locale: 'de-DE'});
@@ -129,7 +120,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testServiceNumberDontAddAreaCode: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("0191 7654321", {locale: 'de-DE'});
@@ -141,7 +131,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testMobileNumberUsingDEMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("016 87654321", {locale: 'de-DE'});
@@ -153,7 +142,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testMobileNumberDontAddAreaCode: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("016 87654321", {locale: 'de-DE'});
@@ -165,7 +153,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testLDNumberUsingDEMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -177,7 +164,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'fr-FR'
         test.done();
     },
-
     testLDNumberUsingUSLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("650 7654321", {locale: 'en-US'});
@@ -186,7 +172,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'en-US'
         test.done();
     },
-
     testLDNumberUsingUSSpanishLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("650 7654321", {locale: 'es-US'});
@@ -195,7 +180,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'es-us'
         test.done();
     },
-
     testLDNumberUsingDELocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("030 87654321", {locale: 'de-DE'});
@@ -204,7 +188,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'de-DE'
         test.done();
     },
-
     testAreaCodeFromHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -216,7 +199,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testAreaCodeIgnoreHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("408 7654321", {locale: 'en-US'});
@@ -228,7 +210,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testNoAreaCodeAndNoCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -237,7 +218,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'en-US'
         test.done();
     },
-
     testDontAddCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321", {locale: 'de-DE'});
@@ -249,7 +229,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testIgnoreTrunkAccessUS: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("1 408 7654321", {locale: 'en-US'});
@@ -258,7 +237,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'en-US'
         test.done();
     },
-
     testIgnoreTrunkAccessDE: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("030 87654321", {locale: 'de-DE'});
@@ -267,7 +245,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'de-DE'
         test.done();
     },
-
     testDontIgnoreTrunkAccessIT: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+39 06 87654321", {locale: 'it-IT'}); // rome
@@ -276,7 +253,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'it-IT'
         test.done();
     },
-
     testDontIgnoreTrunkAccessNoCountryIT: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
@@ -285,7 +261,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'it-IT'
         test.done();
     },
-
     testDontIgnoreTrunkAccessUseMCCIT: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
@@ -297,7 +272,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testAddTrunkAccessNoCountryIT: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
@@ -306,7 +280,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(), expected); // 'it-IT'
         test.done();
     },
-
     testCountryHintUS: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("408 7654321", {locale: 'en-US'});
@@ -318,7 +291,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testCountryHintUSOverrideLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("408 7654321", {locale: 'en-US'});
@@ -330,7 +302,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testCountryHintFR: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02 12345678", {locale: 'fr-FR'});
@@ -342,7 +313,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testStringIDDPrefix: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("011-31-456-3453434", {locale: "en-US"});
@@ -351,7 +321,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(), expected);
         test.done();
     },
-
     testStringLDNumberUsingUSMCC: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("650-765-4321", {locale: "en-US"});
@@ -363,7 +332,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'en-US'
         test.done();
     },
-
     testStringLDNumberUsingUSMCCOtherLocale: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("650.765.4321", {locale: "en-US"});
@@ -375,7 +343,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringLDNumberUsingDEMCC: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("02302-654321", {locale: "de-DE"});
@@ -387,7 +354,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringServiceNumberUsingDEMCC: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("0191 7654321", {locale: "de-DE"});
@@ -399,7 +365,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringServiceNumberDontAddAreaCode: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("0191/7654321", {locale: "de-DE"});
@@ -411,7 +376,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringMobileNumberUsingDEMCC: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("016 8765 4321", {locale: "de-DE"});
@@ -423,7 +387,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringMobileNumberDontAddAreaCode: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("016 87654321", {locale: "de-DE"});
@@ -435,7 +398,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testStringLDStringNumberUsingUSMCCOtherLocale: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("(650) 765-4321", {mcc: "316"});
@@ -447,7 +409,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     // for CFISH-7296
     testNormalizeForSkype: function(test) {
         test.expect(1);
@@ -461,7 +422,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -476,7 +436,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTSAddTrunkClosed: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+33 1 87654321", {locale: 'en-US'});
@@ -490,7 +449,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'fr-FR'
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTSAddTrunkOpenNoAreaCodes: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+352 7654321", {locale: 'en-US'});
@@ -504,7 +462,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'de-lu'
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTSAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -519,7 +476,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTSNoTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -534,7 +490,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingLocalToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -549,7 +504,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingLocalToLocalCDMAAddTrunkClosed: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+33 1 87654321", {locale: 'en-US'});
@@ -564,7 +518,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'fr-FR'
         test.done();
     },
-
     testAssistedDialingLocalToLocalCDMAAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -579,7 +532,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingLocalToLocalCDMANoTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -594,7 +546,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -609,7 +560,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("416 7654321", {locale: 'en-US'});
@@ -624,7 +574,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDUMTSRemoveTrunk: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("1416 7654321", {locale: 'en-US'});
@@ -639,7 +588,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDUMTSKeepTrunk: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("010 87654321", {locale: 'it-IT'});
@@ -654,7 +602,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'it-IT'
         test.done();
     },
-
     testAssistedDialingIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -669,7 +616,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("416 7654321", {locale: 'en-US'});
@@ -684,7 +630,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDCDMARemoveTrunk: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("1416 7654321", {locale: 'en-US'});
@@ -699,7 +644,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingIntlToLDCDMAKeepTrunk: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("010 87654321", {locale: 'it-IT'});
@@ -714,7 +658,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'it-IT'
         test.done();
     },
-
     testAssistedDialingLocalToLocalUMTSOpenNoDefAreaCode: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -728,7 +671,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingLocalToLocalCDMAOpenNoDefAreaCode: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+31 20 7654321", {locale: 'en-US'});
@@ -742,7 +684,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'nl-NL'
         test.done();
     },
-
     testAssistedDialingIntlToLDDefaultToUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("416 7654321", {locale: 'en-US'});
@@ -756,7 +697,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingDefaultIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -771,7 +711,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingNonDefaultIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -786,7 +725,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingDefaultIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -801,7 +739,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingNonDefaultIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("7654321", {locale: 'en-US'});
@@ -816,7 +753,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingThreeLocalesCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber({
@@ -839,7 +775,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialingThreeLocalesUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber({
@@ -862,7 +797,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     // for CFISH-5258
     testAssistedDialNormalizeBogusNumberNonVerizon: function(test) {
         test.expect(1);
@@ -880,7 +814,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonUMTS: function(test) {
         test.expect(1);
         var left = new PhoneNumber("442076543211"); // number is too long, so try with a + prefix
@@ -896,7 +829,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonCDMA: function(test) {
         test.expect(1);
         var left = new PhoneNumber("442076543211"); // number is too long, so try with a + prefix
@@ -912,7 +844,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonAlreadyPlus: function(test) {
         test.expect(1);
         var left = new PhoneNumber("+442076543211");
@@ -928,7 +859,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonAlreadyIDD: function(test) {
         test.expect(1);
         var left = new PhoneNumber("011442076543211");
@@ -944,7 +874,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonWithTrunk: function(test) {
         test.expect(1);
         var left = new PhoneNumber("1442076543233");
@@ -960,7 +889,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testAssistedDialNormalizeBogusNumberForVerizonInvalidCountryCode: function(test) {
         test.expect(1);
         var left = new PhoneNumber("4259876543233");
@@ -976,7 +904,6 @@ module.exports.normalize = {
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     //for CFISH-5447
     testDontRemoveDefaultAreaCodeAtHome: function(test) {
         test.expect(1);
@@ -992,7 +919,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testDoAddDefaultAreaCodeAtHome: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("234-5678", {locale: 'en-US'});
@@ -1007,7 +933,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     // for CFISH-5217
     testDefaultAreaCodeOnlyAtHome: function(test) {
         test.expect(1);
@@ -1023,7 +948,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testDefaultAreaCodeAtHome: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("6543211", {locale: 'en-US'}); // number is in the same area code as the device is
@@ -1038,7 +962,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testDefaultAreaCodeAtHomeNoDefault: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("4086543211", {locale: 'en-US'}); // number is in the same area code as the device is
@@ -1053,7 +976,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     // for CFISH-5307
     testSMSToUSNumbersCDMA: function(test) {
         test.expect(1);
@@ -1069,7 +991,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToUSNumbersUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("650 456 7890", {locale: 'en-US'});
@@ -1084,7 +1005,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToUSNumbersNoAreaCodeCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("456 7890", {locale: 'en-US'});
@@ -1099,7 +1019,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToUSNumbersNoAreaCodeUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("456 7890", {locale: 'en-US'});
@@ -1114,7 +1033,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     //for CFISH-5308
     testSMSToNonUSNumbersFromAbroadCDMA: function(test) {
         test.expect(1);
@@ -1130,7 +1048,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToNonUSNumbersFromAbroadUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+44 20 4567890", {locale: 'en-US'});
@@ -1145,7 +1062,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToNonUSNumbersFromUSCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+44 20 4567890", {locale: 'en-US'});
@@ -1160,7 +1076,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     testSMSToNonUSNumbersFromUSUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+44 20 4567890", {locale: 'en-US'});
@@ -1175,7 +1090,6 @@ module.exports.normalize = {
         test.equal(phone.normalize(hints), expectedString); // 'en-US'
         test.done();
     },
-
     // for CFISH-5729
     testAssistedDialingEmergencyNumberDontNormalize: function(test) {
         test.expect(1);
@@ -1193,7 +1107,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-5753
     testAssistedDialingServiceNumberDontAddAreaCodeCDMA: function(test) {
         test.expect(1);
@@ -1209,7 +1122,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingServiceNumberDontAddAreaCodeUMTS: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("1 800 7654321", {locale: 'en-US'});
@@ -1224,7 +1136,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-6022
     testAssistedDialingVerizonVSC: function(test) {
         test.expect(1);
@@ -1240,7 +1151,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-5261
     testAssistedDialingNonManual: function(test) {
         test.expect(1);
@@ -1257,7 +1167,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingNonManualNoOption: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("987-6543", {locale: 'en-US'});
@@ -1272,7 +1181,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingNonManualCDMA: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("987-6543", {locale: 'en-US'});
@@ -1288,7 +1196,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("987-6543", {locale: 'en-US'});
@@ -1304,7 +1211,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManualWithTrunk: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("1-408-987-6543", {locale: 'en-US'});
@@ -1320,7 +1226,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManualWithIDD: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("011-1-408-987-6543", {locale: 'en-US'});
@@ -1336,7 +1241,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManualWithTrunkFR: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("01 12 34 56 78", {locale: 'fr-FR'});
@@ -1352,7 +1256,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManualWithIDDFR: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+33 1 12 34 56 78", {locale: 'fr-FR'});
@@ -1368,7 +1271,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingManualLocalIN: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("40861 76683", {locale: 'en-US'});
@@ -1384,7 +1286,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingNonManualIN: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("4086176683", {locale: 'en-US'});
@@ -1400,7 +1301,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-8481
     testAssistedDialingLocalMobileIN: function(test) {
         test.expect(1);
@@ -1417,7 +1317,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingLocalLandLineIN: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("011 91 11 12345678", {locale: 'en-US'});
@@ -1433,7 +1332,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     //for CFISH-6043
     testNormalizeES: function(test) {
         test.expect(1);
@@ -1448,7 +1346,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingESSMS: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("987654321", {locale: "es-ES"});
@@ -1465,7 +1362,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingES: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("987654321", {locale: "es-ES"});
@@ -1481,7 +1377,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingFR: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("12345678", {locale: 'fr-FR'});
@@ -1497,7 +1392,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-6444
     testAssistedDialingCN1: function(test) {
         test.expect(1);
@@ -1513,7 +1407,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingCN2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("011 44 20 76543211");
@@ -1528,7 +1421,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for DFISH-6274
     testAssistedDialingBogusInputs1: function(test) {
         test.expect(1);
@@ -1544,7 +1436,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingBogusInputs2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("617 6683");
@@ -1559,7 +1450,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingBogusInputs3: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("617 6683");
@@ -1574,7 +1464,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingBogusInputs4: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("", {locale: "en-US"}); // empty!
@@ -1589,7 +1478,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingBogusInputs5: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("4157773456");
@@ -1603,7 +1491,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingBogusInputs6: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("617 6683");
@@ -1618,7 +1505,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-6873
     testAssistedDialingSMSSameCountryHomeIsUS: function(test) {
         test.expect(1);
@@ -1636,7 +1522,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-6444
     testAssistedDialingForeignIDD: function(test) {
         test.expect(1);
@@ -1654,7 +1539,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-6845
     testAssistedDialingSameCountryHomeIsUS: function(test) {
         test.expect(1);
@@ -1672,7 +1556,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     //for CFISH-6869
     testAssistedDialingSMSToUSFromIntlCDMA1: function(test) {
         test.expect(1);
@@ -1690,7 +1573,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+19087654321");
@@ -1707,7 +1589,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA2Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+19087654321");
@@ -1724,7 +1605,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA3: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("19087654321");
@@ -1741,7 +1621,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA3Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("19087654321");
@@ -1758,7 +1637,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA4: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("9087654321");
@@ -1775,7 +1653,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA4Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("9087654321");
@@ -1792,7 +1669,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA5: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("65876"); // short code
@@ -1809,7 +1685,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA6: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321");
@@ -1826,7 +1701,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlCDMA6Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321");
@@ -1843,7 +1717,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA1: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+9087654321");
@@ -1860,7 +1733,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA1Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+9087654321");
@@ -1877,7 +1749,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("009087654321");
@@ -1894,7 +1765,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA2Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("009087654321");
@@ -1911,7 +1781,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA3: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("908765432101"); // +90 is Turkey
@@ -1928,7 +1797,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA3Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("908765432101"); // +90 is Turkey
@@ -1945,7 +1813,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA4: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("658765432101", {locale: "en-US"}); // +65 is Singapore -- special case
@@ -1962,7 +1829,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA5: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("0119087654321");
@@ -1979,7 +1845,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlCDMA5Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("0119087654321");
@@ -1996,7 +1861,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS1: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("0019087654321");
@@ -2013,7 +1877,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+19087654321");
@@ -2030,7 +1893,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS2Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+19087654321");
@@ -2047,7 +1909,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS3: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("19087654321");
@@ -2064,7 +1925,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS3Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("19087654321");
@@ -2081,7 +1941,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS4: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("9087654321");
@@ -2098,7 +1957,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS4Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("9087654321");
@@ -2115,7 +1973,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS5: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("65876"); // short code
@@ -2132,7 +1989,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS6: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321");
@@ -2149,7 +2005,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToUSFromIntlUMTS6Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("7654321");
@@ -2166,7 +2021,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS1: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+9087654321");
@@ -2183,7 +2037,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS1Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+9087654321");
@@ -2200,7 +2053,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("009087654321");
@@ -2217,7 +2069,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS2Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("009087654321");
@@ -2234,7 +2085,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS3: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("908765432101"); // +90 is Turkey
@@ -2251,7 +2101,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS3Manual: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("908765432101"); // +90 is Turkey
@@ -2268,7 +2117,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testAssistedDialingSMSToIntlFromIntlUMTS4: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("658765432101", {locale: "en-US"}); // +65 is Singapore -- special case
@@ -2285,7 +2133,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-3992
     testAssistedDialingSMSToIntlFromIntlCDMAChina: function(test) {
         test.expect(1);
@@ -2302,7 +2149,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     //for CFISH-7040
     testNormalizeESRegular1: function(test) {
         test.expect(1);
@@ -2319,7 +2165,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     testNormalizeESRegular2: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+34 665 545 880", {locale: "en-ES"});
@@ -2335,7 +2180,6 @@ module.exports.normalize = {
         test.equal(parsed.normalize(hints), expected);
         test.done();
     },
-
     // for CFISH-10884
     testAssistedDialingIntlToLLDUMTSForES: function(test) {
         test.expect(1);

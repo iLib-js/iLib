@@ -29,7 +29,6 @@ module.exports.testalphaindex_de = {
         ilib.clearCache();
         callback();
     },
-
     testAlphaIndexConstructor_deDE: function(test) {
         test.expect(3);
         var ai = new AlphabeticIndex({
@@ -42,7 +41,6 @@ module.exports.testalphaindex_de = {
 
         test.done();
     },
-
     testAlphaIndexConstructorWithParams_deDE: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -52,7 +50,6 @@ module.exports.testalphaindex_de = {
         test.ok(ai);
         test.done();
     },
-
     testAlphaIndexgetDefaultIndexStyle_deDE: function(test) {
         test.expect(2);
         var ai = new AlphabeticIndex({
@@ -63,7 +60,6 @@ module.exports.testalphaindex_de = {
         test.equal("latin", ai.getIndexStyle());
         test.done();
     },
-
     testAlphaIndexENUSGetBucketBaseLetter_deDE: function(test) {
         test.expect(2);
 
@@ -75,7 +71,6 @@ module.exports.testalphaindex_de = {
         test.equal("A", ai.getBucket("abacus"));
         test.done();
     },
-
     testAlphaIndexGetBucket_deDE: function(test) {
         test.expect(3);
 
@@ -89,7 +84,6 @@ module.exports.testalphaindex_de = {
 
         test.done();
     },
-
     testAlphaIndexGetBucket_deDE2: function(test) {
         test.expect(7);
 
@@ -109,7 +103,6 @@ module.exports.testalphaindex_de = {
 
         test.done();
     },
-
     testAlphaIndexGetBucketAccentInsensitiveSZ_deDE: function(test) {
         test.expect(2);
 
@@ -122,7 +115,6 @@ module.exports.testalphaindex_de = {
         test.equal("S", ai.getBucket("ß"));
         test.done();
     },
-
     testAlphaIndexGetAllBuckets_deDE: function(test) {
         test.expect(2);
 
@@ -212,7 +204,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexGetBucketLabels_deDE: function(test) {
         test.expect(2);
 
@@ -270,7 +261,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexGetAllBucketLabels_deDE: function(test) {
         test.expect(2);
 
@@ -337,7 +327,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexDEDEStandardStyle: function(test) {
         test.expect(2);
 
@@ -399,7 +388,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexDEDEPhonebookStyle: function(test) {
         test.expect(2);
 
@@ -469,7 +457,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexDEDEDictionaryStyle: function(test) {
         test.expect(2);
 
@@ -539,7 +526,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexDEDEMixedScriptTest1: function(test) {
         test.expect(2);
 
@@ -601,7 +587,6 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexDEDEMixedScriptTest2: function(test) {
         test.expect(2);
 
@@ -663,5 +648,4 @@ module.exports.testalphaindex_de = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     }
-
 };

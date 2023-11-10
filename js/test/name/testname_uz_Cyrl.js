@@ -32,7 +32,6 @@ module.exports.testname_uz_Cyrl = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_uz_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -46,7 +45,6 @@ module.exports.testname_uz_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -60,7 +58,6 @@ module.exports.testname_uz_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_uz_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
@@ -75,7 +72,6 @@ module.exports.testname_uz_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_uz_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -89,7 +85,6 @@ module.exports.testname_uz_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_uz_Cyrl: function(test) {
         test.expect(2);
         var parsed = new Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -104,11 +99,6 @@ module.exports.testname_uz_Cyrl = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_uz_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -127,7 +117,6 @@ module.exports.testname_uz_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_uz_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({
@@ -146,9 +135,6 @@ module.exports.testname_uz_Cyrl = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSimpleNameFull_uz_Cyrl: function(test) {
         test.expect(2);
         var name = new Name({

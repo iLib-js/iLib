@@ -32,7 +32,6 @@ module.exports.testaddress_YE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressYENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
@@ -46,7 +45,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
     testParseAddressYENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﻉﺪﻧ\nاليمن", {locale: 'ar-YE'});
@@ -60,7 +58,6 @@ module.exports.testaddress_YE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressYENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ", {locale: 'ar-YE'});
@@ -74,7 +71,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
     testParseAddressYEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\nﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\nﻉﺪﻧ\n\nاليمن\n\n\n", {locale: 'ar-YE'});
@@ -87,7 +83,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
     testParseAddressYEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﻉﺪﻧ , اليمن", {locale: 'ar-YE'});
@@ -101,7 +96,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
     testParseAddressYESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tپﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\n\tﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ\n\n\t\n\n\tﻉﺪﻧ\n\n\tاليمن\n\n\n", {locale: 'ar-YE'});
@@ -115,9 +109,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
-
-
     testParseAddressYEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺂﻗﺍی ﻢﺤﻣﺩ ﻑﻭﺍﺩ ﺂﻟ ﻑیﺽ پﺲﺗ ﻩﺍﻭ پﺱ ﺎﻧﺩﺍﺯ پﺲﺗی ﺍﺮﺳﺎﻟ ﺞﻌﺒﻫ. ١٩٩٣\n\nﻉﺪﻧ\nYemen", {locale: 'en-US'});
@@ -132,7 +123,6 @@ module.exports.testaddress_YE = {
         test.equal(parsedAddress.countryCode, "YE");
         test.done();
     },
-
     testFormatAddressYE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -147,7 +137,6 @@ module.exports.testaddress_YE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressYEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,5 +151,4 @@ module.exports.testaddress_YE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

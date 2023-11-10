@@ -32,7 +32,6 @@ module.exports.phonefmt_BR = {
         ilib.clearCache();
         callback();
     },
-
     testFormatBRStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -45,7 +44,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -58,7 +56,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -72,7 +69,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -86,7 +82,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -104,7 +99,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRLongAreaCode: function(test) {
         test.expect(1);
         var formatted;
@@ -117,7 +111,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRMobile: function(test) {
         test.expect(1);
         var formatted;
@@ -130,7 +123,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRMobileInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -143,7 +135,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRService: function(test) {
         test.expect(1);
         var formatted;
@@ -156,7 +147,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBREmergency1: function(test) {
         test.expect(1);
         var formatted;
@@ -169,7 +159,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBREmergency2: function(test) {
         test.expect(1);
         var formatted;
@@ -182,7 +171,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRIEIDD: function(test) {
         test.expect(1);
         var formatted;
@@ -195,7 +183,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -209,7 +196,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial1: function(test) {
         test.expect(1);
         var formatted;
@@ -222,7 +208,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -235,7 +220,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -248,7 +232,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial4: function(test) {
         test.expect(1);
         var formatted;
@@ -261,7 +244,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial5: function(test) {
         test.expect(1);
         var formatted;
@@ -274,7 +256,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial6: function(test) {
         test.expect(1);
         var formatted;
@@ -287,7 +268,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial7: function(test) {
         test.expect(1);
         var formatted;
@@ -300,7 +280,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial8: function(test) {
         test.expect(1);
         var formatted;
@@ -313,7 +292,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial9: function(test) {
         test.expect(1);
         var formatted;
@@ -326,7 +304,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -339,7 +316,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial11: function(test) {
         test.expect(1);
         var formatted;
@@ -352,7 +328,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial12: function(test) {
         test.expect(1);
         var formatted;
@@ -365,7 +340,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Partial13: function(test) {
         test.expect(1);
         var formatted;
@@ -378,7 +352,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole0: function(test) {
         test.expect(1);
         var formatted;
@@ -393,7 +366,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole1: function(test) {
         test.expect(1);
         var formatted;
@@ -406,7 +378,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole2: function(test) {
         test.expect(1);
         var formatted;
@@ -419,7 +390,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole3: function(test) {
         test.expect(1);
         var formatted;
@@ -432,7 +402,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole4: function(test) {
         test.expect(1);
         var formatted;
@@ -446,7 +415,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole5: function(test) {
         test.expect(1);
         var formatted;
@@ -459,7 +427,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole6: function(test) {
         test.expect(1);
         var formatted;
@@ -472,7 +439,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole7: function(test) {
         test.expect(1);
         var formatted;
@@ -485,7 +451,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole8: function(test) {
         test.expect(1);
         var formatted;
@@ -498,7 +463,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole9: function(test) {
         test.expect(1);
         var formatted;
@@ -523,7 +487,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole11: function(test) {
         test.expect(1);
         var formatted;
@@ -536,7 +499,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole12: function(test) {
         test.expect(1);
         var formatted;
@@ -549,7 +511,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0Whole13: function(test) {
         test.expect(1);
         var formatted;
@@ -562,7 +523,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -659,7 +619,6 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatBRStyle0PartialLocal9: function(test) {
         test.expect(1);
         var formatted;
@@ -672,5 +631,4 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

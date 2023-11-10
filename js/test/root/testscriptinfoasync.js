@@ -36,7 +36,6 @@ module.exports.testscriptinfoasync = {
             }
         });
     },
-
     testScriptInfoAsyncGet1: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Latn", {
@@ -55,7 +54,6 @@ module.exports.testscriptinfoasync = {
             }
         });
     },
-
     testScriptInfoAsyncGet4: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Hans", {
@@ -74,7 +72,6 @@ module.exports.testscriptinfoasync = {
             }
         });
     },
-
     testScriptInfoAsyncGetDefaultLongCodeArab: function(test) {
         test.expect(8);
         var si = new ScriptInfo("Arab", {
@@ -108,7 +105,6 @@ module.exports.testscriptinfoasync = {
             }
         });
     },
-
     testScriptInfoAsyncGetAllScripts: function(test) {
         test.expect(11);
         ScriptInfo.getAllScripts(false, undefined, function(scripts) {

@@ -149,12 +149,10 @@ module.exports.testutils = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testBsearch: function(test) {
         test.expect(1);
         var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -162,7 +160,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(10, array), 5);
         test.done();
     },
-
     testBsearchEmptyArray: function(test) {
         test.expect(1);
         var array = [];
@@ -170,13 +167,11 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(10, array), 0);
         test.done();
     },
-
     testBsearchUndefinedArray: function(test) {
         test.expect(1);
         test.equal(SearchUtils.bsearch(10, undefined), -1);
         test.done();
     },
-
     testBsearchUndefinedTarget: function(test) {
         test.expect(1);
         var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -184,7 +179,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(undefined, array), -1);
         test.done();
     },
-
     testBsearchBefore: function(test) {
         test.expect(1);
         var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -192,7 +186,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(0, array), 0);
         test.done();
     },
-
     testBsearchAfter: function(test) {
         test.expect(1);
         var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -200,7 +193,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(20, array), 10);
         test.done();
     },
-
     testBsearchExact: function(test) {
         test.expect(1);
         var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -209,7 +201,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(15, array), 7);
         test.done();
     },
-
     testBsearchExactBeginning: function(test) {
         test.expect(1);
         var array = [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -218,7 +209,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(0, array), 0);
         test.done();
     },
-
     testBsearchExactEnd: function(test) {
         test.expect(1);
         var array = [0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -227,7 +217,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(19, array), 10);
         test.done();
     },
-
     testBsearchMonthEdge: function(test) {
         test.expect(1);
         var array = [0,31,60,91,121,152,182,213,244,274,305,335,366];
@@ -235,7 +224,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch(182, array), 6);
         test.done();
     },
-
     testBsearchStrings: function(test) {
         test.expect(1);
         var array = [
@@ -254,7 +242,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch("mango", array, strcmp), 6);
         test.done();
     },
-
     testBsearchStringsBefore: function(test) {
         test.expect(1);
         var array = [
@@ -273,7 +260,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch("apple", array, strcmp), 0);
         test.done();
     },
-
     testBsearchStringsAfter: function(test) {
         test.expect(1);
         var array = [
@@ -292,7 +278,6 @@ module.exports.testutils = {
         test.equal(SearchUtils.bsearch("zucchini", array, strcmp), 10);
         test.done();
     },
-
     testBisectionSearchSimple: function(test) {
         var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
             return 2 * x + 5;
@@ -301,7 +286,6 @@ module.exports.testutils = {
         test.roughlyEqual(actual, 5.5, 1e-12);
         test.done();
     },
-
     testBisectionSearchMoreComplex: function(test) {
         var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
             return x * x;
@@ -310,7 +294,6 @@ module.exports.testutils = {
         test.roughlyEqual(actual, 4, 1e-12);
         test.done();
     },
-
     testBisectionSearchTrig: function(test) {
         var actual = SearchUtils.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
             return Math.sin(x * Math.PI / 180);
@@ -319,7 +302,6 @@ module.exports.testutils = {
         test.roughlyEqual(actual, 30, 1e-9);
         test.done();
     },
-
     testBisectionSearchVeryComplex: function(test) {
         var actual = SearchUtils.bisectionSearch(0, -0.9, 0, 1e-13, function polynomial(x) {
             var coeff = [2, 5, 3];
@@ -334,37 +316,31 @@ module.exports.testutils = {
         test.roughlyEqual(actual, -0.66666666666666, 1e-13);
         test.done();
     },
-
     testModSimple: function(test) {
         test.expect(1);
         test.equal(MathUtils.mod(2, 4), 2);
         test.done();
     },
-
     testModWrap: function(test) {
         test.expect(1);
         test.equal(MathUtils.mod(6, 4), 2);
         test.done();
     },
-
     testModWrapNeg: function(test) {
         test.expect(1);
         test.equal(MathUtils.mod(-6, 4), 2);
         test.done();
     },
-
     testModZeroModulus: function(test) {
         test.expect(1);
         test.equal(MathUtils.mod(6, 0), 0);
         test.done();
     },
-
     testModZeroNum: function(test) {
         test.expect(1);
         test.equal(MathUtils.mod(0, 6), 0);
         test.done();
     },
-
     testModReal: function(test) {
         test.expect(1);
         var actual = MathUtils.mod(2.234231, 4);
@@ -383,37 +359,31 @@ module.exports.testutils = {
         test.roughlyEqual(actual, 1.7, 0.0000001);
         test.done();
     },
-
     testAmodSimple: function(test) {
         test.expect(1);
         test.equal(MathUtils.amod(2, 4), 2);
         test.done();
     },
-
     testAmodWrap: function(test) {
         test.expect(1);
         test.equal(MathUtils.amod(6, 4), 2);
         test.done();
     },
-
     testAmodWrapNeg: function(test) {
         test.expect(1);
         test.equal(MathUtils.amod(-6, 4), 2);
         test.done();
     },
-
     testAmodZeroModulus: function(test) {
         test.expect(1);
         test.equal(MathUtils.amod(6, 0), 0);
         test.done();
     },
-
     testAmodZeroNum: function(test) {
         test.expect(1);
         test.equal(MathUtils.amod(0, 6), 6);
         test.done();
     },
-
     testAmodReal: function(test) {
         test.expect(1);
         var actual = MathUtils.amod(2.234231, 4);
@@ -432,85 +402,71 @@ module.exports.testutils = {
         test.roughlyEqual(actual, 1.7, 0.0000001);
         test.done();
     },
-
     testLog10: function(test) {
         test.expect(1);
         test.equal(Math.floor(MathUtils.log10(12345)), 4);
         test.done();
     },
-
     testLog10two: function(test) {
         test.expect(1);
         test.equal(Math.floor(MathUtils.log10(987654321)), 8);
         test.done();
     },
-
     testSignificant1: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, 3), 12300);
         test.done();
     },
-
     testSignificant2: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, 2), 12000);
         test.done();
     },
-
     testSignificant3: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, 1), 10000);
         test.done();
     },
-
     testSignificantZero: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, 0), 12345);
         test.done();
     },
-
     testSignificantNegativeDigits: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, -234), 12345);
         test.done();
     },
-
     testSignificantNegativeNumber: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(-12345, 4), -12340);
         test.done();
     },
-
     testSignificantStradleDecimal: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12.345, 4), 12.35);
         test.done();
     },
-
     testSignificantLessThanOne: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(0.123456, 2), 0.12);
         test.done();
     },
-
     testSignificantLessThanOneRound: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(0.123456, 4), 0.1235);
         test.done();
     },
-
     testSignificantLessThanOneSmall: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(0.000123456, 2), 0.00012);
         test.done();
     },
-
     testSignificantZero: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(0, 2), 0);
         test.done();
     },
-
     testMergeSimple: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
@@ -521,7 +477,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSimpleNoSideEffects: function(test) {
         test.expect(2);
         var object1 = {"a": "A", "b": "B"},
@@ -534,7 +489,6 @@ module.exports.testutils = {
         test.deepEqual(object1, expected);
         test.done();
     },
-
     testMergeArrays: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -545,7 +499,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeArraysDups: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -556,7 +509,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeArraysEmptySource: function(test) {
         test.expect(1);
         var object1 = {"a": []},
@@ -567,7 +519,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeArraysEmptyTarget: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -578,7 +529,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeArraysIncongruentTypes1: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -589,7 +539,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeArraysIncongruentTypes2: function(test) {
         test.expect(1);
         var object1 = {"a": "b"},
@@ -600,7 +549,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSimpleProperty: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
@@ -611,7 +559,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeComplexProperty: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "B"}},
@@ -622,7 +569,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSubobjects: function(test) {
         test.expect(1);
         var object1 = {"b": {"x": "X", "y": "Y"}},
@@ -633,7 +579,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSubobjectsLeaveObj1PropsUntouched: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
@@ -644,7 +589,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSubobjectsAddProps: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
@@ -655,7 +599,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeSubobjectsAddProps: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
@@ -666,7 +609,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeBooleans: function(test) {
         test.expect(1);
         var object1 = {"a": true, "b": true},
@@ -677,7 +619,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeAddBooleans: function(test) {
         test.expect(1);
         var object1 = {"a": true, "b": true},
@@ -688,7 +629,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeNumbers: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -699,7 +639,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeNumbersWithZero: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -710,7 +649,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeNumbersAddZero: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -721,7 +659,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeUndefined: function(test) {
         test.expect(1);
         var object1 = undefined,
@@ -732,7 +669,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testMergeUndefined2: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -743,7 +679,6 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-
     testIsEmptyFalse: function(test) {
         test.expect(1);
         var object = {"a": "A"};
@@ -751,7 +686,6 @@ module.exports.testutils = {
         test.ok(!JSUtils.isEmpty(object));
         test.done();
     },
-
     testIsEmptyTrue: function(test) {
         test.expect(1);
         var object = {};
@@ -759,13 +693,11 @@ module.exports.testutils = {
         test.ok(JSUtils.isEmpty(object));
         test.done();
     },
-
     testIsEmptyUndefined: function(test) {
         test.expect(1);
         test.ok(JSUtils.isEmpty(undefined));
         test.done();
     },
-
     testIsEmptyUndefinedProperties: function(test) {
         test.expect(1);
         var object = {"a": undefined};
@@ -773,7 +705,6 @@ module.exports.testutils = {
         test.ok(JSUtils.isEmpty(object));
         test.done();
     },
-
     testIsEmptyFalsyValues: function(test) {
         test.expect(1);
         var object = {"a": false, "b": 0};
@@ -781,7 +712,6 @@ module.exports.testutils = {
         test.ok(!JSUtils.isEmpty(object));
         test.done();
     },
-
     testShallowCopy: function(test) {
         test.expect(2);
         var src = {"a": "b"};
@@ -794,7 +724,6 @@ module.exports.testutils = {
         test.ok(typeof(tgt.a) !== "undefined");
         test.done();
     },
-
     testShallowCopyRightValues: function(test) {
         test.expect(4);
         var src = {
@@ -815,7 +744,6 @@ module.exports.testutils = {
         test.equal(tgt.c.f, 23);
         test.done();
     },
-
     testShallowCopyUndefined: function(test) {
         test.expect(4);
         var src = undefined;
@@ -830,7 +758,6 @@ module.exports.testutils = {
         test.ok(JSUtils.isEmpty(tgt));
         test.done();
     },
-
     testShallowCopyToUndefined: function(test) {
         var src = {
             "a": "b",
@@ -851,7 +778,6 @@ module.exports.testutils = {
         }
         test.done();
     },
-
     testShallowCopyEmpty: function(test) {
         test.expect(2);
         var src = {};
@@ -862,7 +788,6 @@ module.exports.testutils = {
         test.ok(JSUtils.isEmpty(tgt));
         test.done();
     },
-
     testShallowCopyEmptyValues: function(test) {
         test.expect(4);
         var src = {
@@ -881,115 +806,97 @@ module.exports.testutils = {
         test.equal(tgt.d, undefined);
         test.done();
     },
-
     testSignumPositive: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(1), 1);
         test.done();
     },
-
     testSignumPositiveLarge: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(1345234), 1);
         test.done();
     },
-
     testSignumNegative: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(-1), -1);
         test.done();
     },
-
     testSignumPositiveLarge: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(-13234), -1);
         test.done();
     },
-
     testSignumZero: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(0), 1);
         test.done();
     },
-
     testSignumStringNumberPositive: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum("1345234"), 1);
         test.done();
     },
-
     testSignumStringNumberNegative: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum("-1345234"), -1);
         test.done();
     },
-
     testSignumUndefined: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(), 1);
         test.done();
     },
-
     testSignumNull: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(null), 1);
         test.done();
     },
-
     testSignumStringNonNumber: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum("rafgasdf"), 1);
         test.done();
     },
-
     testSignumBoolean: function(test) {
         test.expect(2);
         test.equal(MathUtils.signum(true), 1);
         test.equal(MathUtils.signum(false), 1);
         test.done();
     },
-
     testSignumFunction: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(function () { return -4; }), 1);
         test.done();
     },
-
     testGetSublocalesENUS: function(test) {
         test.expect(1);
 
         test.deepEqual(Utils.getSublocales("en-US"), ["root", "en", "und-US", "en-US"]);
         test.done();
     },
-
     testGetSublocalesESUS: function(test) {
         test.expect(1);
 
         test.deepEqual(Utils.getSublocales("es-US"), ["root", "es", "und-US", "es-US"]);
         test.done();
     },
-
     testGetSublocalesZHCN: function(test) {
         test.expect(1);
 
         test.deepEqual(Utils.getSublocales("zh-Hans-CN"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "zh-Hans-CN"]);
         test.done();
     },
-
     testGetSublocalesWithVariant: function(test) {
         test.expect(1);
 
         test.deepEqual(Utils.getSublocales("es-US-ASDF"), ["root", "es", "und-US", "es-US", "es-ASDF", "und-US-ASDF", "es-US-ASDF"]);
         test.done();
     },
-
     testGetSublocalesWithScriptAndVariant: function(test) {
         test.expect(1);
 
         test.deepEqual(Utils.getSublocales("zh-Hans-CN-ASDF"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "zh-ASDF", "und-CN-ASDF", "zh-Hans-CN", "zh-Hans-ASDF", "zh-CN-ASDF", "zh-Hans-CN-ASDF"]);
         test.done();
     },
-
     testMergeLocData: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1020,7 +927,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNoLocale: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1051,7 +957,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNonLeafLocale: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1082,7 +987,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataMissingData: function(test) {
         test.expect(1);
         ilib.data.foobar = {
@@ -1111,7 +1015,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNoName: function(test) {
         test.expect(1);
         ilib.data.foobar = {
@@ -1140,7 +1043,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNoLocale: function(test) {
         test.expect(4);
         ilib.data.foobar = {
@@ -1172,7 +1074,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNoSideEffects: function(test) {
         test.expect(4);
         ilib.data.foobar = {
@@ -1204,7 +1105,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testMergeLocDataNoBase: function(test) {
         test.expect(3);
         ilib.data.asdf_de = {
@@ -1230,7 +1130,6 @@ module.exports.testutils = {
         // clean up for the other tests
         ilib.data.asdf_de = ilib.data.asdf_de_DE = ilib.data.asdf_de_Latn_DE = ilib.data.asdf_de_Latn_DE_SAP = undefined;
     },
-
     testMergeLocDataMissingLocaleParts: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1255,7 +1154,6 @@ module.exports.testutils = {
 
         test.done();
     },
-
     testGetLocFilesLanguageOnly: function(test) {
         test.expect(2);
         var locale = new Locale("en");
@@ -1269,7 +1167,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesRegionOnly: function(test) {
         test.expect(2);
         var locale = new Locale("US");
@@ -1283,7 +1180,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangScript: function(test) {
         test.expect(2);
         var locale = new Locale("en-Latn");
@@ -1298,7 +1194,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangRegion: function(test) {
         test.expect(2);
         var locale = new Locale("en-US");
@@ -1314,7 +1209,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangVariant: function(test) {
         test.expect(2);
         var locale = new Locale("en-govt");
@@ -1329,7 +1223,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesScriptRegion: function(test) {
         test.expect(2);
         var locale = new Locale("Latn-US");
@@ -1343,7 +1236,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesRegionVariant: function(test) {
         test.expect(2);
         var locale = new Locale("US-GOVT");
@@ -1358,7 +1250,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangScriptRegion: function(test) {
         test.expect(2);
         var locale = new Locale("en-Latn-US");
@@ -1376,7 +1267,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangScriptVariant: function(test) {
         test.expect(2);
         var locale = new Locale("en-Latn-govt");
@@ -1393,7 +1283,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesLangRegionVariant: function(test) {
         test.expect(2);
         var locale = new Locale("en-US-govt");
@@ -1412,7 +1301,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesAll: function(test) {
         test.expect(2);
         var locale = new Locale("en-US-Latn-govt");
@@ -1435,7 +1323,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesNoLocale: function(test) {
         test.expect(2);
         var locale = new Locale("-");
@@ -1448,7 +1335,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesNoBasename: function(test) {
         test.expect(2);
         var locale = new Locale("en-US-Latn-govt");
@@ -1471,7 +1357,6 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testGetLocFilesDefaultLocale: function(test) {
         test.expect(2);
         var f = Utils.getLocFiles(undefined, "localeinfo.json");
@@ -1486,92 +1371,77 @@ module.exports.testutils = {
         test.deepEqual(f, expected);
         test.done();
     },
-
     testHashCodeEmptyString: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(""), 0);
         test.done();
     },
-
     testHashCodeEmptyNumber: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(0), 48);
         test.done();
     },
-
     testHashCodeEmptyObject: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode({}), 0);
         test.done();
     },
-
     testHashCodeEmptyBoolean: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(false), 0);
         test.done();
     },
-
     testHashCodeUndefined: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(undefined), 0);
         test.done();
     },
-
     testHashCodeNull: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(null), 0);
         test.done();
     },
-
     testHashCodeFunction: function(test) {
         test.expect(1);
         test.ok(0 < JSUtils.hashCode(function(asdf) { return asdf * 38; }));
         test.done();
     },
-
     testHashCodeEqualStrings: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode("abcdef"), JSUtils.hashCode("abcdef"));
         test.done();
     },
-
     testHashCodeNotEqualStrings: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode("abcdef"), JSUtils.hashCode("abcdefg"));
         test.done();
     },
-
     testHashCodeEqualNumbers: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(23455), JSUtils.hashCode(23455));
         test.done();
     },
-
     testHashCodeNotEqualNumbers: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode(33455), JSUtils.hashCode(23455));
         test.done();
     },
-
     testHashCodeEqualBoolean: function(test) {
         test.expect(1);
         test.equal(JSUtils.hashCode(true), JSUtils.hashCode(true));
         test.done();
     },
-
     testHashCodeNotEqualBoolean: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode(true), JSUtils.hashCode(false));
         test.done();
     },
-
     testHashCodeEqualFunction: function(test) {
         test.expect(1);
         var expected = JSUtils.hashCode(function a() { return "a"; });
         test.equal(JSUtils.hashCode(function a() { return "a"; }), expected);
         test.done();
     },
-
     testHashCodeEqualFunctionDifferentSpacing: function(test) {
         test.expect(1);
         var plat = ilib._getPlatform();
@@ -1589,7 +1459,6 @@ module.exports.testutils = {
         }
         test.done();
     },
-
     testHashCodeNotEqualFunctionDifferentNames: function(test) {
         test.expect(1);
         var expected = JSUtils.hashCode(function a() { return "a"; });
@@ -1609,46 +1478,39 @@ module.exports.testutils = {
         }
         test.done();
     },
-
     testHashCodeEqualObjects: function(test) {
         test.expect(1);
         var expected = JSUtils.hashCode({name: "abcdef"});
         test.equal(JSUtils.hashCode({name: "abcdef"}), expected);
         test.done();
     },
-
     testHashCodeNotEqualObjectProperties: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode({value: "abcdef"}), JSUtils.hashCode({name: "abcdef"}));
         test.done();
     },
-
     testHashCodeNotEqualObjectOneEmpty: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode({value: "abcdef"}), JSUtils.hashCode({}));
         test.done();
     },
-
     testHashCodeNotEqualObjectValues: function(test) {
         test.expect(1);
         test.notEqual(JSUtils.hashCode({name: "abcdef"}), JSUtils.hashCode({name: "abcXdef"}));
         test.done();
     },
-
     testHashCodeEqualObjectScrambledProperties: function(test) {
         test.expect(1);
         var expected = JSUtils.hashCode({name: "abcdef", num: 3, value: "asdf"});
         test.equal(JSUtils.hashCode({value: "asdf", name: "abcdef", num: 3}), expected);
         test.done();
     },
-
     testHashCodeNotEqualObjectValuesComplex: function(test) {
         test.expect(1);
         var expected = JSUtils.hashCode({num: 3, apple: "jacks", type: false, name: "abcXdef"});
         test.notEqual(JSUtils.hashCode({name: "abcdef", apple: "jacks", num: 3, type: false}), expected);
         test.done();
     },
-
     testLoadDataCorrectType: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1673,7 +1535,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataCorrectItems: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1699,7 +1560,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataWithLocale: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1725,7 +1585,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataWithLocaleMissingParts: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1751,7 +1610,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataDefaultLocale: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1805,7 +1663,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataAsynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1833,7 +1690,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataDefaults: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1855,7 +1711,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJson_en_US: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1877,7 +1732,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJson_de: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1899,7 +1753,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJson_de_DE: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1921,7 +1774,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJson_DE: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1943,7 +1795,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJsonWithFallbackToLanguage: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1966,7 +1817,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJsonWithFallbackToRoot: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1988,7 +1838,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataNonJsonInferFileTypeFromExtension: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -2009,7 +1858,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataJsonInferFileTypeFromExtension: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -2031,7 +1879,6 @@ module.exports.testutils = {
             }
         });
     },
-
     testLoadDataCacheResult: function(test) {
         ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderNoMulti);
@@ -2060,7 +1907,6 @@ module.exports.testutils = {
             test.done();
         }
     },
-
     testLoadDataDontMixDifferentBasePaths: function(test) {
         ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderNoMulti);
@@ -2090,7 +1936,6 @@ module.exports.testutils = {
             test.done();
         }
     },
-
     testLoadDataCacheResultAlreadyMerged: function(test) {
         ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderNoMulti);
@@ -2125,7 +1970,6 @@ module.exports.testutils = {
             ilib._cacheMerged = cacheMerged;
         }
     },
-
     testMapStringDigits: function(test) {
         test.expect(1);
         var map = "abcdefghij".split("");
@@ -2133,7 +1977,6 @@ module.exports.testutils = {
         test.equal(JSUtils.mapString("9876543210", map), "jihgfedcba");
         test.done();
     },
-
     testMapStringDigitsUnknown: function(test) {
         test.expect(1);
         var map = "abcde".split("");
@@ -2141,7 +1984,6 @@ module.exports.testutils = {
         test.equal(JSUtils.mapString("9876543210", map), "98765edcba");
         test.done();
     },
-
     testMapStringHash: function(test) {
         test.expect(1);
         var map = {
@@ -2153,7 +1995,6 @@ module.exports.testutils = {
         test.equal(JSUtils.mapString("abccb", map), "xyzzy");
         test.done();
     },
-
     testMapStringUndefined: function(test) {
         test.expect(1);
         var map = {
@@ -2165,13 +2006,11 @@ module.exports.testutils = {
         test.ok(typeof(JSUtils.mapString(undefined, map)) === "undefined");
         test.done();
     },
-
     testMapStringUndefinedMap: function(test) {
         test.expect(1);
         test.equal(JSUtils.mapString("abccb", undefined), "abccb");
         test.done();
     },
-
     testMapStringHashUnknown: function(test) {
         test.expect(1);
         var map = {
@@ -2183,7 +2022,6 @@ module.exports.testutils = {
         test.equal(JSUtils.mapString("abcdefabc", map), "xyzdefxyz");
         test.done();
     },
-
     testMapStringHashMulti: function(test) {
         test.expect(1);
         var map = {
@@ -2195,232 +2033,195 @@ module.exports.testutils = {
         test.equal(JSUtils.mapString("abcabc", map), "xmynzoxmynzo");
         test.done();
     },
-
     testIndexOf: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, "b"), 1);
         test.done();
     },
-
     testIndexOfNeg: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, "d"), -1);
         test.done();
     },
-
     testIndexOfBeginning: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, "a"), 0);
         test.done();
     },
-
     testIndexOfEnd: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, "c"), 2);
         test.done();
     },
-
     testIndexOfCaseSensitive: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, "C"), -1);
         test.done();
     },
-
     testIndexOfWrongObjectType: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, 2), -1);
         test.done();
     },
-
     testIndexOfUndefinedSearchTerm: function(test) {
         test.expect(1);
         var arr = ["a", "b", "c"];
         test.equal(JSUtils.indexOf(arr, undefined), -1);
         test.done();
     },
-
     testIndexOfUndefinedArray: function(test) {
         test.expect(1);
         test.equal(JSUtils.indexOf(undefined, "a"), -1);
         test.done();
     },
-
     testToHexStringSimple: function(test) {
         test.expect(1);
         test.equal(JSUtils.toHexString("a"), "0061");
         test.done();
     },
-
     testToHexStringWithLengthLimit2: function(test) {
         test.expect(1);
         test.equal(JSUtils.toHexString("a", 2), "61");
         test.done();
     },
-
     testToHexStringWithLengthLimit8: function(test) {
         test.expect(1);
         test.equal(JSUtils.toHexString("a", 8), "00000061");
         test.done();
     },
-
     testToHexStringChinese: function(test) {
         test.expect(1);
         test.equal(JSUtils.toHexString("㗀"), "35C0");
         test.done();
     },
-
     testToHexStringComplex: function(test) {
         test.expect(1);
         test.equal(JSUtils.toHexString("a㗀จఓ"), "006135C00E080C13");
         test.done();
     },
-
     testPad2lt10: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(1, 2), "01");
         test.done();
     },
-
     testPad2lt0: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-1, 2), "-01");
         test.done();
     },
-
     testPad2gt10: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(11, 2), "11");
         test.done();
     },
-
     testPad2ltMinus10: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-11, 2), "-11");
         test.done();
     },
-
     testPad2gt100: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(111, 2), "111");
         test.done();
     },
-
     testPad2ltMinus100: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-111, 2), "-111");
         test.done();
     },
-
     testPad0: function(test) {
         test.expect(2);
         test.equal(JSUtils.pad(1, 0), "1");
         test.equal(JSUtils.pad(10, 0), "10");
         test.done();
     },
-
     testPad0Neg: function(test) {
         test.expect(2);
         test.equal(JSUtils.pad(-1, 0), "-1");
         test.equal(JSUtils.pad(-10, 0), "-10");
         test.done();
     },
-
     testPad4_1: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(6, 4), "0006");
         test.done();
     },
-
     testPad4_2: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(67, 4), "0067");
         test.done();
     },
-
     testPad4_3: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(679, 4), "0679");
         test.done();
     },
-
     testPad4_4: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(6792, 4), "6792");
         test.done();
     },
-
     testPad4_5: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(67925, 4), "67925");
         test.done();
     },
-
     testPad4_6: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-1, 4), "-0001");
         test.done();
     },
-
     testPad4_7: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-10, 4), "-0010");
         test.done();
     },
-
     testPad4_8: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-112, 4), "-0112");
         test.done();
     },
-
     testPad4_9: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-1123, 4), "-1123");
         test.done();
     },
-
     testPad4_10: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad(-11233, 4), "-11233");
         test.done();
     },
-
     testPad2lt10String: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("1", 2), "01");
         test.done();
     },
-
     testPad2gt10String: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("11", 2), "11");
         test.done();
     },
-
     testPad2gt100String: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("111", 2), "111");
         test.done();
     },
-
     testPadRightSide4: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("123", 6, true), "123000");
         test.done();
     },
-
     testPadRightSide4Decimal: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("1.0", 6, true), "1.0000");
         test.done();
     },
-
     testPadRightSideEnough: function(test) {
         test.expect(1);
         test.equal(JSUtils.pad("1.234323", 4, true), "1.234323");

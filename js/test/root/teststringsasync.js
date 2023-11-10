@@ -40,7 +40,6 @@ module.exports.teststringsasync = {
             test.done();
         })
     },
-
     testStringSetLocale: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
@@ -51,7 +50,6 @@ module.exports.teststringsasync = {
             test.done();
         })
     },
-
     testStringFormatChoiceSimpleNoPlurals: function(test) {
         test.expect(2);
         var str = new IString("1#first string|2#second string");
@@ -62,7 +60,6 @@ module.exports.teststringsasync = {
         test.equal(str.formatChoice(1), "first string");
         test.done();
     },
-
     testStringFormatChoiceSimpleRussian: function(test) {
         test.expect(3);
         var str = new IString("1#first string|few#second string|many#third string");
@@ -74,7 +71,6 @@ module.exports.teststringsasync = {
             test.done();
         });
     },
-
     testStringFormatChoiceSimpleRussianTwice: function(test) {
         test.expect(4);
         var str = new IString("1#first string|few#second string|many#third string");

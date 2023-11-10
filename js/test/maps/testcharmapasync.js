@@ -20,7 +20,6 @@
 if (typeof(CharmapFactory) === "undefined") {
     var CharmapFactory = require("../../lib/CharmapFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -36,7 +35,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncLoadMap: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -50,7 +48,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncAlias: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -64,7 +61,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncLoadAlgorithmic: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -78,7 +74,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncUTF8MapToUnicodeUint8ArrayExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -100,7 +95,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncCNMapToUnicode: function(test) {
         var big5source = [
             0xa4, 0xb1, // 仃
@@ -120,7 +114,6 @@ module.exports.testcharmapasync = {
             }
         });
     },
-
     testCharmapAsyncCNMapToNative: function(test) {
 
         /*

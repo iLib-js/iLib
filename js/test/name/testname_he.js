@@ -32,7 +32,6 @@ module.exports.testname_he = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_he: function(test) {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
@@ -46,8 +45,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseAdjunctNames_he: function(test) {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
@@ -61,9 +58,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_he: function(test) {
         test.expect(2);
         var parsed = new Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
@@ -77,8 +71,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_he: function(test) {
         test.expect(2);
         var parsed = new Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
@@ -93,9 +85,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_he: function(test) {
         test.expect(2);
         var parsed = new Name("גברת פורטמן", {locale: 'he-IL'});
@@ -109,9 +98,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_he: function(test) {
         test.expect(2);
         var parsed = new Name("גברת נטלי פורטמן", {locale: 'he-IL'});
@@ -126,12 +112,6 @@ module.exports.testname_he = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -150,7 +130,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -169,7 +148,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -189,7 +167,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -211,7 +188,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -232,7 +208,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -253,7 +228,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -274,7 +248,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -294,7 +267,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -314,7 +286,6 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_he: function(test) {
         test.expect(2);
         var name = new Name({
@@ -334,10 +305,4 @@ module.exports.testname_he = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
-
-
 };

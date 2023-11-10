@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_AM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAMAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25, 0002, YEREVAN, ARMENIA", {locale: 'en-AM'});
@@ -48,7 +45,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25, YEREVAN, ARMENIA", {locale: 'en-AM'});
@@ -62,7 +58,6 @@ module.exports.testaddress_AM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAMAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan\nSaryan str 22 apt 25\n0002 YEREVAN\nARMENIA", {locale: 'en-AM'});
@@ -76,7 +71,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-AM'});
@@ -90,7 +84,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25  \n\t\n 0002 YEREVAN\t\n\n ARMENIA  \n  \t\t\t", {locale: 'en-AM'});
@@ -104,7 +97,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan P. 15 Sh. 1 0002 YEREVAN ARMENIA", {locale: 'en-AM'});
@@ -118,7 +110,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressSpeciAMChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-AM'});
@@ -132,7 +123,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Armen Simonyan, Saryan str 22 apt 25, 0002 YEREVAN, ARMENIA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testFormatAddressAM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +153,6 @@ module.exports.testaddress_AM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,7 +168,6 @@ module.exports.testaddress_AM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressinArmenian: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Արմեն Սիմոնյանը , Սարյան փող 22 , բն 25 , 0002 ԵՐԵՎԱՆ , ՀԱՅԱՍՏԱՆ", {locale: 'hy-AM'});
@@ -194,7 +181,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAddressinArmenianNoZip: function(test) {
         test.expect(6);
         var parsedAddress = new Address("Արմեն Սիմոնյանը , Սարյան փող 22 , բն 25 , ԵՐԵՎԱՆ , ՀԱՅԱՍՏԱՆ", {locale: 'hy-AM'});
@@ -219,7 +205,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressManyLineinArmenian: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Արմեն Սիմոնյանը , Սարյան փող 22 , բն 25 \n 0002 ԵՐԵՎԱՆ\n ՀԱՅԱՍՏԱՆ \n", {locale: 'hy-AM'});
@@ -232,7 +217,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressNoDelimittersinArmenian: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Արմեն Սիմոնյանը , Սարյան փող 22 , բն 25  0002 ԵՐԵՎԱՆ  ՀԱՅԱՍՏԱՆ ", {locale: 'hy-AM'});
@@ -245,7 +229,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testParseAMAddressfromUSinAM: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Արմեն Սիմոնյանը , Սարյան փող 22 , բն 25  0002 ԵՐԵՎԱՆ  ՀԱՅԱՍՏԱՆ ", {locale: 'en-US'});
@@ -258,7 +241,6 @@ module.exports.testaddress_AM = {
         test.equal(parsedAddress.countryCode, "AM");
         test.done();
     },
-
     testFormatAddressAMinArmenian: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -274,7 +256,6 @@ module.exports.testaddress_AM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -290,5 +271,4 @@ module.exports.testaddress_AM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

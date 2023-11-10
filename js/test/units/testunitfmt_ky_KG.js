@@ -87,7 +87,6 @@ module.exports.testunitfmt_ky_KG = {
         test.equal(str, "-16,666666666666668 Цельсий градусу");
         test.done();
     },
-
     testUnitFormatArea1_ky_KG: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

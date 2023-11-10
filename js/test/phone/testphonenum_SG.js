@@ -30,7 +30,6 @@ module.exports.phonenum_SG = {
         ilib.clearCache();
         callback();
     },
-
     testSGLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("93897077", {locale: "en-SG"});
@@ -42,7 +41,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testSGFromIntl: function(test) {
         test.expect(2);
@@ -57,7 +55,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testSGLocalNumberWithMCC: function(test) {
         test.expect(2);
@@ -70,9 +67,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6123 4567", {locale: "en-SG"});
@@ -84,9 +79,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("62-34-56-78", {locale: "en-SG"});
@@ -98,9 +91,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6!1@2$3-^4&5(6)7", {locale: "en-SG"});
@@ -112,9 +103,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("1800 345 6789", {locale: "en-SG"});
@@ -127,9 +116,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("81234567", {locale: "en-SG"});
@@ -141,9 +128,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "en-SG"});
@@ -158,9 +143,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00112028675309", {locale: "en-SG"});
@@ -175,9 +158,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("999", {locale: "en-SG"});
@@ -189,9 +170,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6", {locale: "en-SG"});
@@ -203,9 +182,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("61", {locale: "en-SG"});
@@ -217,7 +194,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial3: function(test) {
         test.expect(2);
@@ -230,7 +206,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial4: function(test) {
         test.expect(2);
@@ -243,7 +218,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial5: function(test) {
         test.expect(2);
@@ -256,7 +230,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial6: function(test) {
         test.expect(2);
@@ -269,7 +242,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial7: function(test) {
         test.expect(2);
@@ -282,7 +254,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial8: function(test) {
         test.expect(2);
@@ -295,7 +266,6 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseSGPartial9: function(test) {
         test.expect(2);
@@ -308,9 +278,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "316"});
@@ -323,9 +291,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "208"});
@@ -337,9 +303,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "334"});
@@ -352,9 +316,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "262"});
@@ -366,9 +328,7 @@ module.exports.phonenum_SG = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseSGWithGBMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "en-SG", mcc: "235"});
@@ -383,5 +343,4 @@ module.exports.phonenum_SG = {
         test.done();
 
     }
-
 };

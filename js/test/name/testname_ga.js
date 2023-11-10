@@ -32,7 +32,6 @@ module.exports.testname_ga = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ga_IE: function(test) {
         test.expect(2);
         var parsed = new Name("Daniel O'Reilly", {locale: 'ga-IE'});
@@ -46,9 +45,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_ga_IE: function(test) {
         test.expect(2);
         var parsed = new Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
@@ -64,9 +60,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_ga_IE: function(test) {
         test.expect(2);
         var parsed = new Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
@@ -81,8 +74,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_ga_IE1: function(test) {
         test.expect(2);
         var parsed = new Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
@@ -97,8 +88,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_ga_IE_second: function(test) {
         test.expect(2);
         var parsed = new Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
@@ -112,8 +101,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_ga_IE: function(test) {
         test.expect(2);
 
@@ -136,9 +123,6 @@ module.exports.testname_ga = {
         test.done();
 
     },
-
-
-
     testParseCompoundHonorific_ga_IE: function(test) {
         test.expect(2);
         var parsed = new Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
@@ -152,11 +136,6 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -175,7 +154,6 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -194,7 +172,6 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -215,7 +192,6 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -235,8 +211,6 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -257,7 +231,6 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_ga_IE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -278,8 +251,4 @@ module.exports.testname_ga = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

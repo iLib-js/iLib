@@ -32,7 +32,6 @@ module.exports.testaddress_RU = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressRUNormal: function(test) {
         test.expect(7);
        var parsedAddress = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {locale: 'ru-RU'});
@@ -46,7 +45,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     testParseAddressRUNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия", {locale: 'ru-RU'});
@@ -60,7 +58,6 @@ module.exports.testaddress_RU = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressRUNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\n247112", {locale: 'ru-RU'});
@@ -74,7 +71,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     testParseAddressRUManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петров Иван Сергеевич ул\nЛесная D. 5 поз\nЛесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {locale: 'ru-RU'});
@@ -88,7 +84,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     testParseAddressRUOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петров Иван Сергеевич ул , Лесная D. 5 поз , Лесной , АЛЕКСЕЕВСКИЙ R-N , Воронежская область, Россия , 247112", {locale: 'ru-RU'});
@@ -102,7 +97,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     testParseAddressRUSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Петров Иван Сергеевич ул\t\t\rЛесная D. 5 поз\t\t\rЛесной\n\tАЛЕКСЕЕВСКИЙ R-N\n\t\tВоронежская область\n\t\rРоссия\n\t\r247112", {locale: 'ru-RU'});
@@ -116,7 +110,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     /*
     testParseAddressRUNoDelimiters: function(test) {
         test.expect(7);
@@ -146,7 +139,6 @@ module.exports.testaddress_RU = {
         test.equal(parsedAddress.countryCode, "RU");
         test.done();
     },
-
     testFormatAddressRU: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +155,6 @@ module.exports.testaddress_RU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressRUFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,7 +171,6 @@ module.exports.testaddress_RU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressRU1: function(test) {
         test.expect(5);
         var parsedAddress = new Address("23, Ilyinka Street,Moscow, 103132, Russia");
@@ -233,7 +223,6 @@ module.exports.testaddress_RU = {
         test.done();
 
     },
-
     testFormatAddressRU4: function(test) {
         test.expect(6);
 

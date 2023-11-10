@@ -32,7 +32,6 @@ module.exports.testaddress_SY = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSYNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SY = {
         test.equal(parsedAddress.countryCode, "SY");
         test.done();
     },
-
     testParseAddressSYNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺪﻤﺸﻗ\nسوريا", {locale: 'ar-SY'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SY = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSYNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠ ﺪﻤﺸﻗ", {locale: 'ar-SY'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SY = {
         test.equal(parsedAddress.countryCode, "SY");
         test.done();
     },
-
     testParseAddressSYManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n٠١٠٠\nﺪﻤﺸﻗ\n\nسوريا\n\n\n", {locale: 'ar-SY'});
@@ -87,8 +83,6 @@ module.exports.testaddress_SY = {
         test.equal(parsedAddress.countryCode, "SY");
         test.done();
     },
-
-
     testParseAddressSYSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١\n\n\t٠١٠٠\n\n\tﺪﻤﺸﻗ\n\n\tسوريا\n\n\n", {locale: 'ar-SY'});
@@ -102,8 +96,6 @@ module.exports.testaddress_SY = {
         test.equal(parsedAddress.countryCode, "SY");
         test.done();
     },
-
-
     testParseAddressSYFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ ٠١ ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦ ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nSyria", {locale: 'en-US'});
@@ -119,7 +111,6 @@ module.exports.testaddress_SY = {
         test.equal(parsedAddress.countryCode, "SY");
         test.done();
     },
-
     testFormatAddressSY: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -135,7 +126,6 @@ module.exports.testaddress_SY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSYFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -151,5 +141,4 @@ module.exports.testaddress_SY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

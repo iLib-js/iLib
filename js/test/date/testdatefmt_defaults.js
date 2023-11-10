@@ -201,7 +201,6 @@ module.exports.testdatefmt_defaults = {
         test.equal(fmt.formatRelative(reference, date), "-4 h");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_aa: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "aa", length: "full"});
@@ -258,7 +257,6 @@ module.exports.testdatefmt_defaults = {
         test.equal(fmt.formatRelative(reference, date), "-4 d");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_aa: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "aa", length: "full"});
@@ -315,7 +313,6 @@ module.exports.testdatefmt_defaults = {
         test.equal(fmt.formatRelative(reference, date), "-9 w");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_aa: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "aa", length: "full"});
@@ -372,7 +369,6 @@ module.exports.testdatefmt_defaults = {
         test.equal(fmt.formatRelative(reference, date), "-14 m");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_aa: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "aa", length: "full"});

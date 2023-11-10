@@ -30,7 +30,6 @@ module.exports.testcoptic = {
         ilib.clearCache();
         callback();
     },
-
     testCopticGetNumMonths: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -38,7 +37,6 @@ module.exports.testcoptic = {
         test.equal(cal.getNumMonths(1731), 13);
         test.done();
     },
-
     testCopticGetMonLength1: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -46,7 +44,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(1, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength2: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -54,7 +51,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(2, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength3: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -62,7 +58,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(3, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength4: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -70,7 +65,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(4, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength5: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -78,7 +72,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(5, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength6: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -86,7 +79,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(6, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength7: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -94,7 +86,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(7, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength8: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -102,7 +93,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(8, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength9: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -110,7 +100,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(9, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength10: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -118,7 +107,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(10, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength11: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -126,7 +114,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(11, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength12: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -134,7 +121,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(12, 1731), 30);
         test.done();
     },
-
     testCopticGetMonLength13LeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -142,7 +128,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(13, 1731), 6);
         test.done();
     },
-
     testCopticGetMonLength13: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -150,7 +135,6 @@ module.exports.testcoptic = {
         test.equal(cal.getMonLength(13, 1732), 5);
         test.done();
     },
-
     testCopticIsLeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -158,7 +142,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1731));
         test.done();
     },
-
     testCopticIsLeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -166,7 +149,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(1732));
         test.done();
     },
-
     testCopticIsLeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -174,7 +156,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(1733));
         test.done();
     },
-
     testCopticIsLeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -182,7 +163,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(1734));
         test.done();
     },
-
     testCopticIsLeapYear: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -190,7 +170,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1735));
         test.done();
     },
-
     testCopticIsLeapYearBM0: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -198,7 +177,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(0));
         test.done();
     },
-
     testCopticIsLeapYearBMMinus1: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -206,7 +184,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(-1));
         test.done();
     },
-
     testCopticIsLeapYearBMMinus2: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -214,7 +191,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(-2));
         test.done();
     },
-
     testCopticIsLeapYearBMMinus3: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -222,7 +198,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(-3));
         test.done();
     },
-
     testCopticIsLeapYearBMMinus4: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -230,7 +205,6 @@ module.exports.testcoptic = {
         test.ok(!cal.isLeapYear(-4));
         test.done();
     },
-
     testCopticIsLeapYearOnMillenium: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -238,7 +212,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(2003));
         test.done();
     },
-
     testCopticIsLeapYearOnCentury0: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -246,7 +219,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1603));
         test.done();
     },
-
     testCopticIsLeapYearOnCentury1: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -254,7 +226,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1703));
         test.done();
     },
-
     testCopticIsLeapYearOnCentury2: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -262,7 +233,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1803));
         test.done();
     },
-
     testCopticIsLeapYearOnCentury3: function(test) {
         test.expect(1);
         var cal = new CopticCal();
@@ -270,7 +240,6 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1903));
         test.done();
     },
-
     testCopticIsLeapYearOnQuadCentennial: function(test) {
         test.expect(1);
         var cal = new CopticCal();

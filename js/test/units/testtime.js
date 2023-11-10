@@ -30,7 +30,6 @@ module.exports.testtime = {
         ilib.clearCache();
         callback();
     },
-
     testTimeTimeConstructor: function(test) {
         test.expect(1);
         var m = new TimeUnit({
@@ -41,7 +40,6 @@ module.exports.testtime = {
         test.ok(m !== null);
         test.done();
     },
-
     testTimeTimeConvertSecondToHour: function(test) {
         test.expect(3);
         var m1 = new TimeUnit({
@@ -59,7 +57,6 @@ module.exports.testtime = {
         test.roughlyEqual(m2.getAmount(), 1.0, 0.1);
         test.done();
     },
-
     testTimeStaticConvert1: function(test) {
         test.expect(1);
         var m = TimeUnit.convert("second", "ns", 1000000000);
@@ -67,7 +64,6 @@ module.exports.testtime = {
         test.equal(m, 1);
         test.done();
     },
-
     testTimeStaticConvertWithString: function(test) {
         test.expect(1);
         var m = TimeUnit.convert("hour", "decade", "5");
@@ -75,7 +71,6 @@ module.exports.testtime = {
         test.equal(m, 438290.5);
         test.done();
     },
-
     testTimeStaticConvert2: function(test) {
         test.expect(1);
         var m = TimeUnit.convert("hour", "day", 10);
@@ -83,7 +78,6 @@ module.exports.testtime = {
         test.equal(m, 240);
         test.done();
     },
-
     testTimeStaticConvert3: function(test) {
         test.expect(1);
         var m = TimeUnit.convert("min", "month", 2);
@@ -91,7 +85,6 @@ module.exports.testtime = {
         test.equal(m, 87658.2);
         test.done();
     },
-
     testTimeStaticConvert4: function(test) {
         test.expect(1);
         var m = TimeUnit.convert("day", "week", 10);
@@ -99,7 +92,6 @@ module.exports.testtime = {
         test.equal(m, 70);
         test.done();
     },
-
     testTimeScaling1: function(test) {
         test.expect(2);
         var m = new TimeUnit({
@@ -113,7 +105,6 @@ module.exports.testtime = {
         test.equal(m1.unit, "microsecond");
         test.done();
     },
-
     testTimeScaling2: function(test) {
         test.expect(2);
         var m = new TimeUnit({
@@ -127,7 +118,6 @@ module.exports.testtime = {
         test.equal(m.unit, "second");
         test.done();
     },
-
     testTimeScaling3: function(test) {
         test.expect(2);
         var m = new TimeUnit({
@@ -141,7 +131,6 @@ module.exports.testtime = {
         test.equal(m.unit, "decade");
         test.done();
     },
-
     testTimeScaling4: function(test) {
         test.expect(2);
         var m = new TimeUnit({
@@ -155,7 +144,6 @@ module.exports.testtime = {
         test.equal(m.unit, "century");
         test.done();
     },
-
     testTimeScaling5: function(test) {
         test.expect(2);
         var m = new TimeUnit({
@@ -169,7 +157,6 @@ module.exports.testtime = {
         test.equal(m.unit, "day");
         test.done();
     },
-
     testTimeGetMeasures: function(test) {
         test.expect(1);
         var measures = TimeUnit.getMeasures();

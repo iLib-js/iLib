@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_AO = {
         ilib.clearCache();
         callback();
     },
-
     testParseAOAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
@@ -48,7 +45,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
@@ -62,7 +58,6 @@ module.exports.testaddress_AO = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAOAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele\nRua Frederik Engels 92 – 7 o\nLUANDA\nANGOLA", {locale: 'pt-AO'});
@@ -76,7 +71,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
@@ -90,7 +84,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o  \n\t\n LUANDA\t\n\n ANGOLA  \n  \t\t\t", {locale: 'pt-AO'});
@@ -104,7 +97,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele P. 15 Sh. 1 LUANDA ANGOLA", {locale: 'pt-AO'});
@@ -118,7 +110,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressSpeciAOChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
@@ -132,7 +123,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testParseAOAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_AO = {
         test.equal(parsedAddress.countryCode, "AO");
         test.done();
     },
-
     testFormatAddressAO: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +152,6 @@ module.exports.testaddress_AO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAOFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +166,4 @@ module.exports.testaddress_AO = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

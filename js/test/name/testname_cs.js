@@ -33,7 +33,6 @@ module.exports.testname_cs = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
@@ -47,7 +46,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTripleName_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
@@ -61,8 +59,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseSingleNameWithPrefixAndAdjunct_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
@@ -77,7 +73,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHypenatedName_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
@@ -91,9 +86,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
@@ -108,8 +100,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
@@ -124,9 +114,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
@@ -141,9 +128,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
@@ -158,8 +142,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseCompoundHonorific_cs_CZ: function(test) {
         test.expect(2);
         var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
@@ -173,7 +155,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundHonorific_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
@@ -187,7 +168,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParsewithFamilyCompoundHonorific_cs_CZ1: function(test) {
         test.expect(2);
         var parsed = new Name("Pan a Paní Synkova", {locale: 'cs-CZ'});
@@ -201,7 +181,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundHonorific_cs_CZZ: function(test) {
         test.expect(2);
         var parsed = new Name("Paní Yana Synkova", {locale: 'cs-CZ'});
@@ -216,10 +195,6 @@ module.exports.testname_cs = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -238,7 +213,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -257,7 +231,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -277,7 +250,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull1_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -298,7 +270,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFullu_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -319,8 +290,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatSimpleNameFull_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -341,7 +310,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -361,7 +329,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -381,7 +348,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -401,7 +367,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -422,7 +387,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -443,7 +407,6 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_cs_CZ: function(test) {
         test.expect(2);
         var name = new Name({
@@ -464,5 +427,4 @@ module.exports.testname_cs = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

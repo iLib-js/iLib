@@ -32,7 +32,6 @@ module.exports.testname_ru = {
         ilib.clearCache();
         callback();
     },
-
     testRUParseSimpleName: function(test) {
         test.expect(2);
         var parsed = new Name("Андрей Николаевич", {locale: 'ru-RU'});
@@ -46,7 +45,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUParseTripleName: function(test) {
         test.expect(2);
         var parsed = new Name("Андрей Микаэль Николаевич", {locale: 'ru-RU'});
@@ -61,7 +59,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUParseQuadrupleName: function(test) {
         test.expect(2);
         var parsed = new Name("Андрей Микаэль Григорий Николаевич", {locale: 'ru-RU'});
@@ -76,7 +73,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUParseTitle: function(test) {
         test.expect(2);
         var parsed = new Name("Доктор Андрей Николаевич", {locale: 'ru-RU'});
@@ -91,7 +87,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUParseHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Г-жа Татьяна Ивановна", {locale: 'ru-RU'});
@@ -106,7 +101,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUFamilyName1: function(test) {
         test.expect(2);
         var parsed = new Name("Pavel Яшкин", {locale: 'ru-RU'});
@@ -120,7 +114,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUFamilyName2: function(test) {
         test.expect(2);
         var parsed = new Name("Абакумов Pavel", {locale: 'ru-RU'});
@@ -134,7 +127,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUFamilyName3: function(test) {
         test.expect(2);
         var parsed = new Name("Pavel Андреевич", {locale: 'ru-RU'});
@@ -148,7 +140,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName1: function(test) {
         test.expect(2);
         var parsed = new Name("Иван Иванович Иванов", {locale: 'ru-RU'});
@@ -163,7 +154,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName2: function(test) {
         test.expect(2);
         var parsed = new Name("Иван Иванович", {locale: 'ru-RU'});
@@ -177,7 +167,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName3: function(test) {
         test.expect(2);
         var parsed = new Name("Иван Иванов", {locale: 'ru-RU'});
@@ -191,7 +180,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName4: function(test) {
         test.expect(2);
         var parsed = new Name("Иванов Иван", {locale: 'ru-RU'});
@@ -204,7 +192,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName5: function(test) {
         test.expect(2);
         var parsed = new Name("Владимир Андреевич Филатов", {locale: 'ru-RU'});
@@ -218,7 +205,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName6: function(test) {
         test.expect(2);
         var parsed = new Name("Владимир Андреевич", {locale: 'ru-RU'});
@@ -255,8 +241,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testRUName10: function(test) {
         test.expect(2);
         var parsed = new Name("Филатов Андреевич", {locale: 'ru-RU'});
@@ -269,7 +253,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName11: function(test) {
         test.expect(2);
         var parsed = new Name("Владимир Андреевич Филатовa", {locale: 'ru-RU'});
@@ -283,7 +266,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName12: function(test) {
         test.expect(2);
         var parsed = new Name("Владимир Андреевич", {locale: 'ru-RU'});
@@ -320,7 +302,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName15: function(test) {
         test.expect(2);
         var parsed = new Name("Екатерина Таттар", {locale: 'ru-RU'});
@@ -345,7 +326,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName17: function(test) {
         test.expect(2);
         var parsed = new Name("Валерия Твардовскиая", {locale: 'ru-RU'});
@@ -358,7 +338,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName18: function(test) {
         test.expect(2);
         var parsed = new Name("Твардовскиая Валерия", {locale: 'ru-RU'});
@@ -371,7 +350,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName19: function(test) {
         test.expect(2);
         var parsed = new Name("Анатолы Полищук", {locale: 'ru-RU'});
@@ -384,7 +362,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testRUName20: function(test) {
         test.expect(2);
         var parsed = new Name("Полищук Анатолы", {locale: 'ru-RU'});
@@ -410,11 +387,6 @@ module.exports.testname_ru = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testRUFormatSimpleNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -430,7 +402,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatSimpleNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -446,7 +417,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatSimpleNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -462,7 +432,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatSimpleNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -479,7 +448,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatComplexNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -496,7 +464,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatComplexNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -513,7 +480,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatComplexNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -530,7 +496,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatComplexNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -547,7 +512,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatAsianNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -565,7 +529,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatAsianNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -583,7 +546,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatAsianNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -601,7 +563,6 @@ module.exports.testname_ru = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testRUFormatAsianNameFull: function(test) {
         test.expect(2);
         var name = new Name({

@@ -32,7 +32,6 @@ module.exports.testaddress_SD = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSDNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SD = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSDNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ", {locale: 'ar-SD'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDManyLines: function(test) {
         test.expect(6);
         var parsedAddress = new Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\n\nالسودان\n\n\n", {locale: 'ar-OM'});
@@ -86,7 +82,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ,  ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ , ١١١١١ , ﺎﻠﺧﺮﻃﻮﻣ , السودان", {locale: 'ar-SD'});
@@ -100,7 +95,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n\n\t١١١١١\n\n\tﺎﻠﺧﺮﻃﻮﻣ\n\n\tالسودان\n\n\n", {locale: 'ar-SD'});
@@ -114,7 +108,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ١١١١١  ﺎﻠﺧﺮﻃﻮﻣ السودان", {locale: 'ar-SD'});
@@ -128,7 +121,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testParseAddressSDFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nSudan", {locale: 'en-US'});
@@ -144,7 +136,6 @@ module.exports.testaddress_SD = {
         test.equal(parsedAddress.countryCode, "SD");
         test.done();
     },
-
     testFormatAddressSD: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_SD = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSDFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,5 +166,4 @@ module.exports.testaddress_SD = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

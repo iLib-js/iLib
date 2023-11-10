@@ -87,7 +87,6 @@ module.exports.testunitfmt_yo_BJ = {
         test.equal(str, "-16.666666666666668°C");
         test.done();
     },
-
     testUnitFormatArea1_yo_BJ: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

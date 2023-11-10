@@ -32,7 +32,6 @@ module.exports.phonefmt_NZ = {
         ilib.clearCache();
         callback();
     },
-
     testFormatNZStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -48,10 +47,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -67,10 +63,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -87,10 +80,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -107,10 +97,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZLongNumber: function(test) {
         test.expect(1);
         var formatted;
@@ -126,11 +113,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
-
     testFormatNZMobile: function(test) {
         test.expect(1);
         var formatted;
@@ -146,10 +129,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZMobileInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -167,10 +147,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZService: function(test) {
         test.expect(1);
         var formatted;
@@ -186,10 +163,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZIEIDD: function(test) {
         test.expect(1);
         var formatted;
@@ -207,10 +181,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZStyle0Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -224,8 +195,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial1: function(test) {
         test.expect(1);
@@ -241,8 +210,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial2: function(test) {
         test.expect(1);
@@ -259,8 +226,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial3: function(test) {
         test.expect(1);
@@ -277,8 +242,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial4: function(test) {
         test.expect(1);
@@ -295,8 +258,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial5: function(test) {
         test.expect(1);
@@ -313,8 +274,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial6: function(test) {
         test.expect(1);
@@ -331,8 +290,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial7: function(test) {
         test.expect(1);
@@ -349,8 +306,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial8: function(test) {
         test.expect(1);
@@ -367,8 +322,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial9: function(test) {
         test.expect(1);
@@ -385,8 +338,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0Partial10: function(test) {
         test.expect(1);
@@ -403,10 +354,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -420,8 +368,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal2: function(test) {
         test.expect(1);
@@ -436,8 +382,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal3: function(test) {
         test.expect(1);
@@ -452,8 +396,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal4: function(test) {
         test.expect(1);
@@ -468,8 +410,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal5: function(test) {
         test.expect(1);
@@ -484,8 +424,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal6: function(test) {
         test.expect(1);
@@ -500,8 +438,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal7: function(test) {
         test.expect(1);
@@ -516,8 +452,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal8: function(test) {
         test.expect(1);
@@ -532,8 +466,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle0PartialLocal9: function(test) {
         test.expect(1);
@@ -548,10 +480,7 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatNZStyle1PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -565,8 +494,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal2: function(test) {
         test.expect(1);
@@ -581,8 +508,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal3: function(test) {
         test.expect(1);
@@ -597,8 +522,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal4: function(test) {
         test.expect(1);
@@ -613,8 +536,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal5: function(test) {
         test.expect(1);
@@ -629,8 +550,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal6: function(test) {
         test.expect(1);
@@ -645,8 +564,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal7: function(test) {
         test.expect(1);
@@ -661,8 +578,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal8: function(test) {
         test.expect(1);
@@ -677,8 +592,6 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatNZStyle1PartialLocal9: function(test) {
         test.expect(1);
@@ -693,8 +606,5 @@ module.exports.phonefmt_NZ = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     }
-
 };

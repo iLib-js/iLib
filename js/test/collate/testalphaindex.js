@@ -29,7 +29,6 @@ module.exports.testalphaindex = {
         ilib.clearCache();
         callback();
     },
-
     testAlphaIndexConstructor: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex();
@@ -37,7 +36,6 @@ module.exports.testalphaindex = {
         test.ok(ai);
         test.done();
     },
-
     testAlphaIndexConstructorWithParams: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -48,7 +46,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexgetDefaultIndexStyle: function(test) {
         test.expect(2);
         var ai = new AlphabeticIndex({
@@ -59,7 +56,6 @@ module.exports.testalphaindex = {
         test.equal("latin", ai.getIndexStyle());
         test.done();
     },
-
     testAlphaIndexConstructorWithUnknownLocale: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -69,7 +65,6 @@ module.exports.testalphaindex = {
         test.ok(ai);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketBaseLetter: function(test) {
         test.expect(2);
 
@@ -81,7 +76,6 @@ module.exports.testalphaindex = {
         test.equal("A", ai.getBucket("abacus"));
         test.done();
     },
-
     testAlphaIndexENUSGetBucket: function(test) {
         test.expect(3);
 
@@ -95,7 +89,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSGetBucket2: function(test) {
         test.expect(3);
 
@@ -110,7 +103,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSAddElementActuallyAdded: function(test) {
         test.expect(6);
 
@@ -132,7 +124,6 @@ module.exports.testalphaindex = {
         test.equal(a.elements, "abacus");
         test.done();
     },
-
     testAlphaIndexENUSAddElementRightBucket: function(test) {
         test.expect(2);
 
@@ -144,7 +135,6 @@ module.exports.testalphaindex = {
         test.equal("A", ai.addElement("abacus"));
         test.done();
     },
-
     testAlphaIndexENUSAddElementRightBucket2: function(test) {
         test.expect(3);
 
@@ -158,7 +148,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSAddElementRightBucket3: function(test) {
         test.expect(3);
 
@@ -172,7 +161,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSGetAllBuckets: function(test) {
         test.expect(2);
 
@@ -249,7 +237,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexENUSGetElementCount: function(test) {
         test.expect(2);
 
@@ -283,7 +270,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getElementCount(), 14);
         test.done();
     },
-
     testAlphaIndexENUSGetElementCountEmpty: function(test) {
         test.expect(2);
 
@@ -295,7 +281,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getElementCount(), 0);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketCountEmpty: function(test) {
         test.expect(2);
 
@@ -307,7 +292,6 @@ module.exports.testalphaindex = {
         test.equal(ai.getBucketCount(), 0);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketCount: function(test) {
         test.expect(2);
 
@@ -342,7 +326,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSGetBucketCount2: function(test) {
         test.expect(2);
 
@@ -382,7 +365,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getBucketCount(), 15);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketLabels: function(test) {
         test.expect(2);
 
@@ -440,7 +422,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketLabelsEmpty: function(test) {
         test.expect(2);
 
@@ -452,7 +433,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getBucketLabels(), []);
         test.done();
     },
-
     testAlphaIndexENUSGetAllBucketLabels: function(test) {
         test.expect(2);
 
@@ -523,7 +503,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexENUSGetAllBucketLabelsEmpty: function(test) {
         test.expect(2);
 
@@ -567,7 +546,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexLVLVGetAllBucketLabels: function(test) {
         test.expect(2);
 
@@ -624,7 +602,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketOverflow: function(test) {
         test.expect(3);
 
@@ -639,7 +616,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSGetAllBucketsOverflow: function(test) {
         test.expect(2);
 
@@ -722,7 +698,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexENUSGetBucketUnderflow: function(test) {
         test.expect(3);
 
@@ -737,7 +712,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSGetAllBucketsUnderflow: function(test) {
         test.expect(2);
 
@@ -820,7 +794,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexConstructorAsync: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -832,7 +805,6 @@ module.exports.testalphaindex = {
             }
         });
     },
-
     testAlphaIndexUnknowLocaleActsLikeEnglish: function(test) {
         test.expect(2);
 
@@ -928,7 +900,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSsetflowLabels: function(test) {
         test.expect(3);
 
@@ -946,7 +917,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSgetCollator: function(test) {
         test.expect(2);
 
@@ -959,7 +929,6 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
     testAlphaIndexENUSaddLabels: function(test) {
         test.expect(2);
 
@@ -1006,7 +975,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexENUSaddLabelswithPosition: function(test) {
         test.expect(2);
 
@@ -1053,7 +1021,6 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexENUSMixedScriptTest1: function(test) {
         test.expect(2);
 

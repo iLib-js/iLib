@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_hu_HU = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtHURangeinDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011. december 31. 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtHURangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011. december 30. 13:45 – 2011. december 31. 14:30");
         test.done();
     },
-
     testDateRngFmtHURangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011. december 20. – 31");
         test.done();
     },
-
     testDateRngFmtHURangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011. október 20. – december 31.");
         test.done();
     },
-
     testDateRngFmtHURangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011. október 20. – 2012. január 31.");
         test.done();
     },
-
     testDateRngFmtHURangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "hu-HU", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_hu_HU = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

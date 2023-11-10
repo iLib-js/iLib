@@ -30,9 +30,6 @@ module.exports.testlistfmt_te_IN = {
         ilib.clearCache();
         callback();
     },
-
-    // te-IN
-
     testListFmtteINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి"]), "ఒకటి");
         test.done();
     },
-
     testListFmtteINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి మరియు రెండు");
         test.done();
     },
-
     testListFmtteINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు మరియు మూడు");
         test.done();
     },
-
     testListFmtteINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి"]), "ఒకటి");
         test.done();
     },
-
     testListFmtUnitStyleteINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి", "రెండు"]), "ఒకటి, రెండు");
         test.done();
     },
-
     testListFmtUnitStyleteINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_te_IN = {
         test.equal(fmt.format(["ఒకటి", "రెండు", "మూడు"]), "ఒకటి, రెండు, మూడు");
         test.done();
     },
-
     testListFmtUnitStyleteINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "te-IN",

@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_ja_JP = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtJPRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年12月31日 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtJPRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年12月30日 13:45 – 2011年12月31日 14:30");
         test.done();
     },
-
     testDateRngFmtJPRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年12月20日 – 31日");
         test.done();
     },
-
     testDateRngFmtJPRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 12月31日");
         test.done();
     },
-
     testDateRngFmtJPRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 2012年1月31日");
         test.done();
     },
-
     testDateRngFmtJPRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ja-JP", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_ja_JP = {
         test.equal(fmt.format(start, end), "2011年 – 2064年");
         test.done();
     }
-
 };

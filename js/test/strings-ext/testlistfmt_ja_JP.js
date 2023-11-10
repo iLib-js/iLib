@@ -30,7 +30,6 @@ module.exports.testlistfmt_ja_JP = {
         ilib.clearCache();
         callback();
     },
-
     testListFmtjaJPNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP"
@@ -41,7 +40,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtjaJPNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP"
@@ -52,7 +50,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いち、に");
         test.done();
     },
-
     testListFmtjaJPNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP"
@@ -63,7 +60,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち、に、さん");
         test.done();
     },
-
     testListFmtjaJPNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP"
@@ -74,7 +70,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち、に、さん、し");
         test.done();
     },
-
     testListFmtjaJPNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP"
@@ -85,9 +80,7 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち、に、さん、し、ご");
         test.done();
     },
-
     //ja-JP : disjunction style
-
     testListFmtUnitStylejaJPDisjunctionFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtUnitStylejaJPDisjunctionFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いちまたはに");
         test.done();
     },
-
     testListFmtUnitStylejaJPDisjunctionFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -123,7 +114,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち、に、またはさん");
         test.done();
     },
-
     testListFmtUnitStylejaJPDisjunctionFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -135,9 +125,7 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち、に、さん、またはし");
         test.done();
     },
-
     //ja-JP : unit style
-
     testListFmtUnitStylejaJPNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -149,7 +137,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -161,7 +148,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いち に");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -173,7 +159,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち に さん");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -185,7 +170,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち に さん し");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFive: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -197,7 +181,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち に さん し ご");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatOneMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -210,7 +193,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -223,7 +205,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いち に");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -236,7 +217,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち に さん");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -249,7 +229,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち に さん し");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFiveMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -262,7 +241,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち に さん し ご");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatOneLong: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -275,7 +253,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatTwoLong: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -288,7 +265,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いち に");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatThreeLong: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -301,7 +277,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち に さん");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFourLong: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -314,7 +289,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち に さん し");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFiveLong: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -327,7 +301,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち に さん し ご");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -340,7 +313,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち"]), "いち");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -353,7 +325,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に"]), "いち に");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -366,7 +337,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん"]), "いち に さん");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -379,7 +349,6 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し"]), "いち に さん し");
         test.done();
     },
-
     testListFmtUnitStylejaJPNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "ja-JP",
@@ -392,5 +361,4 @@ module.exports.testlistfmt_ja_JP = {
         test.equal(fmt.format(["いち", "に", "さん", "し", "ご"]), "いち に さん し ご");
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_ta = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
@@ -46,7 +45,6 @@ module.exports.testname_ta = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
@@ -61,7 +59,6 @@ module.exports.testname_ta = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
@@ -75,7 +72,6 @@ module.exports.testname_ta = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
@@ -89,7 +85,6 @@ module.exports.testname_ta = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_ta_IN: function(test) {
         test.expect(2);
         var parsed = new Name("திரு மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
@@ -104,10 +99,6 @@ module.exports.testname_ta = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -126,7 +117,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -145,7 +135,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -164,7 +153,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -183,7 +171,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -204,7 +191,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -224,7 +210,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -244,7 +229,6 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_ta_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,7 +248,4 @@ module.exports.testname_ta = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

@@ -31,7 +31,6 @@ module.exports.testdurfmt_ar_SA = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtARFormatShortDefaultStyle1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -52,7 +51,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
-
     testDurFmtARFormatShortText1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -74,7 +72,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
-
     testDurFmtARFormatShortClock1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -96,7 +93,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و‏١:٠١:٠١");
         test.done();
     },
-
     testDurFmtARFormatMedium1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -117,7 +113,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و١ أ و١ ي و١ س و١ د و١ ث");
         test.done();
     },
-
     testDurFmtARFormatLong1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -138,7 +133,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، و١ س، و١ د، و١ ث");
         test.done();
     },
-
     testDurFmtARFormatFull1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -159,7 +153,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، وساعة، ودقيقة، وثانية");
         test.done();
     },
-
     testDurFmtARFormatShortDefaultStyle2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -180,7 +173,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
-
     testDurFmtARFormatShortText2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -202,7 +194,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
-
     testDurFmtARFormatShortClock2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -224,7 +215,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و‏٢:٠٢:٠٢");
         test.done();
     },
-
     testDurFmtARFormatMedium2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -245,7 +235,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان وشهران و٢ أ و٢ ي و٢ س و٢ د و٢ ث");
         test.done();
     },
-
     testDurFmtARFormatLong2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -266,7 +255,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان، وشهران، وأسبوعان، ويومان، و٢ س، و٢ د، و٢ ث");
         test.done();
     },
-
     testDurFmtARFormatFull2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -287,7 +275,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنتان، وشهران، وأسبوعان، ويومان، وساعتان، ودقيقتان، وثانيتان");
         test.done();
     },
-
     testDurFmtARFormatShortDefaultStyle3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -308,7 +295,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
-
     testDurFmtARFormatShortText3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -330,7 +316,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
-
     testDurFmtARFormatShortClock3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -352,7 +337,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و‏٣:٠٣:٠٣");
         test.done();
     },
-
     testDurFmtARFormatMedium3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -373,7 +357,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات و٣ أشهر و٣ أ و٣ ي و٣ س و٣ د و٣ ث");
         test.done();
     },
-
     testDurFmtARFormatLong3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -394,7 +377,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ س، و٣ د، و٣ ث");
         test.done();
     },
-
     testDurFmtARFormatFull3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -415,7 +397,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏٣ سنوات، و٣ أشهر، و٣ أسابيع، و٣ أيام، و٣ ساعات، و٣ دقائق، و٣ ثوانٍ");
         test.done();
     },
-
     testDurFmtARFormatShortDefaultStyle11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -436,7 +417,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
-
     testDurFmtARFormatShortText11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -458,7 +438,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
-
     testDurFmtARFormatShortClock11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -480,7 +459,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و‏١١:١١:١١");
         test.done();
     },
-
     testDurFmtARFormatMedium11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -501,7 +479,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة و١١ شهرًا و١١ أ و١١ ي و١١ س و١١ د و١١ ث");
         test.done();
     },
-
     testDurFmtARFormatLong11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -522,7 +499,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة، و١١ شهرًا، و١١ أسبوعًا، و١١ يومًا، و١١ س، و١١ د، و١١ ث");
         test.done();
     },
-
     testDurFmtARFormatFull11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -543,7 +519,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏١١ سنة، و١١ شهرًا، و١١ أسبوعًا، و١١ يومًا، و١١ ساعة، و١١ دقيقة، و١١ ثانية");
         test.done();
     },
-
     testDurFmtARAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -567,7 +542,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsyncWithLocale1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -591,7 +565,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsync2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -615,7 +588,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsyncWithLocale2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -639,7 +611,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsync3: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -663,7 +634,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsyncWithLocale3: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -687,7 +657,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsync11: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -711,7 +680,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsyncWithLocale11: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -735,7 +703,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARFormatShortClockAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -784,7 +751,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
-
     testDurFmtARFormatWesternShortText1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -807,7 +773,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
-
     testDurFmtARFormatWesternShortClock1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -830,7 +795,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و‏1:01:01");
         test.done();
     },
-
     testDurFmtARFormatWesternMedium1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -852,7 +816,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة وشهر و1 أ و1 ي و1 س و1 د و1 ث");
         test.done();
     },
-
     testDurFmtARFormatWesternLong1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -874,7 +837,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، و1 س، و1 د، و1 ث");
         test.done();
     },
-
     testDurFmtARFormatWesternFull1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -896,8 +858,6 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، وساعة، ودقيقة، وثانية");
         test.done();
     },
-
-
     testDurFmtARAsync2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -922,7 +882,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARAsyncWithLocale2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -947,7 +906,6 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-
     testDurFmtARFormatWesternShortClockAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -973,5 +931,4 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     }
-
 };

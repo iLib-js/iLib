@@ -35,7 +35,6 @@ module.exports.testcollationasync = {
         ilib.clearCache();
         callback();
     },
-
     testCollatorAsyncConstructorNative: function(test) {
         test.expect(1);
         var col = new Collator({
@@ -47,7 +46,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncDefaultNative: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -65,7 +63,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncDefaultCase: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -95,7 +92,6 @@ module.exports.testcollationasync = {
             }
         });
     },
-
     testCollatorAsyncGetComparator: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -125,7 +121,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncDefaultJS: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -187,7 +182,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncGetSortKeySimpleUpper: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -202,7 +196,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncGetSortKeyMixed: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -217,7 +210,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncWithSort: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -236,7 +228,6 @@ module.exports.testcollationasync = {
             }
         });
     },
-
     testCollatorAsyncWithSortJS: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -256,7 +247,6 @@ module.exports.testcollationasync = {
             }
         });
     },
-
     testCollatorAsyncWithSortUpperFirstJS: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -277,19 +267,16 @@ module.exports.testcollationasync = {
             }
         });
     },
-
     testCollatorAsyncGetAvailableScripts: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableScripts(), ["Latn"]);
         test.done();
     },
-
     testCollatorAsyncGetAvailableStyles: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableStyles(), ["standard"]);
         test.done();
     },
-
     testCollatorAsyncPhonebookQuatAE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -312,7 +299,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncQuat_el: function(test) {
         test.expect(91);
         var col = new Collator({
@@ -421,7 +407,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncPriL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -442,7 +427,6 @@ module.exports.testcollationasync = {
         });
 
     },
-
     testCollatorAsyncQuatHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -479,9 +463,7 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-
     },
-
     testCollatorAsyncTraditionalQuatCH_es: function(test) {
         test.expect(6);
         var col = new Collator({

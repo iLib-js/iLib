@@ -30,7 +30,6 @@ module.exports.testcollation_lv = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuatUpper_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -78,7 +77,6 @@ module.exports.testcollation_lv = {
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.done();
     },
-
     testJSCollatorQuatLower_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -126,7 +124,6 @@ module.exports.testcollation_lv = {
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-
     // differences in umlauted characters should be primary differences
 
     testJSCollatorPrimaryUpper_lv: function(test) {
@@ -174,7 +171,6 @@ module.exports.testcollation_lv = {
         test.ok("Z < Ž",  col.compare("Z", "Ž") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryOE_lv: function(test) {
         test.expect(33);
         var col = new Collator({
@@ -220,7 +216,6 @@ module.exports.testcollation_lv = {
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-
     testCollatorNativeCase_lv: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -381,7 +376,6 @@ module.exports.testcollation_lv = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorNativeVariant_lv: function(test) {
         test.expect(2);
         var col = new Collator({

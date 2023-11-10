@@ -51,7 +51,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncHKFromIntl: function(test) {
         test.expect(2);
         new PhoneNumber("+85223897077", {
@@ -75,7 +74,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncUSFull: function(test) {
         test.expect(2);
         new PhoneNumber("(456) 345-3434", {
@@ -98,7 +96,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncKRFullLongAreaCode: function(test) {
         test.expect(2);
         new PhoneNumber("033-9467-2345", {
@@ -122,7 +119,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncMXFull: function(test) {
         test.expect(2);
         new PhoneNumber("6241234567", {
@@ -145,7 +141,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncUndefined: function(test) {
         test.expect(1);
         new PhoneNumber(undefined, {
@@ -158,7 +153,6 @@ module.exports.phonenumasync = {
             }
         });
     },
-
     testPhoneParseAsyncEmpty: function(test) {
         test.expect(1);
         new PhoneNumber("", {

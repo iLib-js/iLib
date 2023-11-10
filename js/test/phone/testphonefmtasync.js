@@ -55,7 +55,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncUSPlusIDDtoUnknownCountry: function(test) {
         test.expect(1);
         var formatted;
@@ -86,7 +85,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncUSStyle0Emergency: function(test) {
         test.expect(1);
         var formatted;
@@ -115,7 +113,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncUSNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -147,7 +144,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncWithParamsFormatUSInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -178,7 +174,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncGBLongAreaCode: function(test) {
         test.expect(1);
         var formatted;
@@ -211,7 +206,6 @@ module.exports.phonefmtasync = {
 
 
     },
-
     testFormatAsyncDEStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -242,7 +236,6 @@ module.exports.phonefmtasync = {
             }
         });
     },
-
     testFormatAsyncJPStyle1: function(test) {
         test.expect(1);
         var formatted;

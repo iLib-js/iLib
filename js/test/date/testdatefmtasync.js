@@ -56,7 +56,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtGetCalendarExplicit: function(test) {
         test.expect(3);
         new DateFmt({
@@ -72,7 +71,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtGetCalendarNotInThisLocale: function(test) {
         new DateFmt({
             calendar: "arabic",
@@ -85,7 +83,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtGetTimeZoneDefault: function(test) {
         test.expect(2);
         ilib.tz = undefined;    // just in case
@@ -103,7 +100,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtGetTimeZone: function(test) {
         test.expect(2);
         new DateFmt({
@@ -117,7 +113,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtUseTemplateNonEmptyCalendar: function(test) {
         test.expect(2);
         new DateFmt({
@@ -132,7 +127,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtUseTemplateNonEmptyLocale: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -147,7 +141,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtFormatJSDate1: function(test) {
         test.expect(2);
         new DateFmt({
@@ -166,7 +159,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtFormatJSDateRightTimeZone1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -186,7 +178,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtGetMonthsOfYearThai: function(test) {
         test.expect(2);
         // uses ThaiSolar calendar
@@ -204,7 +195,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter: function(test) {
         test.expect(1);
         new DateFmt({
@@ -240,7 +230,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtConvertToGMT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -272,7 +261,6 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-
     testDateFmtConvertToOtherTimeZone: function(test) {
         test.expect(2);
         new DateFmt({

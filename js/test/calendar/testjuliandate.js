@@ -67,7 +67,6 @@ module.exports.testjuliandate = {
         ilib.clearCache();
         callback();
     },
-
     testJulDateConstructor: function(test) {
         test.expect(1);
         var jul = new JulianDate();
@@ -75,7 +74,6 @@ module.exports.testjuliandate = {
         test.ok(jul !== null);
         test.done();
     },
-
     /* julian date is rd 366 + epoch */
     testJulDateConstructorFromJD: function(test) {
         test.expect(8);
@@ -94,7 +92,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateConstructorUnixTime: function(test) {
         test.expect(8);
         var gd = new JulianDate({
@@ -112,7 +109,6 @@ module.exports.testjuliandate = {
         test.equal(0, gd.getMilliseconds(), "millisecond");
         test.done();
     },
-
     testJulDateAfterLeapYear: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -130,7 +126,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateJan31Midnight: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734548,    timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
@@ -145,7 +140,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateJan31Noon: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734548.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
@@ -160,7 +154,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateFeb1: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734549.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
@@ -175,7 +168,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateFeb28LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734576.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
@@ -190,7 +182,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateFeb29LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734577.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
@@ -205,7 +196,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateMar1LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734578.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
@@ -220,7 +210,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateMar31LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734608.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
@@ -235,7 +224,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateApr1LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734609.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
@@ -250,7 +238,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateDec31LeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734883.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
@@ -265,7 +252,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateJan1NonLeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734884.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
@@ -280,7 +266,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateFeb28NonLeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734942.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
@@ -295,7 +280,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateMar1NonLeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734943.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
@@ -310,7 +294,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateMar31NonLeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734973.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
@@ -325,7 +308,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateApr1NonLeapYear: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 734974.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
@@ -340,7 +322,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateAfterCentury: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -358,7 +339,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateAfterQuadCentury: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -376,7 +356,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateEndOfYearMinus1Rd: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 0, timezone: "Etc/UTC"});
@@ -391,7 +370,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateBeginningOfYearRd: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 1, timezone: "Etc/UTC"});
@@ -406,7 +384,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateAlmostEndOfYearRd: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 364, timezone: "Etc/UTC"});
@@ -421,7 +398,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateEndOfYearRd: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 365, timezone: "Etc/UTC"});
@@ -436,7 +412,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateBeginningOfYear2Rd: function(test) {
         test.expect(8);
         var gd = new JulianDate({rd: 366, timezone: "Etc/UTC"});
@@ -451,7 +426,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getMilliseconds(), 0);
         test.done();
     },
-
     testJulDateConvert: function(test) {
         var jul;
 
@@ -475,7 +449,6 @@ module.exports.testjuliandate = {
         }
         test.done();
     },
-
     testJulDateConstructorFull: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -500,7 +473,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 123);
         test.done();
     },
-
     testJulDateConstructorFullWithStrings: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -524,7 +496,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 123);
         test.done();
     },
-
     testJulDateConstructorCopy: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -549,7 +520,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 123);
         test.done();
     },
-
     testJulDateGetJulianDay: function(test) {
         var jul;
 
@@ -574,7 +544,6 @@ module.exports.testjuliandate = {
         }
         test.done();
     },
-
     testJulDateSetYears: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -586,7 +555,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getYears(), 123);
         test.done();
     },
-
     testJulDateSetMonths: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -598,7 +566,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMonths(), 7);
         test.done();
     },
-
     testJulDateSetDays: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -610,7 +577,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getDays(), 12);
         test.done();
     },
-
     testJulDateSetHours: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -622,7 +588,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getHours(), 12);
         test.done();
     },
-
     testJulDateSetMinutes: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -634,7 +599,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMinutes(), 13);
         test.done();
     },
-
     testJulDateSetSeconds: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -646,7 +610,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getSeconds(), 23);
         test.done();
     },
-
     testJulDateSetMilliseconds: function(test) {
         test.expect(2);
         var jul = new JulianDate();
@@ -658,7 +621,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getMilliseconds(), 123);
         test.done();
     },
-
     testJulDateTestGetTimeZero: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -672,7 +634,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTime(), 0);
         test.done();
     },
-
     testJulDateTestGetTime: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -688,7 +649,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTime(), 203400000);
         test.done();
     },
-
     testJulDateTestGetTimeTooEarly: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -702,7 +662,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTime(), -1);
         test.done();
     },
-
     testJulDateTestGetTimeTooLate: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -716,7 +675,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTime(), -1);
         test.done();
     },
-
     testJulDateTestSetTime1: function(test) {
         test.expect(8);
         var jul = new JulianDate({
@@ -738,7 +696,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getSeconds(), 3);
         test.done();
     },
-
     testJulDateTestSetTimeZero: function(test) {
         test.expect(7);
         var jul = new JulianDate({
@@ -764,7 +721,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getSeconds(), 0);
         test.done();
     },
-
     testJulDateGetTimeZone: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -778,7 +734,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-
     testJulDateGetTimeZoneDefault: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -791,7 +746,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTimeZone(), "local");
         test.done();
     },
-
     testJulDateGetTimeZoneByLocaleDE: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -805,7 +759,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTimeZone(), "Europe/Berlin");
         test.done();
     },
-
     testJulDateGetTimeZoneByLocaleJP: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -819,7 +772,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-
     testJulDateGetTimeZoneByLocaleBogus: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -833,7 +785,6 @@ module.exports.testjuliandate = {
         test.equal(jul.getTimeZone(), "Etc/UTC");
         test.done();
     },
-
     testJulDateCurrentTimeWithTimeZone: function(test) {
         test.expect(2);
         var jul = new JulianDate({
@@ -845,7 +796,6 @@ module.exports.testjuliandate = {
         test.roughlyEqual(jul.getTime(), d.getTime(), 50);
         test.done();
     },
-
     testJulDateSetTimeZone: function(test) {
         test.expect(3);
         var gd = new JulianDate({
@@ -863,7 +813,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "Asia/Tokyo");
         test.done();
     },
-
     testJulDateSetTimeZoneNotString: function(test) {
         test.expect(3);
         var gd = new JulianDate({
@@ -881,7 +830,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
-
     testJulDateSetTimeZoneUndefined: function(test) {
         test.expect(3);
         var gd = new JulianDate({
@@ -900,7 +848,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "local");
         test.done();
     },
-
     testJulDateSetTimeZoneEmpty: function(test) {
         test.expect(3);
         var gd = new JulianDate({
@@ -919,7 +866,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "local");
         test.done();
     },
-
     testJulDateInitWithUnixTimeRightTimeZone: function(test) {
         test.expect(2);
         var gd = new JulianDate({
@@ -930,7 +876,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "local");
         test.done();
     },
-
     testJulDateInitWithJDRightTimeZone: function(test) {
         test.expect(2);
         var gd = new JulianDate({
@@ -941,7 +886,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "local");
         test.done();
     },
-
     testJulDateInitWithRDRightTimeZone: function(test) {
         test.expect(2);
         var gd = new JulianDate({
@@ -952,7 +896,6 @@ module.exports.testjuliandate = {
         test.equal(gd.getTimeZone(), "local");
         test.done();
     },
-
     testJulianDateRoundTripConstruction: function(test) {
         test.expect(8);
         var jd = new JulianDate({
@@ -980,7 +923,6 @@ module.exports.testjuliandate = {
         test.equal(jd2.getSeconds(), jd.getSeconds());
         test.done();
     },
-
     testJulianDateRoundTripConstruction2: function(test) {
         test.expect(8);
         var jd = new JulianDate({
@@ -1008,5 +950,4 @@ module.exports.testjuliandate = {
         test.equal(jd2.getSeconds(), jd.getSeconds());
         test.done();
     }
-
 };

@@ -33,7 +33,6 @@ module.exports.testalphaindex_ko = {
         ilib.clearCache();
         callback();
     },
-
     testAlphaIndexKOKRConstructorWithParams: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -44,7 +43,6 @@ module.exports.testalphaindex_ko = {
         test.ok(ai);
         test.done();
     },
-
     testAlphaIndexKOKRgetDefaultIndexStyle: function(test) {
         test.expect(2);
         var ai = new AlphabeticIndex({
@@ -55,7 +53,6 @@ module.exports.testalphaindex_ko = {
         test.equal("korean", ai.getIndexStyle());
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketBaseLetter: function(test) {
         test.expect(2);
 
@@ -67,7 +64,6 @@ module.exports.testalphaindex_ko = {
         test.equal("ㄱ", ai.getBucket("김영희"));
         test.done();
     },
-
     testAlphaIndexKOKRGetBucket: function(test) {
         test.expect(3);
 
@@ -81,7 +77,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRAddElementRightBucket: function(test) {
         test.expect(2);
 
@@ -93,7 +88,6 @@ module.exports.testalphaindex_ko = {
         test.equal("ㄷ", ai.addElement("대한민국"));
         test.done();
     },
-
     testAlphaIndexKOKRAddElementActuallyAdded: function(test) {
         test.expect(6);
 
@@ -115,7 +109,6 @@ module.exports.testalphaindex_ko = {
         test.equal(a.elements, "대한민국");
         test.done();
     },
-
     testAlphaIndexKOKRAddElementRightBucketCaseInsensitive: function(test) {
         test.expect(3);
 
@@ -129,7 +122,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRGetAllBuckets: function(test) {
         test.expect(2);
 
@@ -201,7 +193,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRGetElementCount: function(test) {
         test.expect(2);
 
@@ -234,7 +225,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getElementCount(), 13);
         test.done();
     },
-
     testAlphaIndexKOKRGetElementCountEmpty: function(test) {
         test.expect(2);
 
@@ -246,7 +236,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getElementCount(), 0);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketCountEmpty: function(test) {
         test.expect(2);
 
@@ -258,7 +247,6 @@ module.exports.testalphaindex_ko = {
         test.equal(ai.getBucketCount(), 0);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketCount: function(test) {
         test.expect(2);
 
@@ -292,7 +280,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketCount2: function(test) {
         test.expect(2);
 
@@ -328,7 +315,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getBucketCount(), 9);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketLabels: function(test) {
         test.expect(2);
 
@@ -376,7 +362,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketLabelsEmpty: function(test) {
         test.expect(2);
 
@@ -388,7 +373,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getBucketLabels(), []);
         test.done();
     },
-
     testAlphaIndexKOKRGetAllBucketLabels: function(test) {
         test.expect(2);
 
@@ -452,7 +436,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRGetAllBucketLabelsEmpty: function(test) {
         test.expect(2);
 
@@ -489,7 +472,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketOverflow: function(test) {
         test.expect(3);
 
@@ -504,7 +486,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRGetAllBucketsOverflow: function(test) {
         test.expect(2);
 
@@ -589,7 +570,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRGetBucketUnderflow: function(test) {
         test.expect(3);
 
@@ -604,7 +584,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRGetAllBucketsUnderflow: function(test) {
         test.expect(2);
 
@@ -702,7 +681,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexUnknowLocaleActsLikeEnglish: function(test) {
         test.expect(2);
 
@@ -794,7 +772,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRsetflowLabels: function(test) {
         test.expect(3);
 
@@ -812,7 +789,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRgetCollator: function(test) {
         test.expect(2);
 
@@ -825,7 +801,6 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-
     testAlphaIndexKOKRaddLabels: function(test) {
         test.expect(2);
 
@@ -904,7 +879,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRMixedScriptTest1: function(test) {
         test.expect(2);
 
@@ -989,7 +963,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRMixedScriptTest2: function(test) {
         test.expect(2);
 
@@ -1071,7 +1044,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRMixedScriptTest3: function(test) {
         test.expect(2);
 
@@ -1154,7 +1126,6 @@ module.exports.testalphaindex_ko = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-
     testAlphaIndexKOKRMixedScriptTest4: function(test) {
         test.expect(2);
 

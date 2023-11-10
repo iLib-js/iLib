@@ -32,7 +32,6 @@ module.exports.phonegeo_TW = {
         ilib.clearCache();
         callback();
     },
-
     testNANPUStoTaiwan: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("011 886 2 3210 3210");
@@ -59,7 +58,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWLocalNumber2: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "en-US"});
@@ -80,7 +78,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testTWNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("(89) 456-7890",{locale: "en-US"});
@@ -106,7 +103,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("(49)212-3456",{locale: "en-US"});
@@ -132,7 +128,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-49-312-3456");
@@ -158,7 +153,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-49-32-456-1");
@@ -184,7 +178,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-2-212-3456");
@@ -210,7 +203,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 886-812-212-3456");
@@ -236,7 +228,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+886-37-212-3456");
@@ -262,7 +253,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "tw-TW"});
@@ -288,7 +278,6 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testTWFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "tw-TW"});
@@ -314,6 +303,4 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-
-
 };

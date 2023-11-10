@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_fr_FR = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtFRRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "31 décembre 2011 à 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtFRRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "30 décembre 2011 à 13:45 – 31 décembre 2011 à 14:30");
         test.done();
     },
-
     testDateRngFmtFRRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 – 31 décembre 2011");
         test.done();
     },
-
     testDateRngFmtFRRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 novembre – 31 décembre 2011");
         test.done();
     },
-
     testDateRngFmtFRRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "20 novembre 2011 – 31 janvier 2012");
         test.done();
     },
-
     testDateRngFmtFRRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "fr-FR", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_fr_FR = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

@@ -30,9 +30,6 @@ module.exports.testlistfmt_ml_IN = {
         ilib.clearCache();
         callback();
     },
-
-    // ml-IN
-
     testListFmtmlINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-
     testListFmtmlINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), "ഒന്ന് കൂടാതെ രണ്ട്");
         test.done();
     },
-
     testListFmtmlINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന് എന്നിവ");
         test.done();
     },
-
     testListFmtmlINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന്, രണ്ട്');
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്");
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -135,7 +126,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -148,7 +138,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന്, രണ്ട്');
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -161,7 +150,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്");
         test.done();
     },
-
     testListFmtUnitStylemlINNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -185,7 +173,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
         test.done();
     },
-
     testListFmtORStyle_ml_IN_Two: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -197,7 +184,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന് അല്ലെങ്കിൽ രണ്ട്');
         test.done();
     },
-
     testListFmtORStyle_ml_IN_Three: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",
@@ -209,7 +195,6 @@ module.exports.testlistfmt_ml_IN = {
         test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), 'ഒന്ന്, രണ്ട്, അല്ലെങ്കിൽ മൂന്ന്');
         test.done();
     },
-
     testListFmtORStyle_ml_IN_Four: function(test) {
         var fmt = new ListFmt({
             locale: "ml-IN",

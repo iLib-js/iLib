@@ -32,7 +32,6 @@ module.exports.testname_ko = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("정훈교", {locale: 'ko-KR', order:"fmg"});
@@ -46,7 +45,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleNameBogusOrder_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("정훈교", {locale: 'ko-KR', order:"xcfa"});
@@ -60,7 +58,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithHonorific_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("정훈교씨", {locale: 'ko-KR'});
@@ -75,7 +72,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseNameWithPrefix_ko_KR1: function(test) {
         test.expect(2);
         var parsed = new Name("미스터김근면", {locale: 'ko-KR'});
@@ -90,7 +86,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseLatinName_ko_KR: function(test) {
         test.expect(2);
         // written with western style when in Latin
@@ -105,7 +100,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("미스터김동경", {locale: 'ko-KR'});
@@ -120,7 +114,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHonorific_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("미스터김동경", {locale: 'ko-KR'});
@@ -135,7 +128,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSuffix_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김동경주니어", {locale: 'ko-KR'});
@@ -150,7 +142,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithLongMixedName_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("홍길동/선임연구원/MC연구소 A실 1팀 1파트", {locale: "ko-KR"});
@@ -163,7 +154,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithLongMixedName2_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("홍길동/Software Engineer", {locale: "ko-KR"});
@@ -176,7 +166,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithLongMixedName2_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김Jinah/Software Engineer", {locale: "ko-KR"});
@@ -189,8 +178,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     // for DFISH-25146
     testParseSuffixWithComma_ko_KR: function(test) {
         test.expect(2);
@@ -206,8 +193,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testLastNames_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("미스터강", {locale: 'ko-KR'});
@@ -221,7 +206,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParsePunctInSuffix_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("홍길동 선임연구원", {locale: "ko-KR"});
@@ -235,7 +219,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParsePunctInSuffix2_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("홍길동 선임", {locale: "ko-KR"});
@@ -248,7 +231,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParsePunctInSuffix3_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("홍길동 선임 연구원", {locale: "ko-KR"});
@@ -261,7 +243,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithfourLength1_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("가나다라", {locale: 'ko-KR'});
@@ -275,7 +256,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithfourLength2_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김빛나리", {locale: 'ko-KR'});
@@ -288,7 +268,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseLongCharacters1_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("가나다라마바사", {locale: 'ko-KR'});
@@ -301,8 +280,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseWithSpace1_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김빛 나리", {locale: 'ko-KR'});
@@ -315,7 +292,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithSpace2_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김빛나리 입니다", {locale: 'ko-KR'});
@@ -328,7 +304,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithSpace3_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김 빛나리 입니다", {locale: 'ko-KR'});
@@ -342,7 +317,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithSpace4_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("가나 다라 마바사", {locale: 'ko-KR'});
@@ -356,7 +330,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseWithSpace5_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("가나 다라 마 바사", {locale: 'ko-KR'});
@@ -370,11 +343,6 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format tests
-     */
-
     testFormatSimpleNameShort_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -392,7 +360,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -410,7 +377,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -431,7 +397,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -452,7 +417,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -470,7 +434,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -488,7 +451,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -506,7 +468,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameFull_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -524,7 +485,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatCommasInSuffix_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -542,7 +502,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithNulls_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -562,7 +521,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithLongMixedName_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -578,7 +536,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithHonorifix_ko_KR: function(test) {
         test.expect(3);
         var parsed = new Name("정훈교씨", {locale: 'ko-KR'});
@@ -593,7 +550,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSuffix_ko_KR: function(test) {
         test.expect(3);
         var parsed = new Name("홍길동선배", {locale: 'ko-KR'});
@@ -608,7 +564,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatPunctInSuffix_ko_KR: function(test) {
         test.expect(3);
         var parsed = new Name("홍길동 선임 연구원", {locale: "ko-KR"});
@@ -622,7 +577,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testParsePunctInSuffix1_ko_KR: function(test) {
         test.expect(3);
         var parsed = new Name("홍길동 회장", {locale: "ko-KR"});
@@ -636,7 +590,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSuffix2_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -653,7 +606,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSuffix3_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -670,7 +622,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSuffix4_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("홍길동 선임 연구원", {locale: "ko-KR"});
@@ -685,7 +636,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithCopyConstructor_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -701,7 +651,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithfullStyleWithoutSuffix1_ko_KR: function(test) {
         test.expect(2);
         var name = new Name("홍길동", {locale: "ko-KR"});
@@ -715,8 +664,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatWithName_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("빛나리", {locale: 'ko-KR'});
@@ -731,7 +678,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithfullStyleWithoutSuffix2_ko_KR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -747,7 +693,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithfourLength1_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("가나다라", {locale: 'ko-KR'});
@@ -762,7 +707,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithfourLength2_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("김빛나리", {locale: 'ko-KR'});
@@ -777,7 +721,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatLongCharacters1_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("가나다라마바사", {locale: 'ko-KR'});
@@ -792,7 +735,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSpace1_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("김빛 나리", {locale: 'ko-KR'});
@@ -807,7 +749,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSpace2_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("김빛나리 입니다", {locale: 'ko-KR'});
@@ -821,7 +762,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSpace3_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("김 빛나리 입니다", {locale: 'ko-KR'});
@@ -837,7 +777,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSpace4_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("가나 다라 마바사", {locale: 'ko-KR'});
@@ -851,7 +790,6 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatWithSpace5_ko_KR: function(test) {
         test.expect(3);
         var name = new Name("가나 다라 마 바사", {locale: 'ko-KR'});
@@ -866,5 +804,4 @@ module.exports.testname_ko = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

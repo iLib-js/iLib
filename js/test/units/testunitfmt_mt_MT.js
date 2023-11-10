@@ -92,7 +92,6 @@ module.exports.testunitfmt_mt_MT = {
         test.equal(str, "-16.666666666666668 grad Celsius");
         test.done();
     },
-
     testUnitFormatArea1_mt_MT: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

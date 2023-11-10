@@ -29,13 +29,11 @@ module.exports.testglobal = {
         ilib.clearCache();
         callback();
     },
-
     testGetLocaleDefault: function(test) {
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
         test.done();
     },
-
     testSetLocale: function(test) {
         test.expect(2);
         test.equal(ilib.getLocale(), "en-US");
@@ -46,7 +44,6 @@ module.exports.testglobal = {
         test.done();
         delete ilib.locale; // clean up
     },
-
     testSetLocaleObject: function(test) {
         test.expect(2);
         test.equal(ilib.getLocale(), "en-US");
@@ -57,7 +54,6 @@ module.exports.testglobal = {
         test.equal(ilib.getLocale(), "en-US");
         test.done();
     },
-
     testSetLocaleEmpty: function(test) {
         test.expect(2);
         test.equal(ilib.getLocale(), "en-US");
@@ -67,7 +63,6 @@ module.exports.testglobal = {
         test.equal(ilib.getLocale(), "en-US");
         test.done();
     },
-
     testGetVersion: function(test) {
         if (ilib._getPlatform() === "qt" ) {
             test.done();
@@ -77,13 +72,11 @@ module.exports.testglobal = {
         test.equal(ilib.getVersion().substring(0,5), "14.19");
         test.done();
     },
-
     testGetCldrVersion: function(test) {
         test.expect(1);
         test.equal(ilib.getCLDRVersion().substring(0,4), "43.1");
         test.done();
     },
-
     testGetTimeZoneDefault: function(test) {
         // use a different test when the Intl object is available
         ilib._platform = undefined;
@@ -109,7 +102,6 @@ module.exports.testglobal = {
         process.env.TZ = tmp;
         test.done();
     },
-
     testGetTimeZoneDefaultWithIntl: function(test) {
         // only test when the Intl object is available
         if (!ilib._global("Intl")) {
@@ -129,7 +121,6 @@ module.exports.testglobal = {
         }
         test.done();
     },
-
     testSetTimeZone: function(test) {
         // use a different test when the Intl object is available
         if (ilib._global("Intl")) {
@@ -148,7 +139,6 @@ module.exports.testglobal = {
         test.done();
         delete ilib.tz; // clean up
     },
-
     testGetTimeZoneBrowser: function(test) {
         if (ilib._getPlatform() !== "browser" || ilib._global("Intl")) {
             // only testable on a browser without the Intl object available
@@ -165,7 +155,6 @@ module.exports.testglobal = {
         test.done();
         navigator.timezone = undefined;
     },
-
     testSetTimeZoneEmpty: function(test) {
         // use a different test when the Intl object is available
         if (ilib._global("Intl")) {
@@ -187,7 +176,6 @@ module.exports.testglobal = {
         test.equal(ilib.getTimeZone(), "local");
         test.done();
     },
-
     testGetTimeZoneNodejs: function(test) {
         // only test on older nodejs where the Intl object is not available
         if (ilib._getPlatform() === "nodejs" && !ilib._global("Intl")) {
@@ -209,7 +197,6 @@ module.exports.testglobal = {
         }
         test.done();
     },
-
     testGetTimeZoneRhino: function(test) {
         if (ilib._getPlatform() !== "rhino" || ilib._global("Intl")) {
             // only test this in rhino
@@ -229,7 +216,6 @@ module.exports.testglobal = {
         test.equal(ilib.getTimeZone(), "America/New_York");
         test.done();
     },
-
     testGetTimeZoneWebOS: function(test) {
         if (ilib._getPlatform() !== "webos" || ilib._global("Intl")) {
             // only test this in webos
@@ -279,7 +265,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejs2: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -298,7 +283,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsFullLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -317,7 +301,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsLangScript: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -336,7 +319,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsLangOnly: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -355,7 +337,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsPosixLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -374,7 +355,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsPosixLocaleFull: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -393,7 +373,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsThreeLetterLanguage1: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -412,7 +391,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsThreeLetterLanguage2: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -431,7 +409,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsThreeLetterLanguage3: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -450,7 +427,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsThreeDigitRegion: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -469,7 +445,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsUnderscoreLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -489,7 +464,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsLocaleWithVariant1: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -509,7 +483,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsLocaleWithVariant2: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -529,7 +502,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleNodejsLocaleWithLongVariant: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -549,7 +521,6 @@ module.exports.testglobal = {
         ilib.locale = undefined;
         test.done();
     },
-
     testGetLocaleSimulateRhino: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -577,7 +548,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateTrireme1: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -600,7 +570,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateTrireme2: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -623,7 +592,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateTrireme3: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -646,7 +614,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateTriremeFullSpecifier: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -669,7 +636,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateTriremeFullLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -692,7 +658,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateWebOS: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -717,7 +682,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateWebOSWebapp: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
@@ -742,7 +706,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateRegularBrowser: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -769,7 +732,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateRegularBrowserLangOnly: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -796,7 +758,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateRegularBrowserFullLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -823,7 +784,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateRegularBrowserNonBCP47: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -850,7 +810,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateIEBrowser1: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -877,7 +836,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateIEBrowser2: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -904,7 +862,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateIEBrowser3: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -931,7 +888,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateIEBrowserNonBCP: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -958,7 +914,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateIEBrowserFull: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -985,7 +940,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleSimulateQt: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in nodejs
@@ -1016,7 +970,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-
     testGetLocaleRhino: function(test) {
         if (ilib._getPlatform() !== "rhino") {
             // only test this in node
@@ -1047,7 +1000,6 @@ module.exports.testglobal = {
         }
         test.done();
     },
-
     testGetLocaleWebOS: function(test) {
         if (ilib._getPlatform() !== "webos") {
             // only test this in node
@@ -1065,7 +1017,6 @@ module.exports.testglobal = {
         PalmSystem.locale = undefined;
         test.done();
     },
-
     testGetLocaleNotString: function(test) {
         if (ilib.isDynCode()) {
             // can't test this with dynamically loaded code because the global context
@@ -1082,7 +1033,6 @@ module.exports.testglobal = {
         test.equal(ilib.getLocale(), "en-US");
         test.done();
     },
-
     testGetLocaleBrowser: function(test) {
         if (ilib._getPlatform() !== "browser") {
             // only test this in a real browser
@@ -1108,63 +1058,54 @@ module.exports.testglobal = {
         test.equal(ilib.getLocale(), loc);
         test.done();
     },
-
     testIsArrayNewArrayObj: function(test) {
         test.expect(1);
         var a = new Array();
         test.ok(ilib.isArray(a));
         test.done();
     },
-
     testIsArrayNewArrayBrackets: function(test) {
         test.expect(1);
         var a = [];
         test.ok(ilib.isArray(a));
         test.done();
     },
-
     testIsArrayObject: function(test) {
         test.expect(1);
         var a = {foo:234};
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testIsArrayObjectWithNumericProperties: function(test) {
         test.expect(1);
         var a = {"0": "d", "1": "c"};
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testIsArrayNumber: function(test) {
         test.expect(1);
         var a = 234;
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testIsArrayString: function(test) {
         test.expect(1);
         var a = "asdf";
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testIsArrayNull: function(test) {
         test.expect(1);
         var a = null;
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testIsArrayUndefined: function(test) {
         test.expect(1);
         var a = undefined;
         test.ok(!ilib.isArray(a));
         test.done();
     },
-
     testExtendSimple: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
@@ -1174,7 +1115,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": "B", "c": "C", "d": "D"});
         test.done();
     },
-
     testExtendReturnObject1: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
@@ -1184,7 +1124,6 @@ module.exports.testglobal = {
         test.equal(x, object1);
         test.done();
     },
-
     testExtendArrays: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -1194,7 +1133,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": ["b", "c", "d"]});
         test.done();
     },
-
     testExtendArraysDups: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -1204,7 +1142,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": ["b", "c", "c", "d"]});
         test.done();
     },
-
     testExtendArraysEmptySource: function(test) {
         test.expect(1);
         var object1 = {"a": []},
@@ -1214,7 +1151,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": ["d"]});
         test.done();
     },
-
     testExtendArraysEmptyTarget: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -1224,7 +1160,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": ["b", "c"]});
         test.done();
     },
-
     testExtendArraysIncongruentTypes1: function(test) {
         test.expect(1);
         var object1 = {"a": ["b", "c"]},
@@ -1234,7 +1169,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "d"});
         test.done();
     },
-
     testExtendArraysIncongruentTypes2: function(test) {
         test.expect(1);
         var object1 = {"a": "b"},
@@ -1244,7 +1178,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": ["d"]});
         test.done();
     },
-
     testExtendSimpleProperty: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
@@ -1254,7 +1187,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": "X"});
         test.done();
     },
-
     testExtendComplexProperty: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "B"}},
@@ -1264,7 +1196,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": "X"});
         test.done();
     },
-
     testExtendSubobjects: function(test) {
         test.expect(1);
         var object1 = {"b": {"x": "X", "y": "Y"}},
@@ -1274,7 +1205,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"b": {"x": "M", "y": "N"}});
         test.done();
     },
-
     testExtendSubobjectsLeaveObj1PropsUntouched: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
@@ -1284,7 +1214,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
-
     testExtendSubobjectsAddProps: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
@@ -1294,7 +1223,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
-
     testExtendSubobjectsAddProps: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
@@ -1304,7 +1232,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
-
     testExtendBooleans: function(test) {
         test.expect(1);
         var object1 = {"a": true, "b": true},
@@ -1314,7 +1241,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": true, "b": false});
         test.done();
     },
-
     testExtendAddBooleans: function(test) {
         test.expect(1);
         var object1 = {"a": true, "b": true},
@@ -1324,7 +1250,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": true, "b": true, "c": false});
         test.done();
     },
-
     testExtendNumbers: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -1334,7 +1259,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": 1, "b": 3});
         test.done();
     },
-
     testExtendNumbersWithZero: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -1344,7 +1268,6 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": 1, "b": 0});
         test.done();
     },
-
     testExtendNumbersAddZero: function(test) {
         test.expect(1);
         var object1 = {"a": 1, "b": 2},
@@ -1364,19 +1287,16 @@ module.exports.testglobal = {
         test.ok(ilib._isGlobal("testGlobalNumber"));
         test.done();
     },
-
     testIsGlobalNot: function(test) {
         test.expect(1);
         test.ok(!ilib._isGlobal("asdfasdfasdf"));
         test.done();
     },
-
     testGlobal: function(test) {
         test.expect(1);
         test.equal(ilib._global("testGlobalNumber"), 42);
         test.done();
     },
-
     testGlobalUndefined: function(test) {
         test.expect(1);
         test.ok(typeof(ilib._global("testGlobalNumber2")) === "undefined");

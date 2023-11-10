@@ -32,7 +32,6 @@ module.exports.testname_de = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Johan Schmidt", {locale: 'de-DE'});
@@ -46,7 +45,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTripleName_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Johan Michael Schmidt", {locale: 'de-DE'});
@@ -61,7 +59,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseAdjunctNames_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Ludwig Klaus von Beethoven", {locale: 'de-DE'});
@@ -76,7 +73,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleName_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Ludwig", {locale: 'de-DE'});
@@ -89,7 +85,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithAdjunct_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("von Beethoven", {locale: 'de-DE'});
@@ -103,7 +98,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithPrefixAndAdjunct_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr von Beethoven", {locale: 'de-DE'});
@@ -117,7 +111,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseMultiAdjunctNames_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Ludwig von den Wiesthal", {locale: 'de-DE'});
@@ -131,7 +124,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHypenatedName_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Johan Michael Bergische-Schmidt", {locale: 'de-DE'});
@@ -146,7 +138,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseQuadrupleName_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Johan Michael Jürgen Schmidt", {locale: 'de-DE'});
@@ -161,7 +152,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr Dr. Johan Schmidt", {locale: 'de-DE'});
@@ -176,7 +166,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr Schmidt", {locale: 'de-DE'});
@@ -190,7 +179,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnlyAndAdjunct_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr von Schmidt", {locale: 'de-DE'});
@@ -204,7 +192,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseHonorific_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Fr. Julia Maier", {locale: 'de-DE'});
@@ -219,7 +206,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr Präsident Johan Michael Jürgen Schmidt III", {locale: 'de-DE'});
@@ -236,7 +222,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseFamily_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Die Maiers", {locale: 'de-DE'});
@@ -250,7 +235,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseCompoundHonorific_de_DE: function(test) {
         test.expect(2);
         var parsed = new Name("Herr und Frau Maier", {locale: 'de-DE'});
@@ -264,11 +248,6 @@ module.exports.testname_de = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -288,7 +267,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -308,7 +286,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -329,7 +306,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -351,7 +327,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -373,7 +348,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -395,7 +369,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -417,7 +390,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -438,7 +410,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -459,7 +430,6 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_de_DE: function(test) {
         test.expect(2);
         var name = new Name({
@@ -480,5 +450,4 @@ module.exports.testname_de = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

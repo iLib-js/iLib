@@ -32,7 +32,6 @@ module.exports.testaddress_QA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressQANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nقطر", {locale: 'ar-QA'});
@@ -46,7 +45,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
     testParseAddressQANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nقطر", {locale: 'ar-QA'});
@@ -60,7 +58,6 @@ module.exports.testaddress_QA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressQANoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ", {locale: 'ar-QA'});
@@ -74,7 +71,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
     testParseAddressQAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\nمكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\n\nقطر\n\n\n", {locale: 'ar-QA'});
@@ -87,7 +83,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
     testParseAddressQAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﺎﻟﺩﻮﺣﺓ , قطر", {locale: 'ar-QA'});
@@ -101,7 +96,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
     testParseAddressQASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\n\n\tمكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\n\t\n\n\tﺎﻟﺩﻮﺣﺓ\n\n\tقطر\n\n\n", {locale: 'ar-QA'});
@@ -115,9 +109,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
-
-
     testParseAddressQAFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\nQatar", {locale: 'en-US'});
@@ -131,7 +122,6 @@ module.exports.testaddress_QA = {
         test.equal(parsedAddress.countryCode, "QA");
         test.done();
     },
-
     testFormatAddressQA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -146,7 +136,6 @@ module.exports.testaddress_QA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressQAFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,5 +150,4 @@ module.exports.testaddress_QA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -30,7 +30,6 @@ module.exports.testhebrew = {
         ilib.clearCache();
         callback();
     },
-
     testHebrewGetNumMonths: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -38,7 +37,6 @@ module.exports.testhebrew = {
         test.equal(cal.getNumMonths(5772), 12);
         test.done();
     },
-
     testHebrewGetMonLength1: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -46,7 +44,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(1, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength2: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -54,7 +51,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(2, 5772), 29);
         test.done();
     },
-
     testHebrewGetMonLength3: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -62,7 +58,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(3, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength4: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -70,7 +65,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(4, 5772), 29);
         test.done();
     },
-
     testHebrewGetMonLength5: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -78,7 +72,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(5, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength6: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -86,7 +79,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(6, 5772), 29);
         test.done();
     },
-
     testHebrewGetMonLength7: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -94,7 +86,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(7, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength8: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -102,7 +93,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(8, 5772), 29);
         test.done();
     },
-
     testHebrewGetMonLength9: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -110,7 +100,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(9, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength10: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -118,7 +107,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(10, 5772), 29);
         test.done();
     },
-
     testHebrewGetMonLength11: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -126,7 +114,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(11, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength12: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -134,7 +121,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(12, 5772), 30);
         test.done();
     },
-
     testHebrewGetMonLength13: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -143,7 +129,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(13, 5772), 0);
         test.done();
     },
-
     testHebrewGetNumMonthsLeap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -151,7 +136,6 @@ module.exports.testhebrew = {
         test.equal(cal.getNumMonths(5774), 13);
         test.done();
     },
-
     testHebrewGetMonLength1Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -159,7 +143,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(1, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength2Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -167,7 +150,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(2, 5774), 29);
         test.done();
     },
-
     testHebrewGetMonLength3Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -175,7 +157,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(3, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength4Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -183,7 +164,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(4, 5774), 29);
         test.done();
     },
-
     testHebrewGetMonLength5Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -191,7 +171,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(5, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength6Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -199,7 +178,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(6, 5774), 29);
         test.done();
     },
-
     testHebrewGetMonLength7Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -207,7 +185,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(7, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength8Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -215,7 +192,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(8, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength9Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -223,7 +199,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(9, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength10Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -231,7 +206,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(10, 5774), 29);
         test.done();
     },
-
     testHebrewGetMonLength11Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -239,7 +213,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(11, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength12Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -247,7 +220,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(12, 5774), 30);
         test.done();
     },
-
     testHebrewGetMonLength13Leap: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -255,7 +227,6 @@ module.exports.testhebrew = {
         test.equal(cal.getMonLength(13, 5774), 29);
         test.done();
     },
-
     testHebrewIsLeapYear1: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -263,7 +234,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(1));
         test.done();
     },
-
     testHebrewIsLeapYear2: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -271,7 +241,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(2));
         test.done();
     },
-
     testHebrewIsLeapYear3: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -279,7 +248,6 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(3));
         test.done();
     },
-
     testHebrewIsLeapYear4: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -287,7 +255,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(4));
         test.done();
     },
-
     testHebrewIsLeapYear5: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -295,7 +262,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(5));
         test.done();
     },
-
     testHebrewIsLeapYear6: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -303,7 +269,6 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(6));
         test.done();
     },
-
     testHebrewIsLeapYear7: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -311,7 +276,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(7));
         test.done();
     },
-
     testHebrewIsLeapYear8: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -319,7 +283,6 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(8));
         test.done();
     },
-
     testHebrewIsLeapYear9: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -327,7 +290,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(9));
         test.done();
     },
-
     testHebrewIsLeapYear10: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -335,7 +297,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(10));
         test.done();
     },
-
     testHebrewIsLeapYear11: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -343,7 +304,6 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(11));
         test.done();
     },
-
     testHebrewIsLeapYear12: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -351,7 +311,6 @@ module.exports.testhebrew = {
         test.ok(!cal.isLeapYear(12));
         test.done();
     },
-
     testHebrewIsLeapYear13: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -478,7 +437,6 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(30));
         test.done();
     },
-
     testHebrewGetNumMonths1: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -486,7 +444,6 @@ module.exports.testhebrew = {
         test.equal(cal.getNumMonths(1), 12);
         test.done();
     },
-
     testHebrewGetNumMonths2: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -522,7 +479,6 @@ module.exports.testhebrew = {
         test.equal(cal.getNumMonths(6), 13);
         test.done();
     },
-
     testHebrewLastDayOfMonth1: function(test) {
         test.expect(1);
         var cal = new HebrewCal();
@@ -649,7 +605,6 @@ module.exports.testhebrew = {
         test.equal(cal.lastDayOfMonth(-2, 5772), 0);
         test.done();
     },
-
     /* test internal private functions to make sure they are providing the correct
      * information to the other internal routines...
      */
@@ -689,5 +644,4 @@ module.exports.testhebrew = {
         test.equal(HebrewCal.elapsedDays(5773), 2108190);
         test.done();
     }
-
 };

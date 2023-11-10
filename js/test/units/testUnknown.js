@@ -30,7 +30,6 @@ module.exports.testUnknown = {
         ilib.clearCache();
         callback();
     },
-
     testMeasurementUnknownEmpty: function(test) {
         test.expect(1);
         var m = new UnknownUnit();
@@ -38,7 +37,6 @@ module.exports.testUnknown = {
         test.ok(m !== null);
         test.done();
     },
-
     testMeasurementUnknownUnitPreserved: function(test) {
         test.expect(3);
         var m = new UnknownUnit({
@@ -52,7 +50,6 @@ module.exports.testUnknown = {
         test.equal(m.getAmount(), 2);
         test.done();
     },
-
     testMeasurementUnknownUnitUnknownMeasureType: function(test) {
         test.expect(2);
         var m = new UnknownUnit({
@@ -65,5 +62,4 @@ module.exports.testUnknown = {
         test.equal(m.getMeasure(), "unknown");
         test.done();
     }
-
 };

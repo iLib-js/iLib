@@ -91,7 +91,6 @@ module.exports.testunitfmt_ps_PK = {
         test.equal(str, '‎-‎16٫666666666666668 درجے سيلسيس');
         test.done();
     },
-
     testUnitFormatArea1_ps_PK: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

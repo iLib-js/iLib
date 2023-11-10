@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_CV = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCVNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
@@ -48,7 +45,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38,PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
@@ -62,7 +58,6 @@ module.exports.testaddress_CV = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCVManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos\nRua 5 de Julho 138/Platô, C.P. 38\n7600 PRAIA\nSANTIAGO\nCAPE VERDE", {locale: 'pt-CV'});
@@ -76,7 +71,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
@@ -90,7 +84,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38  \n\t\n 7600 PRAIA, SANTIAGO\t\n\n CAPE VERDE  \n  \t\t\t", {locale: 'pt-CV'});
@@ -104,7 +97,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos Rua 5 de Julho 138/Platô C.P. 38 7600 PRAIA SANTIAGO CAPE VERDE", {locale: 'pt-CV'});
@@ -118,7 +110,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'pt-CV'});
@@ -132,7 +123,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testParseAddressCVFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Luis Felipe Ramos, Rua 5 de Julho 138/Platô, C.P. 38, 7600 PRAIA, SANTIAGO, CAPE VERDE", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_CV = {
         test.equal(parsedAddress.countryCode, "CV");
         test.done();
     },
-
     testFormatAddressCV: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +154,6 @@ module.exports.testaddress_CV = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCVFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,5 +170,4 @@ module.exports.testaddress_CV = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

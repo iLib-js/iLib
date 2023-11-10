@@ -29,7 +29,6 @@ module.exports.phonenum_MX = {
         ilib.clearCache();
         callback();
     },
-
     testParseMXFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6241234567", {locale: "es-MX"});
@@ -42,9 +41,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXLocal: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("62412345", {locale: "es-MX"});
@@ -56,9 +53,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("624-123-4567", {locale: "es-MX"});
@@ -71,9 +66,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("62@4$1%2^3&45!67", {locale: "es-MX"});
@@ -86,9 +79,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "es-MX"});
@@ -103,9 +94,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0012028675309", {locale: "es-MX"});
@@ -120,9 +109,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXPlusIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345678", {locale: "es-MX"});
@@ -137,9 +124,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXZerosIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00442012345678", {locale: "es-MX"});
@@ -154,9 +139,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("019981234567", {locale: "es-MX"});
@@ -170,9 +153,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXServiceNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("026241234567", {locale: "es-MX"});
@@ -186,9 +167,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXServiceNumber2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("8006241234567", {locale: "es-MX"});
@@ -202,9 +181,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXShortAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5512345678", {locale: "es-MX"});
@@ -217,9 +194,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("5", {locale: "es-MX"});
@@ -231,9 +206,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("55", {locale: "es-MX"});
@@ -245,7 +218,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial3: function(test) {
         test.expect(2);
@@ -258,7 +230,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial4: function(test) {
         test.expect(2);
@@ -271,7 +242,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial5: function(test) {
         test.expect(2);
@@ -284,7 +254,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial6: function(test) {
         test.expect(2);
@@ -297,7 +266,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial7: function(test) {
         test.expect(2);
@@ -310,7 +278,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial8: function(test) {
         test.expect(2);
@@ -323,7 +290,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial9: function(test) {
         test.expect(2);
@@ -337,7 +303,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartial10: function(test) {
         test.expect(2);
@@ -351,9 +316,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXPartialTrunk0: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "es-MX"});
@@ -365,7 +328,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk1: function(test) {
         test.expect(2);
@@ -378,7 +340,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk2: function(test) {
         test.expect(2);
@@ -392,7 +353,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk3: function(test) {
         test.expect(2);
@@ -406,7 +366,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk4: function(test) {
         test.expect(2);
@@ -421,7 +380,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk5: function(test) {
         test.expect(2);
@@ -436,7 +394,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk6: function(test) {
         test.expect(2);
@@ -451,7 +408,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk7: function(test) {
         test.expect(2);
@@ -466,7 +422,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk8: function(test) {
         test.expect(2);
@@ -481,7 +436,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk9: function(test) {
         test.expect(2);
@@ -496,7 +450,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk10: function(test) {
         test.expect(2);
@@ -511,7 +464,6 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseMXPartialTrunk11: function(test) {
         test.expect(2);
@@ -526,9 +478,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "es-MX", mcc: "316"});
@@ -541,9 +491,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "es-MX", mcc: "208"});
@@ -555,9 +503,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "es-MX", mcc: "334"});
@@ -570,9 +516,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseMXWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "es-MX", mcc: "262"});
@@ -584,9 +528,7 @@ module.exports.phonenum_MX = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     // for bug NOV-119557
     testParseMXTollFree: function(test) {
         test.expect(2);
@@ -603,5 +545,4 @@ module.exports.phonenum_MX = {
         test.done();
 
     }
-
 };

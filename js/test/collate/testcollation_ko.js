@@ -29,7 +29,6 @@ module.exports.testcollation_ko = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorPriL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -47,7 +46,6 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-
     testJSCollatorPriV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -65,7 +63,6 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-
     testJSCollatorPriT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -83,7 +80,6 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-
     testJSCollatorSecL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -101,7 +97,6 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-
     testJSCollatorSecV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -119,7 +114,6 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-
     testJSCollatorSecT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -137,7 +131,6 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-
     testJSCollatorTerL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -155,7 +148,6 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-
     testJSCollatorTerV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -173,7 +165,6 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-
     testJSCollatorTerT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -191,7 +182,6 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-
     testJSCollatorQuatL_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -209,7 +199,6 @@ module.exports.testcollation_ko = {
         test.ok("다 < 따", col.compare("다", "따") < 0);
         test.done();
     },
-
     testJSCollatorQuatV_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -227,7 +216,6 @@ module.exports.testcollation_ko = {
         test.ok("걔 < 거", col.compare("걔", "거") < 0);
         test.done();
     },
-
     testJSCollatorQuatT_ko: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -245,7 +233,6 @@ module.exports.testcollation_ko = {
         test.ok("갃 < 간", col.compare("갃", "간") < 0);
         test.done();
     },
-
     testJSCollatorJamoL_ko: function(test) {
         test.expect(19);
         var col = new Collator({
@@ -277,7 +264,6 @@ module.exports.testcollation_ko = {
         test.ok("ㅍ < ㅎ", col.compare("ㅍ", "ㅎ") < 0);
         test.done();
     },
-
     testJSCollatorJamoV_ko: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -311,7 +297,6 @@ module.exports.testcollation_ko = {
         test.ok("ㅢ < ㅣ", col.compare("ㅢ", "ㅣ") < 0);
         test.done();
     },
-
     testJSCollatorJamoT_ko: function(test) {
         test.expect(27);
         var col = new Collator({
@@ -352,7 +337,6 @@ module.exports.testcollation_ko = {
         test.ok("ᇁ < ᇂ", col.compare("ᇁ", "ᇂ") < 0);
         test.done();
     },
-
     testJSCollatorJamoLHalfwidthPri_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -589,7 +573,6 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
-
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -708,7 +691,6 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
-
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
         test.expect(104);
         var col = new Collator({
@@ -827,7 +809,6 @@ module.exports.testcollation_ko = {
         test.ok("₩ < ￦", col.compare("₩", "￦") < 0);
         test.done();
     },
-
     testCollatorPri_ko: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -875,5 +856,4 @@ module.exports.testcollation_ko = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

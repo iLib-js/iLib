@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_BF = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBFNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("03 B.P. 7021, Ouagadougou 03, Burkina Faso", {locale: 'fr-BF'});
@@ -48,7 +45,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFNoZip: function(test) {
         test.expect(8);
         var parsedAddress = new Address("BP 621, BOBO-DIOULASSO, BURKINA FASO", {locale: 'fr-BF'});
@@ -63,7 +59,6 @@ module.exports.testaddress_BF = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBFManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("01 BP 621\nBOBO-DIOULASSO 01\nBURKINA FASO", {locale: 'fr-BF'});
@@ -77,7 +72,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("01 BP 621, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
@@ -91,7 +85,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("01 BP 621  \n\t\n BOBO-DIOULASSO 01\t\n\n BURKINA FASO  \n  \t\t\t", {locale: 'fr-BF'});
@@ -105,7 +98,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("01 BP 621 BOBO-DIOULASSO 01 BURKINA FASO", {locale: 'fr-BF'});
@@ -119,7 +111,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Société nationale des postes, 01 BP 6000, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
@@ -133,7 +124,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testParseAddressBFFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("01 BP 621, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'en-US'});
@@ -149,7 +139,6 @@ module.exports.testaddress_BF = {
         test.equal(parsedAddress.countryCode, "BF");
         test.done();
     },
-
     testFormatAddressBF: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +153,6 @@ module.exports.testaddress_BF = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBFFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -179,5 +167,4 @@ module.exports.testaddress_BF = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

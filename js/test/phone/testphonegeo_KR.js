@@ -32,7 +32,6 @@ module.exports.phonegeo_KR = {
         ilib.clearCache();
         callback();
     },
-
     testKRLocalNumber1: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("312 3456",{locale: "ko-KR"});
@@ -53,7 +52,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testKRLocalNumber2: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "ko-KR"});
@@ -74,7 +72,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testKRNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("02-312-3456",{locale: "ko-KR"});
@@ -100,7 +97,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("051-212-3456",{locale: "ko-KR"});
@@ -126,7 +122,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+82-2-312-3456");
@@ -152,7 +147,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+82-2-312-3456");
@@ -178,7 +172,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+82-51-212-3456");
@@ -204,7 +197,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 82-51-212-3456");
@@ -230,7 +222,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+82-51-212-3456");
@@ -256,7 +247,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "ko-KR"});
@@ -282,7 +272,6 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testKRFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "ko-KR"});
@@ -308,6 +297,4 @@ module.exports.phonegeo_KR = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-
-
 };

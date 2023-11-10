@@ -32,7 +32,6 @@ module.exports.testaddress_SI = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSINormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marija Borisek Prvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
     testParseAddressSINoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Prešernova 31\n1000 Ljubljana\nSlovenia", {locale: 'sl-SI'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
     testParseAddressSINoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marija Borisek , Prvomajska , ulica 20 , 1270 LITIJA", {locale: 'sl-SI'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
     testParseAddressSIManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marija Borisek\nPrvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
@@ -88,7 +84,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
     testParseAddressSIOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marija Borisek , Prvomajska ulica 20 , 1270 , LITIJA , SLOVENIA", {locale: 'sl-SI'});
@@ -118,8 +113,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
-
     testParseAddressSIFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marija Borisek Prvomajska ulica 20\nLITIJA 1270\nSLOVENIA", {locale: 'en-US'});
@@ -135,7 +128,6 @@ module.exports.testaddress_SI = {
         test.equal(parsedAddress.countryCode, "SI");
         test.done();
     },
-
     testFormatAddressSI: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -152,7 +144,6 @@ module.exports.testaddress_SI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSIFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -169,5 +160,4 @@ module.exports.testaddress_SI = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

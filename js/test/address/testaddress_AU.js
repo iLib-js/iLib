@@ -32,7 +32,6 @@ module.exports.testaddress_AU = {
         ilib.clearCache();
         callback();
     },
-
     testParseAUAddressNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 5, 48 Pirrama Road,\nPyrmont, NSW 2009\nAustralia", {locale: 'en-AU'});
@@ -46,7 +45,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Canberra Nara Centre,\n1 Constitution Ave\nCanberra City, Australia", {locale: 'en-AU'});
@@ -60,7 +58,6 @@ module.exports.testaddress_AU = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAUAddressNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Trevarrick Rd\nSevenhill SA 5453", {locale: 'en-AU'});
@@ -74,7 +71,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dept of Treasury\nLangton Crs\nParkes\nACT 2600\nAustralia\n\n\n", {locale: 'en-AU'});
@@ -88,7 +84,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("630 Beaufort St, Mt Lawley, WA 6050, Australia", {locale: 'en-AU'});
@@ -102,7 +97,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tPiccadilly\t\t\r  Lot 6B Spring \r\r\tGully Rd\nPiccadilly \n\t\rSA \r\t\n5151\nAustralia    \n\n\n", {locale: 'en-AU'});
@@ -116,7 +110,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("630 Beaufort St Mt Lawley WA 6050 Australia", {locale: 'en-AU'});
@@ -130,7 +123,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testParseAUAddressFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia", {locale: 'en-US'});
@@ -146,7 +138,6 @@ module.exports.testaddress_AU = {
         test.equal(parsedAddress.countryCode, "AU");
         test.done();
     },
-
     testFormatAddressAU: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +154,6 @@ module.exports.testaddress_AU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressAUFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,5 +170,4 @@ module.exports.testaddress_AU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

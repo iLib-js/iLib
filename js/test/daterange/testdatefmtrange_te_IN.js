@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_te_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), '31, డిసెంబర్ 2011 1:45 PMకి – 2:30 PM');
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), '30, డిసెంబర్ 2011 1:45 PMకి – 31, డిసెంబర్ 2011 2:30 PMకి');
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), "20 – 31, డిసెంబర్ 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), "20, నవంబర్ – 31, డిసెంబర్ 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), "20, నవంబర్ 2011 – 31, జనవరి 2012");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_te_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "te-IN", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_te_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

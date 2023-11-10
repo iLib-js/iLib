@@ -44,7 +44,6 @@ module.exports.testaddress_LK = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressLKNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500\nSri Lanka", {locale: 'en-LK'});
@@ -58,7 +57,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA\nSri Lanka", {locale: 'en-LK'});
@@ -72,7 +70,6 @@ module.exports.testaddress_LK = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressLKNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500", {locale: 'en-LK'});
@@ -86,7 +83,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara\n25/1\nCyril Jansz\nMawatha\nPANADURA\n12500\nSri Lanka\n\n\n", {locale: 'en-LK'});
@@ -99,7 +95,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara , 25/1 , Cyril Jansz , Mawatha ,  PANADURA , 12500 , Sri Lanka", {locale: 'en-LK'});
@@ -113,7 +108,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tMarvan Sangakkara\n\t\t\t25/1,\t\t\t\r\r Cyril Jansz \n \r \tMawatha \n\t\nPANADURA\n\t 12500\t\nSri Lanka\n\n\n", {locale: 'en-LK'});
@@ -127,7 +121,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha\nPANADURA 12500 Sri Lanka", {locale: 'en-LK'});
@@ -141,7 +134,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testParseAddressLKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka", {locale: 'en-US'});
@@ -157,7 +149,6 @@ module.exports.testaddress_LK = {
         test.equal(parsedAddress.countryCode, "LK");
         test.done();
     },
-
     testFormatAddressLK: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -173,7 +164,6 @@ module.exports.testaddress_LK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressLKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -189,5 +179,4 @@ module.exports.testaddress_LK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

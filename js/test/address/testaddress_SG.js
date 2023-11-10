@@ -32,7 +32,6 @@ module.exports.testaddress_SG = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSGSGLatinNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-SG'});
@@ -46,7 +45,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGLatinNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("9 Changi Business Park Central 1\nSingapore", {locale: 'en-SG'});
@@ -60,7 +58,6 @@ module.exports.testaddress_SG = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressSGSGLatinNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811", {locale: 'en-SG'});
@@ -74,7 +71,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGAsianNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("新加坡159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
@@ -88,7 +84,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGAsianNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
@@ -102,7 +97,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGAsianNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-SG'});
@@ -116,7 +110,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Blk 111\nAng Mo Kio Avenue 4\nSingapore\n560111\nSingapore\n\n", {locale: 'en-SG'});
@@ -130,7 +123,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("152 Beach Rd., #16-00 Gateway East, Singapore 189721, Singapore", {locale: 'en-SG'});
@@ -144,7 +136,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t2 Orchard Turn\t\t\r\n\t#04-05\r\t ION \tOrchard\t\nSingapore \r\t\n238801\n\t\rSingapore\n\n", {locale: 'en-SG'});
@@ -158,7 +149,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("152 Beach Rd. #16-00 Gateway East Singapore 189721 Singapore", {locale: 'en-SG'});
@@ -172,7 +162,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nSingapore 159088\n", {locale: 'en-SG'});
@@ -186,7 +175,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testParseAddressSGSGFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("#38-01/01A\n8 Shenton Way\nSingapore 068811\nSingapore", {locale: 'en-US'});
@@ -202,7 +190,6 @@ module.exports.testaddress_SG = {
         test.equal(parsedAddress.countryCode, "SG");
         test.done();
     },
-
     testFormatAddressSGLatin: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -219,7 +206,6 @@ module.exports.testaddress_SG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSGAsian: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -236,7 +222,6 @@ module.exports.testaddress_SG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSGFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -253,5 +238,4 @@ module.exports.testaddress_SG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

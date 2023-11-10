@@ -29,7 +29,6 @@ module.exports.phonenum_NL = {
         ilib.clearCache();
         callback();
     },
-
     testParseNLFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0201234567", {locale: "nl-NL"});
@@ -43,9 +42,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("020/123-4567", {locale: "nl-NL"});
@@ -59,9 +56,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0@2!0$12^34(56_7", {locale: "nl-NL"});
@@ -75,9 +70,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("7654321", {locale: "nl-NL"});
@@ -89,9 +82,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "nl-NL"});
@@ -106,9 +97,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0012028675309", {locale: "nl-NL"});
@@ -123,9 +112,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -139,9 +126,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLLocalNumber: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -155,9 +140,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLPlusIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345678", {locale: "nl-NL"});
@@ -172,9 +155,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLZerosIDDToGB: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00442012345678", {locale: "nl-NL"});
@@ -189,9 +170,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("112", {locale: "nl-NL"});
@@ -203,7 +182,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLEmergencyNumberPlus: function(test) {
         test.expect(2);
@@ -217,9 +195,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0612345678", {locale: "nl-NL"});
@@ -233,7 +209,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLMobileInternationalNumber: function(test) {
         test.expect(2);
@@ -249,7 +224,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLService: function(test) {
         test.expect(2);
@@ -263,7 +237,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLBlock: function(test) {
         test.expect(2);
@@ -277,9 +250,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLInternetDialup: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("082 87654321", {locale: "nl-NL"});
@@ -293,9 +264,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "nl-NL"});
@@ -307,9 +276,7 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
-
     testParseNLPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03", {locale: "nl-NL"});
@@ -322,7 +289,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial3: function(test) {
         test.expect(2);
@@ -336,7 +302,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial4: function(test) {
         test.expect(2);
@@ -350,7 +315,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial5: function(test) {
         test.expect(2);
@@ -365,7 +329,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial6: function(test) {
         test.expect(2);
@@ -380,7 +343,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial7: function(test) {
         test.expect(2);
@@ -395,7 +357,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial8: function(test) {
         test.expect(2);
@@ -410,7 +371,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial9: function(test) {
         test.expect(2);
@@ -425,7 +385,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial10: function(test) {
         test.expect(2);
@@ -440,7 +399,6 @@ module.exports.phonenum_NL = {
 
         test.ok(parsed.equals(expected));
         test.done();
-
     },
     testParseNLPartial11: function(test) {
         test.expect(2);

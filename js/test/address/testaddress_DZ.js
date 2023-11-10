@@ -24,8 +24,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -35,7 +33,6 @@ module.exports.testaddress_DZ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressDZFRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed, 2, rue de l'Indépendance, 16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
@@ -49,7 +46,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed,2, rue de l'Indépendance, ALGIERS, Algérie", {locale: 'fr-DZ'});
@@ -63,7 +59,6 @@ module.exports.testaddress_DZ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDZFRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed\n2, rue de l'Indépendance\n16027 ALGIERS\n Algérie", {locale: 'fr-DZ'});
@@ -77,7 +72,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
@@ -91,7 +85,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed,2, rue de l'Indépendance   \n\t\n 16027 ALGIERS\t\n\n  Algérie  \n  \t\t\t", {locale: 'fr-DZ'});
@@ -105,7 +98,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed 2  rue de l'Indépendance 16027 ALGIERS  Algérie", {locale: 'fr-DZ'});
@@ -119,7 +111,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
@@ -133,7 +124,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZFRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algeria", {locale: 'en-US'});
@@ -149,7 +139,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testFormatAddressDZFR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +154,6 @@ module.exports.testaddress_DZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDZFRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -181,8 +169,6 @@ module.exports.testaddress_DZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
-
     testParseAddressDZARNormal: function(test) {
         test.expect(8);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال, ١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
@@ -197,7 +183,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZARNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال, الجزائر, الجزائر", {locale: 'ar-DZ'});
@@ -211,7 +196,6 @@ module.exports.testaddress_DZ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDZARManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد\n٢ شارع الاستقلال\n١٦٠٢٦ الجزائر\n الجزائر", {locale: 'ar-DZ'});
@@ -225,7 +209,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZAROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
@@ -239,7 +222,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZARSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال   \n\t\n ١٦٠٢٦ الجزائر\t\n\n  الجزائر  \n  \t\t\t", {locale: 'ar-DZ'});
@@ -253,7 +235,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZARNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد  ٢ شارع الاستقلال ١٦٠٢٦ الجزائر  الجزائر", {locale: 'ar-DZ'});
@@ -267,7 +248,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZARSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
@@ -281,7 +261,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testParseAddressDZARFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, Algeria", {locale: 'en-US'});
@@ -297,7 +276,6 @@ module.exports.testaddress_DZ = {
         test.equal(parsedAddress.countryCode, "DZ");
         test.done();
     },
-
     testFormatARAddress: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -313,7 +291,6 @@ module.exports.testaddress_DZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDZARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -329,5 +306,4 @@ module.exports.testaddress_DZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -29,7 +29,6 @@ module.exports.testcollation_tr = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuat_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -94,7 +93,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorTer_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -159,7 +157,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorSec_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -224,7 +221,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorPri_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -289,7 +285,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorSortQuat_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -354,7 +349,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorSortTer_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -419,7 +413,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorSortSec_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -484,7 +477,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testJSCollatorSortPri_tr: function(test) {
         test.expect(51);
         var col = new Collator({
@@ -549,7 +541,6 @@ module.exports.testcollation_tr = {
         test.ok("ü < V",  col.compare("ü", "V") < 0);
         test.done();
     },
-
     testCollatorWithSortCase_tr: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -629,7 +620,6 @@ module.exports.testcollation_tr = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorWithSortVariant_tr: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -710,6 +700,4 @@ module.exports.testcollation_tr = {
         test.deepEqual(input, expected);
         test.done();
     }
-
-
 };

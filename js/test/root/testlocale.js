@@ -29,7 +29,6 @@ module.exports.testlocale = {
         ilib.clearCache();
         callback();
     },
-
     testLocaleConstructor: function(test) {
         test.expect(1);
         var loc = new Locale();
@@ -37,7 +36,6 @@ module.exports.testlocale = {
         test.ok(loc !== null);
         test.done();
     },
-
     testLocaleConstructorBrowser: function(test) {
         if (ilib._getPlatform() !== "browser") {
             test.done();
@@ -63,7 +61,6 @@ module.exports.testlocale = {
         navigator.language = undefined;
         test.done();
     },
-
     testLocaleConstructorBrowserCLocale: function(test) {
         if (ilib._getPlatform() !== "browser") {
             test.done();
@@ -90,7 +87,6 @@ module.exports.testlocale = {
         navigator.language = undefined;
         test.done();
     },
-
     testLocaleConstructorBrowserLanguageOnly: function(test) {
         if (ilib._getPlatform() !== "browser") {
             test.done();
@@ -116,7 +112,6 @@ module.exports.testlocale = {
         navigator.language = undefined;
         test.done();
     },
-
     testLocaleConstructorBrowserNoLocale: function(test) {
         if (ilib._getPlatform() !== "browser") {
             test.done();
@@ -142,7 +137,6 @@ module.exports.testlocale = {
         navigator.language = undefined;
         test.done();
     },
-
     testLocaleConstructorNode: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -164,7 +158,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeNonEnglish: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -186,7 +179,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeLocaleWithCharset: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -208,7 +200,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeCLocale: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -231,7 +222,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeCLocaleWithCharset: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -254,7 +244,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeLangOnly: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -276,7 +265,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorNodeNoPlatformSetting: function(test) {
         if (ilib._getPlatform() !== "nodejs") {
             test.done();
@@ -298,7 +286,6 @@ module.exports.testlocale = {
         global.process.env.LANG = "";
         test.done();
     },
-
     testLocaleConstructorDefault: function(test) {
         test.expect(4);
         ilib.setLocale("it-IT");
@@ -314,7 +301,6 @@ module.exports.testlocale = {
 
         delete ilib.locale;
     },
-
     testLocaleCopyConstructor: function(test) {
         test.expect(4);
         var loc2 = new Locale("de", "DE");
@@ -327,7 +313,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorFull: function(test) {
         test.expect(4);
         var loc = new Locale("en", "US", "Midwest");
@@ -339,7 +324,6 @@ module.exports.testlocale = {
         test.equal(loc.getVariant(), "Midwest");
         test.done();
     },
-
     testLocaleConstructorSpecWithVariant: function(test) {
         test.expect(5);
         var loc = new Locale("en-US-Midwest");
@@ -386,7 +370,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorPartial: function(test) {
         test.expect(4);
         var loc = new Locale("en", "US");
@@ -398,7 +381,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecPartial: function(test) {
         test.expect(4);
         var loc = new Locale("en-US");
@@ -410,7 +392,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecWithUnderscores1: function(test) {
         test.expect(5);
         // some locales like those in java properties file names
@@ -425,7 +406,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecWithUnderscores2: function(test) {
         test.expect(4);
         // some locales like those in java properties file names
@@ -439,7 +419,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorShort: function(test) {
         test.expect(4);
         var loc = new Locale("en");
@@ -451,7 +430,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorUpperCaseLanguage: function(test) {
         test.expect(4);
         var loc = new Locale("EN", "US");
@@ -463,7 +441,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorLowerCaseRegion: function(test) {
         test.expect(4);
         var loc = new Locale("en", "us");
@@ -475,7 +452,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecMissingRegion: function(test) {
         test.expect(5);
         var loc = new Locale("en--Midwest");
@@ -488,7 +464,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getScript()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecMissingLanguage: function(test) {
         test.expect(5);
         var loc = new Locale("-US-Midwest");
@@ -501,7 +476,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getScript()) === "undefined");
         test.done();
     },
-
     testLocaleConstructorSpecMissingLanguageAndVariant: function(test) {
         test.expect(5);
         var loc = new Locale("-US");
@@ -514,7 +488,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getScript()) === "undefined");
         test.done();
     },
-
     testLocaleEqualsTrue: function(test) {
         test.expect(3);
         var loc1 = new Locale("en-US"),
@@ -526,7 +499,6 @@ module.exports.testlocale = {
         test.ok(loc1.equals(loc2));
         test.done();
     },
-
     testLocaleEqualsFalse: function(test) {
         test.expect(3);
         var loc1 = new Locale("en-US"),
@@ -538,7 +510,6 @@ module.exports.testlocale = {
         test.ok(!loc1.equals(loc2));
         test.done();
     },
-
     testLocaleEqualsMissing: function(test) {
         test.expect(3);
         var loc1 = new Locale("en-US"),
@@ -550,7 +521,6 @@ module.exports.testlocale = {
         test.ok(!loc1.equals(loc2));
         test.done();
     },
-
     testLocaleEqualsTrueFull: function(test) {
         test.expect(3);
         var loc1 = new Locale("en-US-govt"),
@@ -562,7 +532,6 @@ module.exports.testlocale = {
         test.ok(loc1.equals(loc2));
         test.done();
     },
-
     testLocaleEqualsTrueShort: function(test) {
         test.expect(3);
         var loc1 = new Locale("en"),
@@ -574,7 +543,6 @@ module.exports.testlocale = {
         test.ok(loc1.equals(loc2));
         test.done();
     },
-
     testLocaleIsPseudoTrue: function(test) {
         test.expect(2);
         var loc = new Locale("zxx-XX");
@@ -584,7 +552,6 @@ module.exports.testlocale = {
         test.ok(loc.isPseudo(loc));
         test.done();
     },
-
     testLocaleIsPseudoFalse: function(test) {
         test.expect(2);
         var loc = new Locale("en-US");
@@ -594,7 +561,6 @@ module.exports.testlocale = {
         test.ok(!loc.isPseudo(loc));
         test.done();
     },
-
     testLocaleIsPseudoFalseButClosLang: function(test) {
         test.expect(2);
         var loc = new Locale("zxx-US");
@@ -604,7 +570,6 @@ module.exports.testlocale = {
         test.ok(!loc.isPseudo(loc));
         test.done();
     },
-
     testLocaleIsPseudoFalse: function(test) {
         test.expect(2);
         var loc = new Locale("en-XX");
@@ -625,7 +590,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en");
         test.done();
     },
-
     testLocaleGetSpecRegionOnly: function(test) {
         test.expect(2);
         var loc = new Locale("CA");
@@ -635,7 +599,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "CA");
         test.done();
     },
-
     testLocaleGetSpecScriptOnly: function(test) {
         test.expect(2);
         var loc = new Locale("Latn");
@@ -645,7 +608,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "Latn");
         test.done();
     },
-
     testLocaleGetSpecVariantOnly: function(test) {
         test.expect(2);
         var loc = new Locale("asdfasdf");
@@ -655,7 +617,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "asdfasdf");
         test.done();
     },
-
     testLocaleGetSpecLangAndScript: function(test) {
         test.expect(2);
         var loc = new Locale("Latn-en");
@@ -665,7 +626,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-Latn");
         test.done();
     },
-
     testLocaleGetSpecLangAndRegion: function(test) {
         test.expect(2);
         var loc = new Locale("CA-en");
@@ -675,7 +635,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-CA");
         test.done();
     },
-
     testLocaleGetSpecLangAndVariant: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-en");
@@ -685,7 +644,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-asdf");
         test.done();
     },
-
     testLocaleGetSpecScriptAndRegion: function(test) {
         test.expect(2);
         var loc = new Locale("CA-Latn");
@@ -695,7 +653,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "Latn-CA");
         test.done();
     },
-
     testLocaleGetSpecScriptAndVariant: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-Latn");
@@ -705,7 +662,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "Latn-asdf");
         test.done();
     },
-
     testLocaleGetSpecRegionAndVariant: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-CA");
@@ -715,7 +671,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "CA-asdf");
         test.done();
     },
-
     testLocaleGetSpecLangScriptRegion: function(test) {
         test.expect(2);
         var loc = new Locale("CA-en-Latn");
@@ -725,7 +680,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-Latn-CA");
         test.done();
     },
-
     testLocaleGetSpecScriptRegionVariant: function(test) {
         test.expect(2);
         var loc = new Locale("CA-asdf-Latn");
@@ -735,7 +689,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "Latn-CA-asdf");
         test.done();
     },
-
     testLocaleGetSpecLangScriptVariant: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-Latn-en");
@@ -745,7 +698,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-Latn-asdf");
         test.done();
     },
-
     testLocaleGetSpecLangRegionVariant: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-CA-en");
@@ -755,7 +707,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-CA-asdf");
         test.done();
     },
-
     testLocaleGetSpecAll: function(test) {
         test.expect(2);
         var loc = new Locale("asdf-CA-Latn-en");
@@ -765,7 +716,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-Latn-CA-asdf");
         test.done();
     },
-
     testLocaleM49RegionCodeGetParts: function(test) {
         test.expect(4);
         var loc = new Locale("en-001");
@@ -777,7 +727,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleM49RegionCodeGetParts2: function(test) {
         test.expect(4);
         var loc = new Locale("en-150");
@@ -789,7 +738,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
-
     testLocaleM49RegionCodeGetSpec: function(test) {
         test.expect(2);
         var loc = new Locale("en-001");
@@ -799,7 +747,6 @@ module.exports.testlocale = {
         test.equal(loc.getSpec(), "en-001");
         test.done();
     },
-
     testLocaleNoLocale: function(test) {
         test.expect(6);
         var loc = new Locale("-");
@@ -820,85 +767,71 @@ module.exports.testlocale = {
         test.equal(Locale.regionAlpha2ToAlpha3("SG"), "SGP");
         test.done();
     },
-
     testLocaleRegionMap2: function(test) {
         test.expect(1);
         test.equal(Locale.regionAlpha2ToAlpha3("VN"), "VNM");
         test.done();
     },
-
     testLocaleRegionMap3: function(test) {
         test.expect(1);
         test.equal(Locale.regionAlpha2ToAlpha3("KR"), "KOR");
         test.done();
     },
-
     testLocaleRegionMapEmpty: function(test) {
         test.expect(1);
         test.equal(Locale.regionAlpha2ToAlpha3(""), "");
         test.done();
     },
-
     testLocaleRegionMapUnknown: function(test) {
         test.expect(1);
         test.equal(Locale.regionAlpha2ToAlpha3("QQ"), "QQ");
         test.done();
     },
-
     testLocaleRegionMapWrongCase: function(test) {
         test.expect(1);
         test.equal(Locale.regionAlpha2ToAlpha3("sg"), "sg");
         test.done();
     },
-
     testLocaleRegionMapUndefined: function(test) {
         test.expect(1);
         test.ok(typeof(Locale.regionAlpha2ToAlpha3(undefined)) === "undefined");
         test.done();
     },
-
     testLocaleLanguageMap1: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3("ko"), "kor");
         test.done();
     },
-
     testLocaleLanguageMap2: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3("th"), "tha");
         test.done();
     },
-
     testLocaleLanguageMap3: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3("hr"), "hrv");
         test.done();
     },
-
     testLocaleLanguageMapEmpty: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3(""), "");
         test.done();
     },
-
     testLocaleLanguageMapUnknown: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3("qq"), "qq");
         test.done();
     },
-
     testLocaleLanguageMapWrongCase: function(test) {
         test.expect(1);
         test.equal(Locale.languageAlpha1ToAlpha3("EN"), "EN");
         test.done();
     },
-
     testLocaleLanguageMapUndefined: function(test) {
         test.expect(1);
         test.ok(typeof(Locale.languageAlpha1ToAlpha3(undefined)) === "undefined");
         test.done();
     },
-
     testLocaleGetLanguageAlpha3_1: function(test) {
         test.expect(2);
         var loc = new Locale("en-US");
@@ -908,7 +841,6 @@ module.exports.testlocale = {
         test.equal(loc.getLanguageAlpha3(), "eng");
         test.done();
     },
-
     testLocaleGetLanguageAlpha3_2: function(test) {
         test.expect(2);
         var loc = new Locale("ru-RU");
@@ -918,7 +850,6 @@ module.exports.testlocale = {
         test.equal(loc.getLanguageAlpha3(), "rus");
         test.done();
     },
-
     testLocaleGetLanguageAlpha3_3: function(test) {
         test.expect(2);
         var loc = new Locale("gv-GB");
@@ -928,7 +859,6 @@ module.exports.testlocale = {
         test.equal(loc.getLanguageAlpha3(), "glv");
         test.done();
     },
-
     testLocaleGetLanguageAlpha3NoLanguage: function(test) {
         test.expect(2);
         var loc = new Locale("GB");
@@ -938,7 +868,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getLanguageAlpha3()) === "undefined");
         test.done();
     },
-
     testLocaleGetRegionAlpha3_1: function(test) {
         test.expect(2);
         var loc = new Locale("en-US");
@@ -948,7 +877,6 @@ module.exports.testlocale = {
         test.equal(loc.getRegionAlpha3(), "USA");
         test.done();
     },
-
     testLocaleGetRegionAlpha3_2: function(test) {
         test.expect(2);
         var loc = new Locale("ru-RU");
@@ -958,7 +886,6 @@ module.exports.testlocale = {
         test.equal(loc.getRegionAlpha3(), "RUS");
         test.done();
     },
-
     testLocaleGetRegionAlpha3_3: function(test) {
         test.expect(2);
         var loc = new Locale("gv-GB");
@@ -968,7 +895,6 @@ module.exports.testlocale = {
         test.equal(loc.getRegionAlpha3(), "GBR");
         test.done();
     },
-
     testLocaleGetRegionAlpha3NoRegion: function(test) {
         test.expect(2);
         var loc = new Locale("en");
@@ -978,7 +904,6 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getRegionAlpha3()) === "undefined");
         test.done();
     },
-
     testLocaleGetAvailableLocalesDefault: function(test) {
         test.expect(2);
         var locales = Locale.getAvailableLocales();
@@ -986,7 +911,6 @@ module.exports.testlocale = {
         test.ok(locales.length > 0);
         test.done();
     },
-
     testLocaleGetAvailableLocalesCallback: function(test) {
         test.expect(2);
         Locale.getAvailableLocales(true, function(locales) {
@@ -995,7 +919,6 @@ module.exports.testlocale = {
             test.done();
         });
     },
-
     testLocaleGetLanguageSpecSimple: function(test) {
         test.expect(2);
 
@@ -1004,7 +927,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "en");
         test.done();
     },
-
     testLocaleGetLanguageSpecLeaveOutRegionAndVariant: function(test) {
         test.expect(2);
 
@@ -1013,7 +935,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "en");
         test.done();
     },
-
     testLocaleGetLanguageSpecIncludeScript: function(test) {
         test.expect(2);
         var loc = new Locale("zh-Hans");
@@ -1021,7 +942,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "zh-Hans");
         test.done();
     },
-
     testLocaleGetLanguageSpecIncludeScriptButNotOthers: function(test) {
         test.expect(2);
         var loc = new Locale("zh-Hans-CN-GOVT");
@@ -1029,7 +949,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "zh-Hans");
         test.done();
     },
-
     testLocaleGetLanguageSpecLanguageAndScriptMissing: function(test) {
         test.expect(2);
         var loc = new Locale("CN");
@@ -1037,7 +956,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "");
         test.done();
     },
-
     testLocaleGetLanguageSpecNoScriptWithoutLanguage: function(test) {
         test.expect(2);
         var loc = new Locale("Hans-CN");
@@ -1045,7 +963,6 @@ module.exports.testlocale = {
         test.equal(loc.getLangSpec(), "");
         test.done();
     },
-
     testLocaleConstructorCalledWithNonStrings: function(test) {
         test.expect(8);
 
@@ -1074,7 +991,6 @@ module.exports.testlocale = {
         }
         test.done();
     },
-
     testLocaleIsValidLocaleTrueFull: function(test) {
         test.expect(2);
 
@@ -1084,7 +1000,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleTrueLang: function(test) {
         test.expect(2);
 
@@ -1094,7 +1009,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleTrueScript: function(test) {
         test.expect(2);
 
@@ -1104,7 +1018,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleTrueRegion: function(test) {
         test.expect(2);
 
@@ -1114,7 +1027,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleFalseScript: function(test) {
         test.expect(2);
 
@@ -1124,7 +1036,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleFalseLanguage: function(test) {
         test.expect(2);
 
@@ -1134,7 +1045,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleFalseRegion: function(test) {
         test.expect(2);
 
@@ -1144,7 +1054,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleTrueWithVariant: function(test) {
         test.expect(2);
 
@@ -1154,7 +1063,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleFalseEmpty: function(test) {
         test.expect(2);
 
@@ -1164,7 +1072,6 @@ module.exports.testlocale = {
 
         test.done();
     },
-
     testLocaleIsValidLocaleTrueParts: function(test) {
         test.expect(2);
 

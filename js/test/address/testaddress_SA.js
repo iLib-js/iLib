@@ -23,7 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -33,7 +32,6 @@ module.exports.testaddress_SA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSANormalNative: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
@@ -47,9 +45,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
-
-
     testParseAddressSANoZipNative: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر\nمكة المكرمة\nالمملكة العربية السعودية", {locale: 'ar-SA'});
@@ -63,8 +58,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
-
     testParseAddressSANoCountrynative: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴", {locale: 'ar-SA'});
@@ -78,7 +71,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
     testParseAddressSAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
@@ -92,7 +84,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
     testParseAddressSAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر, مكة المكرمة ٢١۴۵۴, المملكة العربية السعودية", {locale: 'ar-SA'});
@@ -106,8 +97,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
-
     testParseAddressSANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر, مكة المكرمة ٢١۴۵۴ المملكة العربية السعودية", {locale: 'ar-SA'});
@@ -121,8 +110,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
-
     testParseAddressSAFromUSNative: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nSAUDI ARABIA", {locale: 'en-US'});
@@ -138,9 +125,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
-
-
     testFormatAddressSASANative: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -157,7 +141,6 @@ module.exports.testaddress_SA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSAFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -174,7 +157,6 @@ module.exports.testaddress_SA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressSA1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Zakat & Income Tax Dept,RIYADH 11187, SAUDI ARABIA", {locale: 'en-US'});
@@ -190,7 +172,6 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     },
-
     testParseAddressSA2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ibrahim Mohamad, P.O. Box 56577, RIYADH 11564, SAUDI ARABIA", {locale: 'en-US'});
@@ -205,5 +186,4 @@ module.exports.testaddress_SA = {
         test.equal(parsedAddress.countryCode, "SA");
         test.done();
     }
-
 };

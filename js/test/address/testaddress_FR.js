@@ -32,7 +32,6 @@ module.exports.testaddress_FR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressFRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("38 avenue de l‘Opéra\n75002 Paris\nFrance", {locale: 'fr-FR'});
@@ -46,7 +45,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("80 rue Camille Desmoulins\nIssy-les-Moulineaux\nFrance", {locale: 'fr-FR'});
@@ -60,7 +58,6 @@ module.exports.testaddress_FR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressFRNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("38 avenue de l‘Opéra\n75002 Paris", {locale: 'fr-FR'});
@@ -74,7 +71,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRCedex: function(test) {
         test.expect(8);
         var parsedAddress = new Address("38 avenue de l‘Opéra\n75002 Paris cedex 9\nFrance", {locale: 'fr-FR'});
@@ -89,7 +85,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Technoparc de l'Aubinière\n3, avenie des Améthystes\n44300\nNantes\nFrance", {locale: 'fr-FR'});
@@ -103,7 +98,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("4, Avenue Pablo Picasso, 92024 Nanterre, France", {locale: 'fr-FR'});
@@ -117,7 +111,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tTechnoparc de l'Aubinière\n  \t \t \t  3, avenie des Améthystes\n\n\t \t \n44300 \t\r \n       Nantes\t\nFrance \r\r\t \t \n\n\n", {locale: 'fr-FR'});
@@ -131,7 +124,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("4 Avenue Pablo Picasso 92024 Nanterre France", {locale: 'fr-FR'});
@@ -145,7 +137,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testParseAddressFRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Z.I. de Courtaboeuf\n1, avenue du Canada\n91947 Les Ulis\nFrance", {locale: 'en-US'});
@@ -161,7 +152,6 @@ module.exports.testaddress_FR = {
         test.equal(parsedAddress.countryCode, "FR");
         test.done();
     },
-
     testFormatAddressFR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,7 +167,6 @@ module.exports.testaddress_FR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressFRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -193,5 +182,4 @@ module.exports.testaddress_FR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };
