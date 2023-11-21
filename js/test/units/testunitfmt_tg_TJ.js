@@ -87,7 +87,6 @@ module.exports.testunitfmt_tg_TJ = {
         test.equal(str, "-16,666666666666668 Сельсий");
         test.done();
     },
-
     testUnitFormatArea1_tg_TJ: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

@@ -87,7 +87,6 @@ module.exports.testunitfmt_ig_NG = {
         test.equal(str, "-16.666666666666668°C");
         test.done();
     },
-
     testUnitFormatArea1_ig_NG: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

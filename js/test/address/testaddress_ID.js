@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_ID = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressIDNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan 10110,Jakarta,INDONESIA", {locale: 'id-ID'});
@@ -48,7 +45,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     testParseAddressIDNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan, INDONESIA", {locale: 'id-ID'});
@@ -62,7 +58,6 @@ module.exports.testaddress_ID = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressIDManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta\nJalan Medan Merdeka Selatan No. xx\nJakarta Selatan 10110\nINDONESIA", {locale: 'id-ID'});
@@ -76,7 +71,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     testParseAddressIDOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
@@ -90,7 +84,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     testParseAddressIDSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx   \n\t\n Jakarta Selatan 10110\t\n\n INDONESIA  \n  \t\t\t", {locale: 'id-ID'});
@@ -104,7 +97,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     testParseAddressIDNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
@@ -118,7 +110,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     /*
     testParseAddressIDSpecialChars: function(test) {
         test.expect(7);
@@ -150,7 +141,6 @@ module.exports.testaddress_ID = {
         test.equal(parsedAddress.countryCode, "ID");
         test.done();
     },
-
     testFormatAddressID: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -166,7 +156,6 @@ module.exports.testaddress_ID = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressIDFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -181,5 +170,4 @@ module.exports.testaddress_ID = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

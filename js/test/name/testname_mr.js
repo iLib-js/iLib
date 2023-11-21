@@ -32,7 +32,6 @@ module.exports.testname_mr = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_mr_IN: function(test) {
         test.expect(2);
         var parsed = new Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
@@ -46,9 +45,6 @@ module.exports.testname_mr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_mr_IN: function(test) {
         test.expect(2);
         var parsed = new Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
@@ -63,9 +59,6 @@ module.exports.testname_mr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_mr_IN: function(test) {
         test.expect(2);
         var parsed = new Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
@@ -79,9 +72,6 @@ module.exports.testname_mr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_mr_IN: function(test) {
         test.expect(2);
         var parsed = new Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
@@ -95,7 +85,6 @@ module.exports.testname_mr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_mr_IN: function(test) {
         test.expect(2);
         var parsed = new Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
@@ -110,10 +99,6 @@ module.exports.testname_mr = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -132,7 +117,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -151,7 +135,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -170,7 +153,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -189,7 +171,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,7 +191,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -230,7 +210,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -250,7 +229,6 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_mr_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -270,7 +248,4 @@ module.exports.testname_mr = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

@@ -417,7 +417,6 @@ module.exports.testcm_JP = {
         ilib.clearCache();
         callback();
     },
-
     testCharmapJPTestAliases: function(test) {
         for (var charset in aliasesJP) {
             for (var i = 0; i < aliasesJP[charset].length; i++) {
@@ -430,7 +429,6 @@ module.exports.testcm_JP = {
         }
         test.done();
     },
-
     testCharmapJPMapToUnicode: function(test) {
         for (var charset in testDataJP) {
             var cm = CharmapFactory({
@@ -445,7 +443,6 @@ module.exports.testcm_JP = {
         }
         test.done();
     },
-
     testCharmapJPMapToNative: function(test) {
         for (var charset in testDataJP) {
             var cm = CharmapFactory({
@@ -465,6 +462,4 @@ module.exports.testcm_JP = {
         }
         test.done();
     }
-
-
 };

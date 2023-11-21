@@ -87,7 +87,6 @@ module.exports.testunitfmt_lo_LA = {
         test.equal(str, "-16,666666666666668 ອົງສາ ຊີ.");
         test.done();
     },
-
     testUnitFormatArea1_lo_LA: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

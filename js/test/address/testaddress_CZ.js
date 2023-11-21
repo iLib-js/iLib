@@ -32,7 +32,6 @@ module.exports.testaddress_CZ = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCZNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Prujezdna 320/62, 100 00 PRAHA 10, česká republika", {locale: 'cs-CZ'});
@@ -46,7 +45,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testParseAddressCZNoZip: function(test) {
         test.expect(8);
         var parsedAddress = new Address("Prujezdna 320/62, PRAHA, česká republika", {locale: 'cs-CZ'});
@@ -61,7 +59,6 @@ module.exports.testaddress_CZ = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressCZManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Jaromir Jagr\nPrujezdna 320/62\n100 00 Praha 10\nčeská republika", {locale: 'cs-CZ'});
@@ -75,7 +72,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testParseAddressCZOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Prujezdna 320/62 100 00 PRAHA 10 česká republika", {locale: 'cs-CZ'});
@@ -89,7 +85,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testParseAddressCZSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\n\t\t\rPrujezdna 320/62\t   \t\n   \r100 00 Praha 10    \t\n \n\n    česká republika              \t\t", {locale: 'cs-CZ'});
@@ -103,7 +98,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testParseAddressCZSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tyršova 1000, 592 31 Nové Město na Moravě 1000, Česká republika", {locale: 'cs-CZ'});
@@ -117,7 +111,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testParseAddressCZFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tyršova 1000, 592 31 Nové Město na Moravě 1000, Czech Republic", {locale: 'en-US'});
@@ -133,7 +126,6 @@ module.exports.testaddress_CZ = {
         test.equal(parsedAddress.countryCode, "CZ");
         test.done();
     },
-
     testFormatAddressCZ: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -149,7 +141,6 @@ module.exports.testaddress_CZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCZFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,5 +156,4 @@ module.exports.testaddress_CZ = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

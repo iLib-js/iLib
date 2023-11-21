@@ -30,7 +30,6 @@ module.exports.testunits = {
         ilib.clearCache();
         callback();
     },
-
     testMeasurementLength1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -42,7 +41,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
-
     testMeasurementLength2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -54,7 +52,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
-
     testMeasurementSpeed1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -66,7 +63,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
-
     testMeasurementSpeed2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -78,7 +74,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
-
     testMeasurementTemperature1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -90,7 +85,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
-
     testMeasurementTemperature2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -102,7 +96,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
-
     testMeasurementDigitalStorage1: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -114,7 +107,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();
     },
-
     testMeasurementDigitalStorage2: function(test) {
         test.expect(2);
         var measurement = MeasurementFactory({
@@ -126,7 +118,6 @@ module.exports.testunits = {
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();
     },
-
     testMeasurementConstructorLengths: function(test) {
         var measures = [
             "micrometer",
@@ -159,7 +150,6 @@ module.exports.testunits = {
         }
         test.done();
     },
-
     testMeasurementConstructorSpeeds: function(test) {
         var measures = [
             "foot-per-second",
@@ -182,7 +172,6 @@ module.exports.testunits = {
         }
         test.done();
     },
-
     testMeasurementConstructorTemperature: function(test) {
         var measures = [
             "celsius",
@@ -203,7 +192,6 @@ module.exports.testunits = {
         }
         test.done();
     },
-
     testMeasurementConstructorDigitalStorage: function(test) {
         var measures = [
             "bit",
@@ -233,7 +221,6 @@ module.exports.testunits = {
         }
         test.done();
     },
-
     testMeasurementConstructorDigitalStorageCaseInsensitive: function(test) {
         var measures = [
             "bit",
@@ -263,5 +250,4 @@ module.exports.testunits = {
         }
         test.done();
     }
-
 };

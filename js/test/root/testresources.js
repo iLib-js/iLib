@@ -146,12 +146,10 @@ module.exports.testresources = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testResBundleConstructorEmpty: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -161,7 +159,6 @@ module.exports.testresources = {
         test.ok(rb !== null);
         test.done();
     },
-
     testResBundleConstructorDefaultName: function(test) {
         test.expect(2);
         var rb = new ResBundle();
@@ -171,7 +168,6 @@ module.exports.testresources = {
         test.equal(rb.getName(), "strings");
         test.done();
     },
-
     testResBundleConstructorDefaultLocale: function(test) {
         test.expect(2);
         var rb = new ResBundle();
@@ -183,7 +179,6 @@ module.exports.testresources = {
         test.equal(loc.toString(), "en-US");
         test.done();
     },
-
     testResBundleConstructorOtherLocale: function(test) {
         test.expect(2);
         var rb = new ResBundle({locale: "de-DE"});
@@ -195,7 +190,6 @@ module.exports.testresources = {
         test.equal(loc.toString(), "de-DE");
         test.done();
     },
-
     testResBundleConstructorOtherName: function(test) {
         test.expect(2);
         var rb = new ResBundle({name: "tester"});
@@ -205,7 +199,6 @@ module.exports.testresources = {
         test.equal(rb.getName(), "tester");
         test.done();
     },
-
     testResBundleGetString: function(test) {
         test.expect(4);
         var rb = new ResBundle(); // default locale
@@ -217,7 +210,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "third");
         test.done();
     },
-
     testResBundleGetStringJS: function(test) {
         test.expect(4);
         var rb = new ResBundle(); // default locale
@@ -229,7 +221,6 @@ module.exports.testresources = {
         test.equal(rb.getStringJS("third string"), "third");
         test.done();
     },
-
     testResBundleGetStringJSUndefinedSource: function(test) {
         test.expect(2);
         var rb = new ResBundle(); // default locale
@@ -239,7 +230,6 @@ module.exports.testresources = {
         test.ok(typeof(rb.getStringJS(undefined)) === "undefined");
         test.done();
     },
-
     testResBundleGetStringEmpty: function(test) {
         test.expect(2);
         var rb = new ResBundle(); // default locale
@@ -249,7 +239,6 @@ module.exports.testresources = {
         test.equal(rb.getString("").toString(), "");
         test.done();
     },
-
     testResBundleGetStringUndefined: function(test) {
         test.expect(2);
         var rb = new ResBundle(); // default locale
@@ -259,7 +248,6 @@ module.exports.testresources = {
         test.equal(rb.getString(undefined).toString(), "");
         test.done();
     },
-
     testResBundleGetStringde: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "de"});
@@ -271,7 +259,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "dritte String");
         test.done();
     },
-
     testResBundleGetStringfr: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "fr"});
@@ -283,7 +270,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "troisième chaîne");
         test.done();
     },
-
     testResBundleGetStringfrCA: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "fr-CA"});
@@ -295,7 +281,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "troisième chaîne");
         test.done();
     },
-
     testResBundleGetStringfrCAgovt: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "fr-CA-govt"});
@@ -307,7 +292,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "troisième corde");
         test.done();
     },
-
     testResBundleGetStringDefaultToParent: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "de-DE"});
@@ -319,7 +303,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "dritte String");
         test.done();
     },
-
     testResBundleGetStringDefaultToSource: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "ja-JP"});
@@ -331,7 +314,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string x").toString(), "third string x");
         test.done();
     },
-
     testResBundleGetStringJSDefaultToSource: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "ja-JP"});
@@ -343,7 +325,6 @@ module.exports.testresources = {
         test.equal(rb.getStringJS("third string x"), "third string x");
         test.done();
     },
-
     testResBundleGetStringOtherBundle: function(test) {
         test.expect(4);
         var rb = new ResBundle({name: "tester"});
@@ -355,7 +336,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Greetings from {city} in {country}");
         test.done();
     },
-
     testResBundleGetStringOtherBundleesES: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -370,7 +350,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Saludos desde {city} en {country}");
         test.done();
     },
-
     testResBundleGetStringOtherBundleesMX: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -385,7 +364,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Hola de {city} en {country}");
         test.done();
     },
-
     testResBundleGetStringOtherBundleesMXslang: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -418,7 +396,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoText: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -435,7 +412,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoHtml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -452,7 +428,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoHtmlWithTags: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -469,7 +444,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from <span class=\"foo\">{city}</span> in <span class=\"foo\">{country}</span>").toString(), "[Ĝŕëëţíñğš fŕõm <span class=\"foo\">{city}</span> íñ <span class=\"foo\">{country}</span>]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoHtmlWithMultipleTags: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -486,7 +460,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from <div><span class=\"foo\">{city}</span></div> in <div><span class=\"foo\">{country}</span></div>").toString(), "[Ĝŕëëţíñğš fŕõm <div><span class=\"foo\">{city}</span></div> íñ <div><span class=\"foo\">{country}</span></div>]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoHtmlWithTagsAndEntities: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -503,7 +476,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from &amp;<span class=\"foo\">{city}</span>&mdash; in &amp;<span class=\"foo\">{country}</span>&mdash;").toString(), "[Ĝŕëëţíñğš fŕõm &amp;<span class=\"foo\">{city}</span>&mdash; íñ &amp;<span class=\"foo\">{country}</span>&mdash;]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoXml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -520,7 +492,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoC: function(test) {
         test.expect(48);
         var rb = new ResBundle({
@@ -595,7 +566,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoDefault: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -611,7 +581,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoBengali: function(test) {
         test.expect(4);
         ilib.setAsPseudoLocale("as-XX");
@@ -630,7 +599,6 @@ module.exports.testresources = {
         ilib.clearPseudoLocales();
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoGujarati: function(test) {
         test.expect(4);
         ilib.setAsPseudoLocale("gu-XX");
@@ -649,7 +617,6 @@ module.exports.testresources = {
         ilib.clearPseudoLocales();
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoOriya: function(test) {
         test.expect(4);
         ilib.setAsPseudoLocale("or-XX");
@@ -686,7 +653,6 @@ module.exports.testresources = {
         ilib.clearPseudoLocales();
         test.done();
     },
-
     testResBundleGetStringOtherBundlePseudoPunjabi: function(test) {
         test.expect(4);
         ilib.setAsPseudoLocale("pa-XX");
@@ -705,7 +671,6 @@ module.exports.testresources = {
         ilib.clearPseudoLocales();
         test.done();
     },
-
     testResBundleGetStringMissingBundlePseudoHtml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -722,7 +687,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringPseudoHtmlLengthenShort: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -738,7 +702,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris").toString(), "[Ħëľľõ fŕõm Pàŕíš76543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoHtmlLengthenMedium: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -754,7 +717,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris, city of lights").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoHtmlLengthenLong: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -770,7 +732,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoLeaveHTMLTags: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -784,7 +745,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <a href='url'>{city}</a>]");
         test.done();
     },
-
     testResBundleGetStringPseudoLeaveHTMLTags2: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -798,7 +758,6 @@ module.exports.testresources = {
         test.equal(rb.getString('<span class="n_letter">n</span>Cluster: <strong>{clusterName}</strong>').toString(), '[<span class="n_letter">ñ</span>Çľüšţëŕ: <strong>{clusterName}</strong>]');
         test.done();
     },
-
     testResBundleGetStringPseudoNotLeaveHTMLTagsRaw: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -812,7 +771,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{çíţÿ}</à>]");
         test.done();
     },
-
     testResBundleGetStringPseudoNotLeaveHTMLTagsText: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -826,7 +784,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from <a href='url'>{city}</a>").toString(), "[Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{city}</à>]");
         test.done();
     },
-
     testResBundleGetStringPseudoLeaveHTMLEntities: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -840,7 +797,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &amp; {country}]");
         test.done();
     },
-
     testResBundleGetStringPseudoNotLeaveHTMLEntitiesRaw: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -854,7 +810,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {çíţÿ} &àmþ; {çõüñţŕÿ}]");
         test.done();
     },
-
     testResBundleGetStringPseudoNotLeaveHTMLEntitiesText: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -868,7 +823,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &àmþ; {country}]");
         test.done();
     },
-
     testResBundleGetStringMissingBundlePseudoXml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -885,7 +839,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringPseudoXmlLengthenShort: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -901,7 +854,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris").toString(), "[Ħëľľõ fŕõm Pàŕíš76543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoXmlLengthenMedium: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -917,7 +869,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris, city of lights").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoXmlLengthenLong: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -933,7 +884,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString(), "[Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210]");
         test.done();
     },
-
     testResBundleGetStringPseudoLeaveXmlTags: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -947,7 +897,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from <city type='large'>{city}</city>").toString(), "[Ħëľľõ fŕõm <city type='large'>{city}</city>]");
         test.done();
     },
-
     testResBundleGetStringPseudoLeaveXmlEntities: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -961,7 +910,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {city} &amp; {country}").toString(), "[Ħëľľõ fŕõm {city} &amp; {country}]");
         test.done();
     },
-
     testResBundleGetStringWithKeyNamees: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -974,7 +922,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {user}.", "key1").toString(), "Saludos desde {user}.");
         test.done();
     },
-
     testResBundleGetStringWithKeyNameesMX: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -987,7 +934,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {user}.", "key1").toString(), "Saludos desde {user}.");
         test.done();
     },
-
     testResBundleGetStringWithKeyNameesMXslang: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1000,7 +946,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {user}.", "key1").toString(), "Buenas desde {user}.");
         test.done();
     },
-
     testResBundleGetStringWithKeyNamedeDE: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1013,7 +958,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {user}.", "key1").toString(), "Grüße vom {user}");
         test.done();
     },
-
     testResBundleGetStringWithKeyNameUnknown: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1026,7 +970,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello from {user}.", "key3").toString(), "Hello from {user}.");
         test.done();
     },
-
     testResBundleGetStringRightLocale: function(test) {
         test.expect(3);
         var rb = new ResBundle({
@@ -1040,7 +983,6 @@ module.exports.testresources = {
         test.equal(str.getLocale(), "de-DE");
         test.done();
     },
-
     testResBundleGetResObj: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "fr"});
@@ -1054,7 +996,6 @@ module.exports.testresources = {
         test.equal(obj["third string"], "troisième chaîne");
         test.done();
     },
-
     testResBundleGetResObjMerge: function(test) {
         test.expect(4);
         var rb = new ResBundle({locale: "fr-CA"});
@@ -1068,7 +1009,6 @@ module.exports.testresources = {
         test.equal(obj["third string"], "troisième chaîne");
         test.done();
     },
-
     testResBundleGetStringAcceptEmptyTranslations: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1081,7 +1021,6 @@ module.exports.testresources = {
         test.equal(rb.getString("empty").toString(), "");
         test.done();
     },
-
     testResBundleGetStringNonExistantTranslations: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1095,7 +1034,6 @@ module.exports.testresources = {
         test.equal(rb.getString("foobar").toString(), "foobar");
         test.done();
     },
-
     testResBundleGetStringAcceptSpaceTranslations: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1108,7 +1046,6 @@ module.exports.testresources = {
         test.equal(rb.getString("space").toString(), " ");
         test.done();
     },
-
     testResBundleGetStringAcceptCommaTranslations: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1121,7 +1058,6 @@ module.exports.testresources = {
         test.equal(rb.getString("comma").toString(), ",");
         test.done();
     },
-
     testResBundleGetStringAcceptEmptyTranslationsWithKey: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1134,7 +1070,6 @@ module.exports.testresources = {
         test.equal(rb.getString("asdf", "empty").toString(), "");
         test.done();
     },
-
     testResBundleGetStringAcceptNonExistantTranslationsWithKey: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1148,7 +1083,6 @@ module.exports.testresources = {
         test.equal(rb.getString("asdf", "foobar").toString(), "asdf");
         test.done();
     },
-
     testResBundleGetStringAcceptSpaceTranslationsWithKey: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1161,7 +1095,6 @@ module.exports.testresources = {
         test.equal(rb.getString("asdf", "space").toString(), " ");
         test.done();
     },
-
     testResBundleGetStringAcceptCommaTranslationsWithKey: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1174,7 +1107,6 @@ module.exports.testresources = {
         test.equal(rb.getString("asdf", "comma").toString(), ",");
         test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSource: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1187,7 +1119,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a test.").toString(), "This is a test.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceHtmlTypeHtml: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1201,7 +1132,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a <b>test</b>. A&amp;P.").toString(), "This is a <b>test</b>. A&amp;P.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceHtmlTypejs: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1215,7 +1145,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a <b>test</b>. A&amp;P.").toString(), "This is a <b>test</b>. A&amp;P.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceTypejsNoEscape: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1229,7 +1158,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a 'test'.").toString(), "This is a 'test'.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceTypejsWithEscape: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1243,7 +1171,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a 'test'.", undefined, "js").toString(), "This is a \\'test\\'.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscape: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1257,7 +1184,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is a <b>test</b>. A&amp;P.", undefined, "html").toString(), "This is a &lt;b&gt;test&lt;/b&gt;. A&amp;amp;P.");
        test.done();
     },
-
     testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscapeJS: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1271,7 +1197,6 @@ module.exports.testresources = {
        test.equal(rb.getString("This is <a href=\"a test\">a 'test'</a>.", undefined, "js").toString(), "This is <a href=\\\"a test\\\">a \\'test\\'</a>.");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlNoEscape: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1285,7 +1210,6 @@ module.exports.testresources = {
        test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.").toString(), "[Ħëľľõ fŕõm <a href=\"asdf\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlEscapeHtml: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1299,7 +1223,6 @@ module.exports.testresources = {
        test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "html").toString(), "[Ħëľľõ fŕõm &lt;a href=\"asdf\"&gt;Pàŕíš&lt;/a&gt;, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlEscapeJst: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1314,7 +1237,6 @@ module.exports.testresources = {
            "[Ħëľľõ fŕõm <%= (i > 4) ? RB.getStringJS(\"Las Vegas\") : RB.getStringJS(\"Paris\") %>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlEscapeRuby: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1328,7 +1250,6 @@ module.exports.testresources = {
        test.equal(rb.getStringJS("Hello from %PARIS%, city of lights.", undefined, "html"), "[Ħëľľõ fŕõm %PARIS%, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlEscapeHaml: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1342,7 +1263,6 @@ module.exports.testresources = {
        test.equal(rb.getStringJS("Hello from %{city}, city of #{description}."), "[Ħëľľõ fŕõm %{city}, çíţÿ õf #{description}.]");
        test.done();
     },
-
     testResBundleGetStringPseudoHtmlEscapeJS: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1356,7 +1276,6 @@ module.exports.testresources = {
        test.equal(rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "js").toString(), "[Ħëľľõ fŕõm <a href=\\\"asdf\\\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.]");
        test.done();
     },
-
     testResBundleContainsKeyByKeyTrue: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1369,7 +1288,6 @@ module.exports.testresources = {
        test.ok(rb.containsKey(undefined, "first string"));
        test.done();
     },
-
     testResBundleContainsKeyByKeyFalse: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1382,7 +1300,6 @@ module.exports.testresources = {
        test.ok(!rb.containsKey(undefined, "asdfasdf"));
        test.done();
     },
-
     testResBundleContainsKeyBySourceTrue: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1395,7 +1312,6 @@ module.exports.testresources = {
        test.ok(rb.containsKey("first string"));
        test.done();
     },
-
     testResBundleContainsKeyBySourceFalse: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1408,7 +1324,6 @@ module.exports.testresources = {
        test.ok(!rb.containsKey("asdfasdf"));
        test.done();
     },
-
     testResBundleContainsKeyBySourceMakeKey: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1421,7 +1336,6 @@ module.exports.testresources = {
        test.ok(rb.containsKey("first   \t\t\r\n  string"));
        test.done();
     },
-
     testResBundleContainsKeyBothUndefined: function(test) {
         test.expect(2);
        var rb = new ResBundle({
@@ -1434,7 +1348,6 @@ module.exports.testresources = {
        test.ok(!rb.containsKey(undefined, undefined));
        test.done();
     },
-
     testResBundleConstructPreassembledCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
@@ -1457,7 +1370,6 @@ module.exports.testresources = {
         test.ok(onloadcalled);
         test.done();
     },
-
     testResBundleConstructPreassembledCachedCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
@@ -1479,7 +1391,6 @@ module.exports.testresources = {
         test.ok(onloadcalled);
         test.done();
     },
-
     testResBundleConstructAsynchDynamic: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1511,7 +1422,6 @@ module.exports.testresources = {
         test.ok(onloadcalled);
         test.done();
     },
-
     testResBundleConstructSynchDynamic: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1535,7 +1445,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "dritte String");
         test.done();
     },
-
     testResBundleConstructAsynchDynamicDefaultName: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1559,7 +1468,6 @@ module.exports.testresources = {
             }
         });
     },
-
     testResBundleConstructSynchDynamicDefaultName: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1582,7 +1490,6 @@ module.exports.testresources = {
         test.equal(rb.getString("third string").toString(), "troisième corde");
         test.done();
     },
-
     testResBundleConstructAsynchDynamicNoStrings: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1609,7 +1516,6 @@ module.exports.testresources = {
             }
         });
     },
-
     testResBundleConstructSynchDynamicNoStrings: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1737,7 +1643,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Hello, {name}").toString(), "你好")
         test.done();
     },
-
     testResBundleGetStringformatChoice_de_DE: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -1760,7 +1665,6 @@ module.exports.testresources = {
         test.equal(rb.getString(str).formatChoice(5, {N:5}), "(5) Dateien ausgewählt");
         test.done();
     },
-
     testResBundleGetStringCyrlPseudoText: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1777,7 +1681,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
-
     testResBundleGetStringCyrlPseudoHtml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1794,7 +1697,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
-
     testResBundleGetStringCyrlPseudoXml: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1811,7 +1713,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
-
     testResBundleGetStringCyrlPseudoDefault: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1827,7 +1728,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
-
     testResBundleGetStringHansPseudoText: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1845,7 +1745,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[个熱俄俄推意尼个思凡熱夥们{city}意尼{country}]");
         test.done();
     },
-
     testResBundleGetStringHebrPseudoText: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1877,7 +1776,6 @@ module.exports.testresources = {
         test.equal(rb.missing, "source");
         test.done();
     },
-
     testResBundleGetStringMissingRightValue1: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1891,7 +1789,6 @@ module.exports.testresources = {
         test.equal(rb.missing, "pseudo");
         test.done();
     },
-
     testResBundleGetStringMissingRightValue2: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1905,7 +1802,6 @@ module.exports.testresources = {
         test.equal(rb.missing, "source");
         test.done();
     },
-
     testResBundleGetStringMissingRightValue3: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -1919,7 +1815,6 @@ module.exports.testresources = {
         test.equal(rb.missing, "empty");
         test.done();
     },
-
     testResBundleGetStringCyrlMissingRawSource: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1936,7 +1831,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Greetings from {city} in {country}");
         test.done();
     },
-
     testResBundleGetStringCyrlMissingRawPseudo: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1953,7 +1847,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {читя} ин {чоунтря}]");
         test.done();
     },
-
     testResBundleGetStringCyrlMissingRawEmpty: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1970,7 +1863,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "");
         test.done();
     },
-
     testResBundleGetStringLatnMissingPseudo: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -1987,7 +1879,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Ĝŕëëţíñğš fŕõm {city} íñ {country}]");
         test.done();
     },
-
     testResBundleGetStringCyrlMissingPseudo: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -2004,7 +1895,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[Грээтингс фром {city} ин {country}]");
         test.done();
     },
-
     testResBundleGetStringHebrMissingPseudo: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -2021,7 +1911,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), '[גרֶֶטִנגס פרֹמ {city} ִנ {country}]');
         test.done();
     },
-
     testResBundleGetStringHansMissingPseudo: function(test) {
         test.expect(4);
         var rb = new ResBundle({
@@ -2039,7 +1928,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "[个熱俄俄推意尼个思凡熱夥们{city}意尼{country}]");
         test.done();
     },
-
     testResBundleGetStringWithSpaces: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -2051,7 +1939,6 @@ module.exports.testresources = {
         test.equal(rb.getString(" This is a test. ").toString(), "test1");
         test.done();
     },
-
     testResBundleGetStringCompressSpaces: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -2063,7 +1950,6 @@ module.exports.testresources = {
         test.equal(rb.getString("    This    is     a     test.     ").toString(), "test1");
         test.done();
     },
-
     testResBundleGetStringConvertAllWhiteToSpaces: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -2075,7 +1961,6 @@ module.exports.testresources = {
         test.equal(rb.getString(" \t\r   This \n\n   is \n\t    a    \t test.  \n   ").toString(), "test1");
         test.done();
     },
-
     testResBundleGetStringCompressSpacesEnd: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -2087,7 +1972,6 @@ module.exports.testresources = {
         test.equal(rb.getString("This    is     a     test.     ").toString(), "test2");
         test.done();
     },
-
     testResBundleGetStringCompressSpacesBeginning: function(test) {
         test.expect(2);
         var rb = new ResBundle({
@@ -2099,7 +1983,6 @@ module.exports.testresources = {
         test.equal(rb.getString("     This    is     a     test.").toString(), "test3");
         test.done();
     },
-
     testResBundlePseudo_euES: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -2111,7 +1994,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudo_psAF: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -2124,7 +2006,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudo_deDE: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -2136,7 +2017,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudoReallyThere: function(test) {
         test.expect(2);
         ilib.clearPseudoLocales();
@@ -2146,7 +2026,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudoIsPseudo: function(test) {
         test.expect(2);
         var loc = new Locale("de-DE");
@@ -2157,7 +2036,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudo_EMPTY: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -2169,7 +2047,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudoEmptyNothingAdded: function(test) {
         test.expect(2);
         ilib.clearPseudoLocales();
@@ -2179,7 +2056,6 @@ module.exports.testresources = {
         test.done();
         ilib.clearPseudoLocales();
     },
-
     testResBundlePseudoUndefinedNothingAdded: function(test) {
         test.expect(2);
         ilib.clearPseudoLocales();
@@ -2190,7 +2066,6 @@ module.exports.testresources = {
 
         ilib.clearPseudoLocales();
     },
-
     testClearPseudoLocalesOldOnesGone: function(test) {
         test.expect(2);
         var loc = new Locale("de-DE");
@@ -2202,7 +2077,6 @@ module.exports.testresources = {
         test.ok(!loc.isPseudo());
         test.done();
     },
-
     testClearResetToDefaults: function(test) {
         test.expect(4);
         ilib.clearPseudoLocales();
@@ -2218,7 +2092,6 @@ module.exports.testresources = {
         test.ok(loc.isPseudo());
         test.done();
     },
-
     testResBundleWithDefaultLocaleBeingPseudo: function(test) {
         test.expect(1);
         ilib.clearPseudoLocales();
@@ -2234,7 +2107,6 @@ module.exports.testresources = {
 
         ilib.setLocale(tmp);
     },
-
     testResBundleLocalizeArray: function(test) {
         test.expect(1);
         var rb = new ResBundle({locale: "de-DE"});
@@ -2251,7 +2123,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleLocalizeArrayUntranslatedElements: function(test) {
         test.expect(1);
         var rb = new ResBundle({locale: "de-DE"});
@@ -2270,7 +2141,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleLocalizeArrayUndefinedElements: function(test) {
         test.expect(1);
         var rb = new ResBundle({locale: "de-DE"});
@@ -2287,7 +2157,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleLocalizeArrayEmptyString: function(test) {
         test.expect(1);
         var rb = new ResBundle({locale: "de-DE"});
@@ -2330,7 +2199,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleLocalizeArrayWithFormat: function(test) {
         test.expect(1);
         var rb = new ResBundle({locale: "de-DE"});
@@ -2349,7 +2217,6 @@ module.exports.testresources = {
 
         test.done();
     },
-
     testResBundleGetStringWithBasePath: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
@@ -2376,7 +2243,6 @@ module.exports.testresources = {
         test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは");
         test.done();
     },
-
     testResBundleGetStringWithDifferentBasePath: function(test) {
         if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();

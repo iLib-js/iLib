@@ -30,7 +30,6 @@ module.exports.testdigitalstoreage = {
         ilib.clearCache();
         callback();
     },
-
     testDSDSConstructor: function(test) {
         test.expect(1);
 
@@ -42,7 +41,6 @@ module.exports.testdigitalstoreage = {
         test.ok(m !== null);
         test.done();
     },
-
     testDSDSConvertKbToMb: function(test) {
         test.expect(3);
         var m1 = new DigitalStorageUnit({
@@ -60,7 +58,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m2.getAmount(), 100, 1e-7);
         test.done();
     },
-
     testDSStaticConvert1: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("bit", "kilobits", 12024);
@@ -68,7 +65,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 12312576, 0.01);
         test.done();
     },
-
     testDSStaticConvertWithString: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("gigabyte", "petabyte", "1");
@@ -76,7 +72,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 1048576, 0.001);
         test.done();
     },
-
     testDSStaticConvert2: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("tB", "gB", 10240);
@@ -84,7 +79,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 10, 1e-8);
         test.done();
     },
-
     testDSStaticConvert3: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("mb", "byte", 1048576);
@@ -92,7 +86,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 8, 1e-9);
         test.done();
     },
-
     testDSStaticConvert4: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("Pb", "tb", 1024);
@@ -100,7 +93,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 1, 1e-9);
         test.done();
     },
-
     testDSStaticConvert5: function(test) {
         test.expect(1);
         var m = DigitalStorageUnit.convert("megabyte", "byte", 10);
@@ -108,7 +100,6 @@ module.exports.testdigitalstoreage = {
         test.roughlyEqual(m, 9.536743164e-6, 1e-15);
         test.done();
     },
-
     testDSScale1: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -122,7 +113,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "kilobit");
         test.done();
     },
-
     testDSScale2: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -137,7 +127,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "bit");
         test.done();
     },
-
     testDSScale3: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -152,7 +141,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "megabit");
         test.done();
     },
-
     testDSScale4: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -166,7 +154,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "gigabit");
         test.done();
     },
-
     testDSScale5: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -180,7 +167,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "megabyte");
         test.done();
     },
-
     testDSScale6: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -194,7 +180,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "megabyte");
         test.done();
     },
-
     testDSScale7: function(test) {
         test.expect(2);
         // This test case is the most likely scenario. That is, the OS will
@@ -211,7 +196,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "kilobyte");
         test.done();
     },
-
     testDSScale8: function(test) {
         test.expect(2);
         // This test case is the most likely scenario. That is, the OS will
@@ -228,7 +212,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "megabyte");
         test.done();
     },
-
     testDSScaleScaleDown: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -242,7 +225,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "kilobyte");
         test.done();
     },
-
     testDSScaleNoScale: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -256,7 +238,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "byte");
         test.done();
     },
-
     testDSaLocalize1: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -270,7 +251,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "petabyte");
         test.done();
     },
-
     testDSLocalize2: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -284,7 +264,6 @@ module.exports.testdigitalstoreage = {
         test.equal(m.unit, "kilobit");
         test.done();
     },
-
     testDSLocalize3: function(test) {
         test.expect(2);
         var m = new DigitalStorageUnit({
@@ -319,5 +298,4 @@ module.exports.testdigitalstoreage = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

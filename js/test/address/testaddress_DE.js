@@ -32,7 +32,6 @@ module.exports.testaddress_DE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressDENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {locale: 'de-DE'});
@@ -46,7 +45,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Berliner Straße 111, Ratingen, Deutschland", {locale: 'de-DE'});
@@ -60,7 +58,6 @@ module.exports.testaddress_DE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Herrenberger Straße 140, 71034 Böblingen", {locale: 'de-DE'});
@@ -74,7 +71,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Altrottstraße 31\nPartner Port SAP\n69190\nWalldorf/Baden\nDeutschland\n\n\n", {locale: 'de-DE'});
@@ -88,7 +84,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ABC-Strasse 19, 20354 Hamburg, Deutschland", {locale: 'de-DE'});
@@ -102,7 +97,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tAltrottstraße 31\n\n\nPartner Port SAP\n   \t\n69190\n   \r\t\n Walldorf/Baden\n   \t \t \t Deutschland\n\n\n", {locale: 'de-DE'});
@@ -116,7 +110,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ABC-Strasse 19 20354 Hamburg Deutschland", {locale: 'de-DE'});
@@ -130,7 +123,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDESpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Geschäftsstelle Lützowplatz 15\n(Eingang Einemstraße 24)\n10785 Würtzheim", {locale: 'de-DE'});
@@ -144,7 +136,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testParseAddressDEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Dienerstrasse 12\n80331 Munich\nGermany", {locale: 'en-US'});
@@ -160,7 +151,6 @@ module.exports.testaddress_DE = {
         test.equal(parsedAddress.countryCode, "DE");
         test.done();
     },
-
     testFormatAddressDEDE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,7 +166,6 @@ module.exports.testaddress_DE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -192,5 +181,4 @@ module.exports.testaddress_DE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

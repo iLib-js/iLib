@@ -27,7 +27,6 @@ module.exports.testloader = {
         ilib.clearCache();
         callback();
     },
-
     testLoaderExists: function(test) {
         if (ilib.isDynData()) {
             test.expect(1);
@@ -37,7 +36,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderIsAvailable: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -48,7 +46,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderIsAvailableFalse: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -59,7 +56,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderIsAvailableWithDirectory: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -70,7 +66,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderIsAvailableWithDirectories: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -81,7 +76,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderListAvailableFilesNotEmpty: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -93,7 +87,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderListAvailableFilesRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(2);
@@ -110,7 +103,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesSingle: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
@@ -124,7 +116,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesSingleRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(5);
@@ -141,7 +132,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesMultiple: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
@@ -159,7 +149,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesMultipleRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(16);
@@ -192,7 +181,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesMultipleMissingFile: function(test) {
         if (ilib.isDynData()) {
             test.expect(3);
@@ -211,7 +199,6 @@ module.exports.testloader = {
         }
         test.done();
     },
-
     testLoaderLoadFilesMultipleMissingFileRightContents: function(test) {
         if (ilib.isDynData()) {
             test.expect(17);
@@ -246,5 +233,4 @@ module.exports.testloader = {
         }
         test.done();
     }
-
 };

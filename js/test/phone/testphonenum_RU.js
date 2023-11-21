@@ -29,7 +29,6 @@ module.exports.phonenum_RU = {
         ilib.clearCache();
         callback();
     },
-
     testParseRUFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("88122345678", {locale: "ru-RU"});
@@ -44,7 +43,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRULocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("234-56-78", {locale: "ru-RU"});
@@ -57,7 +55,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("88122345678", {locale: "ru-RU"});
@@ -72,7 +69,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("8.812.234-56-78", {locale: "ru-RU"});
@@ -87,7 +83,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("8$812@234&5678-", {locale: "ru-RU"});
@@ -102,7 +97,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("2345678", {locale: "ru-RU"});
@@ -115,7 +109,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
@@ -130,7 +123,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("88042345678", {locale: "ru-RU"});
@@ -145,7 +137,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("89105551234", {locale: "ru-RU"});
@@ -160,7 +151,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "ru-RU"});
@@ -176,7 +166,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("81012028675309", {locale: "ru-RU"});
@@ -192,7 +181,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRULongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -207,7 +195,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("112", {locale: "ru-RU"});
@@ -233,7 +220,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("8", {locale: "ru-RU"});
@@ -246,7 +232,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("84", {locale: "ru-RU"});
@@ -370,7 +355,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("88122345678", {locale: "ru-RU"});
@@ -385,7 +369,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("881223456789", {locale: "ru-RU"});
@@ -400,7 +383,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "316"});
@@ -414,7 +396,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "208"});
@@ -427,7 +408,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "334"});
@@ -441,7 +421,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "262"});
@@ -454,7 +433,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "450"});
@@ -468,7 +446,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithJPMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "440"});
@@ -481,7 +458,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithTWMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "466"});
@@ -494,7 +470,6 @@ module.exports.phonenum_RU = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseRUWithRUMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ru-RU", mcc: "250"});

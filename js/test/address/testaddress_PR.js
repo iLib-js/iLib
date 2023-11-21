@@ -32,7 +32,6 @@ module.exports.testaddress_PR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressPRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
@@ -46,7 +45,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPRNormalLanguageIndepedent: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'es-PR'});
@@ -60,7 +58,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR\nPuerto Rico", {locale: 'en-PR'});
@@ -74,7 +71,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPRShortZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926\nPuerto Rico", {locale: 'en-PR'});
@@ -88,7 +84,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPRNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-PR'});
@@ -102,7 +97,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ\nURB LAS GLADIOLAS\n150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
@@ -116,7 +110,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testParseAddressPROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A, SAN JUAN, PR 00926-3232, Puerto Rico", {locale: 'en-PR'});
@@ -130,8 +123,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
-
     testParseAddressPRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A SAN JUAN PR 00926-3232 Puerto Rico", {locale: 'en-PR'});
@@ -145,8 +136,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
-
     testParseAddressPRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-US'});
@@ -162,7 +151,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-
     testParseAddressPRFromUSWithCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-US'});
@@ -178,7 +166,6 @@ module.exports.testaddress_PR = {
         test.equal(parsedAddress.countryCode, "PR");
         test.done();
     },
-
     testFormatAddressPR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -195,7 +182,6 @@ module.exports.testaddress_PR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressPRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -212,5 +198,4 @@ module.exports.testaddress_PR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -35,7 +35,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtConstructorEmpty_bs_Cyrl_BA: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.ok(fmt !== null);
         test.done();
     },
-
-
     testDateFmtSimpleShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short"});
@@ -63,7 +60,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-
     testDateFmtSimpleMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium"});
@@ -82,7 +78,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.09.2011.");
         test.done();
     },
-
     testDateFmtSimpleLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "long"});
@@ -101,7 +96,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-
     testDateFmtSimpleFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -120,7 +114,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-
     testDateFmtSimpleTimeShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short", type: "time"});
@@ -139,7 +132,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium", type: "time"});
@@ -158,7 +150,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", timelength: "long", type: "time"});
@@ -177,7 +168,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtSimpleTimeFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", type: "time"});
@@ -196,7 +186,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short", type: "datetime"});
@@ -215,7 +204,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium", type: "datetime"});
@@ -234,7 +222,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.09.2011. 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "long", type: "datetime"});
@@ -253,7 +240,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011. 13:45");
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", type: "datetime"});
@@ -272,8 +258,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011. 13:45");
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", calendar: "julian", template: "yyyy-MM-dd"});
@@ -292,9 +276,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
-
     testDateFmtTemplateClock12SwitchHH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "12", template: "HH:mm"});
@@ -313,7 +294,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "12", template: "kk:mm"});
@@ -332,7 +312,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "24", template: "hh:mm"});
@@ -351,7 +330,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "24", template: "KK:mm"});
@@ -370,7 +348,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "hh:mm"});
@@ -389,7 +366,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "KK:mm"});
@@ -408,7 +384,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "HH:mm"});
@@ -427,7 +402,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "kk:mm"});
@@ -446,8 +420,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtTypeDate_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "date"});
@@ -466,7 +438,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-
     testDateFmtTypeTime_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time"});
@@ -485,7 +456,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtTypeDateTime_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "datetime"});
@@ -504,8 +474,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "y"});
@@ -524,7 +492,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtShortDateComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "m"});
@@ -543,7 +510,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "с");
         test.done();
     },
-
     testDateFmtShortDateComponentsN_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "n"});
@@ -562,7 +528,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "с");
         test.done();
     },
-
     testDateFmtShortDateComponentsD_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "d"});
@@ -581,7 +546,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "dm"});
@@ -600,7 +564,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9");
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "my"});
@@ -619,7 +582,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "9.11.");
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "dmy"});
@@ -638,7 +600,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "wdm"});
@@ -657,7 +618,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "ч, 29.9");
         test.done();
     },
-
     testDateFmtShortDateComponentsWDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "wdmy"});
@@ -676,8 +636,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "ч, 29.9.11.");
         test.done();
     },
-
-
     testDateFmtFullDateComponentsY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "y"});
@@ -696,7 +654,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtFullDateComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "m"});
@@ -715,7 +672,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "септембар");
         test.done();
     },
-
     testDateFmtFullDateComponentsD_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "d"});
@@ -734,7 +690,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "dm"});
@@ -753,7 +708,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар");
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "my"});
@@ -772,7 +726,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "септембар 2011.");
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "dmy"});
@@ -791,7 +744,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "wdm"});
@@ -810,7 +762,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "четвртак, 29. септембар");
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "wdmy"});
@@ -829,8 +780,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "четвртак, 29. септембар 2011.");
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "s"});
@@ -849,7 +798,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "m"});
@@ -868,7 +816,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "h"});
@@ -887,7 +834,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "ms"});
@@ -906,7 +852,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hm"});
@@ -925,7 +870,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hms"});
@@ -944,7 +888,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hma"});
@@ -963,7 +906,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -986,7 +928,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1009,7 +950,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hmsa"});
@@ -1028,7 +968,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1051,7 +990,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1074,8 +1012,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "s"});
@@ -1094,7 +1030,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "m"});
@@ -1113,7 +1048,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "h"});
@@ -1132,7 +1066,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "ms"});
@@ -1151,7 +1084,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hm"});
@@ -1170,7 +1102,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hms"});
@@ -1189,7 +1120,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hma"});
@@ -1208,7 +1138,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1232,7 +1161,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1256,7 +1184,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hmsa"});
@@ -1275,7 +1202,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1299,7 +1225,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1323,7 +1248,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1347,7 +1271,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CET");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinMinuteAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1516,7 +1439,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), 'прије 4 сата');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1573,7 +1495,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), 'прије 4 дана');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1630,7 +1551,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), 'прије 9 седмица');
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
@@ -1687,7 +1607,6 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), 'прије 14 мјесеци');
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});

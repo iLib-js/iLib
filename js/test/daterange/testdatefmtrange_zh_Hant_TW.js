@@ -32,7 +32,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtTWRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
         test.done();
     },
-
     testDateRngFmtTWRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
         test.done();
     },
-
     testDateRngFmtTWRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月20日 – 31日");
         test.done();
     },
-
     testDateRngFmtTWRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 12月31日");
         test.done();
     },
-
     testDateRngFmtTWRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 2012年1月31日");
         test.done();
     },
-
     testDateRngFmtTWRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
@@ -688,5 +682,4 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年 – 2064年");
         test.done();
     }
-
 };

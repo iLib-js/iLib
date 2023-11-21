@@ -37,7 +37,6 @@ module.exports.numplanasync = {
             }
         });
     },
-
     testNumberingPlanAsync2: function(test) {
         test.expect(2);
         new NumberingPlan({
@@ -50,7 +49,6 @@ module.exports.numplanasync = {
             }
         });
     },
-
     testNumberingPlanAsyncUnknown: function(test) {
         test.expect(2);
         new NumberingPlan({
@@ -63,7 +61,6 @@ module.exports.numplanasync = {
             }
         });
     },
-
     testNumberingPlanAsyncUnrecognized: function(test) {
         test.expect(2);
         new NumberingPlan({

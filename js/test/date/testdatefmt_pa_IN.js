@@ -35,7 +35,6 @@ module.exports.testdatefmt_pa_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtINConstructorEmpty_pa_IN: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "pa-IN"});
@@ -43,8 +42,6 @@ module.exports.testdatefmt_pa_IN = {
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
-
-
     testDateFmtINSimpleShort_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "short"});
@@ -62,7 +59,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINSimpleMedium_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "medium"});
@@ -81,7 +77,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰ 2011");
         test.done();
     },
-
     testDateFmtINSimpleLong_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "long"});
@@ -100,7 +95,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011");
         test.done();
     },
-
     testDateFmtINSimpleFull_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full"});
@@ -119,7 +113,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "short", type: "time"});
@@ -138,7 +131,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINSimpleTimeShort_pa_IN1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "short", type: "time"});
@@ -157,7 +149,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINSimpleTimeMedium_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "medium", type: "time"});
@@ -176,7 +167,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINSimpleTimeLong_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", timelength: "long", type: "time"});
@@ -195,7 +185,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINSimpleTimeFull_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", type: "time"});
@@ -214,7 +203,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleShort_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "short", type: "datetime"});
@@ -233,7 +221,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9/11, 1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleMedium_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "medium", type: "datetime"});
@@ -252,7 +239,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰ 2011, 1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleLong_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "long", type: "datetime"});
@@ -271,7 +257,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINDateTimeSimpleFull_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", type: "datetime"});
@@ -290,8 +275,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
-
     testDateFmtINTemplateCalendar_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", calendar: "julian", template: "yyyy-MM-dd"});
@@ -310,7 +293,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
     testDateFmtINTemplateClock12SwitchHH_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", clock: "12", template: "HH:mm"});
@@ -329,7 +311,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock12Switchkk_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", clock: "12", template: "kk:mm"});
@@ -348,7 +329,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24Switchhh_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", clock: "24", template: "hh:mm"});
@@ -367,7 +347,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateClock24SwitchKK_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", clock: "24", template: "KK:mm"});
@@ -386,7 +365,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", template: "hh:mm"});
@@ -405,7 +383,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", template: "KK:mm"});
@@ -424,7 +401,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", template: "HH:mm"});
@@ -443,7 +419,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
     testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", template: "kk:mm"});
@@ -462,8 +437,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-
-
     testDateFmtINTypeDate_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "date"});
@@ -482,7 +455,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINTypeTime_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time"});
@@ -501,7 +473,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINTypeDateTime_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "datetime"});
@@ -520,8 +491,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9/11, 1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
-
     testDateFmtINShortDateComponentsY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "y"});
@@ -540,7 +509,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "m"});
@@ -559,7 +527,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsN_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "n"});
@@ -578,7 +545,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਸ");
         test.done();
     },
-
     testDateFmtINShortDateComponentsD_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "d"});
@@ -597,7 +563,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "dm"});
@@ -616,7 +581,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "my"});
@@ -635,7 +599,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "9/11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsDMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "dmy"});
@@ -654,7 +617,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "wdm"});
@@ -673,7 +635,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਵੀ, 29/9");
         test.done();
     },
-
     testDateFmtINShortDateComponentsWDMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", date: "wdmy"});
@@ -692,8 +653,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਵੀ, 29/9/11");
         test.done();
     },
-
-
     testDateFmtINFullDateComponentsY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "y"});
@@ -712,7 +671,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "m"});
@@ -731,7 +689,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਸਤੰਬਰ");
         test.done();
     },
-
     testDateFmtINFullDateComponentsD_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "d"});
@@ -750,7 +707,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "dm"});
@@ -769,7 +725,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ");
         test.done();
     },
-
     testDateFmtINFullDateComponentsMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "my"});
@@ -788,7 +743,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਸਤੰਬਰ 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsDMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "dmy"});
@@ -807,7 +761,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "wdm"});
@@ -826,7 +779,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਵੀਰਵਾਰ, 29 ਸਤੰਬਰ");
         test.done();
     },
-
     testDateFmtINFullDateComponentsWDMY_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full", date: "wdmy"});
@@ -845,8 +797,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "ਵੀਰਵਾਰ, 29 ਸਤੰਬਰ 2011");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsS_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "s"});
@@ -865,7 +815,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "m"});
@@ -884,7 +833,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsH_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "h"});
@@ -903,8 +851,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-
-
     testDateFmtINShortTimeComponentsHM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "hm"});
@@ -923,7 +869,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMS_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "hms"});
@@ -942,7 +887,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMA_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "hma"});
@@ -961,7 +905,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -984,7 +927,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMAZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1008,7 +950,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSA_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", time: "hmsa"});
@@ -1027,7 +968,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1051,7 +991,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINShortTimeComponentsHMSAZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1075,8 +1014,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
-
     testDateFmtINFullTimeComponentsS_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "s"});
@@ -1095,7 +1032,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsM_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "m"});
@@ -1114,7 +1050,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsH_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "h"});
@@ -1154,7 +1089,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMS_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "hmsa"});
@@ -1173,7 +1107,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMA_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "hma"});
@@ -1219,7 +1152,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSA_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", type: "time", length: "full", time: "hmsa"});
@@ -1238,7 +1170,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1263,7 +1194,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINFullTimeComponentsHMSAZ_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1288,7 +1218,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
         test.done();
     },
-
     testDateFmtINWithTimeZoneAndNoDST_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1483,7 +1412,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 घंटे पहले");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full"});
@@ -1540,7 +1468,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.formatRelative(reference, date), "4 दिन पहले");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full"});
@@ -1597,7 +1524,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.formatRelative(reference, date), "9 सप्ताह पहले");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full"});
@@ -1654,7 +1580,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.formatRelative(reference, date), "14 महीने पहले");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_pa_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "pa-IN", length: "full"});
@@ -1712,7 +1637,4 @@ module.exports.testdatefmt_pa_IN = {
         test.done();
     }
     */
-
-
-
 };

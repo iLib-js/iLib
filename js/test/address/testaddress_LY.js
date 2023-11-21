@@ -23,7 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -33,7 +32,6 @@ module.exports.testaddress_LY = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressLYARNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
@@ -47,7 +45,6 @@ module.exports.testaddress_LY = {
         test.equal(parsedAddress.countryCode, "LY");
         test.done();
     },
-
     testParseAddressLYARNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
@@ -61,7 +58,6 @@ module.exports.testaddress_LY = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressLYARManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\n ليبيا", {locale: 'ar-LY'});
@@ -75,7 +71,6 @@ module.exports.testaddress_LY = {
         test.equal(parsedAddress.countryCode, "LY");
         test.done();
     },
-
     testParseAddressLYAROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
@@ -89,7 +84,6 @@ module.exports.testaddress_LY = {
         test.equal(parsedAddress.countryCode, "LY");
         test.done();
     },
-
     testParseAddressLYARSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢   \n\t\n طرابلس\t\n\n  ليبيا  \n  \t\t\t", {locale: 'ar-LY'});
@@ -134,7 +128,6 @@ module.exports.testaddress_LY = {
         test.equal(parsedAddress.countryCode, "LY");
         test.done();
     },
-
     testParseAddressLYFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, Libya", {locale: 'en-US'});
@@ -150,7 +143,6 @@ module.exports.testaddress_LY = {
         test.equal(parsedAddress.countryCode, "LY");
         test.done();
     },
-
     testFormatAddressLY: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +157,6 @@ module.exports.testaddress_LY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressLYARFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,5 +171,4 @@ module.exports.testaddress_LY = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

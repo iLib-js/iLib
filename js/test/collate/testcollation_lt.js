@@ -30,7 +30,6 @@ module.exports.testcollation_lt = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuatCD_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -49,7 +48,6 @@ module.exports.testcollation_lt = {
         test.ok("č < d",  col.compare("č", "d") < 0);
         test.done();
     },
-
     testJSCollatorQuatEF_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -70,7 +68,6 @@ module.exports.testcollation_lt = {
         test.ok("ė < f",  col.compare("ė", "f") < 0);
         test.done();
     },
-
     testJSCollatorQuatIJ_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -91,7 +88,6 @@ module.exports.testcollation_lt = {
         test.ok("y < j",  col.compare("y", "j") < 0);
         test.done();
     },
-
     testJSCollatorQuatST_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -110,7 +106,6 @@ module.exports.testcollation_lt = {
         test.ok("š < t",  col.compare("š", "t") < 0);
         test.done();
     },
-
     testJSCollatorQuatUV_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -131,7 +126,6 @@ module.exports.testcollation_lt = {
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.done();
     },
-
     testJSCollatorQuatZ_lt: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -148,7 +142,6 @@ module.exports.testcollation_lt = {
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-
     // differences in accented characters should be primary differences
 
     testJSCollatorPrimaryCD_lt: function(test) {
@@ -170,7 +163,6 @@ module.exports.testcollation_lt = {
         test.ok("č < d",  col.compare("č", "d") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryEF_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -192,7 +184,6 @@ module.exports.testcollation_lt = {
         test.ok("ė < f",  col.compare("ė", "f") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryIJ_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -214,7 +205,6 @@ module.exports.testcollation_lt = {
         test.ok("y < j",  col.compare("y", "j") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryST_lt: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -234,7 +224,6 @@ module.exports.testcollation_lt = {
         test.ok("š < t",  col.compare("š", "t") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryUV_lt: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -256,7 +245,6 @@ module.exports.testcollation_lt = {
         test.ok("ū < v",  col.compare("ū", "v") < 0);
         test.done();
     },
-
     testJSCollatorPrimaryZ_lt: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -274,7 +262,6 @@ module.exports.testcollation_lt = {
         test.ok("z < ž",  col.compare("z", "ž") < 0);
         test.done();
     },
-
     testCollatorNativeCase_lt: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -379,7 +366,6 @@ module.exports.testcollation_lt = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorNativeVariant_lt: function(test) {
         test.expect(2);
         var col = new Collator({

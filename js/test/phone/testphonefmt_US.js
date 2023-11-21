@@ -46,12 +46,10 @@ module.exports.phonefmt_US = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testFormatUSNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -68,7 +66,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -84,7 +81,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -100,7 +96,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSFull0: function(test) {
         test.expect(1);
         var formatted;
@@ -116,7 +111,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -167,7 +161,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -185,7 +178,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSInternationalAccessCode2: function(test) {
         test.expect(1);
         var formatted;
@@ -199,7 +191,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSPlusIDDtoUnknownCountry: function(test) {
         test.expect(1);
         var formatted;
@@ -216,7 +207,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0DialAround: function(test) {
         test.expect(1);
         var formatted;
@@ -233,7 +223,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle1DialAround: function(test) {
         test.expect(1);
         var formatted;
@@ -250,7 +239,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0Vertical: function(test) {
         test.expect(1);
         var formatted;
@@ -267,7 +255,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0OldVertical: function(test) {
         test.expect(1);
         var formatted;
@@ -284,7 +271,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalWithPauseChars: function(test) {
         test.expect(1);
         var formatted;
@@ -300,7 +286,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLDWithPauseChars: function(test) {
         test.expect(1);
         var formatted;
@@ -317,7 +302,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalWithExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -333,7 +317,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLDWithExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -350,7 +333,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLDWithTrunkAndExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -368,7 +350,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0Emergency: function(test) {
         test.expect(1);
         var formatted;
@@ -383,7 +364,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSEmergencyLikeServiceNumber: function(test) {
         test.expect(1);
         var formatted;
@@ -398,7 +378,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSStyle0EmergencyExtended: function(test) {
         test.expect(1);
         var formatted;
@@ -414,7 +393,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithUSMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -430,7 +408,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithUSMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -446,7 +423,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithUSMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -461,7 +437,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithUSMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -494,7 +469,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -511,7 +485,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -526,7 +499,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -541,7 +513,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithDEMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -558,7 +529,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithDEMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -575,7 +545,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -590,7 +559,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -605,7 +573,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithMXMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -621,7 +588,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithMXMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -637,7 +603,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithMXMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -652,7 +617,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSLocalNumberWithMXMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -667,7 +631,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     //for NOV-108200
     testFormatUSWithBogusSpecialChars: function(test) {
         test.expect(1);
@@ -686,7 +649,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -703,7 +665,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -719,7 +680,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -735,7 +695,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSFull0: function(test) {
         test.expect(1);
         var formatted;
@@ -751,7 +710,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatPartialSMS: function(test) {
         test.expect(1);
         var formatted;
@@ -766,7 +724,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatWholeSMS: function(test) {
         test.expect(1);
         var formatted;
@@ -781,7 +738,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -799,7 +755,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSInternationalLongArea: function(test) {
         test.expect(1);
         var formatted;
@@ -817,7 +772,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -835,7 +789,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPlusIDDtoUnknownCountry: function(test) {
         test.expect(1);
         var formatted;
@@ -852,7 +805,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0DialAround: function(test) {
         test.expect(1);
         var formatted;
@@ -869,7 +821,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1DialAround: function(test) {
         test.expect(1);
         var formatted;
@@ -886,7 +837,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Vertical: function(test) {
         test.expect(1);
         var formatted;
@@ -903,7 +853,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0OldVertical: function(test) {
         test.expect(1);
         var formatted;
@@ -920,7 +869,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalWithPauseChars: function(test) {
         test.expect(1);
         var formatted;
@@ -936,7 +884,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLDWithPauseChars: function(test) {
         test.expect(1);
         var formatted;
@@ -953,7 +900,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalWithExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -969,7 +915,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLDWithExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -986,7 +931,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLDWithTrunkAndExtension: function(test) {
         test.expect(1);
         var formatted;
@@ -1004,7 +948,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Emergency: function(test) {
         test.expect(1);
         var formatted;
@@ -1019,7 +962,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0EmergencyExtended: function(test) {
         test.expect(1);
         var formatted;
@@ -1035,7 +977,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial1: function(test) {
         test.expect(1);
         var formatted;
@@ -1050,7 +991,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -1065,7 +1005,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -1080,7 +1019,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial4: function(test) {
         test.expect(1);
         var formatted;
@@ -1096,7 +1034,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial5: function(test) {
         test.expect(1);
         var formatted;
@@ -1112,7 +1049,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial6: function(test) {
         test.expect(1);
         var formatted;
@@ -1128,7 +1064,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial7: function(test) {
         test.expect(1);
         var formatted;
@@ -1144,7 +1079,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial8: function(test) {
         test.expect(1);
         var formatted;
@@ -1160,7 +1094,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial9: function(test) {
         test.expect(1);
         var formatted;
@@ -1176,7 +1109,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -1192,7 +1124,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0Partial11: function(test) {
         test.expect(1);
         var formatted;
@@ -1208,7 +1139,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -1223,7 +1153,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal2: function(test) {
         test.expect(1);
         var formatted;
@@ -1238,7 +1167,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal3: function(test) {
         test.expect(1);
         var formatted;
@@ -1253,7 +1181,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal4: function(test) {
         test.expect(1);
         var formatted;
@@ -1268,7 +1195,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal5: function(test) {
         test.expect(1);
         var formatted;
@@ -1283,7 +1209,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal6: function(test) {
         test.expect(1);
         var formatted;
@@ -1298,7 +1223,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal7: function(test) {
         test.expect(1);
         var formatted;
@@ -1313,7 +1237,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialLocal8: function(test) {
         test.expect(1);
         var formatted;
@@ -1328,7 +1251,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk1: function(test) {
         test.expect(1);
         var formatted;
@@ -1343,7 +1265,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk1: function(test) {
         test.expect(1);
         var formatted;
@@ -1359,7 +1280,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk2: function(test) {
         test.expect(1);
         var formatted;
@@ -1375,7 +1295,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk3: function(test) {
         test.expect(1);
         var formatted;
@@ -1391,7 +1310,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk4: function(test) {
         test.expect(1);
         var formatted;
@@ -1408,7 +1326,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk5: function(test) {
         test.expect(1);
         var formatted;
@@ -1425,7 +1342,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk6: function(test) {
         test.expect(1);
         var formatted;
@@ -1442,7 +1358,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk7: function(test) {
         test.expect(1);
         var formatted;
@@ -1459,7 +1374,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk8: function(test) {
         test.expect(1);
         var formatted;
@@ -1476,7 +1390,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk9: function(test) {
         test.expect(1);
         var formatted;
@@ -1493,7 +1406,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk10: function(test) {
         test.expect(1);
         var formatted;
@@ -1510,7 +1422,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle0PartialTrunk11: function(test) {
         test.expect(1);
         var formatted;
@@ -1527,7 +1438,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial1: function(test) {
         test.expect(1);
         var formatted;
@@ -1542,7 +1452,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -1557,7 +1466,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -1572,7 +1480,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial4: function(test) {
         test.expect(1);
         var formatted;
@@ -1588,7 +1495,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial5: function(test) {
         test.expect(1);
         var formatted;
@@ -1604,7 +1510,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial6: function(test) {
         test.expect(1);
         var formatted;
@@ -1620,7 +1525,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial7: function(test) {
         test.expect(1);
         var formatted;
@@ -1636,7 +1540,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial8: function(test) {
         test.expect(1);
         var formatted;
@@ -1652,7 +1555,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial9: function(test) {
         test.expect(1);
         var formatted;
@@ -1668,7 +1570,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -1684,7 +1585,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1Partial11: function(test) {
         test.expect(1);
         var formatted;
@@ -1700,7 +1600,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -1715,7 +1614,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal2: function(test) {
         test.expect(1);
         var formatted;
@@ -1730,7 +1628,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal3: function(test) {
         test.expect(1);
         var formatted;
@@ -1745,7 +1642,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal4: function(test) {
         test.expect(1);
         var formatted;
@@ -1760,7 +1656,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal5: function(test) {
         test.expect(1);
         var formatted;
@@ -1775,7 +1670,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal6: function(test) {
         test.expect(1);
         var formatted;
@@ -1790,7 +1684,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal7: function(test) {
         test.expect(1);
         var formatted;
@@ -1805,7 +1698,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialLocal8: function(test) {
         test.expect(1);
         var formatted;
@@ -1820,7 +1712,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk1: function(test) {
         test.expect(1);
         var formatted;
@@ -1835,7 +1726,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk1: function(test) {
         test.expect(1);
         var formatted;
@@ -1851,7 +1741,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk2: function(test) {
         test.expect(1);
         var formatted;
@@ -1867,7 +1756,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk3: function(test) {
         test.expect(1);
         var formatted;
@@ -1883,7 +1771,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk4: function(test) {
         test.expect(1);
         var formatted;
@@ -1900,7 +1787,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk5: function(test) {
         test.expect(1);
         var formatted;
@@ -1917,7 +1803,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk6: function(test) {
         test.expect(1);
         var formatted;
@@ -1934,7 +1819,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk7: function(test) {
         test.expect(1);
         var formatted;
@@ -1951,7 +1835,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk8: function(test) {
         test.expect(1);
         var formatted;
@@ -1968,7 +1851,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk9: function(test) {
         test.expect(1);
         var formatted;
@@ -1985,7 +1867,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk10: function(test) {
         test.expect(1);
         var formatted;
@@ -2002,7 +1883,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSStyle1PartialTrunk11: function(test) {
         test.expect(1);
         var formatted;
@@ -2019,7 +1899,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry0: function(test) {
         test.expect(1);
         var formatted;
@@ -2034,7 +1913,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry1: function(test) {
         test.expect(1);
         var formatted;
@@ -2050,7 +1928,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry2: function(test) {
         test.expect(1);
         var formatted;
@@ -2066,7 +1943,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry3: function(test) {
         test.expect(1);
         var formatted;
@@ -2083,7 +1959,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry4: function(test) {
         test.expect(1);
         var formatted;
@@ -2101,7 +1976,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry5: function(test) {
         test.expect(1);
         var formatted;
@@ -2119,7 +1993,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry6: function(test) {
         test.expect(1);
         var formatted;
@@ -2138,7 +2011,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatUSPartialIDDToPreserveZeroCountry7: function(test) {
         test.expect(1);
         var formatted;
@@ -2157,7 +2029,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithUSMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2173,7 +2044,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithUSMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2189,7 +2059,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithUSMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2204,7 +2073,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithUSMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2219,7 +2087,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2236,7 +2103,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2253,7 +2119,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2268,7 +2133,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2283,7 +2147,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithDEMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2300,7 +2163,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithDEMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2317,7 +2179,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2332,7 +2193,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithFRMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2347,7 +2207,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatUSNumberWithMXMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2363,7 +2222,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatNumberWithMXMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2379,7 +2237,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithMXMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -2394,7 +2251,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatLocalNumberWithMXMCCNoLocale: function(test) {
         test.expect(1);
         var formatted;
@@ -2409,7 +2265,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     //for NOV-108200
     testWithParamsFormatWithBogusSpecialChars: function(test) {
         test.expect(1);
@@ -2428,7 +2283,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatWith555Number: function(test) {
         test.expect(1);
         var formatted;
@@ -2444,7 +2298,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatFictitiousNumberLocal: function(test) {
         test.expect(1);
         var formatted;
@@ -2459,7 +2312,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatFictitiousNumberLD: function(test) {
         test.expect(1);
         var formatted;
@@ -2475,7 +2327,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testWithParamsFormatSMSThatLooksFictitious: function(test) {
         test.expect(1);
         var formatted;
@@ -2490,7 +2341,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     //for NOV-113367
     testCrazyIntl: function(test) {
         test.expect(1);
@@ -2509,7 +2359,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     //for NOV-109333
     testOddVSC: function(test) {
         test.expect(1);
@@ -2525,7 +2374,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testSSCode: function(test) {
         test.expect(1);
         var formatted;
@@ -2541,7 +2389,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     // for CFISH-5088
     testVSCUMTS1: function(test) {
         test.expect(2);
@@ -2557,7 +2404,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS2: function(test) {
         test.expect(2);
         var formatted;
@@ -2572,7 +2418,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS3: function(test) {
         test.expect(2);
         var formatted;
@@ -2587,7 +2432,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS4: function(test) {
         test.expect(2);
         var formatted;
@@ -2602,7 +2446,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS5: function(test) {
         test.expect(2);
         var formatted;
@@ -2617,7 +2460,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS6: function(test) {
         test.expect(2);
         var formatted;
@@ -2632,7 +2474,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS7: function(test) {
         test.expect(2);
         var formatted;
@@ -2647,7 +2488,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testVSCUMTS8: function(test) {
         test.expect(2);
         var formatted;
@@ -2662,7 +2502,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     // for CFISH-6362
     testVSCCDMALong: function(test) {
         test.expect(2);
@@ -2678,7 +2517,6 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testGetAvailableStyles: function(test) {
         test.expect(4);
         var fmtStyle = new PhoneFmt({locale: "en-US"});
@@ -2690,7 +2528,6 @@ module.exports.phonefmt_US = {
         test.equal(styles[2], "dots");
         test.done();
     },
-
     testGetStyleExample: function(test) {
         test.expect(3);
         var fmtStyle = new PhoneFmt({locale: "en-US"});
@@ -2703,7 +2540,6 @@ module.exports.phonefmt_US = {
         test.equal(exampleDots, "1.650.555.1234");
         test.done();
     },
-
     testPhoneFmtUSLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing

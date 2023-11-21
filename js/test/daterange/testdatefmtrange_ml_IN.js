@@ -34,7 +34,6 @@ module.exports.testdatefmtrange_ml_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtRangeinDayShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -139,7 +138,6 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 31 1:45 PM – 2:30 PM");
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -244,7 +242,6 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM");
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -349,7 +346,6 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, ഡിസംബർ 20 – 31");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -454,7 +450,6 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, നവംബർ 20 – ഡിസംബർ 31");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -559,7 +554,6 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011, നവംബർ 20 – 2012, ജനുവരി 31");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});
@@ -690,5 +684,4 @@ module.exports.testdatefmtrange_ml_IN = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

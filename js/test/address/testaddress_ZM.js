@@ -32,7 +32,6 @@ module.exports.testaddress_ZM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressZMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA\nZAMBIA", {locale: 'en-ZM'});
@@ -46,7 +45,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\nNDOLA\nZAMBIA", {locale: 'en-ZM'});
@@ -60,7 +58,6 @@ module.exports.testaddress_ZM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressZMNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA", {locale: 'en-ZM'});
@@ -74,7 +71,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n50100\nNDOLA\nZAMBIA\n\n\n", {locale: 'en-ZM'});
@@ -87,7 +83,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda , 10 , Nyimba , Road , 50100 , NDOLA , ZAMBIA", {locale: 'en-ZM'});
@@ -101,7 +96,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n50100\t\nNDOLA\n\t ZAMBIA\n\n\n", {locale: 'en-ZM'});
@@ -115,7 +109,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road 50100 NDOLA ZAMBIA", {locale: 'en-ZM'});
@@ -129,7 +122,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testParseAddressZMFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n56001 NDOLA\nZAMBIA", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_ZM = {
         test.equal(parsedAddress.countryCode, "ZM");
         test.done();
     },
-
     testFormatAddressZM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_ZM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressZMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_ZM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

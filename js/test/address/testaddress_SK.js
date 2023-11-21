@@ -32,7 +32,6 @@ module.exports.testaddress_SK = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressSKNormal: function(test) {
         test.expect(7);
 
@@ -47,7 +46,6 @@ module.exports.testaddress_SK = {
         test.done();
 
     },
-
     testParseAddressSKOtherName: function(test) {
         test.expect(7);
 
@@ -62,7 +60,6 @@ module.exports.testaddress_SK = {
         test.done();
 
     },
-
     testParseAddressSKNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
@@ -75,7 +72,6 @@ module.exports.testaddress_SK = {
         test.equal(parsedAddress.countryCode, "SK");
         test.done();
     },
-
     testParseAddressSKNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1", {locale: 'sk-SK'});
@@ -90,7 +86,6 @@ module.exports.testaddress_SK = {
         test.done();
 
     },
-
     testParseAddressSKManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský\nGazdova 4\n010 01\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
@@ -104,7 +99,6 @@ module.exports.testaddress_SK = {
         test.equal(parsedAddress.countryCode, "SK");
         test.done();
     },
-
     testParseAddressSKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4 010 01 ŽILINA 1 SLOVAKIA", {locale: 'sk-SK'});
@@ -118,8 +112,6 @@ module.exports.testaddress_SK = {
         test.equal(parsedAddress.countryCode, "SK");
         test.done();
     },
-
-
     testParseAddressSKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'en-US'});
@@ -135,7 +127,6 @@ module.exports.testaddress_SK = {
         test.equal(parsedAddress.countryCode, "SK");
         test.done();
     },
-
     testFormatAddressSK: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -152,7 +143,6 @@ module.exports.testaddress_SK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressSKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -169,5 +159,4 @@ module.exports.testaddress_SK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

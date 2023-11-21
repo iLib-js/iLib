@@ -29,7 +29,6 @@ module.exports.testcollation_zh_Hant = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuatHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -92,7 +91,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-
     testJSCollatorTerHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -154,7 +152,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-
     testJSCollatorSecHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -216,7 +213,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-
     testJSCollatorPriHanzi_zh_Hant_stroke: function(test) {
         test.expect(48);
         var col = new Collator({
@@ -278,7 +274,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("䨻 < 𠔻", col.compare("䨻", "𠔻") < 0);
         test.done();
     },
-
     testJSCollatorQuatHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -302,7 +297,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-
     testJSCollatorTerHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -326,7 +320,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-
     testJSCollatorSecHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -350,7 +343,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-
     testJSCollatorPriHanziVariants_zh_Hant_stroke: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -374,7 +366,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-
     testJSCollatorPinyinQuat_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -609,7 +600,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinTer_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -844,7 +834,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinSec_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -1079,7 +1068,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testJSCollatorPinyinPri_zh_Hant_stroke: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -1314,7 +1302,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testJSCollatorBopomofoQuat_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1365,7 +1352,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoTer_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1416,7 +1402,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoSec_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1467,7 +1452,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoPri_zh_Hant_stroke: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1518,7 +1502,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testCollatorCase_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1578,7 +1561,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPri_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1638,7 +1620,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixed_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1714,7 +1695,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_stroke: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1818,7 +1798,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testJSCollatorQuatHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1872,7 +1851,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-
     testJSCollatorTerHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1925,7 +1903,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-
     testJSCollatorSecHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -1978,7 +1955,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-
     testJSCollatorPriHanzi_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -2031,7 +2007,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("臾 < 砽", col.compare("臾", "砽") < 0);
         test.done();
     },
-
     testJSCollatorQuatHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2055,7 +2030,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("㊁ < 🈔", col.compare("㊁", "🈔") < 0);
         test.done();
     },
-
     testJSCollatorTerHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2079,7 +2053,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("㊁ < 🈔", col.compare("㊁", "🈔") < 0);
         test.done();
     },
-
     testJSCollatorSecHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2103,7 +2076,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("㊁ = 🈔", col.compare("㊁", "🈔") === 0);
         test.done();
     },
-
     testJSCollatorPriHanziVariants_zh_Hant_zhuyin: function(test) {
         test.expect(7);
         var col = new Collator({
@@ -2127,7 +2099,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("㊁ = 🈔", col.compare("㊁", "🈔") === 0);
         test.done();
     },
-
     testJSCollatorPinyinQuat_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2363,7 +2334,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinTer_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2599,7 +2569,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinSec_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -2835,7 +2804,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testJSCollatorPinyinPri_zh_Hant_zhuyin: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -3071,7 +3039,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testJSCollatorBopomofoQuat_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3123,7 +3090,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoTer_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3175,7 +3141,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoSec_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3227,7 +3192,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testJSCollatorBopomofoPri_zh_Hant_zhuyin: function(test) {
         test.expect(38);
         var col = new Collator({
@@ -3279,7 +3243,6 @@ module.exports.testcollation_zh_Hant = {
         test.ok("ㄩ < ㄭ", col.compare("ㄩ", "ㄭ") < 0);
         test.done();
     },
-
     testCollatorCase_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3366,7 +3329,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPri_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3453,7 +3415,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixed_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3604,7 +3565,6 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_zhuyin: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -3764,5 +3724,4 @@ module.exports.testcollation_zh_Hant = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

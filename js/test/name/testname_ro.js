@@ -32,7 +32,6 @@ module.exports.testname_ro = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Sebastian Stan", {locale: 'ro-RO'});
@@ -46,7 +45,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleNameWithMiddleName_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Alexandra Maria Lara", {locale: 'ro-RO'});
@@ -61,7 +59,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
@@ -76,7 +73,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Dl. Stan", {locale: 'ro-RO'});
@@ -90,9 +86,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Dl. și D-na. Stan", {locale: 'ro-RO'});
@@ -106,7 +99,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Dl. Sebastian Stan", {locale: 'ro-RO'});
@@ -121,7 +113,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_ro_RO: function(test) {
         test.expect(2);
         var parsed = new Name("Vice-presedinte Sebastian Stan retras", {locale: 'ro-RO'});
@@ -137,10 +128,6 @@ module.exports.testname_ro = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -159,7 +146,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -179,7 +165,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -200,9 +185,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -222,7 +204,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -244,7 +225,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,7 +244,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -284,7 +263,6 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_ro_RO: function(test) {
         test.expect(2);
         var name = new Name({
@@ -304,7 +282,4 @@ module.exports.testname_ro = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

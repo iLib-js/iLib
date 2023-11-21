@@ -68,7 +68,6 @@ module.exports.phonegeoasync = {
             }
         });
     },
-
     testPhoneGeoAsyncNANPOtherLocale: function(test) {
         test.expect(6);
         new PhoneNumber("+1 650 654 3210", {
@@ -104,7 +103,6 @@ module.exports.phonegeoasync = {
             }
         });
     },
-
     //for bug NOV-118981
     testPhoneGeoAsyncNANPInvalidNumber: function(test) {
         test.expect(6);
@@ -142,7 +140,6 @@ module.exports.phonegeoasync = {
         });
 
     },
-
     testPhoneGeoAsyncDefaultDE: function(test) {
         test.expect(6);
         new PhoneNumber("06224 123456", {
@@ -179,7 +176,6 @@ module.exports.phonegeoasync = {
             }
         });
     },
-
     testPhoneGeoAsyncDEMobileNumber: function(test) {
         test.expect(6);
         new PhoneNumber("017 12345678", {
@@ -216,7 +212,6 @@ module.exports.phonegeoasync = {
             }
         });
     },
-
     testPhoneGeoAsyncDefaultHK: function(test) {
         test.expect(6);
         new PhoneNumber("0663 12345678", {

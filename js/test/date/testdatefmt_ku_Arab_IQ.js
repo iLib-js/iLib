@@ -35,7 +35,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         ilib.clearCache();
         callback();
     },
-
     testDateFmtSimpleShort_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -54,7 +53,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
-
     testDateFmtSimpleMedium_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium"});
@@ -73,7 +71,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-
     testDateFmtSimpleLong_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long"});
@@ -92,7 +89,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١');
         test.done();
     },
-
     testDateFmtSimpleFull_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -111,7 +107,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-
     testDateFmtSimpleTimeShort_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short", type: "time"});
@@ -130,7 +125,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtSimpleTimeMedium_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium", type: "time"});
@@ -149,7 +143,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtSimpleTimeLong_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", timelength: "long", type: "time"});
@@ -168,7 +161,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtSimpleTimeFull_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", type: "time"});
@@ -187,7 +179,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtDateTimeSimpleShort_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short", type: "datetime"});
@@ -206,7 +197,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtDateTimeSimpleMedium_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium", type: "datetime"});
@@ -225,7 +215,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtDateTimeSimpleLong_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long", type: "datetime"});
@@ -244,7 +233,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١ ‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtDateTimeSimpleFull_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", type: "datetime"});
@@ -263,8 +251,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-
-
     testDateFmtTemplateCalendar_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", calendar: "julian", template: "yyyy-MM-dd"});
@@ -304,7 +290,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-
     testDateFmtTemplateClock12Switchkk_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "12", template: "kk:mm"});
@@ -323,7 +308,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-
     testDateFmtTemplateClock24Switchhh_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "24", template: "hh:mm"});
@@ -342,7 +326,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-
     testDateFmtTemplateClock24SwitchKK_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "24", template: "KK:mm"});
@@ -361,7 +344,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "hh:mm"});
@@ -380,7 +362,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "KK:mm"});
@@ -399,7 +380,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "HH:mm"});
@@ -418,7 +398,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "kk:mm"});
@@ -437,8 +416,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date),  '١٣:٤٥');
         test.done();
     },
-
-
     testDateFmtTypeDate_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "date"});
@@ -457,7 +434,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
-
     testDateFmtTypeTime_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time"});
@@ -476,7 +452,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtTypeDateTime_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "datetime"});
@@ -495,8 +470,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-
-
     testDateFmtShortDateComponentsY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "y"});
@@ -515,7 +488,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
-
     testDateFmtShortDateComponentsM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "m"});
@@ -534,8 +506,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٠٩');
         test.done();
     },
-
-
     testDateFmtShortDateComponentsD_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "d"});
@@ -554,7 +524,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٢٩');
         test.done();
     },
-
     testDateFmtShortDateComponentsDM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "dm"});
@@ -573,7 +542,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٠٩-٢٩');
         test.done();
     },
-
     testDateFmtShortDateComponentsMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "my"});
@@ -592,7 +560,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١-٠٩');
         test.done();
     },
-
     testDateFmtShortDateComponentsDMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "dmy"});
@@ -613,7 +580,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.done();
 
     },
-
     testDateFmtShortDateComponentsWDM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "wdm"});
@@ -633,7 +599,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.done();
 
     },
-
     testDateFmtShortDateComponentsWDMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "wdmy"});
@@ -653,7 +618,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.done();
 
     },
-
     testDateFmtFullDateComponentsY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "y"});
@@ -672,7 +636,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
-
     testDateFmtFullDateComponentsM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "m"});
@@ -691,7 +654,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), 'ئەیلوول');
         test.done();
     },
-
     testDateFmtFullDateComponentsD_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "d"});
@@ -710,7 +672,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٢٩');
         test.done();
     },
-
     testDateFmtFullDateComponentsDM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "dm"});
@@ -729,7 +690,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), 'ئەیلوول ٢٩');
         test.done();
     },
-
     testDateFmtFullDateComponentsMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "my"});
@@ -748,7 +708,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول');
         test.done();
     },
-
     testDateFmtFullDateComponentsDMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "dmy"});
@@ -767,7 +726,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "wdm"});
@@ -786,7 +744,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), 'ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
-
     testDateFmtFullDateComponentsWDMY_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "wdmy"});
@@ -805,8 +762,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date),  '‏٢٠١١ ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
-
-
     testDateFmtShortTimeComponentsS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "s"});
@@ -825,7 +780,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٣٧');
         test.done();
     },
-
     testDateFmtShortTimeComponentsM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "m"});
@@ -844,7 +798,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٤٥');
         test.done();
     },
-
     testDateFmtShortTimeComponentsH_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "h"});
@@ -863,7 +816,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '١');
         test.done();
     },
-
     testDateFmtShortTimeComponentsMS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "ms"});
@@ -882,7 +834,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hm"});
@@ -901,7 +852,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hms"});
@@ -920,7 +870,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMA_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hma"});
@@ -939,7 +888,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -962,7 +910,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -985,7 +932,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hmsa"});
@@ -1004,7 +950,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1027,7 +972,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1050,8 +994,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
-
-
     testDateFmtFullTimeComponentsS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "s"});
@@ -1070,7 +1012,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٣٧');
         test.done();
     },
-
     testDateFmtFullTimeComponentsM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "m"});
@@ -1089,7 +1030,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٤٥');
         test.done();
     },
-
     testDateFmtFullTimeComponentsH_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "h"});
@@ -1108,7 +1048,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '١');
         test.done();
     },
-
     testDateFmtFullTimeComponentsMS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "ms"});
@@ -1127,7 +1066,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHM_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hm"});
@@ -1146,7 +1084,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMS_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hms"});
@@ -1165,7 +1102,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMA_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hma"});
@@ -1184,7 +1120,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1208,7 +1143,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1232,7 +1166,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hmsa"});
@@ -1251,7 +1184,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1275,7 +1207,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1299,7 +1230,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
-
     testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1491,7 +1421,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.formatRelative(reference, date), "لەمەوبەر 4 کاتژمێر");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinFortnightAfter_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -1548,7 +1477,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.formatRelative(reference, date), "لەمەوبەر 4 رۆژ");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinQuarterAfter_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -1605,7 +1533,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.formatRelative(reference, date), "لەمەوبەر 9 هەفتە");
         test.done();
     },
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
@@ -1662,7 +1589,6 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.equal(fmt.formatRelative(reference, date), "لەمەوبەر 14 مانگ");
         test.done();
     },
-
     testDateFmtFormatRelativeYearsAfter_ku_Arab_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});

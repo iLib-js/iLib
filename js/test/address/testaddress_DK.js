@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_DK = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressDKNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG, DENMARK", {locale: 'da-DK'});
@@ -48,7 +45,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, SKANDERBORG, DENMARK", {locale: 'da-DK'});
@@ -62,7 +58,6 @@ module.exports.testaddress_DK = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressDKShortZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, 8660 SKANDERBORG, DENMARK", {locale: 'da-DK'});
@@ -76,7 +71,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen\nKastanievej 15\nDK-8660 SKANDERBORG\nDENMARK", {locale: 'da-DK'});
@@ -90,7 +84,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
@@ -104,7 +97,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen,          Kastanievej 15   \n\t\n DK-8660      \t SKANDERBORG\t\n\n DENMARK  \n  \t\t\t", {locale: 'da-DK'});
@@ -118,7 +110,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen Kastanievej 15 DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
@@ -132,7 +123,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København, DENMARK", {locale: 'da-DK'});
@@ -146,7 +136,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKPostOffice: function(test) {
         test.expect(8);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København K, DENMARK", {locale: 'da-DK'});
@@ -161,7 +150,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKPostOfficeDot: function(test) {
         test.expect(8);
         var parsedAddress = new Address("Botanisk Centralbibliotek, Sølvgade 83, opg. S, DK-1307 København K., DENMARK", {locale: 'da-DK'});
@@ -176,7 +164,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testParseAddressDKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG, DENMARK", {locale: 'en-US'});
@@ -192,7 +179,6 @@ module.exports.testaddress_DK = {
         test.equal(parsedAddress.countryCode, "DK");
         test.done();
     },
-
     testFormatAddressDK: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -208,7 +194,6 @@ module.exports.testaddress_DK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDKPostOffice: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -225,7 +210,6 @@ module.exports.testaddress_DK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressDKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -241,5 +225,4 @@ module.exports.testaddress_DK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

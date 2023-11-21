@@ -32,7 +32,6 @@ module.exports.testaddress_GM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressGMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
@@ -46,7 +45,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     testParseAddressGMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
@@ -60,7 +58,6 @@ module.exports.testaddress_GM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressGMNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL", {locale: 'en-GM'});
@@ -74,7 +71,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     testParseAddressGMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay\n21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
@@ -88,7 +84,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     testParseAddressGMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay , 21 Liberation Avenue , BANJUL , GAMBIA", {locale: 'en-GM'});
@@ -102,7 +97,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     testParseAddressGMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay\n\n\t\r\t\t\r21 Liberation Avenue\r\r\n\nBANJUL\t\r\n\t\rGAMBIA", {locale: 'en-GM'});
@@ -116,7 +110,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     /*
     testParseAddressGMNoDelimiters: function(test) {
         test.expect(7);
@@ -146,7 +139,6 @@ module.exports.testaddress_GM = {
         test.equal(parsedAddress.countryCode, "GM");
         test.done();
     },
-
     testFormatAddressGM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,7 +154,6 @@ module.exports.testaddress_GM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressGMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +169,4 @@ module.exports.testaddress_GM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

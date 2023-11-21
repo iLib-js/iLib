@@ -248,6 +248,7 @@
             "degree": "#{n} अंश",
             "dessert-spoon": "#{n} dstspn",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
+            "dot": "#{n} पि",
             "dot-per-centimeter": "#{n} प्र सें बिं",
             "dot-per-inch": "#{n} प्र इं बिं",
             "dram": "#{n} dram fl",

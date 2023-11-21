@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_EC = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressECNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
@@ -48,7 +45,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, QUITO, Ecuador", {locale: 'es-EC'});
@@ -62,7 +58,6 @@ module.exports.testaddress_EC = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressECManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V, QUITO\nEcuador", {locale: 'es-EC'});
@@ -76,7 +71,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
@@ -90,7 +84,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito  \n\t\n P0133V, QUITO\t\n\n Ecuador  \n  \t\t\t", {locale: 'es-EC'});
@@ -104,7 +97,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
@@ -118,7 +110,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
@@ -132,7 +123,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testParseAddressECFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_EC = {
         test.equal(parsedAddress.countryCode, "EC");
         test.done();
     },
-
     testFormatAddressEC: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +153,6 @@ module.exports.testaddress_EC = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressECFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,5 +168,4 @@ module.exports.testaddress_EC = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_bs = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_bs: function(test) {
         test.expect(2);
         var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
@@ -150,7 +149,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -169,7 +167,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -190,7 +187,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -211,7 +207,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -231,7 +226,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -251,7 +245,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -271,7 +264,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameShort_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -291,7 +283,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameMedium_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -311,7 +302,6 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_bs: function(test) {
         test.expect(2);
         var name = new Name({
@@ -331,10 +321,4 @@ module.exports.testname_bs = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
-
-
 };

@@ -35,7 +35,6 @@ module.exports.teststrings = {
         ilib.clearCache();
         callback();
     },
-
     testStringFormatChoice_ru_RU_iLib: function(test) {
         test.expect(2);
         console.log("\n");
@@ -98,7 +97,6 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(30), "The items are many");
         test.done();
     },
-
     testStringFormatChoice_be_BY_iLib: function(test) {
         test.expect(2);
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");

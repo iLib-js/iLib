@@ -32,7 +32,6 @@ module.exports.testaddress_IN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressINHINormal: function(test) {
         test.expect(7);
        var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {locale: 'hi-IN'});
@@ -46,8 +45,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
-
     testParseAddressINGUNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {locale: 'gu-IN'});
@@ -61,7 +58,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINKNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
@@ -75,7 +71,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINKNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
@@ -89,7 +84,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINMRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, एजी टॉवर्स. 3 रा मजला, पार्क स्ट्रीट. सर्कस ऍव्हेन्यू\nकलकत्ता\nपश्चिम बंगाल\nभारत", {locale: 'mr-IN'});
@@ -103,7 +97,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINTENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ \nకలకత్తా \nపశ్చిమ బెంగాల్\nభారతదేశం", {locale: 'te-IN'});
@@ -117,7 +110,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINTANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, ஏஜி டவர்ஸ். 3 வது மாடி, பார்க் தெரு. சர்க்கஸ் அவென்யூ\nகல்கத்தா\nமேற்கு வங்காளம்\nஇந்தியா", {locale: 'ta-IN'});
@@ -131,7 +123,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINBNMRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, এজি টাওয়ার্স. 3 য় তল, পার্ক স্ট্রীট. সার্কাস অ্যাভিনিউ\nকলকাতা\nপশ্চিম বঙ্গ\nভারত", {locale: 'bn-IN'});
@@ -145,7 +136,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINHINoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\nn کولکتہ\nمغربی بنگال\nبھارت", {locale: 'hi-IN'});
@@ -159,7 +149,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINHINoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\nभारत", {locale: 'hi-IN'});
@@ -173,7 +162,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINHINoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७", {locale: 'hi-IN'});
@@ -187,7 +175,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINHIManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स\n३ तल, पार्क स्ट्रीट\nसर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {locale: 'hi-IN'});
@@ -201,7 +188,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINHIOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स , ३ तल, पार्क स्ट्रीट , सर्कस एवेन्यू , कोलकाता , पश्चिम बंगाल , ७०००१७ , भारत", {locale: 'hi-IN'});
@@ -215,7 +201,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINHISuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स\t\t\r३ तल, पार्क स्ट्रीट\t\t\rसर्कस एवेन्यू\t\t\r\nकोलकाता\n\t\tपश्चिम बंगाल\n\t\r७०००१७\n\t\rभारत", {locale: 'hi-IN'});
@@ -229,7 +214,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINHINoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू कोलकाता पश्चिम बंगाल ७०००१७ भारत", {locale: 'hi-IN'});
@@ -243,7 +227,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINHIFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nIndia", {locale: 'hi-IN'});
@@ -257,7 +240,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testFormatAddressINHI: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -274,7 +256,6 @@ module.exports.testaddress_IN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressINHIFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -291,8 +272,6 @@ module.exports.testaddress_IN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
-
     testParseAddressINNormal: function(test) {
         test.expect(7);
        var parsedAddress = new Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
@@ -306,7 +285,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\nIndia", {locale: 'en-IN'});
@@ -320,7 +298,6 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressINNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017", {locale: 'en-IN'});
@@ -334,7 +311,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers\n3rd Floor, Park Street\nCircus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
@@ -348,7 +324,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers , 3rd Floor, Park Street , Circus Avenue , Kolkata , West Bengal , 700017 , India", {locale: 'en-IN'});
@@ -362,7 +337,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers\t\t\r3rd Floor, Park Street\t\t\rCircus Avenue\t\t\r\nKolkata\n\t\tWest Bengal\n\t\r700017\n\t\rIndia", {locale: 'en-IN'});
@@ -376,7 +350,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue Kolkata West Bengal 700017 India", {locale: 'en-IN'});
@@ -390,7 +363,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testParseAddressINFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
@@ -404,7 +376,6 @@ module.exports.testaddress_IN = {
         test.equal(parsedAddress.countryCode, "IN");
         test.done();
     },
-
     testFormatAddressIN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -421,7 +392,6 @@ module.exports.testaddress_IN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressINFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -438,5 +408,4 @@ module.exports.testaddress_IN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

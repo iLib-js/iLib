@@ -30,7 +30,6 @@ module.exports.testenergy = {
         ilib.clearCache();
         callback();
     },
-
     testEnergyEnergyConstructor: function(test) {
         test.expect(1);
         var m = new EnergyUnit({
@@ -41,7 +40,6 @@ module.exports.testenergy = {
         test.ok(m !== null);
         test.done();
     },
-
     testEnergyEnergyConvertCalorieToJoule: function(test) {
         test.expect(3);
         var m1 = new EnergyUnit({
@@ -59,7 +57,6 @@ module.exports.testenergy = {
         test.equal(m2.getAmount(), 83736);
         test.done();
     },
-
     testEnergyStaticConvert1: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("gWh", "Cal", 1e+8);
@@ -67,7 +64,6 @@ module.exports.testenergy = {
         test.roughlyEqual(m, 0.1163, 0.0001);
         test.done();
     },
-
     testEnergyStaticConvertWithString: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("MegaWh", "Wh", "5e+6");
@@ -75,7 +71,6 @@ module.exports.testenergy = {
         test.equal(m, 5);
         test.done();
     },
-
     testEnergyStaticConvert2: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("gigajoule", "kJ", 5e+6);
@@ -83,7 +78,6 @@ module.exports.testenergy = {
         test.equal(m, 5);
         test.done();
     },
-
     testEnergyStaticConvert3: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("MWh", "kJ", 5e+6);
@@ -91,7 +85,6 @@ module.exports.testenergy = {
         test.roughlyEqual(m, 1.38889, 0.00001);
         test.done();
     },
-
     testEnergyStaticConvert4: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("cal", "btu", 200);
@@ -99,7 +92,6 @@ module.exports.testenergy = {
         test.roughlyEqual(m, 50.399, 0.001);
         test.done();
     },
-
     testEnergyStaticConvert5: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("joule", "btu", 200);
@@ -107,7 +99,6 @@ module.exports.testenergy = {
         test.roughlyEqual(m, 211011.18, 0.01);
         test.done();
     },
-
     testEnergyStaticConvert6: function(test) {
         test.expect(1);
         var m = EnergyUnit.convert("joule", "cal", 50);
@@ -115,7 +106,6 @@ module.exports.testenergy = {
         test.equal(m, 209340);
         test.done();
     },
-
     testEnergyScale1: function(test) {
         test.expect(2);
         var m1 = new EnergyUnit({
@@ -128,7 +118,6 @@ module.exports.testenergy = {
         test.equal(m2.unit, "kilowatt-hour");
         test.done();
     },
-
     testEnergyScale2: function(test) {
         test.expect(2);
         var m1 = new EnergyUnit({
@@ -141,7 +130,6 @@ module.exports.testenergy = {
         test.equal(m2.unit, "gigawatt-hour");
         test.done();
     },
-
     testEnergyScale3: function(test) {
         test.expect(2);
         var m1 = new EnergyUnit({
@@ -154,7 +142,6 @@ module.exports.testenergy = {
         test.equal(m2.unit, "watt-hour");
         test.done();
     },
-
     testEnergyScale4: function(test) {
         test.expect(2);
         var m1 = new EnergyUnit({
@@ -167,7 +154,6 @@ module.exports.testenergy = {
         test.equal(m2.unit, "gigawatt-hour");
         test.done();
     },
-
     testEnergyGetMeasures: function(test) {
         test.expect(1);
         var measures = EnergyUnit.getMeasures();
@@ -188,5 +174,4 @@ module.exports.testenergy = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

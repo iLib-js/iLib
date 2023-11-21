@@ -45,7 +45,6 @@ module.exports.testunitfmtasync = {
             }
         });
     },
-
     testUnitFormatWithoutScale5: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -64,7 +63,6 @@ module.exports.testunitfmtasync = {
             }
         });
     },
-
     testUnitFormatWithScale11: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -82,7 +80,6 @@ module.exports.testunitfmtasync = {
             }
         });
     },
-
     testUnitFormatArea2: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -100,7 +97,6 @@ module.exports.testunitfmtasync = {
                 test.done();
             }});
     },
-
     testUnitFormatArea4: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -119,7 +115,6 @@ module.exports.testunitfmtasync = {
             }
         });
     },
-
     testUnitFormatArea5: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

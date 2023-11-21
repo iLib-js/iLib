@@ -32,7 +32,6 @@ module.exports.testname_sq = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_sq_Al: function(test) {
         test.expect(2);
         var parsed = new Name("James Belushi", {locale: 'sq-Al'});
@@ -65,9 +64,6 @@ module.exports.testname_sq = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_sq_Al: function(test) {
         test.expect(2);
         var parsed = new Name("Zoti. Belushi", {locale: 'sq-Al'});
@@ -81,9 +77,6 @@ module.exports.testname_sq = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_sq_Al: function(test) {
         test.expect(2);
         var parsed = new Name("Zoti. dhe Zonja. Belushi", {locale: 'sq-Al'});
@@ -97,7 +90,6 @@ module.exports.testname_sq = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_sq_Al: function(test) {
         test.expect(2);
         var parsed = new Name("Zoti. James Belushi", {locale: 'sq-Al'});
@@ -112,7 +104,6 @@ module.exports.testname_sq = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_sq_Al: function(test) {
         test.expect(2);
         var parsed = new Name("Zëvendëspresident James Belushi njom", {locale: 'sq-Al'});
@@ -128,10 +119,6 @@ module.exports.testname_sq = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -150,7 +137,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -169,7 +155,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -189,9 +174,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,7 +192,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -231,7 +212,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -251,7 +231,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -271,7 +250,6 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_sq_Al: function(test) {
         test.expect(2);
         var name = new Name({
@@ -291,7 +269,4 @@ module.exports.testname_sq = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

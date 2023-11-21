@@ -32,7 +32,6 @@ module.exports.testaddress_MM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressMMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\n\nMyanmar", {locale: 'en-MM'});
@@ -46,7 +45,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON\nMyanmar", {locale: 'en-MM'});
@@ -60,7 +58,6 @@ module.exports.testaddress_MM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressMMNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181", {locale: 'en-MM'});
@@ -74,7 +71,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications\nNo 43 Bo Aung Gyaw Street\n\nYANGON\n\n11181\nMyanmar\n\n\n", {locale: 'en-MM'});
@@ -87,7 +83,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications , No 43 Bo Aung Gyaw Street , YANGON , 11181 , Myanmar", {locale: 'en-MM'});
@@ -101,7 +96,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tPosts and Telecommunications\n\t\t\rNo 43 Bo\t\t\rAung Gyaw Street\t\n\n\nYANGON\n\n11181\n\t Myanmar\n\n\n", {locale: 'en-MM'});
@@ -115,7 +109,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON, 11181 Myanmar", {locale: 'en-MM'});
@@ -129,7 +122,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testParseAddressMMFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_MM = {
         test.equal(parsedAddress.countryCode, "MM");
         test.done();
     },
-
     testFormatAddressMM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_MM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressMMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_MM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

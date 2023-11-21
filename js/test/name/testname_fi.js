@@ -32,7 +32,6 @@ module.exports.testname_fi = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_fi_FI: function(test) {
         test.expect(2);
         var parsed = new Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
@@ -47,9 +46,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_fi_FI: function(test) {
         test.expect(2);
         var parsed = new Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
@@ -64,9 +60,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_fi_FI: function(test) {
         test.expect(2);
         var parsed = new Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
@@ -82,8 +75,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_fi_FI1: function(test) {
         test.expect(2);
         var parsed = new Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
@@ -99,8 +90,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_fi_FI_second: function(test) {
         test.expect(2);
         var parsed = new Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
@@ -114,8 +103,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_fi_FI: function(test) {
         test.expect(2);
 
@@ -139,9 +126,6 @@ module.exports.testname_fi = {
         test.done();
 
     },
-
-
-
     testParseCompoundHonorific_fi_FI: function(test) {
         test.expect(2);
         var parsed = new Name("presidentti Mikkeli", {locale: 'fi-FI'});
@@ -155,11 +139,6 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -179,7 +158,6 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -199,7 +177,6 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -221,7 +198,6 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -242,8 +218,6 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -264,7 +238,6 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_fi_FI: function(test) {
         test.expect(2);
         var name = new Name({
@@ -285,8 +258,4 @@ module.exports.testname_fi = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

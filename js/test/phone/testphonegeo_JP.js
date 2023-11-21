@@ -32,7 +32,6 @@ module.exports.phonegeo_JP = {
         ilib.clearCache();
         callback();
     },
-
     testJPLocalNumber1: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("3111 1111",{locale: "ja-JP"});
@@ -53,7 +52,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testJPNumberWithAreaCode1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("056-5-3111-1111",{locale: "ja-JP"});
@@ -79,7 +77,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberWithAreaCode2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("03-3262-2391",{locale: "ja-JP"});
@@ -105,7 +102,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberWithAreaCodeAndCountry1: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-3-2122-3456");
@@ -131,7 +127,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberWithAreaCodeAndCountry2: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-56-5-2122-3456");
@@ -157,7 +152,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberWithAreaCodeAndCountry3: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-4-29-2123-3456");
@@ -183,7 +177,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberCallFromUS: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("011 81-4-29-2123-3456");
@@ -209,7 +202,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPNumberWithAreaCodeAndCountry4: function(test) {
         test.expect(5);
         var parsed = new PhoneNumber("+81-4-29-2123-3456");
@@ -235,7 +227,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPPolice: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("110",{locale: "ja-JP"});
@@ -261,7 +252,6 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testJPFireAndAmbulance: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "ja-JP"});
@@ -287,6 +277,4 @@ module.exports.phonegeo_JP = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     }
-
-
 };

@@ -30,9 +30,7 @@ module.exports.testlistfmt_sq = {
         ilib.clearCache();
         callback();
     },
-
     // sq-AL
-
     testListFmtsqALNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një"]), "një");
         test.done();
     },
-
     testListFmtsqALNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy"]), "një dhe dy");
         test.done();
     },
-
     testListFmtsqALNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy", "tresh"]), "një, dy dhe tresh");
         test.done();
     },
-
     testListFmtsqALNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL"
@@ -87,7 +82,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një"]), "një");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy"]), "një e dy");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy", "tresh"]), "një, dy e tresh");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",
@@ -135,7 +127,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një"]), "një");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",
@@ -148,7 +139,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy"]), "një e dy");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",
@@ -161,7 +151,6 @@ module.exports.testlistfmt_sq = {
         test.equal(fmt.format(["një", "dy", "tresh"]), "një, dy e tresh");
         test.done();
     },
-
     testListFmtUnitStylesqALNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "sq-AL",

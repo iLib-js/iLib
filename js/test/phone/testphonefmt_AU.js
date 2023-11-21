@@ -32,7 +32,6 @@ module.exports.phonefmt_AU = {
         ilib.clearCache();
         callback();
     },
-
     testFormatAUStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -48,10 +47,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -67,10 +63,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUStyle2: function(test) {
         test.expect(1);
         var formatted;
@@ -86,10 +79,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -107,10 +97,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -127,10 +114,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUMobile: function(test) {
         test.expect(1);
         var formatted;
@@ -146,10 +130,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUMobileInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -167,10 +148,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUService: function(test) {
         test.expect(1);
         var formatted;
@@ -185,10 +163,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUIEIDD: function(test) {
         test.expect(1);
         var formatted;
@@ -206,10 +181,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUStyle0Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -223,8 +195,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial1: function(test) {
         test.expect(1);
@@ -240,8 +210,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial2: function(test) {
         test.expect(1);
@@ -258,8 +226,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial3: function(test) {
         test.expect(1);
@@ -276,8 +242,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial4: function(test) {
         test.expect(1);
@@ -294,8 +258,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial5: function(test) {
         test.expect(1);
@@ -312,8 +274,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial6: function(test) {
         test.expect(1);
@@ -330,8 +290,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial7: function(test) {
         test.expect(1);
@@ -348,8 +306,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial8: function(test) {
         test.expect(1);
@@ -366,8 +322,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial9: function(test) {
         test.expect(1);
@@ -384,8 +338,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0Partial10: function(test) {
         test.expect(1);
@@ -402,10 +354,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -419,8 +368,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal2: function(test) {
         test.expect(1);
@@ -435,8 +382,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal3: function(test) {
         test.expect(1);
@@ -451,8 +396,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal4: function(test) {
         test.expect(1);
@@ -467,8 +410,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal5: function(test) {
         test.expect(1);
@@ -483,8 +424,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal6: function(test) {
         test.expect(1);
@@ -499,8 +438,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal7: function(test) {
         test.expect(1);
@@ -515,8 +452,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal8: function(test) {
         test.expect(1);
@@ -531,8 +466,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle0PartialLocal9: function(test) {
         test.expect(1);
@@ -547,10 +480,7 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
-
     testFormatAUStyle2PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -564,8 +494,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal2: function(test) {
         test.expect(1);
@@ -580,8 +508,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal3: function(test) {
         test.expect(1);
@@ -596,8 +522,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal4: function(test) {
         test.expect(1);
@@ -612,8 +536,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal5: function(test) {
         test.expect(1);
@@ -628,8 +550,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal6: function(test) {
         test.expect(1);
@@ -644,8 +564,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal7: function(test) {
         test.expect(1);
@@ -660,8 +578,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal8: function(test) {
         test.expect(1);
@@ -676,8 +592,6 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     },
     testFormatAUStyle2PartialLocal9: function(test) {
         test.expect(1);
@@ -692,8 +606,5 @@ module.exports.phonefmt_AU = {
 
         test.equal(formatted, expected);
         test.done();
-
-
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_es = {
         ilib.clearCache();
         callback();
     },
-
     testESParseSimpleName: function(test) {
         test.expect(2);
         var parsed = new Name("Joaquin Cebolla", {locale: 'es-ES'});
@@ -46,7 +45,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseTripleName: function(test) {
         test.expect(2);
         var parsed = new Name("Joaquin Zaragoza Cebolla", {locale: 'es-ES'});
@@ -60,7 +58,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Mario de Sevilla", {locale: 'es-ES'});
@@ -74,7 +71,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseMultiAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Mario de las Pulgas", {locale: 'es-ES'});
@@ -88,7 +84,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseHypenatedName: function(test) {
         test.expect(2);
         var parsed = new Name("Joaquin Johnson-Cebolla", {locale: 'es-ES'});
@@ -102,7 +97,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseQuadrupleName: function(test) {
         test.expect(2);
         var parsed = new Name("Joaquin Michael de los Cruzes Cebolla", {locale: 'es-ES'});
@@ -117,7 +111,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseMultiMultiFamily: function(test) {
         test.expect(2);
         var parsed = new Name("Joaquin Michael de los Cruzes de Namur", {locale: 'es-ES'});
@@ -146,7 +139,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Doña Julia Maria Lopez Ortiz", {locale: 'es-ES'});
@@ -162,7 +154,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseEverything: function(test) {
         test.expect(2);
         var parsed = new Name("Doña Julia Maria Consuela de las Piñas Ortiz III", {locale: 'es-ES'});
@@ -179,7 +170,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseConjunction1: function(test) {
         test.expect(2);
         var parsed = new Name("Rodrigo y Gabriella", {locale: 'es-ES'});
@@ -192,7 +182,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseConjunction2: function(test) {
         test.expect(2);
         var parsed = new Name("Rodrigo y Gabriella Cortez", {locale: 'es-ES'});
@@ -206,7 +195,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseConjunction3: function(test) {
         test.expect(2);
         var parsed = new Name("Rodrigo y Gabriella Cortez Colón", {locale: 'es-ES'});
@@ -220,7 +208,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseConjunction4: function(test) {
         test.expect(2);
         var parsed = new Name("Miguel, Rodrigo, y Gabriella Cortez Colón", {locale: 'es-ES'});
@@ -234,7 +221,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseFamily: function(test) {
         test.expect(2);
         var parsed = new Name("Los Hernandez", {locale: 'es-ES'});
@@ -248,7 +234,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testESParseCompoundHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Sr. y Sra. Hernandez", {locale: 'es-ES'});
@@ -262,11 +247,6 @@ module.exports.testname_es = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testESFormatSimpleNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,7 +263,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatSimpleNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -300,7 +279,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatSimpleNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -317,7 +295,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatSimpleNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -334,7 +311,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatComplexNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -353,7 +329,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatComplexNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -372,7 +347,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatComplexNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -391,7 +365,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatComplexNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -410,7 +383,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatAsianNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -428,7 +400,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatAsianNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -446,7 +417,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatAsianNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -464,7 +434,6 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testESFormatAsianNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -482,5 +451,4 @@ module.exports.testname_es = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

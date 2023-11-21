@@ -29,7 +29,6 @@ module.exports.phonenum_JP = {
         ilib.clearCache();
         callback();
     },
-
     testParseJPFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03-5841-2047", {locale: "ja-JP"});
@@ -44,7 +43,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("345-6789", {locale: "ja-JP"});
@@ -57,7 +55,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0152-41-0670", {locale: "ja-JP"});
@@ -72,7 +69,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(075) 1234-5678", {locale: "ja-JP"});
@@ -87,7 +83,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$075@1234&5678-", {locale: "ja-JP"});
@@ -102,7 +97,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("82345678", {locale: "ja-JP"});
@@ -115,7 +109,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
@@ -130,7 +123,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0130-12345678", {locale: "ja-JP"});
@@ -145,7 +137,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     /*
     no vsc in Japan? I can't find example of vsc.
     testParseJPWithVSC: function(test) {
@@ -179,7 +170,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "ja-JP"});
@@ -195,7 +185,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("01012028675309", {locale: "ja-JP"});
@@ -212,7 +201,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -227,7 +215,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("110", {locale: "ja-JP"});
@@ -253,7 +240,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "ja-JP"});
@@ -266,7 +252,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("04", {locale: "ja-JP"});
@@ -390,7 +375,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("04751234567", {locale: "ja-JP"});
@@ -405,7 +389,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("047512345678", {locale: "ja-JP"});
@@ -420,7 +403,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "316"});
@@ -434,7 +416,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "208"});
@@ -447,7 +428,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "334"});
@@ -461,7 +441,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "262"});
@@ -474,7 +453,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "450"});
@@ -488,7 +466,6 @@ module.exports.phonenum_JP = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseJPWithJPMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "440"});

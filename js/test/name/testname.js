@@ -20,7 +20,6 @@
 if (typeof(Name) === "undefined") {
     var Name = require("../../lib/Name.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -30,7 +29,6 @@ module.exports.testname = {
         ilib.clearCache();
         callback();
     },
-
     testNameEmptyConstructor: function(test) {
         test.expect(1);
         var name = new Name();
@@ -38,7 +36,6 @@ module.exports.testname = {
         test.ok(typeof(name) !== "undefined");
         test.done();
     },
-
     testNameCopyConstructor: function(test) {
         test.expect(2);
         var name = new Name({
@@ -54,7 +51,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "a", givenName: "b", middleName: "c", familyName: "d", suffix: "e", honorific: "x"});
         test.done();
     },
-
     testNameENSimple: function(test) {
         test.expect(2);
         var name = new Name("John Doe");
@@ -63,7 +59,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "John", familyName: "Doe" });
         test.done();
     },
-
     testNameENSlightlyComplex: function(test) {
         test.expect(2);
         var name = new Name("John Jacob Doe");
@@ -72,7 +67,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "John", middleName: "Jacob", familyName: "Doe" });
         test.done();
     },
-
     testNameENMoreComplex: function(test) {
         test.expect(2);
         var name = new Name("John Jacob Winchester Doe");
@@ -81,7 +75,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "John", middleName: "Jacob Winchester", familyName: "Doe" });
         test.done();
     },
-
     testNameENWithSuffix: function(test) {
         test.expect(2);
         var name = new Name("John Jacob Winchester Doe Jr.");
@@ -90,7 +83,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "John", middleName: "Jacob Winchester", familyName: "Doe", suffix: "Jr." });
         test.done();
     },
-
     testNameENWithPrefix: function(test) {
         test.expect(2);
         var name = new Name("Mr. John Jacob Winchester Doe");
@@ -99,7 +91,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "Mr.", givenName: "John", middleName: "Jacob Winchester", familyName: "Doe" });
         test.done();
     },
-
     testNameENFull: function(test) {
         test.expect(2);
         var name = new Name("Dr. John Jacob Winchester Doe, Phd.");
@@ -108,7 +99,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "Dr.", givenName: "John", middleName: "Jacob Winchester", familyName: "Doe", suffix: ", Phd." });
         test.done();
     },
-
     testNameENPrefixFamily: function(test) {
         test.expect(2);
         var name = new Name("Dr. Winchester");
@@ -125,7 +115,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Sting" });
         test.done();
     },
-
     testNameENGetSortFamilyName: function(test) {
         test.expect(2);
         var name = new Name("Jason Smith");
@@ -134,8 +123,6 @@ module.exports.testname = {
         test.equal(name.getSortFamilyName(), "Smith");
         test.done();
     },
-
-
     testNameENGetSortFamilyNameWithAuxillaries: function(test) {
         test.expect(2);
         var name = new Name("Jason van der Muiden");
@@ -144,8 +131,6 @@ module.exports.testname = {
         test.equal(name.getSortFamilyName(), "van der Muiden");
         test.done();
     },
-
-
     testNameDESimple: function(test) {
         test.expect(2);
         var name = new Name("Josef Herzheim", {locale: "de-DE"});
@@ -154,7 +139,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Josef", familyName: "Herzheim" });
         test.done();
     },
-
     testNameDESlightlyComplex: function(test) {
         test.expect(2);
         var name = new Name("Josef Jürgen Herzheim", {locale: "de-DE"});
@@ -163,7 +147,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Josef", middleName: "Jürgen", familyName: "Herzheim" });
         test.done();
     },
-
     testNameDEMoreComplex: function(test) {
         test.expect(2);
         var name = new Name("Josef Hans Jürgen Herzheim", {locale: "de-DE"});
@@ -172,7 +155,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Josef", middleName: "Hans Jürgen", familyName: "Herzheim" });
         test.done();
     },
-
     testNameDEWithSuffix: function(test) {
         test.expect(2);
         var name = new Name("Josef Hans Jürgen Herzheim III", {locale: "de-DE"});
@@ -181,7 +163,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Josef", middleName: "Hans Jürgen", familyName: "Herzheim", suffix: "III" });
         test.done();
     },
-
     testNameDEWithPrefix: function(test) {
         test.expect(2);
         var name = new Name("Herr Josef Hans Jürgen Herzheim", {locale: "de-DE"});
@@ -190,7 +171,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "Herr", givenName: "Josef", middleName: "Hans Jürgen", familyName: "Herzheim" });
         test.done();
     },
-
     testNameDEWithMultiplePrefixes: function(test) {
         test.expect(2);
         var name = new Name("Herr Dr. Josef Hans Jürgen Herzheim", {locale: "de-DE"});
@@ -199,7 +179,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "Herr Dr.", givenName: "Josef", middleName: "Hans Jürgen", familyName: "Herzheim" });
         test.done();
     },
-
     testNameDEWithAuxillaries: function(test) {
         test.expect(2);
         var name = new Name("Ludwig von Beethoven", {locale: "de-DE"});
@@ -216,7 +195,6 @@ module.exports.testname = {
         test.equal(name.getSortFamilyName(), "Beethoven, von");
         test.done();
     },
-
     testNameESSimple: function(test) {
         test.expect(2);
         var name = new Name("Juan Arroyo", {locale: "es-ES"});
@@ -225,7 +203,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Juan", familyName: "Arroyo" });
         test.done();
     },
-
     testNameESMoreComplex: function(test) {
         test.expect(2);
         var name = new Name("Juan Carlos Arroyo", {locale: "es-ES"});
@@ -234,7 +211,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Juan", familyName: "Carlos Arroyo" });
         test.done();
     },
-
     testNameESFull: function(test) {
         test.expect(2);
         var name = new Name("Juan Carlos Maria León Arroyo", {locale: "es-ES"});
@@ -243,7 +219,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Juan", middleName: "Carlos Maria", familyName: "León Arroyo" });
         test.done();
     },
-
     testNameESAuxillaries: function(test) {
         test.expect(2);
         var name = new Name("Juan de los Reyes", {locale: "es-ES"});
@@ -252,7 +227,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Juan", familyName: "de los Reyes" });
         test.done();
     },
-
     testNameESFullWithAuxillaries: function(test) {
         test.expect(2);
         var name = new Name("Juan Carlos de los Reyes de León", {locale: "es-ES"});
@@ -261,7 +235,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "Juan", middleName: "Carlos", familyName: "de los Reyes de León" });
         test.done();
     },
-
     testNameZHSimple: function(test) {
         test.expect(2);
         var name = new Name("王志成", {locale: "zh-CN"});
@@ -270,7 +243,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "志成", familyName: "王" });
         test.done();
     },
-
     testNameZHCompoundFamily: function(test) {
         test.expect(2);
         var name = new Name("南宫志成", {locale: "zh-CN"});
@@ -279,7 +251,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "志成", familyName: "南宫" });
         test.done();
     },
-
     testNameZHPrefix: function(test) {
         test.expect(2);
         var name = new Name("老王志成", {locale: "zh-CN"});
@@ -288,7 +259,6 @@ module.exports.testname = {
         test.contains(name, { prefix: "老", givenName: "志成", familyName: "王" });
         test.done();
     },
-
     testNameZHMarriedName: function(test) {
         test.expect(2);
         var name = new Name("王杨凭平", {locale: "zh-CN", compoundFamilyName: true});
@@ -297,7 +267,6 @@ module.exports.testname = {
         test.contains(name, { givenName: "凭平", familyName: "王杨" });
         test.done();
     },
-
     testNameZHHonorific: function(test) {
         test.expect(2);
         var name = new Name("堂哥胡锦涛", {locale: "zh-CN"});

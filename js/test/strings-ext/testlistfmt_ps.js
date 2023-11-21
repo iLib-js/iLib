@@ -263,7 +263,6 @@ module.exports.testlistfmt_ps = {
         test.equal(fmt.format(["یو", "دوه", "درې", "څلور", "پنځه"]), 'یو, دوه, درې, څلور, یا پنځه');
         test.done();
     },
-
     // ps-AF
     testListFmtNumberFormatOne_ps_AF: function(test) {
         var fmt = new ListFmt({

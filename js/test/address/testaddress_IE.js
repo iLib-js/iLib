@@ -32,7 +32,6 @@ module.exports.testaddress_IE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressIENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gordon House\nBarrow Street\nDublin 4\nIreland", {locale: 'en-IE'});
@@ -46,7 +45,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIreland", {locale: 'en-IE'});
@@ -60,7 +58,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIENoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Liffey Park Technology Campus\nBarnhall Road\nLeixlip\nCo Kildare", {locale: 'en-IE'});
@@ -74,7 +71,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIEDublinPostalCode: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gordon House\nBarrow Street\nDublin D6W\nIreland", {locale: 'en-IE'});
@@ -88,7 +84,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Belfield Office Park\nBeaver Row\nClonskeagh\nDublin 4\nIreland\n\n", {locale: 'en-IE'});
@@ -102,7 +97,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Swords Business Campus, Balheary Road, Swords, County: Dublin, Ireland", {locale: 'en-IE'});
@@ -116,7 +110,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tSwords Business Campus\n\t\r Balheary Road\n\t\n\tSwords\   \t \t \t   County:    Dublin   \n\n\t Ireland  \n\n\n", {locale: 'en-IE'});
@@ -130,7 +123,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Swords Business Campus Balheary Road Swords County: Dublin Ireland", {locale: 'en-IE'});
@@ -144,7 +136,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIESpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Teach Ceilteach, Sráid Doire, Cill Iníon Léinín, Tamhlacht, Contae Átha Cliath, Éire", {locale: 'en-IE'});
@@ -158,7 +149,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testParseAddressIEFromDE: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIrland", {locale: 'de-DE'});
@@ -172,7 +162,6 @@ module.exports.testaddress_IE = {
         test.equal(parsedAddress.countryCode, "IE");
         test.done();
     },
-
     testFormatAddressIE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -188,7 +177,6 @@ module.exports.testaddress_IE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressIEWithCounty: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -204,7 +192,6 @@ module.exports.testaddress_IE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressIEFromFR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -220,5 +207,4 @@ module.exports.testaddress_IE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

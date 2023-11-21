@@ -35,7 +35,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncGetStandardNameIdentity: function(test) {
         test.expect(2);
         new Charset({
@@ -54,7 +53,6 @@ module.exports.testcharsetasync = {
             }
         })
     },
-
     testCharsetAsyncGetStandardNameUndefined: function(test) {
         test.expect(1);
         new Charset({
@@ -65,7 +63,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncGetStandardNameIdentityUnknown: function(test) {
         test.expect(1);
         new Charset({
@@ -77,7 +74,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncGetStandardNameUTF8: function(test) {
         test.expect(1);
         new Charset({
@@ -89,7 +85,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncGetStandardNameISOLatin1: function(test) {
         test.expect(3);
         new Charset({
@@ -115,7 +110,6 @@ module.exports.testcharsetasync = {
             }
         })
     },
-
     testCharsetAsyncGetOriginalNameUnknown: function(test) {
         test.expect(1);
         new Charset({
@@ -127,7 +121,6 @@ module.exports.testcharsetasync = {
             }
         })
     },
-
     testCharsetAsyncMinCharWidth1: function(test) {
         test.expect(1);
         new Charset({
@@ -139,7 +132,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncMinCharWidth2: function(test) {
         test.expect(1);
         // built-in
@@ -152,7 +144,6 @@ module.exports.testcharsetasync = {
             }
         });
     },
-
     testCharsetAsyncIsMultibyteTrue: function(test) {
         test.expect(1);
         new Charset({

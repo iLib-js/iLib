@@ -32,7 +32,6 @@ module.exports.testaddress_TG = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressTGNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
@@ -46,8 +45,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
-
     testParseAddressTGNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome", {locale: 'fr-TG'});
@@ -61,7 +58,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testParseAddressTGManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
@@ -74,7 +70,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testParseAddressTGOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu , B.P. 526 , Lome , Togo", {locale: 'fr-TG'});
@@ -88,7 +83,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testParseAddressTGSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t\tM. Nicolas Ayi Patatu\t\t\tB.P.\t\r\r526\t\nLome\n\tTogo\n\n\n", {locale: 'fr-TG'});
@@ -102,7 +96,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testParseAddressTGNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526 Lome Togo", {locale: 'fr-TG'});
@@ -116,7 +109,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testParseAddressTGFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'en-US'});
@@ -130,7 +122,6 @@ module.exports.testaddress_TG = {
         test.equal(parsedAddress.countryCode, "TG");
         test.done();
     },
-
     testFormatAddressTG: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -145,7 +136,6 @@ module.exports.testaddress_TG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressTGFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,5 +150,4 @@ module.exports.testaddress_TG = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

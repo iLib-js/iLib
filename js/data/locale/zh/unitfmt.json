@@ -248,6 +248,7 @@
             "degree": "#{n}°",
             "dessert-spoon": "#{n}甜点匙",
             "dessert-spoon-imperial": "#{n} dstspn Imp",
+            "dot": "#{n} px",
             "dot-per-centimeter": "#{n} dpcm",
             "dot-per-inch": "#{n} dpi",
             "dram": "#{n}液量打兰",

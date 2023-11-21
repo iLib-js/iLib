@@ -29,7 +29,6 @@ module.exports.testdurfmt_or_IN = {
         ilib.clearCache();
         callback();
     },
-
     testDurFmtORFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -50,7 +49,6 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
-
     testDurFmtORFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -72,7 +70,6 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
-
     testDurFmtORFormatShortClock: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -94,7 +91,6 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1:01:01');
         test.done();
     },
-
     testDurFmtORFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -115,7 +111,6 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍' );
         test.done();
     },
-
     testDurFmtORFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -136,7 +131,6 @@ module.exports.testdurfmt_or_IN = {
         test.equal(duration.toString(), '1 ବର୍ଷ, 1 ମାସ, 1 ସପ୍ତାହ, 1 ଦିନ, 1 ଘଣ୍ଟା, 1 ମିନିଟ୍‌, 1 ସେକେଣ୍ଡ');
         test.done();
     },
-
     testDurFmtORFormatFull: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -182,7 +176,6 @@ module.exports.testdurfmt_or_IN = {
             }
         });
     },
-
     testDurFmtORFormatShortClockAsync: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -207,5 +200,4 @@ module.exports.testdurfmt_or_IN = {
             }
         });
     }
-
 };

@@ -23,7 +23,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtcaADRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-AD", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
-
     testDateRngFmtcaADRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-AD", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 – 31 de desembre de 2011");
         test.done();
     },
-
     testDateRngFmtcaADRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-AD", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 de novembre – 31 de desembre de 2011");
         test.done();
     },
-
     testDateRngFmtcaADRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-AD", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 de novembre de 2011 – 31 de gener de 2012");
         test.done();
     },
-
     testDateRngFmtcaADRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-AD", length: "short"});
@@ -794,7 +788,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "31 de desembre de 2011, a les 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtcaESRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-ES", length: "short"});
@@ -899,7 +892,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "30 de desembre de 2011, a les 13:45 – 31 de desembre de 2011, a les 14:30");
         test.done();
     },
-
     testDateRngFmtcaESRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-ES", length: "short"});
@@ -1004,7 +996,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 – 31 de desembre de 2011");
         test.done();
     },
-
     testDateRngFmtcaESRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-ES", length: "short"});
@@ -1109,7 +1100,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 de novembre – 31 de desembre de 2011");
         test.done();
     },
-
     testDateRngFmtcaESRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-ES", length: "short"});
@@ -1214,7 +1204,6 @@ module.exports.testdatefmtrange_ca = {
         test.equal(fmt.format(start, end), "20 de novembre de 2011 – 31 de gener de 2012");
         test.done();
     },
-
     testDateRngFmtcaESRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ca-ES", length: "short"});

@@ -37,7 +37,6 @@ module.exports.testunitfmt_ca = {
         ilib.clearCache();
         callback();
     },
-
     //// ca-AD ////
     testUnitFormatGetLocale_ca_AD: function(test) {
         test.expect(2);
@@ -89,7 +88,6 @@ module.exports.testunitfmt_ca = {
         test.equal(str, "-16,666666666666668 graus Celsius");
         test.done();
     },
-
     testUnitFormatArea1_ca_AD: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -330,7 +328,6 @@ module.exports.testunitfmt_ca = {
         test.equal(str, "102,338 quilowatts hora");
         test.done();
     },
-
     //// ca-ES ////
     testUnitFormatGetLocale_ca_ES: function(test) {
         test.expect(2);
@@ -382,7 +379,6 @@ module.exports.testunitfmt_ca = {
         test.equal(str, "-16,666666666666668 graus Celsius");
         test.done();
     },
-
     testUnitFormatArea1_ca_ES: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

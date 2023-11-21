@@ -89,7 +89,6 @@ module.exports.testunitfmt_ne_NP = {
         test.equal(str, '-16.666666666666668 डिग्री सेल्सियस्');
         test.done();
     },
-
     testUnitFormatArea1_ne_NP: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

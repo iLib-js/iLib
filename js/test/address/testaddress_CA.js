@@ -32,7 +32,6 @@ module.exports.testaddress_CA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCASimpleCA: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
@@ -46,7 +45,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     // to verify NOV-111026
     testParseAddressCAWithAccents: function(test) {
         test.expect(7);
@@ -61,7 +59,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCASpelledOutProvince: function(test) {
         test.expect(7);
         var parsedAddress = new Address("340 Hagey Blvd\n2nd Floor\nWaterloo, Ontario, N2L 6R6", {locale: 'en-CA'});
@@ -75,7 +72,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCASpelledOutProvinceWithSpaces: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Prince Edward Island A1B 2C3\nCanada", {locale: 'en-CA'});
@@ -89,7 +85,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, AB\nCanada", {locale: 'en-CA'});
@@ -103,7 +98,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\nApt 45\nCambridge\nON\nA4C 5N4", {locale: 'en-CA'});
@@ -117,7 +111,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way, Mississauga, ON, L4W 5G1, Canada", {locale: 'en-CA'});
@@ -131,7 +124,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way\n  \t \t Mississauga, \n   \t ON, \n, \n\n L4W 5G1   \n  Canada\n\n   \n\n", {locale: 'en-CA'});
@@ -145,7 +137,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way Mississauga ON L4W 5G1 Canada", {locale: 'en-CA'});
@@ -159,7 +150,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCAPOBox: function(test) {
         test.expect(7);
         var parsedAddress = new Address("P.O. Box 350\nToronto ON Y5T 5T5", {locale: 'en-CA'});
@@ -173,7 +163,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCAFrench: function(test) {
         test.expect(7);
         var parsedAddress = new Address("20 Montée Lavalle\nÉparnay, Nouveau-Brunswick Y7Y 7Y7", {locale: 'en-CA'});
@@ -187,7 +176,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "CA");
         test.done();
     },
-
     testParseAddressCAForeign: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-CA'});
@@ -201,7 +189,6 @@ module.exports.testaddress_CA = {
         test.equal(parsedAddress.countryCode, "NL");
         test.done();
     },
-
     testFormatAddressCA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -218,7 +205,6 @@ module.exports.testaddress_CA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCADomestic: function(test) {
         test.expect(1);
         var parsedAddress = new Address({

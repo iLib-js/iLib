@@ -53,6 +53,16 @@ ilib.getVersion = function () {
 };
 
 /**
+ * the cldr version that currently adopted on.
+ *
+ * @static
+ * @return {string} the adopted cldr version for ilib
+ */
+ilib.getCLDRVersion = function () {
+    return "43.1";
+};
+
+/**
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {

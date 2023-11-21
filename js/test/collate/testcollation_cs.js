@@ -29,7 +29,6 @@ module.exports.testcollation_cs = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuat_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -160,7 +159,6 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-
     testJSCollatorTer_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -291,7 +289,6 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-
     testJSCollatorSec_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -422,7 +419,6 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-
     testJSCollatorPri_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -553,7 +549,6 @@ module.exports.testcollation_cs = {
         test.ok("ž = ž", col.compare("ž", "ž") === 0);
         test.done();
     },
-
     testJSCollatorQuatSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -684,7 +679,6 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-
     testJSCollatorTerSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -815,7 +809,6 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-
     testJSCollatorSecSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -946,7 +939,6 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-
     testJSCollatorPriSort_cs: function(test) {
         test.expect(116);
         var col = new Collator({
@@ -1077,7 +1069,6 @@ module.exports.testcollation_cs = {
         test.ok("ž < ž", col.compare("ž", "ž") < 0);
         test.done();
     },
-
     testCollatorCase_cs: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1157,7 +1148,6 @@ module.exports.testcollation_cs = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPrimary_cs: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1237,5 +1227,4 @@ module.exports.testcollation_cs = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testaddress_IS = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressISNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
@@ -46,7 +45,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gudmundur Jonasson Travel\nBorgartun 34\nREYKJAVÍK", {locale: 'en-IS'});
@@ -60,7 +58,6 @@ module.exports.testaddress_IS = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressISNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Wabbitwatchin Excursions\n121 REYKJAVÍK", {locale: 'en-IS'});
@@ -74,7 +71,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Elmér Fúdd\nWabbitwatchin Excursions\nPósthólf 1034\n121 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
@@ -88,7 +84,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034, 121 REYKJAVÍK, ICELAND", {locale: 'en-IS'});
@@ -102,7 +97,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tElmér Fúdd\n\t\t\tWabbitwatchin Excursions, \t\t\t\r\r Pósthólf 1034, \n\t\n121 REYKJAVÍK\t\n\t \nICELAND\n\n", {locale: 'en-IS'});
@@ -116,7 +110,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Elmér Fúdd Wabbitwatchin Excursions Pósthólf 1034 121 REYKJAVÍK ICELAND", {locale: 'en-IS'});
@@ -130,7 +123,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testParseAddressISFromDE: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nisland", {locale: 'de-DE'});
@@ -146,7 +138,6 @@ module.exports.testaddress_IS = {
         test.equal(parsedAddress.countryCode, "IS");
         test.done();
     },
-
     testFormatAddressIS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -162,7 +153,6 @@ module.exports.testaddress_IS = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressISFromDE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_IS = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_HU = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressHUNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, 2806, HUNGARY", {locale: 'hu-HU'});
@@ -48,7 +45,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testParseAddressHUNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, HUNGARY", {locale: 'hu-HU'});
@@ -62,7 +58,6 @@ module.exports.testaddress_HU = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressHUManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest\nHonvéd utca 13-15\n1055\nHUNGARY", {locale: 'hu-HU'});
@@ -76,7 +71,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testParseAddressHUOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest, Honvéd utca 13-15, 1055, HUNGARY", {locale: 'hu-HU'});
@@ -90,7 +84,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testParseAddressHUSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest   \n\t\n Honvéd utca 13-15\t\n\n 1055\n\nHUNGARY  \n  \t\t\t", {locale: 'hu-HU'});
@@ -104,7 +97,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testParseAddressHUNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Budapest Honvéd utca 13-15 1055 HUNGARY", {locale: 'hu-HU'});
@@ -118,7 +110,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testParseAddressHUSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Győr, Arató utca 7 fsz. 2, 9028, HUNGARY", {locale: 'hu-HU'});
@@ -147,7 +138,6 @@ module.exports.testaddress_HU = {
         test.equal(parsedAddress.countryCode, "HU");
         test.done();
     },
-
     testFormatAddressHU: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -163,7 +153,6 @@ module.exports.testaddress_HU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressHUFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -179,5 +168,4 @@ module.exports.testaddress_HU = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

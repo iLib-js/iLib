@@ -42,7 +42,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncConstructorGivenLocale: function(test) {
         test.expect(4);
         new LocaleInfo("de-DE", {
@@ -59,7 +58,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncGetTimeZoneDefault: function(test) {
         test.expect(2);
         new LocaleInfo("zz-ZZ", {
@@ -72,7 +70,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncGetCurrencyUnknown: function(test) {
         test.expect(2);
         new LocaleInfo("zxx-XX", {
@@ -85,7 +82,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncGetDecimalSeparatorfor_ko_KR: function(test) {
         test.expect(5);
         new LocaleInfo("ko-KR", {
@@ -100,7 +96,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncGetDecimalSeparatorfor_fr_FR: function(test) {
         test.expect(5);
         new LocaleInfo("fr-FR", {
@@ -115,7 +110,6 @@ module.exports.testlocaleinfoasync = {
             }
         });
     },
-
     testLocaleInfoAsyncGetDecimalSeparatorfor_zh_Hant_US: function(test) {
         test.expect(5);
         // test mixing locale parts for a non-standard locale

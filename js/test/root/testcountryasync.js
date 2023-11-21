@@ -36,7 +36,6 @@ module.exports.testcountryasync = {
             }
         });
     },
-
     testCountryAsyncLocale1: function(test) {
         test.expect(4);
         new Country({
@@ -53,7 +52,6 @@ module.exports.testcountryasync = {
             }
         });
     },
-
     testCountryAsyncLocale2: function(test) {
         test.expect(4);
         new Country({
@@ -70,7 +68,6 @@ module.exports.testcountryasync = {
             }
         });
     },
-
     testCountryAsyncGetByCodeUnknown: function(test) {
         new Country({
             locale: "en-US",
@@ -86,7 +83,6 @@ module.exports.testcountryasync = {
             }
         });
     },
-
     testCountryAsyncJP: function(test) {
         test.expect(4);
         new Country({

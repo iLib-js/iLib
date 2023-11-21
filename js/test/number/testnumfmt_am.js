@@ -30,7 +30,6 @@ module.exports.testnumfmt_am = {
         ilib.clearCache();
         callback();
     },
-
     testNumFmtNumberETFormatNoFractionalLimit: function(test) {
         test.expect(2);
 
@@ -45,7 +44,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.012345678901234), "1.012345678901234");
         test.done();
     },
-
     testNumFmtNumberETFormatNoIntegralLimit: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -60,7 +58,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12345678901234.0), "12,345,678,901,234");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMaxFracDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -73,7 +70,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.7453), "1.75");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinFracDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -86,7 +82,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.75), "1.7500");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinFracDigitsTooSmall: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -100,7 +95,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.75), "1.75");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinFracDigitsTooSmallNoDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -114,7 +108,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(17500), "17,500");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinFracDigitsTooBig: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -128,7 +121,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.012345678901234567890123456789), "1.01234567890123460000");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooSmall: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -142,7 +134,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.7), "1.700");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooBig: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -156,7 +147,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.76543298765), "1.765433");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMinAndMaxFracDigitsJustRight: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -169,7 +159,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(1.76543), "1.76543");
         test.done();
     },
-
     testNumFmtNumberETStyleStandard: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -182,7 +171,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(2345678901234567.0), "2,345,678,901,234,567");
         test.done();
     },
-
     testNumFmtNumberETFormatStandardWithMultiGroups: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -195,7 +183,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(123456789.4), "123,456,789.4");
         test.done();
     },
-
     testNumFmtNumberETFormatWithMultiGroupsNegative: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -208,7 +195,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(-123456789.4), "-123,456,789.4");
         test.done();
     },
-
     testNumFmtNumberETStyleScientific: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -221,7 +207,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12345678901234567890123456789.0), "1.2345678901234568E+28");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificSmall: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -234,8 +219,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(0.000001234567890123456), "1.234567890123456E-6");
         test.done();
     },
-
-
     testNumFmtNumberETStyleScientificWithMinFractionDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -249,7 +232,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400E+28");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificWithMinFractionDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -264,7 +246,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12345678900000000000000000000.0), "1.23456789E+28");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmall: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -278,7 +259,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(123400000000000000000.0), "1.234E+20");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmallNoDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -292,7 +272,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(10000000000000000000000000000.0), "1E+28");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificWithMinFractionDigitsTooBig: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -307,7 +286,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400000000000000000E+28");
         test.done();
     },
-
     testNumFmtNumberETStyleScientificWithMaxAndRoundUp: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -338,7 +316,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(123456789), "123456789");
         test.done();
     },
-
     testNumFmtNumberETStyleNogroupingFloat: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -351,7 +328,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(123456789.345345), "123456789.345345");
         test.done();
     },
-
     testNumFmtETGetUseNativeHasNativeButFalse: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -364,7 +340,6 @@ module.exports.testnumfmt_am = {
         test.ok(!fmt.getUseNative());
         test.done();
     },
-
     testNumFmtGetUseNativeOverrideTrue: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -377,7 +352,6 @@ module.exports.testnumfmt_am = {
         test.ok(fmt.getUseNative());
         test.done();
     },
-
     testNumFmtGetUseNativeExplicitTrue: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -390,7 +364,6 @@ module.exports.testnumfmt_am = {
         test.ok(fmt.getUseNative());
         test.done();
     },
-
     testNumFmtGetUseNativeExplicitFalse: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -403,7 +376,6 @@ module.exports.testnumfmt_am = {
         test.ok(!fmt.getUseNative());
         test.done();
     },
-
     testNumFmtGetUseNativeOverrideFalse: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -416,9 +388,6 @@ module.exports.testnumfmt_am = {
         test.ok(!fmt.getUseNative());
         test.done();
     },
-
-
-
     testNumFmtPercentageFormatRegular: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -431,7 +400,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.0), "57%");
         test.done();
     },
-
     testNumFmtPercentageGetType: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -444,7 +412,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.getType(), "percentage");
         test.done();
     },
-
     testNumFmtPercentageFormatWithDecimal: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -457,7 +424,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -471,7 +437,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.05), "Br57.05");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -497,7 +462,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.056), "Br57,06");
         test.done();
     },
-
     testNumFmtCurrencyUseCorrectFractionDigitsForLocale: function(test) {
         test.expect(3);
         var fmt = new NumFmt({
@@ -512,7 +476,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.getMinFractionDigits(), 2);
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -526,7 +489,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57), "Br57,00");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -540,7 +502,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.1), "Br57.10");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -555,7 +516,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.1), "BR57.10000");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -570,7 +530,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.1), "ETB57,10000");
         test.done();
     },
-
     testNumFmtCurrencyFormatETDefault: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -584,7 +543,6 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(-57), "-Br57.00");
         test.done();
     },
-
     testNumFmtCurrencyFormatETGrouping: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -598,5 +556,4 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(123456788), "Br123,456,788.00");
         test.done();
     }
-
 };

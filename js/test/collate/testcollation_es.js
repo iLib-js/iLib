@@ -30,7 +30,6 @@ module.exports.testcollation_es = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorTraditionalQuatCH_es: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -50,7 +49,6 @@ module.exports.testcollation_es = {
         test.ok("ch < d",  col.compare("ch", "d") < 0);
         test.done();
     },
-
     testJSCollatorTraditionalQuatLL_es: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -70,7 +68,6 @@ module.exports.testcollation_es = {
         test.ok("ll < m",  col.compare("ll", "m") < 0);
         test.done();
     },
-
     testJSCollatorTraditionalQuatEnye_es: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -90,7 +87,6 @@ module.exports.testcollation_es = {
         test.ok("ñ < o", col.compare("ñ", "o") < 0);
         test.done();
     },
-
     // differences in ch rr ll and ñ should be primary differences
 
     testJSCollatorTraditionalPrimaryCH_es: function(test) {
@@ -113,7 +109,6 @@ module.exports.testcollation_es = {
         test.ok("ch < d",  col.compare("ch", "d") < 0);
         test.done();
     },
-
     testJSCollatorTraditionalPrimaryLL_es: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -134,7 +129,6 @@ module.exports.testcollation_es = {
         test.ok("ll < m",  col.compare("ll", "m") < 0);
         test.done();
     },
-
     testJSCollatorTraditionalPrimaryEnye_es: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -154,7 +148,6 @@ module.exports.testcollation_es = {
         test.ok("ñ < o", col.compare("ñ", "o") < 0);
         test.done();
     },
-
     testCollatorSortWithCase_es: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -209,7 +202,6 @@ module.exports.testcollation_es = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorWithVariants_es: function(test) {
         test.expect(2);
         var col = new Collator({

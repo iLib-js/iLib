@@ -36,7 +36,6 @@ module.exports.testlocalematchasync = {
             }
         });
     },
-
     testLocaleMatcherAsyncGetLikelyLocaleByLanguage1: function(test) {
         test.expect(3);
         new LocaleMatcher({
@@ -51,7 +50,6 @@ module.exports.testlocalematchasync = {
             }
         });
     },
-
     testLocaleMatcherAsyncGetLikelyLocaleByRegion: function(test) {
         test.expect(3);
         new LocaleMatcher({
@@ -66,7 +64,6 @@ module.exports.testlocalematchasync = {
             }
         });
     },
-
     testLocaleMatcherAsyncGetLikelyLocaleByScript: function(test) {
         test.expect(3);
         new LocaleMatcher({

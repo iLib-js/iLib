@@ -29,7 +29,6 @@ module.exports.phonenum_TW = {
         ilib.clearCache();
         callback();
     },
-
     testParseTWFull: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("(03)606-5378", {locale: "zh-TW"});
@@ -44,7 +43,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWLocalNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("345-6789", {locale: "zh-TW"});
@@ -57,7 +55,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWFullLongAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0836-24-789", {locale: "zh-TW"});
@@ -72,7 +69,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWIgnoreFormatting: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03-1234-56789", {locale: "zh-TW"});
@@ -87,7 +83,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWIgnoreCrap: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("$03@1234&5678-", {locale: "zh-TW"});
@@ -102,7 +97,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWNoAreaCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("82345678", {locale: "zh-TW"});
@@ -115,7 +109,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWInvalidLocalNumber: function(test) {
         test.expect(2);
         // local number is too long
@@ -130,7 +123,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWServiceCode: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0800-011-765", {locale: "zh-TW"});
@@ -145,7 +137,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWMobileNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0988-123-456", {locale: "zh-TW"});
@@ -160,7 +151,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWPlusIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "zh-TW"});
@@ -176,7 +166,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWZerosIDDToUS: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("00212028675309", {locale: "zh-TW"});
@@ -192,7 +181,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWLongAreaCodeNoTrunk: function(test) {
         test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
@@ -207,7 +195,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWEmergencyNumber: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("110", {locale: "zh-TW"});
@@ -233,7 +220,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWPartial1: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "zh-TW"});
@@ -246,7 +232,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03", {locale: "zh-TW"});
@@ -372,7 +357,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("03912345678", {locale: "zh-TW"});
@@ -387,7 +371,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("039123456789", {locale: "zh-TW"});
@@ -402,7 +385,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithUSMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "316"});
@@ -416,7 +398,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithFRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "208"});
@@ -429,7 +410,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithMXMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "334"});
@@ -443,7 +423,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithDEMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "262"});
@@ -456,7 +435,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithKRMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "450"});
@@ -470,7 +448,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithJPMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "440"});
@@ -483,7 +460,6 @@ module.exports.phonenum_TW = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-
     testParseTWWithTWMCC: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "466"});

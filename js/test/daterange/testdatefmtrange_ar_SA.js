@@ -683,5 +683,4 @@ module.exports.testdatefmtrange_ar_SA = {
         test.equal(fmt.format(start, end), "‏٢٠١١ – ٢٠٦٤");
         test.done();
     }
-
 };

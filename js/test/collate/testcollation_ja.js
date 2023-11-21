@@ -29,7 +29,6 @@ module.exports.testcollation_ja = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuatKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -80,7 +79,6 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-
     testJSCollatorTerKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -131,7 +129,6 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-
     testJSCollatorSecKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -182,7 +179,6 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-
     testJSCollatorPriKanji_ja: function(test) {
         test.expect(37);
         var col = new Collator({
@@ -233,7 +229,6 @@ module.exports.testcollation_ja = {
         test.ok("鶩 < 熙", col.compare("鶩", "熙") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaQuat_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -348,7 +343,6 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaTer_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -463,7 +457,6 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaSec_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -578,7 +571,6 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaPri_ja: function(test) {
         test.expect(100);
         var col = new Collator({
@@ -693,7 +685,6 @@ module.exports.testcollation_ja = {
         test.ok("を < ん", col.compare("を", "ん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaLengthMarksQuat_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -798,7 +789,6 @@ module.exports.testcollation_ja = {
         test.ok("をー < をぉ", col.compare("をー", "をぉ") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaLengthMarksTer_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -903,7 +893,6 @@ module.exports.testcollation_ja = {
         test.ok("をー < をぉ", col.compare("をー", "をぉ") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaLengthMarksSec_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -1008,7 +997,6 @@ module.exports.testcollation_ja = {
         test.ok("をー = をぉ", col.compare("をー", "をぉ") === 0);
         test.done();
     },
-
     testJSCollatorHiraganaLengthMarksPri_ja: function(test) {
         test.expect(86);
         var col = new Collator({
@@ -1113,7 +1101,6 @@ module.exports.testcollation_ja = {
         test.ok("をー = をぉ", col.compare("をー", "をぉ") === 0);
         test.done();
     },
-
     testJSCollatorHiraganaIterationMarksQuat_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1277,7 +1264,6 @@ module.exports.testcollation_ja = {
         test.ok("んゝ < んん", col.compare("んゝ", "んん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaIterationMarksTer_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1441,7 +1427,6 @@ module.exports.testcollation_ja = {
         test.ok("んゝ < んん", col.compare("んゝ", "んん") < 0);
         test.done();
     },
-
     testJSCollatorHiraganaIterationMarksSec_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1605,7 +1590,6 @@ module.exports.testcollation_ja = {
         test.ok("んゝ = んん", col.compare("んゝ", "んん") === 0);
         test.done();
     },
-
     testJSCollatorHiraganaIterationMarksPri_ja: function(test) {
         test.expect(139);
         var col = new Collator({
@@ -1769,7 +1753,6 @@ module.exports.testcollation_ja = {
         test.ok("んゝ = んん", col.compare("んゝ", "んん") === 0);
         test.done();
     },
-
     testJSCollatorKatakanaQuat_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -1882,7 +1865,6 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaTer_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -1995,7 +1977,6 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaSec_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -2108,7 +2089,6 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaPri_ja: function(test) {
         test.expect(98);
         var col = new Collator({
@@ -2221,7 +2201,6 @@ module.exports.testcollation_ja = {
         test.ok("ヲ < ン", col.compare("ヲ", "ン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaLengthMarksQuat_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2429,7 +2408,6 @@ module.exports.testcollation_ja = {
         test.ok("ヺー < ヺオ", col.compare("ヺー", "ヺオ") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaLengthMarksTer_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2637,7 +2615,6 @@ module.exports.testcollation_ja = {
         test.ok("ヺー < ヺオ", col.compare("ヺー", "ヺオ") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaLengthMarksSec_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -2845,7 +2822,6 @@ module.exports.testcollation_ja = {
         test.ok("ヺー = ヺオ", col.compare("ヺー", "ヺオ") === 0);
         test.done();
     },
-
     testJSCollatorKatakanaLengthMarksPri_ja: function(test) {
         test.expect(189);
         var col = new Collator({
@@ -3053,7 +3029,6 @@ module.exports.testcollation_ja = {
         test.ok("ヺー = ヺオ", col.compare("ヺー", "ヺオ") === 0);
         test.done();
     },
-
     testJSCollatorKatakanaIterationMarksQuat_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -3424,7 +3399,6 @@ module.exports.testcollation_ja = {
         test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaIterationMarksTer_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -3795,7 +3769,6 @@ module.exports.testcollation_ja = {
         test.ok("ﾝヽ < ﾝン", col.compare("ﾝヽ", "ﾝン") < 0);
         test.done();
     },
-
     testJSCollatorKatakanaIterationMarksSec_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -4166,7 +4139,6 @@ module.exports.testcollation_ja = {
         test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);
         test.done();
     },
-
     testJSCollatorKatakanaIterationMarksPri_ja: function(test) {
         test.expect(310);
         var col = new Collator({
@@ -4537,7 +4509,6 @@ module.exports.testcollation_ja = {
         test.ok("ﾝヽ = ﾝン", col.compare("ﾝヽ", "ﾝン") === 0);
         test.done();
     },
-
     testJSCollatorHiraBeforeKataQuat_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4652,7 +4623,6 @@ module.exports.testcollation_ja = {
         test.ok("ん < ン", col.compare("ん", "ン") < 0);
         test.done();
     },
-
     testJSCollatorHiraBeforeKataTer_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4767,7 +4737,6 @@ module.exports.testcollation_ja = {
         test.ok("ん < ン", col.compare("ん", "ン") < 0);
         test.done();
     },
-
     testJSCollatorHiraBeforeKataSec_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4882,7 +4851,6 @@ module.exports.testcollation_ja = {
         test.ok("ん = ン", col.compare("ん", "ン") === 0);
         test.done();
     },
-
     testJSCollatorHiraBeforeKataPri_ja: function(test) {
         test.expect(99);
         var col = new Collator({
@@ -4997,7 +4965,6 @@ module.exports.testcollation_ja = {
         test.ok("ん = ン", col.compare("ん", "ン") === 0);
         test.done();
     },
-
     testJSCollatorKanaBeforeKanji_ja: function(test) {
         test.expect(3);
         var col = new Collator({
@@ -5016,7 +4983,6 @@ module.exports.testcollation_ja = {
         test.ok("ン <  鯵", col.compare("ン", "鯵") < 0);
         test.done();
     },
-
     testJSCollatorSortQuat_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5085,7 +5051,6 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-
     testJSCollatorSortTer_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5156,7 +5121,6 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-
     testJSCollatorSortSec_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5227,7 +5191,6 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-
     testJSCollatorSortPri_ja: function(test) {
         test.expect(50);
         var col = new Collator({
@@ -5298,7 +5261,6 @@ module.exports.testcollation_ja = {
         test.ok("ｩヾ < ｩヴ", col.compare("ｩヾ", "ｩヴ") < 0);
         test.done();
     },
-
     testCollatorCase_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5425,7 +5387,6 @@ module.exports.testcollation_ja = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPrimary_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5552,7 +5513,6 @@ module.exports.testcollation_ja = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testJSCollatorQuatLatin_ja: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -5584,7 +5544,6 @@ module.exports.testcollation_ja = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-
     testCollatorPrimaryMixed_ja: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -5724,5 +5683,4 @@ module.exports.testcollation_ja = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

@@ -23,7 +23,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -137,7 +136,6 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "31 ta’ Diċembru 2011 13:45 – 14:30");
         test.done();
     },
-
     testDateRngFmtRangeNextDayShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
@@ -242,7 +240,6 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "30 ta’ Diċembru 2011 13:45 – 31 ta’ Diċembru 2011 14:30");
         test.done();
     },
-
     testDateRngFmtRangeMultiDayShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
@@ -347,7 +344,6 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 – 31 ta’ Diċembru 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextMonthShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
@@ -452,7 +448,6 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 ta’ Novembru – 31 ta’ Diċembru 2011");
         test.done();
     },
-
     testDateRngFmtRangeNextYearShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});
@@ -557,7 +552,6 @@ module.exports.testdatefmtrange_mt_MT = {
         test.equal(fmt.format(start, end), "20 ta’ Novembru 2011 – 31 ta’ Jannar 2012");
         test.done();
     },
-
     testDateRngFmtRangeMultiYearShort_mt_MT: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "mt-MT", length: "short"});

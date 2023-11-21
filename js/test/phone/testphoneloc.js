@@ -45,12 +45,10 @@ module.exports.phoneloc = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testGetByMCCUS: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({mcc: "310"});
@@ -58,7 +56,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "US");
         test.done();
     },
-
     testGetByMCCDE: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({mcc: "262"});
@@ -66,7 +63,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "DE");
         test.done();
     },
-
     testGetByMCCUnknownMCC: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({mcc: "31"});
@@ -74,7 +70,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
-
     testGetByCC1: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({countryCode: "1"});
@@ -82,7 +77,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "US");
         test.done();
     },
-
     testGetByCC1: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({countryCode: "44"});
@@ -90,7 +84,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "GB");
         test.done();
     },
-
     testGetByCCUnknownCC: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({countryCode: "0"});
@@ -98,7 +91,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
-
     testGetByLocaleUS: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({locale: "en-US"});
@@ -106,7 +98,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "US");
         test.done();
     },
-
     testGetByLocaleDE: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({locale: "de-DE"});
@@ -114,7 +105,6 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "DE");
         test.done();
     },
-
     testGetDefault: function(test) {
         test.expect(2);
         var loc = new PhoneLocale();
@@ -122,7 +112,6 @@ module.exports.phoneloc = {
         test.equal(loc.region, "US");
         test.done();
     },
-
     testGetDefaultEmpty: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({});
@@ -130,7 +119,6 @@ module.exports.phoneloc = {
         test.equal(loc.region, "US");
         test.done();
     },
-
     testPhoneLocLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing

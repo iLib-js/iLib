@@ -30,7 +30,6 @@ module.exports.testarea = {
         ilib.clearCache();
         callback();
     },
-
     testAreaAreaConstructor: function(test) {
         test.expect(1);
 
@@ -42,7 +41,6 @@ module.exports.testarea = {
         test.ok(m !== null);
         test.done();
     },
-
     testAreaAreaConvertKm2toMi2: function(test) {
         test.expect(3);
         var m1 = new AreaUnit({
@@ -60,7 +58,6 @@ module.exports.testarea = {
         test.roughlyEqual(m2.getAmount(), 1930.511, 0.1);
         test.done();
     },
-
     testAreaStaticConvert1: function(test) {
         test.expect(1);
         var m = AreaUnit.convert("square mile","square km", 2.0);
@@ -68,7 +65,6 @@ module.exports.testarea = {
         test.equal(m, 0.772204);
         test.done();
     },
-
     testAreaStaticConvertWithString: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "hectare","square km", 2.0);
@@ -76,7 +72,6 @@ module.exports.testarea = {
         test.equal(m, 200);
         test.done();
     },
-
     testAreaStaticConvert2: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square meter","square km", 2.0);
@@ -84,7 +79,6 @@ module.exports.testarea = {
         test.equal(m, 2e+6);
         test.done();
     },
-
     testAreaStaticConvert3: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square mile","square km", 2.0);
@@ -92,7 +86,6 @@ module.exports.testarea = {
         test.equal(m, 0.772204);
         test.done();
     },
-
     testAreaStaticConvert4: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "hectare", "square km",2.0);
@@ -100,7 +93,6 @@ module.exports.testarea = {
         test.equal(m, 200);
         test.done();
     },
-
     testAreaStaticConvert5: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square yard","square km", 2.0);
@@ -129,7 +121,6 @@ module.exports.testarea = {
         test.equal(m, 3.1e+9);
         test.done();
     },
-
     testAreaStaticConvert9: function(test) {
         test.expect(1);
         var m = AreaUnit.convert("square mile","hectare", 2.0);
@@ -146,7 +137,6 @@ module.exports.testarea = {
         test.equal(m, 20000);
         test.done();
     },
-
     testAreaStaticConvert11: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square mile","square meter", 2.0);
@@ -154,7 +144,6 @@ module.exports.testarea = {
         test.equal(m, 7.722e-7);
         test.done();
     },
-
     testAreaStaticConvert12: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "hectare", "square meter",2.0);
@@ -191,7 +180,6 @@ module.exports.testarea = {
         test.roughlyEqual(m, 1.255e+7, 1e+7);
         test.done();
     },
-
     testAreaStaticConvert17: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square inch","square yard", 2.0);
@@ -199,7 +187,6 @@ module.exports.testarea = {
         test.equal(m, 2592);
         test.done();
     },
-
     testAreaScale1: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -212,7 +199,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-meter");
         test.done();
     },
-
     testAreaScale2: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -225,7 +211,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-inch");
         test.done();
     },
-
     testAreaScale3: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -238,7 +223,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-kilometer");
         test.done();
     },
-
     testAreaScale4: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -251,7 +235,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "acre");
         test.done();
     },
-
     testAreaScale5: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -264,7 +247,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-kilometer");
         test.done();
     },
-
     testAreaScale6: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -276,7 +258,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-mile");
         test.done();
     },
-
     testAreaScale7: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -289,7 +270,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "square-meter");
         test.done();
     },
-
     testAreaScale8: function(test) {
         test.expect(2);
         var m1 = new AreaUnit({
@@ -301,7 +281,6 @@ module.exports.testarea = {
         test.equal(m2.unit, "acre");
         test.done();
     },
-
     testAreaLocalize1: function(test) {
         test.expect(2);
         var m = new AreaUnit({
@@ -315,7 +294,6 @@ module.exports.testarea = {
         test.equal(m.unit, "square-kilometer");
         test.done();
     },
-
     testAreaLocalize2: function(test) {
         test.expect(2);
         var m = new AreaUnit({
@@ -329,7 +307,6 @@ module.exports.testarea = {
         test.equal(m.unit, "square-mile");
         test.done();
     },
-
     testAreaLocalize3: function(test) {
         test.expect(2);
         var m = new AreaUnit({
@@ -361,5 +338,4 @@ module.exports.testarea = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

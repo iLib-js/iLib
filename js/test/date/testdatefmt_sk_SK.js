@@ -1329,7 +1329,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
     testDateFmtFormatRelativeWithinHourAfter_sk_SK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1388,9 +1387,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
-
-
     testDateFmtFormatRelativeWithinDayAfter_sk_SK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1449,7 +1445,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
     testDateFmtFormatRelativeWithinFortnightAfter_sk_SK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1478,9 +1473,6 @@ module.exports.testdatefmt_sk_SK = {
         test.equal(fmt.formatRelative(reference, date), "o 4 dni");
         test.done();
     },
-
-
-
     /*
     testDateFmtFormatRelativeWithinFortnightBefore_sk_SK: function(test) {
         test.expect(2);
@@ -1512,9 +1504,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
-
-
     testDateFmtFormatRelativeWithinQuarterAfter_sk_SK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1573,9 +1562,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
-
-
     testDateFmtFormatRelativeWithinTwoYearsAfter_sk_SK: function(test) {
         test.expect(4);
         test.expect(2);
@@ -1634,7 +1620,6 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     },
     */
-
     testDateFmtFormatRelativeYearsAfter_sk_SK: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1693,6 +1678,4 @@ module.exports.testdatefmt_sk_SK = {
         test.done();
     }
     */
-
-
 };

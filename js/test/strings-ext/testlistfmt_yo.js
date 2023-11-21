@@ -262,7 +262,6 @@ module.exports.testlistfmt_yo = {
         test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pẹ̀lú meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     },
-
     // yo-BJ
     testListFmtNumberFormatOne_yo_BJ: function(test) {
         var fmt = new ListFmt({

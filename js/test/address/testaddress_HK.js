@@ -32,7 +32,6 @@ module.exports.testaddress_HK = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressHKHKLatinNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay, Hong Kong", {locale: 'en-HK'});
@@ -46,7 +45,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKLatinNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay", {locale: 'en-HK'});
@@ -60,7 +58,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKLatinDouble: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Room 1301-1302, 13/F, Block A, Sea View Estate,\n2 Watson Road, Hong Kong\nHong Kong", {locale: 'en-HK'});
@@ -74,7 +71,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKAsianNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("中國香港特別行政區太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-Hant-HK'});
@@ -88,7 +84,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKAsianNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-HK'});
@@ -102,7 +97,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     /*
     // for DFISH-20855
     testParseAddressHKHKMixed: function(test) {
@@ -134,7 +128,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t10/F PCCW Tower\n\t\nTaikoo Place\n \r\n\r\r979 King's Road\n    Quarry Bay\r\r\n    Hong Kong\t\n\n\n", {locale: 'en-HK'});
@@ -148,7 +141,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tower 1 Times Square 1 Matheson Street Room 1706 Causeway Bay Hong Kong", {locale: 'en-HK'});
@@ -162,7 +154,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Suite 19, 1st Floor, Tǎi Gù Chung Zhong Shìn, Hăo 1111, In Huang Street, Dàpǔ Xīn Shìzhèn, Hong Kong", {locale: 'en-HK'});
@@ -176,7 +167,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testParseAddressHKHKFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay, Hong Kong", {locale: 'en-US'});
@@ -190,7 +180,6 @@ module.exports.testaddress_HK = {
         test.equal(parsedAddress.countryCode, "HK");
         test.done();
     },
-
     testFormatAddressHKHKLatin: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -206,7 +195,6 @@ module.exports.testaddress_HK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressHKHKAsian: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -222,7 +210,6 @@ module.exports.testaddress_HK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressHKHKFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -238,5 +225,4 @@ module.exports.testaddress_HK = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -20,7 +20,6 @@
 if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -8074,5 +8073,4 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 ano, 1 mês, 1 semana, 1 dia, 1 hora, 1 minuto e 1 segundo");
         test.done();
     }
-
 };

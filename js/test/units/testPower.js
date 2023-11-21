@@ -30,7 +30,6 @@ module.exports.testpower = {
         ilib.clearCache();
         callback();
     },
-
     testPowerPowerConstructor: function(test) {
         test.expect(1);
         var m = new PowerUnit({
@@ -41,7 +40,6 @@ module.exports.testpower = {
         test.ok(m !== null);
         test.done();
     },
-
     testPowerPowerConvertkWtoHP: function(test) {
         test.expect(3);
         var m1 = new PowerUnit({
@@ -59,7 +57,6 @@ module.exports.testpower = {
         test.roughlyEqual(m2.getAmount(), 2.68204, 1e-5);
         test.done();
     },
-
     testPowerStaticConvert1: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("gW", "hp", 1);
@@ -67,7 +64,6 @@ module.exports.testpower = {
         test.roughlyEqual(m, 7.45701033e-7, 1e-10);
         test.done();
     },
-
     testPowerStaticConvertWithString: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("MW", "W", "1e6");
@@ -75,7 +71,6 @@ module.exports.testpower = {
         test.equal(m, 1);
         test.done();
     },
-
     testPowerStaticConvert2: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("mW", "kW", 1000);
@@ -83,7 +78,6 @@ module.exports.testpower = {
         test.equal(m, 1);
         test.done();
     },
-
     testPowerStaticConvert3: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("ft lb/h", "W", 1);
@@ -91,7 +85,6 @@ module.exports.testpower = {
         test.roughlyEqual(m, 0.737562149277, 1e-8);
         test.done();
     },
-
     testPowerStaticConvert4: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("hp", "btu/h", 1);
@@ -99,7 +92,6 @@ module.exports.testpower = {
         test.roughlyEqual(m, 3.93014685e-4, 1e-7);
         test.done();
     },
-
     testPowerStaticConvert5: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("kW", "HP", 1);
@@ -107,7 +99,6 @@ module.exports.testpower = {
         test.roughlyEqual(m, 0.7457010335416, 1e-8);
         test.done();
     },
-
     testPowerStaticConvert6: function(test) {
         test.expect(1);
         var m = PowerUnit.convert("MW", "BTU/h", 1);
@@ -128,7 +119,6 @@ module.exports.testpower = {
         test.equal(m2.unit, "kilowatt-hour");
         test.done();
     },
-
     testPowerScale2: function(test) {
         test.expect(2);
         var m1 = new PowerUnit({
@@ -141,7 +131,6 @@ module.exports.testpower = {
         test.equal(m2.unit, "gigawatt-hour");
         test.done();
     },
-
     testPowerScale3: function(test) {
         test.expect(2);
         var m1 = new PowerUnit({
@@ -154,7 +143,6 @@ module.exports.testpower = {
         test.equal(m2.unit, "watt-hour");
         test.done();
     },
-
     testPowerScale4: function(test) {
         test.expect(2);
         var m1 = new PowerUnit({

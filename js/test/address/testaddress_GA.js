@@ -32,7 +32,6 @@ module.exports.testaddress_GA = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressGANormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
@@ -46,7 +45,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGANoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
@@ -60,7 +58,6 @@ module.exports.testaddress_GA = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressGANoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE", {locale: 'fr-GA'});
@@ -74,7 +71,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGAManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service\nde l'organisation et\nde l'exploitation du réseau postal\nBP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
@@ -88,7 +84,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGAOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service , de l'organisation et , de l'exploitation du réseau postal , BP 20000 , LIBREVILLE , GABON", {locale: 'fr-GA'});
@@ -102,7 +97,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGASuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service\r\r\tde l'organisation et\t\t\tde l'exploitation du réseau postal\t\t\rBP 20000\r\r\n\nLIBREVILLE\t\r\n\t\rGABON", {locale: 'fr-GA'});
@@ -116,7 +110,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGANoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000 LIBREVILLE GABON", {locale: 'fr-GA'});
@@ -130,7 +123,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testParseAddressGAFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
@@ -144,7 +136,6 @@ module.exports.testaddress_GA = {
         test.equal(parsedAddress.countryCode, "GA");
         test.done();
     },
-
     testFormatAddressGA: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_GA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressGAFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,5 +166,4 @@ module.exports.testaddress_GA = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

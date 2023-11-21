@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_BR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Carlos Rossi,Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP,13035-680,BRAZIL", {locale: 'pt-BR'});
@@ -48,7 +45,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP, BRAZIL", {locale: 'pt-BR'});
@@ -62,7 +58,6 @@ module.exports.testaddress_BR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressBRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Carlos Rossi\nAvenida João Jorge, 112, ap. 31\nVila Industrial\nCampinas - SP\n13035-680\nBRAZIL", {locale: 'pt-BR'});
@@ -76,7 +71,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238, Sao Paulo - SP,BRAZIL", {locale: 'pt-BR'});
@@ -90,7 +84,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP\n\n\n BRAZIL  \n  \t\n 04642-000 \t\t\t", {locale: 'pt-BR'});
@@ -104,7 +97,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro Sao Paulo - SP BRAZIL  04642-000 ", {locale: 'pt-BR'});
@@ -118,7 +110,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,BRAZIL,05315-970", {locale: 'pt-BR'});
@@ -132,7 +123,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Rua Visconde de Porto Seguro, Sao Paulo - SP, Brasil, 04642-000", {locale: 'pt-BR'});
@@ -148,7 +138,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testFormatAddressBR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +154,6 @@ module.exports.testaddress_BR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -182,7 +170,6 @@ module.exports.testaddress_BR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testParseAddressBR1: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Lívia Amaral, Av. Paulista, 1098, 1º andar, apto. 101, Bela Vista, São Paulo - SP, Brasil, 01310-000", {locale: 'pt-BR'});
@@ -198,7 +185,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBR2: function(test) {
         test.expect(6);
         var parsedAddress = new Address("Rua Afonso Canargo, 805, Santana, Guarapuava - PR, 85070-200", {locale: 'pt-BR'});
@@ -214,7 +200,6 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     },
-
     testParseAddressBR3: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Boulevard das Flores 255,    SALVADOR - BA, BRAZIL, 40301-110", {locale: 'pt-BR'});
@@ -230,5 +215,4 @@ module.exports.testaddress_BR = {
         test.equal(parsedAddress.countryCode, "BR");
         test.done();
     }
-
 };

@@ -30,9 +30,6 @@ module.exports.testlistfmt_he_IL = {
         ilib.clearCache();
         callback();
     },
-
-    // he-IL
-
     testListFmtheILNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
@@ -43,7 +40,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-
     testListFmtheILNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
@@ -54,7 +50,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד ושתיים");
         test.done();
     },
-
     testListFmtheILNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
@@ -65,7 +60,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים ושְׁלוֹשָׁה");
         test.done();
     },
-
     testListFmtheILNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL"
@@ -87,7 +81,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -99,7 +92,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -111,7 +103,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים, שְׁלוֹשָׁה");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -135,7 +126,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatTwoMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -148,7 +138,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatThreeMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -161,7 +150,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), "אחד, שתיים, שְׁלוֹשָׁה");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatFourMedium: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -186,7 +174,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד"]), "אחד");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -199,7 +186,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים"]), "אחד, שתיים");
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -212,7 +198,6 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה"]), 'אחד, שתיים ו-שְׁלוֹשָׁה');
         test.done();
     },
-
     testListFmtUnitStyleheILNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "he-IL",
@@ -225,5 +210,4 @@ module.exports.testlistfmt_he_IL = {
         test.equal(fmt.format(["אחד", "שתיים", "שְׁלוֹשָׁה", "ארבעה"]), 'אחד, שתיים, שְׁלוֹשָׁה ו-ארבעה');
         test.done();
     }
-
 };

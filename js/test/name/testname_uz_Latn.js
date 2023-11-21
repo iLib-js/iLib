@@ -32,7 +32,6 @@ module.exports.testname_uz_Latn = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -46,7 +45,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseAdjunctNames_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -60,7 +58,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSingleNameWithPrefixAndAdjunct_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -74,7 +71,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
@@ -89,7 +85,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -103,7 +98,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_uz_Latn: function(test) {
         test.expect(2);
         var parsed = new Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -118,11 +112,6 @@ module.exports.testname_uz_Latn = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_uz_Latn: function(test) {
         test.expect(2);
         var name = new Name({
@@ -141,7 +130,6 @@ module.exports.testname_uz_Latn = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_uz_Latn: function(test) {
         test.expect(2);
         var name = new Name({
@@ -160,7 +148,6 @@ module.exports.testname_uz_Latn = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_uz_Latn: function(test) {
         test.expect(2);
         var name = new Name({
@@ -180,7 +167,6 @@ module.exports.testname_uz_Latn = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_uz_Latn: function(test) {
         test.expect(2);
         var name = new Name({
@@ -201,7 +187,4 @@ module.exports.testname_uz_Latn = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

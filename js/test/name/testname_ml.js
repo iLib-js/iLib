@@ -32,7 +32,6 @@ module.exports.testname_ml = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മോഹന ലള", {locale: 'ml-IN'});
@@ -46,9 +45,6 @@ module.exports.testname_ml = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മോഹന ലള ജൂനിയര്‍", {locale: 'ml-IN'});
@@ -63,9 +59,6 @@ module.exports.testname_ml = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ലള", {locale: 'ml-IN'});
@@ -79,9 +72,6 @@ module.exports.testname_ml = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള", {locale: 'ml-IN'});
@@ -95,7 +85,6 @@ module.exports.testname_ml = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_ml_IN: function(test) {
         test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ മോഹന ലള", {locale: 'ml-IN'});
@@ -110,10 +99,6 @@ module.exports.testname_ml = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -132,7 +117,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -151,7 +135,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -170,7 +153,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -189,7 +171,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -210,7 +191,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -230,7 +210,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -250,7 +229,6 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_ml_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -270,7 +248,4 @@ module.exports.testname_ml = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

@@ -32,7 +32,6 @@ module.exports.testaddress_OM = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressOMNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
@@ -46,7 +45,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nعُمان", {locale: 'ar-OM'});
@@ -60,7 +58,6 @@ module.exports.testaddress_OM = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressOMNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ", {locale: 'ar-OM'});
@@ -74,7 +71,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ\n٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\nعُمان\n\n\n", {locale: 'ar-OM'});
@@ -87,7 +83,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ,  ٣٣٨ - ﺭﻮﻳ , ١١٢ , ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ , عُمان", {locale: 'ar-OM'});
@@ -101,7 +96,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tﻡﻭﺎﻘﻓ ﻑﺮﻋ\n\n\t٣٣٨ - ﺭﻮﻳ\n\n\t١١٢\n\n\tﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\n\n\tعُمان\n\n\n", {locale: 'ar-OM'});
@@ -115,7 +109,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ ١١٢  ﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ عُمان", {locale: 'ar-OM'});
@@ -129,7 +122,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testParseAddressOMFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("ﻡﻭﺎﻘﻓ ﻑﺮﻋ ٣٣٨ - ﺭﻮﻳ\n١١٢\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫﺍ\nOman", {locale: 'en-US'});
@@ -145,7 +137,6 @@ module.exports.testaddress_OM = {
         test.equal(parsedAddress.countryCode, "OM");
         test.done();
     },
-
     testFormatAddressOM: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_OM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressOMFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -177,5 +167,4 @@ module.exports.testaddress_OM = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

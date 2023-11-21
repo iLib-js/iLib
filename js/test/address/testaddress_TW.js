@@ -32,7 +32,6 @@ module.exports.testaddress_TW = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressTWTWLatinNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan", {locale: 'en-TW'});
@@ -46,7 +45,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWLatinNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("3F-499, Jung-Ming S. Road, West District, Taichung, Taiwan, R.O.C.", {locale: 'en-TW'});
@@ -60,7 +58,6 @@ module.exports.testaddress_TW = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressTWTWLatinNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("3F, No.7\nShong-Ren Rd.\nTaipei City 11045", {locale: 'en-TW'});
@@ -74,7 +71,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWAsianNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("台灣高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
@@ -88,7 +84,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWAsianNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("台灣台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-Hant-TW'});
@@ -102,7 +97,6 @@ module.exports.testaddress_TW = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressTWTWAsianNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-Hant-TW'});
@@ -116,7 +110,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWAsianWithRegion: function(test) {
         test.expect(7);
         var parsedAddress = new Address("台灣台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-Hant-TW'});
@@ -130,7 +123,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWAsianZipAtEnd: function(test) {
         test.expect(7);
         var parsedAddress = new Address("台灣\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-Hant-TW'});
@@ -144,7 +136,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 73\nTaipei 101 Tower\n7 Xinyi Road\nSec. 5\nTaipei\n110\nTaiwan\n\n\n", {locale: 'en-TW'});
@@ -158,7 +149,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("3F, 499, Jung-Ming S. Road, West District, Taichung, 403, Taiwan, R.O.C.", {locale: 'en-TW'});
@@ -172,7 +162,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Taiwan\n\n\n", {locale: 'en-TW'});
@@ -186,7 +175,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.streetAddress, "3F, No.7, Shong-Ren Rd.");
         test.done();
     },
-
     testParseAddressTWTWNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("3F 499 Jung-Ming S. Road West District Taichung 403 Taiwan R.O.C.", {locale: 'en-TW'});
@@ -200,7 +188,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTáiběi, 110\nTáiwān\nROC", {locale: 'en-TW'});
@@ -214,7 +201,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testParseAddressTWTWFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nTaiwan", {locale: 'en-US'});
@@ -230,7 +216,6 @@ module.exports.testaddress_TW = {
         test.equal(parsedAddress.countryCode, "TW");
         test.done();
     },
-
     testFormatAddressTWTWLatin: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -248,7 +233,6 @@ module.exports.testaddress_TW = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressTWTWAsian: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -266,7 +250,6 @@ module.exports.testaddress_TW = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressTWTWFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -284,5 +267,4 @@ module.exports.testaddress_TW = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

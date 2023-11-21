@@ -32,7 +32,6 @@ module.exports.testaddress_GN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressGNNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984 CONAKRY\nguinée", {locale: 'fr-GN'});
@@ -41,12 +40,11 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.streetAddress, "Office de la poste guinéenne Direction générale 001 BP 2984");
         test.equal(parsedAddress.region, "CONAKRY");
         test.ok(typeof(parsedAddress.locality) === "undefined");
-            test.ok(typeof(parsedAddress.postalCode) === "undefined");
+        test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.equal(parsedAddress.country, "guinée");
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_GN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressGNNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY", {locale: 'fr-GN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne\nDirection générale\n001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
@@ -88,7 +84,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne , Direction générale , 001 BP 2984 , CONAKRY , guinée", {locale: 'fr-GN'});
@@ -102,7 +97,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne\n\n\t\r\t\t\rDirection générale\r\r\t001 BP 2984\r\r\n\nCONAKRY\t\r\n\t\rguinée", {locale: 'fr-GN'});
@@ -116,7 +110,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984 CONAKRY guinée", {locale: 'fr-GN'});
@@ -130,7 +123,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testParseAddressGNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
@@ -144,7 +136,6 @@ module.exports.testaddress_GN = {
         test.equal(parsedAddress.countryCode, "GN");
         test.done();
     },
-
     testFormatAddressGN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -160,7 +151,6 @@ module.exports.testaddress_GN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressGNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -176,5 +166,4 @@ module.exports.testaddress_GN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

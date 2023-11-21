@@ -30,9 +30,7 @@ module.exports.testlistfmt_pa = {
         ilib.clearCache();
         callback();
     },
-
     // pa-Guru-IN
-
     testListFmtpaGuruINNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN"
@@ -43,7 +41,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ"]), "ਇੱਕ");
         test.done();
     },
-
     testListFmtpaGuruINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN"
@@ -54,7 +51,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ ਅਤੇ ਦੋ");
         test.done();
     },
-
     testListFmtpaGuruINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN"
@@ -65,7 +61,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ, ਦੋ ਅਤੇ ਤਿੰਨ");
         test.done();
     },
-
     testListFmtpaGuruINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN"
@@ -87,7 +82,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ"]), "ਇੱਕ");
         test.done();
     },
-
     testListFmtUnitStylepaGuruINNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN",
@@ -99,7 +93,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ", "ਦੋ"]), "ਇੱਕ, ਦੋ");
         test.done();
     },
-
     testListFmtUnitStylepaGuruINNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN",
@@ -111,7 +104,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ");
         test.done();
     },
-
     testListFmtUnitStylepaGuruINNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Guru-IN",
@@ -123,7 +115,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["ਇੱਕ", "ਦੋ", "ਤਿੰਨ", "ਚਾਰ"]), "ਇੱਕ, ਦੋ, ਤਿੰਨ, ਚਾਰ");
         test.done();
     },
-
     //pa-Arab-PK
     testListFmtpaArabPKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -135,7 +126,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد"]), "واحد");
         test.done();
     },
-
     testListFmtpaArabPKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK"
@@ -146,7 +136,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد", "اثنان"]), "واحد, اثنان");
         test.done();
     },
-
     testListFmtpaArabPKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK"
@@ -157,7 +146,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد, اثنان, ثلاثة");
         test.done();
     },
-
     testListFmtpaArabPKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK"
@@ -168,7 +156,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد, اثنان, ثلاثة, أربعة");
         test.done();
     },
-
     testListFmtUnitStylepaArabPKNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK",
@@ -180,7 +167,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد"]), "واحد");
         test.done();
     },
-
     testListFmtUnitStylepaArabPKNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK",
@@ -192,7 +178,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد", "اثنان"]), "واحد, اثنان");
         test.done();
     },
-
     testListFmtUnitStylepaArabPKNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK",
@@ -204,7 +189,6 @@ module.exports.testlistfmt_pa = {
         test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد, اثنان, ثلاثة");
         test.done();
     },
-
     testListFmtUnitStylepaArabPKNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "pa-Arab-PK",

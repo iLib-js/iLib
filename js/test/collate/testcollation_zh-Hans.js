@@ -29,7 +29,6 @@ module.exports.testcollation_zh_Hans = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuatHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -65,7 +64,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-
     testJSCollatorTerHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -100,7 +98,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-
     testJSCollatorSecHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -135,7 +132,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-
     testJSCollatorPriHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -170,7 +166,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("赵 < 蓙", col.compare("赵", "蓙") < 0);
         test.done();
     },
-
     testJSCollatorQuatHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -194,7 +189,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-
     testJSCollatorTerHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -218,7 +212,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 < ⿕", col.compare("龠", "⿕") < 0);
         test.done();
     },
-
     testJSCollatorSecHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -242,7 +235,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-
     testJSCollatorPriHanziVariants_zh_Hans: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -266,7 +258,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("龠 = ⿕", col.compare("龠", "⿕") === 0);
         test.done();
     },
-
     testJSCollatorPinyinQuat_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -501,7 +492,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinTer_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -736,7 +726,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z < z", col.compare("Z", "z") < 0);
         test.done();
     },
-
     testJSCollatorPinyinSec_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -971,7 +960,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testJSCollatorPinyinPri_zh_Hans: function(test) {
         test.expect(219);
         var col = new Collator({
@@ -1206,7 +1194,6 @@ module.exports.testcollation_zh_Hans = {
         test.ok("Z = z", col.compare("Z", "z") === 0);
         test.done();
     },
-
     testCollatorCase_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1278,7 +1265,6 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPri_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1350,7 +1336,6 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixed_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1438,7 +1423,6 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorCaseMixedWithIndexMarkers_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1569,8 +1553,6 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     },
-
-
     testCollatorHanziTones_zh_Hans: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -1646,6 +1628,4 @@ module.exports.testcollation_zh_Hans = {
         test.deepEqual(input, expected);
         test.done();
     }
-
-
 };

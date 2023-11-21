@@ -32,7 +32,6 @@ module.exports.testname_pt = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Cristiano Ronaldo", {locale: 'pt-PT'});
@@ -46,7 +45,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseSimpleNameWithTwoFamilyName_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("José Eduardo Tavares Silva", {locale: 'pt-PT'});
@@ -61,8 +59,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Cristiano Ronaldo aposentados", {locale: 'pt-PT'});
@@ -77,9 +73,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor Ronaldo", {locale: 'pt-PT'});
@@ -93,9 +86,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
@@ -109,7 +99,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_pt_PT: function(test) {
         test.expect(2);
         var parsed = new Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
@@ -124,10 +113,6 @@ module.exports.testname_pt = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -146,7 +131,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -165,7 +149,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -185,9 +168,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -206,7 +186,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -227,7 +206,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -247,7 +225,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({
@@ -267,7 +244,6 @@ module.exports.testname_pt = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_pt_PT: function(test) {
         test.expect(2);
         var name = new Name({

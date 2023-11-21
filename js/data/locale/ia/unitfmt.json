@@ -256,7 +256,7 @@
             "fathom": "#{n} fth",
             "fluid-ounce": "#{n} oz liq",
             "fluid-ounce-imperial": "#{n} oz liq imp.",
-            "foodcalorie": "",
+            "foodcalorie": "#{n} kcal",
             "foot": "#{n} ft",
             "foot-per-second": "#{n} ft/s",
             "furlong": "#{n} fur",

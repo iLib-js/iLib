@@ -32,7 +32,6 @@ module.exports.phonefmt_RU = {
         ilib.clearCache();
         callback();
     },
-
     testFormatRUStyle0: function(test) {
         test.expect(1);
         var formatted;
@@ -45,7 +44,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -58,7 +56,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -72,7 +69,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUInternationalAccessCode: function(test) {
         test.expect(1);
         var formatted;
@@ -87,7 +83,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRULongAreaCode: function(test) {
         test.expect(1);
         var formatted;
@@ -100,7 +95,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUMobile: function(test) {
         test.expect(1);
         var formatted;
@@ -113,7 +107,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUMobileInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -127,7 +120,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUService: function(test) {
         test.expect(1);
         var formatted;
@@ -140,7 +132,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUEmergency1: function(test) {
         test.expect(1);
         var formatted;
@@ -153,7 +144,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUEmergency2: function(test) {
         test.expect(1);
         var formatted;
@@ -166,7 +156,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUIEIDD: function(test) {
         test.expect(1);
         var formatted;
@@ -179,7 +168,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -193,7 +181,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial1: function(test) {
         test.expect(1);
         var formatted;
@@ -206,7 +193,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -219,7 +205,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -232,7 +217,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial4: function(test) {
         test.expect(1);
         var formatted;
@@ -245,7 +229,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial5: function(test) {
         test.expect(1);
         var formatted;
@@ -258,7 +241,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial6: function(test) {
         test.expect(1);
         var formatted;
@@ -271,7 +253,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial7: function(test) {
         test.expect(1);
         var formatted;
@@ -284,7 +265,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial8: function(test) {
         test.expect(1);
         var formatted;
@@ -297,7 +277,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial9: function(test) {
         test.expect(1);
         var formatted;
@@ -310,7 +289,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -323,7 +301,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Partial11: function(test) {
         test.expect(1);
         var formatted;
@@ -336,7 +313,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole0: function(test) {
         test.expect(1);
         var formatted;
@@ -351,7 +327,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole1: function(test) {
         test.expect(1);
         var formatted;
@@ -364,7 +339,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole2: function(test) {
         test.expect(1);
         var formatted;
@@ -377,7 +351,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole3: function(test) {
         test.expect(1);
         var formatted;
@@ -390,7 +363,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole4: function(test) {
         test.expect(1);
         var formatted;
@@ -404,7 +376,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole5: function(test) {
         test.expect(1);
         var formatted;
@@ -417,7 +388,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole6: function(test) {
         test.expect(1);
         var formatted;
@@ -430,7 +400,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole7: function(test) {
         test.expect(1);
         var formatted;
@@ -443,7 +412,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole8: function(test) {
         test.expect(1);
         var formatted;
@@ -456,7 +424,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole9: function(test) {
         test.expect(1);
         var formatted;
@@ -469,7 +436,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole10: function(test) {
         test.expect(1);
         var formatted;
@@ -482,7 +448,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0Whole11: function(test) {
         test.expect(1);
         var formatted;
@@ -495,7 +460,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial0: function(test) {
         test.expect(1);
         var formatted;
@@ -510,7 +474,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial1: function(test) {
         test.expect(1);
         var formatted;
@@ -523,7 +486,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial2: function(test) {
         test.expect(1);
         var formatted;
@@ -536,7 +498,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial3: function(test) {
         test.expect(1);
         var formatted;
@@ -549,7 +510,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial4: function(test) {
         test.expect(1);
         var formatted;
@@ -562,7 +522,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial5: function(test) {
         test.expect(1);
         var formatted;
@@ -575,7 +534,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial6: function(test) {
         test.expect(1);
         var formatted;
@@ -588,7 +546,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial7: function(test) {
         test.expect(1);
         var formatted;
@@ -601,7 +558,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial8: function(test) {
         test.expect(1);
         var formatted;
@@ -614,7 +570,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial9: function(test) {
         test.expect(1);
         var formatted;
@@ -627,7 +582,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -640,7 +594,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle1Partial10: function(test) {
         test.expect(1);
         var formatted;
@@ -653,7 +606,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal1: function(test) {
         test.expect(1);
         var formatted;
@@ -666,7 +618,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal2: function(test) {
         test.expect(1);
         var formatted;
@@ -679,7 +630,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal3: function(test) {
         test.expect(1);
         var formatted;
@@ -692,7 +642,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal4: function(test) {
         test.expect(1);
         var formatted;
@@ -705,7 +654,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal5: function(test) {
         test.expect(1);
         var formatted;
@@ -718,7 +666,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal6: function(test) {
         test.expect(1);
         var formatted;
@@ -731,7 +678,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal7: function(test) {
         test.expect(1);
         var formatted;
@@ -744,7 +690,6 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatRUStyle0PartialLocal8: function(test) {
         test.expect(1);
         var formatted;

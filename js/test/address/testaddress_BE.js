@@ -35,7 +35,6 @@ module.exports.testaddress_BE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressBENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere\n1000 Brussels\nBelgium", {locale: 'nl-BE'});
@@ -49,7 +48,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
     },
-
     testParseAddressBEOtherNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckère\n1000 Bruxelles\nBelgium", {locale: 'fr-BE'});
@@ -62,9 +60,7 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.country, "Belgium");
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
-
     },
-
     testParseAddressBENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckère\nBruxelles\nBelgium", {locale: 'fr-BE'});
@@ -78,8 +74,6 @@ module.exports.testaddress_BE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
-
     testParseAddressBEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31\nPlace\nde Brouckere\n1000\nBrussels\nBelgium", {locale: 'nl-BE'});
@@ -93,7 +87,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
     },
-
     testParseAddressBEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'nl-BE'});
@@ -107,9 +100,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
     },
-
-
-
     testParseAddressBENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31 Place de Brouckere 1000 Brussels Belgium", {locale: 'nl-BE'});
@@ -123,9 +113,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
     },
-
-
-
     testParseAddressBEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'en-US'});
@@ -141,7 +128,6 @@ module.exports.testaddress_BE = {
         test.equal(parsedAddress.countryCode, "BE");
         test.done();
     },
-
     testFormatAddressBE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -157,7 +143,6 @@ module.exports.testaddress_BE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressBEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -173,5 +158,4 @@ module.exports.testaddress_BE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

@@ -32,7 +32,6 @@ module.exports.testname_tr = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Kemal Sunal", {locale: 'tr-TR'});
@@ -46,7 +45,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
@@ -61,7 +59,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay Sunal", {locale: 'tr-TR'});
@@ -75,9 +72,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
@@ -91,7 +85,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("Bay Kemal Sunal", {locale: 'tr-TR'});
@@ -106,7 +99,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_tr_TR: function(test) {
         test.expect(2);
         var parsed = new Name("belediye başkanı Kemal Sunal kıdemli", {locale: 'tr-TR'});
@@ -122,10 +114,6 @@ module.exports.testname_tr = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -144,7 +132,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -163,7 +150,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -183,7 +169,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -202,7 +187,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -223,7 +207,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -243,7 +226,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -263,7 +245,6 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_tr_TR: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,7 +264,4 @@ module.exports.testname_tr = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

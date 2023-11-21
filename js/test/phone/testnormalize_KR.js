@@ -30,7 +30,6 @@ module.exports.normalize_KR = {
         ilib.clearCache();
         callback();
     },
-
     testKRIDDPrefix: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("001 31 456 3453434", {locale: 'ko-KR'});
@@ -39,7 +38,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize({locale: 'ko-KR'}), expected); // 'ko-KR'
         test.done();
     },
-
     testKRIDDPrefixAlreadyPlus: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ko-KR'});
@@ -48,7 +46,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize({locale: 'ko-KR'}), expected); // 'ko-KR'
         test.done();
     },
-
     testKRWithNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
@@ -57,7 +54,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
-
     testKRNoHints: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
@@ -66,7 +62,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(), expected); // 'ko-KR'
         test.done();
     },
-
     testKRWithNoHintsNoLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("00131 456 3453434", {locale: 'ko-KR'});
@@ -75,7 +70,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testKRLDNumberUsingKRMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02-312-3456", {locale: 'ko-KR'});
@@ -87,7 +81,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'ko-KR'
         test.done();
     },
-
     testKRLDNumberUsingKRMCCOtherLocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02 312 3456", {locale: 'ko-KR'});
@@ -100,7 +93,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testKRLDNumberUsingKRMCC: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
@@ -112,7 +104,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-
     testKRAreaCodeFromHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'ko-KR'});
@@ -124,7 +115,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'ko-KR'
         test.done();
     },
-
     testKRAreaCodeIgnoreHint: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("051-212-3456", {locale: 'ko-KR'});
@@ -136,7 +126,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'ko-KR'
         test.done();
     },
-
     testKRNoAreaCodeAndNoCountry: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'ko-KR'});
@@ -145,7 +134,6 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(), expected);
         test.done();
     },
-
     testKRAssistedDialingLocalToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
@@ -160,7 +148,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString); // 'ko-KR'
         test.done();
     },
-
     testKRAssistedDialingLocalToLocalUMTSAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
@@ -174,7 +161,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString); // 'ko-KR'
         test.done();
     },
-
     testKRAssistedDialingLocalToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
@@ -189,7 +175,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testKRAssistedDialingLocalToLocalCDMAAddTrunkOpen: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("+82 51 2123456", {locale: 'ko-KR'});
@@ -204,7 +189,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testKRAssistedDialingIntlToLocalUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
@@ -219,7 +203,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString);
         test.done();
     },
-
     testKRAssistedDialingIntlToLDUMTS: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("051 2123456", {locale: 'ko-KR'});
@@ -234,7 +217,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString); // 'ko-KR'
         test.done();
     },
-
     testKRAssistedDialingIntlToLocalCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ko-KR'});
@@ -249,7 +231,6 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString); // 'ko-KR'
         test.done();
     },
-
     testKRAssistedDialingIntlToLDCDMA: function(test) {
         test.expect(1);
         var phone = new PhoneNumber("051 2123456", {locale: 'ko-KR'});
@@ -264,6 +245,4 @@ module.exports.normalize_KR = {
         test.equal(phone.normalize(hints), expectedString); // 'ko-KR'
         test.done();
     }
-
-
 };

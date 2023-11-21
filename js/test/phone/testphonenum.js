@@ -118,12 +118,10 @@ module.exports.phonenum = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testNumberMatchFRDepartments1: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -141,7 +139,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchUSIgnoreSomeFields: function(test) {
         test.expect(2);
         var left = new PhoneNumber('1 (650) 456-7890'),
@@ -150,7 +147,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchFRDepartments2: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -168,7 +164,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchFRDepartments3: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -186,7 +181,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchFRDepartments1Reverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -204,7 +198,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchFRDepartmentsWrongArea: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -222,7 +215,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchFRDepartmentsWrongAreaReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -240,7 +232,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 0);
         test.done();
     },
-
     testNumberMatchFRDepartmentsDifferentCountryCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -259,7 +250,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchFRDifferentSN: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -277,7 +267,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchUSTrunk: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -293,7 +282,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchUSTrunkReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -309,7 +297,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchUSTrunkDefaultLocale: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -325,7 +312,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchUSTrunkDefaultLocaleReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -341,7 +327,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchUSTrunkWrongLocale: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -357,7 +342,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchUSTrunkWrongLocaleReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -373,7 +357,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchUSMissingArea: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -388,7 +371,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 88);
         test.done();
     },
-
     testNumberMatchUSMissingAreaReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -403,7 +385,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 88);
         test.done();
     },
-
     testNumberMatchUSDifferentArea: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -418,7 +399,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchUSDifferentAreaReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -433,7 +413,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 0);
         test.done();
     },
-
     testNumberMatchUSCompletelyDifferentCountryCodes: function(test) {
         test.expect(1);
         // different area codes, where neither is the US
@@ -453,7 +432,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchUSMissingCountryCodeThisCountry: function(test) {
         test.expect(1);
         // missing area code, where the one that is present is the same as the locale
@@ -471,7 +449,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 84);
         test.done();
     },
-
     testNumberMatchUSMissingCountryCodeThisCountryReverse: function(test) {
         test.expect(1);
         // missing area code, where the one that is present is the same as the locale
@@ -489,7 +466,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 84);
         test.done();
     },
-
     testNumberMatchUSMissingCountryCodeOtherCountry: function(test) {
         test.expect(1);
         // missing area codes, where the one that is present is not the same as the current locale (US)
@@ -507,7 +483,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 68);
         test.done();
     },
-
     testNumberMatchUSMissingCountryCodeOtherCountryReverse: function(test) {
         test.expect(1);
         // missing area codes, where the one that is present is not the same as the current locale (US)
@@ -525,7 +500,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 68);
         test.done();
     },
-
     testNumberMatchITSanMarino: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -543,7 +517,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchITSanMarinoReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -561,7 +534,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchUSSanMarino: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -580,7 +552,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 68);
         test.done();
     },
-
     testNumberMatchITSanMarinoWrongArea: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -598,7 +569,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchITSanMarinoDifferentCountryCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -619,7 +589,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchITSanMarinoDifferentCountryCodesReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -640,7 +609,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -661,7 +629,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchITVaticanCity: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -680,7 +647,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchITVaticanCityReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -699,7 +665,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchITOther: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -718,7 +683,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 84);
         test.done();
     },
-
     testNumberMatchITOtherReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -737,7 +701,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 84);
         test.done();
     },
-
     testNumberMatchUSDifferentCountryCodesIT: function(test) {
         test.expect(1);
         // both ways are valid ways to reach the Vatican from abroad
@@ -757,7 +720,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchUSDifferentCountryCodesITReverse: function(test) {
         test.expect(1);
         // both ways are valid ways to reach the Vatican from abroad
@@ -777,7 +739,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchUSDifferentCountryCodesFR: function(test) {
         test.expect(1);
         // both ways are valid ways to reach the departments from abroad
@@ -797,7 +758,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testNumberMatchUSDifferentCountryCodesFRReverse: function(test) {
         test.expect(1);
         // both ways are valid ways to reach the departments from abroad
@@ -817,7 +777,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 100);
         test.done();
     },
-
     testNumberMatchDEMissingExtension: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -835,7 +794,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchDEMissingExtensionReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -853,7 +811,6 @@ module.exports.phonenum = {
         test.equal(right.compare(left), 0);
         test.done();
     },
-
     testNumberMatchDEDifferentExtension: function(test) {
         test.expect(1);
         var location;
@@ -873,7 +830,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchUSEverythingDifferent: function(test) {
         test.expect(1);
         var location;
@@ -893,7 +849,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testNumberMatchCAUseNanpRules: function(test) {
         test.expect(1);
         var location;
@@ -910,7 +865,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     // for bug NOV-116615
     testNumberMatchMobileVsLDNumber: function(test) {
         test.expect(1);
@@ -930,7 +884,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     //for bug NOV-118901
 
     testNumberMatchSG: function(test) {
@@ -948,7 +901,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 84);
         test.done();
     },
-
     testNumberMatchSGWrongLocale: function(test) {
         test.expect(1);
         var location;
@@ -964,7 +916,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 68);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoDifferentCountryCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
@@ -972,7 +923,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoMissingCountryCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
@@ -980,7 +930,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
@@ -988,7 +937,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testStringsNumberMatchITOther: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
@@ -996,7 +944,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 84);
         test.done();
     },
-
     testStringsNumberMatchFRDepartments1: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
@@ -1004,7 +951,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchDEMissingExtension: function(test) {
         test.expect(1);
         var left = new PhoneNumber('02203 123456', {locale: "de-DE"}),
@@ -1012,7 +958,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testStringsNumberMatchDEDifferentExtension: function(test) {
         test.expect(1);
         var left = new PhoneNumber('02203/123456-833', {locale: "de-DE"}),
@@ -1020,7 +965,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testStringsNumberMatchUSIgnoreSomeFieldsReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('650-456-7890', {locale: "en-US"}),
@@ -1028,7 +972,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
@@ -1036,7 +979,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoMissingCountryCodesReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('0549 123 456', {locale: "it-IT"}),
@@ -1044,7 +986,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
@@ -1052,7 +993,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testStringsNumberMatchITOtherReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('06-69812345', {locale: "it-IT"}),
@@ -1060,7 +1000,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 84);
         test.done();
     },
-
     testStringsNumberMatchFRDepartments1Reverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('0590 123 456', {locale: "fr-FR"}),
@@ -1068,7 +1007,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testStringsNumberMatchDEMissingExtensionReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
@@ -1076,7 +1014,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
     testStringsNumberMatchDEDifferentExtensionReverse: function(test) {
         test.expect(1);
         var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
@@ -1084,8 +1021,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 0);
         test.done();
     },
-
-
     testEqualsNotEqual: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1103,7 +1038,6 @@ module.exports.phonenum = {
         test.ok(!left.equals(right));
         test.done();
     },
-
     testEquals: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1122,7 +1056,6 @@ module.exports.phonenum = {
         test.ok(left.equals(right));
         test.done();
     },
-
     testEqualsDifferentLocaleOkay: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1142,7 +1075,6 @@ module.exports.phonenum = {
         test.ok(left.equals(right));
         test.done();
     },
-
     testEqualsDifferentLocaleNotOkay: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1158,7 +1090,6 @@ module.exports.phonenum = {
         test.ok(!left.equals(right));
         test.done();
     },
-
     testEqualsMissingLocaleLeft: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1177,7 +1108,6 @@ module.exports.phonenum = {
         test.ok(left.equals(right));
         test.done();
     },
-
     testEqualsMissingLocaleRight: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1196,7 +1126,6 @@ module.exports.phonenum = {
         test.ok(left.equals(right));
         test.done();
     },
-
     testEqualsMissingLocaleBoth: function(test) {
         test.expect(1);
         var left = new PhoneNumber({
@@ -1215,7 +1144,6 @@ module.exports.phonenum = {
         test.ok(left.equals(right));
         test.done();
     },
-
     testPhoneNumLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1247,7 +1175,6 @@ module.exports.phonenum = {
         test.equal(left.compare(right), 100);
         test.done();
     },
-
     testPhoneNumLookaheadRoot: function(test) {
         test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1268,7 +1195,6 @@ module.exports.phonenum = {
         test.equal(left.areaCode, "4");
         test.done();
     },
-
     testPhoneNumLookaheadSubleaf1: function(test) {
         test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1289,7 +1215,6 @@ module.exports.phonenum = {
         test.equal(left.areaCode, "45");
         test.done();
     },
-
     testPhoneNumLookaheadSubleaf2: function(test) {
         test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1310,7 +1235,6 @@ module.exports.phonenum = {
         test.equal(left.areaCode, "456");
         test.done();
     },
-
     testPhoneNumLookaheadSubleaf3: function(test) {
         test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1331,7 +1255,6 @@ module.exports.phonenum = {
         test.equal(left.areaCode, "46555");
         test.done();
     },
-
     testPhoneNumLookaheadFallback1: function(test) {
         test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1354,7 +1277,6 @@ module.exports.phonenum = {
         test.equal(left.subscriberNumber, "7");
         test.done();
     },
-
     testPhoneNumLookaheadFallback2: function(test) {
         test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1377,7 +1299,6 @@ module.exports.phonenum = {
         test.equal(left.subscriberNumber, "6");
         test.done();
     },
-
     testPhoneNumLookaheadFallback3: function(test) {
         test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1400,7 +1321,6 @@ module.exports.phonenum = {
         test.equal(left.subscriberNumber, "655");
         test.done();
     },
-
     testPhoneNumLookaheadFallback4: function(test) {
         test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
@@ -1423,7 +1343,6 @@ module.exports.phonenum = {
         test.equal(left.subscriberNumber, "7");
         test.done();
     },
-
     testPhoneNumLookaheadFallback5: function(test) {
         test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});

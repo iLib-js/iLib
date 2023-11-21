@@ -32,7 +32,6 @@ module.exports.testaddress_KW = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressKWNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
@@ -46,7 +45,6 @@ module.exports.testaddress_KW = {
         test.equal(parsedAddress.countryCode, "KW");
         test.done();
     },
-
     testParseAddressKWNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت\nالكويت", {locale: 'ar-KW'});
@@ -60,7 +58,6 @@ module.exports.testaddress_KW = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressKWNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الجهرا", {locale: 'ar-KW'});
@@ -74,7 +71,6 @@ module.exports.testaddress_KW = {
         test.equal(parsedAddress.countryCode, "KW");
         test.done();
     },
-
     testParseAddressKWManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
@@ -87,8 +83,6 @@ module.exports.testaddress_KW = {
         test.equal(parsedAddress.countryCode, "KW");
         test.done();
     },
-
-
     testParseAddressKWSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("\t\t\tحمد عبد الله حسن\n\n\t آل الصباح ١٠٠٨٤\n\n\t١٥٥٤٥\n\n\tالكويت\n\n\tالكويت\n\n\n", {locale: 'ar-KW'});
@@ -102,8 +96,6 @@ module.exports.testaddress_KW = {
         test.equal(parsedAddress.countryCode, "KW");
         test.done();
     },
-
-
     testParseAddressKWFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nKuwait", {locale: 'en-US'});
@@ -119,7 +111,6 @@ module.exports.testaddress_KW = {
         test.equal(parsedAddress.countryCode, "KW");
         test.done();
     },
-
     testFormatAddressKW: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -135,7 +126,6 @@ module.exports.testaddress_KW = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressKWFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -151,5 +141,4 @@ module.exports.testaddress_KW = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

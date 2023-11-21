@@ -90,7 +90,6 @@ module.exports.testunitfmt_my_MM = {
         test.equal(str, '2 ဒီဂရီ ဖာရင်ဟိုက်');
         test.done();
     },
-
     testUnitFormatArea1_my_MM: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({

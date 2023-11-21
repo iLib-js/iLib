@@ -35,7 +35,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsRightValues: function(test) {
         test.expect(6);
         TimeZone.getAvailableIds(undefined, false, function(zones) {
@@ -51,7 +50,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsNoFilterContainsLocal: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds(undefined, false, function(zones) {
@@ -61,7 +59,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsByCountryRightLength: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds("US", false, function(zones) {
@@ -71,7 +68,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsWithFilterContainsNoLocal: function(test) {
         try {
             TimeZone.getAvailableIds("US", false, function(zones) {
@@ -84,7 +80,6 @@ module.exports.testtimezoneasync = {
         }
         test.done();
     },
-
     testTZAsyncGetAvailableIdsByCountryRightContents: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds("US", false, function(zones) {
@@ -145,7 +140,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsByCountry2RightLength: function(test) {
         test.expect(2);
         var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
@@ -155,7 +149,6 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-
     testTZAsyncGetAvailableIdsByCountry2RightContents: function(test) {
         test.expect(2);
         var zones = TimeZone.getAvailableIds("SG", false, function(zones) {

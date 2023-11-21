@@ -30,7 +30,6 @@ module.exports.testspeeds = {
         ilib.clearCache();
         callback();
     },
-
     testSpeedSpeedConstructor: function(test) {
         test.expect(1);
         var m = new VelocityUnit({
@@ -41,7 +40,6 @@ module.exports.testspeeds = {
         test.ok(m !== null);
         test.done();
     },
-
     testSpeedSpeedConvertMetersPerSecToMilesPerHour: function(test) {
         test.expect(3);
         var m1 = new VelocityUnit({
@@ -59,7 +57,6 @@ module.exports.testspeeds = {
         test.equal(m2.getAmount(), 11184.68);
         test.done();
     },
-
     testSpeedStaticConvert1: function(test) {
         test.expect(1);
         var m = VelocityUnit.convert("feet/sec", "meters/sec", 2.0);
@@ -67,7 +64,6 @@ module.exports.testspeeds = {
         test.equal(m, 6.56168);
         test.done();
     },
-
     testSpeedStaticConvertWithString: function(test) {
         test.expect(1);
         var m = VelocityUnit.convert("feet/sec", "meters/sec", "2");
@@ -75,7 +71,6 @@ module.exports.testspeeds = {
         test.equal(m, 6.56168);
         test.done();
     },
-
     testSpeedStaticConvert2: function(test) {
         test.expect(1);
         var m = VelocityUnit.convert("meters/sec", "km/hour", 720);
@@ -83,7 +78,6 @@ module.exports.testspeeds = {
         test.roughlyEqual(m, 200.00016, 0.00001);
         test.done();
     },
-
     testSpeedStaticConvert3: function(test) {
         test.expect(1);
         var m = VelocityUnit.convert("mile/hour", "knot", 200);
@@ -91,7 +85,6 @@ module.exports.testspeeds = {
         test.roughlyEqual(m, 230.156, 0.001);
         test.done();
     },
-
     testSpeedStaticConvert4: function(test) {
         test.expect(1);
         var m = VelocityUnit.convert("kn", "feet/sec", 200.0);
@@ -99,7 +92,6 @@ module.exports.testspeeds = {
         test.roughlyEqual(m, 118.4968, 0.0001);
         test.done();
     },
-
     testSpeedScale1: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -113,7 +105,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
-
     testSpeedScale2: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -127,7 +118,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "knot");
         test.done();
     },
-
     testSpeedScale3: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -141,7 +131,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "knot");
         test.done();
     },
-
     testSpeedScale4: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -155,7 +144,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "knot");
         test.done();
     },
-
     testSpeedLocalize1: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -169,7 +157,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
-
     testSpeedLocalize2: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -183,7 +170,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "mile-per-hour");
         test.done();
     },
-
     testSpeedLocalize3: function(test) {
         test.expect(2);
         var m = new VelocityUnit({
@@ -197,7 +183,6 @@ module.exports.testspeeds = {
         test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
-
     testSpeedGetMeasures: function(test) {
         test.expect(1);
         var measures = VelocityUnit.getMeasures();
@@ -213,5 +198,4 @@ module.exports.testspeeds = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

@@ -37,7 +37,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncMCCUnknownMCC: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -50,7 +49,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncCC1: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -63,7 +61,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncCC1: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -76,7 +73,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncCCUnknownCC: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -89,7 +85,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncLocaleUS: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -102,7 +97,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncLocaleDE: function(test) {
         test.expect(2);
         new PhoneLocale({locale: "de-DE",
@@ -114,7 +108,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncDefault: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -126,7 +119,6 @@ module.exports.phonelocasync = {
             }
         });
     },
-
     testPhoneLocAsyncDefaultEmpty: function(test) {
         test.expect(2);
         new PhoneLocale({

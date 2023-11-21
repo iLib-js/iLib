@@ -33,7 +33,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         ilib.clearCache();
         callback();
     },
-
     testDateRngFmtKuRangeInDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -138,7 +137,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣١ ‏١:٤٥ د.ن – ‏٢:٣٠ د.ن');
         test.done();
     },
-
     testDateRngFmtKuRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -243,7 +241,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣٠ ‏١:٤٥ د.ن – ‏٢٠١١ کانونی یەکەم ٣١ ‏٢:٣٠ د.ن');
         test.done();
     },
-
     testDateRngFmtKuRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -348,7 +345,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٢٠ – ٣١');
         test.done();
     },
-
     testDateRngFmtKuRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -453,7 +449,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم ٢٠ – ‏کانونی یەکەم ٣١');
         test.done();
     },
-
     testDateRngFmtKuRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -558,7 +553,6 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end),  '‏٢٠١١ تشرینی دووەم ٢٠ – ‏٢٠١٢ کانوونی دووەم ٣١');
         test.done();
     },
-
     testDateRngFmtKuRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
@@ -689,5 +683,4 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
         test.equal(fmt.format(start, end), '‏٢٠١١ – ٢٠٦٤');
         test.done();
     }
-
 };

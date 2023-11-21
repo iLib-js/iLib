@@ -1544,5 +1544,4 @@ module.exports.testdatefmtrange_fa_IR = {
         test.equal(fmt.format(start, end), "‏۱۳۹۳ – ۱۴۵۰");
         test.done();
     }
-
 };

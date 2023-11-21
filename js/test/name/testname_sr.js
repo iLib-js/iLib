@@ -32,7 +32,6 @@ module.exports.testname_sr = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
@@ -46,7 +45,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitle_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
@@ -61,7 +59,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseTitleWithFamilyOnly_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
@@ -75,7 +72,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseEverything_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
@@ -89,7 +85,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("господин. Александар Дероко", {locale: 'sr-Cyrl-RS'});
@@ -104,7 +99,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefixAndSuffix_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var parsed = new Name("заменик председника Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
@@ -120,10 +114,6 @@ module.exports.testname_sr = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -142,7 +132,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -161,7 +150,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -181,9 +169,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
-
     testFormatSurname_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -202,7 +187,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -223,7 +207,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -243,7 +226,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -263,7 +245,6 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_sr_Cyrl_RS: function(test) {
         test.expect(2);
         var name = new Name({
@@ -283,7 +264,4 @@ module.exports.testname_sr = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

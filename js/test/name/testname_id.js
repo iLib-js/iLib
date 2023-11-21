@@ -32,7 +32,6 @@ module.exports.testname_id = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_id_ID: function(test) {
         test.expect(2);
         var parsed = new Name("Mahyadi Panggabean", {locale: 'id-ID'});
@@ -46,9 +45,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSimpleName_id_ID1: function(test) {
         test.expect(2);
         var parsed = new Name("Bapak. Abdul Panggabean", {locale: 'id-ID'});
@@ -63,8 +59,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseSimpleName_id_ID2: function(test) {
         test.expect(2);
         var parsed = new Name("Ibu. Mahyadi Panggabean", {locale: 'id-ID'});
@@ -79,9 +73,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseSingleNameWithPrefixAndAdjunct_id_ID: function(test) {
         test.expect(2);
         var parsed = new Name("Mahyadi Krupuk muda", {locale: 'id-ID'});
@@ -96,8 +87,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_id_ID1: function(test) {
         test.expect(2);
         var parsed = new Name("perdana menteri Mahyadi Krupuk", {locale: 'id-ID'});
@@ -112,8 +101,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitle_id_ID_second: function(test) {
         test.expect(2);
         var parsed = new Name("Ibu. dan Bapak. Panggabean", {locale: 'id-ID'});
@@ -127,8 +114,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
     testParseTitleWithFamilyOnlyAndAdjunct_id_ID: function(test) {
         test.expect(2);
 
@@ -151,9 +136,6 @@ module.exports.testname_id = {
         test.done();
 
     },
-
-
-
     testParseCompoundHonorific_id_ID: function(test) {
         test.expect(2);
         var parsed = new Name("melayani Panggabean", {locale: 'id-ID'});
@@ -167,11 +149,6 @@ module.exports.testname_id = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_id_ID: function(test) {
         test.expect(2);
         var name = new Name({
@@ -190,7 +167,6 @@ module.exports.testname_id = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_id_ID: function(test) {
         test.expect(2);
         var name = new Name({
@@ -209,8 +185,6 @@ module.exports.testname_id = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatComplexNameShort_id_ID: function(test) {
         test.expect(2);
         var name = new Name({
@@ -230,8 +204,6 @@ module.exports.testname_id = {
         test.equal(formatted, expected);
         test.done();
     },
-
-
     testFormatAsianNameMedium_id_ID: function(test) {
         test.expect(2);
         var name = new Name({
@@ -252,7 +224,6 @@ module.exports.testname_id = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatAsianNameLong_id_ID: function(test) {
         test.expect(2);
         var name = new Name({
@@ -273,8 +244,4 @@ module.exports.testname_id = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
-
 };

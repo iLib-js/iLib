@@ -26,7 +26,6 @@ if (typeof(DateFmt) === "undefined") {
 if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -36,7 +35,6 @@ module.exports.testdate = {
         ilib.clearCache();
         callback();
     },
-
     testDateConstructor: function(test) {
         test.expect(1);
         var gd = DateFactory();
@@ -44,7 +42,6 @@ module.exports.testdate = {
         test.ok(gd !== null);
         test.done();
     },
-
     testDateConstructorFull: function(test) {
         test.expect(8);
         var gd = DateFactory({
@@ -68,7 +65,6 @@ module.exports.testdate = {
         test.equal(gd.getMilliseconds(), 123);
         test.done();
     },
-
     testDateSetYears: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -80,7 +76,6 @@ module.exports.testdate = {
         test.equal(gd.getYears(), 123);
         test.done();
     },
-
     testDateSetMonths: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -92,7 +87,6 @@ module.exports.testdate = {
         test.equal(gd.getMonths(), 7);
         test.done();
     },
-
     testDateSetDays: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -104,7 +98,6 @@ module.exports.testdate = {
         test.equal(gd.getDays(), 12);
         test.done();
     },
-
     testDateSetHours: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -116,7 +109,6 @@ module.exports.testdate = {
         test.equal(gd.getHours(), 12);
         test.done();
     },
-
     testDateSetMinutes: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -128,7 +120,6 @@ module.exports.testdate = {
         test.equal(gd.getMinutes(), 13);
         test.done();
     },
-
     testDateSetSeconds: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -140,7 +131,6 @@ module.exports.testdate = {
         test.equal(gd.getSeconds(), 23);
         test.done();
     },
-
     testDateSetMilliseconds: function(test) {
         test.expect(2);
         var gd = DateFactory();
@@ -164,7 +154,6 @@ module.exports.testdate = {
         test.equal(date.getCalendar(), "gregorian");
         test.done();
     },
-
     testDateFactoryDefaultGregorian: function(test) {
         test.expect(2);
         var date = DateFactory();
@@ -173,7 +162,6 @@ module.exports.testdate = {
         test.equal(date.getCalendar(), "gregorian");
         test.done();
     },
-
     testDateFactoryNonGregorian: function(test) {
         test.expect(2);
         var date = DateFactory({
@@ -184,7 +172,6 @@ module.exports.testdate = {
         test.equal(date.getCalendar(), "hebrew");
         test.done();
     },
-
     testDateFactoryNonGregorianWithCalendar: function(test) {
         test.expect(2);
         var date = DateFactory({
@@ -195,7 +182,6 @@ module.exports.testdate = {
         test.equal(date.getCalendar(), "hebrew");
         test.done();
     },
-
     testDateFactoryBogus: function(test) {
         test.expect(1);
         var date = DateFactory({
@@ -205,7 +191,6 @@ module.exports.testdate = {
         test.ok(typeof(date) === "undefined");
         test.done();
     },
-
     testDateToIlibUndefined: function(test) {
         test.expect(1);
         var date = DateFactory._dateToIlib();
@@ -213,7 +198,6 @@ module.exports.testdate = {
         test.ok(typeof(date) === "undefined");
         test.done();
     },
-
     testDateToIlibNull: function(test) {
         test.expect(1);
         var date = DateFactory._dateToIlib(null);
@@ -221,7 +205,6 @@ module.exports.testdate = {
         test.ok(date === null);
         test.done();
     },
-
     testDateToIlibDateWithDate: function(test) {
         test.expect(4);
         var d = new Date();
@@ -233,7 +216,6 @@ module.exports.testdate = {
         test.equal(date.getTime(), d.getTime());
         test.done();
     },
-
     testDateToIlibDateWithIlibDate: function(test) {
         test.expect(4);
         var d = new GregorianDate();
@@ -245,7 +227,6 @@ module.exports.testdate = {
         test.equal(date.getTime(), d.getTime());
         test.done();
     },
-
     testDateToIlibDateWithNumber: function(test) {
         test.expect(4);
         var date = DateFactory._dateToIlib(1000);
@@ -256,7 +237,6 @@ module.exports.testdate = {
         test.equal(date.getTime(), 1000);
         test.done();
     },
-
     testDateToIlibDateWithString: function(test) {
         test.expect(4);
         var date = DateFactory._dateToIlib("Wed Mar 05 2014 14:18:12 GMT-0800");
@@ -267,7 +247,6 @@ module.exports.testdate = {
         test.equal(date.getTime(), 1394057892000);
         test.done();
     },
-
     testDateToIlibDateWithGenericObject: function(test) {
         test.expect(8);
         var d = {
@@ -289,7 +268,6 @@ module.exports.testdate = {
         test.equal(date.minute, 24);
         test.done();
     },
-
     testDateToIlibDateWithBogusObject: function(test) {
         test.expect(9);
         var d = {
@@ -310,7 +288,6 @@ module.exports.testdate = {
         test.ok(date.second - now.getSeconds() <= 1);
         test.done();
     },
-
     testDateToIlibDate: function(test) {
         test.expect(1);
         var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
@@ -327,7 +304,6 @@ module.exports.testdate = {
         test.equal(fmt.format(DateFactory._dateToIlib(datMyBday)), fmt.format(ildMyBday));
         test.done();
     },
-
     testDateToIlibString: function(test) {
         test.expect(1);
         var strMyBday = "Fri Aug 13 1982 13:37:35 GMT-0700";
@@ -344,7 +320,6 @@ module.exports.testdate = {
         test.equal(fmt.format(DateFactory._dateToIlib(strMyBday)), fmt.format(ildMyBday));
         test.done();
     },
-
     testDateToIlibInteger: function(test) {
         test.expect(1);
         var intMyBday = 1234657890000;
@@ -353,14 +328,12 @@ module.exports.testdate = {
         test.equal(fmt.format(DateFactory._dateToIlib(intMyBday)), fmt.format(ildMyBday));
         test.done();
     },
-
     testDateToIlibIlibDate: function(test) {
         test.expect(1);
         var ildMyBday = DateFactory({unixtime: 1234657890000});
         test.deepEqual(DateFactory._dateToIlib(ildMyBday), ildMyBday);
         test.done();
     },
-
     testDateGetJSDateBeyond32Bits: function(test) {
         test.expect(4);
         var d = DateFactory({

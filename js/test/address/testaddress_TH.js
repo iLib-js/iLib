@@ -32,7 +32,6 @@ module.exports.testaddress_TH = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressTHNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {locale: 'th-Th'});
@@ -46,9 +45,6 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-
-
-
     testParseAddressTHNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ\nประเทศไทย", {locale: 'th-Th'});
@@ -62,8 +58,6 @@ module.exports.testaddress_TH = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
-
     testParseAddressTHNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
@@ -77,7 +71,6 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-
     testParseAddressTHManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
@@ -91,8 +84,6 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-
-
     testParseAddressTHOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
@@ -106,8 +97,6 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-
-
     testParseAddressTHOther: function(test) {
         test.expect(7);
         var parsedAddress = new Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nประเทศไทย", {locale: 'th-TH'});
@@ -121,8 +110,6 @@ module.exports.testaddress_TH = {
         test.equal(parsedAddress.countryCode, "TH");
         test.done();
     },
-
-
     testFormatAddressTH: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -139,7 +126,6 @@ module.exports.testaddress_TH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressTHFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -155,6 +141,4 @@ module.exports.testaddress_TH = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
-
 };

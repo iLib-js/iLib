@@ -32,7 +32,6 @@ module.exports.testname_hi = {
         ilib.clearCache();
         callback();
     },
-
     testParseSimpleName_hi_IN: function(test) {
         test.expect(2);
         var parsed = new Name("आदित्य मित्तल", {locale: 'hi-IN'});
@@ -46,9 +45,6 @@ module.exports.testname_hi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitle_hi_IN: function(test) {
         test.expect(2);
         var parsed = new Name("आदित्य मित्तल जूनियर", {locale: 'hi-IN'});
@@ -63,9 +59,6 @@ module.exports.testname_hi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseTitleWithFamilyOnly_hi_IN: function(test) {
         test.expect(2);
         var parsed = new Name("राज्यपाल मित्तल", {locale: 'hi-IN'});
@@ -79,9 +72,6 @@ module.exports.testname_hi = {
         test.contains(parsed, expected);
         test.done();
     },
-
-
-
     testParseEverything_hi_IN: function(test) {
         test.expect(2);
         var parsed = new Name("श्री और श्रीमती मित्तल", {locale: 'hi-IN'});
@@ -95,7 +85,6 @@ module.exports.testname_hi = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testParseprefix_hi_IN: function(test) {
         test.expect(2);
         var parsed = new Name("श्री आदित्य मित्तल", {locale: 'hi-IN'});
@@ -110,10 +99,6 @@ module.exports.testname_hi = {
         test.contains(parsed, expected);
         test.done();
     },
-    /*
-     * Format Tests
-     */
-
     testFormatSimpleNameShort_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -132,7 +117,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameMedium_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -152,7 +136,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameLong_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -173,7 +156,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSurname_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -193,7 +175,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatSimpleNameFull_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -215,7 +196,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameShort_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -235,7 +215,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameMedium_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -255,7 +234,6 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testFormatComplexNameLong_hi_IN: function(test) {
         test.expect(2);
         var name = new Name({
@@ -275,7 +253,4 @@ module.exports.testname_hi = {
         test.equal(formatted, expected);
         test.done();
     }
-
-
-
 };

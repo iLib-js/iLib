@@ -29,7 +29,6 @@ module.exports.testcollation_ru = {
         ilib.clearCache();
         callback();
     },
-
     testJSCollatorQuat_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -75,7 +74,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-
     testJSCollatorTer_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -121,7 +119,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-
     testJSCollatorSec_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -167,7 +164,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-
     testJSCollatorPri_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -213,7 +209,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ = ѓ", col.compare("ѓ", "ѓ") === 0);
         test.done();
     },
-
     testJSCollatorQuatSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -259,7 +254,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-
     testJSCollatorTerSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -305,7 +299,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-
     testJSCollatorSecSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -351,7 +344,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-
     testJSCollatorPriSort_ru: function(test) {
         test.expect(32);
         var col = new Collator({
@@ -397,7 +389,6 @@ module.exports.testcollation_ru = {
         test.ok("ѓ < ѓ", col.compare("ѓ", "ѓ") < 0);
         test.done();
     },
-
     testCollatorCase_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -453,7 +444,6 @@ module.exports.testcollation_ru = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorPrimary_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -509,7 +499,6 @@ module.exports.testcollation_ru = {
         test.deepEqual(input, expected);
         test.done();
     },
-
     testCollatorIgnoreStressMarks_ru: function(test) {
         test.expect(9);
         var col = new Collator({
@@ -534,7 +523,6 @@ module.exports.testcollation_ru = {
         test.equal(comp("ЗА́МОК", "ЗАМО́К"), 0);
         test.done();
     },
-
     testJSCollatorQuatLatin_ru: function(test) {
         test.expect(18);
         var col = new Collator({
@@ -566,7 +554,6 @@ module.exports.testcollation_ru = {
         test.ok("I < i", col.compare("I", "i") < 0);
         test.done();
     },
-
     testCollatorPrimaryMixed_ru: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -634,5 +621,4 @@ module.exports.testcollation_ru = {
         test.deepEqual(input, expected);
         test.done();
     }
-
 };

@@ -584,7 +584,6 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-
     testDateFmtShortDateComponentsDMY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", date: "dmy"});
@@ -641,7 +640,6 @@ module.exports.testdatefmt_bg = {
         test.done();
     },
     */
-
     testDateFmtFullDateComponentsY_bg_BG: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "y"});

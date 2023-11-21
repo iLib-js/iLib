@@ -51,12 +51,10 @@ module.exports.phonegeo = {
         ilib.clearCache();
         callback();
     },
-
     tearDown: function(callback) {
         ilib._load = oldLoader;
         callback();
     },
-
     testNANP: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+1 650 654 3210");
@@ -83,7 +81,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPLocalNumber: function(test) {
         test.expect(3);
         var parsed = new PhoneNumber("654 3210");
@@ -103,7 +100,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testNANPServiceNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+1 888 654 3210");
@@ -130,7 +126,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPEmergencyLikeServiceNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("411");
@@ -157,7 +152,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPEmergency: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("911");
@@ -183,7 +177,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPNoLocale: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+1 650 654 3210");
@@ -210,7 +203,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPOtherLocale: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+1 650 654 3210");
@@ -237,7 +229,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNANPUnknownAreaCode: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("875 654 3210");
@@ -258,7 +249,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testDefaultCountry: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("650 654 3210");
@@ -286,7 +276,6 @@ module.exports.phonegeo = {
         test.done();
 
     },
-
     //for bug NOV-118981
     testNANPInvalidNumber: function(test) {
         test.expect(6);
@@ -314,7 +303,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDefaultDE: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("06224 123456", {locale: "de-DE"});
@@ -341,7 +329,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEMobileNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("017 12345678", {locale: "de-DE"});
@@ -368,7 +355,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEServiceNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("012 12345678", {locale: "de-DE"});
@@ -395,7 +381,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEEmergency: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("112", {locale: "de-DE"});
@@ -422,8 +407,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
-
     testDELocal: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("12345678", {locale: 'de-DE'});
@@ -444,7 +427,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testDefaultHK: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("0663 12345678", {locale: 'en-CN'});
@@ -472,7 +454,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testHKMobileNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("150 05179573", {locale: 'en-CN'});
@@ -500,7 +481,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDefaultCN: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("0663 12345678", {locale: 'zh-CN'});
@@ -527,7 +507,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testCNMobileNumber: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("150 05179573", {locale: 'zh-CN'});
@@ -554,7 +533,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testUK: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
@@ -581,7 +559,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testGB: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+44 161 1234567", {locale: 'en-GB'});
@@ -608,7 +585,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testUKMobile: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+44 75 12345678", {locale: 'en-GB'});
@@ -635,7 +611,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testUKService: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+44 303 1234567", {locale: 'en-GB'});
@@ -662,7 +637,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testUKLocal: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("1234567", {locale: 'en-GB'});
@@ -683,8 +657,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
-
     testFR: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 1 12 34 56 78");
@@ -711,7 +683,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testFRMobile: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 6 23 45 67 89");
@@ -738,7 +709,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testFRService: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 6 90 12 34 56");
@@ -765,7 +735,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testFRDepartment: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 2 62 12 34 56");
@@ -792,7 +761,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testFRFreephone: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 800 12 34 56");
@@ -819,7 +787,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testFRToll: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+33 810 12 34 56");
@@ -846,7 +813,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDE: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+49 6224 12 34 56");
@@ -873,7 +839,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testIT: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+39 075 12345678");
@@ -900,7 +865,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     // for bug NOV-115337
     testITIntl: function(test) {
         test.expect(6);
@@ -928,7 +892,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testITIntlMobile: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+39 390 12345678");
@@ -955,7 +918,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testES: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+34 930 123 456");
@@ -982,7 +944,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testMX: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+52 755 123 4567");
@@ -1009,7 +970,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testMXLocal: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("1234 5678");
@@ -1030,7 +990,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testAU: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+61 8 9201 2345");
@@ -1057,7 +1016,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testAUMobile: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+61 4201 2345");
@@ -1084,7 +1042,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testAUUnknownAreaWithinACity: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+61 2 9120 2343");
@@ -1111,7 +1068,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testAUUnknownAreaWithinCountry: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+61 3 1234 5678");
@@ -1138,7 +1094,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNZ: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+64 3 9601 2345");
@@ -1165,7 +1120,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNZWithDot: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+64 3 2331 2345");
@@ -1192,7 +1146,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNZMobile: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+64 21 201 2345");
@@ -1219,7 +1172,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNZUnknownAreaWithinACity: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+64 9 4620 2343");
@@ -1246,7 +1198,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testNZUnknownAreaWithinCountry: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+64 3 812 345 678");
@@ -1273,7 +1224,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testUnknown: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("+506 20 123 456");
@@ -1294,7 +1244,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     testDEMobileIntl: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+49 16 1234 5678");
@@ -1321,7 +1270,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testWithUSMCC: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("650-123-4567");
@@ -1348,7 +1296,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testWithUSMCCNoLocale: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("650-123-4567");
@@ -1375,7 +1322,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEMCCEnglishLocale: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("06224 123 456", {locale: "de-DE"});
@@ -1402,7 +1348,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEMCCGermanLocale: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("06224 123 456", {locale: "de-DE"});
@@ -1429,7 +1374,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testDEMCCFrenchLocaleUSCountryCode: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber("+1 650 555 1212");
@@ -1456,7 +1400,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBogusCountryCode: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber({
@@ -1490,7 +1433,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testBogusAreaCode: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber({
@@ -1524,7 +1466,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     // for bug NOV-115625
     testNumberTooLongUS: function(test) {
         test.expect(4);
@@ -1549,7 +1490,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.ln, expected.country.ln);
         test.done();
     },
-
     // no fixed length in Germany, so there should not be any numbers that are "too long"
     testNumberTooLongDE: function(test) {
         test.expect(6);
@@ -1580,7 +1520,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testInvalidNumberPartial: function(test) {
         test.expect(6);
         var parsed = new PhoneNumber({
@@ -1610,7 +1549,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-
     testGetCountryCode: function(test) {
         test.expect(2);
         var country;
@@ -1623,7 +1561,6 @@ module.exports.phonegeo = {
         test.equal(country, 'DE');
         test.done();
     },
-
     testGetCountryCode2: function(test) {
         test.expect(2);
         var country;
@@ -1636,7 +1573,6 @@ module.exports.phonegeo = {
         test.equal(country, 'AU');
         test.done();
     },
-
     testGetCountryCodeUndefined: function(test) {
         test.expect(2);
         var locator = new PhoneGeoLocator();
@@ -1646,7 +1582,6 @@ module.exports.phonegeo = {
         test.ok(typeof(undefined === geoInfo) !== "undefined");
         test.done();
     },
-
     testGetCountryCodeLocalNumber: function(test) {
         test.expect(2);
         var country;
@@ -1663,7 +1598,6 @@ module.exports.phonegeo = {
         test.equal(country, 'DE');
         test.done();
     },
-
     testGetCountryCodeLocalNumberNoLocale: function(test) {
         test.expect(2);
         var country;
@@ -1679,7 +1613,6 @@ module.exports.phonegeo = {
         test.equal(country, 'CA');
         test.done();
     },
-
     testGetCountryCodeLocalNumberNoLocaleDefault: function(test) {
         test.expect(2);
         var country;
@@ -1695,7 +1628,6 @@ module.exports.phonegeo = {
         test.equal(country, 'US');
         test.done();
     },
-
     testGetCountryCodeLocalNumberNoAreaCode: function(test) {
         test.expect(2);
         var country;
@@ -1712,7 +1644,6 @@ module.exports.phonegeo = {
         test.equal(country, 'DE');
         test.done();
     },
-
     testGetCountryCodeHaveCountryButNoAreaCode: function(test) {
         test.expect(2);
         var country;
@@ -1730,7 +1661,6 @@ module.exports.phonegeo = {
         test.equal(country, 'DE');
         test.done();
     },
-
     testGetCountryCodeHaveCountryButNoAreaCodeFR: function(test) {
         test.expect(2);
         var country;
@@ -1748,7 +1678,6 @@ module.exports.phonegeo = {
         test.equal(country, 'FR');
         test.done();
     },
-
     testGetCountryCodeUS: function(test) {
         test.expect(2);
         var country;
@@ -1766,7 +1695,6 @@ module.exports.phonegeo = {
         test.equal(country, 'US');
         test.done();
     },
-
     testGetCountryCodeCA: function(test) {
         test.expect(2);
         var country;
@@ -1784,7 +1712,6 @@ module.exports.phonegeo = {
         test.equal(country, 'CA');
         test.done();
     },
-
     testGetCountryCodeCaribbean: function(test) {
         test.expect(2);
         var country;
@@ -1802,7 +1729,6 @@ module.exports.phonegeo = {
         test.equal(country, 'JM');
         test.done();
     },
-
     testGetCountryCodeCaribbean2: function(test) {
         test.expect(2);
         var country;
@@ -1820,7 +1746,6 @@ module.exports.phonegeo = {
         test.equal(country, 'VG');
         test.done();
     },
-
     testGetCountryCodeItalySanMarino: function(test) {
         test.expect(2);
         var country;
@@ -1839,7 +1764,6 @@ module.exports.phonegeo = {
         test.equal(country, 'SM');
         test.done();
     },
-
     testGetCountryCodeItalyRome: function(test) {
         test.expect(2);
         var country;
@@ -1858,7 +1782,6 @@ module.exports.phonegeo = {
         test.equal(country, 'IT');
         test.done();
     },
-
     testGetCountryCodeFranceParis: function(test) {
         test.expect(2);
         var country;
@@ -1877,7 +1800,6 @@ module.exports.phonegeo = {
         test.equal(country, 'FR');
         test.done();
     },
-
     testGetCountryCodeFranceReunion: function(test) {
         test.expect(2);
         var country;
@@ -1896,7 +1818,6 @@ module.exports.phonegeo = {
         test.equal(country, 'RE');
         test.done();
     },
-
     testGetCountryCodeFranceMartinique: function(test) {
         test.expect(2);
         var country;
@@ -1915,7 +1836,6 @@ module.exports.phonegeo = {
         test.equal(country, 'MQ');
         test.done();
     },
-
     // for bug NOV-118981
     testInvalidNumber: function(test) {
         test.expect(2);
@@ -1932,7 +1852,6 @@ module.exports.phonegeo = {
         test.equal(country, 'US');
         test.done();
     },
-
     testSG: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("+65 2543 2102");
@@ -1953,7 +1872,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testSGLocal: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("25432102", {locale: "en-SG"});
@@ -1974,7 +1892,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testSGMobile: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("65432102", {locale: "en-SG"});
@@ -1995,7 +1912,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testHK: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("+852 2543 2102");
@@ -2016,7 +1932,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testHKLocal: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("2543 2102", {locale: "en-HK"});
@@ -2037,7 +1952,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testHKMobile: function(test) {
         test.expect(4);
         var parsed = new PhoneNumber("6543 2102", {locale: "en-HK"});
@@ -2098,7 +2012,6 @@ module.exports.phonegeo = {
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.done();
     },
-
     testPhoneGeoLoadLocaleDataSynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -2138,5 +2051,4 @@ module.exports.phonegeo = {
         test.deepEqual(geoInfo, expected);
         test.done();
     }
-
 };

@@ -23,8 +23,6 @@ var reporter = nodeunit.reporters.minimal;
 var modules = {};
 var suites = require("./testSuiteFilesAsync.js").files;
 
-var ilib = require("../../lib/ilib-node-async.js");
-
 suites.forEach(function (path) {
     var test = require("./" + path);
     for (var suite in test) {

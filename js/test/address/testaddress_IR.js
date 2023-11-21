@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_IR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressIRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه, شماره طبقه, فرهنگ, تهران, ۱۱۹۳۶۵۴۴۷۱, ایران", {locale: 'fa-IR'});
@@ -48,7 +45,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
     testParseAddressIRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه,شماره  طبقه, فرهنگ, تهران, ایران", {locale: 'fa-IR'});
@@ -62,7 +58,6 @@ module.exports.testaddress_IR = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressIRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه\nشماره  طبقه\nفرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\nایران", {locale: 'fa-IR'});
@@ -76,7 +71,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
     testParseAddressIROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
@@ -90,7 +84,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
     testParseAddressIRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه,شماره  طبقه   \n\t\n فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱\t\n\n ایران  \n  \t\t\t", {locale: 'fa-IR'});
@@ -104,7 +97,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
     testParseAddressIRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه شماره  طبقه فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱ ایران", {locale: 'fa-IR'});
@@ -118,9 +110,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
-
-
     testParseAddressIRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("خانم فاطمه,شماره  طبقه,فرهنگ, تهران ۱۱۹۳۶۵۴۴۷۱,Iran", {locale: 'en-US'});
@@ -136,7 +125,6 @@ module.exports.testaddress_IR = {
         test.equal(parsedAddress.countryCode, "IR");
         test.done();
     },
-
     testFormatAddressIR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -153,7 +141,6 @@ module.exports.testaddress_IR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressIRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -168,5 +155,4 @@ module.exports.testaddress_IR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

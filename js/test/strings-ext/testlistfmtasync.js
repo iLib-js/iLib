@@ -36,7 +36,6 @@ module.exports.testlistfmtasync = {
             }
         });
     },
-
     testListFmtAsyncTestProperty8: function(test) {
         new ListFmt({
             sync: false,
@@ -48,7 +47,6 @@ module.exports.testlistfmtasync = {
             }
         });
     },
-
     testListFmtAsyncbnINNumberFormatFour: function(test) {
         new ListFmt({
             locale: "bn-IN",
@@ -61,7 +59,6 @@ module.exports.testlistfmtasync = {
             }
         });
     },
-
     testListFmtAsynckoKRNumberFormatThree: function(test) {
         new ListFmt({
             locale: "ko-KR",

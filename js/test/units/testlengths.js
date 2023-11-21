@@ -30,7 +30,6 @@ module.exports.testlengths = {
         ilib.clearCache();
         callback();
     },
-
     testLengthLengthConstructor: function(test) {
         test.expect(1);
 
@@ -42,7 +41,6 @@ module.exports.testlengths = {
         test.ok(m !== null);
         test.done();
     },
-
     testLengthLengthConvertMetersToMiles: function(test) {
         test.expect(3);
         var m1 = new LengthUnit({
@@ -60,7 +58,6 @@ module.exports.testlengths = {
         test.equal(m2.getAmount(), 3.106856);
         test.done();
     },
-
     testLengthStaticConvert1: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("feet", "meter", 2.0);
@@ -68,7 +65,6 @@ module.exports.testlengths = {
         test.equal(m, 6.56168);
         test.done();
     },
-
     testLengthStaticConvertWithString: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("feet", "meter", "2");
@@ -76,7 +72,6 @@ module.exports.testlengths = {
         test.equal(m, 6.56168);
         test.done();
     },
-
     testLengthStaticConvert2: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("meter", "millimeter", 200000);
@@ -84,7 +79,6 @@ module.exports.testlengths = {
         test.equal(m, 200);
         test.done();
     },
-
     testLengthStaticConvert3: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("mile", "yard", 7495);
@@ -92,7 +86,6 @@ module.exports.testlengths = {
         test.equal(m, 4.25852409);
         test.done();
     },
-
     testLengthStaticConvert4: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("millimeter", "meter", 2.0);
@@ -100,7 +93,6 @@ module.exports.testlengths = {
         test.equal(m, 2000);
         test.done();
     },
-
     testLengthStaticConvert5: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("inch", "micrometer", 200000);
@@ -108,7 +100,6 @@ module.exports.testlengths = {
         test.roughlyEqual(m, 7.87402, 0.00001)
         test.done();
     },
-
     testLengthStaticConvert6: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("yard", "cm", 100);
@@ -116,7 +107,6 @@ module.exports.testlengths = {
         test.equal(m, 1.09361);
         test.done();
     },
-
     testLengthStaticConvert7: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("mile", "decimeter", 100000);
@@ -124,7 +114,6 @@ module.exports.testlengths = {
         test.roughlyEqual(m, 6.21373, 0.00001);
         test.done();
     },
-
     testLengthStaticConvert8: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("nauticalmile", "meter", 1000);
@@ -132,7 +121,6 @@ module.exports.testlengths = {
         test.equal(m, 0.539957);
         test.done();
     },
-
     testLengthStaticConvert9: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("inch", "yard", 1000);
@@ -140,7 +128,6 @@ module.exports.testlengths = {
         test.equal(m, 36000);
         test.done();
     },
-
     testLengthStaticConvert10: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("nauticalmile", "feet", 100000);
@@ -148,7 +135,6 @@ module.exports.testlengths = {
         test.roughlyEqual(m, 16.4579, 0.0001);
         test.done();
     },
-
     testLengthStaticConvert11: function(test) {
         test.expect(1);
         var m = LengthUnit.convert("mm", "feet", 500);
@@ -156,7 +142,6 @@ module.exports.testlengths = {
         test.roughlyEqual(m, 152400, 0.1);
         test.done();
     },
-
     testLengthScale1: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -170,7 +155,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "meter");
         test.done();
     },
-
     testLengthScale2: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -184,7 +168,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "millimeter");
         test.done();
     },
-
     testLengthScale3: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -198,7 +181,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "yard");
         test.done();
     },
-
     testLengthScale4: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -212,7 +194,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "yard");
         test.done();
     },
-
     testLengthScale5: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -226,7 +207,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "nautical-mile");
         test.done();
     },
-
     testLengthScale6: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -240,7 +220,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "inch");
         test.done();
     },
-
     testLengthScale7: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -254,7 +233,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "decimeter");
         test.done();
     },
-
     testLengthScale8: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -268,7 +246,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "meter");
         test.done();
     },
-
     testLengthScale9: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -282,7 +259,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "millimeter");
         test.done();
     },
-
     testLengthScale10: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -296,7 +272,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "nautical-mile");
         test.done();
     },
-
     testLengthScale11: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -310,7 +285,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "inch");
         test.done();
     },
-
     testLengthLocalize1: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -324,7 +298,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "kilometer");
         test.done();
     },
-
     testLengthLocalize2: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -338,7 +311,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "mile");
         test.done();
     },
-
     testLengthLocalize3: function(test) {
         test.expect(2);
         var m = new LengthUnit({
@@ -352,7 +324,6 @@ module.exports.testlengths = {
         test.equal(m.unit, "kilometer");
         test.done();
     },
-
     testLengthGetMeasures: function(test) {
         test.expect(1);
         var measures = LengthUnit.getMeasures();
@@ -377,5 +348,4 @@ module.exports.testlengths = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

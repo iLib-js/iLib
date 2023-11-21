@@ -30,7 +30,6 @@ module.exports.testmass = {
         ilib.clearCache();
         callback();
     },
-
     testMassMassConstructor: function(test) {
         test.expect(1);
         var m = new MassUnit({
@@ -41,7 +40,6 @@ module.exports.testmass = {
         test.ok(m !== null);
         test.done();
     },
-
     testMassMassConvertGramToKG: function(test) {
         test.expect(3);
         var m1 = new MassUnit({
@@ -59,7 +57,6 @@ module.exports.testmass = {
         test.equal(m2.getAmount(), 3);
         test.done();
     },
-
     testMassStaticConvert1: function(test) {
         test.expect(1);
         var m = MassUnit.convert("long ton", "kg", 10000);
@@ -67,7 +64,6 @@ module.exports.testmass = {
         test.roughlyEqual(m, 9.842065, 0.00001);
         test.done();
     },
-
     testMassStaticConvertWithString: function(test) {
         test.expect(1);
         var m = MassUnit.convert("tonne", "pound", "1000");
@@ -75,7 +71,6 @@ module.exports.testmass = {
         test.equal(m, 0.453592);
         test.done();
     },
-
     testMassStaticConvert2: function(test) {
         test.expect(1);
         var m = MassUnit.convert("short ton", "ounce", 10000);
@@ -83,7 +78,6 @@ module.exports.testmass = {
         test.equal(m, 0.3125);
         test.done();
     },
-
     testMassStaticConvert3: function(test) {
         test.expect(1);
         var m = MassUnit.convert("st", "gram", 10000);
@@ -91,7 +85,6 @@ module.exports.testmass = {
         test.equal(m, 1.57473);
         test.done();
     },
-
     testMassStaticConvert4: function(test) {
         test.expect(1);
         var m = MassUnit.convert("kg", "mg", 1000000);
@@ -99,7 +92,6 @@ module.exports.testmass = {
         test.equal(m, 1);
         test.done();
     },
-
     testMassStaticConvert5: function(test) {
         test.expect(1);
         var m = MassUnit.convert("lb", "mcg", 1000000000);
@@ -107,7 +99,6 @@ module.exports.testmass = {
         test.roughlyEqual(m, 2.20462, 0.0001);
         test.done();
     },
-
     testMassScale1: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -121,7 +112,6 @@ module.exports.testmass = {
         test.equal(m.unit, "gram");
         test.done();
     },
-
     testMassScale2: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -135,7 +125,6 @@ module.exports.testmass = {
         test.equal(m.unit, "microgram");
         test.done();
     },
-
     testMassScale3: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -149,7 +138,6 @@ module.exports.testmass = {
         test.equal(m.unit, "kilogram");
         test.done();
     },
-
     testMassScale4: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -163,7 +151,6 @@ module.exports.testmass = {
         test.equal(m.unit, "gram");
         test.done();
     },
-
     testMassScale5: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -177,7 +164,6 @@ module.exports.testmass = {
         test.equal(m.unit, "stone");
         test.done();
     },
-
     testMassScale6: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -191,7 +177,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassScale7: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -205,7 +190,6 @@ module.exports.testmass = {
         test.equal(m.unit, "long-ton");
         test.done();
     },
-
     testMassScale8: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -219,7 +203,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassScale9: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -233,7 +216,6 @@ module.exports.testmass = {
         test.equal(m.unit, "short-ton");
         test.done();
     },
-
     testMassScale10: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -247,7 +229,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassLocalize1: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -261,7 +242,6 @@ module.exports.testmass = {
         test.equal(m.unit, "gram");
         test.done();
     },
-
     testMassLocalize2: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -275,7 +255,6 @@ module.exports.testmass = {
         test.equal(m.unit, "ounce");
         test.done();
     },
-
     testMassLocalize3: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -289,7 +268,6 @@ module.exports.testmass = {
         test.equal(m.unit, "tonne");
         test.done();
     },
-
     testMassLocalize4: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -303,7 +281,6 @@ module.exports.testmass = {
         test.equal(m.unit, "tonne");
         test.done();
     },
-
     testMassLocalize5: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -317,7 +294,6 @@ module.exports.testmass = {
         test.equal(m.unit, "tonne");
         test.done();
     },
-
     testMassAliases1: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -329,7 +305,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassAliases2: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -341,7 +316,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassAliases3: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -353,7 +327,6 @@ module.exports.testmass = {
         test.equal(m.unit, "pound");
         test.done();
     },
-
     testMassGetMeasures: function(test) {
         test.expect(1);
         var measures = MassUnit.getMeasures();
@@ -372,5 +345,4 @@ module.exports.testmass = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
 };

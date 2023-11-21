@@ -29,7 +29,6 @@ module.exports.testcollation_fo = {
         ilib.clearCache();
         callback();
     },
-
     testCollatorConstructorNative_fo: function(test) {
         test.expect(1);
         var col = new Collator({useNative: false, locale: "fo-FO"});
@@ -37,7 +36,6 @@ module.exports.testcollation_fo = {
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
-
     testCollatorDefaultLowerPrimary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -78,7 +76,6 @@ module.exports.testcollation_fo = {
         test.ok("æ < ø", col.compare("æ", "ø") < 0);
         test.done();
     },
-
     testCollatorDefaultUpperPrimary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -119,7 +116,6 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-
     testCollatorDefaultLowerSecondary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -156,7 +152,6 @@ module.exports.testcollation_fo = {
         test.ok("æ < ø", col.compare("æ", "ø") < 0);
         test.done();
     },
-
     testCollatorDefaultCaseSecondary_fo: function(test) {
         test.expect(10);
         var col = new Collator({
@@ -184,7 +179,6 @@ module.exports.testcollation_fo = {
         test.ok("ø = Ø", col.compare("ø", "Ø") === 0);
         test.done();
     },
-
     testCollatorDefaultVariantsSecondary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
@@ -213,7 +207,6 @@ module.exports.testcollation_fo = {
         test.ok("Ý = Ý", col.compare("Ý", "Ý") === 0);
         test.done();
     },
-
     testCollatorDefaultUpperSecondary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -250,7 +243,6 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-
     testCollatorDefaultLowerTertiary_fo: function(test) {
         test.expect(25);
         var col = new Collator({
@@ -290,7 +282,6 @@ module.exports.testcollation_fo = {
         test.ok("Ø < ø", col.compare("Ø", "ø") < 0);
         test.done();
     },
-
     testCollatorDefaultVariantsTertiary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
@@ -319,7 +310,6 @@ module.exports.testcollation_fo = {
         test.ok("Ý = Ý", col.compare("Ý", "Ý") === 0);
         test.done();
     },
-
     testCollatorDefaultUpperTertiary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -356,7 +346,6 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-
     testCollatorDefaultLowerQuaternary_fo: function(test) {
         test.expect(25);
         var col = new Collator({
@@ -396,7 +385,6 @@ module.exports.testcollation_fo = {
         test.ok("Ø < ø", col.compare("Ø", "ø") < 0);
         test.done();
     },
-
     testCollatorDefaultVariantsQuaternary_fo: function(test) {
         test.expect(11);
         var col = new Collator({
@@ -425,7 +413,6 @@ module.exports.testcollation_fo = {
         test.ok("Ý < Ý", col.compare("Ý", "Ý") < 0);
         test.done();
     },
-
     testCollatorDefaultUpperQuaternary_fo: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -462,7 +449,6 @@ module.exports.testcollation_fo = {
         test.ok("Æ < Ø", col.compare("Æ", "Ø") < 0);
         test.done();
     },
-
     testCollatorGetSortKeySimpleUpper_fo: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -487,8 +473,6 @@ module.exports.testcollation_fo = {
         test.equal(col.sortKey("aábcdðe"), "0020220420620820a20c2");
         test.done();
     },
-
-
     testCollatorWithSort_fo: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -512,21 +496,16 @@ module.exports.testcollation_fo = {
         test.deepEqual(input, expected);
         test.done();
     },
-
-
     testCollatorGetAvailableScripts_fo: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableScripts(), ["Latn"]);
         test.done();
     },
-
     testCollatorGetAvailableStyles_fo: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableStyles(), ["standard"]);
         test.done();
     },
-
-
     testJSCollatorNumeric_fo: function(test) {
         test.expect(4);
         var col = new Collator({
@@ -544,5 +523,4 @@ module.exports.testcollation_fo = {
         test.ok(col.compare("00123,4", "124") < 0);
         test.done();
     }
-
 };

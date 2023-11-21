@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_CR = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressCRNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55\nHeredia, San Rafael\n40501\nCOSTA RICA", {locale: 'es-CR'});
@@ -48,7 +45,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCRNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, COSTA RICA", {locale: 'es-CR'});
@@ -62,7 +58,6 @@ module.exports.testaddress_CR = {
         test.ok(!parsedAddress.postalCode);
         test.done();
     },
-
     testParseAddressCRManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR\nFEDERICO TERRAZAS ARIAS, Ca 15 Av 37 # 55\nHeredia, San Rafael\n40501\nCOSTA RICA", {locale: 'es-CR'});
@@ -76,7 +71,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCROneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
@@ -90,7 +84,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCRSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55\n\t\n Heredia,    San Rafael\t\n\n 40501\n\nCOSTA RICA  \n  \t\t\t", {locale: 'es-CR'});
@@ -104,7 +97,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCRNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR Gabriel Garcia Marquez Ca 15 Av 37 # 55 Heredia San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
@@ -118,7 +110,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCRSpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("SEÑOR, Gabriel García Márquez, SOCIEDAD DE ESCRITORES, Ca 15 Av 37 # 55, Heredia, San Rafael, 40501, COSTA RICA", {locale: 'es-CR'});
@@ -132,7 +123,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testParseAddressCRFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Señor Carlos Torres, Ca 15 Av 37 # 55, Heredia, San Rafael, 40501, COSTA RICA", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_CR = {
         test.equal(parsedAddress.countryCode, "CR");
         test.done();
     },
-
     testFormatAddressCR: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -165,7 +154,6 @@ module.exports.testaddress_CR = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressCRFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({

@@ -23,7 +23,6 @@ if (typeof(GregorianDate) === "undefined") {
 if (typeof(DateRngFmt) === "undefined") {
     var DateRngFmt = require("../../lib/DateRngFmt.js");
 }
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -683,5 +682,4 @@ module.exports.testdatefmtrange_uk_UA = {
         test.equal(fmt.format(start, end), "2011 – 2064");
         test.done();
     }
-
 };

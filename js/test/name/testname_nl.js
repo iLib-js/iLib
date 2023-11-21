@@ -32,7 +32,6 @@ module.exports.testname_nl = {
         ilib.clearCache();
         callback();
     },
-
     testNLParseSimpleName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Hoogeboom", {locale: 'nl-NL'});
@@ -46,7 +45,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseTripleName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Hoogeboom", {locale: 'nl-NL'});
@@ -61,7 +59,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Ludwig Klaus von Beethoven", {locale: 'nl-NL'});
@@ -76,7 +73,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseMultiAdjunctNames: function(test) {
         test.expect(2);
         var parsed = new Name("Geertje van den Bosch", {locale: 'nl-NL'});
@@ -90,7 +86,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseHypenatedName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Bergische-Hoogeboom", {locale: 'nl-NL'});
@@ -105,7 +100,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseQuadrupleName: function(test) {
         test.expect(2);
         var parsed = new Name("Jan Michael Jürgen Hoogeboom", {locale: 'nl-NL'});
@@ -120,7 +114,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseTitle: function(test) {
         test.expect(2);
         var parsed = new Name("Dr. Jan Hoogeboom", {locale: 'nl-NL'});
@@ -135,7 +128,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseHonorific: function(test) {
         test.expect(2);
         var parsed = new Name("Mvw. Julia Maier", {locale: 'nl-NL'});
@@ -150,7 +142,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
     testNLParseEverything: function(test) {
         test.expect(2);
         var parsed = new Name("President Jan Michael Jürgen Hoogeboom Jr.", {locale: 'nl-NL'});
@@ -167,11 +158,6 @@ module.exports.testname_nl = {
         test.contains(parsed, expected);
         test.done();
     },
-
-    /*
-     * Format Tests
-     */
-
     testNLFormatSimpleNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -188,7 +174,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatSimpleNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -205,7 +190,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatSimpleNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -222,7 +206,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatSimpleNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -239,7 +222,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatComplexNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -258,7 +240,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatComplexNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -277,7 +258,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatComplexNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -296,7 +276,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatComplexNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -315,7 +294,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatAsianNameShort: function(test) {
         test.expect(2);
         var name = new Name({
@@ -333,7 +311,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatAsianNameMedium: function(test) {
         test.expect(2);
         var name = new Name({
@@ -351,7 +328,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatAsianNameLong: function(test) {
         test.expect(2);
         var name = new Name({
@@ -369,7 +345,6 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     },
-
     testNLFormatAsianNameFull: function(test) {
         test.expect(2);
         var name = new Name({
@@ -387,5 +362,4 @@ module.exports.testname_nl = {
         test.equal(formatted, expected);
         test.done();
     }
-
 };

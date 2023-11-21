@@ -23,8 +23,6 @@ if (typeof(Address) === "undefined") {
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../lib/AddressFmt.js");
 }
-
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
@@ -34,7 +32,6 @@ module.exports.testaddress_EE = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressEENormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
@@ -48,7 +45,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEENoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House, Rahukohtu 3,Tallinn, Estonia", {locale: 'et-EE'});
@@ -62,7 +58,6 @@ module.exports.testaddress_EE = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressEEManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House\nRahukohtu 3\n15161 Tallinn\nEstonia", {locale: 'et-EE'});
@@ -76,7 +71,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEEOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'et-EE'});
@@ -90,7 +84,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEESuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House\n\tRahukohtu 3  \n\t\n 15161 Tallinn\t\n\n Estonia  \n  \t\t\t", {locale: 'et-EE'});
@@ -104,7 +97,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEENoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House Rahukohtu 3 15161 Tallinn Estonia", {locale: 'et-EE'});
@@ -118,7 +110,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEESpecialChars: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Informatics Center, Rävala 5, 15169 Tallinn, Estonia", {locale: 'et-EE'});
@@ -132,7 +123,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testParseAddressEEFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("The Stenbock House, Rahukohtu 3, 15161 Tallinn, Estonia", {locale: 'en-US'});
@@ -148,7 +138,6 @@ module.exports.testaddress_EE = {
         test.equal(parsedAddress.countryCode, "EE");
         test.done();
     },
-
     testFormatAddressEE: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -164,7 +153,6 @@ module.exports.testaddress_EE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressEEFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -180,5 +168,4 @@ module.exports.testaddress_EE = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

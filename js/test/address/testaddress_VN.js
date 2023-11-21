@@ -32,7 +32,6 @@ module.exports.testaddress_VN = {
         ilib.clearCache();
         callback();
     },
-
     testParseAddressVNNormal: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612\nViệt Nam", {locale: 'vi-VN'});
@@ -46,7 +45,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3 Ho Chi Minh City\nViệt Nam", {locale: 'vi-VN'});
@@ -60,7 +58,6 @@ module.exports.testaddress_VN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-
     testParseAddressVNNoCountry: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612", {locale: 'vi-VN'});
@@ -74,7 +71,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNManyLines: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45\nđường Nguyễn Thị Minh Khai\nPhường 5\nQuận 3\nHo Chi Minh City\n705612\nViệt Nam", {locale: 'vi-VN'});
@@ -88,7 +84,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNOneLine: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612, Việt Nam", {locale: 'vi-VN'});
@@ -102,7 +97,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNSuperfluousWhitespace: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45\n\nđường Nguyễn\t\tThị Minh Khai\n\n\tPhường 5\n\t\t\rQuận 3\r\r\n\tHo Chi Minh City\n\n\t705612\n\n\t\rViệt Nam", {locale: 'vi-VN'});
@@ -116,7 +110,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNNoDelimiters: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612, Việt Nam", {locale: 'vi-VN'});
@@ -130,7 +123,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testParseAddressVNFromUS: function(test) {
         test.expect(7);
         var parsedAddress = new Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612\nViệt Nam", {locale: 'vi-VN'});
@@ -144,7 +136,6 @@ module.exports.testaddress_VN = {
         test.equal(parsedAddress.countryCode, "VN");
         test.done();
     },
-
     testFormatAddressVN: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -161,7 +152,6 @@ module.exports.testaddress_VN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-
     testFormatAddressVNFromUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
@@ -178,5 +168,4 @@ module.exports.testaddress_VN = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
-
 };

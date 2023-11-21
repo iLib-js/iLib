@@ -250,6 +250,7 @@
             "dessert-spoon-imperial": "#{n} britu des. kar.",
             "dot": "zero#{n} px|#{n} p.",
             "dot-per-centimeter": "#{n} dpc",
+            "dot-per-inch": "#{n} ppi",
             "dram": "zero#{n} šķi. drahmu|one#{n} šķ. drahma|#{n} šķ. drahmas",
             "drop": "#{n} pil.",
             "dunam": "zero#{n} dunamu|one#{n} dunams|#{n} dunami",
