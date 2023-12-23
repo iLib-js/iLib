@@ -22,7 +22,7 @@ then
 fi
 if [ "$JAVA_HOME" = "" ]
 then
-	export JAVA_HOME=/usr/lib/jvm/java-11-oracle
+	export JAVA_HOME=/usr/lib/jvm/jdk-17.0.9
 fi
 export CLASSPATH="$JAVA_HOME/lib:$ILIB_HOME/java/output/release/*:$ILIB_HOME/java/lib:$ILIB_HOME/java/lib/*"
 
