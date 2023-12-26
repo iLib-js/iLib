@@ -1,13 +1,22 @@
 Release Notes for Version 14
 ============================
 
+Build 029
+-------
+Published as version 14.19.1
+
+New Features:
+
+Bug Fixes:
+* Updated timezone info to 2023d
+
 Build 028
 -------
 Published as version 14.19.0
 
 New Features:
 * Update to CLDR v43.1 data
-* Added new `getCLDRVersion()` API to know the cldr version that the currently adoped on.
+* Added new `getCLDRVersion()` API to know the cldr version that the current version of ilib uses
 
 Bug Fixes:
 * Removed docs/localeSpecDoc/ directory which is not maintained.
