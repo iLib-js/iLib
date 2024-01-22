@@ -47,25 +47,25 @@
                 "f": "d. MMMM",
                 "l": "d. MMMM",
                 "m": "d. MMM",
-                "s": "d. MM"
+                "s": "d. M"
             },
             "dmw": {
                 "f": "EEEE, d. MMMM",
                 "l": "EEE, d. MMMM",
                 "m": "EE, d. MMM",
-                "s": "E, d. MM"
+                "s": "E, d. M"
             },
             "dmwy": {
                 "f": "EEEE, d. MMMM yyyy",
                 "l": "EEE, d. MMMM yyyy",
                 "m": "EE, d. MMM yyyy",
-                "s": "E, d. MM. yy"
+                "s": "E, d. M. yy"
             },
             "dmy": {
                 "f": "d. MMMM yyyy",
                 "l": "d. MMMM yyyy",
                 "m": "d. MMM yyyy",
-                "s": "d. MM. yy"
+                "s": "d. M. yy"
             },
             "dw": {
                 "f": "EEEE, d",
@@ -75,13 +75,12 @@
             },
             "m": {
                 "l": "MMMM",
-                "m": "MMM",
-                "s": "MM"
+                "m": "MMM"
             },
             "my": {
                 "l": "MMMM yyyy",
                 "m": "MMM yyyy",
-                "s": "MM. yy"
+                "s": "M. yy"
             }
         },
         "order": {

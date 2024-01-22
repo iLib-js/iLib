@@ -1,0 +1,123 @@
+{
+    "gregorian": {
+        "date": {
+            "d": {
+                "f": "d",
+                "l": "d",
+                "m": "d",
+                "s": "d"
+            },
+            "dm": {
+                "l": "d MMMM",
+                "m": "d MMM"
+            },
+            "dmw": {
+                "f": "EEEE, d MMMM",
+                "l": "EEE, d MMMM",
+                "m": "EE, d MMM",
+                "s": "E, d/M"
+            },
+            "dmwy": {
+                "f": "EEEE, d MMMM yyyy",
+                "l": "EEE, d MMMM yyyy",
+                "m": "EE, d MMM yyyy",
+                "s": "E, d/M/yy"
+            },
+            "dmy": {
+                "l": "d MMMM yyyy",
+                "m": "d MMM yyyy"
+            },
+            "dw": {
+                "f": "EEEE, d",
+                "l": "EEE, d",
+                "m": "EE, d",
+                "s": "E, d"
+            },
+            "m": {
+                "l": "MMMM",
+                "m": "MMM"
+            },
+            "my": {
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy"
+            }
+        },
+        "order": {
+            "f": "{date} जो {time}",
+            "l": "{date} जो {time}",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
+        "range": {
+            "c00": {
+                "f": "{sd} {sm} {sy} जो {st} – {et}",
+                "l": "{sd} {sm} {sy} जो {st} – {et}",
+                "m": "{sd} {sm} {sy}, {st} – {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "l": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c02": {
+                "f": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "l": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c03": {
+                "f": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "l": "{sd} {sm} {sy} जो {st} – {ed} {em} {ey} जो {et}",
+                "m": "{sd} {sm} {sy}, {st} – {ed} {em} {ey}, {et}",
+                "s": "{sd}/{sm}/{sy}, {st} – {ed}/{em}/{ey}, {et}"
+            },
+            "c10": {
+                "f": "{sd} – {ed} {em} {ey}",
+                "l": "{sd} – {ed} {em} {ey}",
+                "m": "{sd} – {ed} {em} {ey}",
+                "s": "{sd} – {ed}/{em}/{ey}"
+            },
+            "c11": {
+                "f": "{sd} {sm} – {ed} {em} {ey}",
+                "l": "{sd} {sm} – {ed} {em} {ey}",
+                "m": "{sd} {sm} – {ed} {em} {ey}",
+                "s": "{sd}/{sm} – {ed}/{em}/{ey}"
+            },
+            "c12": {
+                "m": "{sd} {sm} {sy} – {ed} {em} {ey}"
+            },
+            "c20": {
+                "m": "{sm} {sy} – {em} {ey}"
+            },
+            "c30": {
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "h a",
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
+            },
+            "24": {
+                "ah": "HH",
+                "ahm": "HH:mm",
+                "ahms": "HH:mm:ss",
+                "ahmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "h": "HH",
+                "hm": "HH:mm",
+                "hms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "hmz": "HH:mm z"
+            }
+        }
+    }
+}

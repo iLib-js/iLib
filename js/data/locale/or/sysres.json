@@ -6,7 +6,7 @@
     "#in {num}s": "one#{num} ସେ. ରେ|#{num} ସେ. ରେ",
     "#in {num}w": "one#{num} ସପ୍ତା. ରେ|#{num} ସପ୍ତା. ରେ",
     "#in {num}y": "one#{num} ବ. ରେ|#{num} ବ. ରେ",
-    "#{num} ms": "one#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "one#{num}ଦିନ|#{num}ଦିନ",
     "#{num}d ago": "one#{num} ଦିନ ପୂର୍ବେ|#{num} ଦିନ ପୂର୍ବେ",
     "#{num}h": "one#{num}ଘଣ୍ଟା|#{num}ଘଣ୍ଟା",

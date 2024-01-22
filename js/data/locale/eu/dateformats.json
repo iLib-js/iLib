@@ -91,36 +91,31 @@
                 "s": "yy/M"
             }
         },
-        "order": {
-            "f": "{date} ({time})",
-            "l": "{date} ({time})",
-            "m": "{date}, {time}",
-            "s": "{date}, {time}"
-        },
+        "order": "{date} ({time})",
         "range": {
             "c00": {
-                "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})",
-                "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})",
-                "m": "{sy}(e)ko {sm} {sd}(a), {st} – {et}",
-                "s": "{sy}/{sm}/{sd}, {st} – {et}"
+                "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}",
+                "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}",
+                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – {et}",
+                "s": "{sy}/{sm}/{sd} ({st}) – {et}"
             },
             "c01": {
                 "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
                 "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
-                "m": "{sy}(e)ko {sm} {sd}(a), {st} – {ey}(e)ko {em} {ed}(a), {et}",
-                "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
+                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – {ey}(e)ko {em} {ed}(a) ({et})",
+                "s": "{sy}/{sm}/{sd} ({st}) – {ey}/{em}/{ed} ({et})"
             },
             "c02": {
                 "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
                 "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
-                "m": "{sy}(e)ko {sm} {sd}(a), {st} – {ey}(e)ko {em} {ed}(a), {et}",
-                "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
+                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – {ey}(e)ko {em} {ed}(a) ({et})",
+                "s": "{sy}/{sm}/{sd} ({st}) – {ey}/{em}/{ed} ({et})"
             },
             "c03": {
                 "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
                 "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",
-                "m": "{sy}(e)ko {sm} {sd}(a), {st} – {ey}(e)ko {em} {ed}(a), {et}",
-                "s": "{sy}/{sm}/{sd}, {st} – {ey}/{em}/{ed}, {et}"
+                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – {ey}(e)ko {em} {ed}(a) ({et})",
+                "s": "{sy}/{sm}/{sd} ({st}) – {ey}/{em}/{ed} ({et})"
             },
             "c10": {
                 "f": "{sy}(e)ko {sm}ren {sd}(a) – {ed}",

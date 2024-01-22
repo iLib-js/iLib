@@ -110,36 +110,31 @@
                 "s": "yyyy"
             }
         },
-        "order": {
-            "f": "{date} 'klo' {time}",
-            "l": "{date} 'klo' {time}",
-            "m": "{date} 'klo' {time}",
-            "s": "{date} {time}"
-        },
+        "order": "{date} 'klo' {time}",
         "range": {
             "c00": {
                 "f": "{sd}. {sm} {sy} klo {st} – {et}",
                 "l": "{sd}. {sm} {sy} klo {st} – {et}",
                 "m": "{sd}.{sm}.{sy} klo {st} – {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {et}"
+                "s": "{sd}.{sm}.{sy} klo {st} – {et}"
             },
             "c01": {
                 "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "s": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}"
             },
             "c02": {
                 "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "s": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}"
             },
             "c03": {
                 "f": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "l": "{sd}. {sm} {sy} klo {st} – {ed}. {em} {ey} klo {et}",
                 "m": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}",
-                "s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}"
+                "s": "{sd}.{sm}.{sy} klo {st} – {ed}.{em}.{ey} klo {et}"
             },
             "c10": {
                 "f": "{sd} – {ed}. {em} {ey}",
