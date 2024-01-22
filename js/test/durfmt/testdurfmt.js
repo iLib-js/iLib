@@ -1,7 +1,7 @@
 /*
  * testdurfmt.js - test the duration formatter object
  *
- * Copyright © 2012-2023, JEDLSoft
+ * Copyright © 2012-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -910,7 +910,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1:01:01 ч.');
+        test.equal(duration.toString(), '1 г., 1 мес., 1 седм., 1 д, 1:01:01');
         test.done();
     },
     testDurFmtBGFormatMedium: function(test) {
@@ -1474,8 +1474,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for es-CO
-
-
     testDurFmtESFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -1598,10 +1596,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 año, 1 mes, 1 semana, 1 día, 1 hora, 1 minuto y 1 segundo");
         test.done();
     },
-
-
     //test cases for estonian
-
     testDurFmtETFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -1725,7 +1720,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for fa-IR
-
     testDurFmtFAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -1849,8 +1843,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for fi-FI
-
-
     testDurFmtFIFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -1974,7 +1966,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for fr-CA
-
     testDurFmtFRCAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2094,11 +2085,10 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
+        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
         test.done();
     },
     //test cases for ga-IE
-
     testDurFmtGAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2116,7 +2106,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1b 1m 1s 1l 1u 1n 1s");
+        test.equal(duration.toString(), '1 bl 1m 1 scht 1 lá 1 u 1 nóim 1 soic');
         test.done();
     },
     testDurFmtGAFormatShortText: function(test) {
@@ -2137,7 +2127,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1b 1m 1s 1l 1u 1n 1s");
+        test.equal(duration.toString(), '1 bl 1m 1 scht 1 lá 1 u 1 nóim 1 soic');
         test.done();
     },
     testDurFmtGAFormatShortClock: function(test) {
@@ -2158,7 +2148,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1b 1m 1s 1l 01:01:01");
+        test.equal(duration.toString(), '1 bl 1m 1 scht 1 lá 01:01:01');
         test.done();
     },
     testDurFmtGAFormatMedium: function(test) {
@@ -2178,7 +2168,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1b, 1m, 1s, 1l, 1u, 1n, 1s");
+        test.equal(duration.toString(), '1 bl, 1m, 1 scht, 1 lá, 1 u, 1 nóim, 1 soic');
         test.done();
     },
     testDurFmtGAFormatLong: function(test) {
@@ -2198,7 +2188,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 bhl, 1 mhí, 1 scht, 1 lá, 1 u, 1 nóim, 1 soic");
+        test.equal(duration.toString(), '1 bl, 1 mí, 1 scht, 1 lá, 1 u, 1 nóim, 1 soic');
         test.done();
     },
     testDurFmtGAFormatFull: function(test) {
@@ -2218,11 +2208,10 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 bhliain, 1 mhí, 1 seachtain, 1 lá, 1 uair, 1 nóiméad agus 1 soicind");
+        test.equal(duration.toString(), '1 bhliain, 1 mhí, 1 scht, 1 lá, 1 u, 1 nóim agus 1 soic');
         test.done();
     },
     //test cases for hebrew
-
     testDurFmtHEFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2527,7 +2516,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for hi-IN
-
     testDurFmtHIFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2545,7 +2533,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1वर्ष, 1माह, 1 सप्ताह, 1 दि, 1घं॰, 1 मि, 1 से');
+        test.equal(duration.toString(), '1 व, 1 माह, 1 सप्ताह, 1 दि, 1 घं, 1 मि, 1 से');
         test.done();
     },
     testDurFmtHIFormatShortText: function(test) {
@@ -2566,7 +2554,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1वर्ष, 1माह, 1 सप्ताह, 1 दि, 1घं॰, 1 मि, 1 से');
+        test.equal(duration.toString(), '1 व, 1 माह, 1 सप्ताह, 1 दि, 1 घं, 1 मि, 1 से');
         test.done();
     },
     testDurFmtHIFormatShortClock: function(test) {
@@ -2587,7 +2575,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1वर्ष, 1माह, 1 सप्ताह, 1 दि, 1:01:01");
+        test.equal(duration.toString(), '1 व, 1 माह, 1 सप्ताह, 1 दि, 1:01:01');
         test.done();
     },
     testDurFmtHIFormatMedium: function(test) {
@@ -2607,7 +2595,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1वर्ष, 1माह, 1 सप्ताह, 1 दि, 1घं॰, 1 मि, 1 से');
+        test.equal(duration.toString(), '1 व, 1 माह, 1 सप्ताह, 1 दि, 1 घं, 1 मि, 1 से');
         test.done();
     },
     testDurFmtHIFormatLong: function(test) {
@@ -2650,10 +2638,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 वर्ष, 1 महीना, 1 सप्ताह, 1 दिन, 1 घंटा, 1 मिनट, और 1 सेकंड");
         test.done();
     },
-
-
     //test cases for marathi mr-IN
-
     testDurFmtMRFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2776,11 +2761,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "१ वर्ष, १ महिना, १ आठवडा, १ दिवस, १ तास, १ मिनिट, १ सेकंद");
         test.done();
     },
-
-
-
     //testa cases for Telugu (te-IN)
-
     testDurFmtTEFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2843,8 +2824,6 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1సం, 1నె, 1వా, 1రో, 1:01:01");
         test.done();
     },
-
-
     testDurFmtTEFormatMedium: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -2905,10 +2884,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 సంవత్సరం, 1 నెల, 1 వారం, 1 రోజు, 1 గంట, 1 నిమిషం, 1 సెకను");
         test.done();
     },
-
-
     //test cases for kannada(kn-IN)
-
     testDurFmtKNFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3032,7 +3008,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for tamil(ta-IN)
-
     testDurFmtTAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3156,7 +3131,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for Malaylam(ml-IN)
-
     testDurFmtMLFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3280,7 +3254,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for Gujrati(gu-IN)
-
     testDurFmtGUFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3403,10 +3376,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 વર્ષ, 1 મહિનો, 1 અઠવાડિયું, 1 દિવસ, 1 કલાક, 1 મિનિટ, 1 સેકંડ");
         test.done();
     },
-
-
     //test cases for Bengali(bn-IN)
-
     testDurFmtBNFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3594,8 +3564,6 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘন্টা, ১ মিনিট, ১ সেকেন্ড");
         test.done();
     },
-
-
     //test cases for Assamese(as-IN)
     /*
     testDurFmtASFormatShortDefaultStyle: function(test) {
@@ -3721,9 +3689,7 @@ module.exports.testdurfmt = {
         test.done();
     },
     */
-
     //test cases for Punjabi(pa-Guru-IN)
-
     testDurFmtPAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3847,7 +3813,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for Urdu(ur-IN)
-
     testDurFmtURFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -3993,7 +3958,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for croation
-
     testDurFmtHRFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4240,7 +4204,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for indonesia
-
     testDurFmtIDFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4364,7 +4327,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for Italy
-
     testDurFmtITFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4488,7 +4450,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for japanese
-
     testDurFmtJAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4617,10 +4578,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 年 1 か月 1 週間 1 日 1 時間 1 分 1 秒 1 ミリ秒");
         test.done();
     },
-
-
     //test cases for kk-Cyrl-KZ
-
     testDurFmtKKFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4683,8 +4641,6 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 ж. 1 ай 1 ап. 1 к. 01:01:01");
         test.done();
     },
-
-
     testDurFmtKKFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4725,9 +4681,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 жыл 1 ай 1 апта 1 күн 1 сағат 1 минут 1 секунд");
         test.done();
     },
-
     //test cases for ko-KR
-
     testDurFmtKOFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4980,7 +4934,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for lt-LT
-
     testDurFmtLTFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5104,7 +5057,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for lv-LV
-
     testDurFmtLVFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5228,7 +5180,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for mk-MK
-
     testDurFmtMKFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5351,10 +5302,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 година, 1 месец, 1 седмица, 1 ден, 1 час, 1 минута и 1 секунда");
         test.done();
     },
-
-
     //test cases for mn-Cyrl-MN
-
     testDurFmtMNFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5478,7 +5426,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for ms-Latn-MY
-
     testDurFmtMSFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5601,11 +5548,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 tahun, 1 bulan, 1 minggu, 1 hari, 1 jam, 1 minit, 1 saat");
         test.done();
     },
-
-
     //test cases for nb-NO
-
-
     testDurFmtNBFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5729,7 +5672,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for nl-NL
-
     testDurFmtNLFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5853,7 +5795,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for pl-PL
-
     testDurFmtPLFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5871,7 +5812,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 r., 1 m-c, 1 tydz., 1 d., 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), '1 r., 1 m-c, 1 t., 1 d., 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtPLFormatShortText: function(test) {
@@ -5892,7 +5833,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 r., 1 m-c, 1 tydz., 1 d., 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), '1 r., 1 m-c, 1 t., 1 d., 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtPLFormatShortClock: function(test) {
@@ -5913,7 +5854,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 r., 1 m-c, 1 tydz., 1 d., 01:01:01");
+        test.equal(duration.toString(), '1 r., 1 m-c, 1 t., 1 d., 01:01:01');
         test.done();
     },
     testDurFmtPLFormatMedium: function(test) {
@@ -5933,7 +5874,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 r., 1 m-c, 1 tydz., 1 d., 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), '1 r., 1 m-c, 1 t., 1 d., 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtPLFormatLong: function(test) {
@@ -5977,7 +5918,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for pt-BR
-
     testDurFmtPTFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6101,7 +6041,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for ro-RO
-
     testDurFmtROFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6225,7 +6164,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for ru-RU
-
     testDurFmtRUFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6348,10 +6286,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), '1 год 1 месяц 1 неделя 1 день 1 час 1 минута 1 секунда');
         test.done();
     },
-
-
     //test cases for sk-SK
-
     testDurFmtSKFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6475,7 +6410,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for sq-AL
-
     testDurFmtSQFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6598,10 +6532,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 vit, 1 muaj, 1 javë, 1 ditë, 1 orë, 1 minutë e 1 sekondë");
         test.done();
     },
-
-
     //test cases for sr-Latn-RS
-
     testDurFmtSRFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6664,8 +6595,6 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 g, 1 m, 1 n, 1 d, 01:01:01");
         test.done();
     },
-
-
     testDurFmtSRFormatLong: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6707,7 +6636,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for th-TH
-
     testDurFmtTHFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6831,7 +6759,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for uk-UA
-
     testDurFmtUKUAFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -6849,7 +6776,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1р, 1м, 1т, 1д, 1 год., 1х, 1с");
+        test.equal(duration.toString(), '1р, 1м, 1т, 1д, 1г, 1х, 1с');
         test.done();
     },
     testDurFmtUKUAFormatShortText: function(test) {
@@ -6870,7 +6797,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1р, 1м, 1т, 1д, 1 год., 1х, 1с");
+        test.equal(duration.toString(), '1р, 1м, 1т, 1д, 1г, 1х, 1с');
         test.done();
     },
     testDurFmtUKUAFormatShortClock: function(test) {
@@ -6911,7 +6838,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1р, 1м, 1т, 1д, 1 год., 1х, 1с');
+        test.equal(duration.toString(), '1р, 1м, 1т, 1д, 1г, 1х, 1с');
         test.done();
     },
     testDurFmtUKUAFormatLong: function(test) {
@@ -6955,7 +6882,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for uz-Cyrl-UZ
-
     testDurFmtUZFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7079,7 +7005,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for uz-Latn-UZ
-
     testDurFmtUZLATNFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7203,7 +7128,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for vietnemese
-
     testDurFmtVIFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7327,7 +7251,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for zh-Hant-TW
-
     testDurFmtZHFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7452,7 +7375,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for zh-Hank-HK
-
     testDurFmtZHHKFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7473,8 +7395,6 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1年1個月1週1日1小時1分1秒");
         test.done();
     },
-
-
     testDurFmtZHHKFormatShortText: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7578,7 +7498,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for tr-TR
-
     testDurFmtTRFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7702,7 +7621,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for swedish
-
     testDurFmtSVFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7826,7 +7744,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for sl-SI
-
     testDurFmtSLFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -7950,7 +7867,6 @@ module.exports.testdurfmt = {
         test.done();
     },
     //test cases for portuguese pt-PU
-
     testDurFmtPTPTFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
