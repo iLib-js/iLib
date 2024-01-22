@@ -1,7 +1,7 @@
 /*
  * testdatefmt_en_GB.js - test the date formatter object in British English
  *
- * Copyright © 2012-2015,2017,2021-2022-2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2021-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -825,7 +825,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T, 29/09");
+        test.equal(fmt.format(date), "T 29/09");
         test.done();
     },
     testDateFmtGBShortDateComponentsWDMY: function(test) {
@@ -843,7 +843,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T, 29/09/2011");
+        test.equal(fmt.format(date), "T 29/09/2011");
         test.done();
     },
     testDateFmtGBFullDateComponentsY: function(test) {
@@ -969,7 +969,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday, 29 September");
+        test.equal(fmt.format(date), "Thursday 29 September");
         test.done();
     },
     testDateFmtGBFullDateComponentsWDMY: function(test) {
@@ -987,7 +987,7 @@ module.exports.testdatefmt_en_GB = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday, 29 September 2011");
+        test.equal(fmt.format(date), "Thursday 29 September 2011");
         test.done();
     },
     testDateFmtGBShortTimeComponentsS: function(test) {

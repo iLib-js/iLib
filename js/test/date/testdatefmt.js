@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015, 2017, 2020-2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2763,7 +2763,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday 20 September 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtenZA: function(test) {
@@ -3556,7 +3556,7 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "ta-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "முற்பகல்");
+        test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "பிற்பகல்");
         test.done();
     },

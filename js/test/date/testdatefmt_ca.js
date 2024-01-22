@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ca.js - test the date formatter object in Catalan
  *
- * Copyright © 2020-2021,2023 JEDLSoft
+ * Copyright © 2020-2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,7 +94,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 de setembre de 2011");
+        test.equal(fmt.format(date), "29 de setembre del 2011");
         test.done();
     },
     testDateFmtSimpleFull_ca_AD: function(test) {
@@ -112,7 +112,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011');
+        test.equal(fmt.format(date), '29 de setembre del 2011');
         test.done();
     },
     testDateFmtSimpleTimeShort_ca_AD: function(test) {
@@ -238,7 +238,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
+        test.equal(fmt.format(date), '29 de setembre del 2011, a les 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ca_AD: function(test) {
@@ -256,7 +256,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
+        test.equal(fmt.format(date), '29 de setembre del 2011, a les 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_ca_AD: function(test) {
@@ -635,7 +635,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dj, 29/9');
+        test.equal(fmt.format(date), 'dj., 29/9');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_ca_AD: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dj, 29/9/11');
+        test.equal(fmt.format(date), 'dj., 29/9/11');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_ca_AD: function(test) {
@@ -761,7 +761,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'setembre de 2011');
+        test.equal(fmt.format(date), 'setembre del 2011');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_ca_AD: function(test) {
@@ -779,7 +779,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011');
+        test.equal(fmt.format(date), '29 de setembre del 2011');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_ca_AD: function(test) {
@@ -815,7 +815,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dijous, 29 de setembre de 2011');
+        test.equal(fmt.format(date), 'dijous, 29 de setembre del 2011');
         test.done();
     },
     testDateFmtShortTimeComponentsS_ca_AD: function(test) {
@@ -1769,7 +1769,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 de setembre de 2011");
+        test.equal(fmt.format(date), "29 de setembre del 2011");
         test.done();
     },
     testDateFmtSimpleFull_ca_ES: function(test) {
@@ -1787,7 +1787,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011');
+        test.equal(fmt.format(date), '29 de setembre del 2011');
         test.done();
     },
     testDateFmtSimpleTimeShort_ca_ES: function(test) {
@@ -1913,7 +1913,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
+        test.equal(fmt.format(date), '29 de setembre del 2011, a les 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ca_ES: function(test) {
@@ -1931,7 +1931,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011, a les 13:45');
+        test.equal(fmt.format(date), '29 de setembre del 2011, a les 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_ca_ES: function(test) {
@@ -2310,7 +2310,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dj, 29/9');
+        test.equal(fmt.format(date), 'dj., 29/9');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_ca_ES: function(test) {
@@ -2328,7 +2328,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dj, 29/9/11');
+        test.equal(fmt.format(date), 'dj., 29/9/11');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_ca_ES: function(test) {
@@ -2436,7 +2436,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'setembre de 2011');
+        test.equal(fmt.format(date), 'setembre del 2011');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_ca_ES: function(test) {
@@ -2454,7 +2454,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 de setembre de 2011');
+        test.equal(fmt.format(date), '29 de setembre del 2011');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_ca_ES: function(test) {
@@ -2490,7 +2490,7 @@ module.exports.testdatefmt_ca = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'dijous, 29 de setembre de 2011');
+        test.equal(fmt.format(date), 'dijous, 29 de setembre del 2011');
         test.done();
     },
     testDateFmtShortTimeComponentsS_ca_ES: function(test) {
