@@ -18,7 +18,7 @@
  */
 
 module.exports.files = [
-    /*"testdatefmtrange.js",
+    "testdatefmtrange.js",
     "testdatefmtrangeasync.js",
     "testdatefmtrange_af_NA.js",
     "testdatefmtrange_af_ZA.js",
@@ -33,7 +33,7 @@ module.exports.files = [
     "testdatefmtrange_ca.js",
     "testdatefmtrange_cs_CZ.js",
     "testdatefmtrange_da_DK.js",
-    "testdatefmtrange_de_DE.js",*/
+    "testdatefmtrange_de_DE.js",
     "testdatefmtrange_el_GR.js",
     "testdatefmtrange_en_GB.js",
     "testdatefmtrange_en_SG.js",
@@ -44,7 +44,7 @@ module.exports.files = [
     "testdatefmtrange_es_VE.js",
     "testdatefmtrange_et_EE.js",
     "testdatefmtrange_eu_ES.js",
-    /*"testdatefmtrange_fa_IR.js",
+    "testdatefmtrange_fa_IR.js",
     "testdatefmtrange_fi_FI.js",
     "testdatefmtrange_fr_CA.js",
     "testdatefmtrange_fr_FR.js",
@@ -116,5 +116,5 @@ module.exports.files = [
     "testdatefmtrange_zh_Hant_HK.js",
     "testdatefmtrange_zh_Hant_TW.js",
     "testdatefmtrange_zu_ZA.js",
-    "testdatefmtrange_fmttemplate.js",*/
+    "testdatefmtrange_fmttemplate.js",
 ];
