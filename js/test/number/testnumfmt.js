@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018, 2020-2023 JEDLSoft
+ * Copyright © 2012-2018, 2020-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3174,7 +3174,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.0), "57 %");
+        test.equal(fmt.format(57.0), "57%");
         test.done();
     },
     //test cases for ja-JP
@@ -3781,7 +3781,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57,8 %");
+        test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
     testNumFmtPercentageFormatNegative_bs_Latn_BA: function(test) {
@@ -3792,7 +3792,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-57.8), "-57,8 %");
+        test.equal(fmt.format(-57.8), "-57,8%");
         test.done();
     },
     //test cases for de-DE
@@ -4316,7 +4316,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "kr 100 110,57");
+        test.equal(fmt.format(100110.57), "100 110,57 kr");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_nb_NO: function(test) {
@@ -4328,7 +4328,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "kr -100 110,57");
+        test.equal(fmt.format(-100110.57), "-100 110,57 kr");
         test.done();
     },
     testNumFmtPercentageFormatRegular_nb_NO: function(test) {
@@ -5212,7 +5212,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57,8 %");
+        test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_es_CR: function(test) {
@@ -5260,7 +5260,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_es_DO: function(test) {
@@ -5308,7 +5308,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_es_SV: function(test) {
@@ -5404,7 +5404,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_es_GT: function(test) {
@@ -5452,7 +5452,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(57.8), "57.8 %");
+        test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_es_HN: function(test) {
@@ -5572,7 +5572,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-123456.785), "-123.456,78");
+        test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectCurrencyForLocale_km_KH: function(test) {
@@ -5585,7 +5585,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "100.110,57៛");
+        test.equal(fmt.format(100110.57), "100,110.57៛");
         test.done();
     },
     testNumFmtPercentageFormatRegular_km_KH: function(test) {
@@ -5608,7 +5608,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-100.110,57៛");
+        test.equal(fmt.format(-100110.57), "-100,110.57៛");
         test.done();
     },
     // test case for si-LK
