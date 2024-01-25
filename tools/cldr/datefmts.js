@@ -1036,8 +1036,10 @@ module.exports = {
                 } else {
                     dateRangeTemplateOrder = calendar.order + " – " + calendar.order;
                     cFmt0 = calendar.order + " – {time}";
+                    if (language === 'eu') {//ymd case
+                        cFmt0 = cFmt0.replace(" – {time}", " – ({time})");
+                    }
                     opcFmt0  = "{time} – " + calendar.order;
-
                 }
                 var dateTimeOrder = dateRangeTemplateOrder.indexOf("{date}") === 0 ? true: false;
                 var dateOnlyTemplate = "{date} – {date}";
@@ -1229,7 +1231,6 @@ module.exports = {
                                 break;
                             case "ymd":
                                 //console.log("dt,ymd");
-
                                 cFmt0 = replaceFormats(cFmt0, "{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt0 = replaceFormats(cFmt0, startTime);
                                 cFmt0 = replaceFormats(cFmt0,"{time}", "{st}");

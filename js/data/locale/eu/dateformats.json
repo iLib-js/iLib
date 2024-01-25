@@ -94,10 +94,10 @@
         "order": "{date} ({time})",
         "range": {
             "c00": {
-                "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}",
-                "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {et}",
-                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – {et}",
-                "s": "{sy}/{sm}/{sd} ({st}) – {et}"
+                "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})",
+                "l": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – ({et})",
+                "m": "{sy}(e)ko {sm} {sd}(a) ({st}) – ({et})",
+                "s": "{sy}/{sm}/{sd} ({st}) – ({et})"
             },
             "c01": {
                 "f": "{sy}(e)ko {sm}ren {sd}(a) ({st}) – {ey}(e)ko {em}ren {ed}(a) ({et})",

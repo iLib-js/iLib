@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/31, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "11/12/31 (13:45) – (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeInDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a), 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a) (13:45) – (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeInDayLong: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/30, 13:45 – 11/12/31, 14:30");
+        test.equal(fmt.format(start, end), "11/12/30 (13:45) – 11/12/31 (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a), 13:45 – 2011(e)ko abe. 31(a), 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a) (13:45) – 2011(e)ko abe. 31(a) (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeNextDayLong: function(test) {
