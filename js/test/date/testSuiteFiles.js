@@ -18,8 +18,8 @@
  */
 
 module.exports.files = [
-    //"testclock.js",
-   /* "testcalendar.js",
+    "testclock.js",
+    "testcalendar.js",
     "testdate.js",
     "testdateasync.js",
     "testdatefmt.js",
@@ -74,7 +74,7 @@ module.exports.files = [
     "testdatefmt_ka_GE.js",
     "testdatefmt_kk_Cyrl_KZ.js",
     "testdatefmt_km_KH.js",
-    "testdatefmt_kn_IN.js",*/
+    "testdatefmt_kn_IN.js",
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
     "testdatefmt_ky_KG.js",
