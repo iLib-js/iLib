@@ -27,15 +27,14 @@ var coelesce = common.coelesce;
 
 function usage() {
     console.log("Usage: genlangscripts [-h] [toDir]\n" +
-        "Generate the script.jf files for each language.\n" +
+        "Generate the scripts.jf files for each language.\n" +
         "-h or --help\n" +
         "  this help\n" +
         "toDir\n" +
-    "  directory to output the script.jf json files. Default: current dir.");
+    "  directory to output the scripts.jf files. Default: current dir.");
     process.exit(1);
 }
 
-var languageDataFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -46,7 +45,7 @@ process.argv.forEach(function (val, index, array) {
 
 toDir = process.argv[2] || "tmp";
 
-console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
+console.log("genlangscripts - generate the localeinfo scripts.jf files.\n" +
     "Copyright (c) 2013-2018, 2020-2022 JEDLSoft");
 
 console.log("output dir: " + toDir);
