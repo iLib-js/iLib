@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, 2020-2023 JEDLSoft
+ * Copyright © 2012-2017, 2020-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11247,6 +11247,20 @@ module.exports.testlocaleinfo = {
         var li = new LocaleInfo("ojs");
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getLanguageName(), "Oji-Cree");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName8: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("mic");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Mi'kmaw");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName9: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("kxv");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Kuvi");
         test.done();
     },
     testLocaleInfoGetRegionName1: function(test) {
