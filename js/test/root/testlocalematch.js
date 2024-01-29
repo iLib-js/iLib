@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017,2019-2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2019-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,17 +92,6 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "sd-Arab-PK");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleByLanguage6: function(test) {
-        test.expect(3);
-        var lm = new LocaleMatcher({
-            locale: "adp"
-        });
-        test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
-        test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "adp-Tibt-BT");
-        test.done();
-    },
     testLocaleMatcherGetLikelyLocaleByLanguage7: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -123,28 +112,6 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "tk-Latn-TM");
-        test.done();
-    },
-    testLocaleMatcherGetLikelyLocaleByLanguage_snb: function(test) {
-        test.expect(3);
-        var lm = new LocaleMatcher({
-            locale: "snb"
-        });
-        test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
-        test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "snb-Latn-MY");
-        test.done();
-    },
-    testLocaleMatcherGetLikelyLocaleByLanguage_smd: function(test) {
-        test.expect(3);
-        var lm = new LocaleMatcher({
-            locale: "smd"
-        });
-        test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
-        test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "smd-Latn-AO");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLanguage8: function(test) {
@@ -1103,7 +1070,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "hr-Latn-ME");
+        test.equal(locale.getSpec(), "sr-Latn-ME");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLocaleCode60: function(test) {
@@ -1269,6 +1236,17 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ky-Cyrl-KG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_AQ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "AQ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-Latn-AQ");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
@@ -1555,6 +1533,28 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "wo-Latn-SN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_tnh: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "tnh"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "tnh-Latn-PG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_wan: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "wan"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "wan-Latn-CI");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_wo_SN: function(test) {
