@@ -6,6 +6,8 @@
             "commonNegative": "-{s}{n}"
         },
         "decimalChar": ".",
-        "groupChar": ","
+        "groupChar": ",",
+        "negativepctFmt": "-{n}%",
+        "pctFmt": "{n}%"
     }
 }
