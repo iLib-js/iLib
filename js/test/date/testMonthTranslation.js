@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019-2023, JEDLSoft
+ * Copyright © 2019-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2053,7 +2053,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[5], 'jun');
         test.equal(value[6], 'jul');
         test.equal(value[7], 'ago');
-        test.equal(value[8], 'sept');
+        test.equal(value[8], 'sep');
         test.equal(value[9], 'oct');
         test.equal(value[10], 'nov');
         test.equal(value[11], 'dic');
@@ -4902,18 +4902,18 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "січ");
-        test.equal(value[1], "лют");
-        test.equal(value[2], "бер");
-        test.equal(value[3], "кві");
-        test.equal(value[4], "тра");
-        test.equal(value[5], "чер");
-        test.equal(value[6], "лип");
-        test.equal(value[7], "сер");
-        test.equal(value[8], "вер");
-        test.equal(value[9], "жов");
-        test.equal(value[10], "лис");
-        test.equal(value[11], "гру");
+        test.equal(value[0], "січ.");
+        test.equal(value[1], "лют.");
+        test.equal(value[2], "бер.");
+        test.equal(value[3], "квіт.");
+        test.equal(value[4], "трав.");
+        test.equal(value[5], "черв.");
+        test.equal(value[6], "лип.");
+        test.equal(value[7], "серп.");
+        test.equal(value[8], "вер.");
+        test.equal(value[9], "жовт.");
+        test.equal(value[10], "лист.");
+        test.equal(value[11], "груд.");
 
         test.done();
     },
@@ -5038,18 +5038,18 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "Thg 1");
-        test.equal(value[1], "Thg 2");
-        test.equal(value[2], "Thg 3");
-        test.equal(value[3], "Thg 4");
-        test.equal(value[4], "Thg 5");
-        test.equal(value[5], "Thg 6");
-        test.equal(value[6], "Thg 7");
-        test.equal(value[7], "Thg 8");
-        test.equal(value[8], "Thg 9");
-        test.equal(value[9], "Thg 10");
-        test.equal(value[10], "Thg 11");
-        test.equal(value[11], "Thg 12");
+        test.equal(value[0], "Tháng 1");
+        test.equal(value[1], "Tháng 2");
+        test.equal(value[2], "Tháng 3");
+        test.equal(value[3], "Tháng 4");
+        test.equal(value[4], "Tháng 5");
+        test.equal(value[5], "Tháng 6");
+        test.equal(value[6], "Tháng 7");
+        test.equal(value[7], "Tháng 8");
+        test.equal(value[8], "Tháng 9");
+        test.equal(value[9], "Tháng 10");
+        test.equal(value[10], "Tháng 11");
+        test.equal(value[11], "Tháng 12");
         test.done();
     },
     testMonthTranslate_zh_Hans_CN: function(test) {
@@ -7619,35 +7619,35 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "Xaneiro");
-        test.equal(value[1], "Febreiro");
-        test.equal(value[2], "Marzo");
-        test.equal(value[3], "Abril");
-        test.equal(value[4], "Maio");
-        test.equal(value[5], "Xuño");
-        test.equal(value[6], "Xullo");
-        test.equal(value[7], "Agosto");
-        test.equal(value[8], "Setembro");
-        test.equal(value[9], "Outubro");
-        test.equal(value[10], "Novembro");
-        test.equal(value[11], "Decembro");
+        test.equal(value[0], "xaneiro");
+        test.equal(value[1], "febreiro");
+        test.equal(value[2], "marzo");
+        test.equal(value[3], "abril");
+        test.equal(value[4], "maio");
+        test.equal(value[5], "xuño");
+        test.equal(value[6], "xullo");
+        test.equal(value[7], "agosto");
+        test.equal(value[8], "setembro");
+        test.equal(value[9], "outubro");
+        test.equal(value[10], "novembro");
+        test.equal(value[11], "decembro");
 
         var fmt = new DateFmt({locale:"gl-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "Xan.");
-        test.equal(value[1], "Feb.");
-        test.equal(value[2], "Mar.");
-        test.equal(value[3], "Abr.");
-        test.equal(value[4], "Maio");
-        test.equal(value[5], "Xuño");
-        test.equal(value[6], "Xul.");
-        test.equal(value[7], "Ago.");
-        test.equal(value[8], "Set.");
-        test.equal(value[9], "Out.");
-        test.equal(value[10], "Nov.");
-        test.equal(value[11], "Dec.");
+        test.equal(value[0], "xan.");
+        test.equal(value[1], "feb.");
+        test.equal(value[2], "mar.");
+        test.equal(value[3], "abr.");
+        test.equal(value[4], "maio");
+        test.equal(value[5], "xuño");
+        test.equal(value[6], "xul.");
+        test.equal(value[7], "ago.");
+        test.equal(value[8], "set.");
+        test.equal(value[9], "out.");
+        test.equal(value[10], "nov.");
+        test.equal(value[11], "dec.");
         test.done();
     },
     testMonthTranslate_eu_ES: function(test) {

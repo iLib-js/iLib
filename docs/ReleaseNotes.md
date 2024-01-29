@@ -3,9 +3,10 @@ Release Notes for Version 14
 
 Build 029
 -------
-Published as version 14.19.1
+Published as version 14.20.0
 
 New Features:
+* Update to CLDR v44.1 data
 
 Bug Fixes:
 * Updated timezone info to 2023d

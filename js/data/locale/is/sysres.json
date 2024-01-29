@@ -6,7 +6,7 @@
     "#in {num}s": "one#eftir {num} sek.|#eftir {num} sek.",
     "#in {num}w": "one#eftir {num} viku|#eftir {num} vikur",
     "#in {num}y": "one#eftir {num} ár|#eftir {num} ár",
-    "#{num} ms": "one#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "one#{num} d.|#{num} d.",
     "#{num}d ago": "one#fyrir {num} degi|#fyrir {num} dögum",
     "#{num}h": "one#{num} klst.|#{num} klst.",

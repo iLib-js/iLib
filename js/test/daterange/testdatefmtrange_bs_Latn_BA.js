@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_bs_Latn_BA.js - test the date range formatter object in Bosnian/Herzegovina
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31. 12. 2011. 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31. 12. 2011. u 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtBARangeInDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31. dec 2011. 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31. dec 2011. u 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtBARangeInDayLong: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30. 12. 2011. 13:45 – 31. 12. 2011. 14:30');
+        test.equal(fmt.format(start, end), '30. 12. 2011. u 13:45 – 31. 12. 2011. u 14:30');
         test.done();
     },
     testDateRngFmtBARangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30. dec 2011. 13:45 – 31. dec 2011. 14:30');
+        test.equal(fmt.format(start, end), '30. dec 2011. u 13:45 – 31. dec 2011. u 14:30');
         test.done();
     },
     testDateRngFmtBARangeNextDayLong: function(test) {

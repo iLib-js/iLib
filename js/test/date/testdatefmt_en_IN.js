@@ -1,7 +1,7 @@
 /*
  * testdatefmt_en_IN.js - test the date formatter object in Indian English
  *
- * Copyright © 2012-2015,2017,2021,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-Sept-2011");
+        test.equal(fmt.format(date), "29 Sept 2011");
         test.done();
     },
     testDateFmtINSimpleLong: function(test) {
@@ -218,7 +218,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-Sept-2011, 1:45 pm");
+        test.equal(fmt.format(date), "29 Sept 2011, 1:45 pm");
         test.done();
     },
     testDateFmtINDateTimeSimpleLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T, 29/09");
+        test.equal(fmt.format(date), "T 29/09");
         test.done();
     },
     testDateFmtINShortDateComponentsWDMY: function(test) {
@@ -651,7 +651,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T, 29/09/11");
+        test.equal(fmt.format(date), "T 29/09/11");
         test.done();
     },
     testDateFmtINFullDateComponentsY: function(test) {
@@ -777,7 +777,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday, 29 September");
+        test.equal(fmt.format(date), "Thursday 29 September");
         test.done();
     },
     testDateFmtINFullDateComponentsWDMY: function(test) {
@@ -795,7 +795,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday, 29 September, 2011");
+        test.equal(fmt.format(date), "Thursday 29 September, 2011");
         test.done();
     },
     testDateFmtINShortTimeComponentsS: function(test) {
