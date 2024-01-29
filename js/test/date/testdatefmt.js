@@ -2838,7 +2838,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
+        test.equal(fmt.format(date), 'martes, 20 de septiembre de 2011, 1:45 p.m.');
         test.done();
     },
     testDateFmtesAR: function(test) {
@@ -2863,7 +2863,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "martes, 20 de septiembre de 2011, 13:45");
+        test.equal(fmt.format(date), 'martes, 20 de septiembre de 2011, 1:45 p. m.');
         test.done();
     },
     testDateFmttrTR: function(test) {
