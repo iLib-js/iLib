@@ -31,7 +31,7 @@
     "1#1 min ago|#{num} min ago": "one#{num} minut öň|#{num} minut öň",
     "1#1 minute ago|#{num} minutes ago": "one#{num} minut öň|#{num} minut öň",
     "1#1 minute|#{num} minutes": "one#{num} minut|#{num} minut",
-    "1#1 min|#{num} min": "one#{num} min|#{num} min",
+    "1#1 min|#{num} min": "#{num} min",
     "1#1 mi|#{num} min": "one#{num}m|#{num}m",
     "1#1 mon ago|#{num} mons ago": "one#{num} aý öň|#{num} aý öň",
     "1#1 month ago|#{num} months ago": "one#{num} aý öň|#{num} aý öň",

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_da_DK.js - test the date formatter object in Danish
  *
- * Copyright © 2012-2015,2017,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.2011 13.45");
+        test.equal(fmt.format(date), "29.09.2011, 13.45");
         test.done();
     },
     testDateFmtDADKDateTimeSimpleMedium: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. sep. 2011 13.45");
+        test.equal(fmt.format(date), "29. sep. 2011, 13.45");
         test.done();
     },
     testDateFmtDADKDateTimeSimpleLong: function(test) {
@@ -489,7 +489,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.2011 13.45");
+        test.equal(fmt.format(date), "29.09.2011, 13.45");
         test.done();
     },
     testDateFmtDADKShortDateComponentsY: function(test) {

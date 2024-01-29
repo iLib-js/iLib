@@ -37,56 +37,49 @@
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "dd"
+                "s": "d"
             },
             "dm": {
                 "l": "d MMMM",
-                "m": "d MMM",
-                "s": "dd/MM"
+                "m": "d MMM"
             },
             "dmw": {
                 "f": "EEEE, d MMMM",
                 "l": "EEE, d MMMM",
                 "m": "EE, d MMM",
-                "s": "E, dd/MM"
+                "s": "E, d/M"
             },
             "dmwy": {
                 "f": "EEEE, d MMMM, yyyy",
                 "l": "EEE, d MMMM, yyyy",
                 "m": "EE, d MMM, yyyy",
-                "s": "E, dd/MM/yyyy"
+                "s": "E, d/M/yy"
             },
             "dmy": {
                 "f": "d MMMM, yyyy",
                 "l": "d MMMM, yyyy",
-                "m": "d MMM, yyyy",
-                "s": "dd/MM/yyyy"
+                "m": "d MMM, yyyy"
             },
             "dw": {
                 "f": "EEEE, d",
                 "l": "EEE, d",
                 "m": "EE, d",
-                "s": "E, dd"
+                "s": "E, d"
             },
             "l": {
                 "f": "LLLL",
                 "l": "LLLL",
                 "m": "LLL",
-                "s": "LL"
+                "s": "L"
             },
             "m": {
                 "l": "MMMM",
-                "m": "MMM",
-                "s": "MM"
+                "m": "MMM"
             },
             "my": {
                 "f": "MMMM, yyyy",
                 "l": "MMMM, yyyy",
-                "m": "MMM, yyyy",
-                "s": "MM/yyyy"
-            },
-            "y": {
-                "s": "yyyy"
+                "m": "MMM, yyyy"
             }
         },
         "order": {

@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018, 2021-2023 JEDLSoft
+ * Copyright © 2018, 2021-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2419,7 +2419,7 @@ module.exports.testunitfmt_usages = {
             locale: "km-KH"
         });
         var str = uf.format(m1);
-        test.equal(str, "330,2 សង់ទីម៉ែត្រគូប");
+        test.equal(str, '330.2 សង់ទីម៉ែត្រគូប');
         test.done();
     },
     testUnitFormatWithUsageStorageVolume: function(test) {

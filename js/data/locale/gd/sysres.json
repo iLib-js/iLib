@@ -6,7 +6,7 @@
     "#in {num}s": "one#an {num} diog|two#an {num} dhiog|few#an {num} diog.|#an {num} diog",
     "#in {num}w": "one#an {num} sheachd.|two#an {num} sheachd.|few#an {num} seachd.|#an {num} seachd.",
     "#in {num}y": "one#an {num} bhlia.|two#an {num} bhlia.|few#an {num} blia.|#an {num} blia.",
-    "#{num} ms": "one#{num} ms|two#{num} ms|few#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "one#{num}là|two#{num}là|few#{num}là|#{num}là",
     "#{num}d ago": "one#o {num} là|two#o {num} là|few#o {num} là.|#o {num} là",
     "#{num}h": "one#{num}u|two#{num}u|few#{num}u|#{num}u",

@@ -7,7 +7,6 @@
     "#{num}w": "one#{num}sem.|#{num}sems.",
     "#{num}y": "one#{num}a.|#{num}aa.",
     "1#1 dy|#{num} dys": "one#{num}d.|#{num}dd.",
-    "1#1 mi|#{num} min": "one#{num}m|#{num}m",
     "1#1 mon|#{num} mons": "one#{num} mes|#{num} meses",
     "1#1 mo|#{num} mos": "one#{num}m.|#{num}mm.",
     "1#1 sec|#{num} sec": "one#{num} seg.|#{num} seg.",
@@ -66,7 +65,6 @@
     "durationLongDays": "one#{num} día|#{num} días",
     "durationMediumWeeks": "one#{num}sem.|#{num}sems.",
     "durationMediumYears": "one#{num}a.|#{num}aa.",
-    "durationShortMinutes": "one#{num}m|#{num}m",
     "durationShortMonths": "one#{num}m.|#{num}mm.",
     "finalSeparatorLong": " y ",
     "finalSeparatorMedium": " y "

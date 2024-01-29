@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2023, JEDLSoft
+ * Copyright © 2015-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -736,7 +736,11 @@ module.exports = {
                         calendar.date.l = {};
                     }
                     if (isAsian) {
-                        calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+                        if(language === "ko" && (lenAbbr === 'f' || lenAbbr === "l")) {
+                            calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace("월","").replace(/M+/, calendar.date.m[lenAbbr]);
+                        } else {
+                            calendar.date.l[lenAbbr] = getAvailableFormat(cldrCalendar, "M").replace(/M+/, calendar.date.m[lenAbbr]);
+                        }
                     } else {
                         calendar.date.l[lenAbbr] = calendar.date.m[lenAbbr].replace(/M/g, "L");
                     }
@@ -1032,8 +1036,10 @@ module.exports = {
                 } else {
                     dateRangeTemplateOrder = calendar.order + " – " + calendar.order;
                     cFmt0 = calendar.order + " – {time}";
+                    if (language === 'eu') {//ymd case
+                        cFmt0 = cFmt0.replace(" – {time}", " – ({time})");
+                    }
                     opcFmt0  = "{time} – " + calendar.order;
-
                 }
                 var dateTimeOrder = dateRangeTemplateOrder.indexOf("{date}") === 0 ? true: false;
                 var dateOnlyTemplate = "{date} – {date}";
@@ -1225,7 +1231,6 @@ module.exports = {
                                 break;
                             case "ymd":
                                 //console.log("dt,ymd");
-
                                 cFmt0 = replaceFormats(cFmt0, "{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt0 = replaceFormats(cFmt0, startTime);
                                 cFmt0 = replaceFormats(cFmt0,"{time}", "{st}");
@@ -1690,11 +1695,19 @@ module.exports = {
             var part = cldrCalendar.months.format;
             if (isAsianLang(language)) {
                 for (prop in part.wide) {
-                    formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
-                    formats["N" + prop + calendarNameSuffix] =
-                        formats["NN" + prop + calendarNameSuffix] =
-                            formats["MMM" + prop + calendarNameSuffix] =
-                                part.abbreviated[prop].substring(0, part.abbreviated[prop].length-1);
+                    if (language === 'ko') {
+                        formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
+                        formats["N" + prop + calendarNameSuffix] =
+                            formats["NN" + prop + calendarNameSuffix] =
+                                formats["MMM" + prop + calendarNameSuffix] =
+                                    part.abbreviated[prop];
+                    } else {
+                        formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
+                        formats["N" + prop + calendarNameSuffix] =
+                            formats["NN" + prop + calendarNameSuffix] =
+                                formats["MMM" + prop + calendarNameSuffix] =
+                                    part.abbreviated[prop].substring(0, part.abbreviated[prop].length-1);
+                    }
                 }
             } else {
                 for (prop in part.wide) {

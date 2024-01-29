@@ -1,7 +1,7 @@
 /*
  * testdate.js - test the date object
  *
- * Copyright © 2012-2015,2017,2021-2023 JEDLSoft
+ * Copyright © 2012-2015,2017,2021-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -392,7 +392,7 @@ module.exports.testdate = {
         test.equal(boundaryiLib.getTimeExtended(), 1693713600000);
         var ildMyBday = DateFactory({unixtime: 1693713600000});
         var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal(fmt.format(ildMyBday), "03-09-23, 01:00");
+        test.equal(fmt.format(ildMyBday), '03-09-23, 1:00 a. m.');
 
         test.done();
     },
@@ -405,7 +405,7 @@ module.exports.testdate = {
         test.equal(boundaryiLib.getTimeExtended(), 1586059200000);
         var ildMyBday = DateFactory({unixtime: 1586059200000});
         var fmt = new DateFmt({length: "short", type:"datetime",locale:"es-CL", timezone:"America/Santiago"});
-        test.equal(fmt.format(ildMyBday), "05-04-20, 00:00");
+        test.equal(fmt.format(ildMyBday), '05-04-20, 12:00 a. m.');
 
         test.done();
     },
@@ -421,7 +421,7 @@ module.exports.testdate = {
 
         var ildMyBday = DateFactory({unixtime: 1586052000000});
         var fmt = new DateFmt({length: "short", type:"datetime", locale:"es-CL", timezone:"America/Santiago"});
-        test.equal(fmt.format(ildMyBday), "04-04-20, 23:00");
+        test.equal(fmt.format(ildMyBday), '04-04-20, 11:00 p. m.');
 
         test.done();
     }

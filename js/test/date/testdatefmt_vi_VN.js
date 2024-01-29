@@ -1,7 +1,7 @@
 /*
- * testdatefmt_de_DE.js - test the date formatter object in German
+ * testdatefmt_vi_VN.js - test the date formatter object in Vietnamese-Vietnam
  *
- * Copyright © 2012-2015,2017,2020 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
     testDateFmtSimpleMedium_vi_VN: function(test) {
@@ -129,7 +129,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T5, 29/09/2011");
+        test.equal(fmt.format(date), "T5, 29/9/11");
         test.done();
     },
     testDateFmtAllComponentsMedium_vi_VN: function(test) {
@@ -273,7 +273,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 29/09/2011");
+        test.equal(fmt.format(date), "13:45 29/9/11");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_vi_VN: function(test) {
@@ -507,7 +507,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
     testDateFmtTypeTime_vi_VN: function(test) {
@@ -543,7 +543,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 29/09/2011");
+        test.equal(fmt.format(date), "13:45 29/9/11");
         test.done();
     },
     testDateFmtShortDateComponentsY_vi_VN: function(test) {
@@ -561,7 +561,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011");
+        test.equal(fmt.format(date), "11");
         test.done();
     },
     testDateFmtShortDateComponentsM_vi_VN: function(test) {
@@ -579,7 +579,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Th9");
+        test.equal(fmt.format(date), "T9");
         test.done();
     },
     testDateFmtShortDateComponentsN_vi_VN: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09");
+        test.equal(fmt.format(date), "29/9");
         test.done();
     },
     testDateFmtShortDateComponentsMY_vi_VN: function(test) {
@@ -651,7 +651,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09/2011");
+        test.equal(fmt.format(date), "9/11");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_vi_VN: function(test) {
@@ -669,7 +669,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
     testDateFmtShortDateComponentsWDM_vi_VN: function(test) {
@@ -687,7 +687,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T5, 29/09");
+        test.equal(fmt.format(date), "T5, 29/9");
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_vi_VN: function(test) {
@@ -705,7 +705,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T5, 29/09/2011");
+        test.equal(fmt.format(date), "T5, 29/9/11");
         test.done();
     },
     testDateFmtFullDateComponentsY_vi_VN: function(test) {

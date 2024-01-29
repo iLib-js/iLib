@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_da_DK.js - test the date range formatter object in Danish/Denmark
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31.12.2011 13.45 – 14.30');
+        test.equal(fmt.format(start, end), '31.12.2011, 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtDKRangeInDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. dec. 2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31. dec. 2011, 13.45 – 14.30");
         test.done();
     },
     testDateRngFmtDKRangeInDayLong: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30.12.2011 13.45 – 31.12.2011 14.30');
+        test.equal(fmt.format(start, end), '30.12.2011, 13.45 – 31.12.2011, 14.30');
         test.done();
     },
     testDateRngFmtDKRangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. dec. 2011 13.45 – 31. dec. 2011 14.30");
+        test.equal(fmt.format(start, end), "30. dec. 2011, 13.45 – 31. dec. 2011, 14.30");
         test.done();
     },
     testDateRngFmtDKRangeNextDayLong: function(test) {
