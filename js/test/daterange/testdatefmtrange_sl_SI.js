@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_sl_SI.js - test the date range formatter object in Slovenian/Slovenia
  *
- * Copyright © 2012-2017,2021,2023 JEDLSoft
+ * Copyright © 2012-2017, 2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -471,7 +471,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20. 11. 11 – 31. 01. 12");
+        test.equal(fmt.format(start, end), "20. 11. 11 – 31. 1. 12");
         test.done();
     },
     testDateRngFmtSIRangeNextYearMedium: function(test) {
@@ -575,7 +575,7 @@ module.exports.testdatefmtrange_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11. 11 – 01. 14");
+        test.equal(fmt.format(start, end), "11. 11 – 1. 14");
         test.done();
     },
     testDateRngFmtSIRangeMultiYearMedium: function(test) {

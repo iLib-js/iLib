@@ -6,7 +6,7 @@
     "#in {num}s": "one#sa {num} seg.|#sa {num} seg.",
     "#in {num}w": "one#sa {num} linggo|#sa {num} linggo",
     "#in {num}y": "one#sa {num} taon|#sa {num} taon",
-    "#{num} ms": "one#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "one#{num} araw|#{num} na araw",
     "#{num}d ago": "one#{num} araw ang nakalipas|#{num} (na) araw ang nakalipas",
     "#{num}h": "one#{num} oras|#{num} oras",

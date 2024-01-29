@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_vi_VN.js - test the date range formatter object Vietnamese/Vietnam
  *
- * Copyright © 2012-2017, 2020,2023 JEDLSoft
+ * Copyright © 2012-2017, 2020, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 – 14:30 31/12/2011");
+        test.equal(fmt.format(start, end), '13:45 – 14:30 31/12/11');
         test.done();
     },
     testDateRngFmtVNRangeInDayMedium: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "13:45 30/12/2011 – 14:30 31/12/2011");
+        test.equal(fmt.format(start, end), '13:45 30/12/11 – 14:30 31/12/11');
         test.done();
     },
     testDateRngFmtVNRangeNextDayMedium: function(test) {
@@ -263,7 +263,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20 – 31/12/11');
         test.done();
     },
     testDateRngFmtVNRangeMultiDayMedium: function(test) {
@@ -367,7 +367,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20/11 – 31/12/11');
         test.done();
     },
     testDateRngFmtVNRangeNextMonthMedium: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11/2011 – 31/01/2012");
+        test.equal(fmt.format(start, end), '20/11/11 – 31/1/12');
         test.done();
     },
     testDateRngFmtVNRangeNextYearMedium: function(test) {
@@ -575,7 +575,7 @@ module.exports.testdatefmtrange_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/2011 – 01/2014");
+        test.equal(fmt.format(start, end), '11/11 – 1/14');
         test.done();
     },
     testDateRngFmtVNRangeMultiYearMedium: function(test) {

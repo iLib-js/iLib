@@ -14,7 +14,6 @@
     "1#1 sec|#{num} sec": "one#{num} s|#{num} s",
     "1#1 week|#{num} weeks": "one#{num} semaine|#{num} semaines",
     "1#1 wk|#{num} wks": "one#{num} sem.|#{num} sem.",
-    "1#1 year|#{num} years": "one#{num} an|#{num} ans",
     "1#1 yr|#{num} yrs": "one#{num} an|#{num} ans",
     "B2": "a.m.",
     "B6": "p.m.",

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bs_Latn_BA.js - test the date formatter object in Latin Bosnian
  *
- * Copyright © 2012-2015,2017-2018,2020,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2020, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,7 +202,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. u 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_bs_Latn_BA: function(test) {
@@ -220,7 +220,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. sep 2011. 13:45");
+        test.equal(fmt.format(date), "29. sep 2011. u 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleLong_bs_Latn_BA: function(test) {
@@ -473,7 +473,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. u 13:45");
         test.done();
     },
     testDateFmtShortDateComponentsY_bs_Latn_BA: function(test) {

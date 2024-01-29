@@ -10,14 +10,16 @@
                 "s": "dd/MM"
             },
             "dmw": {
-                "m": "EE, dd MMM",
-                "s": "E, dd/MM"
+                "f": "EEEE d MMMM",
+                "l": "EEE d MMMM",
+                "m": "EE dd MMM",
+                "s": "E dd/MM"
             },
             "dmwy": {
-                "f": "EEEE, d MMMM, yyyy",
-                "l": "EEE, d MMMM, yyyy",
-                "m": "EE, dd MMM, yyyy",
-                "s": "E, dd/MM/yyyy"
+                "f": "EEEE d MMMM, yyyy",
+                "l": "EEE d MMMM, yyyy",
+                "m": "EE dd MMM, yyyy",
+                "s": "E dd/MM/yyyy"
             },
             "dmy": {
                 "f": "d MMMM, yyyy",
@@ -26,8 +28,10 @@
                 "s": "dd/MM/yyyy"
             },
             "dw": {
-                "m": "EE, dd",
-                "s": "E, dd"
+                "f": "EEEE d",
+                "l": "EEE d",
+                "m": "EE dd",
+                "s": "E dd"
             },
             "e": {
                 "f": "cccc",

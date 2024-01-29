@@ -1,7 +1,7 @@
 /*
  * testdatefmt_gl_ES.js - test the date formatter object in Galician-Spain
  *
- * Copyright © 2020,2023 JEDLSoft
+ * Copyright © 2020, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -526,7 +526,7 @@ module.exports.testdatefmt_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Se");
+        test.equal(fmt.format(date), "se");
         test.done();
     },
     testDateFmtShortDateComponentsN_gl_ES: function(test) {
@@ -706,7 +706,7 @@ module.exports.testdatefmt_gl_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Setembro");
+        test.equal(fmt.format(date), "setembro");
         test.done();
     },
     testDateFmtFullDateComponentsD_gl_ES: function(test) {

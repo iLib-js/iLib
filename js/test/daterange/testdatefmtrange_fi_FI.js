@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_fi_FI.js - test the date range formatter object in Finnish/Finland
  *
- * Copyright © 2012-2017, 2020 JEDLSoft
+ * Copyright © 2012-2017, 2020, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), "31.12.2011 klo 13.45 – 14.30");
         test.done();
     },
     testDateRngFmtFIRangeInDayMedium: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_fi_FI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.2011 13.45 – 31.12.2011 14.30");
+        test.equal(fmt.format(start, end), "30.12.2011 klo 13.45 – 31.12.2011 klo 14.30");
         test.done();
     },
     testDateRngFmtFIRangeNextDayMedium: function(test) {

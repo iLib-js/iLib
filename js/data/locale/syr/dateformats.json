@@ -5,37 +5,37 @@
                 "f": "d",
                 "l": "d",
                 "m": "d",
-                "s": "dd"
+                "s": "d"
             },
             "dm": {
-                "f": "‏d MMMM",
-                "l": "MMMM d",
-                "m": "MMM d",
-                "s": "‏MM-dd"
+                "f": "‏d ܒMMMM",
+                "l": "‏d ܒMMMM",
+                "m": "‏d ܒMMM",
+                "s": "‏d-MM"
             },
             "dmw": {
-                "f": "EEEE، ‏d MMMM",
-                "l": "EEE، MMMM d",
-                "m": "EE، MMM d",
-                "s": "E، ‏MM-dd"
+                "f": "EEEE، ‏d ܒMMMM",
+                "l": "EEE، ‏d ܒMMMM",
+                "m": "EE، ‏d ܒMMM",
+                "s": "E، ‏d-MM"
             },
             "dmwy": {
-                "f": "EEEE، d MMMM yyyy",
-                "l": "EEE، yyyy MMMM d",
-                "m": "EE، yyyy MMM d",
-                "s": "E، yyyy-MM-dd"
+                "f": "EEEE، d ܒMMMM yyyy",
+                "l": "EEE، d ܒMMMM yyyy",
+                "m": "EE، d ܒMMM yyyy",
+                "s": "E، d-MM-yyyy"
             },
             "dmy": {
-                "f": "‏d MMMM yyyy",
-                "l": "‏yyyy MMMM d",
-                "m": "‏yyyy MMM d",
-                "s": "‏yyyy-MM-dd"
+                "f": "‏d ܒMMMM yyyy",
+                "l": "‏d ܒMMMM yyyy",
+                "m": "‏d ܒMMM yyyy",
+                "s": "‏d-MM-yyyy"
             },
             "dw": {
                 "f": "EEEE، d",
                 "l": "EEE، d",
                 "m": "EE، d",
-                "s": "E، dd"
+                "s": "E، d"
             },
             "e": {
                 "f": "cccc",
@@ -55,62 +55,66 @@
                 "s": "MM"
             },
             "my": {
-                "l": "‏yyyy MMMM",
-                "m": "‏yyyy MMM",
-                "s": "‏yyyy-MM"
+                "l": "MMMM yyyy",
+                "m": "MMM yyyy",
+                "s": "‏MM-yyyy"
             },
             "y": {
                 "s": "yyyy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} ܒܫܥܬܐ {time}",
+            "l": "{date} ܒܫܥܬܐ {time}",
+            "m": "{date}، {time}",
+            "s": "{date}، {time}"
+        },
         "range": {
             "c00": {
-                "f": "‏{sd} {sm} {sy}, {st} – {et}",
-                "l": "‏{sy} {sm} {sd}, {st} – {et}",
-                "m": "‏{sy} {sm} {sd}, {st} – {et}",
-                "s": "‏{sy}-{sm}-{sd}, {st} – {et}"
+                "f": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – {et}",
+                "l": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – {et}",
+                "m": "‏{sd} ܒ{sm} {sy}، {st} – {et}",
+                "s": "‏{sd}-{sm}-{sy}، {st} – {et}"
             },
             "c01": {
-                "f": "‏{sd} {sm} {sy}, {st} – ‏{ed} {em} {ey}, {et}",
-                "l": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "m": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "s": "‏{sy}-{sm}-{sd}, {st} – ‏{ey}-{em}-{ed}, {et}"
+                "f": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "l": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "m": "‏{sd} ܒ{sm} {sy}، {st} – ‏{ed} ܒ{em} {ey}، {et}",
+                "s": "‏{sd}-{sm}-{sy}، {st} – ‏{ed}-{em}-{ey}، {et}"
             },
             "c02": {
-                "f": "‏{sd} {sm} {sy}, {st} – ‏{ed} {em} {ey}, {et}",
-                "l": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "m": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "s": "‏{sy}-{sm}-{sd}, {st} – ‏{ey}-{em}-{ed}, {et}"
+                "f": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "l": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "m": "‏{sd} ܒ{sm} {sy}، {st} – ‏{ed} ܒ{em} {ey}، {et}",
+                "s": "‏{sd}-{sm}-{sy}، {st} – ‏{ed}-{em}-{ey}، {et}"
             },
             "c03": {
-                "f": "‏{sd} {sm} {sy}, {st} – ‏{ed} {em} {ey}, {et}",
-                "l": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "m": "‏{sy} {sm} {sd}, {st} – ‏{ey} {em} {ed}, {et}",
-                "s": "‏{sy}-{sm}-{sd}, {st} – ‏{ey}-{em}-{ed}, {et}"
+                "f": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "l": "‏{sd} ܒ{sm} {sy} ܒܫܥܬܐ {st} – ‏{ed} ܒ{em} {ey} ܒܫܥܬܐ {et}",
+                "m": "‏{sd} ܒ{sm} {sy}، {st} – ‏{ed} ܒ{em} {ey}، {et}",
+                "s": "‏{sd}-{sm}-{sy}، {st} – ‏{ed}-{em}-{ey}، {et}"
             },
             "c10": {
-                "f": "‏{sd} – ‏{ed} {em} {ey}",
-                "l": "‏{sy} {sm} {sd} – {ed}",
-                "m": "‏{sy} {sm} {sd} – {ed}",
-                "s": "‏{sy}-{sm}-{sd} – {ed}"
+                "f": "‏{sd} – ‏{ed} ܒ{em} {ey}",
+                "l": "‏{sd} – ‏{ed} ܒ{em} {ey}",
+                "m": "‏{sd} – ‏{ed} ܒ{em} {ey}",
+                "s": "‏{sd} – ‏{ed}-{em}-{ey}"
             },
             "c11": {
-                "f": "‏{sd} {sm} – ‏{ed} {em} {ey}",
-                "l": "‏{sy} {sm} {sd} – ‏{em} {ed}",
-                "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
-                "s": "‏{sy}-{sm}-{sd} – ‏{ey}-{em}-{ed}"
+                "f": "‏{sd} ܒ{sm} – ‏{ed} ܒ{em} {ey}",
+                "l": "‏{sd} ܒ{sm} – ‏{ed} ܒ{em} {ey}",
+                "m": "‏{sd} ܒ{sm} – ‏{ed} ܒ{em} {ey}",
+                "s": "‏{sd}-{sm} – ‏{ed}-{em}-{ey}"
             },
             "c12": {
-                "f": "‏{sd} {sm} {sy} – ‏{ed} {em} {ey}",
-                "l": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
-                "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
-                "s": "‏{sy}-{sm}-{sd} – ‏{ey}-{em}-{ed}"
+                "f": "‏{sd} ܒ{sm} {sy} – ‏{ed} ܒ{em} {ey}",
+                "l": "‏{sd} ܒ{sm} {sy} – ‏{ed} ܒ{em} {ey}",
+                "m": "‏{sd} ܒ{sm} {sy} – ‏{ed} ܒ{em} {ey}",
+                "s": "‏{sd}-{sm}-{sy} – ‏{ed}-{em}-{ey}"
             },
             "c20": {
-                "l": "‏{sy} {sm} – ‏{ey} {em}",
-                "m": "‏{sy} {sm} – ‏{ey} {em}",
-                "s": "‏{sy}-{sm} – ‏{ey}-{em}"
+                "m": "{sm} {sy} – {em} {ey}",
+                "s": "‏{sm}-{sy} – ‏{em}-{ey}"
             },
             "c30": {
                 "f": "‏{sy} – {ey}",

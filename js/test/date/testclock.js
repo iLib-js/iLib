@@ -1,7 +1,7 @@
 /*
  * testclock.js - test the 12/24 hour support amongst various locales
  *
- * Copyright © 2019-2023, JEDLSoft
+ * Copyright © 2019-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,6 @@
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
-}
-
-if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
-    var path = require("path");
 }
 
 if (typeof(LocaleInfo) === "undefined") {
@@ -378,7 +374,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-AR");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_BO: function(test) {
@@ -386,7 +382,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-BO");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_CL: function(test) {
@@ -394,7 +390,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-CL");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_CO: function(test) {
@@ -418,7 +414,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-EC");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_ES: function(test) {
@@ -434,7 +430,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-GT");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_HN: function(test) {
@@ -442,7 +438,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-HN");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_MX: function(test) {
@@ -450,7 +446,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-MX");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_NI: function(test) {
@@ -458,7 +454,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-NI");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_PA: function(test) {
@@ -474,7 +470,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-PE");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_PR: function(test) {
@@ -490,7 +486,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-PY");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_SV: function(test) {
@@ -498,7 +494,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-SV");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_US: function(test) {
@@ -514,7 +510,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-UY");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_VE: function(test) {
@@ -722,6 +718,7 @@ module.exports.testclock = {
             test.done();
             return;
         }
+        var path = require("path");
         var multiPath = path.relative(process.cwd(), path.resolve(__dirname, "./custom"));
         var ilibLoader = ilib.getLoader();
         ilibLoader.addPath(multiPath);
@@ -1100,7 +1097,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("en-MX");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_en_TW: function(test) {
@@ -1380,7 +1377,7 @@ module.exports.testclock = {
         var info = new LocaleInfo("es-CR");
         test.ok(info !== null);
 
-        test.equal(info.getClock(), 24);
+        test.equal(info.getClock(), 12);
         test.done();
     },
     testClock_es_GQ: function(test) {

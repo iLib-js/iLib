@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_uk_UA.js - test the date range formatter object Ukrainian/Ukraine
  *
- * Copyright © 2012-2017, 2020,2023 JEDLSoft
+ * Copyright © 2012-2017, 2020, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -601,7 +601,7 @@ module.exports.testdatefmtrange_uk_UA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "лис 2011 р. – січ 2014 р.");
+        test.equal(fmt.format(start, end), "лист. 2011 р. – січ. 2014 р.");
         test.done();
     },
     testDateRngFmtUARangeMultiYearLong: function(test) {
