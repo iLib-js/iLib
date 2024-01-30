@@ -74,7 +74,7 @@ module.exports.testglobal = {
     },
     testGetCldrVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getCLDRVersion().substring(0,4), "43.1");
+        test.equal(ilib.getCLDRVersion().substring(0,4), "44.1");
         test.done();
     },
     testGetTimeZoneDefault: function(test) {

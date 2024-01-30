@@ -2976,7 +2976,7 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "80,56 кілаватаў");
+        test.equal(str, '80,56 кілавата');
         test.done();
     }
 };

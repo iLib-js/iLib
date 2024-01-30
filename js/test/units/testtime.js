@@ -177,6 +177,4 @@ module.exports.testtime = {
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-
-
 };
