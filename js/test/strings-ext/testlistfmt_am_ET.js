@@ -1,7 +1,7 @@
 /*
  * testlistfmt_am_ET.js - test the list formatter object
  *
- * Copyright © 2017, 2020 JEDLSoft
+ * Copyright © 2017, 2020, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testlistfmt_am_ET = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), "አንድ፣ ሁለት, እና ሶስት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት"]), 'አንድ፣ ሁለት፣ እና ሶስት');
         test.done();
     },
     testListFmtamETNumberFormatFour: function(test) {
@@ -67,7 +67,7 @@ module.exports.testlistfmt_am_ET = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), "አንድ፣ ሁለት፣ ሶስት, እና አራት");
+        test.equal(fmt.format(["አንድ", "ሁለት", "ሶስት", "አራት"]), 'አንድ፣ ሁለት፣ ሶስት፣ እና አራት');
         test.done();
     },
     testListFmtUnitStyleamETNumberFormatOne: function(test) {
