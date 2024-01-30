@@ -198,6 +198,11 @@
         "nm": "Cherokee",
         "rtl": false
     },
+    "Chis": {
+        "lid": "Chisoi",
+        "nb": 298,
+        "nm": "Chisoi"
+    },
     "Chrs": {
         "casing": false,
         "ime": false,
@@ -330,6 +335,11 @@
         "nm": "Ethiopic (Geʻez)",
         "rtl": false
     },
+    "Gara": {
+        "lid": "Garay",
+        "nb": 164,
+        "nm": "Garay"
+    },
     "Geok": {
         "lid": "Georgian",
         "nb": 241,
@@ -398,6 +408,11 @@
         "nb": 320,
         "nm": "Gujarati",
         "rtl": false
+    },
+    "Gukh": {
+        "lid": "Gurung_Khema",
+        "nb": 397,
+        "nm": "Gurung Khema"
     },
     "Guru": {
         "casing": false,
@@ -639,6 +654,11 @@
         "lid": "Kpelle",
         "nb": 436,
         "nm": "Kpelle"
+    },
+    "Krai": {
+        "lid": "Kirat_Rai",
+        "nb": 396,
+        "nm": "Kirat Rai"
     },
     "Kthi": {
         "casing": false,
@@ -968,6 +988,11 @@
         "nm": "Ol Chiki (Ol Cemet’, Ol, Santali)",
         "rtl": false
     },
+    "Onao": {
+        "lid": "Ol_Onal",
+        "nb": 296,
+        "nm": "Ol Onal"
+    },
     "Orkh": {
         "casing": false,
         "ime": false,
@@ -1215,6 +1240,11 @@
         "nm": "Siddham, Siddhaṃ, Siddhamātṛkā",
         "rtl": false
     },
+    "Sidt": {
+        "lid": "Sidetic",
+        "nb": 180,
+        "nm": "Sidetic"
+    },
     "Sind": {
         "casing": false,
         "ime": false,
@@ -1363,6 +1393,11 @@
         "nm": "Tai Viet",
         "rtl": false
     },
+    "Tayo": {
+        "lid": "Tai_Yo",
+        "nb": 380,
+        "nm": "Tai Yo"
+    },
     "Telu": {
         "casing": false,
         "ime": false,
@@ -1432,6 +1467,16 @@
         "nm": "Tangsa",
         "rtl": false
     },
+    "Todr": {
+        "lid": "Todhri",
+        "nb": 229,
+        "nm": "Todhri"
+    },
+    "Tols": {
+        "lid": "Tolong_Siki",
+        "nb": 299,
+        "nm": "Tolong Siki"
+    },
     "Toto": {
         "casing": false,
         "ime": false,
@@ -1439,6 +1484,11 @@
         "nb": 294,
         "nm": "Toto",
         "rtl": false
+    },
+    "Tutg": {
+        "lid": "Tulu-Tigalari",
+        "nb": 341,
+        "nm": "Tulu-Tigalari"
     },
     "Ugar": {
         "casing": false,
