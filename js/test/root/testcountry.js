@@ -1,7 +1,7 @@
 /*
  * testcountry.js - test the country routines
  *
- * Copyright © 2017, 2020-2023 JEDLSoft
+ * Copyright © 2017, 2020-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -371,6 +371,45 @@ module.exports.testcountry = {
         test.equal(ctry.getCode("Turquía"), "TR");
         var locale = ctry.getLocale();
         test.equal(locale.toString(), "es-ES");
+        test.done();
+    },
+    testCountryLocale_es_CO: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "es-CO"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SA"),"Arabia Saudita");
+        test.equal(ctry.getCode("Arabia Saudita"), "SA");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "es-CO");
+        test.done();
+    },
+    testCountryLocale_es_CO2: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "es-CO"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("RO"),"Rumania");
+        test.equal(ctry.getCode("Rumania"), "RO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "es-CO");
+        test.done();
+    },
+    testCountryLocale_it_IT: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "it-IT"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("SZ"),"Eswatini");
+        test.equal(ctry.getCode("Eswatini"), "SZ");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "it-IT");
         test.done();
     },
     testCountryLocale_zu_ZA: function(test) {
