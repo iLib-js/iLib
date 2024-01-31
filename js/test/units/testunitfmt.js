@@ -105,7 +105,7 @@ module.exports.testunitfmt = {
             amount: 3000,
             unit: "meter"
         });
-        var uf = new UnitFmt({autoScale: false, autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "3,000 meters");
         test.done();
@@ -129,7 +129,7 @@ module.exports.testunitfmt = {
             amount: 1048576000
         });
 
-        var uf = new UnitFmt({autoScale: false,autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "1,048,576,000 bits");
         test.done();
@@ -153,7 +153,7 @@ module.exports.testunitfmt = {
             amount: 10000000
         });
 
-        var uf = new UnitFmt({autoScale: false,autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "10,000,000 micrograms");
         test.done();
@@ -192,7 +192,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale: false, autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "100 hectares");
         test.done();
@@ -231,7 +231,7 @@ module.exports.testunitfmt = {
             amount: 1233453
         });
 
-        var uf = new UnitFmt({autoScale: false, autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1,233,453 kilowatt-hours");
         test.done();
@@ -270,7 +270,7 @@ module.exports.testunitfmt = {
             amount: 36
         });
 
-        var uf = new UnitFmt({autoScale: false, autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "36 kilometers per hour");
         test.done();
@@ -310,7 +310,7 @@ module.exports.testunitfmt = {
             amount: 12000
         });
 
-        var uf = new UnitFmt({autoScale: false,autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "12,000 milliseconds");
         test.done();
@@ -334,7 +334,7 @@ module.exports.testunitfmt = {
             amount: 1500
         });
 
-        var uf = new UnitFmt({autoScale: false,autoConvert:false});
+        var uf = new UnitFmt({autoScale:false, autoConvert:false});
         var str = uf.format(m);
         test.equal(str, "1,500 milliliters");
         test.done();
@@ -392,7 +392,6 @@ module.exports.testunitfmt = {
         test.done();
     },
     /*Area*/
-
     testUnitFormatArea1: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -412,7 +411,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 квадратных сантиметра");
         test.done();
@@ -424,7 +423,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 квадратных сантиметров");
         test.done();
@@ -436,7 +435,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1,000제곱센티미터");
         test.done();
@@ -448,10 +447,9 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 centimètres carrés");
-
         test.done();
     },
     testUnitFormatArea5DE: function(test) {
@@ -461,7 +459,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1.000 Quadratzentimeter");
         test.done();
@@ -485,7 +483,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 квадратных сантиметра");
         test.done();
@@ -497,7 +495,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 гектаров");
         test.done();
@@ -509,7 +507,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1,000제곱야드");
         test.done();
@@ -521,13 +519,11 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 yards carrés");
         test.done();
     },
-
-
     /*DigitalStorage*/
     testUnitFormatDigitalStorage1: function(test) {
         test.expect(1);
@@ -548,7 +544,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 килобайта");
         test.done();
@@ -560,7 +556,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000킬로바이트");
         test.done();
@@ -572,7 +568,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 kilooctets");
         test.done();
@@ -584,7 +580,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1.000 Kilobyte");
         test.done();
@@ -596,7 +592,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 gigabits");
         test.done();
@@ -608,7 +604,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 гигабита");
         test.done();
@@ -620,7 +616,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 бит");
         test.done();
@@ -632,7 +628,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000기가비트");
         test.done();
@@ -644,13 +640,11 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 gigabits");;
         test.done();
     },
-
-
     testUnitFormatEnergy1: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -670,7 +664,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 джоуля");
         test.done();
@@ -682,7 +676,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true});
         var str = uf.format(m1);
         test.equal(str, "1 килоджоуль");
         test.done();
@@ -694,7 +688,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "1킬로줄");
         test.done();
@@ -706,7 +700,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 joules");
         test.done();
@@ -718,7 +712,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 kWh");
         test.done();
@@ -730,7 +724,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 киловатт-часа");
         test.done();
@@ -742,7 +736,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 килокалорий");
         test.done();
@@ -754,7 +748,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000기가비트");
         test.done();
@@ -766,13 +760,11 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "2 kilojoules");;
         test.done();
     },
-
-
     testUnitFormatFuelConsumption1: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -792,7 +784,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 мили на амер. галлон");
         test.done();
@@ -804,7 +796,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "0,235215 л/100 км");
         test.done();
@@ -816,7 +808,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "리터당 1,000킬로미터");
         test.done();
@@ -828,7 +820,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 miles par gallon");
         test.done();
@@ -840,7 +832,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1.000 Meilen pro Gallone");
         test.done();
@@ -864,7 +856,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 дюйма");
         test.done();
@@ -876,7 +868,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 км");
         test.done();
@@ -888,7 +880,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "1킬로미터");
         test.done();
@@ -900,7 +892,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 mètres");
         test.done();
@@ -912,7 +904,7 @@ module.exports.testunitfmt = {
             amount: 1234.45
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1.234,45 Meter");
         test.done();
@@ -924,7 +916,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "3,21868 Mm");
         test.done();
@@ -936,7 +928,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 мили");
         test.done();
@@ -948,7 +940,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 сантиметров");
         test.done();
@@ -960,7 +952,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000센티미터");
         test.done();
@@ -972,7 +964,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 centimètres");
         test.done();
@@ -996,7 +988,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 микрограмма");
         test.done();
@@ -1008,7 +1000,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 мг");
         test.done();
@@ -1020,7 +1012,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "1밀리그램");
         test.done();
@@ -1032,7 +1024,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 microgrammes");
         test.done();
@@ -1044,7 +1036,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 000 lb");
         test.done();
@@ -1056,7 +1048,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1.000 Mikrogramm");
         test.done();
@@ -1068,7 +1060,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2.000 lb");
         test.done();
@@ -1080,7 +1072,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 стоуна");
         test.done();
@@ -1092,7 +1084,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 тонн");
         test.done();
@@ -1104,7 +1096,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000메트릭 톤");
         test.done();
@@ -1116,13 +1108,11 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true});
         var str = uf.format(m1);
         test.equal(str, "1 kilogramme");
         test.done();
     },
-
-
     testUnitFormatSpeed1: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -1142,7 +1132,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false});
         var str = uf.format(m1);
         test.equal(str, "2 километра в час");
         test.done();
@@ -1154,7 +1144,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "277,778 м/с");
         test.done();
@@ -1166,7 +1156,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "초당 1,000피트");
         test.done();
@@ -1178,7 +1168,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 miles par heure");
         test.done();
@@ -1190,7 +1180,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1.000 Meilen pro Stunde");
         test.done();
@@ -1202,7 +1192,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 km/s");
         test.done();
@@ -1214,7 +1204,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "2 мили в час");
         test.done();
@@ -1226,7 +1216,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 000 уз");
         test.done();
@@ -1238,7 +1228,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "시속 1,000마일");
         test.done();
@@ -1250,7 +1240,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "447,03924652 m/s");
         test.done();
@@ -1262,7 +1252,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"de-DE",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"de-DE", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "447,03924652 m/s");
         test.done();
@@ -1298,7 +1288,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({autoConvert:false,length:"short"});
+        var uf = new UnitFmt({autoConvert:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2°C");
         test.done();
@@ -1310,7 +1300,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"long"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"long"});
         var str = uf.format(m1);
         test.equal(str, "1 000 градусов Цельсия");
         test.done();
@@ -1322,7 +1312,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000켈빈");
         test.done();
@@ -1334,7 +1324,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"en-US",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"en-US", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kelvins");
         test.done();
@@ -1346,9 +1336,8 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short",maxFractionDigits: 9});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short",maxFractionDigits: 9});
         var str = uf.format(m1);
-
         test.equal(str, "1 093,333333333 °C");
         test.done();
     },
@@ -1359,7 +1348,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 °F");
         test.done();
@@ -1371,7 +1360,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 000 K");
         test.done();
@@ -1383,7 +1372,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "화씨 1,000도");
         test.done();
@@ -1395,7 +1384,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"short", maxFractionDigits: 2});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:true, autoScale:false, length:"short", maxFractionDigits: 2});
         var str = uf.format(m1);
         test.equal(str, "537.78°C");
         test.done();
@@ -1407,7 +1396,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:true,autoScale:false, length:"long"});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:true, autoScale:false, length:"long"});
         var str = uf.format(m1);
         test.equal(str, "섭씨 537.7777777777778도");
         test.done();
@@ -1443,7 +1432,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({autoConvert:false,length:"short"});
+        var uf = new UnitFmt({autoConvert:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 ns");
         test.done();
@@ -1455,7 +1444,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:true,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 мкс");
         test.done();
@@ -1467,7 +1456,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000밀리초");
         test.done();
@@ -1479,7 +1468,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 millisecondes");
         test.done();
@@ -1491,7 +1480,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "3,83308 déc.");
         test.done();
@@ -1503,7 +1492,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 г.");
         test.done();
@@ -1515,7 +1504,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 000 мин");
         test.done();
@@ -1527,7 +1516,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000분");
         test.done();
@@ -1539,7 +1528,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",length:"long",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR",length:"long", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 mois");
         test.done();
@@ -1563,7 +1552,7 @@ module.exports.testunitfmt = {
             amount: 2
         });
 
-        var uf = new UnitFmt({autoConvert:false,length:"short"});
+        var uf = new UnitFmt({autoConvert:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 tsp");
         test.done();
@@ -1575,7 +1564,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 000 унц.");
         test.done();
@@ -1587,7 +1576,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000밀리초");
         test.done();
@@ -1599,7 +1588,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1 000 litres");
         test.done();
@@ -1611,7 +1600,7 @@ module.exports.testunitfmt = {
             amount: 2000
         });
 
-        var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short"});
+        var uf = new UnitFmt({locale:"fr-FR", autoConvert:true, autoScale:true, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "2 m³");
         test.done();
@@ -1623,7 +1612,7 @@ module.exports.testunitfmt = {
             amount: 1
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"long"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"long"});
         var str = uf.format(m1);
         test.equal(str, "1 амер. галлон");
         test.done();
@@ -1635,7 +1624,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ru-RU",autoConvert:false,autoScale:false,length:"short"});
+        var uf = new UnitFmt({locale:"ru-RU", autoConvert:false, autoScale:false, length:"short"});
         var str = uf.format(m1);
         test.equal(str, "1 000 ам. гал.");
         test.done();
@@ -1647,7 +1636,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
+        var uf = new UnitFmt({locale:"ko-KR", autoConvert:false, autoScale:false});
         var str = uf.format(m1);
         test.equal(str, "1,000세제곱피트");
         test.done();
@@ -1695,7 +1684,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 square centimeters");
         test.done();
@@ -1707,7 +1696,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 cm²");
         test.done();
@@ -1719,7 +1708,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kilobytes");
         test.done();
@@ -1731,7 +1720,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kB");
         test.done();
@@ -1743,7 +1732,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kilobytes per hour");
         test.done();
@@ -1755,7 +1744,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kB/h");
         test.done();
@@ -1767,7 +1756,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale: "fr-FR",length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({locale: "fr-FR",length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1 000 mégaoctets par seconde");
         test.done();
@@ -1779,7 +1768,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale: "fr-FR",length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({locale: "fr-FR",length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1 000 Mo/s");
         test.done();
@@ -1791,7 +1780,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale: "zh-Hans-CN",length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({locale: "zh-Hans-CN",length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000兆字节/秒");
         test.done();
@@ -1803,7 +1792,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale: "be-BY",length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({locale: "be-BY",length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1 000 мегабайта у секунду");
         test.done();
@@ -1815,7 +1804,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({locale: "be-BY",length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({locale: "be-BY",length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1 000 МБ/с");
         test.done();
@@ -1827,7 +1816,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kilowatt-hours");
         test.done();
@@ -1839,9 +1828,21 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kWh");
+        test.done();
+    },
+    testUnitFormatEnergy13: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kilowatt hour",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({locale:"en-ID", autoConvert:true, autoScale:true});
+        var str = uf.format(m1);
+        test.equal(str, "2 kilowatt-hours");;
         test.done();
     },
     testUnitFormatFuelConsumption11: function(test) {
@@ -1851,7 +1852,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kilometers per liter");
         test.done();
@@ -1863,7 +1864,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 km/L");
         test.done();
@@ -1875,7 +1876,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 decimeters");
         test.done();
@@ -1887,7 +1888,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 dm");
         test.done();
@@ -1899,7 +1900,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 kilometers per second");
         test.done();
@@ -1911,7 +1912,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 km/s");
         test.done();
@@ -1923,7 +1924,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 degrees Fahrenheit");
         test.done();
@@ -1935,7 +1936,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000°F");
         test.done();
@@ -1947,7 +1948,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"long",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"long", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 milliseconds");
         test.done();
@@ -1959,7 +1960,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({length:"short",autoConvert:false,autoScale: false});
+        var uf = new UnitFmt({length:"short", autoConvert:false, autoScale: false});
         var str = uf.format(m1);
         test.equal(str, "1,000 ms");
         test.done();
@@ -2007,10 +2008,10 @@ module.exports.testunitfmt = {
         });
 
         var uf = new UnitFmt({
-            autoConvert:false,
+            autoConvert: false,
             autoScale: false,
-        maxFractionDigits: 2,
-        roundingMode: "up"
+            maxFractionDigits: 2,
+            roundingMode: "up"
         });
         var str = uf.format(m1);
         test.equal(str, "1.75 meters");
@@ -2024,10 +2025,10 @@ module.exports.testunitfmt = {
         });
 
         var uf = new UnitFmt({
-            autoConvert:false,
+            autoConvert: false,
             autoScale: false,
             maxFractionDigits: 2,
-        roundingMode: "down"
+            roundingMode: "down"
         });
         var str = uf.format(m1);
         test.equal(str, "1.74 meters");
@@ -2041,10 +2042,10 @@ module.exports.testunitfmt = {
         });
 
         var uf = new UnitFmt({
-            autoConvert:false,
+            autoConvert: false,
             autoScale: false,
             minFractionDigits: 3,
-        maxFractionDigits: 3
+            maxFractionDigits: 3
         });
         var str = uf.format(m1);
         test.equal(str, "1.745 meters");
@@ -2057,7 +2058,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "bn-IN",useNative:false});
+        var uf = new UnitFmt({autoScale:false, locale: "bn-IN", useNative:false});
         var str = uf.format(m1);
         test.equal(str, "1,000 সেন্টিমিটার");
         test.done();
@@ -2069,7 +2070,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "bn-IN",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "bn-IN", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "১,০০০ সেন্টিমিটার");
         test.done();
@@ -2081,14 +2082,12 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "bn-IN"});
+        var uf = new UnitFmt({autoScale:false, locale: "bn-IN"});
         var str = uf.format(m1);
         test.equal(str, "১,০০০ সেন্টিমিটার");
         test.done();
     },
     /*Zh units*/
-
-
     testUnitFormatzhHansCN: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2096,7 +2095,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-CN", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一,〇〇〇厘米");
         test.done();
@@ -2108,13 +2107,11 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-HK"});
         var str = uf.format(m1);
         test.equal(str, "1,000厘米");
         test.done();
     },
-
-
     testUnitFormatzhHansSG: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2122,7 +2119,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-SG", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一,〇〇〇厘米");
         test.done();
@@ -2134,7 +2131,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-MO"});
         var str = uf.format(m1);
         test.equal(str, "1,000厘米");
         test.done();
@@ -2146,7 +2143,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-HK", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一,〇〇〇 厘米");
         test.done();
@@ -2158,7 +2155,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MO"});
         var str = uf.format(m1);
         test.equal(str, "1,000 厘米");
         test.done();
@@ -2170,7 +2167,7 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MY",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MY", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一,〇〇〇 公分");
         test.done();
@@ -2207,8 +2204,6 @@ module.exports.testunitfmt = {
         test.done();
     },
     /*Kelvin*/
-
-
     testUnitFormatzhHansCNKelvin: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2216,7 +2211,7 @@ module.exports.testunitfmt = {
                amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-CN", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "二八五.三开尔文");
         test.done();
@@ -2228,13 +2223,11 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-HK"});
         var str = uf.format(m1);
         test.equal(str, "285.3开氏度");
         test.done();
     },
-
-
     testUnitFormatzhHansSGKelvin: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2242,7 +2235,7 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-SG", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "二八五.三开氏度");
         test.done();
@@ -2254,7 +2247,7 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-MO"});
         var str = uf.format(m1);
         test.equal(str, "285.3开氏度");
         test.done();
@@ -2266,7 +2259,7 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-HK", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "二八五.三 開爾文");
         test.done();
@@ -2278,13 +2271,11 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MO"});
         var str = uf.format(m1);
         test.equal(str, "285.3 開爾文");
         test.done();
     },
-
-
     testUnitFormatzhHantMYKelvin: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2292,7 +2283,7 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MY",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MY", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "二八五.三 克耳文");
         test.done();
@@ -2304,7 +2295,7 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-TW"});
         var str = uf.format(m1);
         test.equal(str, "285.3 克耳文");
         test.done();
@@ -2327,7 +2318,6 @@ module.exports.testunitfmt = {
         test.done();
     },
     /*hectare*/
-
     testUnitFormatzhHansCNHectare: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2335,7 +2325,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-CN",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-CN", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一〇〇公顷");
         test.done();
@@ -2347,13 +2337,11 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-HK"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-HK"});
         var str = uf.format(m1);
         test.equal(str, "100公顷");
         test.done();
     },
-
-
     testUnitFormatzhHansSGHectare: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2361,7 +2349,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-SG",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-SG", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一〇〇公顷");
         test.done();
@@ -2373,7 +2361,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hans-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hans-MO"});
         var str = uf.format(m1);
         test.equal(str, "100公顷");
         test.done();
@@ -2385,7 +2373,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-HK",useNative:true});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-HK", useNative:true});
         var str = uf.format(m1);
         test.equal(str, "一〇〇 公頃");
         test.done();
@@ -2397,13 +2385,11 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MO"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MO"});
         var str = uf.format(m1);
         test.equal(str, "100 公頃");
         test.done();
     },
-
-
     testUnitFormatUsezhHantMOHectare: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2411,7 +2397,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-MY"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-MY"});
         var str = uf.format(m1);
         test.equal(str, "100 公頃");
         test.done();
@@ -2423,7 +2409,7 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+        var uf = new UnitFmt({autoScale:false, locale: "zh-Hant-TW"});
         var str = uf.format(m1);
         test.equal(str, "100 公頃");
         test.done();
@@ -2703,7 +2689,6 @@ module.exports.testunitfmt = {
         test.done();
     },
     /** pressure **/
-
     testUnitFormatPressure: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2723,7 +2708,6 @@ module.exports.testunitfmt = {
         test.done();
     },
     /** time **/
-
     testUnitFmt_Time_am_ET: function(test) {
         test.expect(2);
         var m1 = MeasurementFactory({
