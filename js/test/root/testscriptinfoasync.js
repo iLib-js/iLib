@@ -1,7 +1,7 @@
 /*
  * testscriptinfoasync.js - test the script info object
  *
- * Copyright © 2018-2022, JEDLSoft
+ * Copyright © 2018-2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,8 +110,7 @@ module.exports.testscriptinfoasync = {
         ScriptInfo.getAllScripts(false, undefined, function(scripts) {
             test.ok(scripts !== null);
 
-            test.equal(scripts.length, 213);
-
+            test.equal(scripts.length, 223);
             test.equal(scripts[0], "Adlm");
             test.equal(scripts[1], "Afak");
             test.equal(scripts[2], "Aghb");
@@ -122,11 +121,9 @@ module.exports.testscriptinfoasync = {
             ScriptInfo.getAllScripts(false, undefined, function(scripts) {
                 test.ok(scripts !== null);
 
-                test.equal(scripts.length, 213);
-
+                test.equal(scripts.length, 223);
                 test.equal(scripts[0], "Adlm");
                 test.equal(scripts[scripts.length-1], "Zzzz");
-
                 test.done();
             });
         });
