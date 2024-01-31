@@ -199,11 +199,6 @@
         "decimals": 2,
         "sign": "₡"
     },
-    "CUC": {
-        "name": "Cuban Convertible Peso",
-        "decimals": 2,
-        "sign": "$"
-    },
     "CUP": {
         "name": "Cuban Peso",
         "decimals": 2,
@@ -372,7 +367,7 @@
     "KGS": {
         "name": "Kyrgystani Som",
         "decimals": 2,
-        "sign": "лв"
+        "sign": "⃀"
     },
     "KHR": {
         "name": "Cambodian Riel",
