@@ -1,7 +1,7 @@
 /*
  * testlistfmt_nl.js - test the list formatter object
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee"]), "een en twee");
+        test.equal(fmt.format(["een", "twee"]), 'een & twee');
         test.done();
     },
     testListFmtnlBENumberFormatThree: function(test) {
@@ -58,7 +58,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
+        test.equal(fmt.format(["een", "twee", "drie"]), 'een, twee & drie');
         test.done();
     },
     testListFmtnlBENumberFormatFour: function(test) {
@@ -68,7 +68,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
+        test.equal(fmt.format(["een", "twee", "drie", "vier"]), 'een, twee, drie & vier');
         test.done();
     },
     testListFmtUnitStylenlBENumberFormatOne: function(test) {
@@ -181,7 +181,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee"]), "een en twee");
+        test.equal(fmt.format(["een", "twee"]), 'een & twee');
         test.done();
     },
     testListFmtnlNLNumberFormatThree: function(test) {
@@ -191,7 +191,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
+        test.equal(fmt.format(["een", "twee", "drie"]), 'een, twee & drie');
         test.done();
     },
     testListFmtnlNLNumberFormatFour: function(test) {
@@ -201,7 +201,7 @@ module.exports.testlistfmt_nl = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
+        test.equal(fmt.format(["een", "twee", "drie", "vier"]), 'een, twee, drie & vier');
         test.done();
     },
     testListFmtUnitStylenlNLNumberFormatOne: function(test) {

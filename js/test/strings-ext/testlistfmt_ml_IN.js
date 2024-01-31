@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ml_IN.js - test the list formatter object
  *
- * Copyright © 2017, 2020-2021 JEDLSoft
+ * Copyright © 2017, 2020-2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,6 +155,54 @@ module.exports.testlistfmt_ml_IN = {
             locale: "ml-IN",
             style: "unit",
             length: "medium"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്", "നാല്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്, നാല്");
+        test.done();
+    },
+    testListFmtUnitStylemlINNumberFormatOneLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ml-IN",
+            style: "unit",
+            length: "full"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ഒന്ന്"]), "ഒന്ന്");
+        test.done();
+    },
+    testListFmtUnitStylemlINNumberFormatTwoLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ml-IN",
+            style: "unit",
+            length: "full"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ഒന്ന്", "രണ്ട്"]), 'ഒന്ന്, രണ്ട്');
+        test.done();
+    },
+    testListFmtUnitStylemlINNumberFormatThreeLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ml-IN",
+            style: "unit",
+            length: "full"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ഒന്ന്", "രണ്ട്", "മൂന്ന്"]), "ഒന്ന്, രണ്ട്, മൂന്ന്");
+        test.done();
+    },
+    testListFmtUnitStylemlINNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ml-IN",
+            style: "unit",
+            length: "full"
         });
 
         test.expect(2);

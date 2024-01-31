@@ -2061,7 +2061,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ru-KG", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 лв"); //KGS
+        test.equal(curfmt.format(57.05), '57,05 ⃀'); //KGS
         test.done();
     },
     testNumFmt_ru_KZ: function(test) {
@@ -3827,7 +3827,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ky-KG", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 лв"); //KGS
+        test.equal(curfmt.format(57.05), '57,05 ⃀'); //KGS
         test.done();
     },
     testNumFmt_ca_AD: function(test) {

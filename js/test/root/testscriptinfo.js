@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  *
- * Copyright © 2013-2017, 2019-2022 JEDLSoft
+ * Copyright © 2013-2017, 2019-2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -171,8 +171,7 @@ module.exports.testscriptinfo = {
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
 
-        test.equal(scripts.length, 213);
-
+        test.equal(scripts.length, 223);
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");
         test.equal(scripts[2], "Aghb");
@@ -222,13 +221,40 @@ module.exports.testscriptinfo = {
         test.ok(!si.getCasing());
         test.done();
     },
+    testScriptGetDefaultLongCode_Gara: function(test) {
+        test.expect(8);
+        var si = new ScriptInfo("Gara");
+        test.ok(si !== null);
+
+        test.equal(si.getCode(), "Gara");
+        test.equal(si.getCodeNumber(), 164);
+        test.equal(si.getName(), "Garay");
+        test.equal(si.getLongCode(), "Garay");
+        test.equal(si.getScriptDirection(), "ltr");
+        test.ok(!si.getNeedsIME());
+        test.ok(!si.getCasing());
+        test.done();
+    },
+    testScriptGetDefaultLongCode_Tols: function(test) {
+        test.expect(8);
+        var si = new ScriptInfo("Tols");
+        test.ok(si !== null);
+
+        test.equal(si.getCode(), "Tols");
+        test.equal(si.getCodeNumber(), 299);
+        test.equal(si.getName(), "Tolong Siki");
+        test.equal(si.getLongCode(), "Tolong_Siki");
+        test.equal(si.getScriptDirection(), "ltr");
+        test.ok(!si.getNeedsIME());
+        test.ok(!si.getCasing());
+        test.done();
+    },
     testScriptInfo_ar_EG: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ar-EG");
         var scinfo = new ScriptInfo(li.getScript());
         test.ok(li !== null);
         test.ok(scinfo !== null);
-
         test.equal(li.getScript(), "Arab");
         test.equal(scinfo.getScriptDirection(), "rtl");
         test.done();
