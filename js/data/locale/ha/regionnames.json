@@ -6595,10 +6595,6 @@
             "name": "Enfield"
         },
         {
-            "code": "ENG",
-            "name": "England"
-        },
-        {
             "code": "EAW",
             "name": "England and Wales"
         },
@@ -6701,6 +6697,10 @@
         {
             "code": "HNS",
             "name": "Hounslow"
+        },
+        {
+            "code": "ENG",
+            "name": "Ingila"
         },
         {
             "code": "IVC",
