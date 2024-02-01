@@ -7,6 +7,7 @@ Published as version 14.20.0
 
 New Features:
 * Update to CLDR v44.1 data
+* Update to Unicode Character Database (UCD) version 15.1.0
 
 Bug Fixes:
 * Updated timezone info to 2023d
