@@ -7,7 +7,7 @@ Published as version 14.20.0
 
 New Features:
 * Updated to CLDR v44.1 data
-* Updated to check the webOS Platform as `webOSSystem` value. The PalmSystem has been renamed.
+* Updated to detect the webOS Platform with `webOSSystem` value. The previous PalmSystem has been renamed.
 
 Bug Fixes:
 * Updated timezone info to 2023d
