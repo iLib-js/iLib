@@ -11,7 +11,7 @@ New Features:
 * Updated to detect the webOS Platform with `webOSSystem` value. The previous PalmSystem has been renamed.
 
 Bug Fixes:
-* Updated timezone info to 2023d
+* Updated timezone info to 2024a
 
 Build 028
 -------
