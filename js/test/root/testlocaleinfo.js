@@ -11757,8 +11757,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("es-ES");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "«");
-        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
         test.done();
     },
     testLocaleInfoQuotation_zh_CN: function(test) {
@@ -12011,8 +12011,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("tg-TJ");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "“");
-        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getDelimiterQuotationStart(), "»");
+        test.equal(info.getDelimiterQuotationEnd(), "«");
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
