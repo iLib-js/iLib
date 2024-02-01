@@ -6,7 +6,8 @@ Build 029
 Published as version 14.20.0
 
 New Features:
-* Updated to CLDR v44.1 data
+* Update to CLDR v44.1 data
+* Update to Unicode Character Database (UCD) version 15.1.0
 * Updated to detect the webOS Platform with `webOSSystem` value. The previous PalmSystem has been renamed.
 
 Bug Fixes:
