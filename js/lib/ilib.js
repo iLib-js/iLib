@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  *
- * Copyright © 2012-2021, JEDLSoft
+ * Copyright © 2012-2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -157,7 +157,7 @@ ilib._getPlatform = function () {
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
             ilib._cacheMerged = true; // qt is too slow, so we need to cache the already-merged locale data
-        } else if (typeof(PalmSystem) !== 'undefined') {
+        } else if ((typeof(PalmSystem) !== 'undefined') || (typeof(webOSSystem) !== 'undefined')) {
             ilib._platform = (typeof(window) !== 'undefined') ? "webos-webapp" : "webos";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = "browser";
@@ -391,6 +391,8 @@ ilib.getLocale = function () {
                     ilib.locale = parseLocale(PalmSystem.locales.UI);
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
                     ilib.locale = parseLocale(PalmSystem.locale);
+                } else if (typeof(webOSSystem.locale) !== 'undefined') {
+                    ilib.locale = parseLocale(webOSSystem.locale);
                 } else {
                     ilib.locale = undefined;
                 }
@@ -481,7 +483,8 @@ ilib.getTimeZone = function() {
             case 'webos-webapp':
             case 'webos':
                 // running in webkit on webOS
-                if (PalmSystem.timezone && PalmSystem.timezone.length > 0) {
+                if ((PalmSystem.timezone && PalmSystem.timezone.length > 0) ||
+                    (webOSSystem.timeZone && PalmSystem.timeZone.length > 0)) {
                     ilib.tz = PalmSystem.timezone;
                 }
                 break;
