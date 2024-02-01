@@ -11248,6 +11248,20 @@ module.exports.testlocaleinfo = {
         test.equal(li.getLanguageName(), "Oji-Cree");
         test.done();
     },
+    testLocaleInfoGetLanguageName8: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("mic");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Mi'kmaw");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName9: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("kxv");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Kuvi");
+        test.done();
+    },
     testLocaleInfoGetRegionName1: function(test) {
         test.expect(2);
         var li = new LocaleInfo("he-IL");

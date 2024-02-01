@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the localematch.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2020, 2022-2023 JEDLSoft
+ * Copyright © 2013-2020, 2022-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlikelyloc - generate the localematch.json file.\n" +
-        "Copyright (c) 2013-2019, 2022 JEDLSoft");
+        "Copyright (c) 2013-2019, 2022-2024 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -67,6 +67,35 @@ var localematch = {};
 
 // cldr is missing these
 var hardCodedSubtags = {
+    "002": "en-Latn-NG",
+    "003": "en-Latn-US",
+    "005": "pt-Latn-BR",
+    "009": "en-Latn-AU",
+    "011": "en-Latn-NG",
+    "013": "es-Latn-MX",
+    "014": "sw-Latn-TZ",
+    "015": "ar-Arab-EG",
+    "017": "sw-Latn-CD",
+    "018": "en-Latn-ZA",
+    "019": "en-Latn-US",
+    "021": "en-Latn-US",
+    "029": "es-Latn-CU",
+    "030": "zh-Hans-CN",
+    "034": "hi-Deva-IN",
+    "035": "id-Latn-ID",
+    "039": "it-Latn-IT",
+    "053": "en-Latn-AU",
+    "054": "en-Latn-PG",
+    "057": "en-Latn-GU",
+    "061": "sm-Latn-WS",
+    "142": "zh-Hans-CN",
+    "143": "uz-Latn-UZ",
+    "145": "ar-Arab-SA",
+    "150": "ru-Cyrl-RU",
+    "151": "ru-Cyrl-RU",
+    "154": "en-Latn-GB",
+    "155": "de-Latn-DE",
+    "202": "en-Latn-NG",
     "bn-IN": "bn-Beng-IN",
     "en-KR": "en-Latn-KR",
     "hr-HU": "hr-Latn-HU",
