@@ -8,6 +8,7 @@ Published as version 14.20.0
 New Features:
 * Update to CLDR v44.1 data
 * Update to Unicode Character Database (UCD) version 15.1.0
+* Updated to detect the webOS Platform with `webOSSystem` value. The previous PalmSystem has been renamed.
 
 Bug Fixes:
 * Updated timezone info to 2023d
@@ -17,7 +18,7 @@ Build 028
 Published as version 14.19.0
 
 New Features:
-* Update to CLDR v43.1 data
+* Updated to CLDR v43.1 data
 * Added new `getCLDRVersion()` API to know the cldr version that the current version of ilib uses
 
 Bug Fixes:
