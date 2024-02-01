@@ -6,7 +6,8 @@ Build 029
 Published as version 14.20.0
 
 New Features:
-* Update to CLDR v44.1 data
+* Updated to CLDR v44.1 data
+* Updated to check the webOS Platform as `webOSSystem` value. The PalmSystem has been renamed.
 
 Bug Fixes:
 * Updated timezone info to 2023d
@@ -16,7 +17,7 @@ Build 028
 Published as version 14.19.0
 
 New Features:
-* Update to CLDR v43.1 data
+* Updated to CLDR v43.1 data
 * Added new `getCLDRVersion()` API to know the cldr version that the current version of ilib uses
 
 Bug Fixes:
