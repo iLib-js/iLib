@@ -6,7 +6,7 @@
     "#in {num}s": "one#en {num} seg.|#en {num} seg.",
     "#in {num}w": "one#en {num} selm.|#en {num} selm.",
     "#in {num}y": "one#en {num} añu|#en {num} años",
-    "#{num} ms": "one#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "one#{num}día|#{num}díes",
     "#{num}d ago": "one#hai {num} día|#hai {num} díes",
     "#{num}h": "one#{num}hr|#{num}hrs",

@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  *
- * Copyright © 2012-2015, 2017-2023 JEDLSoft
+ * Copyright © 2012-2015, 2017-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,12 +69,12 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.19");
+        test.equal(ilib.getVersion().substring(0,5), "14.20");
         test.done();
     },
     testGetCldrVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getCLDRVersion().substring(0,4), "43.1");
+        test.equal(ilib.getCLDRVersion().substring(0,4), "44.1");
         test.done();
     },
     testGetTimeZoneDefault: function(test) {

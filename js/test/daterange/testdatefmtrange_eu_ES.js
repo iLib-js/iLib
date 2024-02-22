@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_eu_ES.js - test the date range formatter object Basque-Spain
  *
- * Copyright © 2020-2021,2023 JEDLSoft
+ * Copyright © 2020-2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/31, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "11/12/31 (13:45) – (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeInDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a), 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 31(a) (13:45) – (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeInDayLong: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/12/30, 13:45 – 11/12/31, 14:30");
+        test.equal(fmt.format(start, end), "11/12/30 (13:45) – 11/12/31 (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a), 13:45 – 2011(e)ko abe. 31(a), 14:30");
+        test.equal(fmt.format(start, end), "2011(e)ko abe. 30(a) (13:45) – 2011(e)ko abe. 31(a) (14:30)");
         test.done();
     },
     testDateRngFmteuESRangeNextDayLong: function(test) {

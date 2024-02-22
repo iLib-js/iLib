@@ -1,7 +1,7 @@
 /*
  * testdatefmt_eu_ES.js - test the date formatter object in Basque/Spain
  *
- * Copyright © 2020-2021,2023 JEDLSoft
+ * Copyright © 2020-2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '11/9/29, 13:45');
+        test.equal(fmt.format(date), '11/9/29 (13:45)');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_eu_ES: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011(e)ko ira. 29(a), 13:45');
+        test.equal(fmt.format(date), '2011(e)ko ira. 29(a) (13:45)');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_eu_ES: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '11/9/29, 13:45');
+        test.equal(fmt.format(date), '11/9/29 (13:45)');
         test.done();
     },
     testDateFmtShortDateComponentsY_eu_ES: function(test) {
@@ -1370,7 +1370,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Duela 30 segundo");
+        test.equal(fmt.formatRelative(reference, date), "duela 30 segundo");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_eu_ES: function(test) {
@@ -1426,7 +1426,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'Duela 10 minutu');
+        test.equal(fmt.formatRelative(reference, date), 'duela 10 minutu');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_eu_ES: function(test) {
@@ -1482,7 +1482,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'Duela 4 ordu');
+        test.equal(fmt.formatRelative(reference, date), 'duela 4 ordu');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_eu_ES: function(test) {
@@ -1538,7 +1538,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date),  'Duela 4 egun');
+        test.equal(fmt.formatRelative(reference, date),  'duela 4 egun');
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterAfter_eu_ES: function(test) {
@@ -1594,7 +1594,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'Duela 9 aste');
+        test.equal(fmt.formatRelative(reference, date), 'duela 9 aste');
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsAfter_eu_ES: function(test) {
@@ -1650,7 +1650,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'Duela 14 hilabete');
+        test.equal(fmt.formatRelative(reference, date), 'duela 14 hilabete');
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_eu_ES: function(test) {
@@ -1706,7 +1706,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'Duela 21 urte');
+        test.equal(fmt.formatRelative(reference, date), 'duela 21 urte');
         test.done();
     }
 };

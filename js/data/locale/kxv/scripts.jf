@@ -1,0 +1,9 @@
+{
+    "generated": true,
+    "scripts": [
+        "Latn",
+        "Deva",
+        "Orya",
+        "Telu"
+    ]
+}

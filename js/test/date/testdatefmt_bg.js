@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bg_BG.js - test the date formatter object in bulgarian
  *
- * Copyright © 2012-2015,2017,2021,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -129,7 +129,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeMedium_bg_BG: function(test) {
@@ -147,7 +147,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeLong_bg_BG: function(test) {
@@ -165,7 +165,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtSimpleTimeFull_bg_BG: function(test) {
@@ -183,7 +183,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleShort_bg_BG: function(test) {
@@ -201,7 +201,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.11 г., 13:45 ч.');
+        test.equal(fmt.format(date), '29.09.11 г., 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_bg_BG: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.2011 г., 13:45 ч.');
+        test.equal(fmt.format(date), '29.09.2011 г., 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_bg_BG: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45 ч.');
+        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_bg_BG: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45 ч.');
+        test.equal(fmt.format(date), '29 септември 2011 г. в 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_bg_BG: function(test) {
@@ -453,7 +453,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtTypeDateTime_bg_BG: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.09.11 г., 13:45 ч.');
+        test.equal(fmt.format(date), '29.09.11 г., 13:45');
         test.done();
     },
     testDateFmtShortDateComponentsY_bg_BG: function(test) {
@@ -874,7 +874,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtShortTimeComponentsHMS_bg_BG: function(test) {
@@ -892,7 +892,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч.');
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
     testDateFmtShortTimeComponentsHMA_bg_BG: function(test) {
@@ -910,7 +910,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtShortTimeComponentsHMZ_bg_BG: function(test) {
@@ -933,7 +933,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч. EEST');
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_bg_BG: function(test) {
@@ -956,7 +956,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч. EEST');
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_bg_BG: function(test) {
@@ -974,7 +974,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч.');
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSZ_bg_BG: function(test) {
@@ -997,7 +997,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч. EEST');
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_bg_BG: function(test) {
@@ -1020,7 +1020,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч. EEST');
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
     testDateFmtFullTimeComponentsS_bg_BG: function(test) {
@@ -1110,7 +1110,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtFullTimeComponentsHMS_bg_BG: function(test) {
@@ -1128,7 +1128,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч.');
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
     testDateFmtFullTimeComponentsHMA_bg_BG: function(test) {
@@ -1146,7 +1146,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч.');
+        test.equal(fmt.format(date), '13:45');
         test.done();
     },
     testDateFmtFullTimeComponentsHMZ_bg_BG: function(test) {
@@ -1170,7 +1170,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч. EEST');
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_bg_BG: function(test) {
@@ -1194,7 +1194,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45 ч. EEST');
+        test.equal(fmt.format(date), '13:45 EEST');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_bg_BG: function(test) {
@@ -1212,7 +1212,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч.');
+        test.equal(fmt.format(date), '13:45:37');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSZ_bg_BG: function(test) {
@@ -1236,7 +1236,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч. EEST');
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_bg_BG: function(test) {
@@ -1260,7 +1260,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч. EEST');
+        test.equal(fmt.format(date), '13:45:37 EEST');
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_bg_BG: function(test) {
@@ -1284,7 +1284,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45:37 ч. EET');
+        test.equal(fmt.format(date), '13:45:37 EET');
         test.done();
     },
     /*

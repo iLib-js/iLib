@@ -1,7 +1,7 @@
 /*
  * testaddress.js - test the address parsing and formatting routines
  *
- * Copyright © 2013-2015,2017,2023 JEDLSoft
+ * Copyright © 2013-2015, 2017, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1170,7 +1170,7 @@ module.exports.testaddress = {
             "Angola",
             "Anguila",
             "Antigua y Barbuda",
-            "Arabia Saudí",
+            "Arabia Saudita",
             "Argelia",
             "Argentina",
             "Armenia",
@@ -1275,7 +1275,7 @@ module.exports.testaddress = {
             "Islas Cocos",
             "Islas Cook",
             "Islas Feroe",
-            "Islas Georgia del Sur y Sandwich del Sur",
+            "Islas Georgia del Sur y Sándwich del Sur",
             "Islas Heard y McDonald",
             "Islas Malvinas",
             "Islas Marianas del Norte",
@@ -1361,7 +1361,7 @@ module.exports.testaddress = {
             "República Dominicana",
             "Reunión",
             "Ruanda",
-            "Rumanía",
+            "Rumania",
             "Rusia",
             "Sahara Occidental",
             "Samoa",
@@ -1400,7 +1400,7 @@ module.exports.testaddress = {
             "Territorios alejados de Oceanía",
             "Territorios Australes Franceses",
             "Territorios Palestinos",
-            "Timor-Leste",
+            "Timor Oriental",
             "Togo",
             "Tokelau",
             "Tonga",

@@ -1,7 +1,7 @@
 /*
  * testpersiandateastro.js - test the persian date object
  *
- * Copyright © 2014-2015,2017,2021 JEDLSoft
+ * Copyright © 2014-2015,2017,2021,2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -620,7 +620,7 @@ module.exports.testpersiandateastro = {
 
         test.ok(pd !== null);
 
-        test.equal(pd.getJulianDay(), 2458201.1965277777);
+        test.equal(pd.getJulianDay(), 2458201.238194444);
         test.done();
     },
     /*

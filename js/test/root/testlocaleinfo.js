@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, 2020-2023 JEDLSoft
+ * Copyright © 2012-2017, 2020-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1011,7 +1011,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("es-CO");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), "{n} %");
+        test.equal(info.getPercentageFormat(), "{n}%");
         test.done();
     },
     testLocaleInfoGetCurrencyFormat_es_CO: function(test) {
@@ -1035,7 +1035,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("es-CO");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), "-{n} %");
+        test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_es_CO: function(test) {
@@ -3095,9 +3095,8 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("bs-BS");
         test.ok(info !== null);
-        test.equal(info.getPercentageFormat(), "{n} %");
+        test.equal(info.getPercentageFormat(), "{n}%");
         test.done();
-
     },
     testLocaleInfoGetNegativeNumberFormat_bs_BS: function(test) {
         test.expect(2);
@@ -3112,7 +3111,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("bs-BS");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), "-{n} %");
+        test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_bs_BS: function(test) {
@@ -3169,7 +3168,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("bs-ME");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), "{n} %");
+        test.equal(info.getPercentageFormat(), "{n}%");
         test.done();
     },
     testLocaleInfoGetCurrencyFormat_bs_ME: function(test) {
@@ -3193,7 +3192,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("bs-ME");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), "-{n} %");
+        test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_bs_ME: function(test) {
@@ -6778,7 +6777,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("no-BV");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{n} {s}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_no_BV: function(test) {
@@ -6802,7 +6801,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("no-BV");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '{s} -{n}');
+        test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_no_BV: function(test) {
@@ -6858,7 +6857,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("no-SJ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{n} {s}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_no_SJ: function(test) {
@@ -6882,7 +6881,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("no-SJ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '{s} -{n}');
+        test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_no_SJ: function(test) {
@@ -10666,7 +10665,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("km-KH");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), ",");
+        test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_km_KH: function(test) {
@@ -10674,7 +10673,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("km-KH");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), ".");
+        test.equal(info.getGroupingSeparator(), ",");
         test.done();
     },
     testLocaleInfoGetPercentageFormat_km_KH: function(test) {
@@ -11249,6 +11248,20 @@ module.exports.testlocaleinfo = {
         test.equal(li.getLanguageName(), "Oji-Cree");
         test.done();
     },
+    testLocaleInfoGetLanguageName8: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("mic");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Mi'kmaw");
+        test.done();
+    },
+    testLocaleInfoGetLanguageName9: function(test) {
+        test.expect(2);
+        var li = new LocaleInfo("kxv");
+        test.ok(typeof(li) !== "undefined");
+        test.equal(li.getLanguageName(), "Kuvi");
+        test.done();
+    },
     testLocaleInfoGetRegionName1: function(test) {
         test.expect(2);
         var li = new LocaleInfo("he-IL");
@@ -11744,8 +11757,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("es-ES");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "«");
-        test.equal(info.getDelimiterQuotationEnd(), "»");
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
         test.done();
     },
     testLocaleInfoQuotation_zh_CN: function(test) {
@@ -11998,8 +12011,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("tg-TJ");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "“");
-        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getDelimiterQuotationStart(), "»");
+        test.equal(info.getDelimiterQuotationEnd(), "«");
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },

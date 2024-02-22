@@ -7,7 +7,7 @@
         },
         "decimalChar": "٫",
         "digits": "٠١٢٣٤٥٦٧٨٩",
-        "exponential": "اس",
+        "exponential": "أس",
         "groupChar": "٬",
         "negativenumFmt": "؜-{n}",
         "negativepctFmt": "؜-{n}٪؜",

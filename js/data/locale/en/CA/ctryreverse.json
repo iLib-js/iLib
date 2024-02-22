@@ -285,13 +285,13 @@
     "VU": "Vanuatu",
     "WF": "Wallis and Futuna",
     "WS": "Samoa",
-    "XA": "pseudo-accents",
-    "XB": "pseudo-bidi",
+    "XA": "Pseudo-Accents",
+    "XB": "Pseudo-Bidi",
     "XK": "Kosovo",
     "YE": "Yemen",
     "YT": "Mayotte",
     "ZA": "South Africa",
     "ZM": "Zambia",
     "ZW": "Zimbabwe",
-    "ZZ": "unknown region"
+    "ZZ": "Unknown Region"
 }

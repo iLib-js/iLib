@@ -1,7 +1,7 @@
  /*
  * testnumfmt2.js - test the number formatter object
  *
- * Copyright © 2019-2023, JEDLSoft
+ * Copyright © 2019-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -158,9 +158,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"bs-Latn-BA", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "bs-Latn-BA", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
@@ -177,9 +177,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"bs-Latn-ME", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "bs-Latn-ME", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
@@ -853,9 +853,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-AR", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-AR", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -873,9 +873,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-BO", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-BO", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -893,9 +893,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-CL", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-CL", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -913,9 +913,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-CO", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-CO", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -933,9 +933,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-DO", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-DO", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -953,9 +953,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-EC", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-EC", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -993,9 +993,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-GT", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-GT", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1013,9 +1013,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-HN", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-HN", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1053,9 +1053,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-NI", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-NI", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1073,9 +1073,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-PA", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-PA", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1093,9 +1093,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-PE", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-PE", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -1113,9 +1113,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-PR", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-PR", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1133,9 +1133,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-PY", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-PY", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -1153,9 +1153,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-SV", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-SV", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1173,9 +1173,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"es-US", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-US", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1192,9 +1192,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-UY", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-UY", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -1212,9 +1212,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123.456.789,45");
 
         var pctfmt = new NumFmt({locale:"es-VE", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-VE", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -1850,9 +1850,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34 %");
 
         var curfmt = new NumFmt({locale: "nb-NO", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "{s} -{n}");
-        test.equal(curfmt.format(57.05), "kr 57,05"); //NOK
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 kr"); //NOK
         test.done();
     },
     testNumFmt_nl_BE: function(test) {
@@ -2061,7 +2061,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ru-KG", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 лв"); //KGS
+        test.equal(curfmt.format(57.05), '57,05 ⃀'); //KGS
         test.done();
     },
     testNumFmt_ru_KZ: function(test) {
@@ -2733,9 +2733,9 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("km-KH");
         var fmt = new NumFmt({locale:"km-KH", type:"standard", useNative:false});
-        test.equal(li.getDecimalSeparator(), ",");
-        test.equal(li.getGroupingSeparator(), ".");
-        test.equal(fmt.format(123456789.45), "123.456.789,45");
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), "123,456,789.45");
 
         var pctfmt = new NumFmt({locale:"km-KH", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");
@@ -2745,7 +2745,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "km-KH", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n}{s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n}{s}");
-        test.equal(curfmt.format(57.05), "57,05៛"); //KHR
+        test.equal(curfmt.format(57.05), "57.05៛"); //KHR
         test.done();
     },
     testNumFmt_si_LK: function(test) {
@@ -3232,9 +3232,9 @@ module.exports.testnumfmt2 = {
         test.equal(fmt.format(123456789.45), "123 456 789,45");
 
         var pctfmt = new NumFmt({locale:"es-CR", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), "{n} %");
-        test.equal(li.getNegativePercentageFormat(), "-{n} %");
-        test.equal(pctfmt.format(34), "34 %");
+        test.equal(li.getPercentageFormat(), "{n}%");
+        test.equal(li.getNegativePercentageFormat(), "-{n}%");
+        test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "es-CR", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
@@ -3827,7 +3827,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ky-KG", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 лв"); //KGS
+        test.equal(curfmt.format(57.05), '57,05 ⃀'); //KGS
         test.done();
     },
     testNumFmt_ca_AD: function(test) {

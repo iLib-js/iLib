@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2023, JEDLSoft
+ * Copyright © 2019-2024, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -544,8 +544,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-MX"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'a. m.');
-        test.equal(fmt[1].name, 'p. m.');
+        test.equal(fmt[0].name, 'a.m.');
+        test.equal(fmt[1].name, 'p.m.');
 
         test.done();
     },
@@ -614,8 +614,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"es-US"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'a. m.');
-        test.equal(fmt[1].name, 'p. m.');
+        test.equal(fmt[0].name, 'a.m.');
+        test.equal(fmt[1].name, 'p.m.');
 
         test.done();
     },
@@ -1170,7 +1170,7 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ta-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "முற்பகல்");
+        test.equal(fmt[0].name, "AM");
         test.equal(fmt[1].name, "பிற்பகல்");
 
         test.done();

@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ps_PK.js - test the date range formatter object Pashto-Pakistan
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeInDayFull_ps_PK: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 د دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_ps_PK: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 30 ‏1:45 غ.و. – د 2011 د دسمبر 31 ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 دسمبر 30 ‏1:45 غ.و. – ‏2011 دسمبر 31 ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ps_PK: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 30 ‏1:45 غ.و. – د 2011 د دسمبر 31 ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 د دسمبر 30 ‏1:45 غ.و. – ‏2011 د دسمبر 31 ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_ps_PK: function(test) {
@@ -315,7 +315,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 20 – 31');
+        test.equal(fmt.format(start, end), '‏2011 دسمبر 20 – 31');
         test.done();
     },
     testDateRngFmtRangeMultiDayFull_ps_PK: function(test) {
@@ -341,7 +341,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د دسمبر 20 – 31');
+        test.equal(fmt.format(start, end), '‏2011 د دسمبر 20 – 31' );
         test.done();
     },
     testDateRngFmtRangeNextMonthShort_ps_PK: function(test) {
@@ -419,7 +419,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د نومبر 20 – د دسمبر 31');
+        test.equal(fmt.format(start, end), '‏2011 نومبر 20 – ‏دسمبر 31');
         test.done();
     },
     testDateRngFmtRangeNextMonthFull_ps_PK: function(test) {
@@ -445,7 +445,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د نومبر 20 – د دسمبر 31');
+        test.equal(fmt.format(start, end), '‏2011 د نومبر 20 – ‏دسمبر 31');
         test.done();
     },
     testDateRngFmtRangeNextYearShort_ps_PK: function(test) {
@@ -523,7 +523,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د نومبر 20 – د 2012 د جنوري 31');
+        test.equal(fmt.format(start, end), '‏2011 نومبر 20 – ‏2012 جنوري 31');
         test.done();
     },
     testDateRngFmtRangeNextYearFull_ps_PK: function(test) {
@@ -549,7 +549,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د نومبر 20 – د 2012 د جنوري 31');
+        test.equal(fmt.format(start, end), '‏2011 د نومبر 20 – ‏2012 د جنوري 31');
         test.done();
     },
     testDateRngFmtRangeMultiYearShort_ps_PK: function(test) {
@@ -627,7 +627,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د نومبر – د 2014 د جنوري');
+        test.equal(fmt.format(start, end), '‏2011 نومبر – ‏2014 جنوري');
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_ps_PK: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end),  'د 2011 د نومبر – د 2014 د جنوري');
+        test.equal(fmt.format(start, end), '‏2011 د نومبر – ‏2014 د جنوري');
         test.done();
     },
     testDateRngFmtManyYearsFull_ps_PK: function(test) {

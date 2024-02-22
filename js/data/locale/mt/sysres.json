@@ -6,7 +6,7 @@
     "#in {num}s": "one#sa sek. oħra|two#sa {num} sek. oħra|few#sa {num} sek. oħra|many#sa {num}-il sek. oħra|#sa {num} sek. oħra",
     "#in {num}w": "one#sa ġimgħa oħra|two#sa ġimagħtejn oħra|few#sa {num} ġimgħat oħra|many#sa {num}-il ġimgħa oħra|#sa {num} ġimgħa oħra",
     "#in {num}y": "one#fi żmien sena|two#fi żmien sentejn oħra|few#fi żmien {num} snin oħra|many#fi żmien {num}-il sena oħra|#fi żmien {num} sena oħra",
-    "#{num} ms": "one#{num} ms|two#{num} ms|few#{num} ms|many#{num} ms|#{num} ms",
+    "#{num} ms": "#{num} ms",
     "#{num}d": "#{num} j",
     "#{num}d ago": "one#ġurnata ilu|two#jumejn ilu|few#{num} ġranet ilu|many#{num}-il ġurnata ilu|#{num} ġurnata ilu",
     "#{num}h": "#{num} s",

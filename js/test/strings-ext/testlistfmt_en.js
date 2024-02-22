@@ -1,7 +1,7 @@
 /*
  * testlistfmt_en.js - test the list formatter object
  *
- * Copyright © 2017, 2020, 2022 JEDLSoft
+ * Copyright © 2017, 2020, 2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2049,6 +2049,57 @@ module.exports.testlistfmt_en = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["one", "two", "three", "four", "five"]), "one, two, three, four, & five");
+        test.done();
+    },
+    // en-ID
+    testListFmtenIDNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-ID"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one"]), "one");
+        test.done();
+    },
+    testListFmtenIDNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-ID"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one", "two"]), "one and two");
+        test.done();
+    },
+    testListFmtenIDNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-ID"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one", "two", "three"]), "one, two and three");
+        test.done();
+    },
+    testListFmtenIDNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-ID"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three and four");
+        test.done();
+    },
+    testListFmtenIDNumberFormatFive: function(test) {
+        var fmt = new ListFmt({
+            locale: "en-ID"
+        });
+
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["one", "two", "three", "four", "five"]), "one, two, three, four and five");
         test.done();
     }
 };
