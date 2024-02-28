@@ -144,11 +144,20 @@ ilib.clearPseudoLocales();
 ilib._getPlatform = function () {
     if (!ilib._platform) {
         try {
+            if (typeof(self) !== 'undefined' && 
+                    typeof(self.window) === undefined &&
+                    typeof(self.document) === undefined) {
+                ilib._platform = "flutter-js";
+                return ilib._platform;
+            }
+        } catch (e) {}
+
+        try {
             if (typeof(java.lang.Object) !== 'undefined') {
                 ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
                 return ilib._platform;
             }
-        } catch (e) {}
+        } catch (e2) {}
 
         if (typeof(global) !== 'undefined' && global.process &&
                 ((global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') ||
@@ -222,6 +231,10 @@ ilib._top = function() {
     if (typeof(this.top) === 'undefined') {
         this.top = null;
         switch (ilib._getPlatform()) {
+            case "flutter-js":
+                this.top = self;
+                break;
+
             case "rhino":
                 this.top = (function() {
                   return (typeof global === 'object') ? global : this;
