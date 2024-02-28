@@ -441,6 +441,9 @@ ilib.getLocale = function () {
                 var locobj = Qt.locale();
                 ilib.locale = parseLocale(locobj.name || "en-US");
                 break;
+            case 'flutter-js':
+                // TODO: put the right code here!
+                break;
         }
         // test for posix "C" locale
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale.length && ilib.locale !== "C" ? ilib.locale : 'en-US';
@@ -511,6 +514,9 @@ ilib.getTimeZone = function() {
                 if (global.process.env && typeof(global.process.env.TZ) !== "undefined") {
                     ilib.tz = global.process.env.TZ;
                 }
+                break;
+            case 'flutter-js':
+                // TODO: put the right code here!
                 break;
         }
 
