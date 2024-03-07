@@ -24,9 +24,12 @@
 ilib.js
 DateRngFmt.js
 IDate.js
+Utils.js
 MathUtils.js
 SearchUtils.js
 DateFactory.js
+Loader.js
+LocaleInfo.js
 Astro.js
 Calendar.js
 CalendarFactory.js
@@ -57,14 +60,12 @@ CopticDate.js
 INumber.js
 NumFmt.js
 DateFmt.js
-Utils.js
 Locale.js
 IString.js
 ISet.js
 DurationFmt.js
 ResBundle.js
 CType.js
-LocaleInfo.js
 DateRngFmt.js
 isAlnum.js
 isAlpha.js
