@@ -17,7 +17,7 @@
  */
 
 /*
- * ilib-full-inc.js - metafile that includes all other js files
+ * ilib-standard-flutter.js - metafile that includes all other js files
  */
 
 /* !depends
