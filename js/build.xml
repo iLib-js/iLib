@@ -170,6 +170,30 @@ limitations under the License.
             </exec>
         </sequential>
     </macrodef>
+    <macrodef name="runassembleJava">
+        <attribute name="tgtfilename"/>
+        <attribute name="srcfilename"/>
+        <attribute name="locales"/>
+        <sequential>
+            <java dir="${build.lib}"
+                    fork="true"
+                    maxmemory="6000m"
+                    classname="com.ilib.tools.jsa.JSAssemble"
+                    classpathref="project.classpath.jsa">
+                <arg value="-I"/>
+                <arg value="${build.locale}"/>
+                <arg value="-I"/>
+                <arg value="${build.lib}"/>
+                <arg value="-o"/>
+                <arg value="@{tgtfilename}"/>
+                <arg value="-l"/>
+                <arg value="@{locales}"/>
+                <arg value="-v"/>
+                <arg value="${version}"/>
+                <arg value="@{srcfilename}"/>
+            </java>
+        </sequential>
+    </macrodef>
     <target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
         <uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/core-assembled-uncompiled-web/ilib-core.js">
             <srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -209,6 +233,12 @@ limitations under the License.
             <srcfiles dir="${build.lib}" includes="metafiles/ilib-standard-webpack.js"/>
             <srcfiles dir="${build.locale}" includes="**/*.json" />
         </uptodate>
+    </target>
+    <target name="assemble.standard.flutter" depends="prepare,gen.manifest.locale" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+        <runassembleJava
+            tgtfilename="${build.output.js}/ilib-standard-flutter.js"
+            srcfilename="${build.lib}/ilib-standard-flutter-inc.js"
+            locales="af-ZA,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,az-Latn-AZ,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cs-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-CN,en-ET,en-GB,en-GE,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-JP,en-KE,en-LK,en-LR,en-MM,en-MW,en-MX,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TW,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CA,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,et-EE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-GQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,id-ID,is-IS,it-CH,it-IT,ja-JP,ka-GE,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ko-US,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,or-IN,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-GQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,si-LK,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,sw-Latn-KE,ta-IN,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW"/>
     </target>
     <target name="assemble.standard.assembled" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
         <runassemble size="standard"/>
