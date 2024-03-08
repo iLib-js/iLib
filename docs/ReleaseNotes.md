@@ -8,7 +8,7 @@ Published as version 14.21.0
 New Features:
 * Update to generate assemed js file by JSAssembl java tool code. This file will work on QuickJS Engine used by [flutter-js](https://pub.dev/packages/flutter_js)
 * Fixed they JSAssemble tool code to generate the region data with name `und_`
-  * e.g ilib.data.localeinfo_und_IR.
+  * e.g ilib.data.localeinfo_und_IR = {}.
 
 Build 029
 -------
