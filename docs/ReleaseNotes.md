@@ -1,6 +1,13 @@
 Release Notes for Version 14
 ============================
 
+Build 030
+-------
+Published as version 14.21.0
+
+New Features:
+* Update to generate assemed js file by JSAssembl java tool code. This file will work on QuickJS Engine used by [flutter-js](https://pub.dev/packages/flutter_js)
+
 Build 029
 -------
 Published as version 14.20.0

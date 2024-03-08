@@ -69,7 +69,7 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.20");
+        test.equal(ilib.getVersion().substring(0,5), "14.21");
         test.done();
     },
     testGetCldrVersion: function(test) {
