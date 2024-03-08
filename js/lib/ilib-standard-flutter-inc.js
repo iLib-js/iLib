@@ -92,16 +92,7 @@ DurationFmt.js
 DateRngFmt.js
 ResBundle.js
 TimeZone.js
-GlyphString.js
-NormString.js
 CaseMapper.js
-Charset.js
-Charmap.js
-CharmapFactory.js
-CharmapTable.js
-UTF8.js
-UTF16BE.js
-UTF16LE.js
 Country.js
 ListFmt.js
 */
