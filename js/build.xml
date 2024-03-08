@@ -240,6 +240,14 @@ limitations under the License.
             srcfilename="${build.lib}/ilib-standard-flutter-inc.js"
             locales="af-ZA,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,az-Latn-AZ,bg-BG,bn-IN,bs-Latn-BA,bs-Latn-ME,cs-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-CN,en-ET,en-GB,en-GE,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-JP,en-KE,en-LK,en-LR,en-MM,en-MW,en-MX,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TW,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CA,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,et-EE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-GQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,id-ID,is-IS,it-CH,it-IT,ja-JP,ka-GE,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ko-US,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,ml-IN,mn-Cyrl-MN,mr-IN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,or-IN,pa-IN,pa-PK,pl-PL,pt-AO,pt-BR,pt-GQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,si-LK,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,sw-Latn-KE,ta-IN,te-IN,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,ur-IN,ur-PK,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW"/>
     </target>
+    <target name="assemble.standard.flutter.compiled" depends="assemble.standard.flutter" description="uglify assembles the ilib-standard-flutter.js files">
+        <exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+            <arg value="${build.output.js}/ilib-standard-flutter.js"/>
+            <arg value="-o"/>
+            <arg value="${build.output.js}/ilib-standard-flutter-compiled.js"/>
+        </exec>
+    </target>
     <target name="assemble.standard.assembled" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
         <runassemble size="standard"/>
         <runassemble size="standard" compilation="compiled"/>
