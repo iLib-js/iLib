@@ -6,7 +6,7 @@ Build 030
 Published as version 14.21.0
 
 New Features:
-* Updated to generate the assemed js file by JSAssembl java tool code. This file will work on [QuickJS](https://bellard.org/quickjs/) Engine used by [flutter-js](https://pub.dev/packages/flutter_js)
+* Updated to generate the assembled js file by JSAssemble java tool code. This file will work on [QuickJS](https://bellard.org/quickjs/) Engine used by [flutter-js](https://pub.dev/packages/flutter_js)
 * Fixed the JSAssemble tool code to generate the region data with name `und_`
   * e.g ilib.data.localeinfo_und_IR = {}.
 
