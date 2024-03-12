@@ -183,7 +183,7 @@ public class JSFile
 						localeDir.append("/");
 						localeDir.append(locale.getVariant());
 						fileName = localeDir + "/" + baseFileName;
-				        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+						locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 					}
 				}
 			} else if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
@@ -195,8 +195,8 @@ public class JSFile
 				if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 					localeDir.append("/");
 					localeDir.append(locale.getVariant());
-			        fileName = localeDir + "/" + baseFileName;
-			        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+					fileName = localeDir + "/" + baseFileName;
+					locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 				}
 			}
 		}
@@ -232,19 +232,19 @@ public class JSFile
 			if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getVariant());
-		        fileName = "und/" + localeDir + "/" + baseFileName;
-		        undlocaleDir = "und/" + localeDir;
-		        locate(includePath, massagedBaseName+"_"+undlocaleDir.toString().replace('/', '_'), fileName, allFiles);
+				fileName = "und/" + localeDir + "/" + baseFileName;
+				undlocaleDir = "und/" + localeDir;
+				locate(includePath, massagedBaseName+"_"+undlocaleDir.toString().replace('/', '_'), fileName, allFiles);
 			}
 		}
 		
 		localeDir = new StringBuilder();
 		if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 			localeDir.append(locale.getVariant());
-	        fileName = localeDir + "/" + baseFileName;
-	        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			fileName = localeDir + "/" + baseFileName;
+			locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 		}
-    }
+	}
     
     /**
      * Find all json files for a given basename across all locales. This method always finds
