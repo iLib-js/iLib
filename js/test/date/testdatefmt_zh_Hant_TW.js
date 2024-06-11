@@ -152,7 +152,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
     },
     testDateFmtSimpleTimeLong_zh_Hant_TW: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "zh-Hant-TW", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "zh-Hant-TW", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

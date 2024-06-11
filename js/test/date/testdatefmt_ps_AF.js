@@ -154,7 +154,7 @@ module.exports.testdatefmt_ps_AF = {
     },
     testDateFmtSimpleTimeLong_ps_AF: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ps-AF", timelength: "long", type: "time", useNative: false});
+        var fmt = new DateFmt({locale: "ps-AF", length: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
 
         var date = new PersianDate({

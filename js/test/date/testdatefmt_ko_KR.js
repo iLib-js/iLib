@@ -320,7 +320,7 @@ module.exports.testdatefmt_ko_KR = {
     },
     testDateFmtSimpleTimeLong_ko_KR: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ko-KR", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ko-KR", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

@@ -154,7 +154,7 @@ module.exports.testdatefmt_cop_EG = {
     },
     testDateFmtSimpleTimeLong_cop_EG: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "cop-EG", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "cop-EG", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new CopticDate({

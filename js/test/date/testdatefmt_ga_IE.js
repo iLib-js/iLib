@@ -152,7 +152,7 @@ module.exports.testdatefmt_ga_IE = {
     },
     testDateFmtSimpleTimeLong_ga_IE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ga-IE", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ga-IE", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
