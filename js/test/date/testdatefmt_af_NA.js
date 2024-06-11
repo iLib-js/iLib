@@ -368,7 +368,7 @@ module.exports.testdatefmt_af_NA = {
     },
     testDateFmtSimpleTimeLong_af_NA: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "af-NA", calendar: "gregorian", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "af-NA", calendar: "gregorian", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

@@ -152,7 +152,7 @@ module.exports.testdatefmt_uz_Cyrl_UZ = {
     },
     testDateFmtSimpleTimeLong_uz_Cyrl_UZ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "uz-Cyrl-UZ", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "uz-Cyrl-UZ", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

@@ -152,7 +152,7 @@ module.exports.testdatefmt_eu_ES = {
     },
     testDateFmtSimpleTimeLong_eu_ES: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "eu-ES", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "eu-ES", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

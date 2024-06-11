@@ -169,7 +169,7 @@ module.exports.testdatefmt_bn_IN = {
     },
     testDateFmtINSimpleTimeLong_bn_IN: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "bn-IN", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "bn-IN", length: "long", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
 
         var date = new GregorianDate({

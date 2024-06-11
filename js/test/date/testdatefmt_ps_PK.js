@@ -152,7 +152,7 @@ module.exports.testdatefmt_ps_PK = {
     },
     testDateFmtSimpleTimeLong_ps_PK: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ps-PK", timelength: "long", type: "time", useNative: false});
+        var fmt = new DateFmt({locale: "ps-PK", length: "long", type: "time", useNative: false});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

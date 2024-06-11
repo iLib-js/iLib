@@ -153,7 +153,7 @@ module.exports.testdatefmt_sw_KE = {
     },
     testDateFmtSimpleTimeLong_sw_KE: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "sw-Latn-KE", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "sw-Latn-KE", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

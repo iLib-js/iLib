@@ -169,7 +169,7 @@ module.exports.testdatefmt_kn_IN = {
     },
     testDateFmtINSimpleTimeLong_kn_IN: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "kn-IN", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "kn-IN", length: "long", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
 
         var date = new GregorianDate({
