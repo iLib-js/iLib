@@ -153,7 +153,7 @@ module.exports.testdatefmt_si_LK = {
     },
     testDateFmtSimpleTimeLong_si_LK: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "si-LK", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "si-LK", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

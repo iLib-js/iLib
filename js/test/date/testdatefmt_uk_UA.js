@@ -153,7 +153,7 @@ module.exports.testdatefmt_uk_UA = {
     },
     testDateFmtSimpleTimeLong_uk_UA: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "uk-UA", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "uk-UA", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

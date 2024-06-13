@@ -153,7 +153,7 @@ module.exports.testdatefmt_ca = {
     },
     testDateFmtSimpleTimeLong_ca_AD: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ca-AD", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ca-AD", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -1828,7 +1828,7 @@ module.exports.testdatefmt_ca = {
     },
     testDateFmtSimpleTimeLong_ca_ES: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ca-ES", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ca-ES", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

@@ -145,7 +145,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
     },
     testDateFmtSimpleTimeLong_ku_Arab_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

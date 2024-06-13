@@ -168,7 +168,7 @@ module.exports.testdatefmt_ml_IN = {
     },
     testDateFmtINSimpleTimeLong_ml_IN: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ml-IN", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ml-IN", length: "long", type: "time"});
         test.ok(typeof(fmt) !== "undefined");
 
         var date = new GregorianDate({

@@ -152,7 +152,7 @@ module.exports.testdatefmt_tk_TM = {
     },
     testDateFmtSimpleTimeLong_tk_TM: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "tk-TM", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "tk-TM", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
