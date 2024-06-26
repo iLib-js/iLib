@@ -47,7 +47,7 @@ var DateFactory = require("./DateFactory.js");
  * locale is not specified, then the default locale of the app or web page will be used.
  *
  * <li><i>calendar</i> - the type of calendar to use for this format. The value should
- * be a sting containing the name of the calendar. Currently, the supported
+ * be a string containing the name of the calendar. Currently, the supported
  * types are "gregorian", "julian", "arabic", "hebrew", or "chinese". If the
  * calendar is not specified, then the default calendar for the locale is used. When the
  * calendar type is specified, then the format method must be called with an instance of

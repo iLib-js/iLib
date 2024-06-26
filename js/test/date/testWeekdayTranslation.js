@@ -1773,9 +1773,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "Fr");
         test.equal(value[6], "Sa");
 
-        fmt = new DateFmt({locale:"en-LK", date:"w", length: "medium", useNative:false, timezone:"local"});
+        fmt = new DateFmt({locale:"en-LK", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
-            fmt = new DateFmt({locale:"en-LK", date:"w", length: "short", useNative:false, timezone:"local"});
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
