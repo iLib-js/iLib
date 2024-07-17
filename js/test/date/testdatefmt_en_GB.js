@@ -297,8 +297,10 @@ module.exports.testdatefmt_en_GB = {
                 } else {
                     test.equal(fmt.format(date), "Thursday, September 29, 2011");
                 }
-            } else {
+            } else if (cldrVersion < 44) {
                 test.equal(fmt.format(date), "Thursday, 29 September 2011");
+            } else {
+                test.equal(fmt.format(date), "Thursday 29 September 2011");
             }
         } else {
             test.equal(fmt.format(date), "Thursday, 29 September 2011");
