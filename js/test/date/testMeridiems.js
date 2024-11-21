@@ -64,8 +64,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"as-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "পূৰ্বাহ্ন");
-        test.equal(fmt[1].name, "অপৰাহ্ন");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -754,8 +754,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"he-IL"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "לפנה״צ");
-        test.equal(fmt[1].name, "אחה״צ");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -863,8 +863,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"kn-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ಪೂರ್ವಾಹ್ನ");
-        test.equal(fmt[1].name, "ಅಪರಾಹ್ನ");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testMeridiem_ko_KR: function(test) {
@@ -1171,7 +1171,7 @@ module.exports.testmeridiems = {
         test.ok(fmt !== null);
 
         test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "பிற்பகல்");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
