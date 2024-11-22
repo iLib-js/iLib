@@ -526,7 +526,7 @@ module.exports.testdatefmt_eu_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "I");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
     testDateFmtShortDateComponentsN_eu_ES: function(test) {

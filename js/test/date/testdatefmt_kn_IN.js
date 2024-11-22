@@ -1,7 +1,7 @@
 /*
  * testdatefmt_kn_IN.js - test the date formatter object in Kannada for India
  *
- * Copyright © 2013-2015,2017-2018,2023 JEDLSoft
+ * Copyright © 2013-2015, 2017-2018, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeShort_kn_IN1: function(test) {
@@ -146,7 +146,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeMedium_kn_IN: function(test) {
@@ -164,7 +164,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeLong_kn_IN: function(test) {
@@ -182,7 +182,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeFull_kn_IN: function(test) {
@@ -200,7 +200,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleShort_kn_IN: function(test) {
@@ -218,7 +218,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11, 01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "29/9/11, 01:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleMedium_kn_IN: function(test) {
@@ -236,7 +236,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂ 29, 2011, 01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂ 29, 2011, 01:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleLong_kn_IN: function(test) {
@@ -254,7 +254,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂಬರ್ 29, 2011 ರಂದು 01:45 ಅಪರಾಹ್ನ ಸಮಯಕ್ಕೆ");
+        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂಬರ್ 29, 2011 ರಂದು 01:45 PM ಸಮಯಕ್ಕೆ");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_kn_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂಬರ್ 29, 2011 ರಂದು 01:45 ಅಪರಾಹ್ನ ಸಮಯಕ್ಕೆ");
+        test.equal(fmt.format(date), "ಸೆಪ್ಟೆಂಬರ್ 29, 2011 ರಂದು 01:45 PM ಸಮಯಕ್ಕೆ");
         test.done();
     },
     testDateFmtINTemplateCalendar_kn_IN: function(test) {
@@ -470,7 +470,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINTypeDateTime_kn_IN: function(test) {
@@ -488,7 +488,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11, 01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "29/9/11, 01:45 PM");
         test.done();
     },
     testDateFmtINShortDateComponentsY_kn_IN: function(test) {
@@ -524,7 +524,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ಸೆ");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
     testDateFmtINShortDateComponentsN_kn_IN: function(test) {
@@ -902,7 +902,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMZ_kn_IN: function(test) {
@@ -924,7 +924,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMAZ_kn_IN: function(test) {
@@ -947,7 +947,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSA_kn_IN: function(test) {
@@ -965,7 +965,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSZ_kn_IN: function(test) {
@@ -988,7 +988,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSAZ_kn_IN: function(test) {
@@ -1011,7 +1011,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsS_kn_IN: function(test) {
@@ -1086,7 +1086,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMS_kn_IN: function(test) {
@@ -1104,7 +1104,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMA_kn_IN: function(test) {
@@ -1122,7 +1122,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45 PM");
         test.done();
     },
 
@@ -1149,7 +1149,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSA_kn_IN: function(test) {
@@ -1167,7 +1167,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ");
+        test.equal(fmt.format(date), "01:45:37 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSZ_kn_IN: function(test) {
@@ -1191,7 +1191,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSAZ_kn_IN: function(test) {
@@ -1215,7 +1215,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtINWithTimeZoneAndNoDST_kn_IN: function(test) {
@@ -1239,7 +1239,7 @@ module.exports.testdatefmt_kn_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45:37 ಅಪರಾಹ್ನ IST");
+        test.equal(fmt.format(date), "01:45:37 PM IST");
         test.done();
     },
     testDateFmtFormatRelativeWitknnMinuteAfter_kn_IN: function(test) {
