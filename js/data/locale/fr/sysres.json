@@ -79,6 +79,7 @@
     "E3": "M",
     "E4": "J",
     "E5": "V",
+    "E6": "S",
     "EE0": "di",
     "EE1": "lu",
     "EE2": "ma",
@@ -150,6 +151,8 @@
     "NN7": "ju",
     "NN8": "ao",
     "NN9": "se",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} j|#{num} j",
     "durationMediumHours": "one#{num}h|#{num}h",
     "durationMediumMillis": "one#{num}ms|#{num}ms",
@@ -162,5 +165,8 @@
     "finalSeparatorLong": " et ",
     "finalSeparatorMedium": " et ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

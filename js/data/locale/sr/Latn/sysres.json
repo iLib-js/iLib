@@ -65,7 +65,7 @@
     "1#in 1 year|#in {num} years": "one#za {num} godinu|few#za {num} godine|#za {num} godina",
     "1#in 1 yr|#in {num} yrs": "one#za {num} godinu|few#za {num} godine|#za {num} godina",
     "B0": "ponoć",
-    "B2": "ujutro",
+    "B2": "ujutru",
     "B3": "podne",
     "B4": "po podne",
     "B6": "uveče",

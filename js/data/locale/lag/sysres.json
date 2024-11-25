@@ -130,6 +130,7 @@
     "N6": "I",
     "N7": "M",
     "N8": "V",
+    "N9": "S",
     "NN1": "Fú",
     "NN10": "In",
     "NN11": "Sa",
@@ -156,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

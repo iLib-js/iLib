@@ -151,6 +151,8 @@
     "NN7": "7K",
     "NN8": "8K",
     "NN9": "9K",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} kurã|#{num} kurã ag",
     "durationMediumHours": "#{num} h",
     "durationMediumMillis": "#{num} ms",
@@ -163,5 +165,8 @@
     "finalSeparatorLong": " kar ",
     "finalSeparatorMedium": " kar ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

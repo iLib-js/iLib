@@ -75,6 +75,7 @@
     "B7": "öösel",
     "E0": "P",
     "E1": "E",
+    "E2": "T",
     "E3": "K",
     "E4": "N",
     "E5": "R",
@@ -150,6 +151,8 @@
     "NN7": "ju",
     "NN8": "au",
     "NN9": "se",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} päev|#{num} päeva",
     "durationMediumHours": "one#{num} t|#{num} t",
     "durationMediumMillis": "#{num} ms",
@@ -162,5 +165,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

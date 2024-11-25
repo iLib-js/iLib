@@ -122,7 +122,7 @@
     "MMMM2": "dzodze",
     "MMMM3": "tedoxe",
     "MMMM4": "afɔfĩe",
-    "MMMM5": "dama",
+    "MMMM5": "dame",
     "MMMM6": "masa",
     "MMMM7": "siamlɔm",
     "MMMM8": "deasiamime",
@@ -165,6 +165,8 @@
     "finalSeparatorLong": ", kple ",
     "finalSeparatorMedium": ", kple ",
     "finalSeparatorShort": ", kple ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

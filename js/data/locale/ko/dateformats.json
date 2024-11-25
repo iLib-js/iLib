@@ -86,8 +86,10 @@
                 "s": "M월"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
-                "m": "M"
+                "m": "M",
+                "s": "M"
             },
             "my": {
                 "f": "yyyy년 MMMM",
@@ -100,8 +102,21 @@
                 "l": "yyyy년",
                 "m": "yyyy년",
                 "s": "yy년"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
+        "order": "{date} {time}",
         "range": {
             "c00": {
                 "f": "{sy}년 {sm} {sd}일 {st} – {et}",
@@ -165,13 +180,28 @@
                 "ahms": "a h:mm:ss",
                 "ahmsz": "a h:mm:ss z",
                 "ahmz": "a h:mm z",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "hmz": "h:mm z",
                 "m": "m",
+                "ms": "mm:ss",
                 "s": "s"
             },
             "24": {
                 "ah": "H시",
+                "ahm": "H:mm",
+                "ahms": "H:mm:ss",
+                "ahmsz": "H:mm:ss z",
+                "ahmz": "H:mm z",
                 "h": "H시",
+                "hm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "hmz": "H:mm z",
                 "m": "m",
+                "ms": "mm:ss",
                 "s": "s"
             }
         }

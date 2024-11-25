@@ -1,6 +1,12 @@
 {
     "gregorian": {
         "time": {
+            "12": {
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
+            },
             "24": {
                 "ahm": "HH:mm",
                 "ahmz": "HH:mm z",

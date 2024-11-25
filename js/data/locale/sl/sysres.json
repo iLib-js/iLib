@@ -166,6 +166,8 @@
     "finalSeparatorLong": " in ",
     "finalSeparatorMedium": " in ",
     "finalSeparatorShort": " in ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

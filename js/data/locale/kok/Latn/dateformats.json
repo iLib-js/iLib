@@ -1,0 +1,92 @@
+{
+    "gregorian": {
+        "date": {
+            "dm": {
+                "m": "d MMM"
+            },
+            "dmw": {
+                "f": "EEEE, d MMMM",
+                "l": "EEE, d MMMM",
+                "m": "EE, d MMM",
+                "s": "E, d-M"
+            },
+            "dmwy": {
+                "f": "EEEE, d MMMM, yyyy",
+                "l": "EEE, d MMMM, yyyy",
+                "m": "EE, d MMM, yyyy",
+                "s": "E, d-M-yy"
+            },
+            "dmy": {
+                "f": "d MMMM, yyyy",
+                "l": "d MMMM, yyyy",
+                "m": "d MMM, yyyy"
+            },
+            "dw": {
+                "f": "EEEE, d",
+                "l": "EEE, d",
+                "m": "EE, d",
+                "s": "E, d"
+            },
+            "my": {
+                "f": "MMMM, yyyy",
+                "l": "MMMM, yyyy",
+                "m": "MMM, yyyy"
+            }
+        },
+        "order": {
+            "f": "{date}, {time} 'vaztam'",
+            "l": "{date}, {time} 'vaztam'"
+        },
+        "range": {
+            "c00": {
+                "f": "{sd} {sm}, {sy}, {st} vaztam – {et}",
+                "l": "{sd} {sm}, {sy}, {st} vaztam – {et}",
+                "m": "{sd} {sm}, {sy}, {st} – {et}"
+            },
+            "c01": {
+                "f": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "l": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
+            },
+            "c02": {
+                "f": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "l": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
+            },
+            "c03": {
+                "f": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "l": "{sd} {sm}, {sy}, {st} vaztam – {ed} {em}, {ey}, {et} vaztam",
+                "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
+            },
+            "c10": {
+                "f": "{sd} – {ed} {em}, {ey}",
+                "l": "{sd} – {ed} {em}, {ey}",
+                "m": "{sd} – {ed} {em}, {ey}"
+            },
+            "c11": {
+                "f": "{sd} {sm} – {ed} {em}, {ey}",
+                "l": "{sd} {sm} – {ed} {em}, {ey}",
+                "m": "{sd} {sm} – {ed} {em}, {ey}"
+            },
+            "c12": {
+                "f": "{sd} {sm}, {sy} – {ed} {em}, {ey}",
+                "l": "{sd} {sm}, {sy} – {ed} {em}, {ey}",
+                "m": "{sd} {sm}, {sy} – {ed} {em}, {ey}"
+            },
+            "c20": {
+                "f": "{sm}, {sy} – {em}, {ey}",
+                "l": "{sm}, {sy} – {em}, {ey}",
+                "m": "{sm}, {sy} – {em}, {ey}"
+            }
+        },
+        "time": {
+            "12": {
+                "ah": "a h",
+                "ahm": "a h:mm",
+                "ahms": "a h:mm:ss",
+                "ahmsz": "a h:mm:ss z",
+                "ahmz": "a h:mm z"
+            }
+        }
+    }
+}

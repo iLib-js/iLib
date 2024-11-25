@@ -71,6 +71,7 @@
     "E3": "M",
     "E4": "X",
     "E5": "V",
+    "E6": "S",
     "EE0": "do",
     "EE1": "ll",
     "EE2": "ma",
@@ -204,6 +205,8 @@
     "finalSeparatorLong": " y ",
     "finalSeparatorMedium": " y ",
     "finalSeparatorShort": " y ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

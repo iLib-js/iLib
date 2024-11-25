@@ -199,6 +199,8 @@
     "NN7": "ші",
     "NN8": "та",
     "NN9": "қы",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} күн|#{num} күн",
     "durationMediumHours": "one#{num} сағ|#{num} сағ",
     "durationMediumMillis": "one#{num} мс|#{num} мс",
@@ -212,5 +214,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }
