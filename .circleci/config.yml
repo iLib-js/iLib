@@ -71,14 +71,14 @@ workflows:
       - test:
           docker_image: cimg/node:8.17.0
       - test:
-          docker_image: cimg/node:10.24
+          docker_image: cimg/node:10.24.1-browsers
       - test:
-          docker_image: cimg/node:12.22.12
+          docker_image: cimg/node:12.22.12-browsers
       - test:
-          docker_image: cimg/node:14.21
+          docker_image: cimg/node:14.21.3-browsers
       - test:
-          docker_image: cimg/node:16.20
+          docker_image: cimg/node:16.20.2-browsers
       - test:
-          docker_image: cimg/node:18.20
+          docker_image: cimg/node:18.20.4-browsers
       - test:
-          docker_image: cimg/node:20.15
+          docker_image: cimg/node:20.15.1-browsers
