@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_yo_BJ.js - test the date range formatter object Yoruba-Benin
  *
- * Copyright © 2022-2023 JEDLSoft
+ * Copyright © 2022-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 níti 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31 Oshù Ɔ̀pɛ̀ 2011 ní 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeInDayFull_yo_BJ: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Ɔ̀pɛ 2011 ní 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31 Oshù Ɔ̀pɛ̀ 2011 ní 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_yo_BJ: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 níti 13:45 – 31 Ɔ̀pɛ 2011 níti 14:30");
+        test.equal(fmt.format(start, end), '30 Oshù Ɔ̀pɛ̀ 2011 ní 13:45 – 31 Oshù Ɔ̀pɛ̀ 2011 ní 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_yo_BJ: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Ɔ̀pɛ 2011 ní 13:45 – 31 Ɔ̀pɛ 2011 ní 14:30");
+        test.equal(fmt.format(start, end), '30 Oshù Ɔ̀pɛ̀ 2011 ní 13:45 – 31 Oshù Ɔ̀pɛ̀ 2011 ní 14:30');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_yo_BJ: function(test) {
@@ -315,7 +315,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 Ɔ̀pɛ 2011");
+        test.equal(fmt.format(start, end), '20 – 31 Oshù Ɔ̀pɛ̀ 2011');
         test.done();
     },
     testDateRngFmtRangeMultiDayFull_yo_BJ: function(test) {
@@ -341,7 +341,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 Ɔ̀pɛ 2011");
+        test.equal(fmt.format(start, end), '20 – 31 Oshù Ɔ̀pɛ̀ 2011');
         test.done();
     },
     testDateRngFmtRangeNextMonthShort_yo_BJ: function(test) {
@@ -419,7 +419,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 Bél – 31 Ɔ̀pɛ 2011");
+        test.equal(fmt.format(start, end), '20 Oshù Bélú – 31 Oshù Ɔ̀pɛ̀ 2011');
         test.done();
     },
     testDateRngFmtRangeNextMonthFull_yo_BJ: function(test) {
@@ -445,7 +445,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 Bél – 31 Ɔ̀pɛ 2011");
+        test.equal(fmt.format(start, end), '20 Oshù Bélú – 31 Oshù Ɔ̀pɛ̀ 2011');
         test.done();
     },
     testDateRngFmtRangeNextYearShort_yo_BJ: function(test) {
@@ -523,7 +523,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 Bél 2011 – 31 Shɛ́r 2012");
+        test.equal(fmt.format(start, end), '20 Oshù Bélú 2011 – 31 Oshù Shɛ́rɛ́ 2012');
         test.done();
     },
     testDateRngFmtRangeNextYearFull_yo_BJ: function(test) {
@@ -549,7 +549,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 Bél 2011 – 31 Shɛ́r 2012");
+        test.equal(fmt.format(start, end), '20 Oshù Bélú 2011 – 31 Oshù Shɛ́rɛ́ 2012');
         test.done();
     },
     testDateRngFmtRangeMultiYearShort_yo_BJ: function(test) {
@@ -627,7 +627,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Bél 2011 – Shɛ́r 2014");
+        test.equal(fmt.format(start, end), 'Oshù Bélú 2011 – Oshù Shɛ́rɛ́ 2014');
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_yo_BJ: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmtrange_yo_BJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Bél 2011 – Shɛ́r 2014");
+        test.equal(fmt.format(start, end), 'Oshù Bélú 2011 – Oshù Shɛ́rɛ́ 2014');
         test.done();
     },
     testDateRngFmtManyYearsFull_yo_BJ: function(test) {
