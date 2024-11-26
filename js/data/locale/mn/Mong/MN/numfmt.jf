@@ -4,14 +4,12 @@
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
-        },
-        "decimalChar": ","
+        }
     },
     "numfmt": {
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
-        },
-        "decimalChar": ","
+        }
     }
 }

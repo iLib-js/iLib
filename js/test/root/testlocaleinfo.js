@@ -9065,7 +9065,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), ",");
+        test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_st_LS: function(test) {
@@ -9073,7 +9073,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), ' ');
+        test.equal(info.getGroupingSeparator(), ',');
         test.done();
     },
     testLocaleInfoGetPercentageFormat_st_LS: function(test) {

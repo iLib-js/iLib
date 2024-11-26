@@ -5,7 +5,6 @@
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
-        "decimalChar": ".",
         "exponential": "E",
         "groupChar": ",",
         "negativenumFmt": "-{n}",
