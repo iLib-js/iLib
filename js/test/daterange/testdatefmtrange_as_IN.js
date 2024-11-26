@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_as_IN.js - test the date range formatter object in Assamese/india
  *
- * Copyright © 2012-2017,2023 JEDLSoft
+ * Copyright © 2012-2017, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩১-১২-২০১১, অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩১-১২-২০১১, PM ১.৪৫ – PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩১-১২-২০১১, অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩১-১২-২০১১, PM ১.৪৫ – PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayLong: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ at PM ১.৪৫ – PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayFull: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ at PM ১.৪৫ – PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayShort: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩০-১২-২০১১, অপৰাহ্ন ১.৪৫ – ৩১-১২-২০১১, অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩০-১২-২০১১, PM ১.৪৫ – ৩১-১২-২০১১, PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩০-১২-২০১১, অপৰাহ্ন ১.৪৫ – ৩১-১২-২০১১, অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩০-১২-২০১১, PM ১.৪৫ – ৩১-১২-২০১১, PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayLong: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ at PM ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ at PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayFull: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ at অপৰাহ্ন ২.৩০');
+        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ at PM ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ at PM ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeMultiDayShort: function(test) {

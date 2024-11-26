@@ -361,7 +361,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "বুঃ");
         test.equal(value[4], "বৃঃ");
         test.equal(value[5], "শুঃ");
-        test.equal(value[6], "শনি");
+        test.equal(value[6], "শঃ");
 
         fmt = new DateFmt({locale:"bn-IN", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -576,26 +576,26 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "søn");
-        test.equal(value[1], "man");
-        test.equal(value[2], "tir");
-        test.equal(value[3], "ons");
-        test.equal(value[4], "tor");
-        test.equal(value[5], "fre");
-        test.equal(value[6], "lør");
+        test.equal(value[0], "søn.");
+        test.equal(value[1], "man.");
+        test.equal(value[2], "tirs.");
+        test.equal(value[3], "ons.");
+        test.equal(value[4], "tors.");
+        test.equal(value[5], "fre.");
+        test.equal(value[6], "lør.");
 
         fmt = new DateFmt({locale:"da-DK", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "sø");
-        test.equal(value[1], "ma");
-        test.equal(value[2], "ti");
-        test.equal(value[3], "on");
-        test.equal(value[4], "to");
-        test.equal(value[5], "fr");
-        test.equal(value[6], "lø");
+        test.equal(value[0], "sø.");
+        test.equal(value[1], "ma.");
+        test.equal(value[2], "ti.");
+        test.equal(value[3], "on.");
+        test.equal(value[4], "to.");
+        test.equal(value[5], "fr.");
+        test.equal(value[6], "lø.");
 
         fmt = new DateFmt({locale:"da-DK", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -2653,13 +2653,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "DO");
-        test.equal(value[1], "LU");
-        test.equal(value[2], "MA");
-        test.equal(value[3], "MI");
-        test.equal(value[4], "JU");
-        test.equal(value[5], "VI");
-        test.equal(value[6], "SA");
+        test.equal(value[0], "do");
+        test.equal(value[1], "lu");
+        test.equal(value[2], "ma");
+        test.equal(value[3], "mi");
+        test.equal(value[4], "ju");
+        test.equal(value[5], "vi");
+        test.equal(value[6], "sá");
 
         fmt = new DateFmt({locale:"es-CL", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -12622,13 +12622,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Àìk");
-        test.equal(value[1], "Aj");
-        test.equal(value[2], "Ìsẹ́g");
-        test.equal(value[3], "Ọjọ́r");
-        test.equal(value[4], "Ọjọ́b");
-        test.equal(value[5], "Ẹt");
-        test.equal(value[6], "Àbám");
+        test.equal(value[0], "Àìkú");
+        test.equal(value[1], "Ajé");
+        test.equal(value[2], "Ìsẹ́gun");
+        test.equal(value[3], "Ọjọ́rú");
+        test.equal(value[4], "Ọjọ́bọ");
+        test.equal(value[5], "Ẹtì");
+        test.equal(value[6], "Àbámẹ́ta");
 
         test.done();
     },
@@ -12640,13 +12640,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Àìk");
-        test.equal(value[1], "Aj");
-        test.equal(value[2], "Ìsẹ́g");
-        test.equal(value[3], "Ọjọ́r");
-        test.equal(value[4], "Ọjọ́b");
-        test.equal(value[5], "Ẹt");
-        test.equal(value[6], "Àbám");
+        test.equal(value[0], "Àìkú");
+        test.equal(value[1], "Ajé");
+        test.equal(value[2], "Ìsẹ́gun");
+        test.equal(value[3], "Ọjọ́rú");
+        test.equal(value[4], "Ọjọ́bọ");
+        test.equal(value[5], "Ẹtì");
+        test.equal(value[6], "Àbámẹ́ta");
         test.done();
     },
     testWeekdayTranslationShort_yo_NG: function(test) {
@@ -12693,13 +12693,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Àìk");
-        test.equal(value[1], "Aj");
-        test.equal(value[2], "Ìsɛ́g");
-        test.equal(value[3], "Ɔjɔ́r");
-        test.equal(value[4], "Ɔjɔ́b");
-        test.equal(value[5], "Ɛt");
-        test.equal(value[6], "Àbám");
+        test.equal(value[0], "Àìkú");
+        test.equal(value[1], "Ajé");
+        test.equal(value[2], "Ìsɛ́gun");
+        test.equal(value[3], "Ɔjɔ́rú");
+        test.equal(value[4], "Ɔjɔ́bɔ");
+        test.equal(value[5], "Ɛtì");
+        test.equal(value[6], "Àbámɛ́ta");
 
         test.done();
     },
@@ -12711,13 +12711,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Àìk");
-        test.equal(value[1], "Aj");
-        test.equal(value[2], "Ìsɛ́g");
-        test.equal(value[3], "Ɔjɔ́r");
-        test.equal(value[4], "Ɔjɔ́b");
-        test.equal(value[5], "Ɛt");
-        test.equal(value[6], "Àbám");
+        test.equal(value[0], "Àìkú");
+        test.equal(value[1], "Ajé");
+        test.equal(value[2], "Ìsɛ́gun");
+        test.equal(value[3], "Ɔjɔ́rú");
+        test.equal(value[4], "Ɔjɔ́bɔ");
+        test.equal(value[5], "Ɛtì");
+        test.equal(value[6], "Àbámɛ́ta");
         test.done();
     },
     testWeekdayTranslationShort_yo_BJ: function(test) {

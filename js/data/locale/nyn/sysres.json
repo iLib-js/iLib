@@ -65,6 +65,7 @@
     "1#in 1 wk|#in {num} wks": "#+{num} w",
     "1#in 1 year|#in {num} years": "#+{num} y",
     "1#in 1 yr|#in {num} yrs": "#+{num} y",
+    "E0": "S",
     "E1": "K",
     "E2": "R",
     "E3": "S",
@@ -142,6 +143,8 @@
     "NN7": "KM",
     "NN8": "KM",
     "NN9": "KM",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "#{num} d",
     "durationMediumHours": "#{num} h",
     "durationMediumMillis": "#{num} ms",
@@ -154,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

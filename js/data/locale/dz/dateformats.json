@@ -44,6 +44,7 @@
                 "s": "LL"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -54,10 +55,20 @@
                 "m": "སྤྱི་ལོ་yyyy ཟླ་MMM",
                 "s": "yyyy-MM"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
+        "order": "{date} {time}",
         "range": {
             "c00": {
                 "f": "{sy} {sm} ཚེས་{sd} {st} – {et}",
@@ -121,10 +132,14 @@
                 "ahms": "ཆུ་ཚོད་h:mm:ss a",
                 "ahmsz": "ཆུ་ཚོད་h:mm:ss a z",
                 "ahmz": "ཆུ་ཚོད་ h སྐར་མ་ mm a z",
+                "h": "h",
                 "hm": "ཆུ་ཚོད་ h སྐར་མ་ mm",
                 "hms": "ཆུ་ཚོད་h:mm:ss",
                 "hmsz": "ཆུ་ཚོད་h:mm:ss z",
-                "hmz": "ཆུ་ཚོད་ h སྐར་མ་ mm z"
+                "hmz": "ཆུ་ཚོད་ h སྐར་མ་ mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "ཆུ་ཚོད་HH",
@@ -136,7 +151,10 @@
                 "hm": "ཆུ་ཚོད་ HH སྐར་མ་ mm",
                 "hms": "ཆུ་ཚོད་HH:mm:ss",
                 "hmsz": "ཆུ་ཚོད་HH:mm:ss z",
-                "hmz": "ཆུ་ཚོད་ HH སྐར་མ་ mm z"
+                "hmz": "ཆུ་ཚོད་ HH སྐར་མ་ mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

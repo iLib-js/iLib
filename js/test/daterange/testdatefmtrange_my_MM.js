@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_my_MM.js - test the date range formatter object Burmese-Myanmar
  *
- * Copyright © 2020-2021,2023 JEDLSoft
+ * Copyright © 2020-2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 31 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011 ဒီ 31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayLong: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeInDayFull: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 31 13:45 – 14:30' );
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayShort: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 30 13:45 – 2011၊ ဒီ 31 14:30');
+        test.equal(fmt.format(start, end), '2011 ဒီ 30 13:45 – 2011 ဒီ 31 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayLong: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 13:45 – 2011၊ ဒီဇင်ဘာ 31 14:30');
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 30 13:45 – 2011 ဒီဇင်ဘာ 31 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeNextDayFull: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 30 13:45 – 2011၊ ဒီဇင်ဘာ 31 14:30');
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 30 13:45 – 2011 ဒီဇင်ဘာ 31 14:30');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiDayShort: function(test) {
@@ -289,7 +289,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီ 20 – 31');
+        test.equal(fmt.format(start, end), '2011 ဒီ 20 – 31');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiDayLong: function(test) {
@@ -315,7 +315,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 20 – 31');
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 20 – 31');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiDayFull: function(test) {
@@ -341,7 +341,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ ဒီဇင်ဘာ 20 – 31');
+        test.equal(fmt.format(start, end), '2011 ဒီဇင်ဘာ 20 – 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextMonthShort: function(test) {
@@ -393,7 +393,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နို 20 – 2011၊ ဒီ 31');
+        test.equal(fmt.format(start, end), '2011 နို 20 – 2011 ဒီ 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextMonthLong: function(test) {
@@ -419,7 +419,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ 20 – ဒီဇင်ဘာ 31');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ 20 – ဒီဇင်ဘာ 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextMonthFull: function(test) {
@@ -445,7 +445,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ 20 – ဒီဇင်ဘာ 31');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ 20 – ဒီဇင်ဘာ 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextYearShort: function(test) {
@@ -497,7 +497,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နို 20 – 2012၊ ဇန် 31');
+        test.equal(fmt.format(start, end), '2011 နို 20 – 2012 ဇန် 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextYearLong: function(test) {
@@ -523,7 +523,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ 20 – 2012၊ ဇန်နဝါရီ 31');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ 20 – 2012 ဇန်နဝါရီ 31');
         test.done();
     },
     testDateRngFmtmyMMRangeNextYearFull: function(test) {
@@ -549,7 +549,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ 20 – 2012၊ ဇန်နဝါရီ 31');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ 20 – 2012 ဇန်နဝါရီ 31');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiYearShort: function(test) {
@@ -601,7 +601,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နို – 2014၊ ဇန်');
+        test.equal(fmt.format(start, end), '2011 နို – 2014 ဇန်');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiYearLong: function(test) {
@@ -627,7 +627,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ – 2014၊ ဇန်နဝါရီ');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ – 2014 ဇန်နဝါရီ');
         test.done();
     },
     testDateRngFmtmyMMRangeMultiYearFull: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmtrange_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011၊ နိုဝင်ဘာ – 2014၊ ဇန်နဝါရီ');
+        test.equal(fmt.format(start, end), '2011 နိုဝင်ဘာ – 2014 ဇန်နဝါရီ');
         test.done();
     },
     testDateRngFmtmyMMManyYearsFull: function(test) {

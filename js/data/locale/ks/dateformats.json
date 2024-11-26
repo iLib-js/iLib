@@ -44,44 +44,58 @@
                 "s": "L"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MMM"
+                "m": "MMM",
+                "s": "M"
             },
             "my": {
                 "f": "MMMM, yyyy",
                 "l": "MMMM, yyyy",
                 "m": "MMM, yyyy",
                 "s": "‏M/yy"
+            },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
+            "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "s": "yy"
             }
         },
         "order": {
-            "f": "{time} پٮ۪ٹھۍ {date}",
-            "l": "{time} پٮ۪ٹھۍ {date}",
+            "f": "{time} پٮ۪ٹھؠ {date}",
+            "l": "{time} پٮ۪ٹھؠ {date}",
             "m": "{date}, {time}",
             "s": "{date}, {time}"
         },
         "range": {
             "c00": {
-                "f": "{st} – {et} پٮ۪ٹھۍ {sm} {sd}, {sy}",
-                "l": "{st} – {et} پٮ۪ٹھۍ {sm} {sd}, {sy}",
+                "f": "{st} – {et} پٮ۪ٹھؠ {sm} {sd}, {sy}",
+                "l": "{st} – {et} پٮ۪ٹھؠ {sm} {sd}, {sy}",
                 "m": "{sm} {sd}, {sy}, {st} – {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
-                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "f": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },
             "c02": {
-                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
-                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "f": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },
             "c03": {
-                "f": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
-                "l": "{st} پٮ۪ٹھۍ {sm} {sd}, {sy} – {et} پٮ۪ٹھۍ {em} {ed}, {ey}",
+                "f": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
+                "l": "{st} پٮ۪ٹھؠ {sm} {sd}, {sy} – {et} پٮ۪ٹھؠ {em} {ed}, {ey}",
                 "m": "{sm} {sd}, {sy}, {st} – {em} {ed}, {ey}, {et}",
                 "s": "‏{sm}/{sd}/{sy}, {st} – ‏{em}/{ed}/{ey}, {et}"
             },
@@ -118,15 +132,19 @@
         },
         "time": {
             "12": {
-                "ah": "‏h a",
+                "ah": "‏h a",
                 "ahm": "‏h:mm a",
                 "ahms": "‏h:mm:ss a",
                 "ahmsz": "‏h:mm:ss a z",
                 "ahmz": "‏h:mm a z",
+                "h": "h",
                 "hm": "‏h:mm",
                 "hms": "‏h:mm:ss",
                 "hmsz": "‏h:mm:ss z",
-                "hmz": "‏h:mm z"
+                "hmz": "‏h:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "‏HH",
@@ -138,7 +156,10 @@
                 "hm": "‏HH:mm",
                 "hms": "‏HH:mm:ss",
                 "hmsz": "‏HH:mm:ss z",
-                "hmz": "‏HH:mm z"
+                "hmz": "‏HH:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

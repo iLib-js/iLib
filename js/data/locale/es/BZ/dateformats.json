@@ -1,13 +1,5 @@
 {
     "gregorian": {
-        "date": {
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            }
-        },
         "time": {
             "24": {
                 "ah": "HH",

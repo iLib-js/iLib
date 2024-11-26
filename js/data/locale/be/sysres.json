@@ -191,6 +191,8 @@
     "NN7": "лі",
     "NN8": "жн",
     "NN9": "ве",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} сут|few#{num} сут|many#{num} сут|#{num} сут",
     "durationMediumHours": "one#{num} гадз|few#{num} гадз|many#{num} гадз|#{num} гадз",
     "durationMediumMillis": "one#{num} мс|few#{num} мс|many#{num} мс|#{num} мс",
@@ -204,5 +206,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }
