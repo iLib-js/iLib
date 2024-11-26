@@ -12092,7 +12092,7 @@ module.exports.testlocaleinfo = {
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), '„');
-        test.equal(info.getDelimiterQuotationEnd(), '„');
+        test.equal(info.getDelimiterQuotationEnd(), '”');
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
@@ -12101,7 +12101,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("sr-Latn-ME");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationStart(), '„');
         test.equal(info.getDelimiterQuotationEnd(), "”");
         test.equal(info.getPaperSize(), "A4");
         test.done();
