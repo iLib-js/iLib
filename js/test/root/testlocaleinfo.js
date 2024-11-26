@@ -12011,8 +12011,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("tg-TJ");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "»");
-        test.equal(info.getDelimiterQuotationEnd(), "«");
+        test.equal(info.getDelimiterQuotationStart(), '“');
+        test.equal(info.getDelimiterQuotationEnd(), '”');
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
@@ -12079,6 +12079,26 @@ module.exports.testlocaleinfo = {
     testLocaleInfoQuotation_yo_NG: function(test) {
         test.expect(4);
         var info = new LocaleInfo("yo-NG");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_sr_Cyrl_BA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("sr-Cyrl-BA");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), '„');
+        test.equal(info.getDelimiterQuotationEnd(), '„');
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_sr_Latn_ME: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("sr-Latn-ME");
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
