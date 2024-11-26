@@ -44,8 +44,10 @@
                 "s": "c"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MMM"
+                "m": "MMM",
+                "s": "M"
             },
             "my": {
                 "f": "MMMM. yyyy",
@@ -60,6 +62,9 @@
                 "s": "c"
             },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -132,22 +137,29 @@
                 "ahms": "h.mm.ssa",
                 "ahmsz": "h.mm.ssa z",
                 "ahmz": "h.mma z",
+                "h": "h",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",
                 "hmz": "h.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             },
             "24": {
+                "ah": "H",
                 "ahm": "H.mm",
                 "ahms": "H.mm.ss",
                 "ahmsz": "H.mm.ss z",
                 "ahmz": "H.mm z",
+                "h": "H",
                 "hm": "H.mm",
                 "hms": "H.mm.ss",
                 "hmsz": "H.mm.ss z",
                 "hmz": "H.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             }
         }
     }

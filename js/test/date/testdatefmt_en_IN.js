@@ -110,7 +110,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September, 2011");
+        test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
     testDateFmtINSimpleTimeShort: function(test) {
@@ -254,7 +254,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September, 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "29 September 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtINTemplateCalendar: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T 29/09");
+        test.equal(fmt.format(date), "T, 29/09");
         test.done();
     },
     testDateFmtINShortDateComponentsWDMY: function(test) {
@@ -651,7 +651,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T 29/09/11");
+        test.equal(fmt.format(date), "T, 29/09/11");
         test.done();
     },
     testDateFmtINFullDateComponentsY: function(test) {
@@ -741,7 +741,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "September, 2011");
+        test.equal(fmt.format(date), "September 2011");
         test.done();
     },
     testDateFmtINFullDateComponentsDMY: function(test) {
@@ -759,7 +759,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 September, 2011");
+        test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
     testDateFmtINFullDateComponentsWDM: function(test) {
@@ -777,7 +777,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday 29 September");
+        test.equal(fmt.format(date), "Thursday, 29 September");
         test.done();
     },
     testDateFmtINFullDateComponentsWDMY: function(test) {
@@ -795,7 +795,7 @@ module.exports.testdatefmt_en_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Thursday 29 September, 2011");
+        test.equal(fmt.format(date), "Thursday, 29 September 2011");
         test.done();
     },
     testDateFmtINShortTimeComponentsS: function(test) {

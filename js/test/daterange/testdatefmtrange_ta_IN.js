@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ta_IN.js - test the date range formatter object in Tamil/India
  *
- * Copyright © 2012-2017,2020-2021 JEDLSoft
+ * Copyright © 2012-2017, 2020-2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11, பிற்பகல் 1:45 – பிற்பகல் 2:30");
+        test.equal(fmt.format(start, end), '31/12/11, 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayMedium_ta_IN: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 டிச., 2011, பிற்பகல் 1:45 – பிற்பகல் 2:30");
+        test.equal(fmt.format(start, end), '31 டிச., 2011, 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayLong_ta_IN: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayFull_ta_IN: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '31 டிசம்பர், 2011 அன்று 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_ta_IN: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11, பிற்பகல் 1:45 – 31/12/11, பிற்பகல் 2:30");
+        test.equal(fmt.format(start, end), '30/12/11, 1:45 PM – 31/12/11, 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_ta_IN: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 டிச., 2011, பிற்பகல் 1:45 – 31 டிச., 2011, பிற்பகல் 2:30");
+        test.equal(fmt.format(start, end), '30 டிச., 2011, 1:45 PM – 31 டிச., 2011, 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayLong_ta_IN: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – 31 டிசம்பர், 2011 அன்று பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று 1:45 PM – 31 டிசம்பர், 2011 அன்று 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ta_IN: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_ta_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று பிற்பகல் 1:45 – 31 டிசம்பர், 2011 அன்று பிற்பகல் 2:30');
+        test.equal(fmt.format(start, end), '30 டிசம்பர், 2011 அன்று 1:45 PM – 31 டிசம்பர், 2011 அன்று 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_ta_IN: function(test) {

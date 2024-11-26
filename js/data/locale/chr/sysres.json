@@ -98,6 +98,8 @@
     "EEEE4": "ᏅᎩᏁᎢᎦ",
     "EEEE5": "ᏧᎾᎩᎶᏍᏗ",
     "EEEE6": "ᎤᎾᏙᏓᏈᏕᎾ",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "ᎤᏃ",
     "MMM10": "ᏚᏂ",
     "MMM11": "ᏅᏓ",
@@ -160,5 +162,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

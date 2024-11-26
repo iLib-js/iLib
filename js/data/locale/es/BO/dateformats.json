@@ -7,12 +7,6 @@
             "dmy": {
                 "m": "d MMM 'de' yyyy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
             "my": {
                 "m": "MMM 'de' yyyy"
             }

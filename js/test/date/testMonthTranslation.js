@@ -655,8 +655,8 @@ module.exports.testmonthtranslation = {
         test.equal(value[2], "Mar");
         test.equal(value[3], "Apr");
         test.equal(value[4], "May");
-        test.equal(value[5], "Jun");
-        test.equal(value[6], "Jul");
+        test.equal(value[5], "June");
+        test.equal(value[6], "July");
         test.equal(value[7], "Aug");
         test.equal(value[8], "Sept");
         test.equal(value[9], "Oct");
@@ -2482,36 +2482,36 @@ module.exports.testmonthtranslation = {
         }
         // full/long length: standAlone Format _ LLLL*
 
-        test.equal(value[0], "فروردین");
-        test.equal(value[1], "اردیبهشت");
-        test.equal(value[2], "خرداد");
-        test.equal(value[3], "تیر");
-        test.equal(value[4], "مرداد");
-        test.equal(value[5], "شهریور");
-        test.equal(value[6], "مهر");
-        test.equal(value[7], "آبان");
-        test.equal(value[8], "آذر");
-        test.equal(value[9], "دی");
-        test.equal(value[10], "بهمن");
-        test.equal(value[11], "اسفند");
+        test.equal(value[0], 'حمل');
+        test.equal(value[1], 'ثور');
+        test.equal(value[2], 'جوزا');
+        test.equal(value[3], 'سرطان');
+        test.equal(value[4], 'اسد');
+        test.equal(value[5], 'سنبلهٔ');
+        test.equal(value[6], 'میزان');
+        test.equal(value[7], 'عقرب');
+        test.equal(value[8], 'قوس');
+        test.equal(value[9], 'جدی');
+        test.equal(value[10], 'دلو');
+        test.equal(value[11], 'حوت');
 
         var fmt = new DateFmt({locale:"fa-AF", date:"m", length: "medium", useNative:false, timezone:"local"});
 
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
         }
-        test.equal(value[0], "فروردین");
-        test.equal(value[1], "اردیبهشت");
-        test.equal(value[2], "خرداد");
-        test.equal(value[3], "تیر");
-        test.equal(value[4], "مرداد");
-        test.equal(value[5], "شهریور");
-        test.equal(value[6], "مهر");
-        test.equal(value[7], "آبان");
-        test.equal(value[8], "آذر");
-        test.equal(value[9], "دی");
-        test.equal(value[10], "بهمن");
-        test.equal(value[11], "اسفند");
+        test.equal(value[0], 'حمل');
+        test.equal(value[1], 'ثور');
+        test.equal(value[2], 'جوزا');
+        test.equal(value[3], 'سرطان');
+        test.equal(value[4], 'اسد');
+        test.equal(value[5], 'سنبلهٔ');
+        test.equal(value[6], 'میزان');
+        test.equal(value[7], 'عقرب');
+        test.equal(value[8], 'قوس');
+        test.equal(value[9], 'جدی');
+        test.equal(value[10], 'دلو');
+        test.equal(value[11], 'حوت');
 
         test.done();
     },
@@ -8098,7 +8098,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[2], 'Maachị');
         test.equal(value[3], 'Epreel');
         test.equal(value[4], 'Mee');
-        test.equal(value[5], 'Juun');
+        test.equal(value[5], 'Jun');
         test.equal(value[6], 'Julaị');
         test.equal(value[7], 'Ọgọọst');
         test.equal(value[8], 'Septemba');
@@ -8226,19 +8226,19 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], 'Ṣẹ́');
-        test.equal(value[1], 'Èr');
-        test.equal(value[2], 'Ẹr');
-        test.equal(value[3], 'Ìg');
-        test.equal(value[4], 'Ẹ̀b');
-        test.equal(value[5], 'Òk');
-        test.equal(value[6], 'Ag');
-        test.equal(value[7], 'Òg');
-        test.equal(value[8], 'Ow');
-        test.equal(value[9], 'Ọ̀w');
-        test.equal(value[10], 'Bé');
-        test.equal(value[11], 'Ọ̀p');
-       test.done();
+        test.equal(value[0], 'Oṣù Ṣẹ́rẹ́');
+        test.equal(value[1], 'Oṣù Èrèlè');
+        test.equal(value[2], 'Oṣù Ẹrẹ̀nà');
+        test.equal(value[3], 'Oṣù Ìgbé');
+        test.equal(value[4], 'Oṣù Ẹ̀bibi');
+        test.equal(value[5], 'Oṣù Òkúdu');
+        test.equal(value[6], 'Oṣù Agẹmọ');
+        test.equal(value[7], 'Oṣù Ògún');
+        test.equal(value[8], 'Oṣù Owewe');
+        test.equal(value[9], 'Oṣù Ọ̀wàrà');
+        test.equal(value[10], 'Oṣù Bélú');
+        test.equal(value[11], 'Oṣù Ọ̀pẹ̀');
+        test.done();
     },
     testMonthTranslate_yo_BJ: function(test) {
         test.expect(12);
@@ -8252,18 +8252,18 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], 'Shɛ́');
-        test.equal(value[1], 'Èr');
-        test.equal(value[2], 'Ɛr');
-        test.equal(value[3], 'Ìg');
-        test.equal(value[4], 'Ɛ̀b');
-        test.equal(value[5], 'Òk');
-        test.equal(value[6], 'Ag');
-        test.equal(value[7], 'Òg');
-        test.equal(value[8], 'Ow');
-        test.equal(value[9], 'Ɔ̀w');
-        test.equal(value[10], 'Bé');
-        test.equal(value[11], 'Ɔ̀p');
+        test.equal(value[0], 'Oshù Shɛ́rɛ́');
+        test.equal(value[1], 'Oshù Èrèlè');
+        test.equal(value[2], 'Oshù Ɛrɛ̀nà');
+        test.equal(value[3], 'Oshù Ìgbé');
+        test.equal(value[4], 'Oshù Ɛ̀bibi');
+        test.equal(value[5], 'Oshù Òkúdu');
+        test.equal(value[6], 'Oshù Agɛmɔ');
+        test.equal(value[7], 'Oshù Ògún');
+        test.equal(value[8], 'Oshù Owewe');
+        test.equal(value[9], 'Oshù Ɔ̀wàrà');
+        test.equal(value[10], 'Oshù Bélú');
+        test.equal(value[11], 'Oshù Ɔ̀pɛ̀');
        test.done();
     }
 }

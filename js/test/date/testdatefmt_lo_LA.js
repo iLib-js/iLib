@@ -1,7 +1,7 @@
 /*
  * testdatefmt_lo_LA.js - test the date formatter object in Lao
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -634,7 +634,7 @@ module.exports.testdatefmt_lo_LA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'ພຫ ທີ 29/9');
+        test.equal(fmt.format(date), 'ພຫ, 29/9');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_lo_LA: function(test) {
@@ -652,7 +652,7 @@ module.exports.testdatefmt_lo_LA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'ພຫ ທີ 29/9/2011');
+        test.equal(fmt.format(date), 'ພຫ, 29/9/2011');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_lo_LA: function(test) {
@@ -670,7 +670,7 @@ module.exports.testdatefmt_lo_LA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'ພະຫັດ ທີ 29 ກັນຍາ');
+        test.equal(fmt.format(date), 'ພະຫັດ, 29 ກັນຍາ');
         test.done();
     },
     testDateFmtFullDateComponentsY_lo_LA: function(test) {
@@ -796,7 +796,7 @@ module.exports.testdatefmt_lo_LA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'ວັນພະຫັດ ທີ 29 ກັນຍາ');
+        test.equal(fmt.format(date), 'ວັນພະຫັດ, 29 ກັນຍາ');
         test.done();
     },
     testDateFmtFullDateComponentsWDMY_lo_LA: function(test) {
@@ -814,7 +814,7 @@ module.exports.testdatefmt_lo_LA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'ວັນພະຫັດ ທີ 29 ກັນຍາ 2011');
+        test.equal(fmt.format(date), 'ວັນພະຫັດ, 29 ກັນຍາ 2011');
         test.done();
     },
     testDateFmtShortTimeComponentsS_lo_LA: function(test) {

@@ -124,7 +124,9 @@
     "N11": "M",
     "N12": "M",
     "N2": "M",
+    "N3": "M",
     "N4": "M",
+    "N5": "M",
     "N6": "M",
     "N7": "M",
     "N8": "M",
@@ -155,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

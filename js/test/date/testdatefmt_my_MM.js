@@ -1,7 +1,7 @@
 /*
  * testdatefmt_my_MM.js - test the date formatter object in Burmese-Myanmar
  *
- * Copyright © 2020-2021,2023 JEDLSoft
+ * Copyright © 2020-2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29');
+        test.equal(fmt.format(date), '2011 စက် 29');
         test.done();
     },
     testDateFmtSimpleLong_my_MM: function(test) {
@@ -93,7 +93,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29');
         test.done();
     },
     testDateFmtSimpleFull_my_MM: function(test) {
@@ -111,7 +111,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29');
         test.done();
     },
     testDateFmtSimpleTimeShort_my_MM: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက် 29 13:45');
+        test.equal(fmt.format(date), '2011 စက် 29 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_my_MM: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_my_MM: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29 13:45');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_my_MM: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/9၊ က');
+        test.equal(fmt.format(date), '29/9 က');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_my_MM: function(test) {
@@ -652,7 +652,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/9/11၊ က');
+        test.equal(fmt.format(date), '29/9/11 က');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_my_MM: function(test) {
@@ -670,7 +670,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'စက်တင်ဘာ 29၊ ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29 ကြာသပတေး');
         test.done();
     },
     testDateFmtFullDateComponentsY_my_MM: function(test) {
@@ -760,7 +760,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_my_MM: function(test) {
@@ -778,7 +778,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_my_MM: function(test) {
@@ -796,7 +796,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'စက်တင်ဘာ 29၊ ကြာသပတေး');
+        test.equal(fmt.format(date), 'စက်တင်ဘာ 29 ကြာသပတေး');
         test.done();
     },
     testDateFmtFullDateComponentsWDMY_my_MM: function(test) {
@@ -814,7 +814,7 @@ module.exports.testdatefmt_my_MM = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011၊ စက်တင်ဘာ 29၊ ကြာသပတေး');
+        test.equal(fmt.format(date), '2011 စက်တင်ဘာ 29 ကြာသပတေး');
         test.done();
     },
     testDateFmtShortTimeComponentsS_my_MM: function(test) {

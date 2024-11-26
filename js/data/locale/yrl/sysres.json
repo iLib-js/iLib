@@ -74,10 +74,12 @@
     "B6": "PM",
     "B7": "pituna ramẽ",
     "E0": "M",
+    "E1": "M",
     "E2": "M",
     "E3": "M",
     "E4": "S",
     "E5": "Y",
+    "E6": "S",
     "EE0": "mit",
     "EE1": "mur",
     "EE2": "mmk",
@@ -149,6 +151,8 @@
     "NN7": "pm",
     "NN8": "ps",
     "NN9": "pi",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "#{num} ara",
     "durationMediumHours": "#{num} h",
     "durationMediumMillis": "#{num} ms",
@@ -161,5 +165,8 @@
     "finalSeparatorLong": " asuí ",
     "finalSeparatorMedium": " asuí ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

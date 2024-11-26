@@ -124,7 +124,9 @@
     "N11": "D",
     "N12": "K",
     "N2": "C",
+    "N3": "M",
     "N4": "E",
+    "N5": "M",
     "N6": "M",
     "N7": "G",
     "N8": "E",
@@ -136,6 +138,7 @@
     "NN2": "Cʼ",
     "NN3": "Me",
     "NN4": "Eb",
+    "NN5": "Ma",
     "NN6": "Me",
     "NN7": "Go",
     "NN8": "Eo",
@@ -154,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

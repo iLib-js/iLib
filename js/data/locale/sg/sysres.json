@@ -67,6 +67,7 @@
     "1#in 1 yr|#in {num} yrs": "#+{num} y",
     "E0": "K",
     "E1": "S",
+    "E2": "T",
     "E3": "S",
     "E4": "K",
     "E5": "P",
@@ -120,7 +121,10 @@
     "MMMM9": "Mvuka",
     "N1": "N",
     "N10": "N",
+    "N11": "N",
     "N12": "K",
+    "N2": "F",
+    "N3": "M",
     "N4": "N",
     "N5": "B",
     "N6": "F",
@@ -153,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

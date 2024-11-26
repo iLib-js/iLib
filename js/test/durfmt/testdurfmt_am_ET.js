@@ -1,7 +1,7 @@
 /*
  * testdurfmt_am_ET.js - test the duration formatter object
  *
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -148,7 +148,7 @@ module.exports.testdurfmt_am_ET = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ፣ 1 ሰከንድ');
+        test.equal(duration.toString(), '1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ እና 1 ሰከንድ');
         test.done();
     },
     testDurFmtAMFormatShortDefaultStyle2: function(test) {
@@ -270,7 +270,7 @@ module.exports.testdurfmt_am_ET = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ 2 ሰከንዶች');
+        test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች እና 2 ሰከንዶች');
         test.done();
     },
     testDurFmtAMFormatShortDefaultStyle3: function(test) {
@@ -392,7 +392,7 @@ module.exports.testdurfmt_am_ET = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ 3 ሰከንዶች');
+        test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች እና 3 ሰከንዶች');
         test.done();
     },
     testDurFmtAMFormatShortDefaultStyle11: function(test) {
@@ -514,7 +514,7 @@ module.exports.testdurfmt_am_ET = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ 11 ሰከንዶች');
+        test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች እና 11 ሰከንዶች');
         test.done();
     },
     testDurFmtAMAsync1: function(test) {
@@ -535,7 +535,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(),'1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ፣ 1 ሰከንድ');
+                test.equal(duration.toString(),'1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ እና 1 ሰከንድ');
                 test.done();
             }
         });
@@ -558,7 +558,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(), '1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ፣ 1 ሰከንድ');
+                test.equal(duration.toString(), '1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ እና 1 ሰከንድ');
                 test.done();
             }
         });
@@ -627,7 +627,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 3,
                     second: 3
                 });
-                test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ 3 ሰከንዶች');
+                test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች እና 3 ሰከንዶች');
                 test.done();
             }
         });
@@ -650,7 +650,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 3,
                     second: 3
                 });
-                test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች፣ 3 ሰከንዶች');
+                test.equal(duration.toString(), '3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች እና 3 ሰከንዶች');
                 test.done();
             }
         });
@@ -673,7 +673,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 11,
                     second: 11
                 });
-                test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ 11 ሰከንዶች');
+                test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች እና 11 ሰከንዶች');
                 test.done();
             }
         });
@@ -696,7 +696,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 11,
                     second: 11
                 });
-                test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች፣ 11 ሰከንዶች');
+                test.equal(duration.toString(), '11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች እና 11 ሰከንዶች');
                 test.done();
             }
         });
@@ -744,11 +744,10 @@ module.exports.testdurfmt_am_ET = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ 2 ሰከንዶች');
+                test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች እና 2 ሰከንዶች');
                 test.done();
             }
         });
-
     },
     testDurFmtAMAsyncWithLocale2: function(test) {
         test.expect(2);
@@ -769,11 +768,10 @@ module.exports.testdurfmt_am_ET = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ 2 ሰከንዶች');
+                test.equal(duration.toString(), '2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች እና 2 ሰከንዶች');
                 test.done();
             }
         });
-
     },
     testDurFmtAMFormatWesternShortClockAsync1: function(test) {
         test.expect(2);

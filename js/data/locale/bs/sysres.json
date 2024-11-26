@@ -1,7 +1,7 @@
 {
     "#in {num}d": "one#za {num} d.|few#za {num} d.|#za {num} d.",
     "#in {num}h": "one#za {num} sat|few#za {num} sata|#za {num} sati",
-    "#in {num}mi": "one#za {num} min.|few#za {num} min.|#za {num} min.",
+    "#in {num}mi": "one#za {num} min|few#za {num} min.|#za {num} min.",
     "#in {num}mo": "one#za {num} mj.|few#za {num} mj.|#za {num} mj.",
     "#in {num}s": "one#za {num} sek.|few#za {num} sek.|#za {num} sek.",
     "#in {num}w": "one#za {num} sed.|few#za {num} sed.|#za {num} sed.",
@@ -79,6 +79,7 @@
     "E3": "S",
     "E4": "Č",
     "E5": "P",
+    "E6": "S",
     "EE0": "ned",
     "EE1": "pon",
     "EE2": "uto",
@@ -101,7 +102,7 @@
     "EEEE5": "petak",
     "EEEE6": "subota",
     "G-1": "p. n. e.",
-    "G1": "n.e.",
+    "G1": "n. e.",
     "MMM1": "jan",
     "MMM10": "okt",
     "MMM11": "nov",
@@ -192,6 +193,8 @@
     "finalSeparatorLong": " i ",
     "finalSeparatorMedium": " i ",
     "finalSeparatorShort": " i ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

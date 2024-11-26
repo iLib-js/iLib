@@ -93,6 +93,8 @@
     "EEEE4": "बिरेस्तार",
     "EEEE5": "शुक्रार",
     "EEEE6": "शेनवार",
+    "G-1": "BC",
+    "G1": "AD",
     "L1": "1",
     "L10": "10",
     "L11": "11",
@@ -189,8 +191,8 @@
     "NN7": "जु",
     "NN8": "ऑग",
     "NN9": "सप",
-    "a0": "सकाळ",
-    "a1": "सांज",
+    "a0": "सकाळीं",
+    "a1": "सांजे",
     "c0": "आ",
     "c1": "सो",
     "c2": "मं",
@@ -231,5 +233,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

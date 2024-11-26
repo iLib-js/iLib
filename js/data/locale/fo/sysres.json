@@ -65,8 +65,12 @@
     "1#in 1 wk|#in {num} wks": "one#um {num} viku|#um {num} vikur",
     "1#in 1 year|#in {num} years": "one#um {num} ár|#um {num} ár",
     "1#in 1 yr|#in {num} yrs": "one#um {num} ár|#um {num} ár",
+    "E0": "S",
+    "E1": "M",
+    "E2": "T",
     "E3": "M",
     "E4": "H",
+    "E5": "F",
     "E6": "L",
     "EE0": "su.",
     "EE1": "má.",
@@ -187,6 +191,8 @@
     "NN7": "ju",
     "NN8": "au",
     "NN9": "se",
+    "a0": "AM",
+    "a1": "PM",
     "c0": "S",
     "c1": "M",
     "c2": "T",
@@ -227,5 +233,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

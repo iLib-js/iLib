@@ -73,6 +73,7 @@
     "B5": "popietė",
     "B6": "popiet",
     "B7": "vakaras",
+    "E0": "S",
     "E1": "P",
     "E2": "A",
     "E3": "T",
@@ -213,5 +214,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }
