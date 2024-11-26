@@ -23,13 +23,6 @@ jobs:
             sudo apt install -y ant
 
       - run:
-          name: Set up QT
-          command: |
-            #sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-            #sudo apt update
-            sudo apt install -y build-essential libfontconfig1 mesa-common-dev qtbase5-dev qmlscene qtdeclarative5-dev 
-
-      - run:
           name: Set up OpenJDK
           command: |
             sudo apt-get install -y openjdk-11-jdk
@@ -54,7 +47,6 @@ jobs:
             echo "javac version: " $(javac -version)
             echo "javadoc version: " $(javadoc --version)
             echo "ant version: " $(ant -version)
-            echo "qmake version: " $(qmake --version)
             echo "TZ is $TZ"
             echo "NODE_OPTIONS is $NODE_OPTIONS"
 
