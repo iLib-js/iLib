@@ -1,6 +1,7 @@
 {
     "generated": true,
     "scripts": [
-        "Deva"
+        "Deva",
+        "Latn"
     ]
 }

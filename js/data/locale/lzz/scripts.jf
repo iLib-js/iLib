@@ -1,7 +1,7 @@
 {
     "generated": true,
     "scripts": [
-        "Geor",
-        "Latn"
+        "Latn",
+        "Geor"
     ]
 }
