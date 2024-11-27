@@ -1675,5 +1675,12 @@ module.exports.testcurrency = {
         test.ok(info !== null);
         test.equal(info.getCurrency(), "XOF");
         test.done();
+    },
+    testCurrency_af_NA: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("af-NA");
+        test.ok(info !== null);
+        test.equal(info.getCurrency(), "NAD");
+        test.done();
     }
 };
