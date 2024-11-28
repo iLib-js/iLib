@@ -551,6 +551,10 @@
             "name": "ബ്യൂണസ് അയേഴ്സ്"
         },
         {
+            "code": "Z",
+            "name": "ലോസ് ഗ്ലേസിയേഴ്സ് നാഷണൽ പാർക്ക്"
+        },
+        {
             "code": "B",
             "name": "Buenos Aires Province"
         },
@@ -621,10 +625,6 @@
         {
             "code": "D",
             "name": "San Luis"
-        },
-        {
-            "code": "Z",
-            "name": "Santa Cruz"
         },
         {
             "code": "S",
@@ -749,6 +749,10 @@
         {
             "code": "LAN",
             "name": "ലങ്കരാൻ"
+        },
+        {
+            "code": "LA",
+            "name": "ലങ്കരാൻ²"
         },
         {
             "code": "SA",
@@ -901,10 +905,6 @@
         {
             "code": "LAC",
             "name": "Lachin"
-        },
-        {
-            "code": "LA",
-            "name": "Lankaran"
         },
         {
             "code": "LER",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -5571,6 +5611,10 @@
             "name": "Southern Nations, Nationalities, and Peoples"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "TI",
             "name": "Tigray"
         }
@@ -5771,6 +5815,10 @@
             "name": "പാരിസ്"
         },
         {
+            "code": "973",
+            "name": "ഫ്രഞ്ച് ഗയാന"
+        },
+        {
             "code": "67",
             "name": "ബാസ്-റിൻ"
         },
@@ -5781,6 +5829,10 @@
         {
             "code": "88",
             "name": "വോസ്ഗെസ്"
+        },
+        {
+            "code": "974",
+            "name": "റീയൂണിയൻ"
         },
         {
             "code": "01",
@@ -5935,10 +5987,6 @@
             "name": "Grand-Est"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "68",
             "name": "Haut-Rhin"
         },
@@ -6013,10 +6061,6 @@
         {
             "code": "39",
             "name": "Jura"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "40",
@@ -6269,6 +6313,10 @@
         {
             "code": "OXF",
             "name": "ഓക്സ്ഫോഡ്"
+        },
+        {
+            "code": "ORK",
+            "name": "ഓർക്ക്നി"
         },
         {
             "code": "CRF",
@@ -6931,6 +6979,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -6957,10 +7009,6 @@
         {
             "code": "OMH",
             "name": "Omagh"
-        },
-        {
-            "code": "ORK",
-            "name": "Orkney Islands"
         },
         {
             "code": "ELS",
@@ -7209,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8589,6 +8635,10 @@
             "name": "പശ്ചിമ കലിമന്താൻ"
         },
         {
+            "code": "SR",
+            "name": "പശ്ചിമ സുലവേസി"
+        },
+        {
             "code": "BB",
             "name": "ബങ്ക ബലിറ്റങ് ദ്വീപുകൾ"
         },
@@ -8677,8 +8727,20 @@
             "name": "Maluku"
         },
         {
-            "code": "SR",
-            "name": "West Sulawesi"
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         }
     ],
     "IE": [
@@ -8847,7 +8909,7 @@
             "name": "ആസാം"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "ഉത്തരാഖണ്ഡ്"
         },
         {
@@ -8855,7 +8917,7 @@
             "name": "ഉത്തർ‌പ്രദേശ്"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "ഒഡീഷ"
         },
         {
@@ -8879,6 +8941,10 @@
             "name": "ചണ്ഡീഗഢ്"
         },
         {
+            "code": "CG",
+            "name": "ഛത്തീസ്ഗഢ്"
+        },
+        {
             "code": "CT",
             "name": "ഛത്തീസ്‌ഗഢ്"
         },
@@ -8899,7 +8965,7 @@
             "name": "തമിഴ്‌നാട്"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "തെലങ്കാന"
         },
         {
@@ -8981,6 +9047,14 @@
         {
             "code": "HP",
             "name": "ഹിമാചൽ പ്രദേശ്‌"
+        },
+        {
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9068,7 +9142,7 @@
         },
         {
             "code": "01",
-            "name": "East Azerbaijan"
+            "name": "ഗിലാൻ പ്രവിശ്യ"
         },
         {
             "code": "02",
@@ -9076,19 +9150,19 @@
         },
         {
             "code": "03",
-            "name": "Ardabil"
+            "name": "കിഴക്കൻ അസർബെയ്ജാൻ പ്രവിശ്യ"
         },
         {
             "code": "04",
-            "name": "Isfahan"
+            "name": "പശ്ചിമ അസർബൈജാൻ പ്രവിശ്യ"
         },
         {
             "code": "05",
-            "name": "Ilam"
+            "name": "കെർമാൻഷാ പ്രവിശ്യ"
         },
         {
             "code": "06",
-            "name": "Bushehr"
+            "name": "ഖുസെസ്ഥാൻ പ്രവിശ്യ"
         },
         {
             "code": "07",
@@ -9096,31 +9170,31 @@
         },
         {
             "code": "08",
-            "name": "Chaharmahal and Bakhtiari"
+            "name": "കെർമാൻ പ്രവിശ്യ"
         },
         {
             "code": "09",
-            "name": "Khorāsān-e Raẕavī"
+            "name": "റസാവി ഖൊറാസാൻ പ്രവിശ്യ"
         },
         {
             "code": "10",
-            "name": "Khuzestan"
+            "name": "ഇസ്ഫഹാൻ പ്രവിശ്യ"
         },
         {
             "code": "11",
-            "name": "Zanjan"
+            "name": "സിസ്റ്റാൻ, ബലൂചെസ്താൻ പ്രവിശ്യ"
         },
         {
             "code": "12",
-            "name": "Semnan"
+            "name": "കുർദിസ്ഥാൻ പ്രവിശ്യ"
         },
         {
             "code": "13",
-            "name": "Sistan and Baluchestan"
+            "name": "ഹമദാൻ പ്രവിശ്യ"
         },
         {
             "code": "14",
-            "name": "Fars"
+            "name": "ചാഹർമഹൽ, ബഖ്തിയാരി പ്രവിശ്യ"
         },
         {
             "code": "15",
@@ -9128,7 +9202,7 @@
         },
         {
             "code": "16",
-            "name": "Kurdistan"
+            "name": "ഇലാം പ്രവിശ്യ"
         },
         {
             "code": "17",
@@ -9136,11 +9210,11 @@
         },
         {
             "code": "18",
-            "name": "Kohgiluyeh and Boyer-Ahmad"
+            "name": "ബുഷെഹ്ർ പ്രവിശ്യ"
         },
         {
             "code": "19",
-            "name": "Gilan"
+            "name": "സഞ്ജാൻ പ്രവിശ്യ"
         },
         {
             "code": "20",
@@ -9148,19 +9222,19 @@
         },
         {
             "code": "21",
-            "name": "Mazandaran"
+            "name": "യാസ്ദ് പ്രവിശ്യ"
         },
         {
             "code": "22",
-            "name": "Markazi"
+            "name": "ഹോർമോസ്ഗാൻ പ്രവിശ്യ"
         },
         {
             "code": "23",
-            "name": "Hormozgan"
+            "name": "ടെഹ്റാൻ പ്രവിശ്യ"
         },
         {
             "code": "24",
-            "name": "Hamadan"
+            "name": "അർദാബിൽ പ്രവിശ്യ"
         },
         {
             "code": "25",
@@ -9168,7 +9242,7 @@
         },
         {
             "code": "26",
-            "name": "Qom"
+            "name": "ഖാസ്വിൻ പ്രവിശ്യ"
         },
         {
             "code": "27",
@@ -9176,11 +9250,11 @@
         },
         {
             "code": "28",
-            "name": "Qazvin"
+            "name": "വടക്കൻ ഖൊറാസാൻ പ്രവിശ്യ"
         },
         {
             "code": "29",
-            "name": "South Khorasan"
+            "name": "ദക്ഷിണ ഖൊറാസാൻ പ്രവിശ്യ"
         },
         {
             "code": "30",
@@ -9196,6 +9270,10 @@
         }
     ],
     "IS": [
+        {
+            "code": "RKV",
+            "name": "റെയിക്യാവിക്"
+        },
         {
             "code": "AKH",
             "name": "Akrahreppur"
@@ -9321,6 +9399,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9401,10 +9483,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9419,6 +9497,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9541,6 +9623,10 @@
         {
             "code": "36",
             "name": "ഫ്രിയൂളി-വെനേസിയ ജിയൂളിയ"
+        },
+        {
+            "code": "VE",
+            "name": "വെനീസ്"
         },
         {
             "code": "88",
@@ -10021,10 +10107,6 @@
         {
             "code": "34",
             "name": "Veneto"
-        },
-        {
-            "code": "VE",
-            "name": "Venice"
         },
         {
             "code": "VB",
@@ -10821,6 +10903,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -10921,12 +11007,16 @@
     ],
     "KZ": [
         {
-            "code": "ALA",
+            "code": "75",
             "name": "അൽമാട്ടി"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "അസ്താന"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
         },
         {
             "code": "AKM",
@@ -10937,12 +11027,32 @@
             "name": "Aktobe"
         },
         {
+            "code": "19",
+            "name": "Almaty oblysy"
+        },
+        {
             "code": "ALM",
             "name": "Almaty Region"
         },
         {
+            "code": "11",
+            "name": "Aqmola oblysy"
+        },
+        {
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
             "code": "ATY",
             "name": "Atyrau"
+        },
+        {
+            "code": "23",
+            "name": "Atyraū oblysy"
+        },
+        {
+            "code": "27",
+            "name": "Batys Qazaqstan oblysy"
         },
         {
             "code": "BAY",
@@ -10969,6 +11079,10 @@
             "name": "Kyzylorda"
         },
         {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
             "code": "MAN",
             "name": "Mangystau"
         },
@@ -10981,16 +11095,56 @@
             "name": "Pavlodar"
         },
         {
-            "code": "SHY",
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "39",
+            "name": "Qostanay oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "63",
+            "name": "Shyghys Qazaqstan oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
+        },
+        {
+            "code": "59",
+            "name": "Soltüstik Qazaqstan oblysy"
         },
         {
             "code": "YUZ",
             "name": "South Kazakhstan"
         },
         {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
             "code": "ZAP",
             "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12357,7 +12511,7 @@
             "name": "ഫെസ്, മൊറോക്കോ"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "മരാക്കേഷ്"
         },
         {
@@ -12549,8 +12703,8 @@
             "name": "M’diq-Fnideq"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "11",
@@ -13037,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13664,7 +13822,7 @@
         },
         {
             "code": "16",
-            "name": "Rakhine"
+            "name": "റാഖൈൻ സംസ്ഥാനം"
         },
         {
             "code": "17",
@@ -14309,6 +14467,10 @@
             "name": "കസുങു ജില്ല"
         },
         {
+            "code": "TH",
+            "name": "ത്യൊലൊ ജില്ല"
+        },
+        {
             "code": "ZO",
             "name": "സൊംബ ജില്ല"
         },
@@ -14423,10 +14585,6 @@
         {
             "code": "S",
             "name": "Southern"
-        },
-        {
-            "code": "TH",
-            "name": "Thyolo"
         }
     ],
     "MX": [
@@ -15171,6 +15329,22 @@
     ],
     "NP": [
         {
+            "code": "P6",
+            "name": "കർണലി പ്രദേശ്"
+        },
+        {
+            "code": "P2",
+            "name": "മധേഷ് പ്രവിശ്യ"
+        },
+        {
+            "code": "P5",
+            "name": "ലുംബിനി പ്രവിശ്യ"
+        },
+        {
+            "code": "P7",
+            "name": "സുദുർപശ്ചിം പ്രവിശ്യ"
+        },
+        {
             "code": "BA",
             "name": "Bagmati"
         },
@@ -15203,10 +15377,6 @@
             "name": "Karnali"
         },
         {
-            "code": "P6",
-            "name": "Karnali²"
-        },
-        {
             "code": "KO",
             "name": "Kosi"
         },
@@ -15235,20 +15405,8 @@
             "name": "Province 1"
         },
         {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         },
         {
             "code": "4",
@@ -15405,6 +15563,10 @@
     ],
     "OM": [
         {
+            "code": "ZU",
+            "name": "ദോഫാർ ഗവർണറേറ്റ്"
+        },
+        {
             "code": "MU",
             "name": "മുസന്ധം"
         },
@@ -15423,10 +15585,6 @@
         {
             "code": "WU",
             "name": "Al Wusta"
-        },
-        {
-            "code": "ZU",
-            "name": "Dhofar"
         },
         {
             "code": "BJ",
@@ -15945,6 +16103,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAS",
@@ -20280,7 +20446,7 @@
         },
         {
             "code": "32",
-            "name": "Kyivshchyna"
+            "name": "കീവ് ഒബ്ലാസ്റ്റ്"
         },
         {
             "code": "35",
@@ -20288,7 +20454,7 @@
         },
         {
             "code": "40",
-            "name": "Sevastopol"
+            "name": "സെവാസ്റ്റോപോൾ"
         },
         {
             "code": "43",
@@ -21777,6 +21943,10 @@
             "name": "അൽ മഹ്രഹ് സംസ്ഥാനം"
         },
         {
+            "code": "MA",
+            "name": "മാരിബ് ഗവർണറേറ്റ്"
+        },
+        {
             "code": "SA",
             "name": "സന"
         },
@@ -21831,10 +22001,6 @@
         {
             "code": "LA",
             "name": "Lahij"
-        },
-        {
-            "code": "MA",
-            "name": "Ma’rib"
         },
         {
             "code": "RA",

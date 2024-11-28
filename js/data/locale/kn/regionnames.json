@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "ರಿಲಿಜೆನ್ ಪ್ರಾಂತ್ಯ"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "ಇಡಾ-ವೀರು ಕೌಂಟಿ"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "ಜೊಗ್ವಾ ಕೌಂಟಿ"
+            "name": "ಇಡಾ-ವೀರು ಕೌಂಟಿ"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "ಜಾರ್ವಾ ಕೌಂಟಿ"
+            "name": "ಜೊಗ್ವಾ ಕೌಂಟಿ"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "ಜಾರ್ವಾ ಕೌಂಟಿ"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "ಲಾನ್ ಕೌಂಟಿ"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "ಲಾನ್-ವಿರು ಕೌಂಟಿ"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "ಲಾನ್-ವಿರು ಕೌಂಟಿ"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "ಪೊಲ್ವಾ ಕೌಂಟಿ"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "ಪರ್ನು ಕೌಂಟಿ"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "ರಾಪ್ಲಾ ಕೌಂಟಿ"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "ರಾಪ್ಲಾ ಕೌಂಟಿ"
         },
         {
             "code": "74",
             "name": "Saare"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "ಟಾರ್ಟು ಕೌಂಟಿ"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "ವ್ಯಾಲ್ಗಾ ಕೌಂಟಿ"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "ವಿಲ್ಜಂಡಿ ಕೌಂಟಿ"
         },
         {
-            "code": "86",
-            "name": "ಕೌಂಟಿ ಕೌಂಟಿ"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "ಕೌಂಟಿ ಕೌಂಟಿ"
         },
         {
             "code": "130",
@@ -5605,6 +5613,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5811,6 +5823,10 @@
             "name": "ಆಲ್ಪೆಸ್-ಮಾರಿಟೈಮ್ಸ್"
         },
         {
+            "code": "6AE",
+            "name": "ಆಲ್ಸೇಸ್"
+        },
+        {
             "code": "37",
             "name": "ಇಂಡ್ರೆ-ಎಟ್-ಲೋರೆ"
         },
@@ -5975,6 +5991,10 @@
             "name": "ಫಿನಿಸ್ಟ್ರೆ"
         },
         {
+            "code": "973",
+            "name": "ಫ್ರೆಂಚ್ ಗಯಾನ"
+        },
+        {
             "code": "67",
             "name": "ಬಾಸ್-ರೈನ್"
         },
@@ -5993,6 +6013,10 @@
         {
             "code": "53",
             "name": "ಮಾಯೆನ್ನೆ"
+        },
+        {
+            "code": "972",
+            "name": "ಮಾರ್ಟಿನಿಕ್"
         },
         {
             "code": "54",
@@ -6029,6 +6053,10 @@
         {
             "code": "89",
             "name": "ಯೋನೆ"
+        },
+        {
+            "code": "974",
+            "name": "ರೀಯೂನಿಯನ್"
         },
         {
             "code": "69",
@@ -6171,10 +6199,6 @@
             "name": "ಹೌಟ್ಸ್-ಡೆ-ಸೀನ್"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
-        },
-        {
             "code": "ARA",
             "name": "Auvergne-Rhône-Alpes"
         },
@@ -6199,24 +6223,12 @@
             "name": "Grand-Est"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "HDF",
             "name": "Hauts-de-France"
         },
         {
             "code": "IDF",
             "name": "Île-de-France²"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -7179,6 +7191,10 @@
             "name": "North Down"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OLD",
             "name": "Oldham"
         },
@@ -7277,6 +7293,10 @@
         {
             "code": "WDU",
             "name": "West Dunbartonshire"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WGN",
@@ -8159,12 +8179,6 @@
             "name": "Mahaica-Berbice"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8705,6 +8719,22 @@
             "name": "North Kalimantan"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
+        },
+        {
             "code": "SL",
             "name": "Sulawesi"
         },
@@ -8883,11 +8913,11 @@
             "name": "ಉತ್ತರ ಪ್ರದೇಶ"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "ಉತ್ತರಾಖಂಡ"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "ಒರಿಸ್ಸಾ"
         },
         {
@@ -8911,6 +8941,10 @@
             "name": "ಚಂಡೀಗಡ"
         },
         {
+            "code": "CG",
+            "name": "ಛತ್ತೀಸ್ಘಡ್"
+        },
+        {
             "code": "CT",
             "name": "ಛತ್ತೀಸ್‌ಘಡ್"
         },
@@ -8927,7 +8961,7 @@
             "name": "ತಮಿಳುನಾಡು"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "ತೆಲಂಗಾಣ"
         },
         {
@@ -9013,6 +9047,14 @@
         {
             "code": "HP",
             "name": "ಹಿಮಾಚಲ ಪ್ರದೇಶ"
+        },
+        {
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9253,6 +9295,10 @@
             "name": "ರಾಜಧಾನಿ ಪ್ರದೇಶ"
         },
         {
+            "code": "RKV",
+            "name": "ರೇಕೆವಿಕ್"
+        },
+        {
             "code": "5",
             "name": "ವಾಯುವ್ಯ ಪ್ರದೇಶ"
         },
@@ -9377,6 +9423,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9449,10 +9499,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9467,6 +9513,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -10853,6 +10903,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "ಕೆಸಾಂಗ್"
         }
     ],
     "KR": [
@@ -10953,59 +11007,59 @@
     ],
     "KZ": [
         {
-            "code": "AKT",
+            "code": "15",
             "name": "ಅಕ್ಟೋಬ್ ಪ್ರದೇಶ"
         },
         {
-            "code": "AKM",
+            "code": "11",
             "name": "ಅಕ್ಮೋಲಾ ಪ್ರದೇಶ"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "ಅಲ್ಮಾಟಿ"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "ಅಲ್ಮಾಟಿ ಪ್ರದೇಶ"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "ಅಸ್ತಾನ"
         },
         {
-            "code": "ATY",
+            "code": "23",
             "name": "ಆತಿರಾವ್ ಪ್ರಾಂತ್ಯ"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "ಉತ್ತರ ಕಝಾಕಿಸ್ತಾನ್ ಪ್ರಾಂತ್ಯ"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "ಕರಾಗಾಂಡಿ ಪ್ರದೇಶ"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "ಕಿಜಿಲೋರ್ಡಾ ಪ್ರಾಂತ್ಯ"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "ಕೊಸ್ಟನೇ ಪ್ರದೇಶ"
         },
         {
-            "code": "YUZ",
+            "code": "61",
             "name": "ದಕ್ಷಿಣ ಕಝಾಕಿಸ್ತಾನ್ ಪ್ರದೇಶ"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "ಪವ್ಲೋಡರ್ ಪ್ರಾಂತ್ಯ"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "ಪಶ್ಚಿಮ ಕಝಾಕಿಸ್ತಾನ್ ಪ್ರಾಂತ್ಯ"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "ಪೂರ್ವ ಕಝಾಕಿಸ್ತಾನ್ ಪ್ರದೇಶ"
         },
         {
@@ -11013,16 +11067,84 @@
             "name": "ಬೈಕೊನೂರ್"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "ಮಂಗೈಸ್ಟೌ ಪ್ರದೇಶ"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "ಶಿಮ್ಕೆಂಟ್"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
         },
         {
             "code": "ZHA",
             "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "YUZ",
+            "name": "South Kazakhstan"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12453,7 +12575,7 @@
             "name": "ಮಾರಕೆಶ್-ಟೆನ್ಶಿಫ್ಟ್-ಎಲ್ ಹಾವ್ಜ್"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "ಮಾರಕೇಶ್"
         },
         {
@@ -12637,8 +12759,8 @@
             "name": "M’diq-Fnideq"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "MED",
@@ -13069,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -16105,6 +16231,14 @@
         {
             "code": "01",
             "name": "Ilocos"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "00",

@@ -2339,6 +2339,10 @@
             "name": "استان ها"
         },
         {
+            "code": "43",
+            "name": "ناحیه پماگاتشل"
+        },
+        {
             "code": "23",
             "name": "ناحیه پوناخا"
         },
@@ -2347,40 +2351,36 @@
             "name": "ناحیه تراشیگانگ"
         },
         {
+            "code": "32",
+            "name": "ناحیه ترونگسا"
+        },
+        {
+            "code": "21",
+            "name": "ناحیه تسیرنگ"
+        },
+        {
             "code": "34",
             "name": "ناحیه ژهمگانگ"
+        },
+        {
+            "code": "45",
+            "name": "ناحیه سادروپ جونگخار"
         },
         {
             "code": "31",
             "name": "ناحیه سرپانگ"
         },
         {
-            "code": "24",
-            "name": "ناحیه وانگدودودرنگ"
-        },
-        {
             "code": "44",
-            "name": "Lhuntse"
+            "name": "ناحیه لهونتسه"
         },
         {
             "code": "42",
-            "name": "Mongar"
+            "name": "ناحیه مونگار"
         },
         {
-            "code": "43",
-            "name": "Pemagatshel"
-        },
-        {
-            "code": "45",
-            "name": "Samdrup Jongkhar"
-        },
-        {
-            "code": "32",
-            "name": "Trongsa"
-        },
-        {
-            "code": "21",
-            "name": "Tsirang"
+            "code": "24",
+            "name": "ناحیه وانگدودودرنگ"
         }
     ],
     "BW": [
@@ -2561,6 +2561,10 @@
     ],
     "CD": [
         {
+            "code": "IT",
+            "name": "استان ایتوری"
+        },
+        {
             "code": "TA",
             "name": "استان تانگانیکا"
         },
@@ -2659,10 +2663,6 @@
         {
             "code": "BU",
             "name": "Bas-Uélé"
-        },
-        {
-            "code": "IT",
-            "name": "Ituri"
         },
         {
             "code": "KC",
@@ -3099,12 +3099,12 @@
             "name": "منطقه ماژلان و قطب جنوب شیلی"
         },
         {
-            "code": "VS",
-            "name": "منطقه والپارایزو"
+            "code": "NB",
+            "name": "منطقه نوبله"
         },
         {
-            "code": "NB",
-            "name": "Ñuble"
+            "code": "VS",
+            "name": "منطقه والپارایزو"
         }
     ],
     "CM": [
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "استان غلیزان"
+        },
+        {
+            "code": "49",
+            "name": "استان تیمیمون"
+        },
+        {
+            "code": "50",
+            "name": "استان برج باجی مختار"
+        },
+        {
+            "code": "51",
+            "name": "استان اولاد جلال"
+        },
+        {
+            "code": "52",
+            "name": "استان بنیعباس"
+        },
+        {
+            "code": "53",
+            "name": "استان عین صالح"
+        },
+        {
+            "code": "54",
+            "name": "استان عین قزام"
+        },
+        {
+            "code": "55",
+            "name": "استان تقرت"
+        },
+        {
+            "code": "56",
+            "name": "استان جانت"
+        },
+        {
+            "code": "57",
+            "name": "استان المغیر"
+        },
+        {
+            "code": "58",
+            "name": "استان المنیعه"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "شهرستان ایدا-ویرو"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "شهرستان یوگوا"
+            "name": "شهرستان ایدا-ویرو"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "شهرستان یاروا"
+            "name": "شهرستان یوگوا"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "شهرستان یاروا"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "شهرستان لنه"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "شهرستان لنه-ویرو"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "شهرستان لنه-ویرو"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "شهرستان پولوا"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "شهرستان پارنو"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "شهرستان رپلا"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "شهرستان رپلا"
         },
         {
             "code": "74",
             "name": "شهرستان ساره"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "شهرستان تارتو"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "شهرستان والگا"
         },
         {
@@ -4819,20 +4831,16 @@
             "name": "شهرستان ویلیاندی"
         },
         {
-            "code": "86",
+            "code": "87",
             "name": "شهرستان وورو"
         },
         {
-            "code": "87",
-            "name": "Võrumaa"
-        },
-        {
             "code": "130",
-            "name": "Alutaguse"
+            "name": "دهستان آلوتاگوسه"
         },
         {
             "code": "141",
-            "name": "Anija"
+            "name": "دهستان آنیا"
         },
         {
             "code": "142",
@@ -4840,7 +4848,7 @@
         },
         {
             "code": "171",
-            "name": "Elva"
+            "name": "دهستان الوا"
         },
         {
             "code": "184",
@@ -4856,27 +4864,27 @@
         },
         {
             "code": "205",
-            "name": "Hiiumaa"
+            "name": "دهستان هیوما"
         },
         {
             "code": "214",
-            "name": "Häädemeeste"
+            "name": "دهستان هادمسته"
         },
         {
             "code": "245",
-            "name": "Jõelähtme"
+            "name": "دهستان یئولاتمه"
         },
         {
             "code": "247",
-            "name": "Jõgeva"
+            "name": "دهستان یوگوا"
         },
         {
             "code": "251",
-            "name": "Jõhvi"
+            "name": "دهستان یووی"
         },
         {
             "code": "255",
-            "name": "Järva"
+            "name": "دهستان یاروا"
         },
         {
             "code": "272",
@@ -4916,7 +4924,7 @@
         },
         {
             "code": "321",
-            "name": "Kohtla-Järve"
+            "name": "کوتلا-یاروه"
         },
         {
             "code": "338",
@@ -4932,11 +4940,11 @@
         },
         {
             "code": "430",
-            "name": "Lääneranna"
+            "name": "دهستان لانرانا"
         },
         {
             "code": "431",
-            "name": "Lääne-Harju"
+            "name": "دهستان لنه-هاریو"
         },
         {
             "code": "432",
@@ -4944,11 +4952,11 @@
         },
         {
             "code": "441",
-            "name": "Lääne-Nigula"
+            "name": "دهستان لنه-نیگولا"
         },
         {
             "code": "442",
-            "name": "Lüganuse"
+            "name": "دهستان لوگانوسه"
         },
         {
             "code": "446",
@@ -4984,7 +4992,7 @@
         },
         {
             "code": "557",
-            "name": "Otepää"
+            "name": "دهستان اوتپا"
         },
         {
             "code": "567",
@@ -4992,7 +5000,7 @@
         },
         {
             "code": "586",
-            "name": "Peipsiääre"
+            "name": "دهستان پیپسیاره"
         },
         {
             "code": "615",
@@ -5000,7 +5008,7 @@
         },
         {
             "code": "618",
-            "name": "Põltsamaa"
+            "name": "دهستان پولتساما"
         },
         {
             "code": "622",
@@ -5040,7 +5048,7 @@
         },
         {
             "code": "698",
-            "name": "Rõuge"
+            "name": "دهستان روگه"
         },
         {
             "code": "708",
@@ -5068,7 +5076,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "سیلامائه"
         },
         {
             "code": "784",
@@ -5092,7 +5100,7 @@
         },
         {
             "code": "809",
-            "name": "Tori"
+            "name": "دهستان توری (شهرستان پارنو)"
         },
         {
             "code": "824",
@@ -5100,7 +5108,7 @@
         },
         {
             "code": "834",
-            "name": "Türi"
+            "name": "دهستان توری"
         },
         {
             "code": "855",
@@ -5140,7 +5148,7 @@
         },
         {
             "code": "928",
-            "name": "Väike-Maarja"
+            "name": "دهستان وایک-ماریا"
         }
     ],
     "EG": [
@@ -5604,7 +5612,11 @@
         },
         {
             "code": "SI",
-            "name": "Sidama"
+            "name": "ناحیه سیداما"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5803,6 +5815,10 @@
             "name": "آلپ-ماریتیم"
         },
         {
+            "code": "6AE",
+            "name": "آلزاس"
+        },
+        {
             "code": "GES",
             "name": "آلزاس-شامپاین-آردن-لورن"
         },
@@ -5995,6 +6011,10 @@
             "name": "دوردون"
         },
         {
+            "code": "974",
+            "name": "رئونیون"
+        },
+        {
             "code": "69",
             "name": "رون"
         },
@@ -6103,6 +6123,10 @@
             "name": "گار"
         },
         {
+            "code": "973",
+            "name": "گویان فرانسه"
+        },
+        {
             "code": "40",
             "name": "لاند"
         },
@@ -6137,6 +6161,10 @@
         {
             "code": "48",
             "name": "لوزر"
+        },
+        {
+            "code": "972",
+            "name": "مارتینیک"
         },
         {
             "code": "50",
@@ -6219,24 +6247,8 @@
             "name": "یون"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
-        },
-        {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -6497,6 +6509,10 @@
         {
             "code": "TAM",
             "name": "تیمساید"
+        },
+        {
+            "code": "THR",
+            "name": "ثارک (انگلستان)"
         },
         {
             "code": "IOW",
@@ -7255,6 +7271,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OMH",
             "name": "Omagh"
         },
@@ -7279,8 +7299,8 @@
             "name": "Telford and Wrekin"
         },
         {
-            "code": "THR",
-            "name": "Thurrock"
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WOK",
@@ -8159,12 +8179,6 @@
             "name": "ماهایکا-بربیک"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8711,6 +8725,22 @@
         {
             "code": "YO",
             "name": "یوگیاکارتا"
+        },
+        {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         }
     ],
     "IE": [
@@ -8879,11 +8909,11 @@
             "name": "اوتار پرادش"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "اوتاراکند"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "اوریسا"
         },
         {
@@ -8911,7 +8941,7 @@
             "name": "تریپورا"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "تلنگانا"
         },
         {
@@ -8927,7 +8957,7 @@
             "name": "جزایر آندامان و نیکوبار"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "چتیسگر"
         },
         {
@@ -9013,6 +9043,18 @@
         {
             "code": "HP",
             "name": "هیماچال پرادش"
+        },
+        {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9241,6 +9283,10 @@
             "name": "اکراهرپور"
         },
         {
+            "code": "SOL",
+            "name": "اولفوس"
+        },
+        {
             "code": "EOM",
             "name": "ایجا- اوگ میکلاهولتشرپور"
         },
@@ -9253,6 +9299,10 @@
             "name": "بولونگارویک"
         },
         {
+            "code": "VEM",
+            "name": "جزایر وستمن"
+        },
+        {
             "code": "DAB",
             "name": "دالابیگگی"
         },
@@ -9261,8 +9311,36 @@
             "name": "دالویکوربیگگی"
         },
         {
+            "code": "RGY",
+            "name": "رانگاربینسکترا"
+        },
+        {
+            "code": "RKV",
+            "name": "ریکیاویک"
+        },
+        {
+            "code": "SEL",
+            "name": "سلتیارنارنس"
+        },
+        {
             "code": "2",
             "name": "شبه‌جزیره جنوبی ایسلند"
+        },
+        {
+            "code": "SVG",
+            "name": "شهردای وگار"
+        },
+        {
+            "code": "FJD",
+            "name": "فیاردابیگد"
+        },
+        {
+            "code": "KOP",
+            "name": "کوپاووگور"
+        },
+        {
+            "code": "GAR",
+            "name": "گارذابایر"
         },
         {
             "code": "1",
@@ -9291,6 +9369,14 @@
         {
             "code": "4",
             "name": "وستفیوردز"
+        },
+        {
+            "code": "HAF",
+            "name": "هاپنارفیورویر"
+        },
+        {
+            "code": "HVE",
+            "name": "هراگریه"
         },
         {
             "code": "ARN",
@@ -9325,10 +9411,6 @@
             "name": "Fjallabyggð"
         },
         {
-            "code": "FJD",
-            "name": "Fjarðabyggð"
-        },
-        {
             "code": "FLD",
             "name": "Fljótsdalshérað"
         },
@@ -9339,10 +9421,6 @@
         {
             "code": "FLA",
             "name": "Flóahreppur"
-        },
-        {
-            "code": "GAR",
-            "name": "Garðabær"
         },
         {
             "code": "GOG",
@@ -9361,10 +9439,6 @@
             "name": "Grýtubakkahreppur"
         },
         {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
-        },
-        {
             "code": "HEL",
             "name": "Helgafellssveit"
         },
@@ -9375,6 +9449,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9389,10 +9467,6 @@
             "name": "Hvalfjarðarsveit"
         },
         {
-            "code": "HVE",
-            "name": "Hveragerðisbær"
-        },
-        {
             "code": "ISA",
             "name": "Ísafjarðarbær"
         },
@@ -9403,10 +9477,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9433,10 +9503,6 @@
             "name": "Rangárþing eystra"
         },
         {
-            "code": "RGY",
-            "name": "Rangárþing ytra"
-        },
-        {
             "code": "RHH",
             "name": "Reykhólahreppur"
         },
@@ -9449,14 +9515,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
-            "code": "SEL",
-            "name": "Seltjarnarnesbær"
-        },
-        {
             "code": "SEY",
             "name": "Seyðisfjarðarkaupstaður"
         },
@@ -9467,6 +9525,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9517,10 +9579,6 @@
             "name": "Sveitarfélagið Hornafjörður"
         },
         {
-            "code": "SOL",
-            "name": "Sveitarfélagið Ölfus"
-        },
-        {
             "code": "SSF",
             "name": "Sveitarfélagið Skagafjörður"
         },
@@ -9529,20 +9587,12 @@
             "name": "Sveitarfélagið Skagaströnd"
         },
         {
-            "code": "SVG",
-            "name": "Sveitarfélagið Vogar"
-        },
-        {
             "code": "TAL",
             "name": "Tálknafjarðarhreppur"
         },
         {
             "code": "TJO",
             "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10853,6 +10903,10 @@
         {
             "code": "14",
             "name": "نامپو"
+        },
+        {
+            "code": "15",
+            "name": "کائسونگ"
         }
     ],
     "KR": [
@@ -10953,39 +11007,59 @@
     ],
     "KZ": [
         {
-            "code": "AST",
+            "code": "71",
             "name": "آستانه"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "آلماآتی"
         },
         {
-            "code": "ATY",
+            "code": "10",
+            "name": "استان آبای"
+        },
+        {
+            "code": "23",
             "name": "استان آتیرائو"
+        },
+        {
+            "code": "15",
+            "name": "استان آقتپه"
         },
         {
             "code": "AKT",
             "name": "استان اکتوب"
         },
         {
-            "code": "AKM",
+            "code": "11",
             "name": "استان اکمولا"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "استان الماتی"
         },
         {
-            "code": "PAV",
+            "code": "62",
+            "name": "استان اولیتاو"
+        },
+        {
+            "code": "55",
             "name": "استان پاولودار"
         },
         {
-            "code": "ZHA",
+            "code": "61",
+            "name": "استان ترکستان"
+        },
+        {
+            "code": "33",
+            "name": "استان جتیسو"
+        },
+        {
+            "code": "31",
             "name": "استان ژمبیل"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "استان قراغندی"
         },
         {
@@ -10993,27 +11067,31 @@
             "name": "استان قزاقستان جنوبی"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "استان قزاقستان شرقی"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "استان قزاقستان شمالی"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "استان قزاقستان غربی"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "استان قوستانای"
+        },
+        {
+            "code": "43",
+            "name": "استان قیزیلاوردا"
         },
         {
             "code": "KZY",
             "name": "استان قیزیل‌اوردا"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "استان مانغیستاو"
         },
         {
@@ -11021,8 +11099,52 @@
             "name": "بایقونور، قزاقستان"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "چیمکند"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
         }
     ],
     "LA": [
@@ -12385,6 +12507,10 @@
             "name": "استان برکان"
         },
         {
+            "code": "BOD",
+            "name": "استان بوجدور"
+        },
+        {
             "code": "BOM",
             "name": "استان بولمان"
         },
@@ -12403,6 +12529,10 @@
         {
             "code": "GUF",
             "name": "استان جرسیف"
+        },
+        {
+            "code": "HOC",
+            "name": "استان حسیمه"
         },
         {
             "code": "DRI",
@@ -12561,7 +12691,7 @@
             "name": "محمدیه"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "مراکش"
         },
         {
@@ -12593,10 +12723,6 @@
             "name": "وجده"
         },
         {
-            "code": "HOC",
-            "name": "Al Hoceïma"
-        },
-        {
             "code": "AOU",
             "name": "Aousserd"
         },
@@ -12615,10 +12741,6 @@
         {
             "code": "BEM",
             "name": "Béni-Mellal"
-        },
-        {
-            "code": "BOD",
-            "name": "Boujdour"
         },
         {
             "code": "CHE",
@@ -12677,8 +12799,8 @@
             "name": "M’diq-Fnideq"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "MED",
@@ -13068,7 +13190,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "شهرداری توزی"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -15203,8 +15329,28 @@
     ],
     "NP": [
         {
+            "code": "P1",
+            "name": "استان شماره ۱"
+        },
+        {
+            "code": "P2",
+            "name": "استان شماره ۲"
+        },
+        {
+            "code": "P5",
+            "name": "استان شماره ۵"
+        },
+        {
             "code": "JA",
             "name": "جاناکپور"
+        },
+        {
+            "code": "P7",
+            "name": "سودورپاشچیم پرادش"
+        },
+        {
+            "code": "P6",
+            "name": "کارنالی پرادش"
         },
         {
             "code": "BH",
@@ -15239,10 +15385,6 @@
             "name": "Karnali"
         },
         {
-            "code": "P6",
-            "name": "Karnali²"
-        },
-        {
             "code": "KO",
             "name": "Kosi"
         },
@@ -15267,24 +15409,8 @@
             "name": "Narayani"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         },
         {
             "code": "4",
@@ -15371,6 +15497,10 @@
             "name": "اوتاگو"
         },
         {
+            "code": "TKI",
+            "name": "تاراناکی"
+        },
+        {
             "code": "CIT",
             "name": "جزایر چاتام"
         },
@@ -15421,10 +15551,6 @@
         {
             "code": "NSN",
             "name": "Nelson"
-        },
-        {
-            "code": "TKI",
-            "name": "Taranaki"
         },
         {
             "code": "TAS",
@@ -16125,6 +16251,14 @@
         {
             "code": "08",
             "name": "Eastern Visayas"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "10",
@@ -17390,7 +17524,7 @@
         },
         {
             "code": "16",
-            "name": "La Rivière Anglaise"
+            "name": "انگلیش ریور (سیشل)"
         },
         {
             "code": "17",
@@ -17402,7 +17536,7 @@
         },
         {
             "code": "19",
-            "name": "Plaisance"
+            "name": "پلزاس (سیشل)"
         },
         {
             "code": "20",
@@ -17422,7 +17556,7 @@
         },
         {
             "code": "24",
-            "name": "Les Mamelles"
+            "name": "له مامل"
         },
         {
             "code": "25",
@@ -18987,6 +19121,14 @@
             "name": "انجامنا"
         },
         {
+            "code": "EE",
+            "name": "اندی شرقی"
+        },
+        {
+            "code": "EO",
+            "name": "اندی غربی"
+        },
+        {
             "code": "BG",
             "name": "بخش بحر غزل"
         },
@@ -19007,8 +19149,32 @@
             "name": "بخش وادی فیرا"
         },
         {
+            "code": "TA",
+            "name": "تاجیلی"
+        },
+        {
             "code": "TI",
             "name": "تیبستی"
+        },
+        {
+            "code": "CB",
+            "name": "شاری باقرمی"
+        },
+        {
+            "code": "GR",
+            "name": "قیرا"
+        },
+        {
+            "code": "KA",
+            "name": "کانم"
+        },
+        {
+            "code": "LR",
+            "name": "لوگون شرقی"
+        },
+        {
+            "code": "LO",
+            "name": "لوگون غربی"
         },
         {
             "code": "ME",
@@ -19027,40 +19193,8 @@
             "name": "ناحیه مایو-کبی اوست"
         },
         {
-            "code": "CB",
-            "name": "Chari-Baguirmi"
-        },
-        {
-            "code": "EE",
-            "name": "Ennedi-Est"
-        },
-        {
-            "code": "EO",
-            "name": "Ennedi-Ouest"
-        },
-        {
-            "code": "GR",
-            "name": "Guéra"
-        },
-        {
-            "code": "KA",
-            "name": "Kanem"
-        },
-        {
-            "code": "LO",
-            "name": "Logone Occidental"
-        },
-        {
-            "code": "LR",
-            "name": "Logone Oriental"
-        },
-        {
             "code": "OD",
-            "name": "Ouaddaï"
-        },
-        {
-            "code": "TA",
-            "name": "Tandjilé"
+            "name": "ودای"
         }
     ],
     "TF": [
@@ -20266,7 +20400,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "ناحیه سونگو"
         }
     ],
     "UA": [

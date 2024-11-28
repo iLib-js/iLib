@@ -551,6 +551,10 @@
             "name": "ဗျူနိုအေးရိစ်မြို့"
         },
         {
+            "code": "Z",
+            "name": "လော့စ်ဂလက်ဆရားရက်စ် အမျိုးသားဥယျာဉ်"
+        },
+        {
             "code": "B",
             "name": "Buenos Aires Province"
         },
@@ -621,10 +625,6 @@
         {
             "code": "D",
             "name": "San Luis"
-        },
-        {
-            "code": "Z",
-            "name": "Santa Cruz"
         },
         {
             "code": "S",
@@ -2063,8 +2063,44 @@
     ],
     "BR": [
         {
+            "code": "CE",
+            "name": "ဆီအာရာပြည်နယ်"
+        },
+        {
             "code": "SP",
             "name": "ဆောပိုလိုမြို့"
+        },
+        {
+            "code": "PE",
+            "name": "ပါနမ်ဘူကိုပြည်နယ်"
+        },
+        {
+            "code": "PR",
+            "name": "ပါရာနာပြည်နယ်"
+        },
+        {
+            "code": "PA",
+            "name": "ပါရာပြည်နယ်"
+        },
+        {
+            "code": "PB",
+            "name": "ပါရိုင်ဘာပြည်နယ်"
+        },
+        {
+            "code": "BA",
+            "name": "ဘာဟီယာပြည်နယ်"
+        },
+        {
+            "code": "RS",
+            "name": "ရီယိုဂရန်းဒေးဒိုဆူလ်ပြည်နယ်"
+        },
+        {
+            "code": "RJ",
+            "name": "ရီယိုဒီဂျနေးရိုးပြည်နယ်"
+        },
+        {
+            "code": "AM",
+            "name": "အမေဇုံနက်စ်ပြည်နယ် (ဘရာဇီး ပြည်နယ်)"
         },
         {
             "code": "AC",
@@ -2077,18 +2113,6 @@
         {
             "code": "AP",
             "name": "Amapá"
-        },
-        {
-            "code": "AM",
-            "name": "Amazonas"
-        },
-        {
-            "code": "BA",
-            "name": "Bahia"
-        },
-        {
-            "code": "CE",
-            "name": "Ceará"
         },
         {
             "code": "ES",
@@ -2119,36 +2143,12 @@
             "name": "Minas Gerais"
         },
         {
-            "code": "PA",
-            "name": "Pará"
-        },
-        {
-            "code": "PB",
-            "name": "Paraíba"
-        },
-        {
-            "code": "PR",
-            "name": "Paraná"
-        },
-        {
-            "code": "PE",
-            "name": "Pernambuco"
-        },
-        {
             "code": "PI",
             "name": "Piauí"
         },
         {
-            "code": "RJ",
-            "name": "Rio de Janeiro"
-        },
-        {
             "code": "RN",
             "name": "Rio Grande do Norte"
-        },
-        {
-            "code": "RS",
-            "name": "Rio Grande do Sul"
         },
         {
             "code": "RO",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -5571,6 +5611,10 @@
             "name": "Southern Nations, Nationalities, and Peoples"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "TI",
             "name": "Tigray"
         }
@@ -5730,7 +5774,7 @@
     "FM": [
         {
             "code": "TRK",
-            "name": "Chuuk"
+            "name": "ချုခ်ပြည်နယ်"
         },
         {
             "code": "KSA",
@@ -5757,6 +5801,10 @@
         {
             "code": "75C",
             "name": "ပါရီမြို့"
+        },
+        {
+            "code": "972",
+            "name": "မာတီနစ်"
         },
         {
             "code": "01",
@@ -6049,10 +6097,6 @@
         {
             "code": "51",
             "name": "Marne"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "53",
@@ -6923,6 +6967,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7209,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8625,8 +8671,24 @@
             "name": "Papua"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "RI",
@@ -8855,6 +8917,22 @@
             "name": "ဆစ်ကင်ပြည်နယ်"
         },
         {
+            "code": "CG",
+            "name": "ဆတ္တိံသဂြဟပြည်နယ်"
+        },
+        {
+            "code": "JH",
+            "name": "ဈာရခဏ္ဍပြည်နယ်"
+        },
+        {
+            "code": "TS",
+            "name": "တေလံဂါနာပြည်နယ်"
+        },
+        {
+            "code": "TR",
+            "name": "တြိပူရပြည်နယ်"
+        },
+        {
             "code": "DL",
             "name": "ဒေလီမြို့"
         },
@@ -8873,6 +8951,10 @@
         {
             "code": "TN",
             "name": "မဒရပ်ပြည်နယ်"
+        },
+        {
+            "code": "MH",
+            "name": "မဟာရဋ္ဌပြည်နယ်"
         },
         {
             "code": "MZ",
@@ -8895,8 +8977,20 @@
             "name": "လာတက်"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "သြရိဿပြည်နယ်"
+        },
+        {
+            "code": "HR",
+            "name": "ဟရိယာဏာပြည်နယ်"
+        },
+        {
+            "code": "HP",
+            "name": "ဟိမာစလပဒေသပြည်နယ်"
+        },
+        {
+            "code": "AR",
+            "name": "အရုဏာစလပဒေသပြည်နယ်"
         },
         {
             "code": "AS",
@@ -8909,10 +9003,6 @@
         {
             "code": "AP",
             "name": "အန်ဒရာပရာဒစ် ပြည်နယ်"
-        },
-        {
-            "code": "AR",
-            "name": "Arunachal Pradesh"
         },
         {
             "code": "CH",
@@ -8935,28 +9025,12 @@
             "name": "Daman and Diu"
         },
         {
-            "code": "HR",
-            "name": "Haryana"
-        },
-        {
-            "code": "HP",
-            "name": "Himachal Pradesh"
-        },
-        {
-            "code": "JH",
-            "name": "Jharkhand"
-        },
-        {
             "code": "KL",
             "name": "Kerala"
         },
         {
             "code": "LD",
             "name": "Lakshadweep"
-        },
-        {
-            "code": "MH",
-            "name": "Maharashtra"
         },
         {
             "code": "PY",
@@ -8971,8 +9045,8 @@
             "name": "Telangana"
         },
         {
-            "code": "TR",
-            "name": "Tripura"
+            "code": "UK",
+            "name": "Uttarākhand"
         },
         {
             "code": "UT",
@@ -9321,6 +9395,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9419,6 +9497,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9533,6 +9615,10 @@
         {
             "code": "88",
             "name": "ဆာဒင်းနီးယားကျွန်း"
+        },
+        {
+            "code": "VE",
+            "name": "ဗင်းနစ်မြို့"
         },
         {
             "code": "62",
@@ -10021,10 +10107,6 @@
         {
             "code": "34",
             "name": "Veneto"
-        },
-        {
-            "code": "VE",
-            "name": "Venice"
         },
         {
             "code": "VB",
@@ -10821,6 +10903,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -10834,7 +10920,7 @@
         },
         {
             "code": "27",
-            "name": "Daegu"
+            "name": "ဒယ်ဂူမြို့"
         },
         {
             "code": "28",
@@ -10842,11 +10928,11 @@
         },
         {
             "code": "29",
-            "name": "Gwangju City"
+            "name": "ဂွမ်းဂျူမြို့"
         },
         {
             "code": "30",
-            "name": "Daejeon"
+            "name": "ဒယ်ဂျောန်မြို့"
         },
         {
             "code": "31",
@@ -10854,7 +10940,7 @@
         },
         {
             "code": "41",
-            "name": "Gyeonggi"
+            "name": "ဂယောင်းဂီတိုင်း"
         },
         {
             "code": "42",
@@ -10890,7 +10976,7 @@
         },
         {
             "code": "50",
-            "name": "Sejong"
+            "name": "ဆဲဂျွံမြို့"
         }
     ],
     "KW": [
@@ -10921,8 +11007,12 @@
     ],
     "KZ": [
         {
-            "code": "AST",
+            "code": "71",
             "name": "နျူ-ဆူလ်တန်မြို့"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
         },
         {
             "code": "AKM",
@@ -10933,16 +11023,36 @@
             "name": "Aktobe"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Almaty"
+        },
+        {
+            "code": "19",
+            "name": "Almaty oblysy"
         },
         {
             "code": "ALM",
             "name": "Almaty Region"
         },
         {
+            "code": "11",
+            "name": "Aqmola oblysy"
+        },
+        {
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
             "code": "ATY",
             "name": "Atyrau"
+        },
+        {
+            "code": "23",
+            "name": "Atyraū oblysy"
+        },
+        {
+            "code": "27",
+            "name": "Batys Qazaqstan oblysy"
         },
         {
             "code": "BAY",
@@ -10969,6 +11079,10 @@
             "name": "Kyzylorda"
         },
         {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
             "code": "MAN",
             "name": "Mangystau"
         },
@@ -10981,16 +11095,56 @@
             "name": "Pavlodar"
         },
         {
-            "code": "SHY",
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "39",
+            "name": "Qostanay oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "63",
+            "name": "Shyghys Qazaqstan oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
+        },
+        {
+            "code": "59",
+            "name": "Soltüstik Qazaqstan oblysy"
         },
         {
             "code": "YUZ",
             "name": "South Kazakhstan"
         },
         {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
             "code": "ZAP",
             "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12353,6 +12507,10 @@
             "name": "တန်ဂျီးယားမြို့"
         },
         {
+            "code": "MAR",
+            "name": "မာရကက်ရှ်မြို့"
+        },
+        {
             "code": "AGD",
             "name": "Agadir-Ida Ou Tanane"
         },
@@ -12531,10 +12689,6 @@
         {
             "code": "MDF",
             "name": "M’diq-Fnideq"
-        },
-        {
-            "code": "MAR",
-            "name": "Marrakech"
         },
         {
             "code": "MMD",
@@ -13037,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -15945,6 +16103,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -19061,6 +19227,10 @@
     ],
     "TH": [
         {
+            "code": "46",
+            "name": "ကာဠသိန္ဓုပြည်နယ်"
+        },
+        {
             "code": "71",
             "name": "ကန်ချနဘူရီ ခရိုင်"
         },
@@ -19143,10 +19313,6 @@
         {
             "code": "86",
             "name": "Chumphon"
-        },
-        {
-            "code": "46",
-            "name": "Kalasin"
         },
         {
             "code": "62",
@@ -21425,6 +21591,10 @@
     ],
     "VN": [
         {
+            "code": "CT",
+            "name": "ကန်သို"
+        },
+        {
             "code": "07",
             "name": "တူယန်ကွမ်းပြည်နယ်"
         },
@@ -21499,10 +21669,6 @@
         {
             "code": "59",
             "name": "Cà Mau"
-        },
-        {
-            "code": "CT",
-            "name": "Can Tho"
         },
         {
             "code": "04",

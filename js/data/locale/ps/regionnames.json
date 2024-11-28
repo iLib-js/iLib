@@ -32,7 +32,7 @@
     "AE": [
         {
             "code": "AZ",
-            "name": "Abu Dhabi"
+            "name": "ابوظبۍ (امارت)"
         },
         {
             "code": "AJ",
@@ -1443,6 +1443,26 @@
             "name": "بروکسل"
         },
         {
+            "code": "VBR",
+            "name": "فلېميش برابانت"
+        },
+        {
+            "code": "WLG",
+            "name": "ليېژ ولايت"
+        },
+        {
+            "code": "WNA",
+            "name": "نامور ولايت"
+        },
+        {
+            "code": "WHT",
+            "name": "هايناوت ولايت"
+        },
+        {
+            "code": "WBR",
+            "name": "والون برابانت ولايت"
+        },
+        {
             "code": "VAN",
             "name": "Antwerp"
         },
@@ -1455,18 +1475,6 @@
             "name": "Flanders"
         },
         {
-            "code": "VBR",
-            "name": "Flemish Brabant"
-        },
-        {
-            "code": "WHT",
-            "name": "Hainaut"
-        },
-        {
-            "code": "WLG",
-            "name": "Liège"
-        },
-        {
             "code": "VLI",
             "name": "Limburg"
         },
@@ -1475,16 +1483,8 @@
             "name": "Luxembourg"
         },
         {
-            "code": "WNA",
-            "name": "Namur"
-        },
-        {
             "code": "WAL",
             "name": "Wallonia"
-        },
-        {
-            "code": "WBR",
-            "name": "Walloon Brabant"
         },
         {
             "code": "VWV",
@@ -2519,8 +2519,12 @@
             "name": "برتانوي کولمبيا"
         },
         {
+            "code": "SK",
+            "name": "سسکچوان"
+        },
+        {
             "code": "MB",
-            "name": "Manitoba"
+            "name": "مانيتوبا"
         },
         {
             "code": "NB",
@@ -2549,10 +2553,6 @@
         {
             "code": "QC",
             "name": "Quebec"
-        },
-        {
-            "code": "SK",
-            "name": "Saskatchewan"
         },
         {
             "code": "YT",
@@ -2831,6 +2831,14 @@
             "name": "تورګاو"
         },
         {
+            "code": "JU",
+            "name": "جورا"
+        },
+        {
+            "code": "FR",
+            "name": "فريبورګ"
+        },
+        {
             "code": "GR",
             "name": "ګراو بوندن"
         },
@@ -2859,20 +2867,12 @@
             "name": "Bern"
         },
         {
-            "code": "FR",
-            "name": "Fribourg"
-        },
-        {
             "code": "GE",
             "name": "Geneva"
         },
         {
             "code": "GL",
             "name": "Glarus"
-        },
-        {
-            "code": "JU",
-            "name": "Jura"
         },
         {
             "code": "LU",
@@ -3109,6 +3109,14 @@
     ],
     "CM": [
         {
+            "code": "NO",
+            "name": "شمالي سيمه"
+        },
+        {
+            "code": "OU",
+            "name": "لوېديځه سيمه"
+        },
+        {
             "code": "AD",
             "name": "Adamawa"
         },
@@ -3129,10 +3137,6 @@
             "name": "Littoral"
         },
         {
-            "code": "NO",
-            "name": "North"
-        },
-        {
             "code": "NW",
             "name": "Northwest"
         },
@@ -3143,10 +3147,6 @@
         {
             "code": "SW",
             "name": "Southwest"
-        },
-        {
-            "code": "OU",
-            "name": "West"
         }
     ],
     "CN": [
@@ -3159,8 +3159,16 @@
             "name": "سینګیانګ"
         },
         {
+            "code": "SX",
+            "name": "شانشي"
+        },
+        {
             "code": "SH",
             "name": "شانګهای"
+        },
+        {
+            "code": "GX",
+            "name": "ګوانګشي"
         },
         {
             "code": "MO",
@@ -3189,10 +3197,6 @@
         {
             "code": "GD",
             "name": "Guangdong"
-        },
-        {
-            "code": "GX",
-            "name": "Guangxi"
         },
         {
             "code": "GZ",
@@ -3257,10 +3261,6 @@
         {
             "code": "SD",
             "name": "Shandong"
-        },
-        {
-            "code": "SX",
-            "name": "Shanxi"
         },
         {
             "code": "SC",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4736,7 +4776,7 @@
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
+            "name": "ایدا"
         },
         {
             "code": "50",
@@ -5223,6 +5263,10 @@
     ],
     "ER": [
         {
+            "code": "SK",
+            "name": "شمالي سور سمندر سیمه"
+        },
+        {
             "code": "AN",
             "name": "Anseba"
         },
@@ -5239,15 +5283,15 @@
             "name": "Maekel"
         },
         {
-            "code": "SK",
-            "name": "Northern Red Sea"
-        },
-        {
             "code": "DK",
             "name": "Southern Red Sea"
         }
     ],
     "ES": [
+        {
+            "code": "PV",
+            "name": "باسک سيمه"
+        },
         {
             "code": "CE",
             "name": "سیوتا"
@@ -5315,10 +5359,6 @@
         {
             "code": "B",
             "name": "Barcelona"
-        },
-        {
-            "code": "PV",
-            "name": "Basque Country"
         },
         {
             "code": "BI",
@@ -5571,6 +5611,10 @@
             "name": "Southern Nations, Nationalities, and Peoples"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "TI",
             "name": "Tigray"
         }
@@ -5751,6 +5795,22 @@
             "name": "پاريس"
         },
         {
+            "code": "974",
+            "name": "رېيونين"
+        },
+        {
+            "code": "973",
+            "name": "فرانسوي ګيانا"
+        },
+        {
+            "code": "20R",
+            "name": "کروسيکا"
+        },
+        {
+            "code": "971",
+            "name": "ګوادېلوپ"
+        },
+        {
             "code": "01",
             "name": "Ain"
         },
@@ -5847,10 +5907,6 @@
             "name": "Corrèze"
         },
         {
-            "code": "20R",
-            "name": "Corse"
-        },
-        {
             "code": "2A",
             "name": "Corse-du-Sud"
         },
@@ -5917,14 +5973,6 @@
         {
             "code": "GES",
             "name": "Grand-Est"
-        },
-        {
-            "code": "971",
-            "name": "Guadeloupe"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
         },
         {
             "code": "68",
@@ -6001,10 +6049,6 @@
         {
             "code": "39",
             "name": "Jura"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "40",
@@ -6263,6 +6307,10 @@
             "name": "اورکني"
         },
         {
+            "code": "EDH",
+            "name": "ایدینبرګ"
+        },
+        {
             "code": "UKM",
             "name": "بريتانيا"
         },
@@ -6277,6 +6325,10 @@
         {
             "code": "ZET",
             "name": "شټلنډ"
+        },
+        {
+            "code": "NIR",
+            "name": "شمالي ایرلنډ"
         },
         {
             "code": "GLG",
@@ -6611,10 +6663,6 @@
             "name": "East Sussex"
         },
         {
-            "code": "EDH",
-            "name": "Edinburgh"
-        },
-        {
             "code": "ENF",
             "name": "Enfield"
         },
@@ -6915,6 +6963,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -6929,10 +6981,6 @@
         {
             "code": "NTH",
             "name": "Northamptonshire"
-        },
-        {
-            "code": "NIR",
-            "name": "Northern Ireland"
         },
         {
             "code": "NBL",
@@ -7209,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8517,6 +8563,10 @@
     ],
     "ID": [
         {
+            "code": "BA",
+            "name": "بالي"
+        },
+        {
             "code": "JK",
             "name": "جکارتا"
         },
@@ -8525,12 +8575,12 @@
             "name": "ختیځ سوندای"
         },
         {
-            "code": "AC",
-            "name": "Aceh"
+            "code": "KA",
+            "name": "کاليمانتان"
         },
         {
-            "code": "BA",
-            "name": "Bali"
+            "code": "AC",
+            "name": "Aceh"
         },
         {
             "code": "BB",
@@ -8577,10 +8627,6 @@
             "name": "Java"
         },
         {
-            "code": "KA",
-            "name": "Kalimantan"
-        },
-        {
             "code": "LA",
             "name": "Lampung"
         },
@@ -8617,8 +8663,24 @@
             "name": "Papua"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "RI",
@@ -8805,28 +8867,28 @@
     ],
     "IL": [
         {
-            "code": "M",
-            "name": "Central District"
+            "code": "TA",
+            "name": "تل ابيب ولسوالۍ"
         },
         {
             "code": "HA",
-            "name": "Haifa District"
-        },
-        {
-            "code": "JM",
-            "name": "Jerusalem"
-        },
-        {
-            "code": "Z",
-            "name": "Northern District"
+            "name": "حيفا ولسوالۍ"
         },
         {
             "code": "D",
-            "name": "Southern District"
+            "name": "د اسراييلو سوېلي ولسوالۍ"
         },
         {
-            "code": "TA",
-            "name": "Tel Aviv District"
+            "code": "Z",
+            "name": "د اسراييلو شمالي ولسوالۍ"
+        },
+        {
+            "code": "M",
+            "name": "د اسراييلو مرکزي ولسوالۍ"
+        },
+        {
+            "code": "JM",
+            "name": "يروشلم ولسوالۍ"
         }
     ],
     "IN": [
@@ -8843,7 +8905,7 @@
             "name": "اتر پرديش"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "اتر کنډ"
         },
         {
@@ -8855,7 +8917,7 @@
             "name": "اندامان او نیکوبار ټاپو"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "اوړېشه"
         },
         {
@@ -8865,6 +8927,10 @@
         {
             "code": "PB",
             "name": "پنجاب"
+        },
+        {
+            "code": "PY",
+            "name": "پودوچېري"
         },
         {
             "code": "TN",
@@ -8883,7 +8949,7 @@
             "name": "جمو او کشمير"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "چتيس گړ"
         },
         {
@@ -8917,6 +8983,10 @@
         {
             "code": "GJ",
             "name": "گوجرات"
+        },
+        {
+            "code": "LD",
+            "name": "لاکشادويپ"
         },
         {
             "code": "MP",
@@ -8955,6 +9025,10 @@
             "name": "هماچل پرديش"
         },
         {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "DN",
             "name": "Dadra and Nagar Haveli"
         },
@@ -8971,22 +9045,22 @@
             "name": "Ladakh"
         },
         {
-            "code": "LD",
-            "name": "Lakshadweep"
-        },
-        {
-            "code": "PY",
-            "name": "Puducherry"
-        },
-        {
             "code": "TG",
             "name": "Telangana"
+        },
+        {
+            "code": "TS",
+            "name": "Telangāna"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
         {
             "code": "AN",
-            "name": "Al Anbar"
+            "name": "انبار"
         },
         {
             "code": "MU",
@@ -9345,6 +9419,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9435,6 +9513,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9543,12 +9625,20 @@
             "name": "توسکاني"
         },
         {
+            "code": "88",
+            "name": "ساردينيا"
+        },
+        {
             "code": "82",
             "name": "سيسيلي"
         },
         {
             "code": "36",
             "name": "فریولي ونتزیا جولیا"
+        },
+        {
+            "code": "VE",
+            "name": "وېنيس"
         },
         {
             "code": "65",
@@ -9943,10 +10033,6 @@
             "name": "Salerno"
         },
         {
-            "code": "88",
-            "name": "Sardinia"
-        },
-        {
             "code": "SS",
             "name": "Sassari"
         },
@@ -10021,10 +10107,6 @@
         {
             "code": "34",
             "name": "Veneto"
-        },
-        {
-            "code": "VE",
-            "name": "Venice"
         },
         {
             "code": "VB",
@@ -10286,7 +10368,7 @@
         },
         {
             "code": "32",
-            "name": "Shimane"
+            "name": "شیمانه"
         },
         {
             "code": "33",
@@ -10821,6 +10903,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -10921,16 +11007,24 @@
     ],
     "KZ": [
         {
-            "code": "AST",
+            "code": "71",
             "name": "استانه"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "الماته"
         },
         {
-            "code": "ZAP",
+            "code": "59",
+            "name": "شمالي قزاقستان ولایت"
+        },
+        {
+            "code": "27",
             "name": "لویدیځ قزاقستان ولایت"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
         },
         {
             "code": "AKM",
@@ -10941,12 +11035,28 @@
             "name": "Aktobe"
         },
         {
+            "code": "19",
+            "name": "Almaty oblysy"
+        },
+        {
             "code": "ALM",
             "name": "Almaty Region"
         },
         {
+            "code": "11",
+            "name": "Aqmola oblysy"
+        },
+        {
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
             "code": "ATY",
             "name": "Atyrau"
+        },
+        {
+            "code": "23",
+            "name": "Atyraū oblysy"
         },
         {
             "code": "BAY",
@@ -10973,6 +11083,10 @@
             "name": "Kyzylorda"
         },
         {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
             "code": "MAN",
             "name": "Mangystau"
         },
@@ -10985,12 +11099,52 @@
             "name": "Pavlodar"
         },
         {
-            "code": "SHY",
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "39",
+            "name": "Qostanay oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "63",
+            "name": "Shyghys Qazaqstan oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
         },
         {
             "code": "YUZ",
             "name": "South Kazakhstan"
+        },
+        {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12349,6 +12503,10 @@
             "name": "ربات"
         },
         {
+            "code": "CAS",
+            "name": "کازابلانکا"
+        },
+        {
             "code": "AGD",
             "name": "Agadir-Ida Ou Tanane"
         },
@@ -12395,10 +12553,6 @@
         {
             "code": "BOM",
             "name": "Boulemane"
-        },
-        {
-            "code": "CAS",
-            "name": "Casablanca"
         },
         {
             "code": "09",
@@ -13037,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -14306,7 +14464,7 @@
     "MW": [
         {
             "code": "BA",
-            "name": "Balaka"
+            "name": "بالاکا"
         },
         {
             "code": "BL",
@@ -14431,6 +14589,14 @@
     ],
     "MX": [
         {
+            "code": "JAL",
+            "name": "جلیسکو"
+        },
+        {
+            "code": "CMX",
+            "name": "مکسیکو ښار"
+        },
+        {
             "code": "YUC",
             "name": "یوکاتان"
         },
@@ -14459,10 +14625,6 @@
             "name": "Chihuahua"
         },
         {
-            "code": "CMX",
-            "name": "Ciudad de Mexico"
-        },
-        {
             "code": "COA",
             "name": "Coahuila"
         },
@@ -14485,10 +14647,6 @@
         {
             "code": "HID",
             "name": "Hidalgo"
-        },
-        {
-            "code": "JAL",
-            "name": "Jalisco"
         },
         {
             "code": "DIF",
@@ -14631,6 +14789,10 @@
     ],
     "MZ": [
         {
+            "code": "Q",
+            "name": "زامبېزيا ولايت"
+        },
+        {
             "code": "A",
             "name": "نیاسا"
         },
@@ -14669,10 +14831,6 @@
         {
             "code": "T",
             "name": "Tete"
-        },
-        {
-            "code": "Q",
-            "name": "Zambezia"
         }
     ],
     "NA": [
@@ -15935,6 +16093,14 @@
             "name": "Maguindanao"
         },
         {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
+        },
+        {
             "code": "MAD",
             "name": "Marinduque"
         },
@@ -16356,7 +16522,7 @@
         },
         {
             "code": "20",
-            "name": "Azores"
+            "name": "ازور"
         },
         {
             "code": "30",
@@ -16431,6 +16597,10 @@
     ],
     "PY": [
         {
+            "code": "ASU",
+            "name": "اسونسيون"
+        },
+        {
             "code": "16",
             "name": "Alto Paraguay"
         },
@@ -16441,10 +16611,6 @@
         {
             "code": "13",
             "name": "Amambay"
-        },
-        {
-            "code": "ASU",
-            "name": "Asunción"
         },
         {
             "code": "19",
@@ -16549,6 +16715,14 @@
             "name": "بخارست"
         },
         {
+            "code": "SV",
+            "name": "سوچاوا ښارګی"
+        },
+        {
+            "code": "MM",
+            "name": "مارامورش ښارګی"
+        },
+        {
             "code": "AB",
             "name": "Alba"
         },
@@ -16649,10 +16823,6 @@
             "name": "Ilfov"
         },
         {
-            "code": "MM",
-            "name": "Maramureş"
-        },
-        {
             "code": "MH",
             "name": "Mehedinți"
         },
@@ -16683,10 +16853,6 @@
         {
             "code": "SB",
             "name": "Sibiu"
-        },
-        {
-            "code": "SV",
-            "name": "Suceava"
         },
         {
             "code": "TR",
@@ -16849,8 +17015,48 @@
             "name": "آمور"
         },
         {
+            "code": "UD",
+            "name": "ادمورتيا جمهوريت"
+        },
+        {
+            "code": "AD",
+            "name": "اډيګيا"
+        },
+        {
+            "code": "AST",
+            "name": "استراخان اوبلاست"
+        },
+        {
             "code": "AL",
             "name": "التای جمهوریت"
+        },
+        {
+            "code": "IN",
+            "name": "انګوشتيا"
+        },
+        {
+            "code": "ORE",
+            "name": "اورینبورګ اوبلاست"
+        },
+        {
+            "code": "ORL",
+            "name": "اوريول ولايت"
+        },
+        {
+            "code": "ULY",
+            "name": "اوليانوسک ولايت"
+        },
+        {
+            "code": "IRK",
+            "name": "ايرکتسک اوبلاست"
+        },
+        {
+            "code": "IVA",
+            "name": "ایوانوو ولايت"
+        },
+        {
+            "code": "BA",
+            "name": "باشکيرستان"
         },
         {
             "code": "BRY",
@@ -16861,184 +17067,264 @@
             "name": "بلګورود"
         },
         {
+            "code": "BU",
+            "name": "بورياتيا جمهوريت"
+        },
+        {
+            "code": "PRI",
+            "name": "پريمورسکي سيمه"
+        },
+        {
+            "code": "PSK",
+            "name": "پسکوف ولايت"
+        },
+        {
+            "code": "PER",
+            "name": "پیرم کرائی"
+        },
+        {
+            "code": "PNZ",
+            "name": "پېنزا ولايت"
+        },
+        {
+            "code": "TA",
+            "name": "تاتارستان"
+        },
+        {
+            "code": "TAM",
+            "name": "تامبوف ولايت"
+        },
+        {
+            "code": "TUL",
+            "name": "تولا ولايت"
+        },
+        {
+            "code": "TY",
+            "name": "تووا"
+        },
+        {
+            "code": "TVE",
+            "name": "توېر ولايت"
+        },
+        {
+            "code": "TYU",
+            "name": "تيومن ولايت"
+        },
+        {
+            "code": "CHU",
+            "name": "چکوتکا خپلواک اګرک"
+        },
+        {
+            "code": "CU",
+            "name": "چواشيا"
+        },
+        {
             "code": "CE",
             "name": "چيچنيا"
+        },
+        {
+            "code": "CHE",
+            "name": "چيليابنسک ولايت"
+        },
+        {
+            "code": "KHA",
+            "name": "خاباروسک سيمه"
+        },
+        {
+            "code": "KK",
+            "name": "خاکسیا جمهوريت"
+        },
+        {
+            "code": "KHM",
+            "name": "خانتي مانسي په ځان بسيا ښار"
+        },
+        {
+            "code": "ARK",
+            "name": "د ارخانګلسک ولايت"
+        },
+        {
+            "code": "SA",
+            "name": "د ياکوتيا جمهوريت"
+        },
+        {
+            "code": "DA",
+            "name": "داغستان جمهوريت"
+        },
+        {
+            "code": "ROS",
+            "name": "روستوف اوبلاست"
+        },
+        {
+            "code": "RYA",
+            "name": "ريازان ولايت"
+        },
+        {
+            "code": "STA",
+            "name": "سټاوروپول سيمه"
+        },
+        {
+            "code": "SAK",
+            "name": "سخالين اوبلاست"
+        },
+        {
+            "code": "SAR",
+            "name": "سراتوف اوبلاست"
+        },
+        {
+            "code": "SAM",
+            "name": "سمارا ولايت"
+        },
+        {
+            "code": "SMO",
+            "name": "سمولينسک ولايت"
+        },
+        {
+            "code": "SVE",
+            "name": "سوېردلوسک اوبلاست"
+        },
+        {
+            "code": "SPE",
+            "name": "سینټ پیټرزبورګ"
+        },
+        {
+            "code": "SE",
+            "name": "شمالي اوسېتيا الانيا"
+        },
+        {
+            "code": "KR",
+            "name": "کارېليا جمهوريت"
+        },
+        {
+            "code": "KLU",
+            "name": "کالوګا ولايت"
+        },
+        {
+            "code": "KGD",
+            "name": "کالينينګراډ ولايت"
+        },
+        {
+            "code": "KAM",
+            "name": "کامچاټکا سيمه"
+        },
+        {
+            "code": "KB",
+            "name": "کبار دينو بالکار جمهوريت"
+        },
+        {
+            "code": "KC",
+            "name": "کراچای چېرکېس جمهوريت"
+        },
+        {
+            "code": "KDA",
+            "name": "کراسنودار سيمه"
+        },
+        {
+            "code": "KYA",
+            "name": "کراسنويارسک ولايت"
+        },
+        {
+            "code": "KL",
+            "name": "کلمیکیا جمهوریت"
+        },
+        {
+            "code": "KRS",
+            "name": "کورسک ولايت"
+        },
+        {
+            "code": "KGN",
+            "name": "کورګان ولايت"
+        },
+        {
+            "code": "KOS",
+            "name": "کوسټروما ولايت"
+        },
+        {
+            "code": "KO",
+            "name": "کومي جمهوريت"
+        },
+        {
+            "code": "KIR",
+            "name": "کيروف ولايت"
+        },
+        {
+            "code": "KEM",
+            "name": "کيميروو ولايت"
+        },
+        {
+            "code": "LIP",
+            "name": "ليپتسک ولايت"
+        },
+        {
+            "code": "LEN",
+            "name": "ليننګراد ولايت"
+        },
+        {
+            "code": "ME",
+            "name": "ماري اېل جمهوريت"
+        },
+        {
+            "code": "MAG",
+            "name": "ماګادان ولايت"
         },
         {
             "code": "MOW",
             "name": "مسکو"
         },
         {
-            "code": "AD",
-            "name": "Adygea"
+            "code": "MOS",
+            "name": "مسکو ولايت"
+        },
+        {
+            "code": "MO",
+            "name": "موردوويا"
+        },
+        {
+            "code": "MUR",
+            "name": "مورمانسک ولايت"
+        },
+        {
+            "code": "NGR",
+            "name": "نووګورود ولايت"
+        },
+        {
+            "code": "NIZ",
+            "name": "نېزني نوګورود ولايت"
+        },
+        {
+            "code": "NEN",
+            "name": "نينيتس په ځان بسيا ښار"
+        },
+        {
+            "code": "VOR",
+            "name": "ورونيش ولايت"
+        },
+        {
+            "code": "VLA",
+            "name": "ولاديمير اوبلاست"
+        },
+        {
+            "code": "VGG",
+            "name": "وولګوګراد ولايت"
+        },
+        {
+            "code": "VLG",
+            "name": "وولوګودا ولايت"
+        },
+        {
+            "code": "YAR",
+            "name": "ياروسلاول ولايت"
+        },
+        {
+            "code": "YAN",
+            "name": "يامالو نينيتس په ځان بسيا ښار"
+        },
+        {
+            "code": "YEV",
+            "name": "يهودي خپلواک ولايت"
         },
         {
             "code": "ALT",
             "name": "Altai Krai"
-        },
-        {
-            "code": "ARK",
-            "name": "Arkhangelsk"
-        },
-        {
-            "code": "AST",
-            "name": "Astrakhan"
-        },
-        {
-            "code": "BA",
-            "name": "Bashkortostan"
-        },
-        {
-            "code": "BU",
-            "name": "Buryat"
-        },
-        {
-            "code": "CHE",
-            "name": "Chelyabinsk"
-        },
-        {
-            "code": "CHU",
-            "name": "Chukotka Okrug"
-        },
-        {
-            "code": "CU",
-            "name": "Chuvash"
-        },
-        {
-            "code": "DA",
-            "name": "Dagestan"
-        },
-        {
-            "code": "IN",
-            "name": "Ingushetia"
-        },
-        {
-            "code": "IRK",
-            "name": "Irkutsk"
-        },
-        {
-            "code": "IVA",
-            "name": "Ivanovo"
-        },
-        {
-            "code": "YEV",
-            "name": "Jewish"
-        },
-        {
-            "code": "KB",
-            "name": "Kabardino-Balkar"
-        },
-        {
-            "code": "KGD",
-            "name": "Kaliningrad"
-        },
-        {
-            "code": "KL",
-            "name": "Kalmykia"
-        },
-        {
-            "code": "KLU",
-            "name": "Kaluga"
-        },
-        {
-            "code": "KAM",
-            "name": "Kamchatka Krai"
-        },
-        {
-            "code": "KC",
-            "name": "Karachay-Cherkess"
-        },
-        {
-            "code": "KR",
-            "name": "Karelia"
-        },
-        {
-            "code": "KEM",
-            "name": "Kemerovo"
-        },
-        {
-            "code": "KHA",
-            "name": "Khabarovsk Krai"
-        },
-        {
-            "code": "KK",
-            "name": "Khakassia"
-        },
-        {
-            "code": "KHM",
-            "name": "Khanty-Mansi"
-        },
-        {
-            "code": "KIR",
-            "name": "Kirov"
-        },
-        {
-            "code": "KO",
-            "name": "Komi"
-        },
-        {
-            "code": "KOS",
-            "name": "Kostroma"
-        },
-        {
-            "code": "KDA",
-            "name": "Krasnodar Krai"
-        },
-        {
-            "code": "KYA",
-            "name": "Krasnoyarsk Krai"
-        },
-        {
-            "code": "KGN",
-            "name": "Kurgan"
-        },
-        {
-            "code": "KRS",
-            "name": "Kursk"
-        },
-        {
-            "code": "LEN",
-            "name": "Leningrad"
-        },
-        {
-            "code": "LIP",
-            "name": "Lipetsk"
-        },
-        {
-            "code": "MAG",
-            "name": "Magadan"
-        },
-        {
-            "code": "ME",
-            "name": "Mari El"
-        },
-        {
-            "code": "MO",
-            "name": "Mordovia"
-        },
-        {
-            "code": "MOS",
-            "name": "Moscow Province"
-        },
-        {
-            "code": "MUR",
-            "name": "Murmansk"
-        },
-        {
-            "code": "NEN",
-            "name": "Nenets"
-        },
-        {
-            "code": "NIZ",
-            "name": "Nizhny Novgorod"
-        },
-        {
-            "code": "SE",
-            "name": "North Ossetia-Alania"
-        },
-        {
-            "code": "NGR",
-            "name": "Novgorod"
         },
         {
             "code": "NVS",
@@ -17049,128 +17335,8 @@
             "name": "Omsk"
         },
         {
-            "code": "ORE",
-            "name": "Orenburg"
-        },
-        {
-            "code": "ORL",
-            "name": "Oryol"
-        },
-        {
-            "code": "PNZ",
-            "name": "Penza"
-        },
-        {
-            "code": "PER",
-            "name": "Perm Krai"
-        },
-        {
-            "code": "PRI",
-            "name": "Primorsky Krai"
-        },
-        {
-            "code": "PSK",
-            "name": "Pskov"
-        },
-        {
-            "code": "ROS",
-            "name": "Rostov"
-        },
-        {
-            "code": "RYA",
-            "name": "Ryazan"
-        },
-        {
-            "code": "SPE",
-            "name": "Saint Petersburg"
-        },
-        {
-            "code": "SA",
-            "name": "Sakha"
-        },
-        {
-            "code": "SAK",
-            "name": "Sakhalin"
-        },
-        {
-            "code": "SAM",
-            "name": "Samara"
-        },
-        {
-            "code": "SAR",
-            "name": "Saratov"
-        },
-        {
-            "code": "SMO",
-            "name": "Smolensk"
-        },
-        {
-            "code": "STA",
-            "name": "Stavropol Krai"
-        },
-        {
-            "code": "SVE",
-            "name": "Sverdlovsk"
-        },
-        {
-            "code": "TAM",
-            "name": "Tambov"
-        },
-        {
-            "code": "TA",
-            "name": "Tatarstan"
-        },
-        {
             "code": "TOM",
             "name": "Tomsk"
-        },
-        {
-            "code": "TUL",
-            "name": "Tula"
-        },
-        {
-            "code": "TY",
-            "name": "Tuva"
-        },
-        {
-            "code": "TVE",
-            "name": "Tver"
-        },
-        {
-            "code": "TYU",
-            "name": "Tyumen"
-        },
-        {
-            "code": "UD",
-            "name": "Udmurt"
-        },
-        {
-            "code": "ULY",
-            "name": "Ulyanovsk"
-        },
-        {
-            "code": "VLA",
-            "name": "Vladimir"
-        },
-        {
-            "code": "VGG",
-            "name": "Volgograd"
-        },
-        {
-            "code": "VLG",
-            "name": "Vologda"
-        },
-        {
-            "code": "VOR",
-            "name": "Voronezh"
-        },
-        {
-            "code": "YAN",
-            "name": "Yamalo-Nenets Okrug"
-        },
-        {
-            "code": "YAR",
-            "name": "Yaroslavl"
         },
         {
             "code": "ZAB",
@@ -19375,24 +19541,24 @@
     ],
     "TJ": [
         {
+            "code": "GB",
+            "name": "بدخشان ګورنو خپلواک ولايت"
+        },
+        {
+            "code": "RA",
+            "name": "جمهوریت واک لاندې ولسوالۍ"
+        },
+        {
+            "code": "KT",
+            "name": "ختلان ولايت"
+        },
+        {
             "code": "DU",
             "name": "دوشنبه"
         },
         {
-            "code": "GB",
-            "name": "Gorno-Badakhshan"
-        },
-        {
-            "code": "KT",
-            "name": "Khatlon"
-        },
-        {
-            "code": "RA",
-            "name": "Nohiyahoi Tobei Jumhurí"
-        },
-        {
             "code": "SU",
-            "name": "Sughd"
+            "name": "سغد ولایت"
         }
     ],
     "TL": [
@@ -20264,7 +20430,7 @@
         },
         {
             "code": "21",
-            "name": "Zakarpattia"
+            "name": "زاکارپاتيا ولايت"
         },
         {
             "code": "23",
@@ -20288,7 +20454,7 @@
         },
         {
             "code": "40",
-            "name": "Sevastopol"
+            "name": "سواستوپول"
         },
         {
             "code": "43",
@@ -20957,6 +21123,18 @@
             "name": "آیووا"
         },
         {
+            "code": "AR",
+            "name": "ارکنزاس"
+        },
+        {
+            "code": "AZ",
+            "name": "اریزونا"
+        },
+        {
+            "code": "AK",
+            "name": "الاسکا"
+        },
+        {
             "code": "OR",
             "name": "اورګان"
         },
@@ -20981,6 +21159,10 @@
             "name": "تینسي"
         },
         {
+            "code": "GA",
+            "name": "جورجيا (د امريکا ايالت)"
+        },
+        {
             "code": "RI",
             "name": "روډ ایسلنډ"
         },
@@ -20999,6 +21181,10 @@
         {
             "code": "NC",
             "name": "شمالي کارولینا"
+        },
+        {
+            "code": "FL",
+            "name": "فلوريډا"
         },
         {
             "code": "CA",
@@ -21105,32 +21291,12 @@
             "name": "یوتا"
         },
         {
-            "code": "AK",
-            "name": "Alaska"
-        },
-        {
-            "code": "AZ",
-            "name": "Arizona"
-        },
-        {
-            "code": "AR",
-            "name": "Arkansas"
-        },
-        {
             "code": "CT",
             "name": "Connecticut"
         },
         {
             "code": "DE",
             "name": "Delaware"
-        },
-        {
-            "code": "FL",
-            "name": "Florida"
-        },
-        {
-            "code": "GA",
-            "name": "Georgia"
         },
         {
             "code": "ID",
@@ -21233,32 +21399,44 @@
     ],
     "UZ": [
         {
+            "code": "AN",
+            "name": "انديجان ولايت"
+        },
+        {
+            "code": "BU",
+            "name": "بخارا ولايت"
+        },
+        {
             "code": "TK",
             "name": "تاشکند"
         },
         {
-            "code": "AN",
-            "name": "Andijan"
-        },
-        {
-            "code": "BU",
-            "name": "Bukhara"
-        },
-        {
-            "code": "FA",
-            "name": "Fergana"
+            "code": "TO",
+            "name": "تاشکند ولايت"
         },
         {
             "code": "JI",
-            "name": "Jizzakh"
+            "name": "جيزک ولايت"
+        },
+        {
+            "code": "XO",
+            "name": "خوارزم ولايت"
+        },
+        {
+            "code": "SU",
+            "name": "سرخان دريا ولايت"
+        },
+        {
+            "code": "FA",
+            "name": "فرغانه ولايت"
         },
         {
             "code": "QR",
-            "name": "Karakalpakstan"
+            "name": "کراکل پاکستان"
         },
         {
             "code": "NG",
-            "name": "Namangan"
+            "name": "نمنګان ولايت"
         },
         {
             "code": "NW",
@@ -21275,18 +21453,6 @@
         {
             "code": "SI",
             "name": "Sirdaryo"
-        },
-        {
-            "code": "SU",
-            "name": "Surxondaryo"
-        },
-        {
-            "code": "TO",
-            "name": "Tashkent Province"
-        },
-        {
-            "code": "XO",
-            "name": "Xorazm"
         }
     ],
     "VC": [
@@ -21333,6 +21499,10 @@
             "name": "تاچیرا آیالات"
         },
         {
+            "code": "W",
+            "name": "فدرالي انحصاري سيمې"
+        },
+        {
             "code": "Z",
             "name": "Amazonas"
         },
@@ -21367,10 +21537,6 @@
         {
             "code": "I",
             "name": "Falcón"
-        },
-        {
-            "code": "W",
-            "name": "Federal Dependencies"
         },
         {
             "code": "J",
@@ -21865,12 +22031,12 @@
     ],
     "ZA": [
         {
-            "code": "EC",
-            "name": "Eastern Cape"
+            "code": "FS",
+            "name": "خپلواک ايالت"
         },
         {
-            "code": "FS",
-            "name": "Free State"
+            "code": "EC",
+            "name": "Eastern Cape"
         },
         {
             "code": "GP",

@@ -1149,12 +1149,64 @@
     ],
     "BD": [
         {
+            "code": "19",
+            "name": "가이반다구"
+        },
+        {
+            "code": "18",
+            "name": "가지푸르구"
+        },
+        {
+            "code": "17",
+            "name": "고팔간지구"
+        },
+        {
+            "code": "40",
+            "name": "나라양간지구"
+        },
+        {
+            "code": "43",
+            "name": "나라일구"
+        },
+        {
+            "code": "42",
+            "name": "나르싱디구"
+        },
+        {
+            "code": "48",
+            "name": "나오가온구"
+        },
+        {
+            "code": "44",
+            "name": "나토르구"
+        },
+        {
+            "code": "41",
+            "name": "네트로코나구"
+        },
+        {
+            "code": "47",
+            "name": "노아칼리구"
+        },
+        {
+            "code": "46",
+            "name": "닐파마리구"
+        },
+        {
             "code": "C",
             "name": "다카 구"
         },
         {
             "code": "13",
             "name": "다카구"
+        },
+        {
+            "code": "14",
+            "name": "디나지푸르구"
+        },
+        {
+            "code": "53",
+            "name": "라지바리구"
         },
         {
             "code": "E",
@@ -1165,6 +1217,14 @@
             "name": "라지샤히 지구"
         },
         {
+            "code": "31",
+            "name": "락슈미푸르구"
+        },
+        {
+            "code": "32",
+            "name": "랄모니르하트구"
+        },
+        {
             "code": "F",
             "name": "랑푸르 구"
         },
@@ -1173,8 +1233,16 @@
             "name": "랑푸르 디스트릭트"
         },
         {
+            "code": "37",
+            "name": "마구라구"
+        },
+        {
             "code": "33",
             "name": "마니가니 지구"
+        },
+        {
+            "code": "36",
+            "name": "마다리푸르구"
         },
         {
             "code": "H",
@@ -1183,6 +1251,18 @@
         {
             "code": "34",
             "name": "마이멘싱구"
+        },
+        {
+            "code": "39",
+            "name": "메헤르푸르구"
+        },
+        {
+            "code": "38",
+            "name": "모울비바자르구"
+        },
+        {
+            "code": "35",
+            "name": "문시간지구"
         },
         {
             "code": "05",
@@ -1201,6 +1281,34 @@
             "name": "바리살 지구"
         },
         {
+            "code": "01",
+            "name": "반다르반구"
+        },
+        {
+            "code": "03",
+            "name": "보그라구"
+        },
+        {
+            "code": "07",
+            "name": "볼라구"
+        },
+        {
+            "code": "04",
+            "name": "브라만바리아구"
+        },
+        {
+            "code": "62",
+            "name": "샤리아트푸르구"
+        },
+        {
+            "code": "57",
+            "name": "셰르푸르구"
+        },
+        {
+            "code": "61",
+            "name": "수남간지구"
+        },
+        {
             "code": "59",
             "name": "시라지간지구"
         },
@@ -1213,12 +1321,56 @@
             "name": "실렛 지구"
         },
         {
+            "code": "21",
+            "name": "자말푸르구"
+        },
+        {
+            "code": "25",
+            "name": "잘로카티구"
+        },
+        {
+            "code": "22",
+            "name": "조쇼르구"
+        },
+        {
+            "code": "24",
+            "name": "조이푸르하트구"
+        },
+        {
+            "code": "45",
+            "name": "차파이나와브간지구"
+        },
+        {
+            "code": "09",
+            "name": "찬드푸르구"
+        },
+        {
+            "code": "12",
+            "name": "추아당가구"
+        },
+        {
             "code": "B",
             "name": "치타공 구"
         },
         {
             "code": "10",
             "name": "치타공구"
+        },
+        {
+            "code": "29",
+            "name": "카그라차리구"
+        },
+        {
+            "code": "08",
+            "name": "코밀라구"
+        },
+        {
+            "code": "11",
+            "name": "콕스바자르구"
+        },
+        {
+            "code": "28",
+            "name": "쿠리그람구"
         },
         {
             "code": "30",
@@ -1233,184 +1385,48 @@
             "name": "쿨나구"
         },
         {
+            "code": "26",
+            "name": "키쇼레간지구"
+        },
+        {
             "code": "64",
             "name": "타쿠르가온구"
+        },
+        {
+            "code": "63",
+            "name": "탕가일구"
+        },
+        {
+            "code": "15",
+            "name": "파리드푸르구"
+        },
+        {
+            "code": "49",
+            "name": "파브나구"
+        },
+        {
+            "code": "51",
+            "name": "파투아칼리구"
+        },
+        {
+            "code": "52",
+            "name": "판차가르구"
+        },
+        {
+            "code": "16",
+            "name": "페니구"
         },
         {
             "code": "20",
             "name": "하비간지구"
         },
         {
-            "code": "01",
-            "name": "Bandarban"
-        },
-        {
-            "code": "07",
-            "name": "Bhola"
-        },
-        {
-            "code": "03",
-            "name": "Bogra"
-        },
-        {
-            "code": "04",
-            "name": "Brahmanbaria"
-        },
-        {
-            "code": "09",
-            "name": "Chandpur"
-        },
-        {
-            "code": "12",
-            "name": "Chuadanga"
-        },
-        {
-            "code": "08",
-            "name": "Comilla"
-        },
-        {
-            "code": "11",
-            "name": "Cox’s Bazar"
-        },
-        {
-            "code": "14",
-            "name": "Dinajpur"
-        },
-        {
-            "code": "15",
-            "name": "Faridpur"
-        },
-        {
-            "code": "16",
-            "name": "Feni"
-        },
-        {
-            "code": "19",
-            "name": "Gaibandha"
-        },
-        {
-            "code": "18",
-            "name": "Gazipur"
-        },
-        {
-            "code": "17",
-            "name": "Gopalganj"
-        },
-        {
-            "code": "21",
-            "name": "Jamalpur"
-        },
-        {
-            "code": "22",
-            "name": "Jessore"
-        },
-        {
-            "code": "25",
-            "name": "Jhalokati"
-        },
-        {
             "code": "23",
             "name": "Jhenaidah"
         },
         {
-            "code": "24",
-            "name": "Joypurhat"
-        },
-        {
-            "code": "29",
-            "name": "Khagrachari"
-        },
-        {
-            "code": "26",
-            "name": "Kishoreganj"
-        },
-        {
-            "code": "28",
-            "name": "Kurigram"
-        },
-        {
-            "code": "31",
-            "name": "Lakshmipur"
-        },
-        {
-            "code": "32",
-            "name": "Lalmonirhat"
-        },
-        {
-            "code": "36",
-            "name": "Madaripur"
-        },
-        {
-            "code": "37",
-            "name": "Magura"
-        },
-        {
-            "code": "38",
-            "name": "Maulvi Bazar"
-        },
-        {
-            "code": "39",
-            "name": "Meherpur"
-        },
-        {
-            "code": "35",
-            "name": "Munshiganj"
-        },
-        {
-            "code": "48",
-            "name": "Naogaon"
-        },
-        {
-            "code": "43",
-            "name": "Narail"
-        },
-        {
-            "code": "40",
-            "name": "Narayanganj"
-        },
-        {
-            "code": "42",
-            "name": "Narsingdi"
-        },
-        {
-            "code": "44",
-            "name": "Natore"
-        },
-        {
-            "code": "45",
-            "name": "Nawabganj"
-        },
-        {
-            "code": "41",
-            "name": "Netrokona"
-        },
-        {
-            "code": "46",
-            "name": "Nilphamari"
-        },
-        {
-            "code": "47",
-            "name": "Noakhali"
-        },
-        {
-            "code": "49",
-            "name": "Pabna"
-        },
-        {
-            "code": "52",
-            "name": "Panchagarh"
-        },
-        {
-            "code": "51",
-            "name": "Patuakhali"
-        },
-        {
             "code": "50",
             "name": "Pirojpur"
-        },
-        {
-            "code": "53",
-            "name": "Rajbari"
         },
         {
             "code": "56",
@@ -1419,22 +1435,6 @@
         {
             "code": "58",
             "name": "Satkhira"
-        },
-        {
-            "code": "62",
-            "name": "Shariatpur"
-        },
-        {
-            "code": "57",
-            "name": "Sherpur"
-        },
-        {
-            "code": "61",
-            "name": "Sunamganj"
-        },
-        {
-            "code": "63",
-            "name": "Tangail"
         }
     ],
     "BE": [
@@ -2629,6 +2629,10 @@
             "name": "오트카탕가 주"
         },
         {
+            "code": "IT",
+            "name": "이투리주"
+        },
+        {
             "code": "TO",
             "name": "초포 주"
         },
@@ -2659,10 +2663,6 @@
         {
             "code": "BN",
             "name": "Bandundu"
-        },
-        {
-            "code": "IT",
-            "name": "Ituri"
         },
         {
             "code": "KS",
@@ -2909,8 +2909,24 @@
     ],
     "CI": [
         {
+            "code": "GD",
+            "name": "고지부아구"
+        },
+        {
             "code": "DN",
             "name": "뎅겔레 지구"
+        },
+        {
+            "code": "LG",
+            "name": "라귄구"
+        },
+        {
+            "code": "LC",
+            "name": "라크구"
+        },
+        {
+            "code": "MG",
+            "name": "몽타뉴구"
         },
         {
             "code": "BS",
@@ -2925,6 +2941,10 @@
             "name": "사반 지구"
         },
         {
+            "code": "SM",
+            "name": "사산드라마라우에구"
+        },
+        {
             "code": "AB",
             "name": "아비장"
         },
@@ -2933,8 +2953,16 @@
             "name": "야무수크로"
         },
         {
+            "code": "WR",
+            "name": "워로바구"
+        },
+        {
             "code": "ZZ",
             "name": "장잔 주"
+        },
+        {
+            "code": "CM",
+            "name": "코모에구"
         },
         {
             "code": "16",
@@ -2949,10 +2977,6 @@
             "name": "Bas-Sassandra"
         },
         {
-            "code": "CM",
-            "name": "Comoé"
-        },
-        {
             "code": "10",
             "name": "Denguélé"
         },
@@ -2965,10 +2989,6 @@
             "name": "Fromager"
         },
         {
-            "code": "GD",
-            "name": "Gôh-Djiboua"
-        },
-        {
             "code": "02",
             "name": "Haut-Sassandra"
         },
@@ -2977,24 +2997,12 @@
             "name": "Lacs"
         },
         {
-            "code": "LC",
-            "name": "Lacs²"
-        },
-        {
             "code": "01",
             "name": "Lagunes"
         },
         {
-            "code": "LG",
-            "name": "Lagunes²"
-        },
-        {
             "code": "12",
             "name": "Marahoué"
-        },
-        {
-            "code": "MG",
-            "name": "Montagnes"
         },
         {
             "code": "19",
@@ -3007,10 +3015,6 @@
         {
             "code": "11",
             "name": "N’zi-Comoé"
-        },
-        {
-            "code": "SM",
-            "name": "Sassandra-Marahoué"
         },
         {
             "code": "03",
@@ -3027,10 +3031,6 @@
         {
             "code": "04",
             "name": "Vallée du Bandama"
-        },
-        {
-            "code": "WR",
-            "name": "Woroba"
         },
         {
             "code": "14",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "렐리잔 주"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4736,7 +4776,7 @@
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
+            "name": "이다비루주"
         },
         {
             "code": "49",
@@ -4744,7 +4784,7 @@
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
+            "name": "여게바주"
         },
         {
             "code": "51",
@@ -4752,11 +4792,11 @@
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "얘르바주"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "래네주"
         },
         {
             "code": "57",
@@ -4768,11 +4808,11 @@
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "래네비루주"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
+            "name": "펄바주"
         },
         {
             "code": "65",
@@ -4784,7 +4824,7 @@
         },
         {
             "code": "68",
-            "name": "Pärnumaa"
+            "name": "패르누주"
         },
         {
             "code": "70",
@@ -4792,7 +4832,7 @@
         },
         {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "라플라주"
         },
         {
             "code": "74",
@@ -4804,11 +4844,11 @@
         },
         {
             "code": "79",
-            "name": "Tartumaa"
+            "name": "타르투주"
         },
         {
             "code": "81",
-            "name": "Valgamaa"
+            "name": "발가주"
         },
         {
             "code": "82",
@@ -4824,7 +4864,7 @@
         },
         {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "버루주"
         },
         {
             "code": "130",
@@ -4916,7 +4956,7 @@
         },
         {
             "code": "321",
-            "name": "Kohtla-Järve"
+            "name": "코흐틀라얘르베"
         },
         {
             "code": "338",
@@ -5068,7 +5108,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "실라매에"
         },
         {
             "code": "784",
@@ -5567,6 +5607,10 @@
             "name": "남부 국가 민족 주"
         },
         {
+            "code": "SW",
+            "name": "남서에티오피아인민주"
+        },
+        {
             "code": "DD",
             "name": "디레다와"
         },
@@ -5577,6 +5621,10 @@
         {
             "code": "SO",
             "name": "소말리 주"
+        },
+        {
+            "code": "SI",
+            "name": "시다마주"
         },
         {
             "code": "AA",
@@ -5601,10 +5649,6 @@
         {
             "code": "HA",
             "name": "하라리 주"
-        },
-        {
-            "code": "SI",
-            "name": "Sidama"
         }
     ],
     "FI": [
@@ -5827,6 +5871,10 @@
             "name": "랑드 주"
         },
         {
+            "code": "974",
+            "name": "레위니옹"
+        },
+        {
             "code": "48",
             "name": "로제르 주"
         },
@@ -5857,6 +5905,10 @@
         {
             "code": "41",
             "name": "루아르에셰르 주"
+        },
+        {
+            "code": "972",
+            "name": "마르티니크"
         },
         {
             "code": "51",
@@ -5997,6 +6049,10 @@
         {
             "code": "03",
             "name": "알리에 주"
+        },
+        {
+            "code": "6AE",
+            "name": "알자스"
         },
         {
             "code": "04",
@@ -6203,6 +6259,10 @@
             "name": "퓌드돔 주"
         },
         {
+            "code": "973",
+            "name": "프랑스령 기아나"
+        },
+        {
             "code": "PAC",
             "name": "프로방스알프코트다쥐르"
         },
@@ -6219,24 +6279,8 @@
             "name": "피레네조리앙탈 주"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
-        },
-        {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -7279,12 +7323,20 @@
             "name": "North Down"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OMH",
             "name": "Omagh"
         },
         {
             "code": "STB",
             "name": "Strabane"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         }
     ],
     "GD": [
@@ -8247,12 +8299,6 @@
             "name": "포타로시파루니 주"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "GD",
@@ -8457,6 +8503,10 @@
     ],
     "HU": [
         {
+            "code": "NK",
+            "name": "너지커니저"
+        },
+        {
             "code": "NO",
             "name": "노그라드 주"
         },
@@ -8623,10 +8673,6 @@
         {
             "code": "HV",
             "name": "호드메죄바샤르헤이"
-        },
-        {
-            "code": "NK",
-            "name": "Nagykanizsa"
         }
     ],
     "IC": [
@@ -8639,6 +8685,10 @@
         {
             "code": "GO",
             "name": "고론탈로 주"
+        },
+        {
+            "code": "PS",
+            "name": "남파푸아주"
         },
         {
             "code": "NB",
@@ -8769,6 +8819,10 @@
             "name": "잠비 주"
         },
         {
+            "code": "PT",
+            "name": "중앙파푸아주"
+        },
+        {
             "code": "KA",
             "name": "칼리만탄"
         },
@@ -8797,8 +8851,16 @@
             "name": "파푸아 주"
         },
         {
+            "code": "PE",
+            "name": "파푸아고원주"
+        },
+        {
             "code": "PB",
             "name": "파푸아바랏 주"
+        },
+        {
+            "code": "PD",
+            "name": "Papua Barat Daya"
         }
     ],
     "IE": [
@@ -9043,8 +9105,16 @@
             "name": "오디샤 주"
         },
         {
+            "code": "OD",
+            "name": "오디샤주"
+        },
+        {
             "code": "UT",
             "name": "우타라칸드 주"
+        },
+        {
+            "code": "UK",
+            "name": "우타라칸드주"
         },
         {
             "code": "UP",
@@ -9061,6 +9131,10 @@
         {
             "code": "CT",
             "name": "차티스가르 주"
+        },
+        {
+            "code": "CG",
+            "name": "차티스가르주"
         },
         {
             "code": "CH",
@@ -9081,6 +9155,10 @@
         {
             "code": "TG",
             "name": "텔랑가나 주"
+        },
+        {
+            "code": "TS",
+            "name": "텔랑가나주"
         },
         {
             "code": "TR",
@@ -9317,6 +9395,10 @@
     ],
     "IS": [
         {
+            "code": "GAR",
+            "name": "가르다바이르"
+        },
+        {
             "code": "5",
             "name": "노르뒤를란드 베스트라"
         },
@@ -9325,8 +9407,16 @@
             "name": "노르뒤를란드 에이스트라"
         },
         {
+            "code": "RKV",
+            "name": "레이캬비크"
+        },
+        {
             "code": "3",
             "name": "베스튀를란드"
+        },
+        {
+            "code": "VEM",
+            "name": "베스트만나에이야르 제도"
         },
         {
             "code": "4",
@@ -9339,6 +9429,10 @@
         {
             "code": "BLO",
             "name": "블뢴뒤오스"
+        },
+        {
+            "code": "SEL",
+            "name": "셀티아르드나르네스"
         },
         {
             "code": "2",
@@ -9359,6 +9453,18 @@
         {
             "code": "7",
             "name": "외이스튀를란드"
+        },
+        {
+            "code": "KOP",
+            "name": "코파보귀르"
+        },
+        {
+            "code": "HVE",
+            "name": "크베라게르디"
+        },
+        {
+            "code": "HAF",
+            "name": "하프나르피외르뒤르"
         },
         {
             "code": "1",
@@ -9429,10 +9535,6 @@
             "name": "Flóahreppur"
         },
         {
-            "code": "GAR",
-            "name": "Garðabær"
-        },
-        {
             "code": "GOG",
             "name": "Grímsnes- og Grafningshreppur"
         },
@@ -9449,10 +9551,6 @@
             "name": "Grýtubakkahreppur"
         },
         {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
-        },
-        {
             "code": "HEL",
             "name": "Helgafellssveit"
         },
@@ -9463,6 +9561,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9477,10 +9579,6 @@
             "name": "Hvalfjarðarsveit"
         },
         {
-            "code": "HVE",
-            "name": "Hveragerðisbær"
-        },
-        {
             "code": "ISA",
             "name": "Ísafjarðarbær"
         },
@@ -9491,10 +9589,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9537,14 +9631,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
-            "code": "SEL",
-            "name": "Seltjarnarnesbær"
-        },
-        {
             "code": "SEY",
             "name": "Seyðisfjarðarkaupstaður"
         },
@@ -9555,6 +9641,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9627,10 +9717,6 @@
         {
             "code": "TJO",
             "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10941,6 +11027,10 @@
         {
             "code": "14",
             "name": "남포특별시"
+        },
+        {
+            "code": "15",
+            "name": "개성시"
         }
     ],
     "KR": [
@@ -11045,27 +11135,35 @@
             "name": "망기스타우 주"
         },
         {
+            "code": "47",
+            "name": "망기스타우주"
+        },
+        {
             "code": "BAY",
             "name": "바이코누르"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "바티스카작스탄 주"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "솔튀스틱카작스탄 주"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "쉼켄트"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "시기스카작스탄 주"
         },
         {
-            "code": "AST",
+            "code": "10",
+            "name": "아바이주"
+        },
+        {
+            "code": "71",
             "name": "아스타나"
         },
         {
@@ -11073,15 +11171,27 @@
             "name": "아크몰라 주"
         },
         {
+            "code": "11",
+            "name": "아크몰라주"
+        },
+        {
             "code": "ATY",
             "name": "아티라우 주"
+        },
+        {
+            "code": "23",
+            "name": "아티라우주"
         },
         {
             "code": "AKT",
             "name": "악퇴베 주"
         },
         {
-            "code": "ALA",
+            "code": "15",
+            "name": "악퇴베주"
+        },
+        {
+            "code": "75",
             "name": "알마티"
         },
         {
@@ -11089,28 +11199,76 @@
             "name": "알마티 주"
         },
         {
-            "code": "YUZ",
+            "code": "19",
+            "name": "알마티주"
+        },
+        {
+            "code": "61",
             "name": "옹튀스틱카작스탄 주"
+        },
+        {
+            "code": "62",
+            "name": "울리타우주"
         },
         {
             "code": "ZHA",
             "name": "잠빌 주"
         },
         {
+            "code": "31",
+            "name": "잠빌주"
+        },
+        {
+            "code": "33",
+            "name": "제티수주"
+        },
+        {
             "code": "KAR",
             "name": "카라간다 주"
+        },
+        {
+            "code": "35",
+            "name": "카라간다주"
         },
         {
             "code": "KUS",
             "name": "코스타나이 주"
         },
         {
+            "code": "39",
+            "name": "코스타나이주"
+        },
+        {
             "code": "KZY",
             "name": "키질로르다 주"
         },
         {
+            "code": "43",
+            "name": "키질로르다주"
+        },
+        {
             "code": "PAV",
             "name": "파블로다르 주"
+        },
+        {
+            "code": "55",
+            "name": "파블로다르주"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "YUZ",
+            "name": "South Kazakhstan"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
         }
     ],
     "LA": [
@@ -12501,7 +12659,7 @@
             "name": "라윤부즈두르사키아엘함라 지방"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "마라케시"
         },
         {
@@ -12733,8 +12891,8 @@
             "name": "M’diq-Fnideq"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "MED",
@@ -13157,6 +13315,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -15591,6 +15753,10 @@
             "name": "룸비니 구"
         },
         {
+            "code": "P5",
+            "name": "룸비니주"
+        },
+        {
             "code": "MA",
             "name": "마하칼리 구"
         },
@@ -15635,16 +15801,16 @@
             "name": "카르날리 구"
         },
         {
+            "code": "P6",
+            "name": "카르날리주"
+        },
+        {
             "code": "KO",
             "name": "코시 구"
         },
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P6",
-            "name": "Karnali²"
         },
         {
             "code": "P1",
@@ -15657,10 +15823,6 @@
         {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
         },
         {
             "code": "P7",
@@ -16493,6 +16655,14 @@
         {
             "code": "PAN",
             "name": "팡가시난 주"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         }
     ],
     "PK": [

@@ -35,28 +35,28 @@
             "name": "Абу-Даби"
         },
         {
+            "code": "AJ",
+            "name": "Ажман (эмирлик)"
+        },
+        {
             "code": "DU",
             "name": "Дубай"
         },
         {
-            "code": "AJ",
-            "name": "Ajman"
-        },
-        {
-            "code": "FU",
-            "name": "Fujairah"
-        },
-        {
             "code": "RK",
-            "name": "Ras al-Khaimah"
-        },
-        {
-            "code": "SH",
-            "name": "Sharjah"
+            "name": "Рас-аль-Хайма (эмирлик)"
         },
         {
             "code": "UQ",
-            "name": "Umm al-Quwain"
+            "name": "Умм эль-Кайвайн (эмирлик)"
+        },
+        {
+            "code": "FU",
+            "name": "Фужейра (эмирлик)"
+        },
+        {
+            "code": "SH",
+            "name": "Шаржа (эмирлик)"
         }
     ],
     "AF": [
@@ -689,36 +689,36 @@
     ],
     "AU": [
         {
+            "code": "ACT",
+            "name": "Австралиянын борбордук аймагы"
+        },
+        {
+            "code": "NT",
+            "name": "Австралиянын түндүк аймагы"
+        },
+        {
+            "code": "WA",
+            "name": "Батыш Австралия (штат)"
+        },
+        {
+            "code": "VIC",
+            "name": "Виктория (штат)"
+        },
+        {
+            "code": "NSW",
+            "name": "Жаңы Түштүк Уэльс (штат)"
+        },
+        {
+            "code": "QLD",
+            "name": "Квинсленд (штат)"
+        },
+        {
             "code": "TAS",
             "name": "Тасмания"
         },
         {
-            "code": "ACT",
-            "name": "Australian Capital Territory"
-        },
-        {
-            "code": "NSW",
-            "name": "New South Wales"
-        },
-        {
-            "code": "NT",
-            "name": "Northern Territory"
-        },
-        {
-            "code": "QLD",
-            "name": "Queensland"
-        },
-        {
             "code": "SA",
-            "name": "South Australia"
-        },
-        {
-            "code": "VIC",
-            "name": "Victoria"
-        },
-        {
-            "code": "WA",
-            "name": "Western Australia"
+            "name": "Түштүк Австралия (штат)"
         }
     ],
     "AW": [
@@ -741,6 +741,10 @@
         {
             "code": "LAN",
             "name": "Ленкорань"
+        },
+        {
+            "code": "LA",
+            "name": "Ленкорань²"
         },
         {
             "code": "MI",
@@ -893,10 +897,6 @@
         {
             "code": "LAC",
             "name": "Lachin"
-        },
-        {
-            "code": "LA",
-            "name": "Lankaran"
         },
         {
             "code": "LER",
@@ -2064,19 +2064,19 @@
     "BR": [
         {
             "code": "AC",
-            "name": "Acre"
+            "name": "Акри"
+        },
+        {
+            "code": "AM",
+            "name": "Амазонас (штат)"
+        },
+        {
+            "code": "AP",
+            "name": "Амапа (штат)"
         },
         {
             "code": "AL",
             "name": "Alagoas"
-        },
-        {
-            "code": "AP",
-            "name": "Amapá"
-        },
-        {
-            "code": "AM",
-            "name": "Amazonas"
         },
         {
             "code": "BA",
@@ -4129,6 +4129,10 @@
             "name": "Саар"
         },
         {
+            "code": "SN",
+            "name": "Саксония"
+        },
+        {
             "code": "TH",
             "name": "Тюрингия"
         },
@@ -4159,10 +4163,6 @@
         {
             "code": "RP",
             "name": "Rhineland-Palatinate"
-        },
-        {
-            "code": "SN",
-            "name": "Saxony"
         },
         {
             "code": "ST",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4792,7 +4832,7 @@
         },
         {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Выру"
         },
         {
             "code": "130",
@@ -5531,6 +5571,10 @@
             "name": "Аддис-Абеба"
         },
         {
+            "code": "SO",
+            "name": "Сомали (аймак)"
+        },
+        {
             "code": "TI",
             "name": "Тыграй"
         },
@@ -5567,12 +5611,12 @@
             "name": "Sidama"
         },
         {
-            "code": "SO",
-            "name": "Somali"
-        },
-        {
             "code": "SN",
             "name": "Southern Nations, Nationalities, and Peoples"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5755,6 +5799,10 @@
             "name": "Гваделупа"
         },
         {
+            "code": "973",
+            "name": "Гвиана"
+        },
+        {
             "code": "68",
             "name": "Жогорку Рейн ойдуңу"
         },
@@ -5763,8 +5811,16 @@
             "name": "Корсика"
         },
         {
+            "code": "972",
+            "name": "Мартиника"
+        },
+        {
             "code": "75C",
             "name": "Париж"
+        },
+        {
+            "code": "974",
+            "name": "Реюньон департаменти"
         },
         {
             "code": "01",
@@ -5927,10 +5983,6 @@
             "name": "Grand-Est"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "2B",
             "name": "Haute-Corse"
         },
@@ -6003,10 +6055,6 @@
             "name": "Jura"
         },
         {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
             "code": "40",
             "name": "Landes"
         },
@@ -6049,10 +6097,6 @@
         {
             "code": "51",
             "name": "Marne"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "53",
@@ -6923,6 +6967,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7209,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8621,8 +8667,24 @@
             "name": "Papua"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "RI",
@@ -8851,7 +8913,7 @@
             "name": "Махараштра"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "Орисса"
         },
         {
@@ -8877,6 +8939,10 @@
         {
             "code": "CH",
             "name": "Chandigarh"
+        },
+        {
+            "code": "CG",
+            "name": "Chhattīsgarh"
         },
         {
             "code": "CT",
@@ -8971,12 +9037,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangāna"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradesh"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarākhand"
         },
         {
             "code": "UT",
@@ -9197,6 +9271,10 @@
     ],
     "IS": [
         {
+            "code": "RKV",
+            "name": "Рейкьявик"
+        },
+        {
             "code": "AKH",
             "name": "Akrahreppur"
         },
@@ -9321,6 +9399,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9401,10 +9483,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9419,6 +9497,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9529,6 +9611,10 @@
         {
             "code": "BZ",
             "name": "Болцан Өзэркин Провинциясы"
+        },
+        {
+            "code": "VE",
+            "name": "Венеция"
         },
         {
             "code": "78",
@@ -10021,10 +10107,6 @@
         {
             "code": "34",
             "name": "Veneto"
-        },
-        {
-            "code": "VE",
-            "name": "Venice"
         },
         {
             "code": "VB",
@@ -10821,6 +10903,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -10846,7 +10932,7 @@
         },
         {
             "code": "30",
-            "name": "Daejeon"
+            "name": "Тэжон"
         },
         {
             "code": "31",
@@ -10921,23 +11007,27 @@
     ],
     "KZ": [
         {
-            "code": "AKM",
+            "code": "10",
+            "name": "Абай облусу"
+        },
+        {
+            "code": "11",
             "name": "Акмоло облусу"
         },
         {
-            "code": "AKT",
+            "code": "15",
             "name": "Актөбө облусу"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Алматы"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "Алматы облусу"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "Астана"
         },
         {
@@ -10945,15 +11035,23 @@
             "name": "Атырау облусу"
         },
         {
-            "code": "ZAP",
+            "code": "23",
+            "name": "Атыроо облусу"
+        },
+        {
+            "code": "27",
             "name": "Батыш Казакстан облусу"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "Жамбыл облусу"
         },
         {
-            "code": "KAR",
+            "code": "33",
+            "name": "Жетисуу облусу"
+        },
+        {
+            "code": "35",
             "name": "Караганды облусу"
         },
         {
@@ -10961,7 +11059,11 @@
             "name": "Костанай облусу"
         },
         {
-            "code": "KZY",
+            "code": "39",
+            "name": "Коштанай облусу"
+        },
+        {
+            "code": "43",
             "name": "Кызыл-Ордо облусу"
         },
         {
@@ -10969,28 +11071,80 @@
             "name": "Маңгыстоо областы"
         },
         {
-            "code": "PAV",
+            "code": "47",
+            "name": "Маңкыштоо областы"
+        },
+        {
+            "code": "55",
             "name": "Павлодар областы"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "Түндүк Казакстан облусу"
         },
         {
-            "code": "YUZ",
+            "code": "61",
             "name": "Түркстан облусу"
         },
         {
-            "code": "VOS",
+            "code": "62",
+            "name": "Улуу-Тоо облусу"
+        },
+        {
+            "code": "63",
             "name": "Чыгыш Казакстан облусу"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "Чымкент"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
         },
         {
             "code": "BAY",
             "name": "Bayqongyr"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "YUZ",
+            "name": "South Kazakhstan"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
         }
     ],
     "LA": [
@@ -12349,6 +12503,10 @@
             "name": "Касабланка"
         },
         {
+            "code": "MAR",
+            "name": "Марракеш"
+        },
+        {
             "code": "RAB",
             "name": "Рабат"
         },
@@ -12531,10 +12689,6 @@
         {
             "code": "MDF",
             "name": "M’diq-Fnideq"
-        },
-        {
-            "code": "MAR",
-            "name": "Marrakech"
         },
         {
             "code": "MMD",
@@ -13037,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -15278,59 +15436,59 @@
     "NR": [
         {
             "code": "01",
-            "name": "Aiwo"
+            "name": "Айво"
         },
         {
             "code": "02",
-            "name": "Anabar"
+            "name": "Анабар"
         },
         {
             "code": "03",
-            "name": "Anetan"
+            "name": "Анетан"
         },
         {
             "code": "04",
-            "name": "Anibare"
+            "name": "Анибар"
         },
         {
             "code": "05",
-            "name": "Baiti"
+            "name": "Баити"
         },
         {
             "code": "06",
-            "name": "Boe"
+            "name": "Боэ"
         },
         {
             "code": "07",
-            "name": "Buada"
+            "name": "Буада"
         },
         {
             "code": "08",
-            "name": "Denigomodu"
+            "name": "Денигомоду"
         },
         {
             "code": "09",
-            "name": "Ewa"
+            "name": "Ева"
         },
         {
             "code": "10",
-            "name": "Ijuw"
+            "name": "Июв"
         },
         {
             "code": "11",
-            "name": "Meneng"
+            "name": "Мененг"
         },
         {
             "code": "12",
-            "name": "Nibok"
+            "name": "Нибок"
         },
         {
             "code": "13",
-            "name": "Uaboe"
+            "name": "Уабо"
         },
         {
             "code": "14",
-            "name": "Yaren"
+            "name": "Ярен"
         }
     ],
     "NZ": [
@@ -15935,6 +16093,14 @@
             "name": "Maguindanao"
         },
         {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
+        },
+        {
             "code": "MAD",
             "name": "Marinduque"
         },
@@ -16164,11 +16330,11 @@
         },
         {
             "code": "14",
-            "name": "Mazovia"
+            "name": "Мазовия воеводалыгы"
         },
         {
             "code": "16",
-            "name": "Opole"
+            "name": "Ополе воеводалыгы"
         },
         {
             "code": "18",
@@ -16969,6 +17135,10 @@
             "name": "Санкт-Петербург"
         },
         {
+            "code": "SVE",
+            "name": "Свердлов облусу"
+        },
+        {
             "code": "TA",
             "name": "Татарстан"
         },
@@ -17139,10 +17309,6 @@
         {
             "code": "STA",
             "name": "Stavropol Krai"
-        },
-        {
-            "code": "SVE",
-            "name": "Sverdlovsk"
         },
         {
             "code": "TAM",
@@ -20252,15 +20418,15 @@
         },
         {
             "code": "12",
-            "name": "Dnipropetrovshchyna"
+            "name": "Днепропетровск облусу"
         },
         {
             "code": "14",
-            "name": "Donechchyna"
+            "name": "Донецк облусу"
         },
         {
             "code": "18",
-            "name": "Zhytomyrshchyna"
+            "name": "Житомир облусу"
         },
         {
             "code": "21",
@@ -20268,11 +20434,11 @@
         },
         {
             "code": "23",
-            "name": "Zaporizhzhya"
+            "name": "Запорожье облусу"
         },
         {
             "code": "26",
-            "name": "Prykarpattia"
+            "name": "Ивано-Франковск облусу"
         },
         {
             "code": "30",
@@ -20280,11 +20446,11 @@
         },
         {
             "code": "32",
-            "name": "Kyivshchyna"
+            "name": "Киев облусу"
         },
         {
             "code": "35",
-            "name": "Kirovohradschyna"
+            "name": "Кировоград облусу"
         },
         {
             "code": "40",
@@ -20296,7 +20462,7 @@
         },
         {
             "code": "46",
-            "name": "Lvivshchyna"
+            "name": "Львов облусу"
         },
         {
             "code": "48",
@@ -20308,43 +20474,43 @@
         },
         {
             "code": "53",
-            "name": "Poltavshchyna"
+            "name": "Полтава облусу"
         },
         {
             "code": "56",
-            "name": "Rivnenshchyna"
+            "name": "Ровно облусу"
         },
         {
             "code": "59",
-            "name": "Sumshchyna"
+            "name": "Сумы облусу"
         },
         {
             "code": "61",
-            "name": "Ternopilshchyna"
+            "name": "Тернополь облусу"
         },
         {
             "code": "63",
-            "name": "Kharkivshchyna"
+            "name": "Харьков облусу"
         },
         {
             "code": "65",
-            "name": "Khersonshchyna"
+            "name": "Херсон облусу"
         },
         {
             "code": "68",
-            "name": "Khmelnychchyna"
+            "name": "Хмельницкий облусу"
         },
         {
             "code": "71",
-            "name": "Cherkashchyna"
+            "name": "Черкассы облусу"
         },
         {
             "code": "74",
-            "name": "Chernihivshchyna"
+            "name": "Чернигов облусу"
         },
         {
             "code": "77",
-            "name": "Chernivtsi Oblast"
+            "name": "Черновцы облусу"
         }
     ],
     "UG": [
@@ -20949,12 +21115,44 @@
     ],
     "US": [
         {
+            "code": "ID",
+            "name": "Айдахо (штат)"
+        },
+        {
+            "code": "IA",
+            "name": "Айова"
+        },
+        {
+            "code": "AL",
+            "name": "Алабама"
+        },
+        {
             "code": "AK",
             "name": "Аляска"
         },
         {
             "code": "AZ",
             "name": "Аризона"
+        },
+        {
+            "code": "AR",
+            "name": "Арканзас (штат)"
+        },
+        {
+            "code": "WV",
+            "name": "Батыш Виргиния"
+        },
+        {
+            "code": "WY",
+            "name": "Вайоминг"
+        },
+        {
+            "code": "WA",
+            "name": "Вашингтон (штат)"
+        },
+        {
+            "code": "VT",
+            "name": "Вермонт"
         },
         {
             "code": "VA",
@@ -20969,6 +21167,10 @@
             "name": "Гавайи"
         },
         {
+            "code": "DE",
+            "name": "Делавэр"
+        },
+        {
             "code": "GA",
             "name": "Жоржия"
         },
@@ -20977,20 +21179,80 @@
             "name": "Иллинойс"
         },
         {
+            "code": "IN",
+            "name": "Индиана"
+        },
+        {
             "code": "CA",
             "name": "Калифорния"
+        },
+        {
+            "code": "KS",
+            "name": "Канзас"
+        },
+        {
+            "code": "KY",
+            "name": "Кентукки"
+        },
+        {
+            "code": "CO",
+            "name": "Колорадо"
+        },
+        {
+            "code": "CT",
+            "name": "Коннектикут"
+        },
+        {
+            "code": "LA",
+            "name": "Луизиана"
         },
         {
             "code": "MA",
             "name": "Массачусетс"
         },
         {
+            "code": "MN",
+            "name": "Миннесота"
+        },
+        {
+            "code": "MS",
+            "name": "Миссисипи (штат)"
+        },
+        {
+            "code": "MO",
+            "name": "Миссури (штат)"
+        },
+        {
+            "code": "MI",
+            "name": "Мичиган (штат)"
+        },
+        {
             "code": "MT",
             "name": "Монтана"
         },
         {
+            "code": "ME",
+            "name": "Мэн (штат)"
+        },
+        {
+            "code": "MD",
+            "name": "Мэриленд (штат)"
+        },
+        {
+            "code": "NE",
+            "name": "Небраска (штат)"
+        },
+        {
+            "code": "NV",
+            "name": "Невада (штат)"
+        },
+        {
             "code": "NJ",
             "name": "Нью-Джерси"
+        },
+        {
+            "code": "NY",
+            "name": "Нью-Йорк (штат)"
         },
         {
             "code": "NM",
@@ -21001,156 +21263,60 @@
             "name": "Нью-Хемпшир"
         },
         {
+            "code": "OH",
+            "name": "Огайо (штат)"
+        },
+        {
             "code": "OK",
             "name": "Оклахома"
+        },
+        {
+            "code": "OR",
+            "name": "Орегон (штат)"
         },
         {
             "code": "PA",
             "name": "Пенсильвания"
         },
         {
+            "code": "RI",
+            "name": "Род-Айленд (штат)"
+        },
+        {
+            "code": "TN",
+            "name": "Теннесси (штат)"
+        },
+        {
             "code": "TX",
             "name": "Техас"
+        },
+        {
+            "code": "ND",
+            "name": "Түндүк Дакота (штат)"
+        },
+        {
+            "code": "NC",
+            "name": "Түндүк Каролина (штат)"
+        },
+        {
+            "code": "SD",
+            "name": "Түштүк Дакота (штат)"
+        },
+        {
+            "code": "SC",
+            "name": "Түштүк Каролина (штат)"
         },
         {
             "code": "FL",
             "name": "Флорида"
         },
         {
-            "code": "AL",
-            "name": "Alabama"
-        },
-        {
-            "code": "AR",
-            "name": "Arkansas"
-        },
-        {
-            "code": "CO",
-            "name": "Colorado"
-        },
-        {
-            "code": "CT",
-            "name": "Connecticut"
-        },
-        {
-            "code": "DE",
-            "name": "Delaware"
-        },
-        {
-            "code": "ID",
-            "name": "Idaho"
-        },
-        {
-            "code": "IN",
-            "name": "Indiana"
-        },
-        {
-            "code": "IA",
-            "name": "Iowa"
-        },
-        {
-            "code": "KS",
-            "name": "Kansas"
-        },
-        {
-            "code": "KY",
-            "name": "Kentucky"
-        },
-        {
-            "code": "LA",
-            "name": "Louisiana"
-        },
-        {
-            "code": "ME",
-            "name": "Maine"
-        },
-        {
-            "code": "MD",
-            "name": "Maryland"
-        },
-        {
-            "code": "MI",
-            "name": "Michigan"
-        },
-        {
-            "code": "MN",
-            "name": "Minnesota"
-        },
-        {
-            "code": "MS",
-            "name": "Mississippi"
-        },
-        {
-            "code": "MO",
-            "name": "Missouri"
-        },
-        {
-            "code": "NE",
-            "name": "Nebraska"
-        },
-        {
-            "code": "NV",
-            "name": "Nevada"
-        },
-        {
-            "code": "NY",
-            "name": "New York"
-        },
-        {
-            "code": "NC",
-            "name": "North Carolina"
-        },
-        {
-            "code": "ND",
-            "name": "North Dakota"
-        },
-        {
-            "code": "OH",
-            "name": "Ohio"
-        },
-        {
-            "code": "OR",
-            "name": "Oregon"
-        },
-        {
-            "code": "RI",
-            "name": "Rhode Island"
-        },
-        {
-            "code": "SC",
-            "name": "South Carolina"
-        },
-        {
-            "code": "SD",
-            "name": "South Dakota"
-        },
-        {
-            "code": "TN",
-            "name": "Tennessee"
-        },
-        {
             "code": "UT",
-            "name": "Utah"
-        },
-        {
-            "code": "VT",
-            "name": "Vermont"
-        },
-        {
-            "code": "WA",
-            "name": "Washington"
+            "name": "Юта (штат)"
         },
         {
             "code": "DC",
             "name": "Washington DC"
-        },
-        {
-            "code": "WV",
-            "name": "West Virginia"
-        },
-        {
-            "code": "WY",
-            "name": "Wyoming"
         }
     ],
     "UY": [
@@ -21680,27 +21846,27 @@
     "VU": [
         {
             "code": "MAP",
-            "name": "Malampa"
+            "name": "Малампа"
         },
         {
             "code": "PAM",
-            "name": "Penama"
+            "name": "Пенама"
         },
         {
             "code": "SAM",
-            "name": "Sanma"
-        },
-        {
-            "code": "SEE",
-            "name": "Shefa"
+            "name": "Санма"
         },
         {
             "code": "TAE",
-            "name": "Tafea"
+            "name": "Тафеа"
         },
         {
             "code": "TOB",
-            "name": "Torba"
+            "name": "Торба"
+        },
+        {
+            "code": "SEE",
+            "name": "Шефа"
         }
     ],
     "WF": [

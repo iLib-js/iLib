@@ -1197,10 +1197,6 @@
             "name": "Chuadanga"
         },
         {
-            "code": "08",
-            "name": "Comilla"
-        },
-        {
             "code": "11",
             "name": "Cox’s Bazar"
         },
@@ -1277,6 +1273,10 @@
             "name": "Kishoreganj"
         },
         {
+            "code": "08",
+            "name": "Komilla (ilçe)"
+        },
+        {
             "code": "28",
             "name": "Kurigram"
         },
@@ -1313,16 +1313,16 @@
             "name": "Meherpur"
         },
         {
+            "code": "H",
+            "name": "Mimensingh (bölüm)"
+        },
+        {
             "code": "35",
             "name": "Munshiganj"
         },
         {
             "code": "34",
             "name": "Mymensingh"
-        },
-        {
-            "code": "H",
-            "name": "Mymensingh Division"
         },
         {
             "code": "48",
@@ -1342,7 +1342,7 @@
         },
         {
             "code": "44",
-            "name": "Natore"
+            "name": "Natore Bölgesi"
         },
         {
             "code": "45",
@@ -1377,16 +1377,16 @@
             "name": "Pirojpur"
         },
         {
+            "code": "E",
+            "name": "Racşahi (bölüm)"
+        },
+        {
             "code": "53",
             "name": "Rajbari"
         },
         {
             "code": "54",
             "name": "Rajshahi District"
-        },
-        {
-            "code": "E",
-            "name": "Rajshahi Division"
         },
         {
             "code": "56",
@@ -1398,7 +1398,7 @@
         },
         {
             "code": "F",
-            "name": "Rangpur Division"
+            "name": "Rangpur (bölüm)"
         },
         {
             "code": "58",
@@ -1413,6 +1413,10 @@
             "name": "Sherpur"
         },
         {
+            "code": "G",
+            "name": "Silhet (bölüm)"
+        },
+        {
             "code": "59",
             "name": "Sirajganj"
         },
@@ -1423,10 +1427,6 @@
         {
             "code": "60",
             "name": "Sylhet District"
-        },
-        {
-            "code": "G",
-            "name": "Sylhet Division"
         },
         {
             "code": "63",
@@ -1812,7 +1812,7 @@
         },
         {
             "code": "22",
-            "name": "Sofia"
+            "name": "Sofya şehri ili"
         },
         {
             "code": "23",
@@ -3671,12 +3671,12 @@
             "name": "Břeclav ilçesi"
         },
         {
-            "code": "642",
-            "name": "Brno-město"
+            "code": "643",
+            "name": "Brno-Kırsal (ilçe)"
         },
         {
-            "code": "643",
-            "name": "Brno-venkov"
+            "code": "642",
+            "name": "Brno-město"
         },
         {
             "code": "801",
@@ -3856,7 +3856,7 @@
         },
         {
             "code": "806",
-            "name": "Ostrava"
+            "name": "Ostrava-Şehir"
         },
         {
             "code": "53",
@@ -3871,24 +3871,24 @@
             "name": "Pelhřimov ilçesi"
         },
         {
+            "code": "324",
+            "name": "Pilsen-Güney"
+        },
+        {
+            "code": "325",
+            "name": "Pilsen-Kuzey"
+        },
+        {
+            "code": "323",
+            "name": "Pilsen-Şehir"
+        },
+        {
             "code": "314",
             "name": "Písek ilçesi"
         },
         {
-            "code": "323",
-            "name": "Plzeň"
-        },
-        {
             "code": "32",
             "name": "Plzen Region"
-        },
-        {
-            "code": "325",
-            "name": "Plzeň-North"
-        },
-        {
-            "code": "324",
-            "name": "Plzeň-South"
         },
         {
             "code": "315",
@@ -3897,6 +3897,14 @@
         {
             "code": "10",
             "name": "Prag"
+        },
+        {
+            "code": "20A",
+            "name": "Prag-Batı"
+        },
+        {
+            "code": "209",
+            "name": "Prag-Doğu"
         },
         {
             "code": "101",
@@ -3985,14 +3993,6 @@
         {
             "code": "109",
             "name": "Prague 9"
-        },
-        {
-            "code": "209",
-            "name": "Prague-East"
-        },
-        {
-            "code": "20A",
-            "name": "Prague-West"
         },
         {
             "code": "714",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane Vilayeti"
+        },
+        {
+            "code": "49",
+            "name": "Timimun (il)"
+        },
+        {
+            "code": "50",
+            "name": "Burc Baci Muhtar (il)"
+        },
+        {
+            "code": "51",
+            "name": "Evlad Celal (il)"
+        },
+        {
+            "code": "52",
+            "name": "Beni Abbas (il)"
+        },
+        {
+            "code": "53",
+            "name": "Ayn Salih (il)"
+        },
+        {
+            "code": "54",
+            "name": "Ayn Kazzam (il)"
+        },
+        {
+            "code": "55",
+            "name": "Tukurt (il)"
+        },
+        {
+            "code": "56",
+            "name": "Canet (il)"
+        },
+        {
+            "code": "57",
+            "name": "El-Mugayir (il)"
+        },
+        {
+            "code": "58",
+            "name": "El-Meniye (il)"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "Ida-Viru ili"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "Jõgeva ili"
+            "name": "Ida-Viru ili"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "Järva ili"
+            "name": "Jõgeva ili"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "Järva ili"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "Lääne ili"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "Lääne-Viru ili"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Lääne-Viru ili"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "Põlva ili"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "Pärnu ili"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "Rapla ili"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Rapla ili"
         },
         {
             "code": "74",
             "name": "Saare ili"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "Tartu ili"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "Valga ili"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "Viljandi ili"
         },
         {
-            "code": "86",
-            "name": "Võru ili"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Võru ili"
         },
         {
             "code": "130",
@@ -4932,7 +4940,7 @@
         },
         {
             "code": "430",
-            "name": "Lääneranna"
+            "name": "Lääneranna Bölgesi"
         },
         {
             "code": "431",
@@ -5092,7 +5100,7 @@
         },
         {
             "code": "809",
-            "name": "Tori"
+            "name": "Tori Belediyesi"
         },
         {
             "code": "824",
@@ -5603,6 +5611,10 @@
             "name": "Somali Bölgesi"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "TI",
             "name": "Tigray Bölgesi"
         }
@@ -5923,6 +5935,10 @@
             "name": "Finistère"
         },
         {
+            "code": "973",
+            "name": "French Guiana"
+        },
+        {
             "code": "30",
             "name": "Gard"
         },
@@ -5941,10 +5957,6 @@
         {
             "code": "971",
             "name": "Guadeloupe"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
         },
         {
             "code": "68",
@@ -6025,10 +6037,6 @@
         {
             "code": "20R",
             "name": "Korsika"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "40",
@@ -6165,6 +6173,10 @@
         {
             "code": "66",
             "name": "Pyrénées-Orientales"
+        },
+        {
+            "code": "974",
+            "name": "Réunion"
         },
         {
             "code": "69",
@@ -6328,7 +6340,7 @@
         },
         {
             "code": "ABC",
-            "name": "Armagh, Banbridge and Craigavon"
+            "name": "Armagh City, Banbridge and Craigavon"
         },
         {
             "code": "BLA",
@@ -6556,7 +6568,7 @@
         },
         {
             "code": "DRS",
-            "name": "Derry and Strabane"
+            "name": "Derry City and Strabane"
         },
         {
             "code": "DEV",
@@ -6644,7 +6656,7 @@
         },
         {
             "code": "FAL",
-            "name": "Falkirk"
+            "name": "Falkirk (konsey alanı)"
         },
         {
             "code": "FER",
@@ -6884,7 +6896,7 @@
         },
         {
             "code": "MRY",
-            "name": "Moray"
+            "name": "Moray bölgesi"
         },
         {
             "code": "MYL",
@@ -6941,6 +6953,10 @@
         {
             "code": "NLN",
             "name": "North Lincolnshire"
+        },
+        {
+            "code": "NNH",
+            "name": "North Northamptonshire"
         },
         {
             "code": "NSM",
@@ -7132,7 +7148,7 @@
         },
         {
             "code": "STG",
-            "name": "Stirling"
+            "name": "Stirling (konsey alanı)"
         },
         {
             "code": "SKP",
@@ -7156,7 +7172,7 @@
         },
         {
             "code": "SND",
-            "name": "Sunderland"
+            "name": "Sunderland Şehri"
         },
         {
             "code": "SRY",
@@ -7241,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSM",
@@ -8163,12 +8183,6 @@
             "name": "Upper Takutu- Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8689,12 +8703,28 @@
             "name": "Orta Kalimantan"
         },
         {
+            "code": "PT",
+            "name": "Orta Papua"
+        },
+        {
             "code": "ST",
             "name": "Orta Sulawesi"
         },
         {
             "code": "PA",
             "name": "Papua"
+        },
+        {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
         },
         {
             "code": "RI",
@@ -8895,6 +8925,10 @@
             "name": "Cemmu ve Keşmir"
         },
         {
+            "code": "CG",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "CT",
             "name": "Chhattisgarh"
         },
@@ -8903,12 +8937,12 @@
             "name": "Çhandigarh"
         },
         {
-            "code": "DH",
-            "name": "Dādra and Nagar Haveli and Damān and Diu"
-        },
-        {
             "code": "DN",
             "name": "Dadra ve Nagar Haveli"
+        },
+        {
+            "code": "DH",
+            "name": "Dadra ve Nagar Haveli ve Daman ve Diu"
         },
         {
             "code": "DD",
@@ -8983,6 +9017,10 @@
             "name": "Odisha"
         },
         {
+            "code": "OD",
+            "name": "Orissa"
+        },
+        {
             "code": "PB",
             "name": "Pencap"
         },
@@ -9007,12 +9045,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangana"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradeş"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarakhand"
         },
         {
             "code": "UT",
@@ -9334,7 +9380,7 @@
         },
         {
             "code": "GRU",
-            "name": "Grundarfjarðarbær"
+            "name": "Grundarfjarðarbær (II)"
         },
         {
             "code": "GRY",
@@ -9346,7 +9392,7 @@
         },
         {
             "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
+            "name": "Hafnarfjörður"
         },
         {
             "code": "HEL",
@@ -9359,6 +9405,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9390,7 +9440,7 @@
         },
         {
             "code": "KOP",
-            "name": "Kópavogsbær"
+            "name": "Kópavogur"
         },
         {
             "code": "5",
@@ -9442,11 +9492,11 @@
         },
         {
             "code": "RKV",
-            "name": "Reykjavíkurborg"
+            "name": "Reykjavík"
         },
         {
             "code": "SEL",
-            "name": "Seltjarnarnesbær"
+            "name": "Seltjarnarnes"
         },
         {
             "code": "SEY",
@@ -9517,16 +9567,16 @@
             "name": "Sveitarfélagið Ölfus"
         },
         {
+            "code": "SKR",
+            "name": "Sveitarfélagið Skagafjörður"
+        },
+        {
             "code": "SSF",
             "name": "Sveitarfélagið Skagafjörður"
         },
         {
             "code": "SSS",
             "name": "Sveitarfélagið Skagaströnd"
-        },
-        {
-            "code": "SVG",
-            "name": "Sveitarfélagið Vogar"
         },
         {
             "code": "TAL",
@@ -9538,11 +9588,15 @@
         },
         {
             "code": "VEM",
-            "name": "Vestmannaeyjabær"
+            "name": "Vestmannaeyjar"
         },
         {
             "code": "VER",
             "name": "Vesturbyggð"
+        },
+        {
+            "code": "SVG",
+            "name": "Vogar"
         },
         {
             "code": "VOP",
@@ -10857,6 +10911,10 @@
         {
             "code": "14",
             "name": "Nampo"
+        },
+        {
+            "code": "15",
+            "name": "Kaesong"
         }
     ],
     "KR": [
@@ -10957,31 +11015,51 @@
     ],
     "KZ": [
         {
+            "code": "10",
+            "name": "Abay (il)"
+        },
+        {
             "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "11",
             "name": "Akmola Eyaleti"
         },
         {
             "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "15",
             "name": "Aktöbe eyaleti"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Almatı"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "Almatı Eyaleti"
         },
         {
-            "code": "AST",
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "71",
             "name": "Astana"
         },
         {
-            "code": "ATY",
+            "code": "23",
             "name": "Atırav Eyaleti"
         },
         {
-            "code": "ZAP",
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "27",
             "name": "Batı Kazakistan Eyaleti"
         },
         {
@@ -10989,44 +11067,92 @@
             "name": "Baykonur"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "Çimkent"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "Doğu Kazakistan Eyaleti"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
         },
         {
             "code": "YUZ",
             "name": "Güney Kazakistan Eyaleti"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "Jambıl Eyaleti"
         },
         {
-            "code": "KAR",
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "35",
             "name": "Karagandı Eyaleti"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
         },
         {
             "code": "KZY",
             "name": "Kızılorda Eyaleti"
         },
         {
+            "code": "43",
+            "name": "Kızılordu Eyaleti"
+        },
+        {
             "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "39",
             "name": "Kostanay Eyaleti"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "Kuzey Kazakistan Eyaleti"
+        },
+        {
+            "code": "47",
+            "name": "Mangıstav eyaleti"
         },
         {
             "code": "MAN",
             "name": "Mangistav Eyaleti"
         },
         {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
             "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "55",
             "name": "Pavlodar Eyaleti"
+        },
+        {
+            "code": "61",
+            "name": "Türkistan Eyaleti"
+        },
+        {
+            "code": "62",
+            "name": "Ulıtav (il)"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "33",
+            "name": "Yedisu (il)"
         }
     ],
     "LA": [
@@ -11300,7 +11426,7 @@
         },
         {
             "code": "41",
-            "name": "Jaffna"
+            "name": "Jaffna Bölgesi"
         },
         {
             "code": "42",
@@ -11490,7 +11616,7 @@
         },
         {
             "code": "05",
-            "name": "Birštonas"
+            "name": "Birštonas (Belediye)"
         },
         {
             "code": "06",
@@ -12291,16 +12417,20 @@
     ],
     "LY": [
         {
-            "code": "WA",
-            "name": "Al Wahat"
-        },
-        {
             "code": "BA",
             "name": "Bingazi"
         },
         {
+            "code": "JG",
+            "name": "Cebeligarbî"
+        },
+        {
+            "code": "WA",
+            "name": "Cüdabiye"
+        },
+        {
             "code": "DR",
-            "name": "Derna"
+            "name": "Derne"
         },
         {
             "code": "BU",
@@ -12325,10 +12455,6 @@
         {
             "code": "JA",
             "name": "Jabak Al Akhdar"
-        },
-        {
-            "code": "JG",
-            "name": "Jabal al Gharbi"
         },
         {
             "code": "MJ",
@@ -12385,64 +12511,52 @@
             "name": "Agadir"
         },
         {
-            "code": "HAO",
-            "name": "Al Haouz"
+            "code": "ASZ",
+            "name": "Âsa-Zek (il)"
         },
         {
-            "code": "HOC",
-            "name": "Al Hoceïma"
+            "code": "SAF",
+            "name": "Asfi (il)"
         },
         {
             "code": "AOU",
-            "name": "Aousserd"
-        },
-        {
-            "code": "ASZ",
-            "name": "Assa-Zag"
-        },
-        {
-            "code": "AZI",
-            "name": "Azilal"
-        },
-        {
-            "code": "BES",
-            "name": "Ben Slimane"
+            "name": "Avsird (il)"
         },
         {
             "code": "BEM",
-            "name": "Béni-Mellal"
+            "name": "Beni Mellal (il)"
         },
         {
-            "code": "BER",
-            "name": "Berkane"
+            "code": "BES",
+            "name": "Bin Süleyman (il)"
         },
         {
             "code": "BRR",
-            "name": "Berrechid"
+            "name": "Birreşid (il)"
         },
         {
             "code": "BOD",
-            "name": "Boujdour"
+            "name": "Bucdur (il)"
         },
         {
             "code": "BOM",
-            "name": "Boulemane"
+            "name": "Bulman (il)"
+        },
+        {
+            "code": "BER",
+            "name": "Burkan (il)"
+        },
+        {
+            "code": "JRA",
+            "name": "Cerada (il)"
         },
         {
             "code": "09",
             "name": "Chaouia-Ouardigha"
         },
         {
-            "code": "CHE",
-            "name": "Chefchaouen"
-        },
-        {
-            "code": "CHI",
-            "name": "Chichaoua"
-        },
-        {
-            "code": "CHT",
-            "name": "Chtouka Aït Baha"
+            "code": "GUF",
+            "name": "Cirsif (il)"
         },
         {
             "code": "10",
@@ -12450,31 +12564,55 @@
         },
         {
             "code": "DRI",
-            "name": "Driouch"
+            "name": "Driveş (il)"
         },
         {
-            "code": "HAJ",
-            "name": "El Hajeb"
+            "code": "LAR",
+            "name": "El-Arayiş (il)"
         },
         {
             "code": "JDI",
-            "name": "El Jadida"
+            "name": "El-Cedide (il)"
+        },
+        {
+            "code": "HAJ",
+            "name": "El-Hacib (il)"
+        },
+        {
+            "code": "HAO",
+            "name": "El-Havuz (il)"
+        },
+        {
+            "code": "HOC",
+            "name": "El-Hüseyma"
         },
         {
             "code": "ERR",
-            "name": "Errachidia"
+            "name": "Er-Raşidiye (il)"
         },
         {
             "code": "ESM",
-            "name": "Es Semara"
+            "name": "Es-Simara (il)"
         },
         {
-            "code": "ESI",
-            "name": "Essaouira"
+            "code": "CHT",
+            "name": "Eştuke-Eyt Beha (il)"
+        },
+        {
+            "code": "AZI",
+            "name": "Ezilel (il)"
         },
         {
             "code": "FAH",
-            "name": "Fahs-Beni Makada"
+            "name": "Fahs-Encire (il)"
+        },
+        {
+            "code": "FQH",
+            "name": "Fakih bin Salih (il)"
+        },
+        {
+            "code": "FIG",
+            "name": "Fecic (il)"
         },
         {
             "code": "FES",
@@ -12483,14 +12621,6 @@
         {
             "code": "05",
             "name": "Fès-Boulemane"
-        },
-        {
-            "code": "FIG",
-            "name": "Figuig"
-        },
-        {
-            "code": "FQH",
-            "name": "Fquih Ben Salah"
         },
         {
             "code": "02",
@@ -12509,64 +12639,56 @@
             "name": "Guelmim-Es Semara"
         },
         {
-            "code": "GUF",
-            "name": "Guercif"
+            "code": "KHE",
+            "name": "Hamiset (il)"
+        },
+        {
+            "code": "KHN",
+            "name": "Henifre (il)"
+        },
+        {
+            "code": "KHO",
+            "name": "Huribke (il)"
         },
         {
             "code": "IFR",
-            "name": "Ifrane"
+            "name": "İfran (il)"
         },
         {
             "code": "INE",
-            "name": "Inezgane-Aït Melloul"
+            "name": "İnziken-Eyt Melul (prefektörlük)"
         },
         {
-            "code": "JRA",
-            "name": "Jerada"
+            "code": "KES",
+            "name": "Kaletü’s-Seragine (il)"
         },
         {
             "code": "CAS",
             "name": "Kazablanka"
         },
         {
-            "code": "KES",
-            "name": "Kelaat Sraghna"
-        },
-        {
             "code": "KEN",
-            "name": "Kénitra"
-        },
-        {
-            "code": "KHE",
-            "name": "Khemisset"
-        },
-        {
-            "code": "KHN",
-            "name": "Khénifra"
-        },
-        {
-            "code": "KHO",
-            "name": "Khouribga"
-        },
-        {
-            "code": "LAA",
-            "name": "Laâyoune"
+            "name": "Kuneytire (il, Fas)"
         },
         {
             "code": "15",
             "name": "Laâyoune-Boujdour-Sakia El Hamra"
         },
         {
-            "code": "LAR",
-            "name": "Larache"
+            "code": "LAA",
+            "name": "Layun (il)"
         },
         {
             "code": "MDF",
-            "name": "M’diq-Fnideq"
+            "name": "Madik-Funeydek (prefektörlük)"
         },
         {
             "code": "MMD",
             "name": "Marakeş"
+        },
+        {
+            "code": "MAR",
+            "name": "Marakeş (prefektörlük)"
         },
         {
             "code": "MMN",
@@ -12577,16 +12699,12 @@
             "name": "Marakeş³"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
-        },
-        {
             "code": "11",
             "name": "Marrakech-Tensift-El Haouz"
         },
         {
             "code": "MED",
-            "name": "Médiouna"
+            "name": "Medyuna (il)"
         },
         {
             "code": "MEK",
@@ -12597,12 +12715,12 @@
             "name": "Meknès-Tafilalet"
         },
         {
-            "code": "MID",
-            "name": "Midelt"
+            "code": "MOU",
+            "name": "Mevley Yakub (il)"
         },
         {
-            "code": "MOU",
-            "name": "Moulay Yacoub"
+            "code": "MID",
+            "name": "Midilt (il)"
         },
         {
             "code": "MOH",
@@ -12610,19 +12728,15 @@
         },
         {
             "code": "NAD",
-            "name": "Nador"
+            "name": "Nazur (il)"
         },
         {
             "code": "NOU",
-            "name": "Nouaceur"
+            "name": "Nevasir (il)"
         },
         {
             "code": "04",
             "name": "Oriental"
-        },
-        {
-            "code": "OUA",
-            "name": "Ouarzazate"
         },
         {
             "code": "OUD",
@@ -12631,10 +12745,6 @@
         {
             "code": "16",
             "name": "Oued Ed-Dahab-Lagouira"
-        },
-        {
-            "code": "OUZ",
-            "name": "Ouezzane"
         },
         {
             "code": "RAB",
@@ -12646,43 +12756,51 @@
         },
         {
             "code": "REH",
-            "name": "Rehamna"
+            "name": "Rahamine (il)"
         },
         {
-            "code": "SAF",
-            "name": "Safi"
+            "code": "SEF",
+            "name": "Safru (il)"
         },
         {
             "code": "SAL",
             "name": "Salé"
         },
         {
-            "code": "SEF",
-            "name": "Sefrou"
-        },
-        {
-            "code": "SET",
-            "name": "Settat"
-        },
-        {
             "code": "SIB",
-            "name": "Sidi Bennour"
+            "name": "Sidi Binnur (il)"
         },
         {
             "code": "SIF",
-            "name": "Sidi Ifni"
+            "name": "Sidi İfni (il)"
         },
         {
             "code": "SIK",
-            "name": "Sidi Kacem"
+            "name": "Sidi Kasım (il)"
         },
         {
             "code": "SIL",
-            "name": "Sidi Slimane"
+            "name": "Sidi Süleyman (il)"
+        },
+        {
+            "code": "SET",
+            "name": "Sittat (il)"
         },
         {
             "code": "13",
             "name": "Souss-Massa-Draâ"
+        },
+        {
+            "code": "ESI",
+            "name": "Suveyre (il)"
+        },
+        {
+            "code": "CHE",
+            "name": "Şafşavan (il)"
+        },
+        {
+            "code": "CHI",
+            "name": "Şişava (il)"
         },
         {
             "code": "12",
@@ -12690,7 +12808,7 @@
         },
         {
             "code": "TNT",
-            "name": "Tan-Tan"
+            "name": "Tan-Tan (il)"
         },
         {
             "code": "TNG",
@@ -12701,28 +12819,28 @@
             "name": "Tangier-Tétouan"
         },
         {
-            "code": "TAO",
-            "name": "Taounate"
-        },
-        {
-            "code": "TAI",
-            "name": "Taourirt"
-        },
-        {
             "code": "TAF",
-            "name": "Tarfaya (EH-partial)"
+            "name": "Tarfaye (il)"
         },
         {
             "code": "TAR",
-            "name": "Taroudant"
+            "name": "Tarudant (il)"
         },
         {
             "code": "TAT",
-            "name": "Tata"
+            "name": "Tata (il)"
+        },
+        {
+            "code": "TAO",
+            "name": "Tavnet (il)"
+        },
+        {
+            "code": "TAI",
+            "name": "Tavrirt (il)"
         },
         {
             "code": "TAZ",
-            "name": "Taza"
+            "name": "Taza (il)"
         },
         {
             "code": "03",
@@ -12734,27 +12852,35 @@
         },
         {
             "code": "TET",
-            "name": "Tétouan"
+            "name": "Tetuan (il)"
         },
         {
             "code": "TIN",
-            "name": "Tinghir"
+            "name": "Tingir (il)"
         },
         {
             "code": "TIZ",
-            "name": "Tiznit"
+            "name": "Tiznit (il)"
         },
         {
             "code": "OUJ",
             "name": "Ucda"
         },
         {
+            "code": "OUA",
+            "name": "Varzazat (il)"
+        },
+        {
+            "code": "OUZ",
+            "name": "Vezzân (il)"
+        },
+        {
             "code": "YUS",
-            "name": "Youssoufia"
+            "name": "Yusufiye (il)"
         },
         {
             "code": "ZAG",
-            "name": "Zagora"
+            "name": "Zakura (il)"
         }
     ],
     "MC": [
@@ -13073,6 +13199,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13146,7 +13276,7 @@
         },
         {
             "code": "KWA",
-            "name": "Kwajalein"
+            "name": "Kwajalein Atolü"
         },
         {
             "code": "LAE",
@@ -13284,7 +13414,7 @@
         },
         {
             "code": "101",
-            "name": "Veles"
+            "name": "Köprülü"
         },
         {
             "code": "102",
@@ -13572,7 +13702,7 @@
         },
         {
             "code": "810",
-            "name": "Petrovec"
+            "name": "İbrahimova"
         },
         {
             "code": "811",
@@ -15207,6 +15337,10 @@
     ],
     "NP": [
         {
+            "code": "P1",
+            "name": "1 Nolu il"
+        },
+        {
             "code": "BA",
             "name": "Bagmati Zon"
         },
@@ -15240,7 +15374,7 @@
         },
         {
             "code": "P6",
-            "name": "Karnali²"
+            "name": "Karnali (il)"
         },
         {
             "code": "KO",
@@ -15249,6 +15383,14 @@
         {
             "code": "LU",
             "name": "Lumbini"
+        },
+        {
+            "code": "P5",
+            "name": "Lumbini (il)"
+        },
+        {
+            "code": "P2",
+            "name": "Madheş (il)"
         },
         {
             "code": "2",
@@ -15267,24 +15409,8 @@
             "name": "Narayani Zon"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         },
         {
             "code": "4",
@@ -15305,6 +15431,10 @@
         {
             "code": "5",
             "name": "Sudur Pashchimanchal"
+        },
+        {
+            "code": "P7",
+            "name": "Sudurpaşçim (il)"
         },
         {
             "code": "3",
@@ -15469,16 +15599,16 @@
             "name": "Ez Zahira Bölgesi"
         },
         {
+            "code": "BS",
+            "name": "Kuzey Batıne"
+        },
+        {
             "code": "MA",
             "name": "Maskat valiliği"
         },
         {
             "code": "MU",
             "name": "Musandam valiliği"
-        },
-        {
-            "code": "BS",
-            "name": "Shamal al Batinah"
         },
         {
             "code": "ZU",
@@ -15981,6 +16111,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -18424,7 +18562,7 @@
         },
         {
             "code": "199",
-            "name": "Mokronog–Trebelno"
+            "name": "Mokronog-Trebelno"
         },
         {
             "code": "200",
@@ -18838,7 +18976,7 @@
         },
         {
             "code": "CH",
-            "name": "Chalatenango"
+            "name": "Chalatenango ili"
         },
         {
             "code": "CU",
@@ -21817,10 +21955,6 @@
             "name": "Amran ili"
         },
         {
-            "code": "SU",
-            "name": "Arkhabil Suqutra"
-        },
-        {
             "code": "DA",
             "name": "Ed Dali ili"
         },
@@ -21879,6 +22013,10 @@
         {
             "code": "SN",
             "name": "San’a ili"
+        },
+        {
+            "code": "SU",
+            "name": "Sokotra (il)"
         },
         {
             "code": "SH",

@@ -3464,7 +3464,7 @@
         },
         {
             "code": "03",
-            "name": "Havana"
+            "name": "哈瓦那省"
         },
         {
             "code": "04",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "埃利赞省"
+        },
+        {
+            "code": "49",
+            "name": "提米蒙省"
+        },
+        {
+            "code": "50",
+            "name": "巴吉穆赫塔尔堡省"
+        },
+        {
+            "code": "51",
+            "name": "奥拉德杰拉勒省"
+        },
+        {
+            "code": "52",
+            "name": "貝尼阿巴斯省"
+        },
+        {
+            "code": "53",
+            "name": "萨拉泉省"
+        },
+        {
+            "code": "54",
+            "name": "因盖扎姆省"
+        },
+        {
+            "code": "55",
+            "name": "图古尔特省"
+        },
+        {
+            "code": "56",
+            "name": "贾奈特省"
+        },
+        {
+            "code": "57",
+            "name": "迈盖耶尔省"
+        },
+        {
+            "code": "58",
+            "name": "迈尼耶省"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "東維魯縣"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "約格瓦縣"
+            "name": "東維魯縣"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "耶爾瓦縣"
+            "name": "約格瓦縣"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "耶爾瓦縣"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "萊內縣"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "西維魯縣"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "西維魯縣"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "珀爾瓦縣"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "派爾努縣"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "拉普拉縣"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "拉普拉縣"
         },
         {
             "code": "74",
             "name": "薩雷縣"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "塔爾圖縣"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "瓦爾加縣"
         },
         {
@@ -4819,28 +4831,24 @@
             "name": "維爾揚迪縣"
         },
         {
-            "code": "86",
+            "code": "87",
             "name": "沃魯縣"
         },
         {
-            "code": "87",
-            "name": "Võrumaa"
-        },
-        {
             "code": "130",
-            "name": "Alutaguse"
+            "name": "阿卢塔古塞"
         },
         {
             "code": "141",
-            "name": "Anija"
+            "name": "阿尼亚"
         },
         {
             "code": "142",
-            "name": "Antsla"
+            "name": "安茨拉"
         },
         {
             "code": "171",
-            "name": "Elva"
+            "name": "埃尔瓦"
         },
         {
             "code": "184",
@@ -4856,27 +4864,27 @@
         },
         {
             "code": "205",
-            "name": "Hiiumaa"
+            "name": "希乌马"
         },
         {
             "code": "214",
-            "name": "Häädemeeste"
+            "name": "黑德梅斯泰"
         },
         {
             "code": "245",
-            "name": "Jõelähtme"
+            "name": "约莱赫特梅"
         },
         {
             "code": "247",
-            "name": "Jõgeva"
+            "name": "约格瓦"
         },
         {
             "code": "251",
-            "name": "Jõhvi"
+            "name": "約赫維"
         },
         {
             "code": "255",
-            "name": "Järva"
+            "name": "耶尔瓦"
         },
         {
             "code": "272",
@@ -4916,7 +4924,7 @@
         },
         {
             "code": "321",
-            "name": "Kohtla-Järve"
+            "name": "科赫特拉-耶爾韋"
         },
         {
             "code": "338",
@@ -4932,11 +4940,11 @@
         },
         {
             "code": "430",
-            "name": "Lääneranna"
+            "name": "莱内兰纳"
         },
         {
             "code": "431",
-            "name": "Lääne-Harju"
+            "name": "西哈尔尤"
         },
         {
             "code": "432",
@@ -4944,11 +4952,11 @@
         },
         {
             "code": "441",
-            "name": "Lääne-Nigula"
+            "name": "莱内-尼古拉"
         },
         {
             "code": "442",
-            "name": "Lüganuse"
+            "name": "吕加努塞"
         },
         {
             "code": "446",
@@ -4976,7 +4984,7 @@
         },
         {
             "code": "514",
-            "name": "Narva-Jõesuu"
+            "name": "纳尔瓦约埃苏"
         },
         {
             "code": "528",
@@ -4984,7 +4992,7 @@
         },
         {
             "code": "557",
-            "name": "Otepää"
+            "name": "奥泰佩"
         },
         {
             "code": "567",
@@ -4992,15 +5000,15 @@
         },
         {
             "code": "586",
-            "name": "Peipsiääre"
+            "name": "佩普西埃雷"
         },
         {
             "code": "615",
-            "name": "Põhja-Sakala"
+            "name": "北萨卡拉"
         },
         {
             "code": "618",
-            "name": "Põltsamaa"
+            "name": "珀尔察马"
         },
         {
             "code": "622",
@@ -5012,7 +5020,7 @@
         },
         {
             "code": "638",
-            "name": "Põhja-Pärnumaa"
+            "name": "北派尔努马"
         },
         {
             "code": "651",
@@ -5040,7 +5048,7 @@
         },
         {
             "code": "698",
-            "name": "Rõuge"
+            "name": "勒乌格"
         },
         {
             "code": "708",
@@ -5068,7 +5076,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "錫拉邁埃"
         },
         {
             "code": "784",
@@ -5092,7 +5100,7 @@
         },
         {
             "code": "809",
-            "name": "Tori"
+            "name": "托里"
         },
         {
             "code": "824",
@@ -5100,7 +5108,7 @@
         },
         {
             "code": "834",
-            "name": "Türi"
+            "name": "蒂里"
         },
         {
             "code": "855",
@@ -5140,7 +5148,7 @@
         },
         {
             "code": "928",
-            "name": "Väike-Maarja"
+            "name": "小馬爾亞"
         }
     ],
     "EG": [
@@ -5599,12 +5607,16 @@
             "name": "提格里州"
         },
         {
-            "code": "AA",
-            "name": "亚的斯亚贝巴"
+            "code": "SW",
+            "name": "西南埃塞俄比亚人民州"
         },
         {
             "code": "SI",
-            "name": "Sidama"
+            "name": "錫達馬地區"
+        },
+        {
+            "code": "AA",
+            "name": "亚的斯亚贝巴"
         }
     ],
     "FI": [
@@ -5931,6 +5943,10 @@
             "name": "法兰西岛"
         },
         {
+            "code": "973",
+            "name": "法屬圭亞那"
+        },
+        {
             "code": "29",
             "name": "非尼斯泰尔省"
         },
@@ -5991,6 +6007,10 @@
             "name": "朗格多克-魯西永-南部-庇里牛斯"
         },
         {
+            "code": "974",
+            "name": "留尼汪"
+        },
+        {
             "code": "41",
             "name": "卢瓦尔-谢尔省"
         },
@@ -6037,6 +6057,10 @@
         {
             "code": "53",
             "name": "马耶讷省"
+        },
+        {
+            "code": "972",
+            "name": "馬提尼克"
         },
         {
             "code": "49",
@@ -6227,18 +6251,6 @@
             "name": "中央"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
-        },
-        {
             "code": "976",
             "name": "Mayotte"
         },
@@ -6297,6 +6309,14 @@
         {
             "code": "AGB",
             "name": "阿盖尔-比特"
+        },
+        {
+            "code": "ABC",
+            "name": "阿马市-班布里奇-克雷加文区"
+        },
+        {
+            "code": "AND",
+            "name": "阿兹-北唐区"
         },
         {
             "code": "ELS",
@@ -6507,6 +6527,10 @@
             "name": "鄧弗里斯-加洛韋"
         },
         {
+            "code": "CCG",
+            "name": "堤道海岸-峡谷区"
+        },
+        {
             "code": "STT",
             "name": "蒂斯河畔斯托克頓區"
         },
@@ -6557,6 +6581,10 @@
         {
             "code": "FLN",
             "name": "弗林特郡"
+        },
+        {
+            "code": "FMO",
+            "name": "弗马纳-奥马区"
         },
         {
             "code": "FAL",
@@ -6755,6 +6783,10 @@
             "name": "里茲市"
         },
         {
+            "code": "LBC",
+            "name": "利斯本-卡斯尔雷区"
+        },
+        {
             "code": "LIV",
             "name": "利物浦"
         },
@@ -6799,6 +6831,10 @@
             "name": "梅德韋"
         },
         {
+            "code": "MTY",
+            "name": "梅瑟蒂德菲爾郡級自治市"
+        },
+        {
             "code": "MON",
             "name": "蒙茅斯郡"
         },
@@ -6841,6 +6877,10 @@
         {
             "code": "OXF",
             "name": "牛津郡"
+        },
+        {
+            "code": "NMD",
+            "name": "纽里-莫恩-唐区"
         },
         {
             "code": "NWM",
@@ -7139,6 +7179,10 @@
             "name": "約克"
         },
         {
+            "code": "MEA",
+            "name": "中-东安特里姆区"
+        },
+        {
             "code": "MLN",
             "name": "中洛锡安"
         },
@@ -7155,16 +7199,8 @@
             "name": "Ards"
         },
         {
-            "code": "AND",
-            "name": "Ards and North Down"
-        },
-        {
             "code": "ARM",
             "name": "Armagh"
-        },
-        {
-            "code": "ABC",
-            "name": "Armagh, Banbridge and Craigavon"
         },
         {
             "code": "BLA",
@@ -7185,10 +7221,6 @@
         {
             "code": "CSR",
             "name": "Castlereagh"
-        },
-        {
-            "code": "CCG",
-            "name": "Causeway Coast and Glens"
         },
         {
             "code": "CLR",
@@ -7219,10 +7251,6 @@
             "name": "Fermanagh"
         },
         {
-            "code": "FMO",
-            "name": "Fermanagh and Omagh"
-        },
-        {
             "code": "LRN",
             "name": "Larne"
         },
@@ -7235,20 +7263,8 @@
             "name": "Lisburn"
         },
         {
-            "code": "LBC",
-            "name": "Lisburn and Castlereagh"
-        },
-        {
             "code": "MFT",
             "name": "Magherafelt"
-        },
-        {
-            "code": "MTY",
-            "name": "Merthyr Tydfil"
-        },
-        {
-            "code": "MEA",
-            "name": "Mid and East Antrim"
         },
         {
             "code": "MUL",
@@ -7267,10 +7283,6 @@
             "name": "Newry and Mourne"
         },
         {
-            "code": "NMD",
-            "name": "Newry, Mourne and Down"
-        },
-        {
             "code": "NTA",
             "name": "Newtownabbey"
         },
@@ -7279,12 +7291,20 @@
             "name": "North Down"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OMH",
             "name": "Omagh"
         },
         {
             "code": "STB",
             "name": "Strabane"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         }
     ],
     "GD": [
@@ -8159,12 +8179,6 @@
             "name": "上塔库图-上埃塞奎博"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8593,6 +8607,10 @@
             "name": "東努沙登加拉省"
         },
         {
+            "code": "PE",
+            "name": "高地巴布亞省"
+        },
+        {
             "code": "GO",
             "name": "哥伦打洛省"
         },
@@ -8619,6 +8637,10 @@
         {
             "code": "ML",
             "name": "摩鹿加群岛"
+        },
+        {
+            "code": "PS",
+            "name": "南巴布亞省"
         },
         {
             "code": "KS",
@@ -8661,6 +8683,10 @@
             "name": "西加里曼丹省"
         },
         {
+            "code": "PD",
+            "name": "西南巴布亚省"
+        },
+        {
             "code": "NB",
             "name": "西努沙登加拉省"
         },
@@ -8699,6 +8725,10 @@
         {
             "code": "JW",
             "name": "爪哇岛"
+        },
+        {
+            "code": "PT",
+            "name": "中巴布亞省"
         },
         {
             "code": "KT",
@@ -8879,11 +8909,15 @@
             "name": "安得拉邦"
         },
         {
+            "code": "OD",
+            "name": "奥迪沙邦"
+        },
+        {
             "code": "OR",
             "name": "奥里萨邦"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "北阿坎德邦"
         },
         {
@@ -8987,6 +9021,10 @@
             "name": "恰蒂斯加尔邦"
         },
         {
+            "code": "CG",
+            "name": "切蒂斯格尔邦"
+        },
+        {
             "code": "TN",
             "name": "泰米尔纳德邦"
         },
@@ -8995,7 +9033,7 @@
             "name": "特里普拉邦"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "特伦甘纳邦"
         },
         {
@@ -9013,6 +9051,14 @@
         {
             "code": "MP",
             "name": "中央邦"
+        },
+        {
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9257,6 +9303,10 @@
             "name": "奥尔内斯区"
         },
         {
+            "code": "SOL",
+            "name": "奥佛斯"
+        },
+        {
             "code": "ASA",
             "name": "奥萨区"
         },
@@ -9289,6 +9339,14 @@
             "name": "大雷克雅未克区"
         },
         {
+            "code": "TJO",
+            "name": "蒂约尔内斯区"
+        },
+        {
+            "code": "RGE",
+            "name": "东朗加辛"
+        },
+        {
             "code": "6",
             "name": "東北區"
         },
@@ -9317,12 +9375,68 @@
             "name": "格倫達菲厄澤"
         },
         {
+            "code": "HAF",
+            "name": "哈布纳菲厄泽"
+        },
+        {
+            "code": "HUG",
+            "name": "胡纳比格兹"
+        },
+        {
+            "code": "HVE",
+            "name": "惠拉蓋爾濟"
+        },
+        {
+            "code": "GAR",
+            "name": "加尔扎拜尔"
+        },
+        {
+            "code": "KOP",
+            "name": "科帕沃于尔"
+        },
+        {
+            "code": "RKV",
+            "name": "雷克雅未克"
+        },
+        {
             "code": "MUL",
             "name": "穆拉辛"
         },
         {
+            "code": "SDN",
+            "name": "南半岛镇"
+        },
+        {
             "code": "8",
             "name": "南部區"
+        },
+        {
+            "code": "SEL",
+            "name": "塞尔蒂亚纳内斯"
+        },
+        {
+            "code": "SKR",
+            "name": "斯卡加菲厄泽"
+        },
+        {
+            "code": "STR",
+            "name": "斯特兰达比格兹"
+        },
+        {
+            "code": "SDV",
+            "name": "苏扎维克区"
+        },
+        {
+            "code": "RGY",
+            "name": "外朗加辛"
+        },
+        {
+            "code": "VEM",
+            "name": "韦斯特曼纳埃亚尔"
+        },
+        {
+            "code": "SVG",
+            "name": "沃加尔"
         },
         {
             "code": "5",
@@ -9357,10 +9471,6 @@
             "name": "Fljótsdalshérað"
         },
         {
-            "code": "GAR",
-            "name": "Garðabær"
-        },
-        {
             "code": "GOG",
             "name": "Grímsnes- og Grafningshreppur"
         },
@@ -9371,10 +9481,6 @@
         {
             "code": "GRY",
             "name": "Grýtubakkahreppur"
-        },
-        {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
         },
         {
             "code": "HEL",
@@ -9397,10 +9503,6 @@
             "name": "Hvalfjarðarsveit"
         },
         {
-            "code": "HVE",
-            "name": "Hveragerðisbær"
-        },
-        {
             "code": "ISA",
             "name": "Ísafjarðarbær"
         },
@@ -9411,10 +9513,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9433,14 +9531,6 @@
             "name": "Norðurþing"
         },
         {
-            "code": "RGE",
-            "name": "Rangárþing eystra"
-        },
-        {
-            "code": "RGY",
-            "name": "Rangárþing ytra"
-        },
-        {
             "code": "RHH",
             "name": "Reykhólahreppur"
         },
@@ -9451,14 +9541,6 @@
         {
             "code": "0",
             "name": "Reykjavík"
-        },
-        {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
-            "code": "SEL",
-            "name": "Seltjarnarnesbær"
         },
         {
             "code": "SEY",
@@ -9489,20 +9571,8 @@
             "name": "Snæfellsbær"
         },
         {
-            "code": "STR",
-            "name": "Strandabyggð"
-        },
-        {
             "code": "STY",
             "name": "Stykkishólmsbær"
-        },
-        {
-            "code": "SDV",
-            "name": "Súðavíkurhreppur"
-        },
-        {
-            "code": "SDN",
-            "name": "Suðurnesjabær"
         },
         {
             "code": "SBH",
@@ -9517,10 +9587,6 @@
             "name": "Sveitarfélagið Hornafjörður"
         },
         {
-            "code": "SOL",
-            "name": "Sveitarfélagið Ölfus"
-        },
-        {
             "code": "SSF",
             "name": "Sveitarfélagið Skagafjörður"
         },
@@ -9529,20 +9595,8 @@
             "name": "Sveitarfélagið Skagaströnd"
         },
         {
-            "code": "SVG",
-            "name": "Sveitarfélagið Vogar"
-        },
-        {
             "code": "TAL",
             "name": "Tálknafjarðarhreppur"
-        },
-        {
-            "code": "TJO",
-            "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10853,6 +10907,10 @@
         {
             "code": "14",
             "name": "南浦特別市"
+        },
+        {
+            "code": "15",
+            "name": "开城特级市"
         }
     ],
     "KR": [
@@ -10953,7 +11011,11 @@
     ],
     "KZ": [
         {
-            "code": "AKM",
+            "code": "10",
+            "name": "阿拜州"
+        },
+        {
+            "code": "11",
             "name": "阿克莫拉州"
         },
         {
@@ -10961,23 +11023,31 @@
             "name": "阿克托貝州"
         },
         {
-            "code": "ALA",
+            "code": "15",
+            "name": "阿克托別州"
+        },
+        {
+            "code": "75",
             "name": "阿拉木圖"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "阿拉木圖州"
+        },
+        {
+            "code": "71",
+            "name": "阿斯塔纳"
         },
         {
             "code": "AST",
             "name": "阿斯塔納"
         },
         {
-            "code": "ATY",
+            "code": "23",
             "name": "阿特勞州"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "巴甫洛達爾州"
         },
         {
@@ -10985,27 +11055,31 @@
             "name": "拜科努爾"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "北哈薩克斯坦州"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "東哈薩克斯坦州"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "江布爾州"
         },
         {
-            "code": "KAR",
+            "code": "33",
+            "name": "杰特苏州"
+        },
+        {
+            "code": "35",
             "name": "卡拉干達州"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "克孜勒奧爾達州"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "庫斯塔奈州"
         },
         {
@@ -11013,16 +11087,72 @@
             "name": "曼格斯套州"
         },
         {
+            "code": "47",
+            "name": "曼吉斯套州"
+        },
+        {
             "code": "YUZ",
             "name": "南哈薩克斯坦州"
         },
         {
-            "code": "ZAP",
+            "code": "61",
+            "name": "图尔克斯坦州"
+        },
+        {
+            "code": "62",
+            "name": "乌勒套州"
+        },
+        {
+            "code": "27",
             "name": "西哈薩克斯坦州"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "希姆肯特"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
         }
     ],
     "LA": [
@@ -12553,7 +12683,7 @@
             "name": "賴哈姆納省"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "马拉喀什"
         },
         {
@@ -12749,8 +12879,8 @@
             "name": "扎古拉省"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         }
     ],
     "MC": [
@@ -13068,7 +13198,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "图齐市镇"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13621,6 +13755,10 @@
             "name": "库利科罗区"
         },
         {
+            "code": "9",
+            "name": "馬里行政區"
+        },
+        {
             "code": "5",
             "name": "莫普提区"
         },
@@ -13629,20 +13767,16 @@
             "name": "塞古区"
         },
         {
+            "code": "10",
+            "name": "陶代尼区"
+        },
+        {
             "code": "6",
             "name": "通布圖區"
         },
         {
             "code": "3",
             "name": "锡卡索区"
-        },
-        {
-            "code": "9",
-            "name": "Ménaka"
-        },
-        {
-            "code": "10",
-            "name": "Taoudénit"
         }
     ],
     "MM": [
@@ -15211,6 +15345,14 @@
             "name": "道拉吉里专区"
         },
         {
+            "code": "P7",
+            "name": "第七省"
+        },
+        {
+            "code": "P1",
+            "name": "第一省"
+        },
+        {
             "code": "4",
             "name": "東部發展區"
         },
@@ -15221,6 +15363,10 @@
         {
             "code": "KO",
             "name": "戈西專區"
+        },
+        {
+            "code": "P6",
+            "name": "格尔纳利省"
         },
         {
             "code": "KA",
@@ -15235,8 +15381,16 @@
             "name": "拉布蒂專區"
         },
         {
+            "code": "P5",
+            "name": "蓝毗尼省"
+        },
+        {
             "code": "LU",
             "name": "藍毗尼專區"
+        },
+        {
+            "code": "P2",
+            "name": "马德西省"
         },
         {
             "code": "MA",
@@ -15283,28 +15437,8 @@
             "name": "Gandaki²"
         },
         {
-            "code": "P6",
-            "name": "Karnali²"
-        },
-        {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         }
     ],
     "NR": [
@@ -15523,6 +15657,10 @@
             "name": "洛斯桑托斯省"
         },
         {
+            "code": "NT",
+            "name": "纳索特尔迪原住民区"
+        },
+        {
             "code": "4",
             "name": "奇里基省"
         },
@@ -15533,10 +15671,6 @@
         {
             "code": "KY",
             "name": "雅拉庫納族自治區"
-        },
-        {
-            "code": "NT",
-            "name": "Naso Tjër Di"
         }
     ],
     "PE": [
@@ -15815,6 +15949,10 @@
             "name": "北拉瑙省"
         },
         {
+            "code": "MGN",
+            "name": "北马京达瑙省"
+        },
+        {
             "code": "10",
             "name": "北棉兰老"
         },
@@ -16017,6 +16155,10 @@
         {
             "code": "SLE",
             "name": "南萊特省"
+        },
+        {
+            "code": "MGS",
+            "name": "南马京达瑙省"
         },
         {
             "code": "ZAS",
@@ -16557,16 +16699,16 @@
             "name": "多哈"
         },
         {
+            "code": "SH",
+            "name": "沙哈尼亚"
+        },
+        {
             "code": "WA",
             "name": "沃克拉"
         },
         {
             "code": "US",
             "name": "烏姆錫拉勒"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Shīḩānīyah"
         }
     ],
     "RE": [
@@ -16827,8 +16969,16 @@
             "name": "尼沙瓦州"
         },
         {
+            "code": "26",
+            "name": "佩奇州"
+        },
+        {
             "code": "22",
             "name": "皮羅特州"
+        },
+        {
+            "code": "27",
+            "name": "普里兹伦州"
         },
         {
             "code": "24",
@@ -16865,14 +17015,6 @@
         {
             "code": "16",
             "name": "茲拉提波爾州"
-        },
-        {
-            "code": "26",
-            "name": "Peć"
-        },
-        {
-            "code": "27",
-            "name": "Prizren"
         }
     ],
     "RU": [
@@ -20266,7 +20408,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "森圭區"
         }
     ],
     "UA": [
@@ -20439,6 +20581,10 @@
         {
             "code": "401",
             "name": "本迪布焦區"
+        },
+        {
+            "code": "430",
+            "name": "本扬加布"
         },
         {
             "code": "217",
@@ -20693,6 +20839,10 @@
             "name": "魯昆吉里區"
         },
         {
+            "code": "320",
+            "name": "馬拉查區"
+        },
+        {
             "code": "221",
             "name": "馬納富阿區"
         },
@@ -20845,10 +20995,6 @@
             "name": "Bugweri"
         },
         {
-            "code": "430",
-            "name": "Bunyangabu"
-        },
-        {
             "code": "233",
             "name": "Butebo"
         },
@@ -20899,10 +21045,6 @@
         {
             "code": "336",
             "name": "Madi-Okollo"
-        },
-        {
-            "code": "320",
-            "name": "Maracha"
         },
         {
             "code": "334",
