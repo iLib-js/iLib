@@ -458,7 +458,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan pɛ̀lú meji, tabi mẹta");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta"]), "ọkan, meji, tabi mẹta");
         test.done();
     },
     testListFmtORStyleNumberFormatFour_yo_BJ: function(test) {
@@ -469,7 +469,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin"]), "ọkan, meji, mẹta, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatFiveFull_yo_BJ: function(test) {
@@ -480,7 +480,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     },
     testListFmtORStyleNumberFormatShortFiveFull_yo_BJ: function(test) {
@@ -491,7 +491,7 @@ module.exports.testlistfmt_yo = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan pɛ̀lú meji, mẹta, mẹrin, tabi mẹrin");
+        test.equal(fmt.format(["ọkan", "meji", "mẹta", "mẹrin", "mẹrin"]), "ọkan, meji, mẹta, mẹrin, tabi mẹrin");
         test.done();
     }
 };
