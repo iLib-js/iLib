@@ -1676,11 +1676,11 @@ module.exports.testcurrency = {
         test.equal(info.getCurrency(), "XOF");
         test.done();
     },
-    testCurrency_af_NA: function(test) {
+    testCurrency_sn_ZW: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("af-NA");
+        var info = new LocaleInfo("sn-ZW");
         test.ok(info !== null);
-        test.equal(info.getCurrency(), "NAD");
+        test.equal(info.getCurrency(), "ZWG");
         test.done();
     }
 };
