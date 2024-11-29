@@ -1,7 +1,7 @@
 /*
  * testlistfmt_tg_TJ.js - test the list formatter object
  *
- * Copyright © 2021, JEDLSoft
+ * Copyright © 2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду"]), "як, ду");
+        test.equal(fmt.format(["як", "ду"]), "як ва ду");
         test.done();
     },
     testListFmtNumberFormatThree_tg_TJ: function(test) {
@@ -99,7 +99,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду"]), "як, ду");
+        test.equal(fmt.format(["як", "ду"]), "як ва ду");
         test.done();
     },
     testListFmtUnitStyleNumberFormatThreeShort_tg_TJ: function(test) {
@@ -156,7 +156,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду"]), "як, ду");
+        test.equal(fmt.format(["як", "ду"]), "як ва ду");
         test.done();
     },
     testListFmtUnitStyleNumberFormatThreeFull_tg_TJ: function(test) {
