@@ -4,6 +4,7 @@
         "currencyFormats": {
             "common": "{s}{n}",
             "commonNegative": "-{s}{n}"
-        }
+        },
+        "secgroupSize": 2
     }
 }
