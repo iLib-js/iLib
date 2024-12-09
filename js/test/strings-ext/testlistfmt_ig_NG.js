@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ig_NG.js - test the list formatter object Igbo - Nigeria
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -99,7 +99,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo"]), "otu na abuo");
+        test.equal(fmt.format(["otu", "abuo"]), "otu, abuo");
         test.done();
     },
     testListFmtUnitStyleNumberFormatThreeShort_ig_NG: function(test) {
@@ -110,7 +110,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ"]), "otu, abuo, na atọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ"]), "otu, abuo, atọ");
         test.done();
     },
     testListFmtUnitStyleNumberFormatFourShort_ig_NG: function(test) {
@@ -121,7 +121,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ"]), "otu, abuo, atọ, na anọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ"]), 'otu, abuo, atọ, anọ');
         test.done();
     },
     testListFmtUnitStyleNumberFormatFiveShort_ig_NG: function(test) {
@@ -132,7 +132,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ", "anọ"]), "otu, abuo, atọ, anọ, na anọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ", "anọ"]), "otu, abuo, atọ, anọ, anọ");
         test.done();
     },
     testListFmtUnitStyleNumberFormatOneFull_ig_NG: function(test) {
@@ -156,7 +156,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo"]), "otu na abuo");
+        test.equal(fmt.format(["otu", "abuo"]), "otu, abuo");
         test.done();
     },
     testListFmtUnitStyleNumberFormatThreeFull_ig_NG: function(test) {
@@ -168,7 +168,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ"]), "otu, abuo, na atọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ"]), "otu, abuo, atọ");
         test.done();
     },
     testListFmtUnitStyleNumberFormatFourFull_ig_NG: function(test) {
@@ -180,7 +180,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ"]), "otu, abuo, atọ, na anọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ"]), "otu, abuo, atọ, anọ");
         test.done();
     },
     testListFmtUnitStyleNumberFormatFiveFull_ig_NG: function(test) {
@@ -192,7 +192,7 @@ module.exports.testlistfmt_ig_NG = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ", "anọ"]), "otu, abuo, atọ, anọ, na anọ");
+        test.equal(fmt.format(["otu", "abuo", "atọ", "anọ", "anọ"]), "otu, abuo, atọ, anọ, anọ");
         test.done();
     },
     testListFmtORStyleNumberFormatOne_ig_NG: function(test) {
