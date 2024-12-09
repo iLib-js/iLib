@@ -409,6 +409,19 @@ module.exports.testcountry = {
         test.equal(locale.toString(), "es-CO");
         test.done();
     },
+    testCountryLocale_ml_IN: function(test) {
+        test.expect(4);
+        var ctry = new Country({
+            locale: "ml-IN"
+        });
+        test.ok(ctry !== null);
+
+        test.equal(ctry.getName("MO"), "മക്കാവു എസ്.എ.ആർ. ചൈന");
+        test.equal(ctry.getCode("മക്കാവു എസ്.എ.ആർ. ചൈന"), "MO");
+        var locale = ctry.getLocale();
+        test.equal(locale.toString(), "ml-IN");
+        test.done();
+    },
     testCountryLocale_it_IT: function(test) {
         test.expect(4);
         var ctry = new Country({
