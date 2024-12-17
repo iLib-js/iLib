@@ -3463,7 +3463,6 @@ module.exports.testnumfmt = {
         locale: "hu-HU",
             type: "percentage"
         });
-
         test.ok(fmt);
         test.equal(fmt.format(57.0), "57%");
         test.done();
@@ -3475,7 +3474,6 @@ module.exports.testnumfmt = {
             locale: "nl-NL",
             maxFractionDigits: 2
         });
-
         test.ok(fmt);
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
@@ -3485,11 +3483,10 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "nl-NL",
-            currency: "ANG"
+            currency: "EUR"
         });
-
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "ƒ 100.110,57");
+        test.equal(fmt.format(100110.57), "€ 100.110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_nl_NL: function(test) {
@@ -3498,7 +3495,6 @@ module.exports.testnumfmt = {
         locale: "nl-NL",
             type: "percentage"
         });
-
         test.ok(fmt);
         test.equal(fmt.format(57.0), "57%");
         test.done();
@@ -4417,11 +4413,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "nl-NL",
-            currency: "ANG"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "ƒ -100.110,57");
+        test.equal(fmt.format(-100110.57), "€ -100.110,57");
         test.done();
     },
     testNumFmtNegativeCurrencyFormatForLocale_pl_PL: function(test) {
@@ -5705,6 +5701,30 @@ module.exports.testnumfmt = {
 
         test.ok(fmt);
         test.equal(fmt.format(-100110.57), "-Sh 100,110.57");
+        test.done();
+    },
+    testNumFmtCurrencyFormatForLocale_en_CW: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "en-CW",
+            currency: "XCG"
+        });
+
+        test.ok(fmt);
+        test.equal(fmt.format(100110.57), "Cg.100,110.57");
+        test.done();
+    },
+    testNumFmtNegativeCurrencyFormatForLocale_en_CW: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            type: "currency",
+            locale: "en-CW",
+            currency: "XCG"
+        });
+
+        test.ok(fmt);
+        test.equal(fmt.format(-100110.57), "-Cg.100,110.57");
         test.done();
     },
     /******************************** End of test cases****************************************************/

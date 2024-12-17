@@ -64,11 +64,6 @@
         "decimals": 2,
         "sign": "֏"
     },
-    "ANG": {
-        "name": "Netherlands Antillean Guilder",
-        "decimals": 2,
-        "sign": "ƒ"
-    },
     "AOA": {
         "name": "Angolan Kwanza",
         "decimals": 2,
@@ -739,6 +734,11 @@
         "decimals": 2,
         "sign": "$"
     },
+    "XCG": {
+        "name": "Caribbean guilder",
+        "decimals": 2,
+        "sign": "Cg."
+    },
     "XOF": {
         "name": "West African CFA Franc",
         "decimals": 0,
@@ -763,5 +763,10 @@
         "name": "Zambian Kwacha",
         "decimals": 2,
         "sign": "ZK"
+    },
+    "ZWG": {
+        "name": "Zimbabwean Gold",
+        "decimals": 2,
+        "sign": "ZWG"
     }
 }

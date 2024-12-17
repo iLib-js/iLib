@@ -1675,5 +1675,12 @@ module.exports.testcurrency = {
         test.ok(info !== null);
         test.equal(info.getCurrency(), "XOF");
         test.done();
+    },
+    testCurrency_sn_ZW: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("sn-ZW");
+        test.ok(info !== null);
+        test.equal(info.getCurrency(), "ZWG");
+        test.done();
     }
 };
