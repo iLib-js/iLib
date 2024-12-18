@@ -1260,6 +1260,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "en-Latn-CP");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_BF: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "BF"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-Latn-BF");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_Latn_BF: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Latn-BF"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-Latn-BF");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
