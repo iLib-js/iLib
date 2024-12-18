@@ -1238,6 +1238,28 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ky-Cyrl-KG");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_AQ: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "AQ"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-Latn-AQ");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_CP: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "CP"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-Latn-CP");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
