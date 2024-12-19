@@ -1282,6 +1282,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "fr-Latn-BF");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_und_Latn_VA: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Latn-VA"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "it-Latn-VA");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ca: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
