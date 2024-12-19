@@ -919,6 +919,10 @@
             "name": "ضلع شماخی"
         },
         {
+            "code": "GYG",
+            "name": "ضلع گوئے گول"
+        },
+        {
             "code": "FUZ",
             "name": "فضولی ضلع"
         },
@@ -1025,10 +1029,6 @@
         {
             "code": "YEV",
             "name": "ییولاخ ضلع"
-        },
-        {
-            "code": "GYG",
-            "name": "Goygol"
         },
         {
             "code": "XIZ",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "صوبہ غلیزان"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4739,28 +4779,20 @@
             "name": "Ida-Virumaa"
         },
         {
-            "code": "49",
+            "code": "50",
             "name": "یوگاوا کاؤنٹی"
         },
         {
-            "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
+            "code": "52",
             "name": "جاروا کاؤنٹی"
         },
         {
-            "code": "52",
-            "name": "Järvamaa"
-        },
-        {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "لانی کاؤنٹی"
         },
         {
             "code": "57",
-            "name": "لانی کاؤنٹی"
+            "name": "Lääne"
         },
         {
             "code": "59",
@@ -4772,46 +4804,26 @@
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "پولوا کاؤنٹی"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "پارنو کاؤنٹی"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "رپلا کاؤنٹی"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "رپلا کاؤنٹی"
         },
         {
             "code": "74",
             "name": "سارے کاؤنٹی"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "تارتو کاؤنٹی"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "والگا کاؤنٹی"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "ویلیاندی کاؤنٹی"
         },
         {
-            "code": "86",
-            "name": "وورو کاؤنٹی"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "وورو کاؤنٹی"
         },
         {
             "code": "130",
@@ -5605,6 +5613,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5691,6 +5703,10 @@
             "name": "سینٹرل ڈویژن"
         },
         {
+            "code": "12",
+            "name": "صوبہ ریوا"
+        },
+        {
             "code": "N",
             "name": "ناردرن ڈویژن"
         },
@@ -5747,10 +5763,6 @@
             "name": "Ra"
         },
         {
-            "code": "12",
-            "name": "Rewa"
-        },
-        {
             "code": "13",
             "name": "Serua"
         },
@@ -5785,6 +5797,10 @@
         {
             "code": "09",
             "name": "اریج"
+        },
+        {
+            "code": "6AE",
+            "name": "الزاس"
         },
         {
             "code": "03",
@@ -6051,6 +6067,14 @@
             "name": "شر"
         },
         {
+            "code": "974",
+            "name": "غے یونیوں"
+        },
+        {
+            "code": "973",
+            "name": "فرانسیسی گیانا"
+        },
+        {
             "code": "29",
             "name": "فینیستیر"
         },
@@ -6129,6 +6153,10 @@
         {
             "code": "42",
             "name": "لویری"
+        },
+        {
+            "code": "972",
+            "name": "مارٹینیک"
         },
         {
             "code": "51",
@@ -6219,24 +6247,8 @@
             "name": "یوننے"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
-        },
-        {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -7239,6 +7251,10 @@
             "name": "North Lanarkshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OMH",
             "name": "Omagh"
         },
@@ -7281,6 +7297,10 @@
         {
             "code": "WDU",
             "name": "West Dunbartonshire"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WRX",
@@ -8159,12 +8179,6 @@
             "name": "مشرقی بربیس کورینتینے"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "EP",
@@ -8593,6 +8607,14 @@
             "name": "جنوب مشرقی سولاویسی"
         },
         {
+            "code": "PD",
+            "name": "جنوب مغربی پاپوا"
+        },
+        {
+            "code": "PS",
+            "name": "جنوبی پاپوا"
+        },
+        {
             "code": "SS",
             "name": "جنوبی سماٹرا"
         },
@@ -8615,6 +8637,10 @@
         {
             "code": "KR",
             "name": "ریاو جزائر صوبہ"
+        },
+        {
+            "code": "PE",
+            "name": "سطح مرتفع پاپوا"
         },
         {
             "code": "SM",
@@ -8699,6 +8725,10 @@
         {
             "code": "NB",
             "name": "مغربی نوسا ٹنگارہ"
+        },
+        {
+            "code": "PT",
+            "name": "وسطی پاپوا"
         },
         {
             "code": "JT",
@@ -8867,6 +8897,10 @@
             "name": "اتر پردیش"
         },
         {
+            "code": "UK",
+            "name": "اتر کھنڈ"
+        },
+        {
             "code": "UT",
             "name": "اتراکھنڈ"
         },
@@ -8875,7 +8909,7 @@
             "name": "اروناچل پردیش"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "اڑیسہ"
         },
         {
@@ -8907,6 +8941,10 @@
             "name": "تری پورہ"
         },
         {
+            "code": "TS",
+            "name": "تلنگانہ"
+        },
+        {
             "code": "TG",
             "name": "تیلنگانا"
         },
@@ -8927,7 +8965,7 @@
             "name": "چندی گڑھ"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "چھتیس گڑھ"
         },
         {
@@ -9013,6 +9051,10 @@
         {
             "code": "HP",
             "name": "ہماچل پردیش"
+        },
+        {
+            "code": "CT",
+            "name": "Chhattisgarh"
         }
     ],
     "IQ": [
@@ -9237,6 +9279,10 @@
             "name": "آکوریرے"
         },
         {
+            "code": "VEM",
+            "name": "جزائر ویسٹ مین"
+        },
+        {
             "code": "2",
             "name": "جنوبی جزیرہ نما"
         },
@@ -9249,12 +9295,20 @@
             "name": "دارالحکومت علاقہ"
         },
         {
+            "code": "RKV",
+            "name": "ریکیاوک"
+        },
+        {
             "code": "6",
             "name": "شمال مشرقی علاقہ"
         },
         {
             "code": "5",
             "name": "شمال مغربی علاقہ"
+        },
+        {
+            "code": "KOP",
+            "name": "کھپاووگور"
         },
         {
             "code": "7",
@@ -9377,6 +9431,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9403,10 +9461,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9449,10 +9503,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9467,6 +9517,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9539,10 +9593,6 @@
         {
             "code": "TJO",
             "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10853,6 +10903,10 @@
         {
             "code": "14",
             "name": "نامپو"
+        },
+        {
+            "code": "15",
+            "name": "کائسونگ"
         }
     ],
     "KR": [
@@ -10953,27 +11007,35 @@
     ],
     "KZ": [
         {
-            "code": "ATY",
+            "code": "23",
             "name": "اتیراؤ صوبہ"
         },
         {
-            "code": "AKT",
+            "code": "15",
             "name": "اقتوبے صوبہ"
         },
         {
-            "code": "AKM",
+            "code": "11",
             "name": "اقمولا صوبہ"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "الماتی"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "الماتی صوبہ"
         },
         {
-            "code": "AST",
+            "code": "62",
+            "name": "اولیتاو علاقہ"
+        },
+        {
+            "code": "10",
+            "name": "آبائی علاقہ"
+        },
+        {
+            "code": "71",
             "name": "آستانہ"
         },
         {
@@ -10981,48 +11043,108 @@
             "name": "بایکونور"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "پاؤلودار صوبہ"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "جمبیل پراونس"
         },
         {
-            "code": "YUZ",
+            "code": "61",
             "name": "جنوبی قازقستان صوبہ"
         },
         {
-            "code": "SEV",
+            "code": "33",
+            "name": "ژیتیسو علاقہ"
+        },
+        {
+            "code": "59",
             "name": "شمالی قازقستان صوبہ"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "شیمکنت"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "قاراغاندی صوبہ"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "قوستانای صوبہ"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "قیزیلوردا صوبہ"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "مانغیستاؤ صوبہ"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "مشرقی قازقستان صوبہ"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "مغربی قازقستان صوبہ"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "YUZ",
+            "name": "South Kazakhstan"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
         }
     ],
     "LA": [
@@ -12377,6 +12499,10 @@
     ],
     "MA": [
         {
+            "code": "AZI",
+            "name": "ازیال صوبہ"
+        },
+        {
             "code": "AGD",
             "name": "اغادیر"
         },
@@ -12407,6 +12533,10 @@
         {
             "code": "BER",
             "name": "برکان صوبہ"
+        },
+        {
+            "code": "BEM",
+            "name": "بنی ملال صوبہ"
         },
         {
             "code": "12",
@@ -12447,6 +12577,10 @@
         {
             "code": "04",
             "name": "جھہ شرقیہ"
+        },
+        {
+            "code": "KHN",
+            "name": "خنیفرہ صوبہ"
         },
         {
             "code": "CAS",
@@ -12505,12 +12639,128 @@
             "name": "شیشاوہ صوبہ"
         },
         {
+            "code": "IFR",
+            "name": "صوبہ افران"
+        },
+        {
+            "code": "JDI",
+            "name": "صوبہ الجدیدہ"
+        },
+        {
+            "code": "HAJ",
+            "name": "صوبہ الحاجب"
+        },
+        {
+            "code": "ERR",
+            "name": "صوبہ الرشیدیہ"
+        },
+        {
+            "code": "ESM",
+            "name": "صوبہ السمارہ"
+        },
+        {
+            "code": "LAA",
+            "name": "صوبہ العیون"
+        },
+        {
+            "code": "AOU",
+            "name": "صوبہ اوسرد"
+        },
+        {
+            "code": "SAF",
+            "name": "صوبہ آسفی"
+        },
+        {
+            "code": "BES",
+            "name": "صوبہ بن سلیمان"
+        },
+        {
+            "code": "BOD",
+            "name": "صوبہ بوجدور"
+        },
+        {
+            "code": "BOM",
+            "name": "صوبہ بولمان"
+        },
+        {
+            "code": "TAR",
+            "name": "صوبہ تارودانت"
+        },
+        {
+            "code": "TAZ",
+            "name": "صوبہ تازہ"
+        },
+        {
+            "code": "TAO",
+            "name": "صوبہ تاونات"
+        },
+        {
+            "code": "TIZ",
+            "name": "صوبہ تیزنیت"
+        },
+        {
+            "code": "KHO",
+            "name": "صوبہ خریبکہ"
+        },
+        {
+            "code": "KHE",
+            "name": "صوبہ خمیسات"
+        },
+        {
+            "code": "ZAG",
+            "name": "صوبہ زاکورہ"
+        },
+        {
+            "code": "SET",
+            "name": "صوبہ سلطات"
+        },
+        {
+            "code": "SIF",
+            "name": "صوبہ سیدی افنی"
+        },
+        {
             "code": "SIB",
             "name": "صوبہ سیدی بنور"
         },
         {
+            "code": "CHT",
+            "name": "صوبہ شتوکہ آیت باہا"
+        },
+        {
+            "code": "SEF",
+            "name": "صوبہ صفرو"
+        },
+        {
+            "code": "TAT",
+            "name": "صوبہ طاطا"
+        },
+        {
+            "code": "TNT",
+            "name": "صوبہ طانطان"
+        },
+        {
+            "code": "TAF",
+            "name": "صوبہ طرفایہ"
+        },
+        {
+            "code": "MED",
+            "name": "صوبہ مدیونہ"
+        },
+        {
+            "code": "MOU",
+            "name": "صوبہ مولای یعقوب"
+        },
+        {
+            "code": "MID",
+            "name": "صوبہ میدلت"
+        },
+        {
             "code": "NOU",
             "name": "صوبہ نواصر"
+        },
+        {
+            "code": "OUA",
+            "name": "صوبہ ورزازات"
         },
         {
             "code": "ESI",
@@ -12539,6 +12789,10 @@
         {
             "code": "FAH",
             "name": "فاہس انجرا"
+        },
+        {
+            "code": "FQH",
+            "name": "فقیہ بن صالح صوبہ"
         },
         {
             "code": "FIG",
@@ -12577,6 +12831,10 @@
             "name": "مراکش تانسیف الحوز"
         },
         {
+            "code": "MAR",
+            "name": "مراکش شہر"
+        },
+        {
             "code": "MEK",
             "name": "مکناس"
         },
@@ -12609,154 +12867,22 @@
             "name": "یوسفیہ صوبہ"
         },
         {
-            "code": "AOU",
-            "name": "Aousserd"
-        },
-        {
             "code": "ASZ",
             "name": "Assa-Zag"
         },
         {
-            "code": "AZI",
-            "name": "Azilal"
-        },
-        {
-            "code": "BES",
-            "name": "Ben Slimane"
-        },
-        {
-            "code": "BEM",
-            "name": "Béni-Mellal"
-        },
-        {
-            "code": "BOD",
-            "name": "Boujdour"
-        },
-        {
-            "code": "BOM",
-            "name": "Boulemane"
-        },
-        {
-            "code": "CHT",
-            "name": "Chtouka Aït Baha"
-        },
-        {
-            "code": "HAJ",
-            "name": "El Hajeb"
-        },
-        {
-            "code": "JDI",
-            "name": "El Jadida"
-        },
-        {
-            "code": "ERR",
-            "name": "Errachidia"
-        },
-        {
-            "code": "ESM",
-            "name": "Es Semara"
-        },
-        {
-            "code": "FQH",
-            "name": "Fquih Ben Salah"
-        },
-        {
-            "code": "IFR",
-            "name": "Ifrane"
-        },
-        {
-            "code": "KHE",
-            "name": "Khemisset"
-        },
-        {
-            "code": "KHN",
-            "name": "Khénifra"
-        },
-        {
-            "code": "KHO",
-            "name": "Khouribga"
-        },
-        {
-            "code": "LAA",
-            "name": "Laâyoune"
-        },
-        {
             "code": "MDF",
             "name": "M’diq-Fnideq"
-        },
-        {
-            "code": "MAR",
-            "name": "Marrakech"
-        },
-        {
-            "code": "MED",
-            "name": "Médiouna"
-        },
-        {
-            "code": "MID",
-            "name": "Midelt"
-        },
-        {
-            "code": "MOU",
-            "name": "Moulay Yacoub"
-        },
-        {
-            "code": "OUA",
-            "name": "Ouarzazate"
-        },
-        {
-            "code": "SAF",
-            "name": "Safi"
-        },
-        {
-            "code": "SEF",
-            "name": "Sefrou"
-        },
-        {
-            "code": "SET",
-            "name": "Settat"
-        },
-        {
-            "code": "SIF",
-            "name": "Sidi Ifni"
-        },
-        {
-            "code": "TNT",
-            "name": "Tan-Tan"
-        },
-        {
-            "code": "TAO",
-            "name": "Taounate"
-        },
-        {
-            "code": "TAF",
-            "name": "Tarfaya (EH-partial)"
-        },
-        {
-            "code": "TAR",
-            "name": "Taroudant"
-        },
-        {
-            "code": "TAT",
-            "name": "Tata"
-        },
-        {
-            "code": "TAZ",
-            "name": "Taza"
-        },
-        {
-            "code": "TIZ",
-            "name": "Tiznit"
-        },
-        {
-            "code": "ZAG",
-            "name": "Zagora"
         }
     ],
     "MC": [
         {
             "code": "SR",
             "name": "سینٹ رومن، موناکو"
+        },
+        {
+            "code": "FO",
+            "name": "فونوئی، موناکو"
         },
         {
             "code": "CL",
@@ -12777,10 +12903,6 @@
         {
             "code": "MC",
             "name": "مونٹی کارلو"
-        },
-        {
-            "code": "FO",
-            "name": "Fontvieille"
         },
         {
             "code": "JE",
@@ -13069,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -15239,8 +15365,28 @@
             "name": "ساگرمتھا زون"
         },
         {
+            "code": "P7",
+            "name": "سدرپشچم پردیش"
+        },
+        {
             "code": "SE",
             "name": "سیتی زون"
+        },
+        {
+            "code": "P6",
+            "name": "صوبہ کرنالی"
+        },
+        {
+            "code": "P5",
+            "name": "صوبہ لمبینی"
+        },
+        {
+            "code": "P2",
+            "name": "صوبہ مدھیش"
+        },
+        {
+            "code": "P1",
+            "name": "صوبہ نمبر 1"
         },
         {
             "code": "KA",
@@ -15291,28 +15437,8 @@
             "name": "Gandaki²"
         },
         {
-            "code": "P6",
-            "name": "Karnali²"
-        },
-        {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         }
     ],
     "NR": [
@@ -16141,6 +16267,14 @@
         {
             "code": "07",
             "name": "وسطی ویسایا"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         }
     ],
     "PK": [
@@ -20274,7 +20408,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "سونگوے علاقہ"
         }
     ],
     "UA": [

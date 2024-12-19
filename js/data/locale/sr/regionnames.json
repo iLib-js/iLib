@@ -895,6 +895,10 @@
             "name": "Ленкорански рејон"
         },
         {
+            "code": "LAN",
+            "name": "Ленкорански рејон²"
+        },
+        {
             "code": "LER",
             "name": "Лерички рејон"
         },
@@ -1033,10 +1037,6 @@
         {
             "code": "SUS",
             "name": "Шушински рејон"
-        },
-        {
-            "code": "LAN",
-            "name": "Lankaran District"
         },
         {
             "code": "NA",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Релизан"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "Ида-Виру"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "Јигева"
+            "name": "Ида-Виру"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "Харва"
+            "name": "Јигева"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "Харва"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "Ланема"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "Љаене-Виру"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Љаене-Виру"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "Пилва"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "Парнума"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "Рапла"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Рапла"
         },
         {
             "code": "74",
             "name": "Саре"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "Тарту"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "Валга"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "Виљанди"
         },
         {
-            "code": "86",
-            "name": "Виру"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Виру"
         },
         {
             "code": "130",
@@ -4916,7 +4924,7 @@
         },
         {
             "code": "321",
-            "name": "Kohtla-Järve"
+            "name": "Кохтла-Јарве"
         },
         {
             "code": "338",
@@ -5068,7 +5076,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "Сиљамае"
         },
         {
             "code": "784",
@@ -5605,6 +5613,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5781,6 +5793,10 @@
         {
             "code": "12",
             "name": "Аверон"
+        },
+        {
+            "code": "6AE",
+            "name": "Алзас"
         },
         {
             "code": "03",
@@ -6051,6 +6067,10 @@
             "name": "Марна"
         },
         {
+            "code": "972",
+            "name": "Мартиник"
+        },
+        {
             "code": "55",
             "name": "Меза"
         },
@@ -6147,6 +6167,10 @@
             "name": "Регион Лоара"
         },
         {
+            "code": "974",
+            "name": "Реинион"
+        },
+        {
             "code": "69",
             "name": "Рона"
         },
@@ -6199,16 +6223,16 @@
             "name": "Финистер"
         },
         {
+            "code": "973",
+            "name": "Француска Гвајана"
+        },
+        {
             "code": "16",
             "name": "Шарант"
         },
         {
             "code": "18",
             "name": "Шер"
-        },
-        {
-            "code": "6AE",
-            "name": "Alsace"
         },
         {
             "code": "CVL",
@@ -6219,20 +6243,8 @@
             "name": "Corsica"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "IDF",
             "name": "Île-de-France²"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -7099,6 +7111,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7265,6 +7281,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WGN",
@@ -8038,7 +8058,7 @@
         },
         {
             "code": "17",
-            "name": "Petén"
+            "name": "Петен (департман)"
         },
         {
             "code": "18",
@@ -8157,12 +8177,6 @@
         {
             "code": "UT",
             "name": "Upper Takutu-Upper Essequibo"
-        }
-    ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8709,8 +8723,24 @@
             "name": "Bali"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         }
     ],
     "IE": [
@@ -8915,6 +8945,10 @@
             "name": "Керала"
         },
         {
+            "code": "LA",
+            "name": "Ладак"
+        },
+        {
             "code": "LD",
             "name": "Лакадиви"
         },
@@ -8943,6 +8977,10 @@
             "name": "Нагаланд"
         },
         {
+            "code": "OD",
+            "name": "Одиша"
+        },
+        {
             "code": "OR",
             "name": "Ориса"
         },
@@ -8963,7 +9001,7 @@
             "name": "Тамил Наду"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "Телангана"
         },
         {
@@ -8979,7 +9017,7 @@
             "name": "Утар Прадеш"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "Утараханд"
         },
         {
@@ -8995,7 +9033,7 @@
             "name": "Чандигар"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "Чатисгар"
         },
         {
@@ -9007,12 +9045,20 @@
             "name": "Џарканд"
         },
         {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "DH",
             "name": "Dādra and Nagar Haveli and Damān and Diu"
         },
         {
-            "code": "LA",
-            "name": "Ladakh"
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9249,6 +9295,10 @@
             "name": "Ејстиртланд"
         },
         {
+            "code": "KOP",
+            "name": "Коупавогир"
+        },
+        {
             "code": "5",
             "name": "Нордиртланд Вестра"
         },
@@ -9261,12 +9311,20 @@
             "name": "Рејкјавик"
         },
         {
+            "code": "RKV",
+            "name": "Рејкјавик²"
+        },
+        {
             "code": "2",
             "name": "Сидирнес"
         },
         {
             "code": "8",
             "name": "Сидиртланд"
+        },
+        {
+            "code": "HAF",
+            "name": "Хабнарфјердир"
         },
         {
             "code": "AKH",
@@ -9361,10 +9419,6 @@
             "name": "Grýtubakkahreppur"
         },
         {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
-        },
-        {
             "code": "HEL",
             "name": "Helgafellssveit"
         },
@@ -9375,6 +9429,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9403,10 +9461,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9449,10 +9503,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9467,6 +9517,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9765,6 +9819,10 @@
         {
             "code": "CN",
             "name": "Кунео"
+        },
+        {
+            "code": "AQ",
+            "name": "Л’Аквила (округ)"
         },
         {
             "code": "SP",
@@ -10073,10 +10131,6 @@
         {
             "code": "GE",
             "name": "Genoa"
-        },
-        {
-            "code": "AQ",
-            "name": "L’Aquila"
         },
         {
             "code": "SU",
@@ -10714,7 +10768,7 @@
     "KI": [
         {
             "code": "G",
-            "name": "Gilbert Islands"
+            "name": "Гилбертова острва"
         },
         {
             "code": "L",
@@ -10853,6 +10907,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Кесонг"
         }
     ],
     "KR": [
@@ -10953,27 +11011,27 @@
     ],
     "KZ": [
         {
-            "code": "AKM",
+            "code": "11",
             "name": "Акмолинска област"
         },
         {
-            "code": "AKT",
+            "code": "15",
             "name": "Актјубинска област"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Алмати"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "Алматинска област"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "Астана"
         },
         {
-            "code": "ATY",
+            "code": "23",
             "name": "Атирауска област"
         },
         {
@@ -10981,15 +11039,15 @@
             "name": "Бајконур"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "Жамбилска област"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "Западноказахстанска област"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "Источноказахстанска област"
         },
         {
@@ -10997,32 +11055,100 @@
             "name": "Јужно-казахстанска област"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "Карагандинска област"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "Кизилординска област"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "Костанајска област"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "Мангистауска област"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "Павлодарска област"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "Северноказахстанска област"
         },
         {
-            "code": "SHY",
+            "code": "61",
+            "name": "Туркестанска област"
+        },
+        {
+            "code": "79",
             "name": "Шимкент"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12385,7 +12511,7 @@
             "name": "Казабланка"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "Маракеш"
         },
         {
@@ -12589,8 +12715,8 @@
             "name": "M’diq-Fnideq"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "11",
@@ -13068,7 +13194,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "Тузи"
+        },
+        {
+            "code": "25",
+            "name": "Зета"
         }
     ],
     "MF": [
@@ -14610,7 +14740,7 @@
         },
         {
             "code": "04",
-            "name": "Malacca"
+            "name": "Малака (држава)"
         },
         {
             "code": "05",
@@ -15979,6 +16109,14 @@
             "name": "Maguindanao"
         },
         {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
+        },
+        {
             "code": "MAD",
             "name": "Marinduque"
         },
@@ -16537,6 +16675,10 @@
     ],
     "QA": [
         {
+            "code": "WA",
+            "name": "Вакра"
+        },
+        {
             "code": "DA",
             "name": "Доха"
         },
@@ -16551,10 +16693,6 @@
         {
             "code": "RA",
             "name": "Al Rayyan"
-        },
-        {
-            "code": "WA",
-            "name": "Al Wakrah"
         },
         {
             "code": "SH",
@@ -18408,7 +18546,7 @@
         },
         {
             "code": "196",
-            "name": "Cirkulane"
+            "name": "Општина Циркулане"
         },
         {
             "code": "197",
@@ -18416,19 +18554,19 @@
         },
         {
             "code": "198",
-            "name": "Makole"
+            "name": "Општина Маколе"
         },
         {
             "code": "199",
-            "name": "Mokronog–Trebelno"
+            "name": "Општина Мокроног-Требелно"
         },
         {
             "code": "200",
-            "name": "Poljčane"
+            "name": "Општина Пољчане"
         },
         {
             "code": "201",
-            "name": "Renče–Vogrsko"
+            "name": "Општина Ренче-Вогрско"
         },
         {
             "code": "202",
@@ -18436,7 +18574,7 @@
         },
         {
             "code": "203",
-            "name": "Straža"
+            "name": "Општина Стража"
         },
         {
             "code": "204",
@@ -18444,15 +18582,15 @@
         },
         {
             "code": "205",
-            "name": "Sveti Tomaž"
+            "name": "Општина Свети Томаж"
         },
         {
             "code": "206",
-            "name": "Šmarješke Toplice"
+            "name": "Општина Шмарјешке Топлице"
         },
         {
             "code": "207",
-            "name": "Gorje"
+            "name": "Општина Горје"
         },
         {
             "code": "208",
@@ -18460,11 +18598,11 @@
         },
         {
             "code": "209",
-            "name": "Rečica ob Savinji"
+            "name": "Општина Речица об Савињи"
         },
         {
             "code": "210",
-            "name": "Sveti Jurij v Slovenskih Goricah"
+            "name": "Свети Јуриј в Словенских горицах"
         },
         {
             "code": "211",
@@ -18472,11 +18610,11 @@
         },
         {
             "code": "212",
-            "name": "Mirna"
+            "name": "Општина Мирна"
         },
         {
             "code": "213",
-            "name": "Ankaran"
+            "name": "Општина Анкаран"
         }
     ],
     "SK": [
@@ -19429,6 +19567,10 @@
     ],
     "TL": [
         {
+            "code": "OE",
+            "name": "Окуси-Амбено"
+        },
+        {
             "code": "AL",
             "name": "Aileu"
         },
@@ -19471,10 +19613,6 @@
         {
             "code": "MF",
             "name": "Manufahi"
-        },
-        {
-            "code": "OE",
-            "name": "Oecusse"
         },
         {
             "code": "VI",
@@ -19526,7 +19664,7 @@
         },
         {
             "code": "21",
-            "name": "Nabeul"
+            "name": "Вилајет Набеул"
         },
         {
             "code": "22",
@@ -20186,7 +20324,7 @@
         },
         {
             "code": "11",
-            "name": "Zanzibar Central/South"
+            "name": "Занзибар центар/југ"
         },
         {
             "code": "12",
@@ -20202,7 +20340,7 @@
         },
         {
             "code": "15",
-            "name": "Zanzibar Urban/West"
+            "name": "Занзибар град/запад"
         },
         {
             "code": "16",
