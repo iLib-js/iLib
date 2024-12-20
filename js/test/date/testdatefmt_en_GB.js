@@ -34,6 +34,12 @@ if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
 
+
+function getChromeVersion () {
+    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+    return raw ? parseInt(raw[2], 10) : false;
+}
+
 module.exports.testdatefmt_en_GB = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -285,8 +291,8 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-
-        if(ilib._getPlatform() === "nodejs"){
+        var platform = ilib._getPlatform();
+        if(platform === "nodejs"){
             var cldrVersion = Number(process.versions["cldr"]);
             var nodeMajorVersion = process.versions["node"].split(".")[0];
             if (cldrVersion < 36) {
@@ -302,10 +308,18 @@ module.exports.testdatefmt_en_GB = {
             } else {
                 test.equal(fmt.format(date), "Thursday 29 September 2011");
             }
+        } else if (platform === "browser") {
+            var browser = ilib._getBrowser();
+            if (browser === "chrome" && getChromeVersion() >= 130) {
+                //chrome 131.0.6778.139
+                test.equal(fmt.format(date), "Thursday 29 September 2011");
+            } else {
+                // firefox 133.0.3
+                test.equal(fmt.format(date), "Thursday, 29 September 2011");
+            }
         } else {
             test.equal(fmt.format(date), "Thursday, 29 September 2011");
         }
-
         test.done();
     },
     testDateFmtGBSimpleTimeShort: function(test) {
