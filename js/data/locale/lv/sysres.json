@@ -73,11 +73,13 @@
     "B5": "pēcpusdienā",
     "B6": "vakarā",
     "B7": "naktī",
+    "E0": "S",
     "E1": "P",
     "E2": "O",
     "E3": "T",
     "E4": "C",
     "E5": "P",
+    "E6": "S",
     "EE0": "Sv",
     "EE1": "Pr",
     "EE2": "Ot",
@@ -191,5 +193,8 @@
     "finalSeparatorLong": " un ",
     "finalSeparatorMedium": " un ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

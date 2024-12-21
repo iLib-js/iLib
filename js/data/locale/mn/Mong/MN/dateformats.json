@@ -99,8 +99,8 @@
         },
         "time": {
             "12": {
-                "ahmsz": "h:mm:ss a (z)",
-                "ahmz": "h:mm a (z)",
+                "ahmsz": "h:mm:ssa (z)",
+                "ahmz": "h:mma (z)",
                 "hmsz": "h:mm:ss (z)",
                 "hmz": "h:mm (z)"
             },

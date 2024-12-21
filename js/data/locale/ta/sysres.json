@@ -72,7 +72,7 @@
     "B3": "காலை",
     "B4": "நண்பகல்",
     "B5": "மதியம்",
-    "B6": "பிற்பகல்",
+    "B6": "PM",
     "B7": "பிற்பகல்",
     "B8": "மாலை",
     "B9": "அந்தி மாலை",
@@ -154,7 +154,8 @@
     "NN7": "ஜூ",
     "NN8": "ஆக",
     "NN9": "செ",
-    "a1": "பிற்பகல்",
+    "a0": "AM",
+    "a1": "PM",
     "durationLongDays": "one#{num} நாள்|#{num} நாட்கள்",
     "durationMediumHours": "one#{num} ம.நே.|#{num} ம.நே.",
     "durationMediumMillis": "one#{num} மி.வி.|#{num} மி.வி.",
@@ -167,5 +168,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

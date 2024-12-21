@@ -102,8 +102,8 @@
     "EEEE4": "четврток",
     "EEEE5": "петок",
     "EEEE6": "сабота",
-    "G-1": "п.н.е.",
-    "G1": "н.е.",
+    "G-1": "пр. н. е.",
+    "G1": "н. е.",
     "MMM1": "јан.",
     "MMM10": "окт.",
     "MMM11": "ное.",
@@ -166,6 +166,8 @@
     "finalSeparatorLong": " и ",
     "finalSeparatorMedium": " и ",
     "finalSeparatorShort": " и ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

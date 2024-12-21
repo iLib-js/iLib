@@ -831,6 +831,10 @@
             "name": "Districte de Kəlbəcər"
         },
         {
+            "code": "XCI",
+            "name": "districte de Khojaly"
+        },
+        {
             "code": "KUR",
             "name": "Districte de Kurdamir"
         },
@@ -841,6 +845,10 @@
         {
             "code": "LA",
             "name": "Districte de Lenkoran"
+        },
+        {
+            "code": "QBA",
+            "name": "Districte de Quba"
         },
         {
             "code": "SAB",
@@ -887,10 +895,6 @@
             "name": "Khizi"
         },
         {
-            "code": "XCI",
-            "name": "Khojali"
-        },
-        {
             "code": "XVD",
             "name": "Khojavend"
         },
@@ -931,14 +935,6 @@
             "name": "Oghuz"
         },
         {
-            "code": "ORD",
-            "name": "Ordubad"
-        },
-        {
-            "code": "QAB",
-            "name": "Qabala"
-        },
-        {
             "code": "QAX",
             "name": "Qakh"
         },
@@ -947,16 +943,24 @@
             "name": "Qazakh"
         },
         {
-            "code": "QBA",
-            "name": "Quba"
-        },
-        {
             "code": "QBI",
             "name": "Qubadli"
         },
         {
             "code": "QUS",
             "name": "Qusar"
+        },
+        {
+            "code": "ORD",
+            "name": "raion d’Ordubad"
+        },
+        {
+            "code": "QAB",
+            "name": "raion de Kabala"
+        },
+        {
+            "code": "ZAN",
+            "name": "raion de Zangilan"
         },
         {
             "code": "SAT",
@@ -1024,7 +1028,7 @@
         },
         {
             "code": "YAR",
-            "name": "Yardymli"
+            "name": "Yardımlı"
         },
         {
             "code": "YE",
@@ -1033,10 +1037,6 @@
         {
             "code": "YEV",
             "name": "Yevlakh District"
-        },
-        {
-            "code": "ZAN",
-            "name": "Zangilan"
         },
         {
             "code": "ZAQ",
@@ -1229,6 +1229,10 @@
             "name": "Districte de Mymensingh"
         },
         {
+            "code": "44",
+            "name": "Districte de Natore"
+        },
+        {
             "code": "47",
             "name": "Districte de Noakhali"
         },
@@ -1247,6 +1251,10 @@
         {
             "code": "60",
             "name": "Districte de Sylhet"
+        },
+        {
+            "code": "40",
+            "name": "Districte Nārāyanganj"
         },
         {
             "code": "A",
@@ -1349,12 +1357,12 @@
             "name": "Manikganj"
         },
         {
-            "code": "38",
-            "name": "Maulvi Bazar"
-        },
-        {
             "code": "39",
             "name": "Meherpur"
+        },
+        {
+            "code": "38",
+            "name": "Moulvibazar"
         },
         {
             "code": "35",
@@ -1369,16 +1377,8 @@
             "name": "Narail"
         },
         {
-            "code": "40",
-            "name": "Narayanganj"
-        },
-        {
             "code": "42",
             "name": "Narsingdi"
-        },
-        {
-            "code": "44",
-            "name": "Natore"
         },
         {
             "code": "41",
@@ -1517,10 +1517,6 @@
             "name": "Boulgou"
         },
         {
-            "code": "BLK",
-            "name": "Boulkiemdé"
-        },
-        {
             "code": "COM",
             "name": "Comoé"
         },
@@ -1619,6 +1615,10 @@
         {
             "code": "PON",
             "name": "Poni"
+        },
+        {
+            "code": "BLK",
+            "name": "província de Boulkiemdé"
         },
         {
             "code": "SIS",
@@ -2929,20 +2929,24 @@
             "name": "Bas-Sassandra²"
         },
         {
-            "code": "CM",
-            "name": "Comoé"
-        },
-        {
             "code": "10",
             "name": "Denguélé"
         },
         {
+            "code": "CM",
+            "name": "Districte de Comoé"
+        },
+        {
             "code": "DN",
-            "name": "Denguélé²"
+            "name": "Districte de Denguélé"
         },
         {
             "code": "LC",
             "name": "Districte de Lacs"
+        },
+        {
+            "code": "LG",
+            "name": "Districte de Lagunes"
         },
         {
             "code": "WR",
@@ -2971,10 +2975,6 @@
         {
             "code": "01",
             "name": "Lagunes"
-        },
-        {
-            "code": "LG",
-            "name": "Lagunes²"
         },
         {
             "code": "12",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Província de Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Província de Tuggurt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4736,7 +4776,7 @@
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
+            "name": "comtat d’Ida-Viru"
         },
         {
             "code": "49",
@@ -4744,7 +4784,7 @@
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
+            "name": "comtat de Jõgeva"
         },
         {
             "code": "51",
@@ -4752,11 +4792,11 @@
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "comtat de Järva"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "comtat de Lääne"
         },
         {
             "code": "57",
@@ -4768,11 +4808,11 @@
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "comtat de Lääne-Viru"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
+            "name": "comtat de Põlva"
         },
         {
             "code": "65",
@@ -4784,7 +4824,7 @@
         },
         {
             "code": "68",
-            "name": "Pärnumaa"
+            "name": "comtat de Pärnu"
         },
         {
             "code": "70",
@@ -4792,26 +4832,18 @@
         },
         {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "comtat de Rapla"
         },
         {
             "code": "74",
             "name": "Comtat de Saare"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "Comtat de Tartu"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "Comtat de Valga"
         },
         {
@@ -4819,12 +4851,8 @@
             "name": "Comtat de Viljandi"
         },
         {
-            "code": "86",
-            "name": "Comtat de Võru"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Comtat de Võru"
         },
         {
             "code": "130",
@@ -5605,6 +5633,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -6008,11 +6040,15 @@
         },
         {
             "code": "973",
-            "name": "Guyane (française)"
+            "name": "Guaiana Francesa"
         },
         {
             "code": "IDF",
             "name": "Illa de França"
+        },
+        {
+            "code": "974",
+            "name": "Illa de la Reunió"
         },
         {
             "code": "35",
@@ -6033,10 +6069,6 @@
         {
             "code": "39",
             "name": "Jura"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "40",
@@ -6076,7 +6108,7 @@
         },
         {
             "code": "972",
-            "name": "Martinique"
+            "name": "Martinica"
         },
         {
             "code": "53",
@@ -6396,7 +6428,7 @@
         },
         {
             "code": "BCP",
-            "name": "Bournemouth, Christchurch and Poole"
+            "name": "Bournemouth, Christchurch i Poole"
         },
         {
             "code": "BRC",
@@ -6947,6 +6979,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7245,6 +7281,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -7582,7 +7622,7 @@
         },
         {
             "code": "L",
-            "name": "Labé Region"
+            "name": "Labé"
         },
         {
             "code": "LE",
@@ -7606,19 +7646,19 @@
         },
         {
             "code": "M",
-            "name": "Mamou Region"
+            "name": "Mamou"
         },
         {
             "code": "MD",
             "name": "Mandiana"
         },
         {
-            "code": "NZ",
+            "code": "N",
             "name": "Nzérékoré"
         },
         {
-            "code": "N",
-            "name": "Nzérékoré Region"
+            "code": "NZ",
+            "name": "Nzérékoré²"
         },
         {
             "code": "PI",
@@ -8196,7 +8236,7 @@
         },
         {
             "code": "ES",
-            "name": "Essequibo Islands-West Demerara"
+            "name": "Illes Esequibo-Demerara Occidental"
         },
         {
             "code": "MA",
@@ -8213,12 +8253,6 @@
         {
             "code": "UD",
             "name": "Upper Demerara-Berbice"
-        }
-    ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8705,6 +8739,10 @@
             "name": "Kalimantan Nord"
         },
         {
+            "code": "KB",
+            "name": "Kalimantan Occidental"
+        },
+        {
             "code": "KI",
             "name": "Kalimantan oriental"
         },
@@ -8721,8 +8759,24 @@
             "name": "Moluques Septentrionals"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Occidental"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "MA",
@@ -8755,10 +8809,6 @@
         {
             "code": "SU",
             "name": "Sumatra Septentrional"
-        },
-        {
-            "code": "KB",
-            "name": "West Kalimantan"
         },
         {
             "code": "SR",
@@ -8943,6 +8993,10 @@
             "name": "Chandigar"
         },
         {
+            "code": "CG",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "CT",
             "name": "Chhattisgarh"
         },
@@ -9035,6 +9089,10 @@
             "name": "Odisha"
         },
         {
+            "code": "OD",
+            "name": "Orissa"
+        },
+        {
             "code": "PB",
             "name": "Panjab"
         },
@@ -9059,12 +9117,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangana"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradesh"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarakhand"
         },
         {
             "code": "UT",
@@ -9297,6 +9363,10 @@
             "name": "Akureyri"
         },
         {
+            "code": "SFA",
+            "name": "Árborg"
+        },
+        {
             "code": "ARN",
             "name": "Árneshreppur"
         },
@@ -9394,7 +9464,7 @@
         },
         {
             "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
+            "name": "Hafnarfjörður"
         },
         {
             "code": "HEL",
@@ -9407,6 +9477,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9438,7 +9512,7 @@
         },
         {
             "code": "KOP",
-            "name": "Kópavogsbær"
+            "name": "Kópavogur"
         },
         {
             "code": "LAN",
@@ -9490,11 +9564,11 @@
         },
         {
             "code": "RKV",
-            "name": "Reykjavíkurborg"
+            "name": "Reykjavík"
         },
         {
             "code": "SEL",
-            "name": "Seltjarnarnesbær"
+            "name": "Seltjarnarnes"
         },
         {
             "code": "SEY",
@@ -9507,6 +9581,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9557,10 +9635,6 @@
             "name": "Svalbarðsstrandarhreppur"
         },
         {
-            "code": "SFA",
-            "name": "Sveitarfélagið Árborg"
-        },
-        {
             "code": "SHF",
             "name": "Sveitarfélagið Hornafjörður"
         },
@@ -9577,10 +9651,6 @@
             "name": "Sveitarfélagið Skagaströnd"
         },
         {
-            "code": "SVG",
-            "name": "Sveitarfélagið Vogar"
-        },
-        {
             "code": "TAL",
             "name": "Tálknafjarðarhreppur"
         },
@@ -9594,7 +9664,7 @@
         },
         {
             "code": "VEM",
-            "name": "Vestmannaeyjabær"
+            "name": "Vestmannaeyjar"
         },
         {
             "code": "VER",
@@ -9603,6 +9673,10 @@
         {
             "code": "3",
             "name": "Vesturland"
+        },
+        {
+            "code": "SVG",
+            "name": "Vogar"
         },
         {
             "code": "VOP",
@@ -10203,16 +10277,16 @@
             "name": "Al-Balqa"
         },
         {
-            "code": "AQ",
-            "name": "Aqaba"
-        },
-        {
             "code": "AJ",
             "name": "Governació d’Ajlun"
         },
         {
             "code": "AM",
             "name": "Governació d’Amman"
+        },
+        {
+            "code": "AQ",
+            "name": "governació d’Àqaba"
         },
         {
             "code": "IR",
@@ -10231,16 +10305,16 @@
             "name": "Governació de Madaba"
         },
         {
+            "code": "MA",
+            "name": "Governació de Mafraq"
+        },
+        {
             "code": "AZ",
             "name": "Governació de Zarqa"
         },
         {
             "code": "JA",
             "name": "Jerash"
-        },
-        {
-            "code": "MA",
-            "name": "Mafraq"
         },
         {
             "code": "AT",
@@ -10568,7 +10642,7 @@
         },
         {
             "code": "33",
-            "name": "Narok"
+            "name": "Comtat de Narok"
         },
         {
             "code": "34",
@@ -10909,6 +10983,10 @@
         {
             "code": "14",
             "name": "Namp’o"
+        },
+        {
+            "code": "15",
+            "name": "Kaesong"
         }
     ],
     "KR": [
@@ -11009,11 +11087,15 @@
     ],
     "KZ": [
         {
-            "code": "ALA",
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "75",
             "name": "Almati"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "Astanà"
         },
         {
@@ -11033,12 +11115,28 @@
             "name": "Província d’Akmolà"
         },
         {
+            "code": "11",
+            "name": "província d’Akmolà"
+        },
+        {
             "code": "AKT",
             "name": "Província d’Aktobé"
         },
         {
+            "code": "15",
+            "name": "província d’Aktobé"
+        },
+        {
             "code": "ALM",
             "name": "Província d’Almati"
+        },
+        {
+            "code": "19",
+            "name": "província d’Almati"
+        },
+        {
+            "code": "23",
+            "name": "província d’Atirau"
         },
         {
             "code": "ATY",
@@ -11049,36 +11147,84 @@
             "name": "Província de Jàmbil"
         },
         {
+            "code": "31",
+            "name": "província de Jàmbil"
+        },
+        {
             "code": "KAR",
             "name": "Província de Karaganda"
+        },
+        {
+            "code": "35",
+            "name": "província de Kharagandí"
         },
         {
             "code": "KZY",
             "name": "Província de Khizilordà"
         },
         {
+            "code": "43",
+            "name": "província de Khizilordà"
+        },
+        {
+            "code": "39",
+            "name": "província de Kostanai"
+        },
+        {
             "code": "KUS",
             "name": "província de Kostanay"
+        },
+        {
+            "code": "47",
+            "name": "província de Manguistau"
         },
         {
             "code": "PAV",
             "name": "Província de Pavlodar"
         },
         {
+            "code": "55",
+            "name": "província de Pavlodar"
+        },
+        {
             "code": "YUZ",
             "name": "Província del Kazakhstan Meridional"
+        },
+        {
+            "code": "27",
+            "name": "província del Kazakhstan Occidental"
         },
         {
             "code": "VOS",
             "name": "Província del Kazakhstan Oriental"
         },
         {
+            "code": "63",
+            "name": "província del Kazakhstan Oriental"
+        },
+        {
             "code": "SEV",
             "name": "Província del Kazakhstan Septentrional"
         },
         {
-            "code": "SHY",
+            "code": "59",
+            "name": "província del Kazakhstan Septentrional"
+        },
+        {
+            "code": "61",
+            "name": "Província del Turquestan"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "79",
             "name": "Ximkent"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -11173,6 +11319,10 @@
             "name": "Governació de la Bekaa"
         },
         {
+            "code": "NA",
+            "name": "governació de Nabatieh"
+        },
+        {
             "code": "AS",
             "name": "Governació del Líban-Nord"
         },
@@ -11182,11 +11332,7 @@
         },
         {
             "code": "JL",
-            "name": "Mount Lebanon"
-        },
-        {
-            "code": "NA",
-            "name": "Nabatieh"
+            "name": "governació del Mont Líban"
         }
     ],
     "LC": [
@@ -11288,7 +11434,7 @@
         },
         {
             "code": "3",
-            "name": "Southern"
+            "name": "Província Meridional"
         },
         {
             "code": "4",
@@ -11300,7 +11446,7 @@
         },
         {
             "code": "6",
-            "name": "North Western"
+            "name": "Província del Nord-oest"
         },
         {
             "code": "7",
@@ -11360,11 +11506,11 @@
         },
         {
             "code": "43",
-            "name": "Mannar"
+            "name": "districte de Mannar"
         },
         {
             "code": "44",
-            "name": "Vavuniya"
+            "name": "districte de Vavuniya"
         },
         {
             "code": "45",
@@ -11388,7 +11534,7 @@
         },
         {
             "code": "62",
-            "name": "Puttalam"
+            "name": "Districte de Puttalam"
         },
         {
             "code": "71",
@@ -11861,10 +12007,6 @@
             "name": "Daugavpils"
         },
         {
-            "code": "112",
-            "name": "Dienvidkurzemes Novads"
-        },
-        {
             "code": "JKB",
             "name": "Jēkabpils"
         },
@@ -12007,6 +12149,10 @@
         {
             "code": "023",
             "name": "Municipi de Cibla"
+        },
+        {
+            "code": "112",
+            "name": "municipi de Curlandia del Sud"
         },
         {
             "code": "024",
@@ -12400,7 +12546,7 @@
         },
         {
             "code": "MQ",
-            "name": "Murzuq"
+            "name": "Murzuk"
         },
         {
             "code": "NL",
@@ -13032,15 +13178,15 @@
     "ME": [
         {
             "code": "01",
-            "name": "Andrijevica"
+            "name": "Municipi d’Andrijevica"
         },
         {
             "code": "02",
-            "name": "Bar"
+            "name": "Municipi de Bar"
         },
         {
             "code": "03",
-            "name": "Berane"
+            "name": "Municipi de Berane"
         },
         {
             "code": "04",
@@ -13052,7 +13198,7 @@
         },
         {
             "code": "06",
-            "name": "Cetinje"
+            "name": "Municipi de Cetinje"
         },
         {
             "code": "07",
@@ -13068,7 +13214,7 @@
         },
         {
             "code": "10",
-            "name": "Kotor"
+            "name": "Municipi de Kotor"
         },
         {
             "code": "11",
@@ -13112,7 +13258,7 @@
         },
         {
             "code": "21",
-            "name": "Žabljak"
+            "name": "Municipi de Žabljak"
         },
         {
             "code": "22",
@@ -13125,6 +13271,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13162,7 +13312,7 @@
     "MH": [
         {
             "code": "ALL",
-            "name": "Ailinglaplap Atoll"
+            "name": "Ailinglaplap"
         },
         {
             "code": "ALK",
@@ -13181,6 +13331,10 @@
             "name": "Aur"
         },
         {
+            "code": "L",
+            "name": "cadena de Ralik"
+        },
+        {
             "code": "EBO",
             "name": "Ebon Atoll"
         },
@@ -13190,7 +13344,7 @@
         },
         {
             "code": "JAB",
-            "name": "Jabat Island"
+            "name": "Jabat"
         },
         {
             "code": "JAL",
@@ -13206,7 +13360,7 @@
         },
         {
             "code": "LIB",
-            "name": "Lib Island"
+            "name": "Lib"
         },
         {
             "code": "LIK",
@@ -13230,15 +13384,11 @@
         },
         {
             "code": "NMK",
-            "name": "Namdrik Atoll"
+            "name": "Namdrik"
         },
         {
             "code": "NMU",
-            "name": "Namu Atoll"
-        },
-        {
-            "code": "L",
-            "name": "Ralik Chain"
+            "name": "Namu"
         },
         {
             "code": "T",
@@ -13608,7 +13758,7 @@
         },
         {
             "code": "806",
-            "name": "Zelenikovo"
+            "name": "municipi de Zeleníkovo"
         },
         {
             "code": "807",
@@ -14225,16 +14375,20 @@
             "name": "Curepipe"
         },
         {
+            "code": "GP",
+            "name": "districte de Grand Port"
+        },
+        {
             "code": "PL",
             "name": "Districte de Port Louis"
         },
         {
-            "code": "FL",
-            "name": "Flacq"
+            "code": "RR",
+            "name": "districte de Rivière du Rempart"
         },
         {
-            "code": "GP",
-            "name": "Grand Port"
+            "code": "FL",
+            "name": "Flacq"
         },
         {
             "code": "RO",
@@ -14261,10 +14415,6 @@
             "name": "Quatre Bornes"
         },
         {
-            "code": "RR",
-            "name": "Rivière du Rempart"
-        },
-        {
             "code": "BL",
             "name": "Rivière Noire"
         },
@@ -14289,6 +14439,10 @@
         {
             "code": "01",
             "name": "Atol d’Addu"
+        },
+        {
+            "code": "26",
+            "name": "Atol Kaafu"
         },
         {
             "code": "05",
@@ -14329,10 +14483,6 @@
         {
             "code": "23",
             "name": "Haa Dhaalu"
-        },
-        {
-            "code": "26",
-            "name": "Kaafu"
         },
         {
             "code": "03",
@@ -14414,7 +14564,15 @@
         },
         {
             "code": "DE",
-            "name": "Dedza"
+            "name": "distrcte de Dedza"
+        },
+        {
+            "code": "LK",
+            "name": "Districte de Likoma"
+        },
+        {
+            "code": "NS",
+            "name": "districte de Nsanje"
         },
         {
             "code": "PH",
@@ -14435,10 +14593,6 @@
         {
             "code": "KS",
             "name": "Kasungu"
-        },
-        {
-            "code": "LK",
-            "name": "Likoma"
         },
         {
             "code": "LI",
@@ -14483,10 +14637,6 @@
         {
             "code": "NK",
             "name": "Nkhotakota"
-        },
-        {
-            "code": "NS",
-            "name": "Nsanje"
         },
         {
             "code": "NI",
@@ -15280,7 +15430,7 @@
         },
         {
             "code": "P6",
-            "name": "Karnali²"
+            "name": "Karnali"
         },
         {
             "code": "KO",
@@ -15307,24 +15457,24 @@
             "name": "Narayani"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
         },
         {
             "code": "P5",
-            "name": "Province 5"
+            "name": "Província de Lumbini"
+        },
+        {
+            "code": "P2",
+            "name": "Província de Madheix"
         },
         {
             "code": "P7",
-            "name": "Province 7"
+            "name": "província de Sudurpashchim"
+        },
+        {
+            "code": "P1",
+            "name": "Província núm. 1"
         },
         {
             "code": "RA",
@@ -15497,10 +15647,6 @@
             "name": "Ad Dakhiliyah"
         },
         {
-            "code": "WU",
-            "name": "Al Wusta"
-        },
-        {
             "code": "BU",
             "name": "Al-Buraymī"
         },
@@ -15511,6 +15657,10 @@
         {
             "code": "ZU",
             "name": "Dhofar"
+        },
+        {
+            "code": "WU",
+            "name": "Governació Al-Wusta"
         },
         {
             "code": "SJ",
@@ -15977,6 +16127,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -16594,11 +16752,15 @@
     "QA": [
         {
             "code": "ZA",
-            "name": "Al Daayen"
+            "name": "Al Daayen (municipi)"
         },
         {
             "code": "KH",
-            "name": "Al Khor"
+            "name": "Al Khor (municipi)"
+        },
+        {
+            "code": "SH",
+            "name": "Al Shahaniya (municipi)"
         },
         {
             "code": "WA",
@@ -16607,10 +16769,6 @@
         {
             "code": "RA",
             "name": "Ar Rayyan"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Shīḩānīyah"
         },
         {
             "code": "DA",
@@ -16622,7 +16780,7 @@
         },
         {
             "code": "US",
-            "name": "Umm Salal"
+            "name": "Umm Salal (municipi)"
         }
     ],
     "RE": [
@@ -19194,7 +19352,7 @@
         },
         {
             "code": "20",
-            "name": "Chon Buri"
+            "name": "Chonburi"
         },
         {
             "code": "86",
@@ -19329,10 +19487,6 @@
             "name": "Phrae"
         },
         {
-            "code": "83",
-            "name": "Phuket"
-        },
-        {
             "code": "25",
             "name": "Prachin Buri"
         },
@@ -19351,6 +19505,14 @@
         {
             "code": "94",
             "name": "Província de Pattani"
+        },
+        {
+            "code": "83",
+            "name": "Província de Phuket"
+        },
+        {
+            "code": "32",
+            "name": "Província de Surin"
         },
         {
             "code": "85",
@@ -19419,10 +19581,6 @@
         {
             "code": "84",
             "name": "Surat Thani"
-        },
-        {
-            "code": "32",
-            "name": "Surin"
         },
         {
             "code": "63",
@@ -20111,10 +20269,6 @@
             "name": "Changhua"
         },
         {
-            "code": "CYI",
-            "name": "Chiayi County"
-        },
-        {
             "code": "CYQ",
             "name": "Comarca de Txiayi"
         },
@@ -20193,6 +20347,10 @@
         {
             "code": "TAO",
             "name": "Taoyuan"
+        },
+        {
+            "code": "CYI",
+            "name": "Txiayi"
         },
         {
             "code": "ILA",
@@ -20557,8 +20715,16 @@
             "name": "districte de Bududa"
         },
         {
+            "code": "122",
+            "name": "districte de Kalungu"
+        },
+        {
             "code": "102",
             "name": "districte de Kampala"
+        },
+        {
+            "code": "307",
+            "name": "districte de Lira"
         },
         {
             "code": "108",
@@ -20635,10 +20801,6 @@
         {
             "code": "222",
             "name": "Kaliro"
-        },
-        {
-            "code": "122",
-            "name": "Kalungu"
         },
         {
             "code": "205",
@@ -20765,10 +20927,6 @@
             "name": "Lamwo"
         },
         {
-            "code": "307",
-            "name": "Lira"
-        },
-        {
             "code": "229",
             "name": "Luuka"
         },
@@ -20881,10 +21039,6 @@
             "name": "Ngora"
         },
         {
-            "code": "N",
-            "name": "Northern"
-        },
-        {
             "code": "424",
             "name": "Ntoroko"
         },
@@ -20931,6 +21085,10 @@
         {
             "code": "E",
             "name": "Regió de l’Est d’Uganda"
+        },
+        {
+            "code": "N",
+            "name": "Regió del Nord"
         },
         {
             "code": "429",
@@ -21557,10 +21715,6 @@
             "name": "Bình Thuận"
         },
         {
-            "code": "59",
-            "name": "Cà Mau"
-        },
-        {
             "code": "CT",
             "name": "Cần Thơ"
         },
@@ -21683,6 +21837,10 @@
         {
             "code": "32",
             "name": "Phú Yên"
+        },
+        {
+            "code": "59",
+            "name": "Província de Cà Mau"
         },
         {
             "code": "23",
@@ -22008,7 +22166,7 @@
         },
         {
             "code": "05",
-            "name": "Northern"
+            "name": "Província del Nord"
         },
         {
             "code": "06",
@@ -22028,14 +22186,10 @@
         },
         {
             "code": "10",
-            "name": "Muchinga"
+            "name": "província de Muchinga"
         }
     ],
     "ZW": [
-        {
-            "code": "BU",
-            "name": "Bulawayo"
-        },
         {
             "code": "HA",
             "name": "Harare"
@@ -22067,6 +22221,10 @@
         {
             "code": "MI",
             "name": "Midlands"
+        },
+        {
+            "code": "BU",
+            "name": "província de Bulawayo"
         },
         {
             "code": "MV",

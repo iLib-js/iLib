@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2023 JEDLSoft
+ * Copyright © 2013-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,11 +59,23 @@ if (process.argv.length < 3) {
     usage();
 }
 
+
+// Since the HK data has been removed from the common/subdivisions/en.xml file in CLDR v46,
+// we need to add this data back to preserve it.
+var HKRegionData = {
+    "HK" : [
+        {
+            "code": "",
+            "name": "Hong Kong SAR China"
+        }
+    ]
+}
+
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2013-2021 JEDLSoft");
+        "Copyright (c) 2013-2024 JEDLSoft");
 console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
 
@@ -539,6 +551,8 @@ for (language in localeData) {
     }
 }
 writeCountryNameResources(undefined, undefined, undefined, localeData.data);
+
+regionData["en"].data = merge(regionData["en"].data, HKRegionData)
 
 for (language in regionData) {
     if (language && regionData[language] && language !== 'data' && language !== 'merged') {

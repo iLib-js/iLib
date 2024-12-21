@@ -1,7 +1,7 @@
 /*
  * testdatefmt_mk_Mk.js - test the date formatter object in Former Yugoslav Republic of Macedonia
  *
- * Copyright © 2012-2015,2017,2021,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017,2021, 2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.2011");
+        test.equal(fmt.format(date), '29.9.2011 г.');
         test.done();
     },
     testDateFmtSimpleLong_mk_MK: function(test) {
@@ -93,7 +93,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011");
+        test.equal(fmt.format(date), '29 септември 2011 г.');
         test.done();
     },
     testDateFmtSimpleFull_mk_MK: function(test) {
@@ -111,7 +111,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011");
+        test.equal(fmt.format(date), '29 септември 2011 г.');
         test.done();
     },
     testDateFmtSimpleTimeShort_mk_MK: function(test) {
@@ -152,7 +152,7 @@ module.exports.testdatefmt_mk_MK = {
     },
     testDateFmtSimpleTimeLong_mk_MK: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "mk-MK", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "mk-MK", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -219,7 +219,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.2011, во 13:45");
+        test.equal(fmt.format(date), '29.9.2011 г., во 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_mk_MK: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011, во 13:45");
+        test.equal(fmt.format(date), '29 септември 2011 г., во 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_mk_MK: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011, во 13:45");
+        test.equal(fmt.format(date), '29 септември 2011 г., во 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_mk_MK: function(test) {
@@ -669,7 +669,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "септември 2011");
+        test.equal(fmt.format(date), 'септември 2011 г.');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_mk_MK: function(test) {
@@ -687,7 +687,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011");
+        test.equal(fmt.format(date), '29 септември 2011 г.');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_mk_MK: function(test) {
@@ -723,7 +723,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "четврток, 29 септември 2011");
+        test.equal(fmt.format(date), 'четврток, 29 септември 2011 г.');
         test.done();
     },
     testDateFmtShortTimeComponentsS_mk_MK: function(test) {

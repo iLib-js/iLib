@@ -70,23 +70,28 @@
                 "m": "EE 'den' d",
                 "s": "E 'den' dd"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
             },
             "my": {
+                "f": "MMMM yyyy",
                 "l": "MMMM yyyy",
                 "m": "MMM yyyy",
                 "s": "MM.yyyy"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -140,6 +145,8 @@
                 "s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}"
             },
             "c20": {
+                "f": "{sm} {sy} – {em} {ey}",
+                "l": "{sm} {sy} – {em} {ey}",
                 "m": "{sm} {sy} – {em} {ey}",
                 "s": "{sm}.{sy} – {em}.{ey}"
             },
@@ -157,11 +164,14 @@
                 "ahms": "h.mm.ssa",
                 "ahmsz": "h.mm.ssa z",
                 "ahmz": "h.mma z",
+                "h": "h",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",
                 "hmz": "h.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "HH",
@@ -174,7 +184,9 @@
                 "hms": "HH.mm.ss",
                 "hmsz": "HH.mm.ss z",
                 "hmz": "HH.mm z",
-                "ms": "mm.ss"
+                "m": "mm",
+                "ms": "mm.ss",
+                "s": "ss"
             }
         }
     }

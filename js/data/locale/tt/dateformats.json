@@ -8,6 +8,7 @@
                 "s": "dd"
             },
             "dm": {
+                "f": "d MMMM",
                 "l": "d MMMM",
                 "m": "d MMM",
                 "s": "dd.MM"
@@ -37,6 +38,7 @@
                 "s": "dd.E"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -47,33 +49,47 @@
                 "m": "MMM, yyyy 'ел'",
                 "s": "MM.yyyy"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
-        "order": "{date}, {time}",
+        "order": {
+            "f": "{date} {time} 'сәгатьтә'",
+            "l": "{date} {time} 'сәгатьтә'",
+            "m": "{date}, {time}",
+            "s": "{date}, {time}"
+        },
         "range": {
             "c00": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {et}",
+                "f": "{sd} {sm}, {sy} ел {st} сәгатьтә – {et}",
+                "l": "{sd} {sm}, {sy} ел {st} сәгатьтә – {et}",
                 "m": "{sd} {sm}, {sy} ел, {st} – {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
+                "l": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
                 "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
+                "l": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
                 "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
-                "l": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
+                "f": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
+                "l": "{sd} {sm}, {sy} ел {st} сәгатьтә – {ed} {em}, {ey} ел {et} сәгатьтә",
                 "m": "{sd} {sm}, {sy} ел, {st} – {ed} {em}, {ey} ел, {et}",
                 "s": "{sd}.{sm}.{sy}, {st} – {ed}.{em}.{ey}, {et}"
             },
@@ -110,7 +126,34 @@
         },
         "time": {
             "12": {
-                "ah": "h a"
+                "ah": "h a",
+                "ahm": "h:mma",
+                "ahms": "h:mm:ssa",
+                "ahmsz": "h:mm:ssa z",
+                "ahmz": "h:mma z",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "hmz": "h:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
+            },
+            "24": {
+                "ah": "H",
+                "ahm": "H:mm",
+                "ahms": "H:mm:ss",
+                "ahmsz": "H:mm:ss z",
+                "ahmz": "H:mm z",
+                "h": "H",
+                "hm": "H:mm",
+                "hms": "H:mm:ss",
+                "hmsz": "H:mm:ss z",
+                "hmz": "H:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

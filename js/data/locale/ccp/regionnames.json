@@ -4885,6 +4885,46 @@
         {
             "code": "48",
             "name": "𑄢𑄬𑄣𑄨𑄎𑄚𑄬"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -5827,6 +5867,10 @@
             "name": "Sidama"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "AA",
             "name": "𑄃𑄓𑄨𑄌𑄴 𑄃𑄝𑄝"
         },
@@ -6719,12 +6763,20 @@
             "name": "England"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "SCT",
             "name": "Scotland"
         },
         {
             "code": "WLS",
             "name": "Wales"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "ANS",
@@ -8671,12 +8723,6 @@
             "name": "𑄟𑄦𑄭𑄇-𑄝𑄢𑄴𑄝𑄭𑄌𑄴"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -9061,6 +9107,22 @@
     ],
     "ID": [
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
+        },
+        {
             "code": "AC",
             "name": "𑄃𑄌𑄬𑄦𑄴"
         },
@@ -9375,12 +9437,28 @@
     ],
     "IN": [
         {
+            "code": "CG",
+            "name": "Chhattīsgarh"
+        },
+        {
             "code": "DH",
             "name": "Dādra and Nagar Haveli and Damān and Diu"
         },
         {
             "code": "LA",
             "name": "Ladakh"
+        },
+        {
+            "code": "OD",
+            "name": "Odisha"
+        },
+        {
+            "code": "TS",
+            "name": "Telangāna"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarākhand"
         },
         {
             "code": "AN",
@@ -9857,6 +9935,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9943,6 +10025,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -11365,6 +11451,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -11465,8 +11555,84 @@
     ],
     "KZ": [
         {
-            "code": "SHY",
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "75",
+            "name": "Almaty"
+        },
+        {
+            "code": "19",
+            "name": "Almaty oblysy"
+        },
+        {
+            "code": "11",
+            "name": "Aqmola oblysy"
+        },
+        {
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
+            "code": "71",
+            "name": "Astana"
+        },
+        {
+            "code": "23",
+            "name": "Atyraū oblysy"
+        },
+        {
+            "code": "27",
+            "name": "Batys Qazaqstan oblysy"
+        },
+        {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "39",
+            "name": "Qostanay oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "63",
+            "name": "Shyghys Qazaqstan oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
+        },
+        {
+            "code": "59",
+            "name": "Soltüstik Qazaqstan oblysy"
+        },
+        {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         },
         {
             "code": "AKT",
@@ -13597,6 +13763,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -16574,6 +16744,14 @@
         }
     ],
     "PH": [
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
+        },
         {
             "code": "AKL",
             "name": "𑄃𑄇𑄴𑄣𑄚𑄴"

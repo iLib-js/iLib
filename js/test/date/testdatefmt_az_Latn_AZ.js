@@ -198,7 +198,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
     },
     testDateFmtSimpleTimeLong_az_Latn_AZ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "az-Latn-AZ", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "az-Latn-AZ", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

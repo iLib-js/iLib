@@ -1,6 +1,6 @@
 {
     "generated": true,
-    "numfmt": {
+    "native_numfmt": {
         "currencyFormats": {
             "common": "‏{n} {s}",
             "commonNegative": "؜-‏{n} {s}"
@@ -13,7 +13,19 @@
         "negativepctFmt": "؜-{n}٪؜",
         "pctChar": "٪؜",
         "pctFmt": "{n}٪؜",
+        "prigroupSize": 3,
+        "roundingMode": "halfdown",
         "script": "Arab",
         "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "common": "‏{n} {s}",
+            "commonNegative": "‏-{n} {s}"
+        },
+        "negativenumFmt": "‎-{n}",
+        "negativepctFmt": "‎-{n}‎%‎",
+        "pctChar": "‎%‎",
+        "pctFmt": "{n}‎%‎"
     }
 }

@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Provinz Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Provinz Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal (Provinz)"
+        },
+        {
+            "code": "52",
+            "name": "Provinz Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "Provinz In Salah"
+        },
+        {
+            "code": "54",
+            "name": "Provinz In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt (Provinz)"
+        },
+        {
+            "code": "56",
+            "name": "Provinz Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El M’Ghair (Provinz)"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "Kreis Ida-Viru"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "Kreis Jõgeva"
+            "name": "Kreis Ida-Viru"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "Kreis Järva"
+            "name": "Kreis Jõgeva"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "Kreis Järva"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "Kreis Lääne"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "Kreis Lääne-Viru"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Kreis Lääne-Viru"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "Kreis Põlva"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "Kreis Pärnu"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "Kreis Rapla"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Kreis Rapla"
         },
         {
             "code": "74",
             "name": "Kreis Saare"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "Kreis Tartu"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "Kreis Valga"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "Kreis Viljandi"
         },
         {
-            "code": "86",
-            "name": "Kreis Võru"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Kreis Võru"
         },
         {
             "code": "130",
@@ -5226,7 +5234,7 @@
         },
         {
             "code": "IS",
-            "name": "Ismailia"
+            "name": "Gouvernement Ismailia"
         },
         {
             "code": "KFS",
@@ -5287,10 +5295,6 @@
         {
             "code": "AR",
             "name": "Aragonien"
-        },
-        {
-            "code": "O",
-            "name": "Asturias Province"
         },
         {
             "code": "AS",
@@ -5415,6 +5419,10 @@
         {
             "code": "AL",
             "name": "Provinz Almería"
+        },
+        {
+            "code": "O",
+            "name": "Provinz Asturien"
         },
         {
             "code": "AV",
@@ -5593,6 +5601,10 @@
         {
             "code": "SN",
             "name": "Region der südlichen Nationen, Nationalitäten und Völker"
+        },
+        {
+            "code": "SW",
+            "name": "Region der südwestäthiopischen Völker"
         },
         {
             "code": "SI",
@@ -6171,6 +6183,10 @@
             "name": "Europäische Gebietskörperschaft Elsass"
         },
         {
+            "code": "973",
+            "name": "Französisch-Guayana"
+        },
+        {
             "code": "30",
             "name": "Gard"
         },
@@ -6183,10 +6199,6 @@
             "name": "Guadeloupe"
         },
         {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "HDF",
             "name": "Hauts-de-France"
         },
@@ -6197,10 +6209,6 @@
         {
             "code": "20R",
             "name": "Korsika"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "972",
@@ -6241,6 +6249,10 @@
         {
             "code": "PAC",
             "name": "Provence-Alpes-Côte d’Azur"
+        },
+        {
+            "code": "974",
+            "name": "Réunion"
         },
         {
             "code": "90",
@@ -7015,6 +7027,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7253,6 +7269,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8159,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8569,6 +8583,10 @@
             "name": "Gorontalo"
         },
         {
+            "code": "PE",
+            "name": "Hochland von Papua"
+        },
+        {
             "code": "JK",
             "name": "Jakarta"
         },
@@ -8657,12 +8675,24 @@
             "name": "Papua Barat"
         },
         {
+            "code": "PT",
+            "name": "Papua Tengah"
+        },
+        {
             "code": "BA",
             "name": "Provinz Bali"
         },
         {
             "code": "RI",
             "name": "Riau"
+        },
+        {
+            "code": "PS",
+            "name": "Südpapua"
+        },
+        {
+            "code": "PD",
+            "name": "Südwestpapua"
         },
         {
             "code": "SL",
@@ -8887,6 +8917,10 @@
             "name": "Chandigarh"
         },
         {
+            "code": "CG",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "CT",
             "name": "Chhattisgarh"
         },
@@ -8971,7 +9005,7 @@
             "name": "Nagaland"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "Odisha"
         },
         {
@@ -8999,12 +9033,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangana"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradesh"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarakhand"
         },
         {
             "code": "UT",
@@ -9338,7 +9380,7 @@
         },
         {
             "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
+            "name": "Hafnarfjörður"
         },
         {
             "code": "HEL",
@@ -9355,6 +9397,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9417,6 +9463,10 @@
             "name": "Norðurþing"
         },
         {
+            "code": "SOL",
+            "name": "Ölfus"
+        },
+        {
             "code": "RGE",
             "name": "Rangárþing eystra"
         },
@@ -9438,11 +9488,11 @@
         },
         {
             "code": "RKV",
-            "name": "Reykjavíkurborg"
+            "name": "Reykjavík"
         },
         {
             "code": "SEL",
-            "name": "Seltjarnarnesbær"
+            "name": "Seltjarnarnes"
         },
         {
             "code": "SEY",
@@ -9455,6 +9505,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9509,10 +9563,6 @@
             "name": "Sveitarfélagið Hornafjörður"
         },
         {
-            "code": "SOL",
-            "name": "Sveitarfélagið Ölfus"
-        },
-        {
             "code": "SSF",
             "name": "Sveitarfélagið Skagafjörður"
         },
@@ -9521,16 +9571,12 @@
             "name": "Sveitarfélagið Skagaströnd"
         },
         {
-            "code": "SVG",
-            "name": "Sveitarfélagið Vogar"
-        },
-        {
             "code": "TAL",
             "name": "Tálknafjarðarhreppur"
         },
         {
             "code": "TJO",
-            "name": "Tjörneshreppur"
+            "name": "Tjörnes"
         },
         {
             "code": "4",
@@ -9538,7 +9584,7 @@
         },
         {
             "code": "VEM",
-            "name": "Vestmannaeyjabær"
+            "name": "Vestmannaeyjar"
         },
         {
             "code": "VER",
@@ -9547,6 +9593,10 @@
         {
             "code": "3",
             "name": "Vesturland"
+        },
+        {
+            "code": "SVG",
+            "name": "Vogar"
         },
         {
             "code": "VOP",
@@ -10853,6 +10903,10 @@
         {
             "code": "14",
             "name": "Namp’o"
+        },
+        {
+            "code": "15",
+            "name": "Kaesŏng"
         }
     ],
     "KR": [
@@ -10953,24 +11007,44 @@
     ],
     "KZ": [
         {
-            "code": "ALA",
+            "code": "10",
+            "name": "Abai"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "19",
             "name": "Almaty"
+        },
+        {
+            "code": "75",
+            "name": "Almaty²"
         },
         {
             "code": "ALM",
             "name": "Almaty²"
         },
         {
-            "code": "AKM",
+            "code": "11",
             "name": "Aqmola"
         },
         {
-            "code": "AKT",
+            "code": "15",
             "name": "Aqtöbe"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "Astana"
+        },
+        {
+            "code": "23",
+            "name": "Atyrau"
         },
         {
             "code": "ATY",
@@ -10981,39 +11055,75 @@
             "name": "Baikonur"
         },
         {
-            "code": "MAN",
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "47",
             "name": "Mangghystau"
         },
         {
-            "code": "SEV",
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "59",
             "name": "Nordkasachstan"
         },
         {
-            "code": "VOS",
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "63",
             "name": "Ostkasachstan"
         },
         {
             "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "55",
             "name": "Pawlodar"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "Qaraghandy"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "Qostanai"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "Qysylorda"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "Schambyl"
         },
         {
-            "code": "SHY",
+            "code": "33",
+            "name": "Schetissu"
+        },
+        {
+            "code": "79",
             "name": "Schymkent"
         },
         {
@@ -11021,7 +11131,19 @@
             "name": "Südkasachstan"
         },
         {
+            "code": "61",
+            "name": "Türkistan"
+        },
+        {
+            "code": "62",
+            "name": "Ulytau"
+        },
+        {
             "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "27",
             "name": "Westkasachstan"
         }
     ],
@@ -13060,7 +13182,7 @@
         },
         {
             "code": "22",
-            "name": "Gusinje"
+            "name": "Gemeinde Gusinje"
         },
         {
             "code": "23",
@@ -13068,7 +13190,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "Gemeinde Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Gemeinde Zeta"
         }
     ],
     "MF": [
@@ -15252,7 +15378,7 @@
         },
         {
             "code": "P6",
-            "name": "Karnali²"
+            "name": "Karnali"
         },
         {
             "code": "KO",
@@ -15261,6 +15387,14 @@
         {
             "code": "LU",
             "name": "Lumbini"
+        },
+        {
+            "code": "P5",
+            "name": "Lumbini"
+        },
+        {
+            "code": "P2",
+            "name": "Madhesh"
         },
         {
             "code": "MA",
@@ -15275,24 +15409,12 @@
             "name": "Narayani"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
         },
         {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
+            "code": "P1",
+            "name": "Provinz Koshi"
         },
         {
             "code": "RA",
@@ -15305,6 +15427,10 @@
         {
             "code": "SE",
             "name": "Seti"
+        },
+        {
+            "code": "P7",
+            "name": "Sudurpashchim"
         }
     ],
     "NR": [
@@ -15961,6 +16087,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -20266,7 +20400,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "Songwe (Region)"
         }
     ],
     "UA": [

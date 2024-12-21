@@ -65,6 +65,7 @@
     "1#in 1 wk|#in {num} wks": "one#{num} vahku maŋŋilit|two#{num} vahkku maŋŋilit|#{num} vahkku maŋŋilit",
     "1#in 1 year|#in {num} years": "one#{num} jahki maŋŋilit|two#{num} jahkki maŋŋilit|#{num} jahkki maŋŋilit",
     "1#in 1 yr|#in {num} yrs": "one#{num} jahki maŋŋilit|two#{num} jahkki maŋŋilit|#{num} jahkki maŋŋilit",
+    "E0": "S",
     "E1": "V",
     "E2": "M",
     "E3": "G",
@@ -92,6 +93,8 @@
     "EEEE4": "duorasdat",
     "EEEE5": "bearjadat",
     "EEEE6": "lávvardat",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "ođđj",
     "MMM10": "golg",
     "MMM11": "skáb",
@@ -154,5 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorMedium": ", "
+    "separatorFull": ", ",
+    "separatorLong": ", ",
+    "separatorMedium": ", ",
+    "separatorShort": " "
 }

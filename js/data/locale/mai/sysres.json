@@ -76,7 +76,7 @@
     "EE1": "सोम",
     "EE2": "मंगल",
     "EE3": "बुध",
-    "EE4": "बृहस्पति",
+    "EE4": "गुरु",
     "EE5": "शुक्र",
     "EE6": "शनि",
     "EEE0": "रवि",
@@ -205,6 +205,8 @@
     "finalSeparatorLong": ", और ",
     "finalSeparatorMedium": ", और ",
     "finalSeparatorShort": ", और ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

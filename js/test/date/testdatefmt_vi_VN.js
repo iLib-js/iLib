@@ -224,7 +224,7 @@ module.exports.testdatefmt_vi_VN = {
     },
     testDateFmtSimpleTimeLong_vi_VN: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "vi-VN", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "vi-VN", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

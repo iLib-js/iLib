@@ -9065,7 +9065,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), ",");
+        test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_st_LS: function(test) {
@@ -9073,7 +9073,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("st-LS");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), ' ');
+        test.equal(info.getGroupingSeparator(), ',');
         test.done();
     },
     testLocaleInfoGetPercentageFormat_st_LS: function(test) {
@@ -12011,8 +12011,8 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("tg-TJ");
         test.ok(info !== null);
 
-        test.equal(info.getDelimiterQuotationStart(), "»");
-        test.equal(info.getDelimiterQuotationEnd(), "«");
+        test.equal(info.getDelimiterQuotationStart(), '“');
+        test.equal(info.getDelimiterQuotationEnd(), '”');
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
@@ -12082,6 +12082,26 @@ module.exports.testlocaleinfo = {
         test.ok(info !== null);
 
         test.equal(info.getDelimiterQuotationStart(), "“");
+        test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_sr_Cyrl_BA: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("sr-Cyrl-BA");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), '„');
+        test.equal(info.getDelimiterQuotationEnd(), '”');
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_sr_Latn_ME: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("sr-Latn-ME");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), '„');
         test.equal(info.getDelimiterQuotationEnd(), "”");
         test.equal(info.getPaperSize(), "A4");
         test.done();

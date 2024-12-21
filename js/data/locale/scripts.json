@@ -336,9 +336,12 @@
         "rtl": false
     },
     "Gara": {
+        "casing": true,
+        "ime": false,
         "lid": "Garay",
         "nb": 164,
-        "nm": "Garay"
+        "nm": "Garay",
+        "rtl": true
     },
     "Geok": {
         "lid": "Georgian",
@@ -410,9 +413,12 @@
         "rtl": false
     },
     "Gukh": {
+        "casing": false,
+        "ime": false,
         "lid": "Gurung_Khema",
         "nb": 397,
-        "nm": "Gurung Khema"
+        "nm": "Gurung Khema",
+        "rtl": false
     },
     "Guru": {
         "casing": false,
@@ -656,9 +662,12 @@
         "nm": "Kpelle"
     },
     "Krai": {
+        "casing": false,
+        "ime": false,
         "lid": "Kirat_Rai",
         "nb": 396,
-        "nm": "Kirat Rai"
+        "nm": "Kirat Rai",
+        "rtl": false
     },
     "Kthi": {
         "casing": false,
@@ -989,9 +998,12 @@
         "rtl": false
     },
     "Onao": {
+        "casing": false,
+        "ime": false,
         "lid": "Ol_Onal",
         "nb": 296,
-        "nm": "Ol Onal"
+        "nm": "Ol Onal",
+        "rtl": false
     },
     "Orkh": {
         "casing": false,
@@ -1302,9 +1314,12 @@
         "rtl": false
     },
     "Sunu": {
+        "casing": false,
+        "ime": false,
         "lid": "Sunuwar",
         "nb": 274,
-        "nm": "Sunuwar"
+        "nm": "Sunuwar",
+        "rtl": false
     },
     "Sylo": {
         "casing": false,
@@ -1468,9 +1483,12 @@
         "rtl": false
     },
     "Todr": {
+        "casing": false,
+        "ime": false,
         "lid": "Todhri",
         "nb": 229,
-        "nm": "Todhri"
+        "nm": "Todhri",
+        "rtl": false
     },
     "Tols": {
         "lid": "Tolong_Siki",
@@ -1486,9 +1504,12 @@
         "rtl": false
     },
     "Tutg": {
+        "casing": false,
+        "ime": false,
         "lid": "Tulu-Tigalari",
         "nb": 341,
-        "nm": "Tulu-Tigalari"
+        "nm": "Tulu-Tigalari",
+        "rtl": false
     },
     "Ugar": {
         "casing": false,

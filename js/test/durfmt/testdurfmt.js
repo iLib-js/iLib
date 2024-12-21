@@ -2229,7 +2229,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏ש′ 1 ח׳ 1 ש′ 1 י׳ שעה 1 דקה שניה');
+        test.equal(duration.toString(), '‏1 ש′ 1 ח׳ 1 ש′ 1 י׳ 1 שע׳ 1 דק׳ 1 שנ׳');
         test.done();
     },
     testDurFmtHEFormatShortText: function(test) {
@@ -2250,7 +2250,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏ש′ 1 ח׳ 1 ש′ 1 י׳ שעה 1 דקה שניה');
+        test.equal(duration.toString(), '‏1 ש′ 1 ח׳ 1 ש′ 1 י׳ 1 שע׳ 1 דק׳ 1 שנ׳');
         test.done();
     },
     testDurFmtHEFormatShortClock: function(test) {
@@ -2271,7 +2271,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏ש′ 1 ח׳ 1 ש′ 1 י׳ ‏1:01:01');
+        test.equal(duration.toString(), '‏1 ש′ 1 ח׳ 1 ש′ 1 י׳ ‏1:01:01');
         test.done();
     },
     testDurFmtHEFormatMedium: function(test) {
@@ -2291,7 +2291,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏ש′ 1 ח׳ 1 ש′ 1 י׳ שעה 1 דקה שניה');
+        test.equal(duration.toString(), '‏1 ש′ 1 ח׳ 1 ש′ 1 י׳ 1 שע׳ 1 דק׳ 1 שנ׳');
         test.done();
     },
     testDurFmtHEFormatLong: function(test) {
@@ -2311,7 +2311,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏שנה 1, חודש, שבוע 1, יום, שעה, דקה, שנ׳");
+        test.equal(duration.toString(), '‏1 שנה, 1 ח׳, 1 שבוע, 1 יום, 1 שעה, 1 דק׳, 1 שנ׳');
         test.done();
     },
     testDurFmtHEFormatFull: function(test) {
@@ -2331,7 +2331,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏שנה, חודש, שבוע, יום 1, שעה, דקה ו-שניה');
+        test.equal(duration.toString(), '‏1 שנה, 1 חודש, 1 שבוע, 1 יום, 1 שעה, 1 דקה ו-1 שניה');
         test.done();
     },
     testDurFmtHEFormatShortManyNumber: function(test) {
@@ -2418,7 +2418,9 @@ module.exports.testdurfmt = {
             var cldrVersion = Number(process.versions["cldr"]);
             if (Number(cldrVersion) < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
-            } else if (Number(cldrVersion) < 42) { // The `many` category has been removed since CLDR 42.
+            }  else if(Number(cldrVersion) <= 41) {
+                test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-20 שניות');
+            } else if (Number(cldrVersion) < 43) { // The `many` category has been removed since CLDR 42.
                 test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות');
             } else {
                 test.equal(duration.toString(), '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות');
@@ -5894,7 +5896,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 rok, 1 mies., 1 tydz., 1 doba, 1 godz., 1 min, 1 sek.");
+        test.equal(duration.toString(), '1 rok, 1 mies., 1 tydz., 1 dzień, 1 godz., 1 min, 1 sek.');
         test.done();
     },
     testDurFmtPLFormatFull: function(test) {
@@ -5914,7 +5916,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 rok, 1 miesiąc, 1 tydzień, 1 doba, 1 godzina, 1 minuta i 1 sekunda");
+        test.equal(duration.toString(), '1 rok, 1 miesiąc, 1 tydzień, 1 dzień, 1 godzina, 1 minuta i 1 sekunda');
         test.done();
     },
     //test cases for pt-BR

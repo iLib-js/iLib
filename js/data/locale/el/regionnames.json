@@ -795,6 +795,10 @@
             "name": "Γκορανμπόι"
         },
         {
+            "code": "GYG",
+            "name": "Επαρχία Γκοϊγκόλ"
+        },
+        {
             "code": "QBI",
             "name": "Επαρχία Κουμπάντλι"
         },
@@ -809,6 +813,10 @@
         {
             "code": "SKR",
             "name": "Επαρχία Σαμκίρ"
+        },
+        {
+            "code": "XVD",
+            "name": "Επαρχία Χοτζαβέντ"
         },
         {
             "code": "ZAQ",
@@ -1023,16 +1031,8 @@
             "name": "Χατζιγκαμπούλ"
         },
         {
-            "code": "GYG",
-            "name": "Goygol"
-        },
-        {
             "code": "XIZ",
             "name": "Khizi"
-        },
-        {
-            "code": "XVD",
-            "name": "Khojavend"
         },
         {
             "code": "NA",
@@ -1812,7 +1812,7 @@
         },
         {
             "code": "22",
-            "name": "Sofia"
+            "name": "Μητροπολιτική περιοχή Σόφιας"
         },
         {
             "code": "23",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Ρελιζάν"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Επαρχία Μπενί Αμπές"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "Επαρχία Ίντα-Βίρου"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "Επαρχία Γιογκέβα"
+            "name": "Επαρχία Ίντα-Βίρου"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "Επαρχία Γιέρβα"
+            "name": "Επαρχία Γιογκέβα"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "Επαρχία Γιέρβα"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "Επαρχία Λέενε"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "Επαρχία Λέενε-Βίρου"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Επαρχία Λέενε-Βίρου"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "Επαρχία Πόλβα"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "Επαρχία Πάρνου"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "Επαρχία Ράπλα"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Επαρχία Ράπλα"
         },
         {
             "code": "74",
             "name": "Επαρχία Σάαρε"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "Επαρχία Τάρτου"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "Επαρχία Βάλγκα"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "Επαρχία Βιλγιάντι"
         },
         {
-            "code": "86",
-            "name": "Επαρχία Βόρου"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Επαρχία Βόρου"
         },
         {
             "code": "130",
@@ -4916,7 +4924,7 @@
         },
         {
             "code": "321",
-            "name": "Kohtla-Järve"
+            "name": "Κόχτλα-Γιάρβε"
         },
         {
             "code": "338",
@@ -5068,7 +5076,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "Σίλαμαε"
         },
         {
             "code": "784",
@@ -5100,7 +5108,7 @@
         },
         {
             "code": "834",
-            "name": "Türi"
+            "name": "Δήμος Τιούρι"
         },
         {
             "code": "855",
@@ -5605,6 +5613,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5887,6 +5899,10 @@
             "name": "Βωκλύζ"
         },
         {
+            "code": "973",
+            "name": "Γαλλική Γουιάνα"
+        },
+        {
             "code": "30",
             "name": "Γκαρ"
         },
@@ -6031,6 +6047,10 @@
             "name": "Μαρν"
         },
         {
+            "code": "972",
+            "name": "Μαρτινίκα"
+        },
+        {
             "code": "55",
             "name": "Μεζ"
         },
@@ -6113,6 +6133,10 @@
         {
             "code": "PAC",
             "name": "Προβηγκία-Άλπεις-Κυανή Ακτή"
+        },
+        {
+            "code": "974",
+            "name": "Ρεϋνιόν"
         },
         {
             "code": "69",
@@ -6225,18 +6249,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -6407,6 +6419,10 @@
             "name": "Ίσλινγκτον, Λονδίνο"
         },
         {
+            "code": "CMD",
+            "name": "Κάμντεν"
+        },
+        {
             "code": "CRF",
             "name": "Κάρντιφ"
         },
@@ -6475,6 +6491,10 @@
             "name": "Λίνκολνσαϊρ"
         },
         {
+            "code": "LDS",
+            "name": "Λιντς"
+        },
+        {
             "code": "BNE",
             "name": "Λονδρέζικο Προάστιο του Μπαρνέτ"
         },
@@ -6513,6 +6533,10 @@
         {
             "code": "MLN",
             "name": "Μιντλόδιαν"
+        },
+        {
+            "code": "MRY",
+            "name": "Μόρι"
         },
         {
             "code": "BKM",
@@ -6613,6 +6637,10 @@
         {
             "code": "WLS",
             "name": "Ουαλία"
+        },
+        {
+            "code": "PEM",
+            "name": "Πέμπροκσιρ"
         },
         {
             "code": "PTE",
@@ -6851,10 +6879,6 @@
             "name": "Calderdale"
         },
         {
-            "code": "CMD",
-            "name": "Camden"
-        },
-        {
             "code": "CMN",
             "name": "Carmarthenshire"
         },
@@ -7043,10 +7067,6 @@
             "name": "Larne"
         },
         {
-            "code": "LDS",
-            "name": "Leeds"
-        },
-        {
             "code": "LEW",
             "name": "Lewisham"
         },
@@ -7087,10 +7107,6 @@
             "name": "Monmouthshire"
         },
         {
-            "code": "MRY",
-            "name": "Moray"
-        },
-        {
             "code": "MYL",
             "name": "Moyle"
         },
@@ -7127,6 +7143,10 @@
             "name": "North Lanarkshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7145,10 +7165,6 @@
         {
             "code": "OMH",
             "name": "Omagh"
-        },
-        {
-            "code": "PEM",
-            "name": "Pembrokeshire"
         },
         {
             "code": "PKN",
@@ -7273,6 +7289,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WNM",
@@ -7698,15 +7718,15 @@
         },
         {
             "code": "DJ",
-            "name": "Djibloho"
+            "name": "Ντζιμπλόχο"
+        },
+        {
+            "code": "C",
+            "name": "Ρίο Μούνι"
         },
         {
             "code": "I",
             "name": "Insular"
-        },
-        {
-            "code": "C",
-            "name": "Río Muni"
         }
     ],
     "GR": [
@@ -8163,12 +8183,6 @@
             "name": "Mahaica-Berbice"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8401,6 +8415,10 @@
             "name": "Επαρχία Φετζέρ"
         },
         {
+            "code": "ER",
+            "name": "Ερντ"
+        },
+        {
             "code": "ZA",
             "name": "Ζάλα"
         },
@@ -8531,10 +8549,6 @@
         {
             "code": "BA",
             "name": "Baranya"
-        },
-        {
-            "code": "ER",
-            "name": "Érd"
         },
         {
             "code": "NK",
@@ -8715,6 +8729,22 @@
         {
             "code": "JA",
             "name": "Τζάμπι"
+        },
+        {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         }
     ],
     "IE": [
@@ -8955,7 +8985,7 @@
             "name": "Ντάντρα και Ναγκάρ Χαβέλι"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "Ορίσα"
         },
         {
@@ -8963,7 +8993,7 @@
             "name": "Ούταρ Πραντές"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "Ουταράχαντ"
         },
         {
@@ -8987,7 +9017,7 @@
             "name": "Ταμίλ Ναντού"
         },
         {
-            "code": "TG",
+            "code": "TS",
             "name": "Τελανγκάνα"
         },
         {
@@ -9003,7 +9033,7 @@
             "name": "Τσαντιγκάρ"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "Τσατίσγκαρ"
         },
         {
@@ -9015,8 +9045,20 @@
             "name": "Χιμάτσαλ Πραντές"
         },
         {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "DH",
             "name": "Dādra and Nagar Haveli and Damān and Diu"
+        },
+        {
+            "code": "TG",
+            "name": "Telangana"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9245,6 +9287,10 @@
             "name": "Ανατολική Ισλανδία"
         },
         {
+            "code": "VEM",
+            "name": "Βέστμαναεγιαρ"
+        },
+        {
             "code": "6",
             "name": "Βορειοανατολική Ισλανδία"
         },
@@ -9253,12 +9299,20 @@
             "name": "Βορειοδυτική Ισλανδία"
         },
         {
+            "code": "GAR",
+            "name": "Γκάρδαμπαϊρ"
+        },
+        {
             "code": "4",
             "name": "Δυτικά Φιόρδ"
         },
         {
             "code": "3",
             "name": "Δυτική Ισλανδία"
+        },
+        {
+            "code": "KOP",
+            "name": "Κόπαβογκουρ"
         },
         {
             "code": "8",
@@ -9273,8 +9327,16 @@
             "name": "Περιφέρεια Πρωτεύουσας της Ισλανδίας"
         },
         {
+            "code": "RKV",
+            "name": "Ρέυκιαβικ"
+        },
+        {
             "code": "FJD",
             "name": "Φιαρδαμπίγκδ"
+        },
+        {
+            "code": "HAF",
+            "name": "Χάφναρφιορδουρ"
         },
         {
             "code": "AKH",
@@ -9345,10 +9407,6 @@
             "name": "Flóahreppur"
         },
         {
-            "code": "GAR",
-            "name": "Garðabær"
-        },
-        {
             "code": "GOG",
             "name": "Grímsnes- og Grafningshreppur"
         },
@@ -9365,10 +9423,6 @@
             "name": "Grýtubakkahreppur"
         },
         {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
-        },
-        {
             "code": "HEL",
             "name": "Helgafellssveit"
         },
@@ -9379,6 +9433,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9407,10 +9465,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9453,10 +9507,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9471,6 +9521,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9543,10 +9597,6 @@
         {
             "code": "TJO",
             "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10496,7 +10546,7 @@
         },
         {
             "code": "28",
-            "name": "Mombasa"
+            "name": "κομητεία Μομπάσα"
         },
         {
             "code": "29",
@@ -10857,6 +10907,10 @@
         {
             "code": "14",
             "name": "Ναμπό"
+        },
+        {
+            "code": "15",
+            "name": "Γκέσονγκ"
         }
     ],
     "KR": [
@@ -10957,23 +11011,23 @@
     ],
     "KZ": [
         {
-            "code": "AKM",
+            "code": "11",
             "name": "Ακμόλα"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Αλμάτι"
         },
         {
-            "code": "AST",
+            "code": "71",
             "name": "Αστανά"
         },
         {
-            "code": "ALM",
+            "code": "19",
             "name": "Επαρχία Αλμάτι"
         },
         {
-            "code": "KUS",
+            "code": "39",
             "name": "Κοστανέι"
         },
         {
@@ -10981,35 +11035,35 @@
             "name": "Μπαϊκονούρ"
         },
         {
-            "code": "AKT",
+            "code": "15",
             "name": "Περιφέρεια Ακτόμπε"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "Περιφέρεια Ανατολικού Καζακστάν"
         },
         {
-            "code": "ATY",
+            "code": "23",
             "name": "Περιφέρεια Ατιράου"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "Περιφέρεια Βορείου Καζακστάν"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "Περιφέρεια Δυτικού Καζακστάν"
         },
         {
-            "code": "KAR",
+            "code": "35",
             "name": "Περιφέρεια Καραγκάντα"
         },
         {
-            "code": "KZY",
+            "code": "43",
             "name": "Περιφέρεια Κιζιλόρντα"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "Περιφέρεια Μανγκιστάου"
         },
         {
@@ -11017,16 +11071,84 @@
             "name": "Περιφέρεια Νότιου Καζακστάν"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "Περιφέρεια Παβλοντάρ"
         },
         {
-            "code": "ZHA",
+            "code": "31",
             "name": "Περιφέρεια Τζαμπίλ"
         },
         {
-            "code": "SHY",
+            "code": "61",
+            "name": "Περιφέρεια Τουρκιστάν"
+        },
+        {
+            "code": "79",
             "name": "Σίμκεντ"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
+            "code": "AKT",
+            "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
+        },
+        {
+            "code": "ATY",
+            "name": "Atyrau"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -13016,7 +13138,7 @@
         },
         {
             "code": "10",
-            "name": "Kotor"
+            "name": "Δήμος του Κότορ"
         },
         {
             "code": "11",
@@ -13073,6 +13195,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -16263,6 +16389,14 @@
             "name": "Ilocos"
         },
         {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
+        },
+        {
             "code": "00",
             "name": "Metro Manila"
         },
@@ -16297,6 +16431,10 @@
             "name": "Γκιλγκίτ-Μπαλτιστάν"
         },
         {
+            "code": "IS",
+            "name": "Επικράτεια Πρωτεύουσας του Ισλαμαμπάντ"
+        },
+        {
             "code": "BA",
             "name": "Μπαλοτσιστάν"
         },
@@ -16311,10 +16449,6 @@
         {
             "code": "SD",
             "name": "Σιντ"
-        },
-        {
-            "code": "IS",
-            "name": "Islamabad"
         },
         {
             "code": "KP",
@@ -18296,7 +18430,7 @@
         },
         {
             "code": "129",
-            "name": "Trbovlje"
+            "name": "Δήμος Τρμπόβλιε"
         },
         {
             "code": "130",
@@ -20418,7 +20552,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "Περιφέρεια Σόνγκουε"
         }
     ],
     "UA": [

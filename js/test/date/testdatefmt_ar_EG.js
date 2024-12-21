@@ -152,7 +152,7 @@ module.exports.testdatefmt_ar_EG = {
     },
     testDateFmtSimpleTimeLong_ar_EG: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ar-EG", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ar-EG", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -1943,7 +1943,7 @@ module.exports.testdatefmt_ar_EG = {
     },
     testDateFmtNativeSimpleTimeLong_ar_EG: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ar-EG", useNative: false,  timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({

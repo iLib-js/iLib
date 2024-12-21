@@ -1,35 +1,7 @@
 {
     "generated": true,
-    "native_numfmt": {
-        "currencyFormats": {
-            "common": "‏{n} {s}",
-            "commonNegative": "؜-‏{n} {s}"
-        },
-        "decimalChar": "٫",
-        "digits": "٠١٢٣٤٥٦٧٨٩",
-        "exponential": "أس",
-        "groupChar": "٬",
-        "negativenumFmt": "؜-{n}",
-        "negativepctFmt": "؜-{n}٪؜",
-        "pctChar": "٪؜",
-        "pctFmt": "{n}٪؜",
-        "prigroupSize": 3,
-        "roundingMode": "halfdown",
-        "script": "Arab",
-        "useNative": true
-    },
     "numfmt": {
-        "currencyFormats": {
-            "commonNegative": "‏-{n} {s}"
-        },
         "decimalChar": ",",
-        "exponential": "E",
-        "groupChar": ".",
-        "negativenumFmt": "‎-{n}",
-        "negativepctFmt": "‎-{n}‎%‎",
-        "pctChar": "‎%‎",
-        "pctFmt": "{n}‎%‎",
-        "script": "Latn",
-        "useNative": false
+        "groupChar": "."
     }
 }

@@ -124,7 +124,9 @@
     "N11": "M",
     "N12": "M",
     "N2": "M",
+    "N3": "M",
     "N4": "M",
+    "N5": "M",
     "N6": "M",
     "N7": "M",
     "N8": "M",
@@ -136,6 +138,7 @@
     "NN2": "Mw",
     "NN3": "Ms",
     "NN4": "Mu",
+    "NN5": "Ma",
     "NN6": "Mu",
     "NN7": "Ms",
     "NN8": "Mp",
@@ -154,6 +157,8 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
+    "separatorFull": ", ",
+    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

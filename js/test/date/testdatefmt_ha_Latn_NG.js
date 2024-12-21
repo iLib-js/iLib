@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ha_Latn_NG.js - test the date formatter object in Hausa.
  *
- * Copyright © 2015,2017-2018,2021,2023 JEDLSoft
+ * Copyright © 2015,2017-2018,2021,2023-2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -368,7 +368,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
     },
     testDateFmtSimpleTimeLong_ha_Latn: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ha-Latn-NG", calendar: "gregorian", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -1140,7 +1140,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 Yamma');
+        test.equal(fmt.format(date), '1:45Yamma');
         test.done();
     },
     testDateFmtShortTimeComponentsHMZ_ha_Latn: function(test) {
@@ -1202,7 +1202,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 Yamma');
+        test.equal(fmt.format(date), '1:45:37Yamma');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSZ_ha_Latn: function(test) {
@@ -1372,7 +1372,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 Yamma');
+        test.equal(fmt.format(date), '1:45Yamma');
         test.done();
     },
     testDateFmtFullTimeComponentsHMZ_ha_Latn: function(test) {
@@ -1436,7 +1436,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 Yamma');
+        test.equal(fmt.format(date), '1:45:37Yamma');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSZ_ha_Latn: function(test) {
@@ -1533,7 +1533,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'cikin 30 dakika');
+        test.equal(fmt.formatRelative(reference, date), 'cikin dakiku 30');
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_ha_Latn: function(test) {
@@ -1561,7 +1561,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '30 dakika da ya gabata');
+        test.equal(fmt.formatRelative(reference, date), 'dakiku 30 da suka gabata');
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_ha_Latn: function(test) {
@@ -1589,7 +1589,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'cikin 10 minti');
+        test.equal(fmt.formatRelative(reference, date), 'cikin mintuna 10');
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_ha_Latn: function(test) {
@@ -1617,7 +1617,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '10 minti da ya gabata');
+        test.equal(fmt.formatRelative(reference, date), 'mintuna 10 da suka gabata');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_ha_Latn: function(test) {
@@ -1645,7 +1645,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), 'cikin 4 awa');
+        test.equal(fmt.formatRelative(reference, date), 'cikin awanni 4');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_ha_Latn: function(test) {
@@ -1673,7 +1673,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '4 awa da ya gabata');
+        test.equal(fmt.formatRelative(reference, date), 'awanni 4 da suka gabata');
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_ha_Latn: function(test) {
@@ -1729,7 +1729,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "kwanaki da suka gabata 4");
+        test.equal(fmt.formatRelative(reference, date), "kwanaki 4 da suka gabata");
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterAfter_ha_Latn: function(test) {
@@ -1785,7 +1785,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "makonni da suka gabata 9");
+        test.equal(fmt.formatRelative(reference, date), "makonni 9 da suka gabata");
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsAfter_ha_Latn: function(test) {
@@ -1841,7 +1841,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "watanni da suka gabata 14");
+        test.equal(fmt.formatRelative(reference, date), "watanni 14 da suka gabata");
         test.done();
     },
     testDateFmtFormatRelativeYearsAfter_ha_Latn: function(test) {
@@ -1897,7 +1897,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "shekara da suka gabata 21");
+        test.equal(fmt.formatRelative(reference, date), "shekaru 21 da suka gabata");
         test.done();
     }
 };

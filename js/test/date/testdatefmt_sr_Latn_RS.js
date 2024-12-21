@@ -1,7 +1,7 @@
 /*
- * testdatefmt_sr_Latn_RS.js - test the date formatter object in č,aiLand
+ * testdatefmt_sr_Latn_RS.js - test the date formatter object in Serbia
  *
- * Copyright © 2012-2015,2017,2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
     testDateFmtSimpleMedium_sr_Latn_RS: function(test) {
@@ -152,7 +152,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
     },
     testDateFmtSimpleTimeLong_sr_Latn_RS: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "sr-Latn-RS", calendar: "gregorian", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -201,7 +201,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_sr_Latn_RS: function(test) {
@@ -435,7 +435,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
     testDateFmtTypeTime_sr_Latn_RS: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
         test.done();
     },
     testDateFmtShortDateComponentsY_sr_Latn_RS: function(test) {
@@ -489,7 +489,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), "2011");
         test.done();
     },
     testDateFmtShortDateComponentsM_sr_Latn_RS: function(test) {
@@ -561,7 +561,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9");
+        test.equal(fmt.format(date), "29. 9");
         test.done();
     },
     testDateFmtShortDateComponentsMY_sr_Latn_RS: function(test) {
@@ -579,7 +579,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9.11.");
+        test.equal(fmt.format(date), "9. 2011.");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_sr_Latn_RS: function(test) {
@@ -597,7 +597,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
     testDateFmtShortDateComponentsWDM_sr_Latn_RS: function(test) {
@@ -615,7 +615,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "č, 29.9");
+        test.equal(fmt.format(date), "č, 29. 9");
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_sr_Latn_RS: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmt_sr_Latn_RS = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "č, 29.9.11.");
+        test.equal(fmt.format(date), "č, 29. 9. 2011.");
         test.done();
     },
     testDateFmtFullDateComponentsY_sr_Latn_RS: function(test) {

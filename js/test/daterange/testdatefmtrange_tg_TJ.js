@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_tg_TJ.js - test the date range formatter object Tajik-Tajikistan
  *
- * Copyright © 2021, JEDLSoft
+ * Copyright © 2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31/12/11, 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeInDayMedium_tg_TJ: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Дек 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31 Дек 2011, 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeInDayLong_tg_TJ: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Декабр 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31 Декабр 2011 соати 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeInDayFull_tg_TJ: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Декабр 2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31 Декабр 2011 соати 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_tg_TJ: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 13:45 – 31/12/11 14:30");
+        test.equal(fmt.format(start, end), '30/12/11, 13:45 – 31/12/11, 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_tg_TJ: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Дек 2011 13:45 – 31 Дек 2011 14:30");
+        test.equal(fmt.format(start, end), '30 Дек 2011, 13:45 – 31 Дек 2011, 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayLong_tg_TJ: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Декабр 2011 13:45 – 31 Декабр 2011 14:30");
+        test.equal(fmt.format(start, end), '30 Декабр 2011 соати 13:45 – 31 Декабр 2011 соати 14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_tg_TJ: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Декабр 2011 13:45 – 31 Декабр 2011 14:30");
+        test.equal(fmt.format(start, end), '30 Декабр 2011 соати 13:45 – 31 Декабр 2011 соати 14:30');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_tg_TJ: function(test) {

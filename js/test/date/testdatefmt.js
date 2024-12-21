@@ -2763,7 +2763,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "Tuesday 20 September 2011 at 1:45 pm");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     testDateFmtenZA: function(test) {
@@ -3511,8 +3511,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "kn-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ಪೂರ್ವಾಹ್ನ");
-        test.equal(fmt[1].name, "ಅಪರಾಹ್ನ");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_ml_IN_locale: function(test) {
@@ -3557,7 +3557,7 @@ module.exports.testdatefmt = {
         test.ok(fmt !== null);
 
         test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "பிற்பகல்");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_te_IN_locale: function(test) {
@@ -3583,8 +3583,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'পূৰ্বাহ্ন');
-        test.equal(fmt[1].name,  'অপৰাহ্ন');
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_hi_IN_locale: function(test) {
@@ -3685,7 +3685,7 @@ module.exports.testdatefmt = {
         var fmt = new DateFmt({locale: "ak-GH"})
         test.ok(fmt !== null);
 
-        test.equal(fmt.getDateComponentOrder(), "ymd");
+        test.equal(fmt.getDateComponentOrder(), "mdy");
         test.done();
     },
     testDateFmtGetDateComponentOrderLV: function(test) {

@@ -17,12 +17,6 @@
                 "m": "d/MM/yyyy",
                 "s": "d/MM/yy"
             },
-            "e": {
-                "f": "cccc",
-                "l": "ccc",
-                "m": "cc",
-                "s": "c"
-            },
             "m": {
                 "m": "MM",
                 "s": "MM"

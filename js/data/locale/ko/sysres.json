@@ -67,7 +67,7 @@
     "1#in 1 yr|#in {num} yrs": "#{num}년 후",
     "B0": "자정",
     "B1": "오전",
-    "B2": "새벽",
+    "B2": "아침",
     "B3": "오전",
     "B4": "정오",
     "B5": "오후",
@@ -102,6 +102,8 @@
     "EEEE4": "목요일",
     "EEEE5": "금요일",
     "EEEE6": "토요일",
+    "G-1": "BCE",
+    "G1": "CE",
     "MMM1": "1월",
     "MMM10": "10월",
     "MMM11": "11월",
@@ -165,5 +167,7 @@
     "finalSeparatorMedium": " ",
     "finalSeparatorShort": " ",
     "separatorFull": " ",
-    "separatorLong": " "
+    "separatorLong": " ",
+    "separatorMedium": " ",
+    "separatorShort": " "
 }

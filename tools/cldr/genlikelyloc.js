@@ -119,7 +119,11 @@ var hardCodedSubtags = {
     "pa-XX": "pa-Guru-XX",
     "si-XX": "si-Sinh-XX",
     "ta-XX": "ta-Taml-XX",
-    "te-XX": "te-Telu-XX"
+    "te-XX": "te-Telu-XX",
+    "AC": "en-Latn-AC",
+    "AQ": "en-Latn-AQ",
+    "CP": "en-Latn-CP",
+    "CQ": "en-Latn-CQ"
 };
 
 // Likely Locales
@@ -148,6 +152,18 @@ for (var partial in likelySubtags) {
                 var langregion = new Locale(full.language, undefined, full.region);
                 if (!likelylocales[langregion.getSpec()]) {
                     likelylocales[langregion.getSpec()] = full.getSpec();
+                }
+            } else {
+                if (!partialLoc.region) {
+                    var langregion = new Locale(full.language, full.script, undefined);
+                    if (!likelylocales[langregion.getSpec()]) {
+                        likelylocales[langregion.getSpec()] = full.getSpec();
+                    }
+                } else {
+                    var langscriptregion = new Locale(full.language, full.script, full.region);
+                    if (!likelylocales[langscriptregion.getSpec()]) {
+                        likelylocales[langscriptregion.getSpec()] = full.getSpec();
+                    }
                 }
             }
         } else {

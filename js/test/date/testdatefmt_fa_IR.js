@@ -179,7 +179,7 @@ module.exports.testdatefmt_fa_IR = {
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
-            timelength: "long",
+            length: "long",
             type: "time"
         });
         test.ok(fmt !== null);
@@ -2117,7 +2117,7 @@ module.exports.testdatefmt_fa_IR = {
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
-            timelength: "long",
+            length: "long",
             type: "time"
         });
         test.ok(fmt !== null);

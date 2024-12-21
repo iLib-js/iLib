@@ -1,7 +1,7 @@
 /*
  * testdatefmt_yo_NG.js - test the date formatter object in Yoruba-Nigeria
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,7 +93,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Owe 2021");
+        test.equal(fmt.format(date), '29 Oṣù Owewe 2021');
         test.done();
     },
     testDateFmtSimpleFull_yo_NG: function(test) {
@@ -111,7 +111,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021');
+        test.equal(fmt.format(date), '29 Oṣù Owewe 2021');
         test.done();
     },
     testDateFmtSimpleTimeShort_yo_NG: function(test) {
@@ -152,7 +152,7 @@ module.exports.testdatefmt_yo_NG = {
     },
     testDateFmtSimpleTimeLong_yo_NG: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "yo-NG", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "yo-NG", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -237,7 +237,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021 níti 13:45');
+        test.equal(fmt.format(date), '29 Oṣù Owewe 2021 ní 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_yo_NG: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021 ní 13:45');
+        test.equal(fmt.format(date), '29 Oṣù Owewe 2021 ní 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_yo_NG: function(test) {
@@ -526,7 +526,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "O");
+        test.equal(fmt.format(date), '9');
         test.done();
     },
     testDateFmtShortDateComponentsD_yo_NG: function(test) {
@@ -652,7 +652,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'Ọjọ́r, 29 Owe');
+        test.equal(fmt.format(date), 'Ọjọ́rú, 29 Oṣù Owewe');
         test.done();
     },
     testDateFmtFullDateComponentsY_yo_NG: function(test) {
@@ -688,7 +688,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Ow");
+        test.equal(fmt.format(date), 'Oṣù Owewe');
         test.done();
     },
     testDateFmtFullDateComponentsD_yo_NG: function(test) {
@@ -724,7 +724,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe');
+        test.equal(fmt.format(date), '29 Oṣù Owewe');
         test.done();
     },
     testDateFmtFullDateComponentsMY_yo_NG: function(test) {
@@ -742,7 +742,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'Owe 2021');
+        test.equal(fmt.format(date), 'Oṣù Owewe 2021');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_yo_NG: function(test) {
@@ -760,7 +760,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Owe 2021');
+        test.equal(fmt.format(date), '29 Oṣù Owewe 2021');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_yo_NG: function(test) {
@@ -778,7 +778,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'Ọjọ́rú, 29 Owe');
+        test.equal(fmt.format(date), 'Ọjọ́rú, 29 Oṣù Owewe');
         test.done();
     },
     testDateFmtFullDateComponentsWDMY_yo_NG: function(test) {
@@ -796,7 +796,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'Ọjọ́rú, 29 Owe 2021');
+        test.equal(fmt.format(date), 'Ọjọ́rú, 29 Oṣù Owewe 2021');
         test.done();
     },
     testDateFmtShortTimeComponentsS_yo_NG: function(test) {
@@ -1660,7 +1660,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '+14 y');
+        test.equal(fmt.formatRelative(reference, date), 'ní 14 Ọdún');
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_yo_NG: function(test) {
@@ -1688,7 +1688,7 @@ module.exports.testdatefmt_yo_NG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), '-21 y');
+        test.equal(fmt.formatRelative(reference, date), '21 Ọdún sẹ́yìn');
         test.done();
     }
 };

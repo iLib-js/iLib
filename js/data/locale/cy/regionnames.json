@@ -2577,10 +2577,6 @@
             "name": "Haut-Uélé"
         },
         {
-            "code": "IT",
-            "name": "Ituri"
-        },
-        {
             "code": "KS",
             "name": "Kasaï"
         },
@@ -2655,6 +2651,10 @@
         {
             "code": "HK",
             "name": "Talaith Haut-Katanga"
+        },
+        {
+            "code": "IT",
+            "name": "Talaith Ituri"
         },
         {
             "code": "KG",
@@ -3055,10 +3055,6 @@
             "name": "Arica y Parinacota"
         },
         {
-            "code": "AT",
-            "name": "Atacama"
-        },
-        {
             "code": "AI",
             "name": "Aysén"
         },
@@ -3093,6 +3089,10 @@
         {
             "code": "NB",
             "name": "Ñuble"
+        },
+        {
+            "code": "AT",
+            "name": "Rhanbarth Atacama"
         },
         {
             "code": "RM",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Talaith Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4736,19 +4776,19 @@
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
+            "name": "Sir Ida-Viru"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
+            "name": "Sir Jõgeva"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "Sir Järva"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "Sir Lääne"
         },
         {
             "code": "57",
@@ -4760,19 +4800,19 @@
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Sir Lääne-Viru"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
+            "name": "Sir Põlva"
         },
         {
             "code": "68",
-            "name": "Pärnumaa"
+            "name": "Sir Pärnu"
         },
         {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Sir Rapla"
         },
         {
             "code": "74",
@@ -4780,11 +4820,11 @@
         },
         {
             "code": "79",
-            "name": "Tartumaa"
+            "name": "Sir Tartu"
         },
         {
             "code": "81",
-            "name": "Valgamaa"
+            "name": "Sir Valga"
         },
         {
             "code": "84",
@@ -4792,7 +4832,7 @@
         },
         {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Sir Võru"
         },
         {
             "code": "130",
@@ -4808,7 +4848,7 @@
         },
         {
             "code": "171",
-            "name": "Elva"
+            "name": "Bwrdeistref Gwledig Elva"
         },
         {
             "code": "184",
@@ -5108,7 +5148,7 @@
         },
         {
             "code": "928",
-            "name": "Väike-Maarja"
+            "name": "Väike-Maarja Plwyf"
         }
     ],
     "EG": [
@@ -5571,6 +5611,10 @@
             "name": "Southern Nations, Nationalities, and Peoples"
         },
         {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
+        },
+        {
             "code": "TI",
             "name": "Tigray"
         }
@@ -5903,6 +5947,10 @@
             "name": "Eure-et-Loir"
         },
         {
+            "code": "973",
+            "name": "Gaiana Ffrengig"
+        },
+        {
             "code": "30",
             "name": "Gard"
         },
@@ -5917,10 +5965,6 @@
         {
             "code": "971",
             "name": "Guadeloupe"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
         },
         {
             "code": "68",
@@ -5993,10 +6037,6 @@
         {
             "code": "39",
             "name": "Jura"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
         },
         {
             "code": "40",
@@ -6137,6 +6177,10 @@
         {
             "code": "66",
             "name": "Pyrénées-Orientales"
+        },
+        {
+            "code": "974",
+            "name": "Réunion"
         },
         {
             "code": "71",
@@ -7003,6 +7047,10 @@
             "name": "North Down"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NBL",
             "name": "Northumberland"
         },
@@ -7221,6 +7269,10 @@
         {
             "code": "WND",
             "name": "Wandsworth"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WIL",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8633,8 +8679,24 @@
             "name": "Papua"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "RI",
@@ -8855,6 +8917,10 @@
             "name": "Chandigarh"
         },
         {
+            "code": "CG",
+            "name": "Chhattisgarh"
+        },
+        {
             "code": "CT",
             "name": "Chhattisgarh"
         },
@@ -8947,6 +9013,10 @@
             "name": "Odisha"
         },
         {
+            "code": "OD",
+            "name": "Orissa"
+        },
+        {
             "code": "PY",
             "name": "Puducherry"
         },
@@ -8971,12 +9041,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangana"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradesh"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarakhand"
         },
         {
             "code": "UT",
@@ -9306,7 +9384,7 @@
         },
         {
             "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
+            "name": "Hafnarfjörður"
         },
         {
             "code": "HEL",
@@ -9319,6 +9397,10 @@
         {
             "code": "HRU",
             "name": "Hrunamannahreppur"
+        },
+        {
+            "code": "HUG",
+            "name": "Húnabyggð"
         },
         {
             "code": "HUT",
@@ -9334,7 +9416,7 @@
         },
         {
             "code": "HVE",
-            "name": "Hveragerðisbær"
+            "name": "Hveragerði"
         },
         {
             "code": "ISA",
@@ -9350,7 +9432,7 @@
         },
         {
             "code": "KOP",
-            "name": "Kópavogsbær"
+            "name": "Kópavogur"
         },
         {
             "code": "LAN",
@@ -9405,12 +9487,12 @@
             "name": "Reykjavík"
         },
         {
-            "code": "1",
-            "name": "Reykjavík Fawr"
+            "code": "RKV",
+            "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
+            "code": "1",
+            "name": "Reykjavík Fawr"
         },
         {
             "code": "3",
@@ -9418,7 +9500,7 @@
         },
         {
             "code": "SEL",
-            "name": "Seltjarnarnesbær"
+            "name": "Seltjarnarnes"
         },
         {
             "code": "SEY",
@@ -9431,6 +9513,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9510,7 +9596,7 @@
         },
         {
             "code": "VEM",
-            "name": "Vestmannaeyjabær"
+            "name": "Vestmannaeyjar"
         },
         {
             "code": "VER",
@@ -9535,60 +9621,16 @@
             "name": "Agrigento"
         },
         {
-            "code": "AL",
-            "name": "Alessandria"
-        },
-        {
             "code": "AO",
             "name": "Aosta"
-        },
-        {
-            "code": "AP",
-            "name": "Ascoli Piceno"
-        },
-        {
-            "code": "AT",
-            "name": "Asti"
-        },
-        {
-            "code": "AV",
-            "name": "Avellino"
-        },
-        {
-            "code": "BA",
-            "name": "Bari"
-        },
-        {
-            "code": "BT",
-            "name": "Barletta-Andria-Trani"
         },
         {
             "code": "77",
             "name": "Basilicata"
         },
         {
-            "code": "BL",
-            "name": "Belluno"
-        },
-        {
-            "code": "BI",
-            "name": "Biella"
-        },
-        {
             "code": "BZ",
             "name": "Bolzano"
-        },
-        {
-            "code": "BS",
-            "name": "Brescia"
-        },
-        {
-            "code": "BR",
-            "name": "Brindisi"
-        },
-        {
-            "code": "CA",
-            "name": "Cagliari"
         },
         {
             "code": "78",
@@ -9603,40 +9645,56 @@
             "name": "Campania"
         },
         {
-            "code": "CB",
-            "name": "Campobasso"
-        },
-        {
             "code": "CI",
             "name": "Carbonia-Iglesias"
         },
         {
-            "code": "CE",
-            "name": "Caserta"
+            "code": "BA",
+            "name": "Dinas Fetropolitan Bari"
+        },
+        {
+            "code": "CA",
+            "name": "Dinas Fetropolitan Cagliari"
         },
         {
             "code": "CT",
-            "name": "Catania"
+            "name": "Dinas Fetropolitan Catania"
         },
         {
-            "code": "CZ",
-            "name": "Catanzaro"
+            "code": "VE",
+            "name": "Dinas Fetropolitan Fenis"
         },
         {
-            "code": "CO",
-            "name": "Como"
+            "code": "FI",
+            "name": "Dinas Fetropolitan Fflorens"
         },
         {
-            "code": "CS",
-            "name": "Cosenza"
+            "code": "GE",
+            "name": "Dinas Fetropolitan Genova"
         },
         {
-            "code": "KR",
-            "name": "Crotone"
+            "code": "ME",
+            "name": "Dinas Fetropolitan Messina"
         },
         {
-            "code": "CH",
-            "name": "Chieti"
+            "code": "MI",
+            "name": "Dinas Fetropolitan Milan"
+        },
+        {
+            "code": "NA",
+            "name": "Dinas Fetropolitan Napoli"
+        },
+        {
+            "code": "PA",
+            "name": "Dinas Fetropolitan Palermo"
+        },
+        {
+            "code": "RC",
+            "name": "Dinas Fetropolitan Reggio Calabria"
+        },
+        {
+            "code": "RM",
+            "name": "Dinas Fetropolitan Rhufain"
         },
         {
             "code": "45",
@@ -9647,136 +9705,32 @@
             "name": "Enna"
         },
         {
-            "code": "FM",
-            "name": "Fermo"
-        },
-        {
-            "code": "FI",
-            "name": "Florence"
-        },
-        {
-            "code": "FG",
-            "name": "Foggia"
-        },
-        {
             "code": "36",
             "name": "Friuli-Venezia Giulia"
-        },
-        {
-            "code": "FR",
-            "name": "Frosinone"
-        },
-        {
-            "code": "GE",
-            "name": "Genoa"
-        },
-        {
-            "code": "GO",
-            "name": "Gorizia"
-        },
-        {
-            "code": "GR",
-            "name": "Grosseto"
-        },
-        {
-            "code": "IM",
-            "name": "Imperia"
-        },
-        {
-            "code": "IS",
-            "name": "Isernia"
-        },
-        {
-            "code": "AQ",
-            "name": "L’Aquila"
-        },
-        {
-            "code": "SP",
-            "name": "La Spezia"
-        },
-        {
-            "code": "LT",
-            "name": "Latina"
         },
         {
             "code": "62",
             "name": "Lazio"
         },
         {
-            "code": "LE",
-            "name": "Lecce"
-        },
-        {
-            "code": "LC",
-            "name": "Lecco"
-        },
-        {
             "code": "42",
             "name": "Liguria"
-        },
-        {
-            "code": "LO",
-            "name": "Lodi"
         },
         {
             "code": "25",
             "name": "Lombardia"
         },
         {
-            "code": "LU",
-            "name": "Lucca"
-        },
-        {
-            "code": "MC",
-            "name": "Macerata"
-        },
-        {
             "code": "57",
             "name": "Marche"
-        },
-        {
-            "code": "MS",
-            "name": "Massa and Carrara"
-        },
-        {
-            "code": "MT",
-            "name": "Matera"
         },
         {
             "code": "VS",
             "name": "Medio Campidano"
         },
         {
-            "code": "ME",
-            "name": "Messina"
-        },
-        {
-            "code": "MI",
-            "name": "Milan"
-        },
-        {
-            "code": "MO",
-            "name": "Modena"
-        },
-        {
             "code": "67",
             "name": "Molise"
-        },
-        {
-            "code": "MB",
-            "name": "Monza and Brianza"
-        },
-        {
-            "code": "NA",
-            "name": "Naples"
-        },
-        {
-            "code": "NO",
-            "name": "Novara"
-        },
-        {
-            "code": "NU",
-            "name": "Nuoro"
         },
         {
             "code": "OG",
@@ -9787,44 +9741,8 @@
             "name": "Olbia-Tempio"
         },
         {
-            "code": "OR",
-            "name": "Oristano"
-        },
-        {
-            "code": "PA",
-            "name": "Palermo"
-        },
-        {
-            "code": "PV",
-            "name": "Pavia"
-        },
-        {
-            "code": "PE",
-            "name": "Pescara"
-        },
-        {
             "code": "21",
             "name": "Piemonte"
-        },
-        {
-            "code": "PI",
-            "name": "Pisa"
-        },
-        {
-            "code": "PT",
-            "name": "Pistoia"
-        },
-        {
-            "code": "PN",
-            "name": "Pordenone"
-        },
-        {
-            "code": "PZ",
-            "name": "Potenza"
-        },
-        {
-            "code": "PO",
-            "name": "Prato"
         },
         {
             "code": "75",
@@ -9835,60 +9753,24 @@
             "name": "Ragusa"
         },
         {
-            "code": "RC",
-            "name": "Reggio Calabria"
-        },
-        {
-            "code": "RE",
-            "name": "Reggio Emilia"
-        },
-        {
-            "code": "RI",
-            "name": "Rieti"
-        },
-        {
-            "code": "RN",
-            "name": "Rimini"
-        },
-        {
-            "code": "RM",
-            "name": "Rome"
-        },
-        {
-            "code": "RO",
-            "name": "Rovigo"
-        },
-        {
             "code": "SO",
             "name": "Rhanbarth Sondrio"
-        },
-        {
-            "code": "SA",
-            "name": "Salerno"
         },
         {
             "code": "88",
             "name": "Sardinia"
         },
         {
-            "code": "SS",
-            "name": "Sassari"
-        },
-        {
-            "code": "SV",
-            "name": "Savona"
-        },
-        {
             "code": "82",
             "name": "Sisili"
         },
         {
-            "code": "SU",
-            "name": "Sud Sardegna"
-        },
-        {
             "code": "SR",
             "name": "Syracuse"
+        },
+        {
+            "code": "AL",
+            "name": "Talaith Alessandria"
         },
         {
             "code": "AN",
@@ -9899,6 +9781,26 @@
             "name": "Talaith Arezzo"
         },
         {
+            "code": "AP",
+            "name": "Talaith Ascoli Piceno"
+        },
+        {
+            "code": "AT",
+            "name": "Talaith Asti"
+        },
+        {
+            "code": "AV",
+            "name": "Talaith Avellino"
+        },
+        {
+            "code": "BT",
+            "name": "Talaith Barletta-Andria-Trani"
+        },
+        {
+            "code": "BL",
+            "name": "Talaith Belluno"
+        },
+        {
             "code": "BN",
             "name": "Talaith Benevento"
         },
@@ -9907,32 +9809,164 @@
             "name": "Talaith Bergamo"
         },
         {
+            "code": "BI",
+            "name": "Talaith Biella"
+        },
+        {
             "code": "BO",
             "name": "Talaith Bologna"
+        },
+        {
+            "code": "BS",
+            "name": "Talaith Brescia"
+        },
+        {
+            "code": "BR",
+            "name": "Talaith Brindisi"
+        },
+        {
+            "code": "CB",
+            "name": "Talaith Campobasso"
+        },
+        {
+            "code": "CE",
+            "name": "Talaith Caserta"
+        },
+        {
+            "code": "CZ",
+            "name": "Talaith Catanzaro"
+        },
+        {
+            "code": "CO",
+            "name": "Talaith Como"
+        },
+        {
+            "code": "CS",
+            "name": "Talaith Cosenza"
         },
         {
             "code": "CR",
             "name": "Talaith Cremona"
         },
         {
+            "code": "KR",
+            "name": "Talaith Crotone"
+        },
+        {
             "code": "CN",
             "name": "Talaith Cuneo"
+        },
+        {
+            "code": "CH",
+            "name": "Talaith Chieti"
+        },
+        {
+            "code": "SU",
+            "name": "Talaith De Sardinia"
+        },
+        {
+            "code": "FM",
+            "name": "Talaith Fermo"
         },
         {
             "code": "FE",
             "name": "Talaith Ferrara"
         },
         {
+            "code": "FG",
+            "name": "Talaith Foggia"
+        },
+        {
             "code": "FC",
             "name": "Talaith Forlì-Cesena"
+        },
+        {
+            "code": "FR",
+            "name": "Talaith Frosinone"
+        },
+        {
+            "code": "GO",
+            "name": "Talaith Gorizia"
+        },
+        {
+            "code": "GR",
+            "name": "Talaith Grosseto"
+        },
+        {
+            "code": "IM",
+            "name": "Talaith Imperia"
+        },
+        {
+            "code": "IS",
+            "name": "Talaith Isernia"
+        },
+        {
+            "code": "AQ",
+            "name": "Talaith L’Aquila"
+        },
+        {
+            "code": "SP",
+            "name": "Talaith La Spezia"
+        },
+        {
+            "code": "LT",
+            "name": "Talaith Latina"
+        },
+        {
+            "code": "LE",
+            "name": "Talaith Lecce"
+        },
+        {
+            "code": "LC",
+            "name": "Talaith Lecco"
         },
         {
             "code": "LI",
             "name": "Talaith Livorno"
         },
         {
+            "code": "LO",
+            "name": "Talaith Lodi"
+        },
+        {
+            "code": "LU",
+            "name": "Talaith Lucca"
+        },
+        {
+            "code": "MC",
+            "name": "Talaith Macerata"
+        },
+        {
             "code": "MN",
             "name": "Talaith Mantova"
+        },
+        {
+            "code": "MS",
+            "name": "Talaith Massa-Carrara"
+        },
+        {
+            "code": "MT",
+            "name": "Talaith Matera"
+        },
+        {
+            "code": "MO",
+            "name": "Talaith Modena"
+        },
+        {
+            "code": "MB",
+            "name": "Talaith Monza a Brianza"
+        },
+        {
+            "code": "NO",
+            "name": "Talaith Novara"
+        },
+        {
+            "code": "NU",
+            "name": "Talaith Nuoro"
+        },
+        {
+            "code": "OR",
+            "name": "Talaith Oristano"
         },
         {
             "code": "PD",
@@ -9943,6 +9977,10 @@
             "name": "Talaith Parma"
         },
         {
+            "code": "PV",
+            "name": "Talaith Pavia"
+        },
+        {
             "code": "PG",
             "name": "Talaith Perugia"
         },
@@ -9951,16 +9989,76 @@
             "name": "Talaith Pesaro ac Urbino"
         },
         {
+            "code": "PE",
+            "name": "Talaith Pescara"
+        },
+        {
             "code": "PC",
             "name": "Talaith Piacenza"
+        },
+        {
+            "code": "PI",
+            "name": "Talaith Pisa"
+        },
+        {
+            "code": "PT",
+            "name": "Talaith Pistoia"
+        },
+        {
+            "code": "PN",
+            "name": "Talaith Pordenone"
+        },
+        {
+            "code": "PZ",
+            "name": "Talaith Potenza"
+        },
+        {
+            "code": "PO",
+            "name": "Talaith Prato"
         },
         {
             "code": "RA",
             "name": "Talaith Ravenna"
         },
         {
+            "code": "RE",
+            "name": "Talaith Reggio Emilia"
+        },
+        {
+            "code": "RI",
+            "name": "Talaith Rieti"
+        },
+        {
+            "code": "RN",
+            "name": "Talaith Rimini"
+        },
+        {
+            "code": "RO",
+            "name": "Talaith Rovigo"
+        },
+        {
+            "code": "SA",
+            "name": "Talaith Salerno"
+        },
+        {
+            "code": "SS",
+            "name": "Talaith Sassari"
+        },
+        {
+            "code": "SV",
+            "name": "Talaith Savona"
+        },
+        {
             "code": "SI",
             "name": "Talaith Siena"
+        },
+        {
+            "code": "TA",
+            "name": "Talaith Taranto"
+        },
+        {
+            "code": "TE",
+            "name": "Talaith Teramo"
         },
         {
             "code": "TR",
@@ -9971,20 +10069,44 @@
             "name": "Talaith Torino"
         },
         {
+            "code": "TV",
+            "name": "Talaith Treviso"
+        },
+        {
             "code": "TS",
             "name": "Talaith Trieste"
+        },
+        {
+            "code": "UD",
+            "name": "Talaith Udine"
+        },
+        {
+            "code": "VA",
+            "name": "Talaith Varese"
+        },
+        {
+            "code": "VB",
+            "name": "Talaith Verbano-Cusio-Ossola"
+        },
+        {
+            "code": "VC",
+            "name": "Talaith Vercelli"
+        },
+        {
+            "code": "VR",
+            "name": "Talaith Verona"
+        },
+        {
+            "code": "VV",
+            "name": "Talaith Vibo Valentia"
         },
         {
             "code": "VI",
             "name": "Talaith Vicenza"
         },
         {
-            "code": "TA",
-            "name": "Taranto"
-        },
-        {
-            "code": "TE",
-            "name": "Teramo"
+            "code": "VT",
+            "name": "Talaith Viterbo"
         },
         {
             "code": "52",
@@ -10003,14 +10125,6 @@
             "name": "Trentino-Alto Adige"
         },
         {
-            "code": "TV",
-            "name": "Treviso"
-        },
-        {
-            "code": "UD",
-            "name": "Udine"
-        },
-        {
             "code": "55",
             "name": "Umbria"
         },
@@ -10019,36 +10133,8 @@
             "name": "Valle d’Aosta"
         },
         {
-            "code": "VA",
-            "name": "Varese"
-        },
-        {
             "code": "34",
             "name": "Veneto"
-        },
-        {
-            "code": "VE",
-            "name": "Venice"
-        },
-        {
-            "code": "VB",
-            "name": "Verbano-Cusio-Ossola"
-        },
-        {
-            "code": "VC",
-            "name": "Vercelli"
-        },
-        {
-            "code": "VR",
-            "name": "Verona"
-        },
-        {
-            "code": "VV",
-            "name": "Vibo Valentia"
-        },
-        {
-            "code": "VT",
-            "name": "Viterbo"
         }
     ],
     "JM": [
@@ -10821,6 +10907,10 @@
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "Kaeseong"
         }
     ],
     "KR": [
@@ -10921,35 +11011,55 @@
     ],
     "KZ": [
         {
+            "code": "10",
+            "name": "Abay oblysy"
+        },
+        {
+            "code": "AKM",
+            "name": "Akmola"
+        },
+        {
             "code": "AKT",
             "name": "Aktobe"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Almaty"
+        },
+        {
+            "code": "19",
+            "name": "Almaty oblysy"
         },
         {
             "code": "ALM",
             "name": "Almaty Region"
         },
         {
-            "code": "AKM",
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
+            "code": "11",
             "name": "Ardal Akmola"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "Ardal Dwyrain Kazakhstan"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "Ardal Gogledd Casachstan"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "Ardal Gorllewin Casachstan"
         },
         {
-            "code": "AST",
+            "code": "39",
+            "name": "Ardal Kostanay"
+        },
+        {
+            "code": "71",
             "name": "Astana"
         },
         {
@@ -10957,8 +11067,16 @@
             "name": "Atyrau"
         },
         {
+            "code": "23",
+            "name": "Atyraū oblysy"
+        },
+        {
             "code": "BAY",
             "name": "Bayqongyr"
+        },
+        {
+            "code": "VOS",
+            "name": "East Kazakhstan"
         },
         {
             "code": "ZHA",
@@ -10977,20 +11095,60 @@
             "name": "Kyzylorda"
         },
         {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
             "code": "MAN",
             "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
         },
         {
             "code": "PAV",
             "name": "Pavlodar"
         },
         {
-            "code": "SHY",
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
         },
         {
             "code": "YUZ",
             "name": "South Kazakhstan"
+        },
+        {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -12397,10 +12555,6 @@
             "name": "L’Oriental"
         },
         {
-            "code": "LAA",
-            "name": "Laâyoune"
-        },
-        {
             "code": "15",
             "name": "Laâyoune-Boujdour-Sakia El Hamra"
         },
@@ -12609,6 +12763,10 @@
             "name": "Talaith Khouribga"
         },
         {
+            "code": "LAA",
+            "name": "Talaith Laâyoune"
+        },
+        {
             "code": "LAR",
             "name": "Talaith Larache"
         },
@@ -12723,6 +12881,10 @@
     ],
     "MC": [
         {
+            "code": "MO",
+            "name": "Dinas Monaco"
+        },
+        {
             "code": "FO",
             "name": "Fontvieille"
         },
@@ -12753,10 +12915,6 @@
         {
             "code": "MA",
             "name": "Malbousquet"
-        },
-        {
-            "code": "MO",
-            "name": "Monaco-Ville"
         },
         {
             "code": "MG",
@@ -13036,7 +13194,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "Bwrdeistref Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13597,6 +13759,10 @@
             "name": "rhanbarth Mopti"
         },
         {
+            "code": "6",
+            "name": "Rhanbarth Tombouctou"
+        },
+        {
             "code": "4",
             "name": "Ségou"
         },
@@ -13607,10 +13773,6 @@
         {
             "code": "10",
             "name": "Taoudénit"
-        },
-        {
-            "code": "6",
-            "name": "Tombouctou"
         }
     ],
     "MM": [
@@ -15340,7 +15502,7 @@
         },
         {
             "code": "BOP",
-            "name": "Bay of Plenty"
+            "name": "Bae Digonedd"
         },
         {
             "code": "CAN",
@@ -15933,6 +16095,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -19592,7 +19762,7 @@
         },
         {
             "code": "05",
-            "name": "Vavaʻu"
+            "name": "Vava’u"
         }
     ],
     "TR": [

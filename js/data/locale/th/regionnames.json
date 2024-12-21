@@ -923,6 +923,10 @@
             "name": "ชาฮ์บุช"
         },
         {
+            "code": "SR",
+            "name": "ชีร์วัน (ประเทศอาเซอร์ไบจาน)"
+        },
+        {
             "code": "SM",
             "name": "ซัมกายิต"
         },
@@ -1037,10 +1041,6 @@
         {
             "code": "SAR",
             "name": "Sharur"
-        },
-        {
-            "code": "SR",
-            "name": "Shirvan"
         },
         {
             "code": "YE",
@@ -1165,12 +1165,52 @@
             "name": "เขตรังปูร์"
         },
         {
+            "code": "B",
+            "name": "ภาคจิตตะกอง"
+        },
+        {
+            "code": "A",
+            "name": "ภาคบอรีชัล"
+        },
+        {
+            "code": "H",
+            "name": "ภาคมัยมันสิงห์"
+        },
+        {
+            "code": "F",
+            "name": "ภาครังปุระ"
+        },
+        {
+            "code": "E",
+            "name": "ภาคราชชาฮี"
+        },
+        {
+            "code": "G",
+            "name": "ภาคสิเลฏ"
+        },
+        {
             "code": "54",
             "name": "เมืองกรานาดา"
         },
         {
             "code": "C",
             "name": "เมืองธากา"
+        },
+        {
+            "code": "18",
+            "name": "อำเภอกาจีปุระ"
+        },
+        {
+            "code": "26",
+            "name": "อำเภอกิโศรคัญช์"
+        },
+        {
+            "code": "13",
+            "name": "อำเภอธากา"
+        },
+        {
+            "code": "33",
+            "name": "อำเภอมานิกคัญช์"
         },
         {
             "code": "05",
@@ -1183,10 +1223,6 @@
         {
             "code": "02",
             "name": "Barguna"
-        },
-        {
-            "code": "A",
-            "name": "Barisal"
         },
         {
             "code": "07",
@@ -1209,10 +1245,6 @@
             "name": "Chittagong"
         },
         {
-            "code": "B",
-            "name": "Chittagong Division"
-        },
-        {
             "code": "12",
             "name": "Chuadanga"
         },
@@ -1223,10 +1255,6 @@
         {
             "code": "11",
             "name": "Cox’s Bazar"
-        },
-        {
-            "code": "13",
-            "name": "Dhaka"
         },
         {
             "code": "14",
@@ -1243,10 +1271,6 @@
         {
             "code": "19",
             "name": "Gaibandha"
-        },
-        {
-            "code": "18",
-            "name": "Gazipur"
         },
         {
             "code": "17",
@@ -1285,10 +1309,6 @@
             "name": "Khulna"
         },
         {
-            "code": "26",
-            "name": "Kishoreganj"
-        },
-        {
             "code": "28",
             "name": "Kurigram"
         },
@@ -1313,10 +1333,6 @@
             "name": "Magura"
         },
         {
-            "code": "33",
-            "name": "Manikganj"
-        },
-        {
             "code": "38",
             "name": "Maulvi Bazar"
         },
@@ -1331,10 +1347,6 @@
         {
             "code": "34",
             "name": "Mymensingh"
-        },
-        {
-            "code": "H",
-            "name": "Mymensingh Division"
         },
         {
             "code": "48",
@@ -1393,16 +1405,8 @@
             "name": "Rajbari"
         },
         {
-            "code": "E",
-            "name": "Rajshahi Division"
-        },
-        {
             "code": "56",
             "name": "Rangamati Hill"
-        },
-        {
-            "code": "F",
-            "name": "Rangpur Division"
         },
         {
             "code": "58",
@@ -1423,10 +1427,6 @@
         {
             "code": "61",
             "name": "Sunamganj"
-        },
-        {
-            "code": "G",
-            "name": "Sylhet Division"
         },
         {
             "code": "63",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "เมืองเรริเซน"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -4732,86 +4772,58 @@
         },
         {
             "code": "44",
-            "name": "ไอดา วิรู"
+            "name": "Ida-Viru"
         },
         {
             "code": "45",
-            "name": "Ida-Virumaa"
-        },
-        {
-            "code": "49",
-            "name": "โจเกวา"
+            "name": "ไอดา วิรู"
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
-            "name": "มณฑลแยร์วา"
+            "name": "โจเกวา"
         },
         {
             "code": "52",
-            "name": "Järvamaa"
+            "name": "มณฑลแยร์วา"
         },
         {
             "code": "56",
-            "name": "Läänemaa"
-        },
-        {
-            "code": "57",
             "name": "เมืองลาเน"
         },
         {
+            "code": "57",
+            "name": "Lääne"
+        },
+        {
             "code": "59",
-            "name": "เขตลานวิรุน"
+            "name": "Lääne-Viru"
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "เขตลานวิรุน"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "โพลวา"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "เมืองแปร์นู"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "ลาพรา คันทรี่"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "ลาพรา คันทรี่"
         },
         {
             "code": "74",
             "name": "Saare"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "มณฑลตาร์ตู"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "วัลก้า คันทรี่"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "วิลจันดี"
         },
         {
-            "code": "86",
-            "name": "เทศมณฑลโวรู"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "เทศมณฑลโวรู"
         },
         {
             "code": "130",
@@ -5605,6 +5613,10 @@
         {
             "code": "SI",
             "name": "Sidama"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         }
     ],
     "FI": [
@@ -5821,6 +5833,10 @@
         {
             "code": "OCC",
             "name": "แคว้นอ็อกซีตานี"
+        },
+        {
+            "code": "6AE",
+            "name": "แคว้นอาลซัส"
         },
         {
             "code": "IDF",
@@ -6219,24 +6235,20 @@
             "name": "ปารีส"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
+            "code": "973",
+            "name": "เฟรนช์เกียนา"
+        },
+        {
+            "code": "972",
+            "name": "มาร์ตีนิก"
+        },
+        {
+            "code": "974",
+            "name": "เรอูว์นียง"
         },
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -7043,6 +7055,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7265,6 +7281,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WGN",
@@ -7719,6 +7739,10 @@
             "name": "เขาแอทอส"
         },
         {
+            "code": "H",
+            "name": "แคว้นกรีซกลาง"
+        },
+        {
             "code": "L",
             "name": "เซาร์ทอีเจียน"
         },
@@ -7781,10 +7805,6 @@
         {
             "code": "03",
             "name": "Boeotia"
-        },
-        {
-            "code": "H",
-            "name": "Central Greece"
         },
         {
             "code": "64",
@@ -8225,12 +8245,6 @@
         {
             "code": "MA",
             "name": "Mahaica-Berbice"
-        }
-    ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
         }
     ],
     "HN": [
@@ -8705,8 +8719,24 @@
             "name": "จังหวัดปาปัว"
         },
         {
+            "code": "PT",
+            "name": "จังหวัดปาปัวกลาง"
+        },
+        {
             "code": "PB",
             "name": "จังหวัดปาปัวตะวันตก"
+        },
+        {
+            "code": "PD",
+            "name": "จังหวัดปาปัวตะวันตกเฉียงใต้"
+        },
+        {
+            "code": "PS",
+            "name": "จังหวัดปาปัวใต้"
+        },
+        {
+            "code": "PE",
+            "name": "จังหวัดปาปัวที่สูง"
         },
         {
             "code": "MA",
@@ -8971,7 +9001,7 @@
             "name": "รัฐคุชราต"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "รัฐฉัตตีสครห์"
         },
         {
@@ -8985,6 +9015,10 @@
         {
             "code": "TR",
             "name": "รัฐตริปุระ"
+        },
+        {
+            "code": "TS",
+            "name": "รัฐเตลังคานา"
         },
         {
             "code": "TG",
@@ -9063,8 +9097,12 @@
             "name": "รัฐอุตตรประเทศ"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "รัฐอุตตราขัณฑ์"
+        },
+        {
+            "code": "OD",
+            "name": "รัฐโอฑิศา"
         },
         {
             "code": "OR",
@@ -9081,6 +9119,14 @@
         {
             "code": "AN",
             "name": "หมู่เกาะอันดามันและนิโคบาร์"
+        },
+        {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
         }
     ],
     "IQ": [
@@ -9317,12 +9363,20 @@
             "name": "นอร์ทเทสเทิร์น"
         },
         {
+            "code": "RKV",
+            "name": "เรคยาวิก"
+        },
+        {
             "code": "4",
             "name": "เวสท์ฟยอร์ด"
         },
         {
             "code": "3",
             "name": "เวอเตอร์แลนด์"
+        },
+        {
+            "code": "VEM",
+            "name": "แวสต์มานาเอย์ยาร์"
         },
         {
             "code": "7",
@@ -9445,6 +9499,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9517,10 +9575,6 @@
             "name": "Reykjavík"
         },
         {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
             "code": "SEL",
             "name": "Seltjarnarnesbær"
         },
@@ -9535,6 +9589,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -9607,10 +9665,6 @@
         {
             "code": "TJO",
             "name": "Tjörneshreppur"
-        },
-        {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
         },
         {
             "code": "VER",
@@ -10921,6 +10975,10 @@
         {
             "code": "14",
             "name": "นัมโพ"
+        },
+        {
+            "code": "15",
+            "name": "แคซ็อง"
         }
     ],
     "KR": [
@@ -11041,8 +11099,72 @@
             "name": "คาซัคสถานใต้"
         },
         {
-            "code": "ZHA",
+            "code": "27",
+            "name": "แคว้นคาซัคสถานตะวันตก"
+        },
+        {
+            "code": "63",
+            "name": "แคว้นคาซัคสถานตะวันออก"
+        },
+        {
+            "code": "59",
+            "name": "แคว้นคาซัคสถานเหนือ"
+        },
+        {
+            "code": "35",
+            "name": "แคว้นฆาราฆันเดอ"
+        },
+        {
+            "code": "43",
+            "name": "แคว้นเฆอเซอโลร์ดา"
+        },
+        {
+            "code": "39",
+            "name": "แคว้นโฆสตานัย"
+        },
+        {
+            "code": "31",
             "name": "แคว้นฌัมเบิล"
+        },
+        {
+            "code": "33",
+            "name": "แคว้นเฌียเตอซูว์"
+        },
+        {
+            "code": "61",
+            "name": "แคว้นเตอร์กิสถาน"
+        },
+        {
+            "code": "55",
+            "name": "แคว้นปัฟโลดาร์"
+        },
+        {
+            "code": "47",
+            "name": "แคว้นมังเฆิสเตา"
+        },
+        {
+            "code": "15",
+            "name": "แคว้นอักเตอเบีย"
+        },
+        {
+            "code": "11",
+            "name": "แคว้นอักโมลา"
+        },
+        {
+            "code": "19",
+            "name": "แคว้นอัลมาเตอ"
+        },
+        {
+            "code": "23",
+            "name": "แคว้นอาเตอเรา"
+        },
+        {
+            "code": "10",
+            "name": "แคว้นอาบัย"
+        },
+        {
+            "code": "62",
+            "name": "แคว้นโอเลอเตา"
         },
         {
             "code": "KZY",
@@ -11053,7 +11175,7 @@
             "name": "จังหวัดมูลา"
         },
         {
-            "code": "SHY",
+            "code": "79",
             "name": "เชิมเกียนต์"
         },
         {
@@ -11089,8 +11211,16 @@
             "name": "อัลมาตี²"
         },
         {
-            "code": "AST",
+            "code": "75",
+            "name": "อัลมาเตอ"
+        },
+        {
+            "code": "71",
             "name": "อัสตานา"
+        },
+        {
+            "code": "ZHA",
+            "name": "Jambyl"
         }
     ],
     "LA": [
@@ -12521,7 +12651,7 @@
             "name": "มากาเรท-เทนซิฟ-อัลหาว"
         },
         {
-            "code": "MMD",
+            "code": "MAR",
             "name": "มาร์ราคิช"
         },
         {
@@ -12701,8 +12831,8 @@
             "name": "Larache"
         },
         {
-            "code": "MAR",
-            "name": "Marrakech"
+            "code": "MMD",
+            "name": "Marrakech-Medina"
         },
         {
             "code": "MDF",
@@ -13137,6 +13267,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13147,12 +13281,12 @@
     ],
     "MG": [
         {
-            "code": "T",
-            "name": "Antananarivo"
+            "code": "D",
+            "name": "จังหวัดอันต์ซีรานานา"
         },
         {
-            "code": "D",
-            "name": "Antsiranana"
+            "code": "T",
+            "name": "Antananarivo"
         },
         {
             "code": "F",
@@ -15315,6 +15449,26 @@
             "name": "เมืองการ์ตาโก"
         },
         {
+            "code": "P6",
+            "name": "รัฐกรรณาลี"
+        },
+        {
+            "code": "P1",
+            "name": "รัฐโกศี"
+        },
+        {
+            "code": "P2",
+            "name": "รัฐมเธศ"
+        },
+        {
+            "code": "P5",
+            "name": "รัฐลุมพินี"
+        },
+        {
+            "code": "P7",
+            "name": "รัฐสุทูรปัศจิม"
+        },
+        {
             "code": "RA",
             "name": "แรฟติโซน"
         },
@@ -15325,10 +15479,6 @@
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P6",
-            "name": "Karnali²"
         },
         {
             "code": "KO",
@@ -15343,24 +15493,8 @@
             "name": "Madhya Pashchimanchal"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
-        },
-        {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
         },
         {
             "code": "4",
@@ -15981,6 +16115,14 @@
         {
             "code": "MAS",
             "name": "จังหวัดมัสบาเต"
+        },
+        {
+            "code": "MGS",
+            "name": "จังหวัดมากินดาเนาเดลซูร์"
+        },
+        {
+            "code": "MGN",
+            "name": "จังหวัดมากินดาเนาเดลนอร์เต"
         },
         {
             "code": "MAG",
@@ -17547,6 +17689,10 @@
             "name": "บลูนาย"
         },
         {
+            "code": "GK",
+            "name": "รัฐฆ็อรบ์กุรดุฟาน"
+        },
+        {
             "code": "NO",
             "name": "รัฐซูดานเหนือ"
         },
@@ -17573,10 +17719,6 @@
         {
             "code": "DE",
             "name": "เอิร์ท ดาฟูล"
-        },
-        {
-            "code": "GK",
-            "name": "West Kurdufan"
         }
     ],
     "SE": [
@@ -17736,7 +17878,7 @@
         },
         {
             "code": "010",
-            "name": "Tišina"
+            "name": "เทศบาลตีชินา"
         },
         {
             "code": "011",
@@ -17788,7 +17930,7 @@
         },
         {
             "code": "023",
-            "name": "Domžale"
+            "name": "เทศบาลด็อมฌาแล"
         },
         {
             "code": "024",
@@ -17812,7 +17954,7 @@
         },
         {
             "code": "029",
-            "name": "Gornja Radgona"
+            "name": "เทศบาลกอร์นิยาราดกอนา"
         },
         {
             "code": "030",
@@ -17840,7 +17982,7 @@
         },
         {
             "code": "036",
-            "name": "Idrija"
+            "name": "เทศบาลอีดริยา"
         },
         {
             "code": "037",
@@ -17848,7 +17990,7 @@
         },
         {
             "code": "038",
-            "name": "Ilirska Bistrica"
+            "name": "เทศบาลอิลีร์สกาบีสตริตซา"
         },
         {
             "code": "039",
@@ -17896,7 +18038,7 @@
         },
         {
             "code": "050",
-            "name": "Koper"
+            "name": "เทศบาลนครโคเปอร์"
         },
         {
             "code": "051",
@@ -17948,7 +18090,7 @@
         },
         {
             "code": "063",
-            "name": "Ljutomer"
+            "name": "เทศบาลลิยูตอแมร์"
         },
         {
             "code": "064",
@@ -17992,7 +18134,7 @@
         },
         {
             "code": "074",
-            "name": "Mežica"
+            "name": "เทศบาลแมฌีตซา"
         },
         {
             "code": "075",
@@ -18048,7 +18190,7 @@
         },
         {
             "code": "088",
-            "name": "Osilnica"
+            "name": "เทศบาลออซีวนิตซา"
         },
         {
             "code": "089",
@@ -18084,7 +18226,7 @@
         },
         {
             "code": "097",
-            "name": "Puconci"
+            "name": "เทศบาลปูตซ็อนต์ซี"
         },
         {
             "code": "098",
@@ -18096,7 +18238,7 @@
         },
         {
             "code": "100",
-            "name": "Radenci"
+            "name": "เทศบาลราแด็นต์ซี"
         },
         {
             "code": "101",
@@ -18140,7 +18282,7 @@
         },
         {
             "code": "111",
-            "name": "Sežana"
+            "name": "เทศบาลแซฌานา"
         },
         {
             "code": "112",
@@ -18212,7 +18354,7 @@
         },
         {
             "code": "129",
-            "name": "Trbovlje"
+            "name": "เทศบาลเตอร์บอว์ลิแย"
         },
         {
             "code": "130",
@@ -18224,11 +18366,11 @@
         },
         {
             "code": "132",
-            "name": "Turnišče"
+            "name": "เทศบาลตูร์นิชแช"
         },
         {
             "code": "133",
-            "name": "Velenje"
+            "name": "เทศบาลนครแวแลนิแย"
         },
         {
             "code": "134",
@@ -18236,7 +18378,7 @@
         },
         {
             "code": "135",
-            "name": "Videm"
+            "name": "เทศบาลวีเดิม"
         },
         {
             "code": "136",
@@ -18264,7 +18406,7 @@
         },
         {
             "code": "142",
-            "name": "Zagorje ob Savi"
+            "name": "เทศบาลซาโกริแยอ็อปซาวี"
         },
         {
             "code": "143",
@@ -18316,7 +18458,7 @@
         },
         {
             "code": "156",
-            "name": "Dobrovnik"
+            "name": "เทศบาลดอบรอว์นิก"
         },
         {
             "code": "157",
@@ -18360,7 +18502,7 @@
         },
         {
             "code": "167",
-            "name": "Lovrenc na Pohorju"
+            "name": "เทศบาลโลว์แร็นดซ์นาโปคอริยู"
         },
         {
             "code": "168",
@@ -18368,7 +18510,7 @@
         },
         {
             "code": "169",
-            "name": "Miklavž na Dravskem Polju"
+            "name": "เทศบาลมิคลาวฌ์นาดราวสแก็มโปลิยู"
         },
         {
             "code": "170",
@@ -18412,7 +18554,7 @@
         },
         {
             "code": "180",
-            "name": "Solčava"
+            "name": "เทศบาลซ็อลชาวา"
         },
         {
             "code": "181",
@@ -18472,75 +18614,75 @@
         },
         {
             "code": "195",
-            "name": "Apače"
+            "name": "เทศบาลอาปาแช"
         },
         {
             "code": "196",
-            "name": "Cirkulane"
+            "name": "เทศบาลซีร์กูลาแน"
         },
         {
             "code": "197",
-            "name": "Kostanjevica na Krki"
+            "name": "เทศบาลคอสตานิแยวิตซานาเคอร์กี"
         },
         {
             "code": "198",
-            "name": "Makole"
+            "name": "เทศบาลมากอแล"
         },
         {
             "code": "199",
-            "name": "Mokronog–Trebelno"
+            "name": "เทศบาลมอโครน็อก-แตรเบวนอ"
         },
         {
             "code": "200",
-            "name": "Poljčane"
+            "name": "เทศบาลป็อลชาแน"
         },
         {
             "code": "201",
-            "name": "Renče–Vogrsko"
+            "name": "เทศบาลเรนแช-โวเกิร์สกอ"
         },
         {
             "code": "202",
-            "name": "Središče ob Dravi"
+            "name": "เทศบาลสแรดีชแชอ็อบดราวี"
         },
         {
             "code": "203",
-            "name": "Straža"
+            "name": "เทศบาลสตราฌา"
         },
         {
             "code": "204",
-            "name": "Sveta Trojica v Slovenskih Goricah"
+            "name": "เทศบาลสเวตาตรอยีตซาอูสลอเวนสกิคกอรีตซัค"
         },
         {
             "code": "205",
-            "name": "Sveti Tomaž"
+            "name": "เทศบาลสเวตีตอมาช"
         },
         {
             "code": "206",
-            "name": "Šmarješke Toplice"
+            "name": "เทศบาลชมาริเยชแกตอปลีตแซ"
         },
         {
             "code": "207",
-            "name": "Gorje"
+            "name": "เทศบาลกอริแย"
         },
         {
             "code": "208",
-            "name": "Log–Dragomer"
+            "name": "เทศบาลโลก-ดรากอแมร์"
         },
         {
             "code": "209",
-            "name": "Rečica ob Savinji"
+            "name": "เทศบาลแรชีตซาอ็อปซาวีนิยี"
         },
         {
             "code": "210",
-            "name": "Sveti Jurij v Slovenskih Goricah"
+            "name": "เทศบาลสเวตียูรีย์อูสลอเวนสกิคกอรีตซัค"
         },
         {
             "code": "211",
-            "name": "Šentrupert"
+            "name": "เทศบาลแช็นตรูแปร์ต"
         },
         {
             "code": "212",
-            "name": "Mirna"
+            "name": "เทศบาลมีร์นา"
         },
         {
             "code": "213",

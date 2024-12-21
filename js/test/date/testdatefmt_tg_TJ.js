@@ -1,7 +1,7 @@
 /*
  * testdatefmt_tg_TJ.js - test the date formatter object in Tajik-Tajikistan
  *
- * Copyright © 2021, JEDLSoft
+ * Copyright © 2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,7 +152,7 @@ module.exports.testdatefmt_tg_TJ = {
     },
     testDateFmtSimpleTimeLong_tg_TJ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "tg-TJ", timelength: "long", type: "time"});
+        var fmt = new DateFmt({locale: "tg-TJ", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
@@ -201,7 +201,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/09/11 13:45');
+        test.equal(fmt.format(date), '29/09/11, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_tg_TJ: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Сен 2011 13:45');
+        test.equal(fmt.format(date), '29 Сен 2011, 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_tg_TJ: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Сентябр 2011 13:45');
+        test.equal(fmt.format(date), '29 Сентябр 2011 соати 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_tg_TJ: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 Сентябр 2011 13:45');
+        test.equal(fmt.format(date), '29 Сентябр 2011 соати 13:45');
         test.done();
     },
     testDateFmtTemplateCalendar_tg_TJ: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_tg_TJ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29/09/11 13:45');
+        test.equal(fmt.format(date), '29/09/11, 13:45');
         test.done();
     },
     testDateFmtShortDateComponentsY_tg_TJ: function(test) {

@@ -2,10 +2,10 @@
     "gregorian": {
         "time": {
             "12": {
-                "ahm": "h:mma h",
-                "ahms": "h:mm:ssa h",
-                "ahmsz": "h:mm:ssa h z",
-                "ahmz": "h:mma h z"
+                "ahm": "h:mma",
+                "ahms": "h:mm:ssa",
+                "ahmsz": "h:mm:ssa z",
+                "ahmz": "h:mma z"
             }
         }
     }

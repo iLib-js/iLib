@@ -230,9 +230,9 @@ module.exports.testscriptinfo = {
         test.equal(si.getCodeNumber(), 164);
         test.equal(si.getName(), "Garay");
         test.equal(si.getLongCode(), "Garay");
-        test.equal(si.getScriptDirection(), "ltr");
+        test.equal(si.getScriptDirection(), "rtl");
         test.ok(!si.getNeedsIME());
-        test.ok(!si.getCasing());
+        test.ok(si.getCasing());
         test.done();
     },
     testScriptGetDefaultLongCode_Tols: function(test) {

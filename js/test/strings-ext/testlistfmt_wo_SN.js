@@ -1,7 +1,7 @@
 /*
  * testlistfmt_wo_SN.js - test the list formatter object
  *
- * Copyright © 2021, JEDLSoft
+ * Copyright © 2021, 2024 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar"]), "benn, ñaar");
+        test.equal(fmt.format(["benn", "ñaar"]), "benn & ñaar");
         test.done();
     },
     testListFmtNumberFormatThree_wo_SN: function(test) {
@@ -57,7 +57,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett"]), "benn, ñaar, ñett");
+        test.equal(fmt.format(["benn", "ñaar", "ñett"]), "benn, ñaar, & ñett");
         test.done();
     },
     testListFmtNumberFormatFour_wo_SN: function(test) {
@@ -67,7 +67,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent"]), "benn, ñaar, ñett, ñeent");
+        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent"]), "benn, ñaar, ñett, & ñeent");
         test.done();
     },
     testListFmtNumberFormatFive_wo_SN: function(test) {
@@ -77,7 +77,7 @@ module.exports.testlistfmt_wo_SN = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, juróom");
+        test.equal(fmt.format(["benn", "ñaar", "ñett", "ñeent", "juróom"]), "benn, ñaar, ñett, ñeent, & juróom");
         test.done();
     },
     testListFmtUnitStyleNumberFormatOneShort_wo_SN: function(test) {

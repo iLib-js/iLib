@@ -32,9 +32,13 @@
                 "s": "dd/MM/yyyy"
             },
             "dw": {
+                "f": "EEEE d",
+                "l": "EEE d",
+                "m": "EE d",
                 "s": "E dd"
             },
             "m": {
+                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -45,7 +49,16 @@
                 "m": "MMM yyyy",
                 "s": "MM/yyyy"
             },
+            "w": {
+                "f": "EEEE",
+                "l": "EEE",
+                "m": "EE",
+                "s": "E"
+            },
             "y": {
+                "f": "yyyy",
+                "l": "yyyy",
+                "m": "yyyy",
                 "s": "yyyy"
             }
         },
@@ -95,12 +108,14 @@
             "c12": {
                 "f": "{sd} de {sm} de su {sy} – {ed} de {em} de su {ey}",
                 "l": "{sd} de {sm} de su {sy} – {ed} de {em} de su {ey}",
-                "m": "{sd} de {sm} {sy} – {ed} de {em} {ey}"
+                "m": "{sd} de {sm} {sy} – {ed} de {em} {ey}",
+                "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c20": {
                 "f": "{sm} de su {sy} – {em} de su {ey}",
                 "l": "{sm} de su {sy} – {em} de su {ey}",
-                "m": "{sm} {sy} – {em} {ey}"
+                "m": "{sm} {sy} – {em} {ey}",
+                "s": "{sm}/{sy} – {em}/{ey}"
             },
             "c30": {
                 "f": "{sy} – {ey}",
@@ -111,11 +126,19 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
+                "ah": "h a",
+                "ahm": "h:mma",
+                "ahms": "h:mm:ssa",
+                "ahmsz": "h:mm:ssa z",
+                "ahmz": "h:mma z",
+                "h": "h",
+                "hm": "h:mm",
+                "hms": "h:mm:ss",
+                "hmsz": "h:mm:ss z",
+                "hmz": "h:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             },
             "24": {
                 "ah": "HH",
@@ -127,7 +150,10 @@
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
                 "hmsz": "HH:mm:ss z",
-                "hmz": "HH:mm z"
+                "hmz": "HH:mm z",
+                "m": "mm",
+                "ms": "mm:ss",
+                "s": "ss"
             }
         }
     }

@@ -31,16 +31,16 @@
     ],
     "AE": [
         {
+            "code": "DU",
+            "name": "ទីក្រុងឌូបៃ"
+        },
+        {
             "code": "AZ",
             "name": "Abu Dhabi"
         },
         {
             "code": "AJ",
             "name": "Ajman"
-        },
-        {
-            "code": "DU",
-            "name": "Dubai"
         },
         {
             "code": "FU",
@@ -2561,6 +2561,10 @@
     ],
     "CD": [
         {
+            "code": "KN",
+            "name": "គីនសាសា"
+        },
+        {
             "code": "BN",
             "name": "Bandundu"
         },
@@ -2611,10 +2615,6 @@
         {
             "code": "KA",
             "name": "Katanga"
-        },
-        {
-            "code": "KN",
-            "name": "Kinshasa"
         },
         {
             "code": "KG",
@@ -3151,8 +3151,32 @@
     ],
     "CN": [
         {
+            "code": "GD",
+            "name": "ក្វាងតុង"
+        },
+        {
+            "code": "GX",
+            "name": "ក្វាងស៊ី"
+        },
+        {
             "code": "YN",
             "name": "ខេត្តយូណាន"
+        },
+        {
+            "code": "SX",
+            "name": "ខេត្តសានស៊ី"
+        },
+        {
+            "code": "HE",
+            "name": "ខេត្តហឺបុី"
+        },
+        {
+            "code": "HL",
+            "name": "ខេត្តហេយឡុងជៀង"
+        },
+        {
+            "code": "GZ",
+            "name": "គុយចូវ"
         },
         {
             "code": "BJ",
@@ -3171,6 +3195,14 @@
             "name": "ហុងកុង"
         },
         {
+            "code": "HI",
+            "name": "ហៃណាន"
+        },
+        {
+            "code": "FJ",
+            "name": "ហ្វូជៀន"
+        },
+        {
             "code": "AH",
             "name": "Anhui"
         },
@@ -3179,36 +3211,8 @@
             "name": "Chongqing"
         },
         {
-            "code": "FJ",
-            "name": "Fujian"
-        },
-        {
             "code": "GS",
             "name": "Gansu"
-        },
-        {
-            "code": "GD",
-            "name": "Guangdong"
-        },
-        {
-            "code": "GX",
-            "name": "Guangxi"
-        },
-        {
-            "code": "GZ",
-            "name": "Guizhou"
-        },
-        {
-            "code": "HI",
-            "name": "Hainan"
-        },
-        {
-            "code": "HE",
-            "name": "Hebei"
-        },
-        {
-            "code": "HL",
-            "name": "Heilongjiang"
         },
         {
             "code": "HA",
@@ -3257,10 +3261,6 @@
         {
             "code": "SD",
             "name": "Shandong"
-        },
-        {
-            "code": "SX",
-            "name": "Shanxi"
         },
         {
             "code": "SC",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "Relizane"
+        },
+        {
+            "code": "49",
+            "name": "Timimoun"
+        },
+        {
+            "code": "50",
+            "name": "Bordj Badji Mokhtar"
+        },
+        {
+            "code": "51",
+            "name": "Ouled Djellal"
+        },
+        {
+            "code": "52",
+            "name": "Béni Abbès"
+        },
+        {
+            "code": "53",
+            "name": "In Salah"
+        },
+        {
+            "code": "54",
+            "name": "In Guezzam"
+        },
+        {
+            "code": "55",
+            "name": "Touggourt"
+        },
+        {
+            "code": "56",
+            "name": "Djanet"
+        },
+        {
+            "code": "57",
+            "name": "El Meghaier"
+        },
+        {
+            "code": "58",
+            "name": "El Meniaa"
         }
     ],
     "EC": [
@@ -5569,6 +5609,10 @@
         {
             "code": "SN",
             "name": "Southern Nations, Nationalities, and Peoples"
+        },
+        {
+            "code": "SW",
+            "name": "Southwest Ethiopia Peoples"
         },
         {
             "code": "TI",
@@ -6911,6 +6955,10 @@
             "name": "North Lincolnshire"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "NSM",
             "name": "North Somerset"
         },
@@ -7209,6 +7257,10 @@
         {
             "code": "WLN",
             "name": "West Lothian"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "WSX",
@@ -8127,12 +8179,6 @@
             "name": "Upper Takutu-Upper Essequibo"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8533,12 +8579,24 @@
             "name": "កោះស៊ូម៉ាត្រា"
         },
         {
+            "code": "SU",
+            "name": "ខេត្តស៊ូម៉ាត្រាខាងជើង"
+        },
+        {
+            "code": "SB",
+            "name": "ខេត្តស៊ូម៉ាត្រាខាងលិច"
+        },
+        {
+            "code": "AC",
+            "name": "ខេត្តអាឆេ"
+        },
+        {
             "code": "JK",
             "name": "ចាការតា"
         },
         {
-            "code": "AC",
-            "name": "Aceh"
+            "code": "SL",
+            "name": "ស៊ូឡាវីស៊ី"
         },
         {
             "code": "BB",
@@ -8613,16 +8671,28 @@
             "name": "North Sulawesi"
         },
         {
-            "code": "SU",
-            "name": "North Sumatra"
-        },
-        {
             "code": "PA",
             "name": "Papua"
         },
         {
+            "code": "PD",
+            "name": "Papua Barat Daya"
+        },
+        {
             "code": "PP",
             "name": "Papua Islands"
+        },
+        {
+            "code": "PE",
+            "name": "Papua Pengunungan"
+        },
+        {
+            "code": "PS",
+            "name": "Papua Selatan"
+        },
+        {
+            "code": "PT",
+            "name": "Papua Tengah"
         },
         {
             "code": "RI",
@@ -8649,10 +8719,6 @@
             "name": "Southeast Sulawesi"
         },
         {
-            "code": "SL",
-            "name": "Sulawesi"
-        },
-        {
             "code": "JB",
             "name": "West Java"
         },
@@ -8671,10 +8737,6 @@
         {
             "code": "SR",
             "name": "West Sulawesi"
-        },
-        {
-            "code": "SB",
-            "name": "West Sumatra"
         },
         {
             "code": "YO",
@@ -8859,6 +8921,10 @@
             "name": "Chandigarh"
         },
         {
+            "code": "CG",
+            "name": "Chhattīsgarh"
+        },
+        {
             "code": "CT",
             "name": "Chhattisgarh"
         },
@@ -8939,7 +9005,7 @@
             "name": "Nagaland"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "Odisha"
         },
         {
@@ -8967,12 +9033,20 @@
             "name": "Telangana"
         },
         {
+            "code": "TS",
+            "name": "Telangāna"
+        },
+        {
             "code": "TR",
             "name": "Tripura"
         },
         {
             "code": "UP",
             "name": "Uttar Pradesh"
+        },
+        {
+            "code": "UK",
+            "name": "Uttarākhand"
         },
         {
             "code": "UT",
@@ -9321,6 +9395,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9419,6 +9497,10 @@
         {
             "code": "SKG",
             "name": "Skagabyggð"
+        },
+        {
+            "code": "SKR",
+            "name": "Skagafjörður"
         },
         {
             "code": "SOG",
@@ -10780,15 +10862,15 @@
         },
         {
             "code": "02",
-            "name": "South Pyongan"
+            "name": "ខេត្តព្យុងអានខាងត្បូង"
         },
         {
             "code": "03",
-            "name": "North Pyongan"
+            "name": "ខេត្តព្យុងអានខាងជើង"
         },
         {
             "code": "04",
-            "name": "Chagang"
+            "name": "ខេត្តឆាកាំង"
         },
         {
             "code": "05",
@@ -10816,11 +10898,15 @@
         },
         {
             "code": "13",
-            "name": "Rason"
+            "name": "រ៉ាសុន"
         },
         {
             "code": "14",
             "name": "Nampho"
+        },
+        {
+            "code": "15",
+            "name": "គែសង់"
         }
     ],
     "KR": [
@@ -10854,43 +10940,43 @@
         },
         {
             "code": "41",
-            "name": "Gyeonggi"
+            "name": "ខេត្តក្យុងគី"
         },
         {
             "code": "42",
-            "name": "Gangwon"
+            "name": "ខេត្ដកាំងវ៉ុន(ប្រទេសកូរ៉េខាងត្បូង)"
         },
         {
             "code": "43",
-            "name": "North Chungcheong"
+            "name": "ខេត្តឈុងឆងខាងជើង"
         },
         {
             "code": "44",
-            "name": "South Chungcheong"
+            "name": "ខេត្តឈុងឆងខាងត្បូង"
         },
         {
             "code": "45",
-            "name": "North Jeolla"
+            "name": "ខេត្តចុលឡាខាងជើង"
         },
         {
             "code": "46",
-            "name": "South Jeolla"
+            "name": "ខេត្តចុលឡាខាងត្បូង"
         },
         {
             "code": "47",
-            "name": "North Gyeongsang"
+            "name": "ខេត្តក្យងសាំងខាងជើង"
         },
         {
             "code": "48",
-            "name": "South Gyeongsang"
+            "name": "ខេត្តក្យុងសាំងខាងត្បូង"
         },
         {
             "code": "49",
-            "name": "Jeju"
+            "name": "ខេត្តជេជូ"
         },
         {
             "code": "50",
-            "name": "Sejong"
+            "name": "ទីក្រុងសេចុង"
         }
     ],
     "KW": [
@@ -10921,8 +11007,12 @@
     ],
     "KZ": [
         {
-            "code": "AST",
+            "code": "71",
             "name": "នុរស៊ុលតង់"
+        },
+        {
+            "code": "10",
+            "name": "Abay oblysy"
         },
         {
             "code": "AKM",
@@ -10933,16 +11023,36 @@
             "name": "Aktobe"
         },
         {
-            "code": "ALA",
+            "code": "75",
             "name": "Almaty"
+        },
+        {
+            "code": "19",
+            "name": "Almaty oblysy"
         },
         {
             "code": "ALM",
             "name": "Almaty Region"
         },
         {
+            "code": "11",
+            "name": "Aqmola oblysy"
+        },
+        {
+            "code": "15",
+            "name": "Aqtöbe oblysy"
+        },
+        {
             "code": "ATY",
             "name": "Atyrau"
+        },
+        {
+            "code": "23",
+            "name": "Atyraū oblysy"
+        },
+        {
+            "code": "27",
+            "name": "Batys Qazaqstan oblysy"
         },
         {
             "code": "BAY",
@@ -10969,6 +11079,10 @@
             "name": "Kyzylorda"
         },
         {
+            "code": "47",
+            "name": "Mangghystaū oblysy"
+        },
+        {
             "code": "MAN",
             "name": "Mangystau"
         },
@@ -10981,16 +11095,56 @@
             "name": "Pavlodar"
         },
         {
-            "code": "SHY",
+            "code": "55",
+            "name": "Pavlodar oblysy"
+        },
+        {
+            "code": "35",
+            "name": "Qaraghandy oblysy"
+        },
+        {
+            "code": "39",
+            "name": "Qostanay oblysy"
+        },
+        {
+            "code": "43",
+            "name": "Qyzylorda oblysy"
+        },
+        {
+            "code": "63",
+            "name": "Shyghys Qazaqstan oblysy"
+        },
+        {
+            "code": "79",
             "name": "Shymkent"
+        },
+        {
+            "code": "59",
+            "name": "Soltüstik Qazaqstan oblysy"
         },
         {
             "code": "YUZ",
             "name": "South Kazakhstan"
         },
         {
+            "code": "61",
+            "name": "Türkistan oblysy"
+        },
+        {
+            "code": "62",
+            "name": "Ulytaū oblysy"
+        },
+        {
             "code": "ZAP",
             "name": "West Kazakhstan"
+        },
+        {
+            "code": "31",
+            "name": "Zhambyl oblysy"
+        },
+        {
+            "code": "33",
+            "name": "Zhetisū oblysy"
         }
     ],
     "LA": [
@@ -13037,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13652,7 +13810,7 @@
         },
         {
             "code": "13",
-            "name": "Kayin"
+            "name": "រដ្ឋកាយីន"
         },
         {
             "code": "14",
@@ -14614,7 +14772,7 @@
         },
         {
             "code": "13",
-            "name": "Sarawak"
+            "name": "សារ៉ាវ៉ាក់"
         },
         {
             "code": "14",
@@ -15621,6 +15779,10 @@
     ],
     "PG": [
         {
+            "code": "NCD",
+            "name": "ព័រម៉ូរែសប៊ី"
+        },
+        {
             "code": "NSB",
             "name": "Bougainville"
         },
@@ -15683,10 +15845,6 @@
         {
             "code": "NPP",
             "name": "Oro"
-        },
-        {
-            "code": "NCD",
-            "name": "Port Moresby"
         },
         {
             "code": "SAN",
@@ -15933,6 +16091,14 @@
         {
             "code": "MAG",
             "name": "Maguindanao"
+        },
+        {
+            "code": "MGN",
+            "name": "Maguindanao del Norte"
+        },
+        {
+            "code": "MGS",
+            "name": "Maguindanao del Sur"
         },
         {
             "code": "MAD",
@@ -16845,6 +17011,10 @@
     ],
     "RU": [
         {
+            "code": "MOW",
+            "name": "ម៉ូស្គូ"
+        },
+        {
             "code": "AD",
             "name": "Adygea"
         },
@@ -17011,10 +17181,6 @@
         {
             "code": "MO",
             "name": "Mordovia"
-        },
-        {
-            "code": "MOW",
-            "name": "Moscow"
         },
         {
             "code": "MOS",
@@ -19361,12 +19527,12 @@
             "name": "បាងកក"
         },
         {
-            "code": "65",
-            "name": "ពិ្តសានុឱល្ក"
+            "code": "S",
+            "name": "ផាត់ថាយ៉ា"
         },
         {
-            "code": "S",
-            "name": "Pattaya"
+            "code": "65",
+            "name": "ពិ្តសានុឱល្ក"
         },
         {
             "code": "82",
@@ -20019,6 +20185,18 @@
     ],
     "TW": [
         {
+            "code": "KHH",
+            "name": "កៅស្យុង"
+        },
+        {
+            "code": "TPE",
+            "name": "តៃប៉ិ"
+        },
+        {
+            "code": "NWT",
+            "name": "ទីក្រុងតៃប៉ិថ្មី"
+        },
+        {
             "code": "CHA",
             "name": "Changhua"
         },
@@ -20043,10 +20221,6 @@
             "name": "Hualien"
         },
         {
-            "code": "KHH",
-            "name": "Kaohsiung"
-        },
-        {
             "code": "KEE",
             "name": "Keelung"
         },
@@ -20067,10 +20241,6 @@
             "name": "Nantou"
         },
         {
-            "code": "NWT",
-            "name": "New Taipei"
-        },
-        {
             "code": "PEN",
             "name": "Penghu"
         },
@@ -20085,10 +20255,6 @@
         {
             "code": "TNN",
             "name": "Tainan"
-        },
-        {
-            "code": "TPE",
-            "name": "Taipei"
         },
         {
             "code": "TTT",
@@ -21433,6 +21599,10 @@
             "name": "ក្រុងព្រៃនគរ"
         },
         {
+            "code": "28",
+            "name": "ខេត្តកនទុម"
+        },
+        {
             "code": "04",
             "name": "ខេត្តកាវបាង"
         },
@@ -21449,36 +21619,120 @@
             "name": "ខេត្តក្រមួនស"
         },
         {
+            "code": "29",
+            "name": "ខេត្តក្វាងង៉ាយ"
+        },
+        {
+            "code": "25",
+            "name": "ខេត្តក្វាងជិ"
+        },
+        {
+            "code": "27",
+            "name": "ខេត្តក្វាងណាម"
+        },
+        {
             "code": "13",
             "name": "ខេត្តក្វាងនិញ"
+        },
+        {
+            "code": "24",
+            "name": "ខេត្តក្វាងប៊ិញ"
         },
         {
             "code": "52",
             "name": "ខេត្តឃ្លាំង"
         },
         {
+            "code": "22",
+            "name": "ខេត្តងេះអាន"
+        },
+        {
+            "code": "33",
+            "name": "ខេត្តដាក់ឡាក់"
+        },
+        {
+            "code": "39",
+            "name": "ខេត្តដុងណាយ"
+        },
+        {
+            "code": "71",
+            "name": "ខេត្តឌៀនបៀន"
+        },
+        {
+            "code": "67",
+            "name": "ខេត្តណាមឌិញ"
+        },
+        {
+            "code": "21",
+            "name": "ខេត្តថាញហ្វា"
+        },
+        {
             "code": "69",
             "name": "ខេត្តថាយង្វៀន"
+        },
+        {
+            "code": "20",
+            "name": "ខេត្តថាយប៊ិញ"
         },
         {
             "code": "59",
             "name": "ខេត្តទឹកខ្មៅ"
         },
         {
+            "code": "46",
+            "name": "ខេត្តទៀនយ៉ាង"
+        },
+        {
             "code": "07",
             "name": "ខេត្តទ្វៀនក្វាង"
+        },
+        {
+            "code": "26",
+            "name": "ខេត្តធឿធៀនហ្វេ"
+        },
+        {
+            "code": "36",
+            "name": "ខេត្តនិញថ្វឹន"
+        },
+        {
+            "code": "18",
+            "name": "ខេត្តនិញប៊ិញ"
         },
         {
             "code": "53",
             "name": "ខេត្តបាកកាន"
         },
         {
+            "code": "56",
+            "name": "ខេត្តបាកនិញ"
+        },
+        {
             "code": "54",
             "name": "ខេត្តបាកយ៉ាង"
         },
         {
+            "code": "31",
+            "name": "ខេត្តប៊ិញឌិញ"
+        },
+        {
+            "code": "40",
+            "name": "ខេត្តប៊ិញថ្វឹន"
+        },
+        {
+            "code": "57",
+            "name": "ខេត្តប៊ិញសឿង"
+        },
+        {
+            "code": "58",
+            "name": "ខេត្តប៊ិញហ្វឿក"
+        },
+        {
             "code": "45",
             "name": "ខេត្តផ្សារដែក"
+        },
+        {
+            "code": "73",
+            "name": "ខេត្តផ្សំអំបើស"
         },
         {
             "code": "55",
@@ -21501,16 +21755,56 @@
             "name": "ខេត្តលង់ហោរ"
         },
         {
+            "code": "70",
+            "name": "ខេត្តវិញហ្វុក"
+        },
+        {
+            "code": "05",
+            "name": "ខេត្តសឹនឡា"
+        },
+        {
+            "code": "63",
+            "name": "ខេត្តហាណាម"
+        },
+        {
+            "code": "23",
+            "name": "ខេត្តហាទិញ"
+        },
+        {
+            "code": "61",
+            "name": "ខេត្តហាយសឿង"
+        },
+        {
             "code": "03",
             "name": "ខេត្តហាយ៉ាង"
+        },
+        {
+            "code": "66",
+            "name": "ខេត្តហ៊ឹងអៀន"
+        },
+        {
+            "code": "14",
+            "name": "ខេត្តហ្វាបិញ"
         },
         {
             "code": "68",
             "name": "ខេត្តហ៊្វូថោះ"
         },
         {
+            "code": "32",
+            "name": "ខេត្តហ្វូអៀន"
+        },
+        {
+            "code": "01",
+            "name": "ខេត្តឡាយចឺវ"
+        },
+        {
             "code": "02",
             "name": "ខេត្តឡាវកាយ"
+        },
+        {
+            "code": "35",
+            "name": "ខេត្តឡឹមដុង"
         },
         {
             "code": "09",
@@ -21519,6 +21813,10 @@
         {
             "code": "43",
             "name": "ខេត្តអូរកាប់"
+        },
+        {
+            "code": "06",
+            "name": "ខេត្តអៀនបាយ"
         },
         {
             "code": "30",
@@ -21541,140 +21839,8 @@
             "name": "ហៃហ្វុង"
         },
         {
-            "code": "56",
-            "name": "Bắc Ninh"
-        },
-        {
-            "code": "31",
-            "name": "Bình Định"
-        },
-        {
-            "code": "57",
-            "name": "Bình Dương"
-        },
-        {
-            "code": "58",
-            "name": "Bình Phước"
-        },
-        {
-            "code": "40",
-            "name": "Bình Thuận"
-        },
-        {
-            "code": "33",
-            "name": "Đắk Lắk"
-        },
-        {
             "code": "72",
             "name": "Đắk Nông"
-        },
-        {
-            "code": "71",
-            "name": "Điện Biên"
-        },
-        {
-            "code": "39",
-            "name": "Đồng Nai"
-        },
-        {
-            "code": "63",
-            "name": "Hà Nam"
-        },
-        {
-            "code": "23",
-            "name": "Hà Tĩnh"
-        },
-        {
-            "code": "61",
-            "name": "Hải Dương"
-        },
-        {
-            "code": "73",
-            "name": "Hậu Giang"
-        },
-        {
-            "code": "14",
-            "name": "Hòa Bình"
-        },
-        {
-            "code": "66",
-            "name": "Hưng Yên"
-        },
-        {
-            "code": "28",
-            "name": "Kon Tum"
-        },
-        {
-            "code": "01",
-            "name": "Lai Châu"
-        },
-        {
-            "code": "35",
-            "name": "Lâm Đồng"
-        },
-        {
-            "code": "67",
-            "name": "Nam Định"
-        },
-        {
-            "code": "22",
-            "name": "Nghệ An"
-        },
-        {
-            "code": "18",
-            "name": "Ninh Bình"
-        },
-        {
-            "code": "36",
-            "name": "Ninh Thuận"
-        },
-        {
-            "code": "32",
-            "name": "Phú Yên"
-        },
-        {
-            "code": "24",
-            "name": "Quảng Bình"
-        },
-        {
-            "code": "27",
-            "name": "Quảng Nam"
-        },
-        {
-            "code": "29",
-            "name": "Quảng Ngãi"
-        },
-        {
-            "code": "25",
-            "name": "Quảng Trị"
-        },
-        {
-            "code": "05",
-            "name": "Sơn La"
-        },
-        {
-            "code": "20",
-            "name": "Thái Bình"
-        },
-        {
-            "code": "21",
-            "name": "Thanh Hóa"
-        },
-        {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
-            "code": "46",
-            "name": "Tiền Giang"
-        },
-        {
-            "code": "70",
-            "name": "Vĩnh Phúc"
-        },
-        {
-            "code": "06",
-            "name": "Yên Bái"
         }
     ],
     "VU": [

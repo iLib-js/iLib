@@ -735,10 +735,6 @@
     ],
     "AZ": [
         {
-            "code": "NA",
-            "name": "Naftalan"
-        },
-        {
             "code": "AGC",
             "name": "アグジャバディ県"
         },
@@ -965,6 +961,10 @@
         {
             "code": "NX",
             "name": "ナヒチェヴァン自治共和国"
+        },
+        {
+            "code": "NA",
+            "name": "ナフタラン"
         },
         {
             "code": "NEF",
@@ -2565,10 +2565,6 @@
             "name": "Bandundu"
         },
         {
-            "code": "IT",
-            "name": "Ituri"
-        },
-        {
             "code": "KW",
             "name": "Kasaï-Occidental"
         },
@@ -2583,6 +2579,10 @@
         {
             "code": "OR",
             "name": "Orientale"
+        },
+        {
+            "code": "IT",
+            "name": "イトゥリ州"
         },
         {
             "code": "KS",
@@ -3679,10 +3679,6 @@
             "name": "Cheb"
         },
         {
-            "code": "422",
-            "name": "Chomutov"
-        },
-        {
             "code": "531",
             "name": "Chrudim"
         },
@@ -4073,6 +4069,10 @@
         {
             "code": "202",
             "name": "ベロウン郡"
+        },
+        {
+            "code": "422",
+            "name": "ホムトフ地区"
         },
         {
             "code": "206",
@@ -4621,6 +4621,46 @@
         {
             "code": "48",
             "name": "ルリザンヌ県"
+        },
+        {
+            "code": "49",
+            "name": "ティミムン県"
+        },
+        {
+            "code": "50",
+            "name": "ボルジュ・バジ・モウタール県"
+        },
+        {
+            "code": "51",
+            "name": "ウレド・ジェラル県"
+        },
+        {
+            "code": "52",
+            "name": "ベニ・アッベス県"
+        },
+        {
+            "code": "53",
+            "name": "イン・サラー県"
+        },
+        {
+            "code": "54",
+            "name": "イン・ゲザム県"
+        },
+        {
+            "code": "55",
+            "name": "トゥーグラ県"
+        },
+        {
+            "code": "56",
+            "name": "ジャーネット県"
+        },
+        {
+            "code": "57",
+            "name": "エル・ムエラ県"
+        },
+        {
+            "code": "58",
+            "name": "エル・メニア県"
         }
     ],
     "EC": [
@@ -4739,28 +4779,20 @@
             "name": "Ida-Virumaa"
         },
         {
-            "code": "49",
+            "code": "50",
             "name": "ヨゲヴァ県"
         },
         {
-            "code": "50",
-            "name": "Jõgevamaa"
-        },
-        {
-            "code": "51",
+            "code": "52",
             "name": "イェルヴァ県"
         },
         {
-            "code": "52",
-            "name": "Järvamaa"
-        },
-        {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "レーネ県"
         },
         {
             "code": "57",
-            "name": "レーネ県"
+            "name": "Lääne"
         },
         {
             "code": "59",
@@ -4772,46 +4804,26 @@
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
-        },
-        {
-            "code": "65",
             "name": "ポルヴァ県"
         },
         {
-            "code": "67",
+            "code": "68",
             "name": "ペルヌ県"
         },
         {
-            "code": "68",
-            "name": "Pärnumaa"
-        },
-        {
-            "code": "70",
-            "name": "ラプラ県"
-        },
-        {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "ラプラ県"
         },
         {
             "code": "74",
             "name": "サーレ県"
         },
         {
-            "code": "78",
+            "code": "79",
             "name": "タルトゥ県"
         },
         {
-            "code": "79",
-            "name": "Tartumaa"
-        },
-        {
             "code": "81",
-            "name": "Valgamaa"
-        },
-        {
-            "code": "82",
             "name": "ヴァルガ県"
         },
         {
@@ -4819,12 +4831,8 @@
             "name": "ヴィリャンディ県"
         },
         {
-            "code": "86",
-            "name": "ヴォル県"
-        },
-        {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "ヴォル県"
         },
         {
             "code": "130",
@@ -4948,7 +4956,7 @@
         },
         {
             "code": "442",
-            "name": "Lüganuse"
+            "name": "ルガヌーセ教区"
         },
         {
             "code": "446",
@@ -4984,7 +4992,7 @@
         },
         {
             "code": "557",
-            "name": "Otepää"
+            "name": "オテパー"
         },
         {
             "code": "567",
@@ -5068,7 +5076,7 @@
         },
         {
             "code": "735",
-            "name": "Sillamäe"
+            "name": "シッラマエ"
         },
         {
             "code": "784",
@@ -5100,7 +5108,7 @@
         },
         {
             "code": "834",
-            "name": "Türi"
+            "name": "チュリ"
         },
         {
             "code": "855",
@@ -5559,10 +5567,6 @@
     ],
     "ET": [
         {
-            "code": "SI",
-            "name": "Sidama"
-        },
-        {
             "code": "AA",
             "name": "アディスアベバ"
         },
@@ -5583,6 +5587,10 @@
             "name": "ガンベラ州"
         },
         {
+            "code": "SI",
+            "name": "シダマ県"
+        },
+        {
             "code": "SO",
             "name": "ソマリ州"
         },
@@ -5601,6 +5609,10 @@
         {
             "code": "BE",
             "name": "ベニシャングル・グムズ州"
+        },
+        {
+            "code": "SW",
+            "name": "南西エチオピア諸民族州"
         },
         {
             "code": "SN",
@@ -5787,10 +5799,6 @@
             "name": "Alpes-Maritimes"
         },
         {
-            "code": "6AE",
-            "name": "Alsace"
-        },
-        {
             "code": "ARA",
             "name": "Auvergne-Rhône-Alpes"
         },
@@ -5833,10 +5841,6 @@
         {
             "code": "28",
             "name": "Eure-et-Loir"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
         },
         {
             "code": "68",
@@ -5899,10 +5903,6 @@
             "name": "Indre-et-Loire"
         },
         {
-            "code": "974",
-            "name": "La Réunion"
-        },
-        {
             "code": "41",
             "name": "Loir-et-Cher"
         },
@@ -5917,10 +5917,6 @@
         {
             "code": "49",
             "name": "Maine-et-Loire"
-        },
-        {
-            "code": "972",
-            "name": "Martinique"
         },
         {
             "code": "976",
@@ -5997,6 +5993,10 @@
         {
             "code": "03",
             "name": "アリエ県"
+        },
+        {
+            "code": "6AE",
+            "name": "アルザス地域圏"
         },
         {
             "code": "07",
@@ -6187,6 +6187,10 @@
             "name": "フィニステール県"
         },
         {
+            "code": "973",
+            "name": "フランス領ギアナ"
+        },
+        {
             "code": "BRE",
             "name": "ブルターニュ地域圏"
         },
@@ -6197,6 +6201,10 @@
         {
             "code": "53",
             "name": "マイエンヌ県"
+        },
+        {
+            "code": "972",
+            "name": "マルティニーク"
         },
         {
             "code": "51",
@@ -6225,6 +6233,10 @@
         {
             "code": "40",
             "name": "ランド県"
+        },
+        {
+            "code": "974",
+            "name": "レユニオン"
         },
         {
             "code": "69",
@@ -6379,12 +6391,20 @@
             "name": "North Down"
         },
         {
+            "code": "NNH",
+            "name": "North Northamptonshire"
+        },
+        {
             "code": "OMH",
             "name": "Omagh"
         },
         {
             "code": "STB",
             "name": "Strabane"
+        },
+        {
+            "code": "WNH",
+            "name": "West Northamptonshire"
         },
         {
             "code": "AGB",
@@ -8159,12 +8179,6 @@
             "name": "バリマ・ワイニ州"
         }
     ],
-    "HK": [
-        {
-            "code": "",
-            "name": "Hong Kong SAR China"
-        }
-    ],
     "HN": [
         {
             "code": "AT",
@@ -8629,6 +8643,10 @@
             "name": "リアウ諸島州"
         },
         {
+            "code": "PE",
+            "name": "山岳パプア州"
+        },
+        {
             "code": "NU",
             "name": "小スンダ列島"
         },
@@ -8669,6 +8687,10 @@
             "name": "中部スラウェシ州"
         },
         {
+            "code": "PT",
+            "name": "中部パプア州"
+        },
+        {
             "code": "KI",
             "name": "東カリマンタン州"
         },
@@ -8691,6 +8713,14 @@
         {
             "code": "SN",
             "name": "南スラウェシ州"
+        },
+        {
+            "code": "PS",
+            "name": "南パプア州"
+        },
+        {
+            "code": "PD",
+            "name": "南西パプア州"
         },
         {
             "code": "SG",
@@ -8863,6 +8893,14 @@
     ],
     "IN": [
         {
+            "code": "CT",
+            "name": "Chhattisgarh"
+        },
+        {
+            "code": "UT",
+            "name": "Uttarakhand"
+        },
+        {
             "code": "AP",
             "name": "アーンドラ・プラデーシュ州"
         },
@@ -8879,7 +8917,7 @@
             "name": "アンダマン・ニコバル諸島"
         },
         {
-            "code": "UT",
+            "code": "UK",
             "name": "ウッタラーカンド州"
         },
         {
@@ -8887,7 +8925,7 @@
             "name": "ウッタル・プラデーシュ州"
         },
         {
-            "code": "OR",
+            "code": "OD",
             "name": "オリッサ州"
         },
         {
@@ -8935,12 +8973,16 @@
             "name": "タミル・ナードゥ州"
         },
         {
-            "code": "CT",
+            "code": "CG",
             "name": "チャッティースガル州"
         },
         {
             "code": "CH",
             "name": "チャンディーガル"
+        },
+        {
+            "code": "TS",
+            "name": "テランガーナ州"
         },
         {
             "code": "TG",
@@ -9281,10 +9323,6 @@
             "name": "Flóahreppur"
         },
         {
-            "code": "GAR",
-            "name": "Garðabær"
-        },
-        {
             "code": "GOG",
             "name": "Grímsnes- og Grafningshreppur"
         },
@@ -9295,10 +9333,6 @@
         {
             "code": "GRY",
             "name": "Grýtubakkahreppur"
-        },
-        {
-            "code": "HAF",
-            "name": "Hafnarfjarðarkaupstaður"
         },
         {
             "code": "HEL",
@@ -9313,6 +9347,10 @@
             "name": "Hrunamannahreppur"
         },
         {
+            "code": "HUG",
+            "name": "Húnabyggð"
+        },
+        {
             "code": "HUT",
             "name": "Húnavatnshreppur"
         },
@@ -9325,10 +9363,6 @@
             "name": "Hvalfjarðarsveit"
         },
         {
-            "code": "HVE",
-            "name": "Hveragerðisbær"
-        },
-        {
             "code": "ISA",
             "name": "Ísafjarðarbær"
         },
@@ -9339,10 +9373,6 @@
         {
             "code": "KJO",
             "name": "Kjósarhreppur"
-        },
-        {
-            "code": "KOP",
-            "name": "Kópavogsbær"
         },
         {
             "code": "LAN",
@@ -9365,10 +9395,6 @@
             "name": "Norðurþing"
         },
         {
-            "code": "RGE",
-            "name": "Rangárþing eystra"
-        },
-        {
             "code": "RGY",
             "name": "Rangárþing ytra"
         },
@@ -9383,14 +9409,6 @@
         {
             "code": "0",
             "name": "Reykjavík"
-        },
-        {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
-        },
-        {
-            "code": "SEL",
-            "name": "Seltjarnarnesbær"
         },
         {
             "code": "SEY",
@@ -9473,10 +9491,6 @@
             "name": "Tjörneshreppur"
         },
         {
-            "code": "VEM",
-            "name": "Vestmannaeyjabær"
-        },
-        {
             "code": "VER",
             "name": "Vesturbyggð"
         },
@@ -9501,12 +9515,40 @@
             "name": "アクラネース"
         },
         {
+            "code": "VEM",
+            "name": "ヴェストマン諸島"
+        },
+        {
+            "code": "GAR",
+            "name": "ガルザバイル"
+        },
+        {
+            "code": "HVE",
+            "name": "クヴェラゲルジ"
+        },
+        {
             "code": "GRU",
             "name": "グルンダルフィヨルズル"
         },
         {
+            "code": "KOP",
+            "name": "コーパヴォグル"
+        },
+        {
+            "code": "SKR",
+            "name": "スカーガフィヨルズル"
+        },
+        {
+            "code": "SEL",
+            "name": "セルチャルトナルネース"
+        },
+        {
             "code": "DAV",
             "name": "ダールヴィークルビッグズ"
+        },
+        {
+            "code": "HAF",
+            "name": "ハフナルフィヨルズゥル"
         },
         {
             "code": "FJD",
@@ -9523,6 +9565,14 @@
         {
             "code": "BOL",
             "name": "ボルンガルヴィーク"
+        },
+        {
+            "code": "RGE",
+            "name": "ラゥングアゥルシンク・エイストラ"
+        },
+        {
+            "code": "RKV",
+            "name": "レイキャヴィーク"
         },
         {
             "code": "3",
@@ -10853,6 +10903,10 @@
         {
             "code": "14",
             "name": "南浦特別市"
+        },
+        {
+            "code": "15",
+            "name": "開城特別市"
         }
     ],
     "KR": [
@@ -10953,47 +11007,115 @@
     ],
     "KZ": [
         {
-            "code": "AKT",
-            "name": "アクトベ州"
-        },
-        {
             "code": "AKM",
-            "name": "アクモラ州"
+            "name": "Akmola"
         },
         {
-            "code": "AST",
-            "name": "アスタナ"
-        },
-        {
-            "code": "ATY",
-            "name": "アティラウ州"
-        },
-        {
-            "code": "ALA",
-            "name": "アルマトイ"
+            "code": "AKT",
+            "name": "Aktobe"
         },
         {
             "code": "ALM",
-            "name": "アルマトイ州"
+            "name": "Almaty Region"
         },
         {
-            "code": "KAR",
-            "name": "カラガンダ州"
+            "code": "ATY",
+            "name": "Atyrau"
         },
         {
-            "code": "KZY",
-            "name": "クズロルダ州"
-        },
-        {
-            "code": "KUS",
-            "name": "コスタナイ州"
-        },
-        {
-            "code": "SHY",
-            "name": "シムケント"
+            "code": "VOS",
+            "name": "East Kazakhstan"
         },
         {
             "code": "ZHA",
+            "name": "Jambyl"
+        },
+        {
+            "code": "KAR",
+            "name": "Karagandy"
+        },
+        {
+            "code": "KUS",
+            "name": "Kostanay"
+        },
+        {
+            "code": "KZY",
+            "name": "Kyzylorda"
+        },
+        {
+            "code": "MAN",
+            "name": "Mangystau"
+        },
+        {
+            "code": "SEV",
+            "name": "North Kazakhstan"
+        },
+        {
+            "code": "PAV",
+            "name": "Pavlodar"
+        },
+        {
+            "code": "YUZ",
+            "name": "South Kazakhstan"
+        },
+        {
+            "code": "ZAP",
+            "name": "West Kazakhstan"
+        },
+        {
+            "code": "15",
+            "name": "アクトベ州"
+        },
+        {
+            "code": "11",
+            "name": "アクモラ州"
+        },
+        {
+            "code": "71",
+            "name": "アスタナ"
+        },
+        {
+            "code": "23",
+            "name": "アティラウ州"
+        },
+        {
+            "code": "10",
+            "name": "アバイ州"
+        },
+        {
+            "code": "75",
+            "name": "アルマトイ"
+        },
+        {
+            "code": "19",
+            "name": "アルマトイ州"
+        },
+        {
+            "code": "62",
+            "name": "ウルタウ州"
+        },
+        {
+            "code": "35",
+            "name": "カラガンダ州"
+        },
+        {
+            "code": "43",
+            "name": "クズロルダ州"
+        },
+        {
+            "code": "39",
+            "name": "コスタナイ州"
+        },
+        {
+            "code": "33",
+            "name": "ジェティス州"
+        },
+        {
+            "code": "79",
+            "name": "シムケント"
+        },
+        {
+            "code": "31",
             "name": "ジャンブール州"
         },
         {
@@ -11001,27 +11123,27 @@
             "name": "バイコヌール"
         },
         {
-            "code": "PAV",
+            "code": "55",
             "name": "パブロダール州"
         },
         {
-            "code": "MAN",
+            "code": "47",
             "name": "マンギスタウ州"
         },
         {
-            "code": "ZAP",
+            "code": "27",
             "name": "西カザフスタン州"
         },
         {
-            "code": "VOS",
+            "code": "63",
             "name": "東カザフスタン州"
         },
         {
-            "code": "YUZ",
+            "code": "61",
             "name": "南カザフスタン州"
         },
         {
-            "code": "SEV",
+            "code": "59",
             "name": "北カザフスタン州"
         }
     ],
@@ -11529,10 +11651,6 @@
             "name": "Klaipėda"
         },
         {
-            "code": "20",
-            "name": "Klaipėdos Municipality"
-        },
-        {
             "code": "23",
             "name": "Kupiškis"
         },
@@ -11601,10 +11719,6 @@
             "name": "Šalčininkai"
         },
         {
-            "code": "44",
-            "name": "Šiauliai"
-        },
-        {
             "code": "43",
             "name": "Šiaulių Municipality"
         },
@@ -11635,10 +11749,6 @@
         {
             "code": "51",
             "name": "Telšiai"
-        },
-        {
-            "code": "52",
-            "name": "Trakai"
         },
         {
             "code": "53",
@@ -11697,6 +11807,10 @@
             "name": "クライペダ県"
         },
         {
+            "code": "20",
+            "name": "クライペダ自治体"
+        },
+        {
             "code": "22",
             "name": "クレチンガ"
         },
@@ -11709,6 +11823,10 @@
             "name": "シャウレイ県"
         },
         {
+            "code": "44",
+            "name": "シャウレイ地区自治体"
+        },
+        {
             "code": "41",
             "name": "シャケイ地区自治体"
         },
@@ -11719,6 +11837,10 @@
         {
             "code": "TE",
             "name": "テルシェイ県"
+        },
+        {
+            "code": "52",
+            "name": "トラカイ地区自治体"
         },
         {
             "code": "28",
@@ -13069,6 +13191,10 @@
         {
             "code": "24",
             "name": "Tuzi"
+        },
+        {
+            "code": "25",
+            "name": "Zeta"
         }
     ],
     "MF": [
@@ -13412,7 +13538,7 @@
         },
         {
             "code": "405",
-            "name": "Gevgelija"
+            "name": "ゲヴゲリヤ"
         },
         {
             "code": "406",
@@ -15207,28 +15333,12 @@
             "name": "Gandaki²"
         },
         {
-            "code": "P6",
-            "name": "Karnali²"
-        },
-        {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
             "code": "P3",
             "name": "Province 3"
         },
         {
-            "code": "P5",
-            "name": "Province 5"
-        },
-        {
-            "code": "P7",
-            "name": "Province 7"
+            "code": "P6",
+            "name": "カルナリ・プラデーシュ州"
         },
         {
             "code": "KA",
@@ -15271,6 +15381,10 @@
             "name": "ベリ県"
         },
         {
+            "code": "P2",
+            "name": "マデシ州"
+        },
+        {
             "code": "MA",
             "name": "マハカリ県"
         },
@@ -15293,6 +15407,18 @@
         {
             "code": "3",
             "name": "西部開発区域"
+        },
+        {
+            "code": "P1",
+            "name": "第一州"
+        },
+        {
+            "code": "P5",
+            "name": "第五州"
+        },
+        {
+            "code": "P7",
+            "name": "第七州"
         },
         {
             "code": "2",
@@ -16095,6 +16221,10 @@
             "name": "南ダバオ州"
         },
         {
+            "code": "MGS",
+            "name": "南マギンダナオ州"
+        },
+        {
             "code": "LAS",
             "name": "南ラナオ州"
         },
@@ -16125,6 +16255,10 @@
         {
             "code": "SUN",
             "name": "北スリガオ州"
+        },
+        {
+            "code": "MGN",
+            "name": "北マギンダナオ州"
         },
         {
             "code": "10",
@@ -18344,7 +18478,7 @@
         },
         {
             "code": "180",
-            "name": "Solčava"
+            "name": "ソルチャヴァ"
         },
         {
             "code": "181",
@@ -20266,7 +20400,7 @@
         },
         {
             "code": "31",
-            "name": "Songwe"
+            "name": "ソングウェ州"
         }
     ],
     "UA": [
