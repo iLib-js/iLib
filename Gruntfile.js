@@ -11,7 +11,7 @@ module.exports = function(grunt) {
                 options: {create: ['js/locale', 'js/output', 'js/output/reports', 'js/output/js', 'js/output/dyncode', 'js/output/test', 'js/output/jsdoc']
             }},
             export: {
-                options: {create: ['export', 'export/docs', 'export/js', 'export/locale', 'export/qt', 'export/tools', 'dist']
+                options: {create: ['export', 'export/docs', 'export/js', 'export/locale', 'export/tools', 'dist']
             }},
             dist: {
                 options: {create: ['export/js/assembled','export/js/dyncode', 'export/js/dyncode', 'export/js/jsdoc', 'export/js/jsdoc', 'export/src/js', 'export/package/lib','export/package/locale', 'export/docs/jsdoc']
@@ -88,11 +88,11 @@ module.exports = function(grunt) {
             },
             fulltgz: {
                 options: {archive: "dist/ilib-<%= pkg.version %>.tgz"},
-                files: [{expand:true, cwd: 'export', src: ["js/*", "java/*", "locale/*", "qt/*"]}]
+                files: [{expand:true, cwd: 'export', src: ["js/*", "java/*", "locale/*"]}]
             },
             nodezip: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>.zip'},
-                files: [{expand:true, cwd: 'export', src: ['js/*', 'java/*', 'locale/*', 'qt/*']}]
+                files: [{expand:true, cwd: 'export', src: ['js/*', 'java/*', 'locale/*']}]
             },
             srczip: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>-src.zip'},
@@ -157,7 +157,7 @@ module.exports = function(grunt) {
                 files: [ {
                     expand: true,
                     cwd: 'js/lib/',
-                    src: ['*.js', '!ilib.js', '!ilib-*.js', '!externs.js', 'datefmtstr.js', '!ilib-node*.js','!ilib-stubs*','!ilib-web.js','!ilib-qt.js'],
+                    src: ['*.js', '!ilib.js', '!ilib-*.js', '!externs.js', 'datefmtstr.js', '!ilib-node*.js','!ilib-stubs*','!ilib-web.js'],
                     dest: 'js/output/dyncode/',
                 }]
             }
