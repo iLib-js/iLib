@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 031
+-------
+Published as version 14.21.1
+
+New Features:
+
+Bug Fixes:
+* Fix the CLDR tool code to correctly generate data by also adding a comparison for the U+202F(Narrow No-Break Space) case.
+
 Build 030
 -------
 Published as version 14.21.0
