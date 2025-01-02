@@ -133,10 +133,10 @@
         "time": {
             "12": {
                 "ah": "h a",
-                "ahm": "h:ma",
-                "ahms": "h:m:sa",
-                "ahmsz": "h:m:sa z",
-                "ahmz": "h:ma z",
+                "ahm": "h:m a",
+                "ahms": "h:m:s a",
+                "ahmsz": "h:m:s a z",
+                "ahmz": "h:m a z",
                 "h": "h",
                 "hm": "h:m",
                 "hms": "h:m:s",
