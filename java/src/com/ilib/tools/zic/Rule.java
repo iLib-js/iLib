@@ -18,7 +18,8 @@
  */
 package com.ilib.tools.zic;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,7 +46,7 @@ public class Rule
     protected int saveMinutes = -1;
     protected int saveSeconds = -1;
     protected String character = null;
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
     
     public Rule() {}
     
