@@ -20,10 +20,10 @@ package com.ilib.tools.zic;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -58,13 +58,13 @@ public class Offset
     
     public Offset()
     {
-        logger = Logger.getLogger(this.getClass());
+        logger = LogManager.getLogger(this.getClass());
     }
 
     public Offset(String line, HashMap<String,RuleSet> ruleSets, String timeZoneName)
         throws ParseException
     {
-        logger = Logger.getLogger(this.getClass());
+        logger = LogManager.getLogger(this.getClass());
         setFields(line, ruleSets, timeZoneName);
     }
 

@@ -27,7 +27,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 /**
@@ -39,7 +40,7 @@ public class JsonZoneWriter
     extends ZoneWriter
 {
     protected File outputDir;
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
     
     public JsonZoneWriter(File file)
     {
