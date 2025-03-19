@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the localematch.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2020, 2022-2024 JEDLSoft
+ * Copyright © 2013-2020, 2022-2025 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,6 +101,7 @@ var hardCodedSubtags = {
     "hr-HU": "hr-Latn-HU",
     "ka-IR": "ka-Geor-IR",
     "ko-US": "ko-Kore-US",
+    "ko-TW": "ko-Kore-TW",
     "ku-IQ": "ku-Arab-IQ",
     "ps-PK": "ps-Arab-PK",
     "pt-MO": "pt-Latn-MO",

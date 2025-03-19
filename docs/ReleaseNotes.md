@@ -9,6 +9,8 @@ New Features:
 
 Bug Fixes:
 * Fix the CLDR tool code to correctly generate data by also adding a comparison for the U+202F(Narrow No-Break Space) case.
+* Add the missing `ko-TW` locale to the LocaleMatcher.
+
 
 Build 030
 -------
