@@ -28,10 +28,10 @@
         },
         "time": {
             "12": {
-                "ahm": "h.mma",
-                "ahms": "h.mm.ssa",
-                "ahmsz": "h.mm.ssa z",
-                "ahmz": "h.mma z",
+                "ahm": "h.mm a",
+                "ahms": "h.mm.ss a",
+                "ahmsz": "h.mm.ss a z",
+                "ahmz": "h.mm a z",
                 "hm": "h.mm",
                 "hms": "h.mm.ss",
                 "hmsz": "h.mm.ss z",

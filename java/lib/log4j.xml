@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%5p %t %c - %m%n"/>
+        </Console>
+
+        <!-- Rolling File Appender -->
+        <RollingFile name="RollingFile" fileName="/tmp/ilib.log"
+                     filePattern="/tmp/ilib.log.%i">
+            <PatternLayout>
+                <Pattern>%d %t %c - %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1000KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+
+        <!-- Custom Loggers -->
+        <Logger name="com.ilib.tools.jsa" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <Logger name="com.ilib" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+    </Loggers>
+</Configuration>

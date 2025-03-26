@@ -27,7 +27,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.ilib.IlibLocale;
 
@@ -87,7 +88,7 @@ public class JSAssemble
         ArrayList<IlibLocale> locales = new ArrayList<IlibLocale>();
         File currentDir = new File(".");
         
-        logger = Logger.getLogger(JSAssemble.class.toString());
+        logger = LogManager.getLogger(JSAssemble.class.toString());
         
         target = "iliball.js";
         

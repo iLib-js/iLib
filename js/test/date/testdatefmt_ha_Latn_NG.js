@@ -1140,7 +1140,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45Yamma');
+        test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
     testDateFmtShortTimeComponentsHMZ_ha_Latn: function(test) {
@@ -1202,7 +1202,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37Yamma');
+        test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSZ_ha_Latn: function(test) {
@@ -1372,7 +1372,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45Yamma');
+        test.equal(fmt.format(date), '1:45 Yamma');
         test.done();
     },
     testDateFmtFullTimeComponentsHMZ_ha_Latn: function(test) {
@@ -1436,7 +1436,7 @@ module.exports.testdatefmt_ha_Latn_NG = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37Yamma');
+        test.equal(fmt.format(date), '1:45:37 Yamma');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSZ_ha_Latn: function(test) {

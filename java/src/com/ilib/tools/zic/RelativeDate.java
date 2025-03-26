@@ -19,12 +19,12 @@
 package com.ilib.tools.zic;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -98,7 +98,7 @@ public class RelativeDate
     protected int minute = -1;
     protected int second = -1;
     protected char zoneChar = 'w';
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
     
     public RelativeDate() {}
     
