@@ -293,20 +293,26 @@ module.exports.testdatefmt_en_GB = {
 
         var platform = ilib._getPlatform();
         if(platform === "nodejs"){
-            var cldrVersion = Number(process.versions["cldr"]);
-            var nodeMajorVersion = process.versions["node"].split(".")[0];
+            var cldrVersionStr = process.versions["cldr"];
+            var cldrVersion = parseFloat(cldrVersionStr);
+            var nodeMajorVersion = parseInt(process.versions["node"].split(".")[0], 10);
             if (cldrVersion < 36) {
                 test.equal(fmt.format(date), "9/29/2011");
             } else if (cldrVersion < 38) {
-                if (nodeMajorVersion === "14") {
+                if (nodeMajorVersion === 14) {
                     test.equal(fmt.format(date), "Thursday, 29 September 2011");
                 } else {
                     test.equal(fmt.format(date), "Thursday, September 29, 2011");
                 }
-            } else if (cldrVersion < 44) {
-                test.equal(fmt.format(date), "Thursday, 29 September 2011");
-            } else {
+            } else if (cldrVersion >= 44.1 && cldrVersion < 46) {
+                // CLDR 44.1 and 45.0: comma was removed
+                // Node v18.20.0 (CLDR 44.1) and v20.15.0 (CLDR 45.0) produce format without comma
                 test.equal(fmt.format(date), "Thursday 29 September 2011");
+            } else {
+                // CLDR < 44.1 or CLDR >= 46: format with comma
+                // CLDR 40.0, 41.0, 42.0, 43.1: has comma
+                // CLDR 46.0, 47.0: has comma (restored in CLDR 46.0)
+                test.equal(fmt.format(date), "Thursday, 29 September 2011");
             }
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
