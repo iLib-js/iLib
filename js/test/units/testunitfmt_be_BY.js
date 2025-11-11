@@ -32,6 +32,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+var TestingSupport = require("../testingSupport.js");
+
 module.exports.testunitfmt_be_BY = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -95,7 +97,12 @@ module.exports.testunitfmt_be_BY = {
                 test.equal(str, "-16,666666666666668 градуса Цэльсія");
             }
         } else if (platform === "browser") {
-            test.equal(str, "-16,666666666666668 градуса Цэльсія");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str, "-16,666666666666668 градуса Цэльсія");
+            } else {
+                test.equal(str, "-16,666666666666668 градусы Цэльсія");
+            }
         } else {
             test.equal(str, "-16,666666666666668 градусы Цэльсія");
         }

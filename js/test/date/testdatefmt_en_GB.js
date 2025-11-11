@@ -34,11 +34,7 @@ if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
 
-
-function getChromeVersion () {
-    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-    return raw ? parseInt(raw[2], 10) : false;
-}
+var TestingSupport = require("../testingSupport.js");
 
 module.exports.testdatefmt_en_GB = {
     setUp: function(callback) {
@@ -203,7 +199,14 @@ module.exports.testdatefmt_en_GB = {
                 test.equal(fmt.format(date), "29 Sept 2011");
             }
         } else {
-            test.equal(fmt.format(date), "29 Sept 2011");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR version determines the format - this is a simplified check
+            // In practice, the format depends on the specific CLDR version
+            if (cldrVersion !== undefined && cldrVersion >= 40) {
+                test.equal(fmt.format(date), "29 Sep 2011");
+            } else {
+                test.equal(fmt.format(date), "29 Sept 2011");
+            }
         }
         test.done();
     },
@@ -315,12 +318,12 @@ module.exports.testdatefmt_en_GB = {
                 test.equal(fmt.format(date), "Thursday, 29 September 2011");
             }
         } else if (platform === "browser") {
-            var browser = ilib._getBrowser();
-            if (browser === "chrome" && getChromeVersion() >= 130) {
-                //chrome 131.0.6778.139
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 44.1-45.0: comma was removed
+            // CLDR 46.0+: comma was restored
+            if (cldrVersion !== undefined && cldrVersion >= 44.1 && cldrVersion < 46) {
                 test.equal(fmt.format(date), "Thursday 29 September 2011");
             } else {
-                // firefox 133.0.3
                 test.equal(fmt.format(date), "Thursday, 29 September 2011");
             }
         } else {

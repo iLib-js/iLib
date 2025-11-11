@@ -28,6 +28,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+var TestingSupport = require("../testingSupport.js");
+
 module.exports.testunitfmt_usages = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -2634,7 +2636,12 @@ module.exports.testunitfmt_usages = {
                 test.equal(str, "3,2 кубічнага метра");
             }
         } else if (platform === "browser") {
-            test.equal(str, "3,2 кубічнага метра");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str, "3,2 кубічнага метра");
+            } else {
+                test.equal(str, "3,2 кубічныя метры");
+            }
         } else {
             test.equal(str, "3,2 кубічныя метры");
         }

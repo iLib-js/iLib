@@ -30,11 +30,7 @@ if (typeof(IString) === "undefined") {
     var IString = require("../../lib/IString.js");
 }
 
-function getChromeVersion () {
-    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-
-    return raw ? parseInt(raw[2], 10) : false;
-}
+var TestingSupport = require("../testingSupport.js");
 
 module.exports.teststrings = {
     setUp: function(callback) {
@@ -585,7 +581,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str.formatChoice([params.num,params.pages], params), "0 items (many) on 0 pages (many).");
+            } else {
+                test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+            }
         } else {
             test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
         }
@@ -2666,7 +2667,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(0), "Default items");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(0), "Default items");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str.formatChoice(0), "Default items");
+            } else {
+                test.equal(str.formatChoice(0), "There are no items.");
+            }
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
         }
@@ -2879,7 +2885,8 @@ module.exports.teststrings = {
         str.setLocale("pt-BR");
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 36) { // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(1000000), "The items are many");
@@ -2888,12 +2895,15 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
-        } else {
-            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+        } else if (platform === "browser") {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36 && cldrVersion < 40) {
                 test.equal(str.formatChoice(1000000), "Default items");
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
+        } else {
+            test.equal(str.formatChoice(1000000), "The items are many");
         }
         test.done();
     },
@@ -2912,7 +2922,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(0), "Default items");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(0), "Default items");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str.formatChoice(0), "Default items");
+            } else {
+                test.equal(str.formatChoice(0), "There are no items.");
+            }
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
         }
@@ -2941,7 +2956,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(0), "The items are many");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(0), "The items are many");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str.formatChoice(0), "The items are many");
+            } else {
+                test.equal(str.formatChoice(0), "There are no items.");
+            }
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
         }
@@ -3387,11 +3407,9 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
         } else if (platform === "browser") {
-            var browser = ilib._getBrowser();
-            var expected = "Default items";
-            if (browser === "chrome" && getChromeVersion() >= 110) {
-                expected = "The items are many";
-            }
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // The "many" category for ca-AD was added in CLDR 42
+            var expected = (cldrVersion !== undefined && cldrVersion >= 42) ? "The items are many" : "Default items";
             test.equal(str.formatChoice(1000000), expected);
         } else {
             test.equal(str.formatChoice(1000000), "The items are many");
@@ -3449,7 +3467,12 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(0), "The items are few");
             }
         } else if (platform === "browser") {
-            test.equal(str.formatChoice(0), "The items are few");
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str.formatChoice(0), "The items are few");
+            } else {
+                test.equal(str.formatChoice(0), "There are no items.");
+            }
         } else {
             test.equal(str.formatChoice(0), "There are no items.");
         }
@@ -3498,11 +3521,9 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(2), "The items are two");
             }
         } else if (platform === "browser") {
-            var browser = ilib._getBrowser();
-            var expected = "The items are few";
-            if (browser === "chrome" && getChromeVersion() >= 102) {
-                expected = "Default items";
-            }
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 42 changed the behavior for mt-MT
+            var expected = (cldrVersion !== undefined && cldrVersion >= 42) ? "Default items" : "The items are few";
             test.equal(str.formatChoice(30), expected);
         } else {
             test.equal(str.formatChoice(2), "The items are two");
@@ -3542,7 +3563,8 @@ module.exports.teststrings = {
         str.setLocale("it-IT");
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (Number(cldrVersion) < 36) { // // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(3e6), "The items are many");
@@ -3551,12 +3573,15 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
-        } else {
-            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+        } else if (platform === "browser") {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36 && cldrVersion < 40) {
                 test.equal(str.formatChoice(1000000), "Default items");
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
+        } else {
+            test.equal(str.formatChoice(1000000), "The items are many");
         }
         test.done();
     },
@@ -3566,7 +3591,8 @@ module.exports.teststrings = {
         str.setLocale("it-IT");
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 36) { // // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(3e6), "The items are many");
@@ -3576,12 +3602,15 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(3e6), "The items are many");
             }
-        } else {
-            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+        } else if (platform === "browser") {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36 && cldrVersion < 40) {
                 test.equal(str.formatChoice(3e6), "Default items");
             } else {
                 test.equal(str.formatChoice(3e6), "The items are many");
             }
+        } else {
+            test.equal(str.formatChoice(3e6), "The items are many");
         }
         test.done();
     },
@@ -3591,7 +3620,8 @@ module.exports.teststrings = {
         str.setLocale("es-ES");
         test.ok(str !== null);
 
-        if (ilib._getPlatform() === "nodejs") {
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 36) { // // Intl.PluralRules doesn't support this locale until this version.
                 test.equal(str.formatChoice(1000000), "The items are many");
@@ -3600,12 +3630,15 @@ module.exports.teststrings = {
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
-        }  else {
-            if (ilib._getPlatform() === "browser" && ilib._getBrowser() === "opera") {
+        } else if (platform === "browser") {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36 && cldrVersion < 40) {
                 test.equal(str.formatChoice(1000000), "Default items");
             } else {
                 test.equal(str.formatChoice(1000000), "The items are many");
             }
+        } else {
+            test.equal(str.formatChoice(1000000), "The items are many");
         }
         test.done();
     },
@@ -3656,11 +3689,9 @@ module.exports.teststrings = {
                 test.equal(str.formatChoice(30), "Default items");
             }
         } else if (platform === "browser") {
-            var browser = ilib._getBrowser();
-            var expected = "The items are many";
-            if (browser === "chrome" && getChromeVersion() >= 110) {
-                expected = "Default items";
-            }
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 42 changed the behavior for lb-LU
+            var expected = (cldrVersion !== undefined && cldrVersion >= 42) ? "Default items" : "The items are many";
             test.equal(str.formatChoice(30), expected);
         } else { //qt
             test.equal(str.formatChoice(30), "Default items");

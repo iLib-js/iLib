@@ -25,13 +25,14 @@ if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
 
+var TestingSupport = require("../testingSupport.js");
+
 function setVariable() {
     var obj = {};
     var length = ["full", "long", "medium", "short"];
     obj.fullLength = length;
     return obj;
 }
-
 module.exports.testdurfmt2 = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -3275,7 +3276,9 @@ module.exports.testdurfmt2 = {
             }
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
-            if (browser === "chrome" && getChromeVersion() >= 110) {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 43+ changed the behavior for he-IL
+            if (cldrVersion !== undefined && cldrVersion >= 43) {
                 test.equal(textformatted_20[0], '‏20 שנים, 20 חודשים, 20 שבועות ו-20 ימים');
                 test.equal(textformatted_20[1], '‏20 שנים, 20 ח׳, 20 שבועות, 20 ימ׳');
                 test.equal(textformatted_20[2], '‏20 ש′ 20 ח׳ 20 ש′ 20 י׳');
