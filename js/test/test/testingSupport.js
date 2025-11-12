@@ -518,48 +518,62 @@ function getSafariVersion() {
 }
 
 function getMacOSVersion() {
-
-    const userAgent = navigator.userAgent;
     let osVersion = "Unknown";
+    switch (ilib._isBrowser()) {
+    case "browser":
+        const userAgent = navigator.userAgent;
 
-    // Check if the OS is Mac
-    if (userAgent.indexOf("Macintosh") != -1) {
-        // Look for the version number pattern "Mac OS X 10_X_X" or "Mac OS X 11_X_X" or MacOS 10.X.X, etc.
-        const regex = /Mac OS X 10[_.](\d+)[_.](\d+)/;
-        const match = userAgent.match(regex);
+        // Check if the OS is Mac
+        if (userAgent.indexOf("Macintosh") != -1) {
+            // Look for the version number pattern "Mac OS X 10_X_X" or "Mac OS X 11_X_X" or MacOS 10.X.X, etc.
+            const regex = /Mac OS X 10[_.](\d+)[_.](\d+)/;
+            const match = userAgent.match(regex);
 
-        if (match) {
-            // For versions up to 10.15
-            if (parseInt(match[1]) === 10) {
-                osVersion = {
-                    major: match[2],
-                    minor: match[3],
-                    patch: "0"
-                };
-            } else {
-                // For macOS 11 (Big Sur), 12 (Monterey), etc.
-                osVersion = {
-                    major: match[1],
-                    minor: match[2],
-                    patch: "0"
-                };
+            if (match) {
+                // For versions up to 10.15
+                if (parseInt(match[1]) === 10) {
+                    osVersion = {
+                        major: match[2],
+                        minor: match[3],
+                        patch: "0"
+                    };
+                } else {
+                    // For macOS 11 (Big Sur), 12 (Monterey), etc.
+                    osVersion = {
+                        major: match[1],
+                        minor: match[2],
+                        patch: "0"
+                    };
+                }
+            }
+
+            // Modern user agents might just show the major version in some cases
+            if (osVersion === "Unknown" && userAgent.indexOf("Mac OS X 1") != -1) {
+                // Fallback for newer versions that might be simplified in the UA string
+                // This is highly unreliable and only a guess
+                const simpleRegex = /Mac OS X 10[_.](\d+)/;
+                const simpleMatch = userAgent.match(simpleRegex);
+                if (simpleMatch) {
+                    osVersion = {
+                        major: simpleMatch[1],
+                        minor: "0",
+                        patch: "0"
+                    };
+                }
             }
         }
-
-        // Modern user agents might just show the major version in some cases
-        if (osVersion === "Unknown" && userAgent.indexOf("Mac OS X 1") != -1) {
-            // Fallback for newer versions that might be simplified in the UA string
-            // This is highly unreliable and only a guess
-            const simpleRegex = /Mac OS X 10[_.](\d+)/;
-            const simpleMatch = userAgent.match(simpleRegex);
-            if (simpleMatch) {
-                osVersion = {
-                    major: simpleMatch[1],
-                    minor: "0",
-                    patch: "0"
-                };
-            }
-        }
+        break;
+    case "nodejs":
+        var os = require("os");
+        var release = os.release();
+        osVersion = {
+            major: release.split(".")[0],
+            minor: release.split(".")[1],
+            patch: release.split(".")[2]
+        };
+        break;
+    default:
+        break;
     }
 
     return osVersion;
