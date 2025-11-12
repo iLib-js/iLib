@@ -519,7 +519,7 @@ function getSafariVersion() {
 
 function getMacOSVersion() {
     let osVersion = "Unknown";
-    switch (ilib._isBrowser()) {
+    switch (ilib._getPlatform()) {
     case "browser":
         const userAgent = navigator.userAgent;
 
