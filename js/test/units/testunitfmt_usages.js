@@ -28,7 +28,9 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-var TestingSupport = require("../testingSupport.js");
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
+}
 
 module.exports.testunitfmt_usages = {
     setUp: function(callback) {

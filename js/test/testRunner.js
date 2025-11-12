@@ -26,6 +26,7 @@ var AsyncNodeLoader = require("../lib/AsyncNodeLoader.js");
 
 var nodeunit = require("nodeunit");
 require("./test/assertExtras.js");
+global.TestingSupport = require("./test/testingSupport.js");
 
 var suiteDefinitions = {
     "core": [

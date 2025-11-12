@@ -25,7 +25,9 @@ if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
 
-var TestingSupport = require("../testingSupport.js");
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
+}
 
 function setVariable() {
     var obj = {};

@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-var SearchUtils = require("../lib/SearchUtils");
-var semver = require("semver");
-var ilib = require("../lib/ilib.js");
+if (typeof(SearchUtils) === 'undefined') {
+    var SearchUtils = require("../../lib/SearchUtils");
+}
+if (typeof(semver) === 'undefined') {
+    var semver = require("semver");
+}
+if (typeof(ilib) === 'undefined') {
+    var ilib = require("../../lib/ilib.js");
+}
 
 // ICU Version, CLDR Version, Unicode Version
 var icuCldrVersionMappings = [
@@ -512,6 +518,7 @@ function getSafariVersion() {
 }
 
 function getMacOSVersion() {
+
     const userAgent = navigator.userAgent;
     let osVersion = "Unknown";
 
@@ -790,3 +797,4 @@ module.exports = {
     getCLDRVersionForNodeVersion: getCLDRVersionForNodeVersion,
     getCLDRVersionForBrowser: getCLDRVersionForBrowser,
 };
+

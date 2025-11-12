@@ -30,7 +30,9 @@ if (typeof(IString) === "undefined") {
     var IString = require("../../lib/IString.js");
 }
 
-var TestingSupport = require("../testingSupport.js");
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
+}
 
 module.exports.teststrings = {
     setUp: function(callback) {

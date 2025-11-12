@@ -34,7 +34,9 @@ if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
 
-var TestingSupport = require("../testingSupport.js");
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
+}
 
 module.exports.testdatefmt_en_GB = {
     setUp: function(callback) {
