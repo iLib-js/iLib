@@ -89,33 +89,33 @@ var safariVersionMappings = [
     [ 13.0, 13.0, 13.0, "Sep 2021" ],
 ];
 
-// Node.js Version, ICU Version, CLDR Version, Release Date (Approx.)
+// Node.js Version, ICU Version // Release Date (Approx.)
 var nodeVersionMappings = [
-    [ "24.11.0", 78, 78, "Nov 2024" ],
-    [ "24.0.0", 75, 75, "May 2025" ],
-    [ "22.0.0", 74, 74, "Apr 2024" ],
-    [ "20.19.5", 77.1, 77.1, "Nov 2024" ],
-    [ "20.19.1", 76.1, 76.1, "Sep 2024" ],
-    [ "20.15.0", 75.1, 75.1, "Nov 2023" ],
-    [ "20.0.0", 73, 73, "Apr 2023" ],
-    [ "18.20.8", 74.2, 74.2, "Oct 2024" ],
-    [ "18.20.0", 74.2, 74.2, "Oct 2023" ],
-    [ "18.10.0", 71.1, 71.1, "Oct 2022" ],
-    [ "18.0.0", 71, 72, "Apr 2022" ],
-    [ "16.14.0", 70.1, 70.1, "Feb 2022" ],
-    [ "16.0.0", 69, 71, "Apr 2021" ],
-    [ "14.20.0", 70.1, 70.1, "Mar 2022" ],
-    [ "14.19.0", 70.1, 70.1, "Oct 2021" ],
-    [ "14.0.0", 66, 70, "Apr 2020" ],
-    [ "13.0.0", 65, 65, "Oct 2019" ],
-    [ "12.20.0", 67.1, 67.1, "Nov 2020" ],
-    [ "12.12.0", 64.2, 64.2, "Oct 2019" ],
-    [ "12.0.0", 64, 64, "Apr 2019" ],
-    [ "11.12.0", 63.1, 63.1, "Apr 2019" ],
-    [ "10.19.0", 64.2, 64.2, "Mar 2020" ],
-    [ "10.0.0", 62, 62, "Apr 2018" ],
-    [ "8.0.0", 58, 58, "May 2017" ],
-    [ "6.0.0", 56, 56, "Apr 2016" ],
+    [ "24.11.0", 78], // "Nov 2024"
+    [ "24.0.0", 75], // "May 2025"
+    [ "22.0.0", 74], // "Apr 2024"
+    [ "20.19.5", 77.1], // "Nov 2024"
+    [ "20.19.1", 76.1], // "Sep 2024"
+    [ "20.15.0", 75.1], // "Nov 2023"
+    [ "20.0.0", 73], // "Apr 2023"
+    [ "18.20.8", 74.2], // "Oct 2024"
+    [ "18.20.0", 74.2], // "Oct 2023"
+    [ "18.10.0", 71.1], // "Oct 2022"
+    [ "18.0.0", 71], // "Apr 2022"
+    [ "16.14.0", 70.1], // "Feb 2022"
+    [ "16.0.0", 69], // "Apr 2021"
+    [ "14.20.0", 70.1], // "Mar 2022"
+    [ "14.19.0", 70.1], // "Oct 2021"
+    [ "14.0.0", 66], // "Apr 2020"
+    [ "13.0.0", 65], // "Oct 2019"
+    [ "12.20.0", 67.1], // "Nov 2020"
+    [ "12.12.0", 64.2], // "Oct 2019"
+    [ "12.0.0", 64], // "Apr 2019"
+    [ "11.12.0", 63.1], // "Apr 2019"
+    [ "10.19.0", 64.2], // "Mar 2020"
+    [ "10.0.0", 62], // "Apr 2018"
+    [ "8.0.0", 58], // "May 2017"
+    [ "6.0.0", 56], // "Apr 2016"
 ];
 
 // Opera Version (Approx.), ICU Version
@@ -166,23 +166,23 @@ var firefoxVersionMappings = [
 
 //  OS X / macOS Version, OS Version Number, Approximate Bundled ICU Version
 var macOStoICUVersionMappings = [
-    ["15.0.0", 76, "Tahoe" ],
-    ["14.1.0", 75, "Sequoia" ],
-    ["14.0.0", 74, "Sonoma" ],
-    ["13.0.0", 72.1, "Ventura" ],
-    ["12.0.0", 69.1, "Monterey" ],
-    ["11.0.0", 68.2, "Big Sur" ],
-    ["10.15.0", 64.2, "Catalina" ],
-    ["10.14.0", 62.1, "Mojave" ],
-    ["10.13.0", 59.1, "High Sierra" ],
-    ["10.12.0", 58.2, "Sierra" ],
-    ["10.11.0", 55.1, "El Capitan" ],
-    ["10.10.0", 54.1, "Yosemite" ],
-    ["10.9.0", 52, "Mavericks" ],
-    ["10.8.0", 50, "Mountain Lion" ],
-    ["10.7.0", 48, "Lion" ],
-    ["10.6.0", 46, "Snow Leopard" ],
-    ["10.5.0", 46, "Leopard" ],
+    ["15.0.0", 76], // "Tahoe"
+    ["14.1.0", 75], // "Sequoia"
+    ["14.0.0", 74], // "Sonoma"
+    ["13.0.0", 72.1], // "Ventura"
+    ["12.0.0", 69.1], // "Monterey"
+    ["11.0.0", 68.2], // "Big Sur"
+    ["10.15.0", 64.2], // "Catalina"
+    ["10.14.0", 62.1], // "Mojave"
+    ["10.13.0", 59.1], // "High Sierra"
+    ["10.12.0", 58.2], // "Sierra"
+    ["10.11.0", 55.1], // "El Capitan"
+    ["10.10.0", 54.1], // "Yosemite"
+    ["10.9.0", 52], // "Mavericks"
+    ["10.8.0", 50], // "Mountain Lion"
+    ["10.7.0", 48], // "Lion"
+    ["10.6.0", 46], // "Snow Leopard"
+    ["10.5.0", 46], // "Leopard"
 ];
 
 // Unix/Linux Distribution, Version, ICU Version
@@ -734,9 +734,15 @@ function getCLDRVersionForSafariVersion() {
 }
 
 function getCLDRVersionForNodeVersion() {
-    // Node.js 13.0.0 was the first version with full Intl.DateTimeFormat support
-    // and bundled ICU (ICU 65 with CLDR 35.1). Before Node 13, Intl.DateTimeFormat
-    // was not available, so ilib formats dates itself.
+    var cldrVersion = process.versions["cldr"];
+    if (cldrVersion) {
+        return cldrVersion;
+    }
+
+    // Node.js 13.0.0 was the first version with full Intl.DateTimeFormat support without
+    // the user having to install ICU.
+    // Before Node 13 if ICU was not installed, then Intl.DateTimeFormat
+    // was not available, so we use ilib's own formatting.
     var nodeVersion = process.versions["node"];
     if (!nodeVersion) {
         return undefined;
@@ -745,7 +751,8 @@ function getCLDRVersionForNodeVersion() {
     if (nodeMajorVersion < 13) {
         return undefined;
     }
-    return process.versions["cldr"];
+    var icuVersion = getICUVersionFromMapping(nodeVersion, nodeVersionMappings, findStringVersion, 1, "first");
+    return getCLDRVersionForICUVersion(icuVersion);
 }
 
 function getCLDRVersionForBrowser() {

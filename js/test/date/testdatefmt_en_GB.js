@@ -143,15 +143,19 @@ module.exports.testdatefmt_en_GB = {
         });
 
         var cldrVersion = TestingSupport.getCLDRVersion();
-        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
-            // Node < 13 or CLDR < 35.1: use ilib's own formatting
-            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
-            test.equal(fmt.format(date), "9/29/11");
+        if (cldrVersion === undefined) {
+            // On Node < 13, use ilib's own formatting
+            // before node 13, node did not support new Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "9/29/2011");
             test.done();
             return;
         }
         cldrVersion = Number(cldrVersion);
-        if (cldrVersion < 38) {
+        if (cldrVersion <= 35.1) {
+            test.equal(fmt.format(date), "9/29/2011");
+            test.done();
+            return;
+        } else if (cldrVersion < 38) {
             test.equal(fmt.format(date), "9/29/11");
             test.done();
             return;
@@ -181,17 +185,21 @@ module.exports.testdatefmt_en_GB = {
         });
 
         var cldrVersion = TestingSupport.getCLDRVersion();
-        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
-            // Node < 13 or CLDR < 35.1: use ilib's own formatting
-            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
+        if (cldrVersion === undefined) {
+            // On Node < 13, use ilib's own formatting
+            // before node 13, node did not support new Intl.DateTimeFormat, so it uses ilib's own formatting
             test.equal(fmt.format(date), "Sep 29, 2011");
             test.done();
             return;
         }
         cldrVersion = Number(cldrVersion);
-        if (cldrVersion < 38) {
+        if (cldrVersion <= 36.1) {
+            test.equal(fmt.format(date), "9/29/2011");
+            test.done();
+            return;
+        } else if (cldrVersion < 38) {
             // CLDR < 38.0: month name is "Sep", pattern is "d MMM y" → "29 Sep 2011"
-            test.equal(fmt.format(date), "29 Sep 2011");
+            test.equal(fmt.format(date), "Sep 29, 2011");
             test.done();
             return;
         }
@@ -221,15 +229,19 @@ module.exports.testdatefmt_en_GB = {
         });
 
         var cldrVersion = TestingSupport.getCLDRVersion();
-        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
-            // Node < 13 or CLDR < 35.1: use ilib's own formatting
-            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
-            test.equal(fmt.format(date), "September 29, 2011");
+        if (cldrVersion === undefined) {
+            // On Node < 13, use ilib's own formatting
+            // before node 13, node did not support new Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "9/29/2011");
             test.done();
             return;
         }
         cldrVersion = Number(cldrVersion);
-        if (cldrVersion < 38) {
+        if (cldrVersion <= 36.1) {
+            test.equal(fmt.format(date), "9/29/2011");
+            test.done();
+            return;
+        } else if (cldrVersion < 38) {
             test.equal(fmt.format(date), "September 29, 2011");
             test.done();
             return;
@@ -282,7 +294,7 @@ module.exports.testdatefmt_en_GB = {
         });
 
         var cldrVersion = TestingSupport.getCLDRVersion();
-        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
+        if (cldrVersion === undefined) {
             // Node < 13 or CLDR < 35.1: use ilib's own formatting
             // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
             test.equal(fmt.format(date), "Thursday, September 29, 2011");
@@ -290,7 +302,11 @@ module.exports.testdatefmt_en_GB = {
             return;
         }
         cldrVersion = Number(cldrVersion);
-        if (cldrVersion < 38) {
+        if (cldrVersion <= 36.1) {
+            test.equal(fmt.format(date), "9/29/2011");
+            test.done();
+            return;
+        } else if (cldrVersion < 38) {
             test.equal(fmt.format(date), "Thursday, September 29, 2011");
             test.done();
             return;
