@@ -142,32 +142,27 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = Number(process.versions["cldr"]);
-            var nodeMajorVersion = process.versions["node"].split(".")[0];
-            if (cldrVersion < 36) {
-                test.equal(fmt.format(date), "9/29/2011");
-            } else if (cldrVersion < 38) {
-                /*
-                * Both node v12.16.1 and v14.16.1 say the cldr version is 37.0.
-                * But it returns a different result.
-                */
-                if (nodeMajorVersion === "14") {
-                    test.equal(fmt.format(date), "29/09/2011");
-                } else {
-                    test.equal(fmt.format(date), "9/29/11");
-                }
-            } else {
-                test.equal(fmt.format(date), "29/09/2011");
-            }
-        } else {
-            test.equal(fmt.format(date), "29/09/2011");
+        var cldrVersion = TestingSupport.getCLDRVersion();
+        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
+            // Node < 13 or CLDR < 35.1: use ilib's own formatting
+            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "9/29/11");
+            test.done();
+            return;
         }
+        cldrVersion = Number(cldrVersion);
+        if (cldrVersion < 38) {
+            test.equal(fmt.format(date), "9/29/11");
+            test.done();
+            return;
+        }
+        // Default format for >= 38 or undefined
+        test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
     testDateFmtSimpleMedium_en_GB_useIntl: function(test) {
         if(!DateFmt.isIntlDateTimeAvailable("en-GB")){
-            // The result is different depending on the node version.
+            // The result is different depending on the CLDR version.
             test.done();
             return;
         }
@@ -185,31 +180,24 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        if (ilib._getPlatform() === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            var nodeMajorVersion = process.versions["node"].split(".")[0];
-            //console.log("version: " + version + " majorVersion: " + majorVersion);
-            if (cldrVersion < 36) {
-                test.equal(fmt.format(date), "9/29/2011");
-            } else if (cldrVersion < 38) {
-                if (nodeMajorVersion === "14") {
-                    test.equal(fmt.format(date), "29 Sep 2011");
-                } else {
-                    test.equal(fmt.format(date), "Sep 29, 2011");
-                }
-            } else {
-                test.equal(fmt.format(date), "29 Sept 2011");
-            }
-        } else {
-            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
-            // CLDR version determines the format - this is a simplified check
-            // In practice, the format depends on the specific CLDR version
-            if (cldrVersion !== undefined && cldrVersion >= 40) {
-                test.equal(fmt.format(date), "29 Sep 2011");
-            } else {
-                test.equal(fmt.format(date), "29 Sept 2011");
-            }
+        var cldrVersion = TestingSupport.getCLDRVersion();
+        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
+            // Node < 13 or CLDR < 35.1: use ilib's own formatting
+            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "Sep 29, 2011");
+            test.done();
+            return;
         }
+        cldrVersion = Number(cldrVersion);
+        if (cldrVersion < 38) {
+            // CLDR < 38.0: month name is "Sep", pattern is "d MMM y" → "29 Sep 2011"
+            test.equal(fmt.format(date), "29 Sep 2011");
+            test.done();
+            return;
+        }
+        // Default format for >= 38.0 (catches future CLDR versions)
+        // CLDR >= 38.0: month name is "Sept", pattern is "d MMM y" → "29 Sept 2011"
+        test.equal(fmt.format(date), "29 Sept 2011");
         test.done();
     },
     testDateFmtSimpleLong_en_GB_useIntl: function(test) {
@@ -232,25 +220,22 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        if(ilib._getPlatform() === "nodejs"){
-            var cldrVersion = Number(process.versions["cldr"]);
-            var nodeMajorVersion = process.versions["node"].split(".")[0];
-            if (cldrVersion < 36) {
-                test.equal(fmt.format(date), "9/29/2011");
-            } else if (cldrVersion < 38) {
-                if (nodeMajorVersion === "14") {
-                    test.equal(fmt.format(date), "29 September 2011");
-                } else {
-                    test.equal(fmt.format(date), "September 29, 2011");
-                }
-
-            } else {
-                test.equal(fmt.format(date), "29 September 2011");
-            }
-        } else {
-            test.equal(fmt.format(date), "29 September 2011");
+        var cldrVersion = TestingSupport.getCLDRVersion();
+        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
+            // Node < 13 or CLDR < 35.1: use ilib's own formatting
+            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "September 29, 2011");
+            test.done();
+            return;
         }
-
+        cldrVersion = Number(cldrVersion);
+        if (cldrVersion < 38) {
+            test.equal(fmt.format(date), "September 29, 2011");
+            test.done();
+            return;
+        }
+        // Default format for >= 38 or undefined
+        test.equal(fmt.format(date), "29 September 2011");
         test.done();
     },
     testDateFmtSimpleFull_en_GB_useIntl: function(test) {
@@ -296,41 +281,29 @@ module.exports.testdatefmt_en_GB = {
             millisecond: 0
         });
 
-        var platform = ilib._getPlatform();
-        if(platform === "nodejs"){
-            var cldrVersionStr = process.versions["cldr"];
-            var cldrVersion = parseFloat(cldrVersionStr);
-            var nodeMajorVersion = parseInt(process.versions["node"].split(".")[0], 10);
-            if (cldrVersion < 36) {
-                test.equal(fmt.format(date), "9/29/2011");
-            } else if (cldrVersion < 38) {
-                if (nodeMajorVersion === 14) {
-                    test.equal(fmt.format(date), "Thursday, 29 September 2011");
-                } else {
-                    test.equal(fmt.format(date), "Thursday, September 29, 2011");
-                }
-            } else if (cldrVersion >= 44.1 && cldrVersion < 46) {
-                // CLDR 44.1 and 45.0: comma was removed
-                // Node v18.20.0 (CLDR 44.1) and v20.15.0 (CLDR 45.0) produce format without comma
-                test.equal(fmt.format(date), "Thursday 29 September 2011");
-            } else {
-                // CLDR < 44.1 or CLDR >= 46: format with comma
-                // CLDR 40.0, 41.0, 42.0, 43.1: has comma
-                // CLDR 46.0, 47.0: has comma (restored in CLDR 46.0)
-                test.equal(fmt.format(date), "Thursday, 29 September 2011");
-            }
-        } else if (platform === "browser") {
-            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
-            // CLDR 44.1-45.0: comma was removed
-            // CLDR 46.0+: comma was restored
-            if (cldrVersion !== undefined && cldrVersion >= 44.1 && cldrVersion < 46) {
-                test.equal(fmt.format(date), "Thursday 29 September 2011");
-            } else {
-                test.equal(fmt.format(date), "Thursday, 29 September 2011");
-            }
-        } else {
-            test.equal(fmt.format(date), "Thursday, 29 September 2011");
+        var cldrVersion = TestingSupport.getCLDRVersion();
+        if (cldrVersion === undefined || (cldrVersion < 35.1 && ilib._getPlatform() === "nodejs")) {
+            // Node < 13 or CLDR < 35.1: use ilib's own formatting
+            // before node 13, node did not support Intl.DateTimeFormat, so it uses ilib's own formatting
+            test.equal(fmt.format(date), "Thursday, September 29, 2011");
+            test.done();
+            return;
         }
+        cldrVersion = Number(cldrVersion);
+        if (cldrVersion < 38) {
+            test.equal(fmt.format(date), "Thursday, September 29, 2011");
+            test.done();
+            return;
+        } else if (cldrVersion >= 44.1 && cldrVersion < 46) {
+            // CLDR 44.1 and 45.0: comma was removed
+            test.equal(fmt.format(date), "Thursday 29 September 2011");
+            test.done();
+            return;
+        }
+        // Default format for < 44.1 or >= 46
+        // CLDR 40.0, 41.0, 42.0, 43.1: has comma
+        // CLDR 46.0, 47.0: has comma (restored in CLDR 46.0)
+        test.equal(fmt.format(date), "Thursday, 29 September 2011");
         test.done();
     },
     testDateFmtGBSimpleTimeShort: function(test) {

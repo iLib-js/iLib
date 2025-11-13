@@ -597,6 +597,32 @@ function findStringVersion(version, versionMappings) {
     return index;
 }
 
+/**
+ * Shared function to get ICU version from a version mapping table.
+ * @param {number|string} version - The version to look up
+ * @param {Array} mappings - The mapping table to search
+ * @param {Function} findFunction - Either findNumericVersion or findStringVersion
+ * @param {number} icuVersionIndex - Index in the mapping array where ICU version is stored
+ * @param {string} fallbackStrategy - "first" to use index 0, "last" to use last index, or a number for specific index
+ * @returns {number|undefined} The ICU version or undefined
+ */
+function getICUVersionFromMapping(version, mappings, findFunction, icuVersionIndex, fallbackStrategy) {
+    var index = findFunction(version, mappings);
+    if (index < 0 || index >= mappings.length) {
+        // Handle out of bounds
+        if (fallbackStrategy === "first") {
+            index = 0;
+        } else if (fallbackStrategy === "last") {
+            index = mappings.length - 1;
+        } else if (typeof fallbackStrategy === "number") {
+            index = fallbackStrategy;
+        } else {
+            return undefined;
+        }
+    }
+    return mappings[index][icuVersionIndex];
+}
+
 function getCLDRVersionForICUVersion(icuVersion) {
     var index = findNumericVersion(icuVersion, icuCldrVersionMappings);
     if (index < 0) {
@@ -611,53 +637,28 @@ function getCLDRVersionForICUVersion(icuVersion) {
 }
 
 function getICUVersionForMacOSVersion(macOSVersion) {
-    var index = findStringVersion(macOSVersion, macOStoICUVersionMappings);
-    if (index < 0 || index >= macOStoICUVersionMappings.length) {
-        // assume the latest version
-        index = macOStoICUVersionMappings.length - 1;
-    }
-    // entry 2 is the ICU version
-    return macOStoICUVersionMappings[index][1];
+    // entry 1 is the ICU version (index 1), fallback to last entry
+    return getICUVersionFromMapping(macOSVersion, macOStoICUVersionMappings, findStringVersion, 1, "last");
 }
 
 function getICUVersionForChromeVersion(chromeVersion) {
-    var index = findNumericVersion(chromeVersion, chromeVersionMappings);
-    if (index < 0 || index >= chromeVersionMappings.length) {
-        // if out of bounds, use the last (oldest) entry
-        index = chromeVersionMappings.length - 1;
-    }
-    // entry 1 is the ICU version
-    return chromeVersionMappings[index][1];
+    // entry 1 is the ICU version, fallback to last entry
+    return getICUVersionFromMapping(chromeVersion, chromeVersionMappings, findNumericVersion, 1, "last");
 }
 
 function getICUVersionForFirefoxVersion(firefoxVersion) {
-    var index = findNumericVersion(firefoxVersion, firefoxVersionMappings);
-    if (index < 0 || index >= firefoxVersionMappings.length) {
-        // if out of bounds, use the last (oldest) entry
-        index = firefoxVersionMappings.length - 1;
-    }
-    // entry 1 is the ICU version
-    return firefoxVersionMappings[index][1];
+    // entry 1 is the ICU version, fallback to last entry
+    return getICUVersionFromMapping(firefoxVersion, firefoxVersionMappings, findNumericVersion, 1, "last");
 }
 
 function getICUVersionForOperaVersion(operaVersion) {
-    var index = findNumericVersion(operaVersion, operaVersionMappings);
-    if (index < 0 || index >= operaVersionMappings.length) {
-        // if out of bounds, use the first (latest) entry
-        index = 0;
-    }
-    // entry 1 is the ICU version
-    return operaVersionMappings[index][1];
+    // entry 1 is the ICU version, fallback to first entry
+    return getICUVersionFromMapping(operaVersion, operaVersionMappings, findNumericVersion, 1, "first");
 }
 
 function getICUVersionForEdgeVersion(edgeVersion) {
-    var index = findNumericVersion(edgeVersion, edgeVersionMappings);
-    if (index < 0 || index >= edgeVersionMappings.length) {
-        // if out of bounds, use the first (latest) entry
-        index = 0;
-    }
-    // entry 1 is the ICU version
-    return edgeVersionMappings[index][1];
+    // entry 1 is the ICU version, fallback to first entry
+    return getICUVersionFromMapping(edgeVersion, edgeVersionMappings, findNumericVersion, 1, "first");
 }
 
 function getICUVersionForWindowsVersion(windowsVersion) {
@@ -733,6 +734,17 @@ function getCLDRVersionForSafariVersion() {
 }
 
 function getCLDRVersionForNodeVersion() {
+    // Node.js 13.0.0 was the first version with full Intl.DateTimeFormat support
+    // and bundled ICU (ICU 65 with CLDR 35.1). Before Node 13, Intl.DateTimeFormat
+    // was not available, so ilib formats dates itself.
+    var nodeVersion = process.versions["node"];
+    if (!nodeVersion) {
+        return undefined;
+    }
+    var nodeMajorVersion = parseInt(nodeVersion.split(".")[0], 10);
+    if (nodeMajorVersion < 13) {
+        return undefined;
+    }
     return process.versions["cldr"];
 }
 
@@ -780,6 +792,48 @@ function getCLDRVersionForBrowser() {
     return cldrVersion;
 }
 
+/**
+ * Get the CLDR version for the current platform. This is the main entry point
+ * that automatically determines the platform and calls the appropriate sub-function.
+ * @returns {number|undefined} The CLDR version number, or undefined if it cannot be determined
+ */
+function getCLDRVersion() {
+    var platform = ilib._getPlatform();
+    var cldrVersion = undefined;
+
+    switch (platform) {
+        case "nodejs":
+            cldrVersion = getCLDRVersionForNodeVersion();
+            break;
+        case "browser":
+            cldrVersion = getCLDRVersionForBrowser();
+            break;
+        case "qt":
+        case "rhino":
+        case "trireme":
+        case "webos":
+        case "webos-webapp":
+            // don't have a way to tell right now. Just guess that we are on the latest version of CLDR
+            cldrVersion = icuCldrVersionMappings[icuCldrVersionMappings.length - 1][1];
+            break;
+        case "unknown":
+        default:
+            // For other platforms, try to determine CLDR version based on OS
+            var osType = getOS();
+            if (osType === "Macintosh") {
+                cldrVersion = getCLDRVersionForMacOSVersion();
+            } else if (osType === "Linux" || osType === "Unix" || osType === "BSD" || osType === "Solaris") {
+                cldrVersion = getCLDRVersionForUnixVersion();
+            } else if (osType === "Windows") {
+                cldrVersion = getCLDRVersionForWindowsVersion();
+            }
+            // Other OSes don't have specific mappings yet
+            break;
+    }
+
+    return cldrVersion;
+}
+
 module.exports = {
     getMacOSVersion: getMacOSVersion,
     getChromeVersion: getChromeVersion,
@@ -810,5 +864,6 @@ module.exports = {
     getCLDRVersionForWindowsVersion: getCLDRVersionForWindowsVersion,
     getCLDRVersionForNodeVersion: getCLDRVersionForNodeVersion,
     getCLDRVersionForBrowser: getCLDRVersionForBrowser,
+    getCLDRVersion: getCLDRVersion,
 };
 
