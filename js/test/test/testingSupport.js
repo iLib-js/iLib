@@ -18,7 +18,7 @@
  */
 
 if (typeof(SearchUtils) === 'undefined') {
-    var SearchUtils = require("../../lib/SearchUtils");
+    var SearchUtils = require("../../lib/SearchUtils.js");
 }
 // Simple ES5-compatible semver replacement for Qt/QML compatibility
 // Only implements the functions we actually use: compare() and lte()
