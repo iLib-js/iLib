@@ -20,8 +20,38 @@
 if (typeof(SearchUtils) === 'undefined') {
     var SearchUtils = require("../../lib/SearchUtils");
 }
+// Simple ES5-compatible semver replacement for Qt/QML compatibility
+// Only implements the functions we actually use: compare() and lte()
 if (typeof(semver) === 'undefined') {
-    var semver = require("semver");
+    var semver = (function() {
+        return {
+            /**
+             * Compare two version strings. Returns:
+             * -1 if v1 < v2
+             *  0 if v1 == v2
+             *  1 if v1 > v2
+             */
+            compare: function(v1, v2) {
+                if (v1 === v2) return 0;
+                var parts1 = v1.split('.');
+                var parts2 = v2.split('.');
+                var len = Math.max(parts1.length, parts2.length);
+                for (var i = 0; i < len; i++) {
+                    var num1 = parseInt(parts1[i] || '0', 10);
+                    var num2 = parseInt(parts2[i] || '0', 10);
+                    if (num1 < num2) return -1;
+                    if (num1 > num2) return 1;
+                }
+                return 0;
+            },
+            /**
+             * Check if v1 <= v2 (less than or equal)
+             */
+            lte: function(v1, v2) {
+                return this.compare(v1, v2) <= 0;
+            }
+        };
+    })();
 }
 if (typeof(ilib) === 'undefined') {
     var ilib = require("../../lib/ilib.js");
@@ -733,6 +763,68 @@ function getCLDRVersionForSafariVersion() {
     return getCLDRVersionForMacOSVersion();
 }
 
+/**
+ * Get the ICU version from Qt's FileReader plugin if available.
+ * This function tries multiple ways to access the FileReader singleton.
+ * @returns {string|undefined} The ICU version string (e.g., "73.2") or undefined if not available
+ */
+function getICUVersionFromQt() {
+    // Try to access FileReader through various mechanisms
+    // Method 1: Check if FS.FileReader is available (QML singleton)
+    if (typeof(FS) !== 'undefined' && FS.FileReader && typeof(FS.FileReader.getICUVersion) === 'function') {
+        try {
+            return FS.FileReader.getICUVersion();
+        } catch (e) {
+            // Ignore errors
+        }
+    }
+
+    // Method 2: Check if there's a global FileReader instance
+    if (typeof(FileReader) !== 'undefined' && typeof(FileReader.getICUVersion) === 'function') {
+        try {
+            return FileReader.getICUVersion();
+        } catch (e) {
+            // Ignore errors
+        }
+    }
+
+    // Method 3: Check if Qt object has FileReader
+    if (typeof(Qt) !== 'undefined' && Qt.FileReader && typeof(Qt.FileReader.getICUVersion) === 'function') {
+        try {
+            return Qt.FileReader.getICUVersion();
+        } catch (e) {
+            // Ignore errors
+        }
+    }
+
+    return undefined;
+}
+
+function getCLDRVersionForQt() {
+    // Try to get ICU version from Qt's FileReader plugin
+    var icuVersionStr = getICUVersionFromQt();
+    if (icuVersionStr) {
+        // Parse the version string (e.g., "73.2" -> 73.2)
+        var icuVersion = parseFloat(icuVersionStr);
+        if (!isNaN(icuVersion)) {
+            return getCLDRVersionForICUVersion(icuVersion);
+        }
+    }
+
+    // Fallback: try to determine CLDR version based on OS
+    var osType = getOS();
+    if (osType === "Macintosh") {
+        return getCLDRVersionForMacOSVersion();
+    } else if (osType === "Linux" || osType === "Unix" || osType === "BSD" || osType === "Solaris") {
+        return getCLDRVersionForUnixVersion();
+    } else if (osType === "Windows") {
+        return getCLDRVersionForWindowsVersion();
+    }
+
+    // Last resort: guess latest CLDR version
+    return icuCldrVersionMappings[icuCldrVersionMappings.length - 1][1];
+}
+
 function getCLDRVersionForNodeVersion() {
     var cldrVersion = process.versions["cldr"];
     if (cldrVersion) {
@@ -816,6 +908,8 @@ function getCLDRVersion() {
             cldrVersion = getCLDRVersionForBrowser();
             break;
         case "qt":
+            cldrVersion = getCLDRVersionForQt();
+            break;
         case "rhino":
         case "trireme":
         case "webos":
@@ -871,6 +965,8 @@ module.exports = {
     getCLDRVersionForWindowsVersion: getCLDRVersionForWindowsVersion,
     getCLDRVersionForNodeVersion: getCLDRVersionForNodeVersion,
     getCLDRVersionForBrowser: getCLDRVersionForBrowser,
+    getCLDRVersionForQt: getCLDRVersionForQt,
+    getICUVersionFromQt: getICUVersionFromQt,
     getCLDRVersion: getCLDRVersion,
 };
 

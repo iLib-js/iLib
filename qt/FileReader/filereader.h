@@ -20,6 +20,7 @@ public:
     Q_INVOKABLE QString read(QString path) const;
     Q_INVOKABLE QVariantList readBinary(QString path) const;
     Q_INVOKABLE QVariantList list(QString path) const;
+    Q_INVOKABLE QString getICUVersion() const;
 };
 
 #endif // FILEREADER_H
