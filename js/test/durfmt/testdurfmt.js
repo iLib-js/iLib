@@ -24,9 +24,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-function getChromeVersion () {
-    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-    return raw ? parseInt(raw[2], 10) : false;
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
 }
 
 module.exports.testdurfmt = {
@@ -2428,7 +2427,9 @@ module.exports.testdurfmt = {
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
             var expected = '‏20 שנים, 20 חודשים, 20 שבועות, 20 יום, 20 שעות, 20 דקות ו-‏20 שניות';
-            if (browser === "chrome" && getChromeVersion() >= 110) {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 43+ changed the behavior for he-IL
+            if (cldrVersion !== undefined && cldrVersion >= 43) {
                 expected = '‏20 שנים, 20 חודשים, 20 שבועות, 20 ימים, 20 שעות, 20 דקות ו-20 שניות';
             }
             test.equal(duration.toString(), expected);

@@ -32,9 +32,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-function getChromeVersion () {
-    var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-    return raw ? parseInt(raw[2], 10) : false;
+if (typeof(TestingSupport) === "undefined") {
+    var TestingSupport = require("../test/testingSupport.js");
 }
 
 module.exports.testunitfmt_mt_MT = {
@@ -135,8 +134,10 @@ module.exports.testunitfmt_mt_MT = {
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
             var expected = "2 ċentimetri kwadri";
-            if (browser === "chrome" && getChromeVersion() >= 110) {
-                expected = "2 ċentimetru kwadru";
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 42+ supports the "many" category for mt-MT
+            if (cldrVersion !== undefined && cldrVersion >= 42) {
+               expected = "2 ċentimetru kwadru";
             }
             test.equal(str, expected);
         } else {
@@ -220,7 +221,9 @@ module.exports.testunitfmt_mt_MT = {
         } else if (platform === "browser") {
             var browser = ilib._getBrowser();
             var expected = "2 kilometri kull litru";
-            if (browser === "chrome" && getChromeVersion() >= 110) {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            // CLDR 42+ supports the "many" category for mt-MT
+            if (cldrVersion !== undefined && cldrVersion >= 42) {
                 expected = "2 kilometru kull litru";
             }
             test.equal(str, expected);

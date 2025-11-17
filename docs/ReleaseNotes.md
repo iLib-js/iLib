@@ -3,6 +3,16 @@ Release Notes for Version 14
 
 Build 031
 -------
+Published as version 14.21.2
+
+New Features:
+
+Bug Fixes:
+* Changes to get ilib to run properly on node 22 and 24
+* Updated dependencies
+
+Build 031
+-------
 Published as version 14.21.1
 
 New Features:

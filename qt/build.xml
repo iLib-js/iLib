@@ -89,6 +89,12 @@ limitations under the License.
             <exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
                 <arg value="filereader.pro"/>
             </exec>
+            <!-- Remove deprecated AGL framework from Makefile on macOS -->
+            <!-- Wait a moment for Makefiles to be created, then remove AGL -->
+            <exec osfamily="unix" executable="sh" dir="${build.filereader}" failifexecutionfails="false" failonerror="false">
+                <arg value="-c"/>
+                <arg value="sleep 0.1; if [ -f Makefile.Release ] || [ -f Makefile.Debug ] || [ -f Makefile ]; then sed -i.bak -e 's/-framework AGL//g' -e 's/-Wl,-weak_framework,AGL//g' Makefile* 2>/dev/null; fi"/>
+            </exec>
         </sequential>
     </target>
 
