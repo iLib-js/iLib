@@ -7,6 +7,7 @@
 #include <QTextStream>
 #include <QDateTime>
 #include <QByteArray>
+#include <unicode/uversion.h>
 
 FileReader::FileReader(QQuickItem *parent):
     QQuickItem(parent)
@@ -98,4 +99,13 @@ QVariantList FileReader::list(QString path) const {
         entryList.append(entry);
     }
     return entryList;
+}
+
+QString FileReader::getICUVersion() const {
+    UVersionInfo versionInfo;
+    u_getVersion(versionInfo);
+    // Format as "major.minor" (e.g., "73.2" or "74.1")
+    return QString("%1.%2")
+        .arg(versionInfo[0])
+        .arg(versionInfo[1]);
 }
