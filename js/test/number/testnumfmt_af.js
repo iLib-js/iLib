@@ -433,7 +433,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.05), "R57,05");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault23: function(test) {
+    testNumFmtCurrencyFormatZADefault2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
