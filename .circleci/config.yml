@@ -32,12 +32,11 @@ jobs:
 
       - run:
           name: Set up node packages
-          no_output_timeout: 30m
           command: |
             rm -rf node_modules package-lock.json
             echo "node version: " $(node -v)
             echo "npm version: " $(npm -v)
-            npm install --verbose
+            npm install
 
       - run:
           name: Check environment
@@ -53,10 +52,9 @@ jobs:
 
       - run:
           name: Running all unit tests
-          no_output_timeout: 30m
           command: |
             export PATH="$PWD/node_modules/.bin:$PATH"
-            ant -v clean test.travis
+            ant clean test.travis
 
 workflows:
   version: 2
