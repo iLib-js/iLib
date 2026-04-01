@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 034
+-------
+Published as version 14.22.0
+
+New Features:
+* Update to CLDR v48.2 data
+* Update to Unicode Character Database (UCD) version 17.0.0
+
+
 Build 033
 -------
 Published as version 14.21.3
