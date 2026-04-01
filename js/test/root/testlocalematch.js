@@ -1136,7 +1136,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "be-Cyrl-BY");
+        test.equal(locale.getSpec(), "ru-Cyrl-BY");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleByLocaleCode66: function(test) {
@@ -2489,7 +2489,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "fr-SN");
+        test.equal(locale.getSpec(), "wo-SN");
         test.done();
     },
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry_AD: function(test) {
