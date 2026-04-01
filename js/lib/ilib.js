@@ -59,7 +59,7 @@ ilib.getVersion = function () {
  * @return {string} the adopted cldr version for ilib
  */
 ilib.getCLDRVersion = function () {
-    return "46.0";
+    return "48.2";
 };
 
 /**
