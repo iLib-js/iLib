@@ -877,7 +877,7 @@ Locale._isRegionCode = function (str) {
 
 /**
  * Tell whether or not the given string has the correct syntax to be
- * an ISO 639 language code.
+ * an ISO 15924 script code.
  *
  * @private
  * @param {string} str the string to parse
