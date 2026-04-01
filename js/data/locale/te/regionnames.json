@@ -643,12 +643,6 @@
             "name": "సాల్జ్‌టా ప్రావిన్స్"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "విక్టోరియా"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "LI",
             "name": "లిట్టోరల్ డిపార్ట్మెంట్"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "హుయిలా డిపార్ట్మెంట్"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "S",
             "name": "Sotavento Islands"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5241,6 +5205,10 @@
             "name": "రెడ్ సీ గవర్నరేట్"
         },
         {
+            "code": "LX",
+            "name": "లక్సోర్ గవర్నరేట్"
+        },
+        {
             "code": "SUZ",
             "name": "సూయెజ్ గవర్నరేట్"
         },
@@ -5255,10 +5223,6 @@
         {
             "code": "FYM",
             "name": "Faiyum"
-        },
-        {
-            "code": "LX",
-            "name": "Luxor"
         }
     ],
     "ER": [
@@ -5995,6 +5959,10 @@
             "name": "బౌచెస్-డు-రోన్"
         },
         {
+            "code": "976",
+            "name": "మయాటి"
+        },
+        {
             "code": "50",
             "name": "మాంచి"
         },
@@ -6229,10 +6197,6 @@
         {
             "code": "IDF",
             "name": "Île-de-France²"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -7387,12 +7351,6 @@
             "name": "సామెగ్రెలో-జెమో స్వానెటి"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "UE",
@@ -7679,12 +7637,6 @@
         {
             "code": "NZ",
             "name": "Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "జుటియాపా డిపార్ట్మెంట్"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "SN",
             "name": "Sopron"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "అర్కాంగై ప్రావిన్స్"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Omaheke"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "Puno"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "EPW",
@@ -16369,18 +16273,6 @@
             "name": "పశ్చిమ పొమెరేనియన్ వోయివోడెషిప్"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "NGZ",
@@ -16526,7 +16418,7 @@
         },
         {
             "code": "30",
-            "name": "Madeira"
+            "name": "మదీరా దీవులు"
         }
     ],
     "PW": [
@@ -16701,12 +16593,6 @@
         {
             "code": "SH",
             "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "La Unión"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19095,12 +18975,6 @@
         {
             "code": "HH",
             "name": "హోహ్హో జిల్లా"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "EO",
             "name": "Ennedi-Ouest"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20271,10 +20139,6 @@
         {
             "code": "PEN",
             "name": "Penghu"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "జాన్స్‌స్టన్ అటోల్"
         },
@@ -21583,12 +21443,6 @@
             "name": "సుక్రె"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21881,10 +21735,6 @@
         {
             "code": "SG",
             "name": "సిగేవ్"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "SN",
             "name": "Sana’a"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

@@ -514,7 +514,7 @@
         },
         {
             "code": "LUA",
-            "name": "Luanda"
+            "name": "Luanda probintzia"
         },
         {
             "code": "LNO",
@@ -643,12 +643,6 @@
             "name": "Tucumángo probintzia"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1924,7 +1906,7 @@
         },
         {
             "code": "RM",
-            "name": "Rumonge"
+            "name": "Rumonge probintzia"
         },
         {
             "code": "RT",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4780,7 +4744,7 @@
         },
         {
             "code": "50",
-            "name": "Jõgevamaa"
+            "name": "Jõgevako konderria"
         },
         {
             "code": "52",
@@ -4788,7 +4752,7 @@
         },
         {
             "code": "56",
-            "name": "Läänemaa"
+            "name": "Lääneko konderria"
         },
         {
             "code": "57",
@@ -4800,11 +4764,11 @@
         },
         {
             "code": "60",
-            "name": "Lääne-Virumaa"
+            "name": "Lääne-Viruko konderria"
         },
         {
             "code": "64",
-            "name": "Põlvamaa"
+            "name": "Põlvako konderria"
         },
         {
             "code": "68",
@@ -4812,27 +4776,27 @@
         },
         {
             "code": "71",
-            "name": "Raplamaa"
+            "name": "Raplako konderria"
         },
         {
             "code": "74",
-            "name": "Saare"
+            "name": "Saareko konderria"
         },
         {
             "code": "79",
-            "name": "Tartumaa"
+            "name": "Tartu konderria"
         },
         {
             "code": "81",
-            "name": "Valgamaa"
+            "name": "Valgako konderria"
         },
         {
             "code": "84",
-            "name": "Viljandi"
+            "name": "Viljandiko konderria"
         },
         {
             "code": "87",
-            "name": "Võrumaa"
+            "name": "Võruko konderria"
         },
         {
             "code": "130",
@@ -4868,15 +4832,15 @@
         },
         {
             "code": "214",
-            "name": "Häädemeeste"
+            "name": "Häädemeeste landa-udalerria"
         },
         {
             "code": "245",
-            "name": "Jõelähtme"
+            "name": "Jõelähtme landa udalerria"
         },
         {
             "code": "247",
-            "name": "Jõgeva"
+            "name": "Jõgeva (landa-udalerria)"
         },
         {
             "code": "251",
@@ -4884,7 +4848,7 @@
         },
         {
             "code": "255",
-            "name": "Järva"
+            "name": "Järva udalerria"
         },
         {
             "code": "272",
@@ -4952,7 +4916,7 @@
         },
         {
             "code": "441",
-            "name": "Lääne-Nigula"
+            "name": "Lääne-Nigula landa-udalerria"
         },
         {
             "code": "442",
@@ -4984,7 +4948,7 @@
         },
         {
             "code": "514",
-            "name": "Narva-Jõesuu"
+            "name": "Narva-Jõesuu Hiria"
         },
         {
             "code": "528",
@@ -5008,7 +4972,7 @@
         },
         {
             "code": "618",
-            "name": "Põltsamaa"
+            "name": "Põltsamaa (landa-udalerria)"
         },
         {
             "code": "622",
@@ -5148,7 +5112,7 @@
         },
         {
             "code": "928",
-            "name": "Väike-Maarja"
+            "name": "Väike-Maarja landa-udalerria"
         }
     ],
     "EG": [
@@ -7387,12 +7351,6 @@
             "name": "Xida Kartli"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -12516,7 +12456,7 @@
         },
         {
             "code": "HOC",
-            "name": "Al Hoceïma"
+            "name": "Al-Hoceima probintzia"
         },
         {
             "code": "AOU",
@@ -12572,7 +12512,7 @@
         },
         {
             "code": "CHI",
-            "name": "Chichaoua"
+            "name": "Chichaoua Probintzia"
         },
         {
             "code": "CHT",
@@ -12668,7 +12608,7 @@
         },
         {
             "code": "KHE",
-            "name": "Khemisset"
+            "name": "Khemisseteko probintzia"
         },
         {
             "code": "KHN",
@@ -12744,7 +12684,7 @@
         },
         {
             "code": "OUA",
-            "name": "Ouarzazate"
+            "name": "Ouarzazate probintzia"
         },
         {
             "code": "OUD",
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13752,7 +13686,7 @@
         },
         {
             "code": "9",
-            "name": "Ménaka"
+            "name": "Menakako eskualdea"
         },
         {
             "code": "5",
@@ -13768,7 +13702,7 @@
         },
         {
             "code": "10",
-            "name": "Taoudénit"
+            "name": "Taoudeniteko eskualdea"
         },
         {
             "code": "6",
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "ǁKaras"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -14990,7 +14900,7 @@
         },
         {
             "code": "EN",
-            "name": "Enugu"
+            "name": "Enugu (estatua)"
         },
         {
             "code": "FC",
@@ -15514,7 +15424,7 @@
         },
         {
             "code": "GIS",
-            "name": "Gisborne"
+            "name": "Gisborne eskualdea"
         },
         {
             "code": "HKB",
@@ -15773,12 +15683,6 @@
         {
             "code": "UCA",
             "name": "Ucayali"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16373,18 +16277,6 @@
             "name": "Mendebaldeko Pomeraniako voivoderria"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -18887,6 +18773,10 @@
     ],
     "SS": [
         {
+            "code": "LK",
+            "name": "Aintzirak"
+        },
+        {
             "code": "EC",
             "name": "Central Equatoria"
         },
@@ -18897,10 +18787,6 @@
         {
             "code": "JG",
             "name": "Jonglei"
-        },
-        {
-            "code": "LK",
-            "name": "Lakes"
         },
         {
             "code": "BN",
@@ -19019,12 +18905,6 @@
             "name": "Usulután departamendua"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "QU",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung konderria"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuang konderria"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoloia"
         },
@@ -21531,10 +21391,6 @@
             "name": "Falcón"
         },
         {
-            "code": "W",
-            "name": "Federal Dependencies"
-        },
-        {
             "code": "J",
             "name": "Guárico"
         },
@@ -21579,18 +21435,16 @@
             "name": "Vargas (estatua)"
         },
         {
+            "code": "W",
+            "name": "Venezuelako dependentzia federalak"
+        },
+        {
             "code": "U",
             "name": "Yaracuy"
         },
         {
             "code": "V",
             "name": "Zulia"
-        }
-    ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
         }
     ],
     "VN": [
@@ -21715,6 +21569,10 @@
             "name": "Hòa Bình"
         },
         {
+            "code": "26",
+            "name": "Hue"
+        },
+        {
             "code": "66",
             "name": "Hưng Yên"
         },
@@ -21819,10 +21677,6 @@
             "name": "Thanh Hóa"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
             "code": "46",
             "name": "Tiền Giang"
         },
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "TA",
             "name": "Ta’izz Herrizaintza"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

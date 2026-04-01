@@ -22,7 +22,7 @@
         },
         {
             "code": "07",
-            "name": "Andorra la Vella"
+            "name": "آندورا لاولا"
         },
         {
             "code": "08",
@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -721,18 +715,6 @@
             "name": "ویکتوریا آیالات"
         }
     ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
-        }
-    ],
     "AZ": [
         {
             "code": "XA",
@@ -741,6 +723,10 @@
         {
             "code": "BA",
             "name": "باکو"
+        },
+        {
+            "code": "QAZ",
+            "name": "د قزاق ښار"
         },
         {
             "code": "NV",
@@ -931,10 +917,6 @@
             "name": "Qakh"
         },
         {
-            "code": "QAZ",
-            "name": "Qazakh"
-        },
-        {
             "code": "QBA",
             "name": "Quba"
         },
@@ -1108,7 +1090,7 @@
         },
         {
             "code": "02",
-            "name": "Saint Andrew"
+            "name": "سنت اندرو"
         },
         {
             "code": "03",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3155,6 +3131,14 @@
             "name": "بېجنګ"
         },
         {
+            "code": "TJ",
+            "name": "تيانجين"
+        },
+        {
+            "code": "XZ",
+            "name": "تيبېت خپلواکه سيمه"
+        },
+        {
             "code": "XJ",
             "name": "سینګیانګ"
         },
@@ -3167,12 +3151,24 @@
             "name": "شانګهای"
         },
         {
+            "code": "FJ",
+            "name": "فوجيان"
+        },
+        {
+            "code": "GD",
+            "name": "گوانگډونگ"
+        },
+        {
             "code": "GX",
             "name": "ګوانګشي"
         },
         {
             "code": "MO",
             "name": "مکاو"
+        },
+        {
+            "code": "NM",
+            "name": "منځنۍ منگوليا"
         },
         {
             "code": "HK",
@@ -3187,16 +3183,8 @@
             "name": "Chongqing"
         },
         {
-            "code": "FJ",
-            "name": "Fujian"
-        },
-        {
             "code": "GS",
             "name": "Gansu"
-        },
-        {
-            "code": "GD",
-            "name": "Guangdong"
         },
         {
             "code": "GZ",
@@ -3225,10 +3213,6 @@
         {
             "code": "HN",
             "name": "Hunan"
-        },
-        {
-            "code": "NM",
-            "name": "Inner Mongolia"
         },
         {
             "code": "JS",
@@ -3271,14 +3255,6 @@
             "name": "Taiwan"
         },
         {
-            "code": "TJ",
-            "name": "Tianjin"
-        },
-        {
-            "code": "XZ",
-            "name": "Tibet"
-        },
-        {
             "code": "YN",
             "name": "Yunnan"
         },
@@ -3291,6 +3267,10 @@
         {
             "code": "DC",
             "name": "بوګوتا"
+        },
+        {
+            "code": "SAP",
+            "name": "سن آندرس پروویدنسیا او سانتا کاتالینا ټاپوګان"
         },
         {
             "code": "AMA",
@@ -3393,10 +3373,6 @@
             "name": "Risaralda"
         },
         {
-            "code": "SAP",
-            "name": "San Andrés & Providencia"
-        },
-        {
             "code": "SAN",
             "name": "Santander"
         },
@@ -3419,12 +3395,6 @@
         {
             "code": "VID",
             "name": "Vichada"
-        }
-    ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4171,6 +4135,10 @@
     ],
     "DJ": [
         {
+            "code": "DJ",
+            "name": "جیبوتی ښار"
+        },
+        {
             "code": "AS",
             "name": "Ali Sabieh"
         },
@@ -4181,10 +4149,6 @@
         {
             "code": "DI",
             "name": "Dikhil"
-        },
-        {
-            "code": "DJ",
-            "name": "Djibouti"
         },
         {
             "code": "OB",
@@ -5811,6 +5775,10 @@
             "name": "ګوادېلوپ"
         },
         {
+            "code": "976",
+            "name": "مايوت"
+        },
+        {
             "code": "01",
             "name": "Ain"
         },
@@ -6103,10 +6071,6 @@
             "name": "Mayenne"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         },
@@ -6299,6 +6263,10 @@
     ],
     "GB": [
         {
+            "code": "ABE",
+            "name": "ابردین"
+        },
+        {
             "code": "ENG",
             "name": "انګلېنډ"
         },
@@ -6341,10 +6309,6 @@
         {
             "code": "WLS",
             "name": "ولز"
-        },
-        {
-            "code": "ABE",
-            "name": "Aberdeen"
         },
         {
             "code": "ABD",
@@ -7387,12 +7351,6 @@
             "name": "Shida Kartli"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9279,6 +9219,10 @@
             "name": "استورلند"
         },
         {
+            "code": "RKV",
+            "name": "ریکیاویک"
+        },
+        {
             "code": "8",
             "name": "سودورلند"
         },
@@ -9493,10 +9437,6 @@
         {
             "code": "0",
             "name": "Reykjavík"
-        },
-        {
-            "code": "RKV",
-            "name": "Reykjavíkurborg"
         },
         {
             "code": "SEL",
@@ -13142,7 +13082,7 @@
         },
         {
             "code": "12",
-            "name": "Nikšić"
+            "name": "نیکشیچ"
         },
         {
             "code": "13",
@@ -13195,12 +13135,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15173,6 +15083,10 @@
             "name": "سویلي هالنډ"
         },
         {
+            "code": "BQ2",
+            "name": "سیبا"
+        },
+        {
             "code": "NB",
             "name": "شمالي برابانټ"
         },
@@ -15199,10 +15113,6 @@
         {
             "code": "LI",
             "name": "Limburg"
-        },
-        {
-            "code": "BQ2",
-            "name": "Saba"
         },
         {
             "code": "BQ3",
@@ -15769,12 +15679,6 @@
         {
             "code": "UCA",
             "name": "Ucayali"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16369,18 +16273,6 @@
             "name": "لویدیځ پومراني"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "KYS",
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -18696,7 +18582,7 @@
         },
         {
             "code": "07",
-            "name": "San Marino"
+            "name": "سان مارینو ښار"
         },
         {
             "code": "08",
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20089,6 +19957,10 @@
     ],
     "TT": [
         {
+            "code": "POS",
+            "name": "پرت آو اسپاین"
+        },
+        {
             "code": "ARI",
             "name": "Arima"
         },
@@ -20115,10 +19987,6 @@
         {
             "code": "PTF",
             "name": "Point Fortin"
-        },
-        {
-            "code": "POS",
-            "name": "Port of Spain"
         },
         {
             "code": "PRT",
@@ -20259,10 +20127,6 @@
         {
             "code": "TTT",
             "name": "Taitung"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         },
         {
             "code": "TAO",
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21203,6 +21063,10 @@
             "name": "کنتاکي"
         },
         {
+            "code": "CT",
+            "name": "کنیټیکټ"
+        },
+        {
             "code": "WV",
             "name": "لویدیځه ویرجینیا"
         },
@@ -21289,10 +21153,6 @@
         {
             "code": "UT",
             "name": "یوتا"
-        },
-        {
-            "code": "CT",
-            "name": "Connecticut"
         },
         {
             "code": "DE",
@@ -21581,12 +21441,6 @@
         {
             "code": "V",
             "name": "Zulia"
-        }
-    ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
         }
     ],
     "VN": [
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

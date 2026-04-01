@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Viktoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2803,14 +2779,6 @@
     ],
     "CH": [
         {
-            "code": "BL",
-            "name": "Basel-Landschaft"
-        },
-        {
-            "code": "JU",
-            "name": "Jura"
-        },
-        {
             "code": "AG",
             "name": "Kantoni Aargau"
         },
@@ -2821,6 +2789,10 @@
         {
             "code": "AI",
             "name": "Kantoni Appenzell Innerrhoden"
+        },
+        {
+            "code": "BL",
+            "name": "Kantoni Basel-Landschaft"
         },
         {
             "code": "BS",
@@ -2851,6 +2823,10 @@
             "name": "Kantoni Gjenevë"
         },
         {
+            "code": "JU",
+            "name": "Kantoni Jura"
+        },
+        {
             "code": "LU",
             "name": "Kantoni Luzern"
         },
@@ -2859,8 +2835,16 @@
             "name": "Kantoni Neuchâtel"
         },
         {
+            "code": "NW",
+            "name": "Kantoni Nidwalden"
+        },
+        {
             "code": "OW",
             "name": "Kantoni Obwalden"
+        },
+        {
+            "code": "SH",
+            "name": "Kantoni Schaffhausen"
         },
         {
             "code": "SO",
@@ -2889,14 +2873,6 @@
         {
             "code": "ZG",
             "name": "Kantoni Zug"
-        },
-        {
-            "code": "NW",
-            "name": "Nidwalden"
-        },
-        {
-            "code": "SH",
-            "name": "Schaffhausen"
         },
         {
             "code": "SZ",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6316,7 +6280,7 @@
         },
         {
             "code": "ENG",
-            "name": "Anglia"
+            "name": "Angli"
         },
         {
             "code": "ANS",
@@ -7088,7 +7052,7 @@
         },
         {
             "code": "SCT",
-            "name": "Skocia"
+            "name": "Skoci"
         },
         {
             "code": "SLG",
@@ -7220,7 +7184,7 @@
         },
         {
             "code": "WLS",
-            "name": "Uellsi"
+            "name": "Uells"
         },
         {
             "code": "VGL",
@@ -7389,12 +7353,6 @@
         {
             "code": "TB",
             "name": "Tbilisi"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7683,12 +7641,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8557,12 +8503,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13150,7 +13090,7 @@
         },
         {
             "code": "12",
-            "name": "Nikšić"
+            "name": "Nikshiqi"
         },
         {
             "code": "13",
@@ -13203,12 +13143,6 @@
         {
             "code": "25",
             "name": "Komuna e Zetës"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15779,17 +15689,7 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
-        {
-            "code": "NSB",
-            "name": "Bougainville"
-        },
         {
             "code": "CPM",
             "name": "Central"
@@ -15853,6 +15753,10 @@
         {
             "code": "NCD",
             "name": "Port Moresbi"
+        },
+        {
+            "code": "NSB",
+            "name": "Rajoni Autonom i Bougainville"
         },
         {
             "code": "SAN",
@@ -16377,18 +16281,6 @@
             "name": "West Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17099,10 +16985,6 @@
             "name": "Kabardino-Balkaria"
         },
         {
-            "code": "KGD",
-            "name": "Kaliningrad"
-        },
-        {
             "code": "KL",
             "name": "Kalmikia"
         },
@@ -17157,10 +17039,6 @@
         {
             "code": "KGN",
             "name": "Kurgan"
-        },
-        {
-            "code": "KRS",
-            "name": "Kursk"
         },
         {
             "code": "LEN",
@@ -17241,6 +17119,14 @@
         {
             "code": "PSK",
             "name": "Pskov"
+        },
+        {
+            "code": "KGD",
+            "name": "Rajoni i Kaliningradit"
+        },
+        {
+            "code": "KRS",
+            "name": "Rajoni i Kurskut"
         },
         {
             "code": "AL",
@@ -17656,87 +17542,87 @@
     "SE": [
         {
             "code": "K",
-            "name": "Blekinge"
+            "name": "qarku i Blekinges"
         },
         {
             "code": "W",
-            "name": "Dalarna"
+            "name": "qarku i Dalarnës"
         },
         {
             "code": "X",
-            "name": "Gävleborg"
+            "name": "qarku i Gavleborgut"
         },
         {
             "code": "I",
-            "name": "Gotland"
+            "name": "qarku i Gotlandit"
         },
         {
             "code": "N",
-            "name": "Halland"
+            "name": "qarku i Halandit"
         },
         {
             "code": "Z",
-            "name": "Jämtland"
+            "name": "qarku i Jamtlandit"
         },
         {
             "code": "F",
-            "name": "Jönköping"
+            "name": "qarku i Jonkopingut"
         },
         {
             "code": "H",
-            "name": "Kalmar"
+            "name": "qarku i Kalmarit"
         },
         {
             "code": "G",
-            "name": "Kronoberg"
+            "name": "qarku i Kronobergut"
         },
         {
             "code": "BD",
-            "name": "Norrbotten"
+            "name": "qarku i Norbotenit"
         },
         {
             "code": "T",
-            "name": "Örebro"
+            "name": "qarku i Orebrosë"
         },
         {
             "code": "E",
-            "name": "Östergötland"
+            "name": "qarku i Ostergotlandit"
+        },
+        {
+            "code": "D",
+            "name": "qarku i Sodermanlandit"
+        },
+        {
+            "code": "C",
+            "name": "qarku i Upsalës"
+        },
+        {
+            "code": "S",
+            "name": "qarku i Varmlandit"
+        },
+        {
+            "code": "AC",
+            "name": "qarku i Vasterbotenit"
+        },
+        {
+            "code": "Y",
+            "name": "qarku i Vasternorlandit"
+        },
+        {
+            "code": "U",
+            "name": "qarku i Vastmanlandit"
+        },
+        {
+            "code": "O",
+            "name": "qarku i Vastra Gotalandit"
         },
         {
             "code": "M",
             "name": "Qarku Skåne"
         },
         {
-            "code": "D",
-            "name": "Södermanland"
-        },
-        {
             "code": "AB",
-            "name": "Stockholm"
-        },
-        {
-            "code": "C",
-            "name": "Uppsala"
-        },
-        {
-            "code": "S",
-            "name": "Värmland"
-        },
-        {
-            "code": "AC",
-            "name": "Västerbotten"
-        },
-        {
-            "code": "Y",
-            "name": "Västernorrland"
-        },
-        {
-            "code": "U",
-            "name": "Västmanland"
-        },
-        {
-            "code": "O",
-            "name": "Västra Götaland"
+            "name": "Stokkolma"
         }
     ],
     "SG": [
@@ -19023,12 +18909,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20269,10 +20137,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21591,12 +21451,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

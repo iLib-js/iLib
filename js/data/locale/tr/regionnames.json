@@ -643,12 +643,6 @@
             "name": "Tucumán eyaleti"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NSW",
             "name": "Yeni Güney Galler"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1150,15 +1132,15 @@
     "BD": [
         {
             "code": "05",
-            "name": "Bagerhat"
+            "name": "Bagerhat (ilçe)"
         },
         {
             "code": "01",
-            "name": "Bandarban"
+            "name": "Bandarban (ilçe)"
         },
         {
             "code": "02",
-            "name": "Barguna"
+            "name": "Barguna (ilçe)"
         },
         {
             "code": "A",
@@ -1170,39 +1152,63 @@
         },
         {
             "code": "07",
-            "name": "Bhola"
+            "name": "Bhola (ilçe)"
         },
         {
             "code": "03",
-            "name": "Bogra"
+            "name": "Bogra (ilçe)"
         },
         {
             "code": "04",
-            "name": "Brahmanbaria"
+            "name": "Brammonbariya (ilçe)"
         },
         {
-            "code": "09",
-            "name": "Chandpur"
+            "code": "25",
+            "name": "Calokati (ilçe)"
         },
         {
-            "code": "10",
-            "name": "Chittagong"
+            "code": "22",
+            "name": "Caşore (ilçe)"
+        },
+        {
+            "code": "21",
+            "name": "Cemalpur (ilçe)"
+        },
+        {
+            "code": "23",
+            "name": "Cenaydah (ilçe)"
         },
         {
             "code": "B",
             "name": "Chittagong İli"
         },
         {
-            "code": "12",
-            "name": "Chuadanga"
+            "code": "11",
+            "name": "Cox’s Bazar (ilçe)"
         },
         {
-            "code": "11",
-            "name": "Cox’s Bazar"
+            "code": "24",
+            "name": "Coypurhat (ilçe)"
+        },
+        {
+            "code": "09",
+            "name": "Çandpur (ilçe)"
+        },
+        {
+            "code": "45",
+            "name": "Çapay Nevabganc (ilçe)"
+        },
+        {
+            "code": "10",
+            "name": "Çitagong (ilçe)"
+        },
+        {
+            "code": "12",
+            "name": "Çuadanga (ilçe)"
         },
         {
             "code": "13",
-            "name": "Dhaka"
+            "name": "Dakka (ilçe)"
         },
         {
             "code": "C",
@@ -1210,59 +1216,39 @@
         },
         {
             "code": "14",
-            "name": "Dinajpur"
-        },
-        {
-            "code": "15",
-            "name": "Faridpur"
+            "name": "Dinecpur (ilçe)"
         },
         {
             "code": "16",
-            "name": "Feni"
+            "name": "Feni (ilçe)"
+        },
+        {
+            "code": "15",
+            "name": "Feridpur (ilçe)"
         },
         {
             "code": "19",
-            "name": "Gaibandha"
+            "name": "Gaybandha (ilçe)"
         },
         {
             "code": "18",
-            "name": "Gazipur"
+            "name": "Gazipur (ilçe)"
         },
         {
             "code": "17",
-            "name": "Gopalganj"
+            "name": "Gopalganc (ilçe, Bangladeş)"
         },
         {
             "code": "20",
-            "name": "Habiganj"
-        },
-        {
-            "code": "21",
-            "name": "Jamalpur"
-        },
-        {
-            "code": "22",
-            "name": "Jessore"
-        },
-        {
-            "code": "25",
-            "name": "Jhalokati"
-        },
-        {
-            "code": "23",
-            "name": "Jhenaidah"
-        },
-        {
-            "code": "24",
-            "name": "Joypurhat"
+            "name": "Habiganc (ilçe)"
         },
         {
             "code": "29",
-            "name": "Khagrachari"
+            "name": "Khagraçhari (ilçe)"
         },
         {
             "code": "27",
-            "name": "Khulna"
+            "name": "Khulna (ilçe)"
         },
         {
             "code": "D",
@@ -1270,7 +1256,7 @@
         },
         {
             "code": "26",
-            "name": "Kishoreganj"
+            "name": "Kişoreganc (ilçe)"
         },
         {
             "code": "08",
@@ -1278,111 +1264,107 @@
         },
         {
             "code": "28",
-            "name": "Kurigram"
+            "name": "Kurigram (ilçe)"
         },
         {
             "code": "30",
-            "name": "Kushtia"
+            "name": "Kuştia (ilçe)"
         },
         {
             "code": "31",
-            "name": "Lakshmipur"
+            "name": "Lakşmipur (ilçe)"
         },
         {
             "code": "32",
-            "name": "Lalmonirhat"
-        },
-        {
-            "code": "36",
-            "name": "Madaripur"
+            "name": "Lalmonirhat (ilçe)"
         },
         {
             "code": "37",
-            "name": "Magura"
+            "name": "Magura (ilçe)"
         },
         {
             "code": "33",
-            "name": "Manikganj"
+            "name": "Manikganc (ilçe)"
         },
         {
-            "code": "38",
-            "name": "Maulvi Bazar"
+            "code": "36",
+            "name": "Medaripur (ilçe)"
         },
         {
             "code": "39",
-            "name": "Meherpur"
+            "name": "Meherpur (ilçe)"
+        },
+        {
+            "code": "38",
+            "name": "Mevlevibazar (ilçe)"
         },
         {
             "code": "H",
             "name": "Mimensingh (bölüm)"
         },
         {
-            "code": "35",
-            "name": "Munshiganj"
+            "code": "34",
+            "name": "Mimensingh (ilçe)"
         },
         {
-            "code": "34",
-            "name": "Mymensingh"
+            "code": "35",
+            "name": "Munşiganc (ilçe)"
         },
         {
             "code": "48",
-            "name": "Naogaon"
+            "name": "Naogaon (ilçe)"
         },
         {
             "code": "43",
-            "name": "Narail"
+            "name": "Narail (ilçe)"
         },
         {
             "code": "40",
-            "name": "Narayanganj"
+            "name": "Narayanganc (ilçe)"
         },
         {
             "code": "42",
-            "name": "Narsingdi"
+            "name": "Narsingdi (ilçe)"
         },
         {
             "code": "44",
             "name": "Natore Bölgesi"
         },
         {
-            "code": "45",
-            "name": "Nawabganj"
-        },
-        {
             "code": "41",
-            "name": "Netrokona"
+            "name": "Netrokona (ilçe)"
         },
         {
             "code": "46",
-            "name": "Nilphamari"
+            "name": "Nilphamari (ilçe)"
         },
         {
             "code": "47",
-            "name": "Noakhali"
+            "name": "Noakhali Bölgesi"
         },
         {
             "code": "49",
-            "name": "Pabna"
+            "name": "Pabna (ilçe)"
         },
         {
             "code": "52",
-            "name": "Panchagarh"
+            "name": "Pançagarh (ilçe)"
         },
         {
             "code": "51",
-            "name": "Patuakhali"
+            "name": "Patuakhali (ilçe)"
         },
         {
             "code": "50",
-            "name": "Pirojpur"
+            "name": "Pirucpur (ilçe)"
+        },
+        {
+            "code": "53",
+            "name": "Racbari (ilçe)"
         },
         {
             "code": "E",
             "name": "Racşahi (bölüm)"
-        },
-        {
-            "code": "53",
-            "name": "Rajbari"
         },
         {
             "code": "54",
@@ -1390,7 +1372,7 @@
         },
         {
             "code": "56",
-            "name": "Rangamati Hill"
+            "name": "Rangamati (ilçe)"
         },
         {
             "code": "55",
@@ -1402,15 +1384,7 @@
         },
         {
             "code": "58",
-            "name": "Satkhira"
-        },
-        {
-            "code": "62",
-            "name": "Shariatpur"
-        },
-        {
-            "code": "57",
-            "name": "Sherpur"
+            "name": "Satkhira (ilçe)"
         },
         {
             "code": "G",
@@ -1418,23 +1392,31 @@
         },
         {
             "code": "59",
-            "name": "Sirajganj"
+            "name": "Siracganc (ilçe)"
         },
         {
             "code": "61",
-            "name": "Sunamganj"
+            "name": "Sunamganc (ilçe)"
         },
         {
             "code": "60",
             "name": "Sylhet District"
         },
         {
+            "code": "62",
+            "name": "Şeriatpur İlçesi"
+        },
+        {
+            "code": "57",
+            "name": "Şerpur (ilçe)"
+        },
+        {
             "code": "63",
-            "name": "Tangail"
+            "name": "Tangail (ilçe)"
         },
         {
             "code": "64",
-            "name": "Thakurgaon"
+            "name": "Thakurgaon (ilçe)"
         }
     ],
     "BE": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou Departmanı"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3088,7 +3064,7 @@
         },
         {
             "code": "NB",
-            "name": "Ñuble"
+            "name": "Ñuble (bölge)"
         },
         {
             "code": "LI",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de Sao Belediyesi"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6432,7 +6396,7 @@
         },
         {
             "code": "BGE",
-            "name": "Bridgend"
+            "name": "Bridgend (kontluk borough)"
         },
         {
             "code": "BNH",
@@ -7387,12 +7351,6 @@
             "name": "Tiflis"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou Prefecture"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "19",
             "name": "Zacapa Department"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8557,12 +8503,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9471,6 +9411,10 @@
             "name": "Norðurþing"
         },
         {
+            "code": "SOL",
+            "name": "Ölfus"
+        },
+        {
             "code": "RGE",
             "name": "Rangárþing eystra"
         },
@@ -9561,10 +9505,6 @@
         {
             "code": "SHF",
             "name": "Sveitarfélagið Hornafjörður"
-        },
-        {
-            "code": "SOL",
-            "name": "Sveitarfélagið Ölfus"
         },
         {
             "code": "SKR",
@@ -13205,12 +13145,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "Arhangay"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15341,6 +15251,10 @@
             "name": "1 Nolu il"
         },
         {
+            "code": "P3",
+            "name": "Bagmati (il)"
+        },
+        {
             "code": "BA",
             "name": "Bagmati Zon"
         },
@@ -15407,10 +15321,6 @@
         {
             "code": "NA",
             "name": "Narayani Zon"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "4",
@@ -15777,12 +15687,6 @@
         {
             "code": "UCA",
             "name": "Ucayali Bölgesi"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16377,18 +16281,6 @@
             "name": "Batı Pomeranya Voyvodalığı"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "Umm Selal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19023,12 +18909,6 @@
             "name": "Usulutan Departmanı"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "DR",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "Shiselweni District"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira Bölgesi"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20269,10 +20137,6 @@
             "name": "Taitung County"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atolü"
         },
@@ -21591,12 +21451,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "DH",
             "name": "Zamar ili"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

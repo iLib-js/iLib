@@ -643,12 +643,6 @@
             "name": "ხუხუის პროვინცია"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NT",
             "name": "ჩრდილოეთი ტერიტორია"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "ჩოკოს დეპარტამენტი"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3525,6 +3495,10 @@
     ],
     "CV": [
         {
+            "code": "CA",
+            "name": "სანტა-კატარინა"
+        },
+        {
             "code": "B",
             "name": "Barlavento Islands"
         },
@@ -3573,10 +3547,6 @@
             "name": "Sal"
         },
         {
-            "code": "CA",
-            "name": "Santa Catarina"
-        },
-        {
             "code": "CF",
             "name": "Santa Catarina do Fogo"
         },
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4992,7 +4956,7 @@
         },
         {
             "code": "557",
-            "name": "Otepää"
+            "name": "ოტეპიის მუნიციპალიტეტი"
         },
         {
             "code": "567",
@@ -6051,6 +6015,10 @@
             "name": "მაიენი"
         },
         {
+            "code": "976",
+            "name": "მაიოტა"
+        },
+        {
             "code": "50",
             "name": "მანში"
         },
@@ -6239,10 +6207,6 @@
             "name": "Hauts-de-France"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         },
@@ -6301,6 +6265,10 @@
         {
             "code": "ABE",
             "name": "აბერდინი"
+        },
+        {
+            "code": "AGY",
+            "name": "ანგლსი"
         },
         {
             "code": "ANS",
@@ -6569,10 +6537,6 @@
         {
             "code": "ABD",
             "name": "Aberdeenshire"
-        },
-        {
-            "code": "AGY",
-            "name": "Anglesey"
         },
         {
             "code": "ANT",
@@ -7387,12 +7351,6 @@
             "name": "შიდა ქართლის მხარე"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AH",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "ხუტიაპის დეპარტამენტი"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8555,12 +8501,6 @@
             "name": "Szekszárd"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "JI",
@@ -8867,6 +8807,10 @@
     ],
     "IL": [
         {
+            "code": "TA",
+            "name": "თელ-ავივის რაიონი"
+        },
+        {
             "code": "D",
             "name": "სამხრეთი რაიონი"
         },
@@ -8885,10 +8829,6 @@
         {
             "code": "JM",
             "name": "Jerusalem"
-        },
-        {
-            "code": "TA",
-            "name": "Tel Aviv District"
         }
     ],
     "IN": [
@@ -10791,12 +10731,12 @@
     ],
     "KN": [
         {
-            "code": "01",
-            "name": "Christ Church Nichola Town"
+            "code": "N",
+            "name": "ნევისი"
         },
         {
-            "code": "N",
-            "name": "Nevis"
+            "code": "01",
+            "name": "Christ Church Nichola Town"
         },
         {
             "code": "02",
@@ -11158,11 +11098,11 @@
         },
         {
             "code": "BL",
-            "name": "Bolikhamsai"
+            "name": "ბოლიხამსაის პროვინცია"
         },
         {
             "code": "CH",
-            "name": "Champasak"
+            "name": "ტიამპასაკის პროვინცია"
         },
         {
             "code": "HO",
@@ -13190,17 +13130,11 @@
         },
         {
             "code": "24",
-            "name": "Tuzi"
+            "name": "ტუზის მუნიციპალიტეტი"
         },
         {
             "code": "25",
-            "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
+            "name": "ზეტის მუნიციპალიტეტი"
         }
     ],
     "MG": [
@@ -13923,24 +13857,6 @@
             "name": "არახანგაის აიმაკი"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -14014,7 +13930,7 @@
         },
         {
             "code": "03",
-            "name": "Birgu"
+            "name": "ბირგუ"
         },
         {
             "code": "04",
@@ -14891,12 +14807,6 @@
             "name": "ჰარდაპის რეგიონი"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "ხუნინი"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "EBR",
@@ -16177,6 +16081,10 @@
             "name": "სებუ (პროვინცია)"
         },
         {
+            "code": "SIG",
+            "name": "სიკიხორი"
+        },
+        {
             "code": "SOR",
             "name": "სორსოგონი (პროვინცია)"
         },
@@ -16255,10 +16163,6 @@
         {
             "code": "SAR",
             "name": "Sarangani"
-        },
-        {
-            "code": "SIG",
-            "name": "Siquijor"
         },
         {
             "code": "12",
@@ -16367,18 +16271,6 @@
         {
             "code": "32",
             "name": "დასავლეთ პომერანიის სავოევოდო"
-        }
-    ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "ჩალატენანგოს დეპარტამენტი"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "QU",
@@ -19095,12 +18975,6 @@
         {
             "code": "HH",
             "name": "ჰოჰო"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "HL",
             "name": "ჰაჯერ-ლამისის რეგიონი"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20261,10 +20129,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "ჯონსტონი"
         },
@@ -21583,12 +21443,6 @@
             "name": "ფალკონის შტატი"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "SG",
@@ -21597,6 +21451,10 @@
         {
             "code": "HN",
             "name": "ჰანოი"
+        },
+        {
+            "code": "26",
+            "name": "ჰუე"
         },
         {
             "code": "44",
@@ -21815,10 +21673,6 @@
             "name": "Thanh Hóa"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
             "code": "46",
             "name": "Tiền Giang"
         },
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "SU",
             "name": "Arkhabil Suqutra"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [
