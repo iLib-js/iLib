@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   test:
+    resource_class: large
     parameters:
         docker_image:
           type: string
