@@ -76,7 +76,14 @@ var scriptToRange = {};
 var ranges = [];
 var rangeToScript = [];
 
-var isBerfHardcoded = false;
+// iso-15924 v3.2.0 does not have Berf script
+var hardCodeData =  {
+    "Berf": {
+        "nb": 258,
+        "nm": "Beria Erfe",
+        "lid": "Beria_Erfe"
+    }
+};
 
 function compareByStart(left, right) {
     return left[1] - right[1];
@@ -103,17 +110,11 @@ import("iso-15924").then(function(isoModule) {
         }
     }
 
-    // iso-15924 v3.2.0 does not have Berf script
-    // Script: Berf, English name: Beria Erfe, Numeric code: 258
-    if (scripts['Berf'] === undefined) {
-        script = {
-            nb: 258,
-            nm: "Beria Erfe",
-            lid: "Beria_Erfe"
-        };
-        scripts['Berf'] = script;
-        fullToShortMap["beria_erfe"] = "Berf";
-        isBerfHardcoded = true;
+    for (var script in hardCodeData){
+        if (scripts[script] === undefined) {
+            scripts[script] = hardCodeData[script];
+            fullToShortMap[hardCodeData[script].lid.toLowerCase()] = script;
+        }
     }
 
     for (var scriptName in scriptMetaData) {
@@ -168,8 +169,4 @@ import("iso-15924").then(function(isoModule) {
 
     fs.writeFileSync(path.join(toDir, "scriptToRange.json"), stringify(scriptToRange, {space: 4}), "utf-8");
     fs.writeFileSync(path.join(toDir, "rangeToScript.json"), stringify(rangeToScript, {space: 4}), "utf-8");
-
-    if (isBerfHardcoded) {
-        console.log("Note: The 'Berf' script data was hardcoded as it is not available in iso-15924.");
-    }
 });
