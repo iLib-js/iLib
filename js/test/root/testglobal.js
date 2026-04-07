@@ -69,12 +69,12 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.21");
+        test.equal(ilib.getVersion().substring(0,5), "14.22");
         test.done();
     },
     testGetCldrVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getCLDRVersion().substring(0,4), "46.0");
+        test.equal(ilib.getCLDRVersion().substring(0,4), "48.2");
         test.done();
     },
     testGetTimeZoneDefault: function(test) {
