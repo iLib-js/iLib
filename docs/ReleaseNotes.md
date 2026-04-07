@@ -1,6 +1,16 @@
 Release Notes for Version 14
 ============================
 
+Build 034
+-------
+Published as version 14.22.0
+
+New Features:
+* Add the `assembleJson.mjs` file to enable generating the final merged `[locale].json` files by using the `ilib-assemble tool`.
+
+Bug Fixes:
+
+
 Build 033
 -------
 Published as version 14.21.3
