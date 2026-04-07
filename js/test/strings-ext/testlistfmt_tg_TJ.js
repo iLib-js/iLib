@@ -214,7 +214,7 @@ module.exports.testlistfmt_tg_TJ = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["як", "ду"]), "як ё ду");
+        test.equal(fmt.format(["як", "ду"]), "як, ё ду");
         test.done();
     },
     testListFmtORStyleNumberFormatThree_tg_TJ: function(test) {

@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
  *
- * Copyright © 2017-2023, JEDLSoft
+ * Copyright © 2017-2023, 2026, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,26 +29,6 @@ var aux = require("./datefmts.js");
 var merge = common.merge;
 
 var hardCodeData = {
-    "tg":{
-        "or": {
-            "short": {
-                "2": "{0} ё {1}",
-                "end": "{0}, ё {1}"
-            },
-            "medium": {
-                "2": "{0} ё {1}",
-                "end": "{0}, ё {1}"
-            },
-            "long": {
-                "2": "{0} ё {1}",
-                "end": "{0}, ё {1}"
-            },
-            "full": {
-                "2": "{0} ё {1}",
-                "end": "{0}, ё {1}"
-              }
-        }
-    },
     "mt":{
         "or": {
             "short": {
