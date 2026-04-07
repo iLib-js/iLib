@@ -9,7 +9,7 @@ import { existsSync, readdirSync, statSync } from 'node:fs';
  * @param {Function} readFile - File reader function
  * @returns {object} Flat map of timezone ID to parsed timezone data
  */
-function loadZoneinfoData(zoneinfoPath, readFile) {
+function assembleZoneinfoData(zoneinfoPath, readFile) {
     const zoneinfoData = {};
 
     if (!existsSync(zoneinfoPath)) {
@@ -64,4 +64,4 @@ function loadZoneinfoData(zoneinfoPath, readFile) {
     return zoneinfoData;
 }
 
-export default loadZoneinfoData;
+export default assembleZoneinfoData;

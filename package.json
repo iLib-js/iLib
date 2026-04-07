@@ -103,9 +103,9 @@
         "test": "ant test.dynamic.uncompiled",
         "build.web": "webpack -p",
         "watch": "webpack --watch",
-        "build:mergeJson-compressed": "ilib-assemble --mergeJson --ilibincPath ./js/assemblefiles/ilib-inc.js --localefile ./js/assemblefiles/locales.json assembled --customLocalePath /home/goun/Source/swp/private_iLib/customlocale/tv --compressed",
-        "build:mergeJson": "ilib-assemble --mergeJson --ilibincPath ./js/assemblefiles/ilib-inc.js --localefile ./js/assemblefiles/locales.json assembled --customLocalePath /home/goun/Source/swp/private_iLib/customlocale/tv",
-        "debug:mergeJson": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --ilibincPath ./js/assemblefiles/ilib-inc.js --localefile ./js/assemblefiles/locales.json assembled --customLocalePath /home/goun/Source/swp/private_iLib/customlocale/tv"
+        "build:mergeJson-compressed": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData --compressed assembled",
+        "build:mergeJson": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled",
+        "debug:mergeJson": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled"
     },
     "publishConfig": {
         "tag": "experimental"

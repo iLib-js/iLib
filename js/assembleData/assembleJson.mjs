@@ -1,7 +1,7 @@
 import path from 'path';
 import { readFileSync, existsSync } from 'node:fs';
 import {JSUtils, Utils} from 'ilib-common';
-import loadZoneinfoData from './loadZoneinfoData.mjs';
+import assembleZoneinfoData from './assembleZoneinfoData.mjs';
 
 const reDependentPattern = /require\(\s*["']\.*\/([^"']+\.js)["']\);/g;
 const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
@@ -23,7 +23,7 @@ export function assemble(ilibFiles, options) {
     const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
         ? options.opt.customLocalePath
         : null;
-
+    
     const dataNames = readJSFiles(ilibFiles);
     const regularNames = dataNames.filter(name => name !== "zoneinfo");
 
@@ -33,7 +33,7 @@ export function assemble(ilibFiles, options) {
         : localeData;
 
     if (dataNames.includes("zoneinfo")) {
-        const zoneinfoData = loadZoneinfoData(path.join(localeDataPath, "zoneinfo"), readFile);
+        const zoneinfoData = assembleZoneinfoData(path.join(localeDataPath, "zoneinfo"), readFile);
         locales.forEach(locale => {
             if (!result[locale]) {
                 result[locale] = {};
