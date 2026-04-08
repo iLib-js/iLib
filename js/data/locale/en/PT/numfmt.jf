@@ -2,10 +2,10 @@
     "generated": true,
     "numfmt": {
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "-{s}{n}"
+            "common": "{n} {s}",
+            "commonNegative": "-{n} {s}"
         },
         "decimalChar": ",",
-        "groupChar": " "
+        "groupChar": " "
     }
 }

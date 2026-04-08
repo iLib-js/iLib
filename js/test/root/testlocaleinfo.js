@@ -3960,7 +3960,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("fr-CH");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), " ");
+        test.equal(info.getGroupingSeparator(), "'");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_fr_CH: function(test) {
@@ -5081,7 +5081,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("it-CH");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), "’");
+        test.equal(info.getGroupingSeparator(), "'");
         test.done();
     },
     testLocaleInfoGetPercentageFormat_it_CH: function(test) {
@@ -9809,7 +9809,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_ur_IN: function(test) {
@@ -9833,7 +9833,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s}{n}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_ur_IN: function(test) {

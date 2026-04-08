@@ -2,11 +2,12 @@
     "generated": true,
     "numfmt": {
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "-{s}{n}"
+            "common": "{n} {s}",
+            "commonNegative": "-{n} {s}"
         },
         "decimalChar": ",",
         "groupChar": " ",
-        "prigroupSize": 2
+        "negativepctFmt": "-{n} %",
+        "pctFmt": "{n} %"
     }
 }

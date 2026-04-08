@@ -2602,7 +2602,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(100110.57), "₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1: function(test) {
@@ -2615,7 +2615,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "‎-‎₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(-100110.57), "‎-‎₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN: function(test) {
@@ -2627,7 +2627,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(100110.57), "₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtPercentageFormatRegular_ur_IN: function(test) {
