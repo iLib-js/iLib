@@ -1030,7 +1030,7 @@ module.exports.testnumprs = {
 
         var cur = num.getCurrency();
         test.ok(typeof(cur) !== "undefined");
-        test.equal(cur.getCode(), "NAD");
+        test.equal(cur.getCode(), "USD");
         test.done();
     },
     testNumberCurrencyNANoTypeSpecified: function(test) {

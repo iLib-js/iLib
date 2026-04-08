@@ -203,7 +203,7 @@ module.exports.testcurrency = {
         test.expect(2);
         var info = new LocaleInfo("bg-BG");
         test.ok(info !== null);
-        test.equal(info.getCurrency(), "BGN");
+        test.equal(info.getCurrency(), "EUR");
         test.done();
     },
     testCurrency_bn_IN: function(test) {
@@ -1680,7 +1680,7 @@ module.exports.testcurrency = {
         test.expect(2);
         var info = new LocaleInfo("sn-ZW");
         test.ok(info !== null);
-        test.equal(info.getCurrency(), "ZWG");
+        test.equal(info.getCurrency(), "USD");
         test.done();
     }
 };
