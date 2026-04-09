@@ -1,6 +1,16 @@
 Release Notes for Version 14
 ============================
 
+Build 034
+-------
+Published as version 14.22.0
+
+New Features:
+
+Bug Fixes:
+* Fixes a bug in `LocaleMatcher` where locale parsing information is passed incorrectly.
+
+
 Build 033
 -------
 Published as version 14.21.3
