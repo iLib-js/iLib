@@ -1707,15 +1707,34 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("ku-IQ");
         var fmt = new NumFmt({locale:"ku-IQ", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), '123.456.789,45');
+        var pctfmt = new NumFmt({locale:"ku-IQ", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '%{n}');
+        test.equal(li.getNegativePercentageFormat(), '-%{n}');
+        test.equal(pctfmt.format(34), '%34');
+
+        var curfmt = new NumFmt({locale: "ku-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, '{n} {s}');
+        test.equal(li.getCurrencyFormats().commonNegative, '-{n} {s}');
+        test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
+
+        test.done();
+    },
+    testNumFmt_ku_Arab_IQ: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ku-Arab-IQ");
+        var fmt = new NumFmt({locale:"ku-Arab-IQ", type:"standard", useNative:false});
         test.equal(li.getDecimalSeparator(), "٫");
         test.equal(li.getGroupingSeparator(), "٬");
         test.equal(fmt.format(123456789.45), "123٬456٬789٫45");
-        var pctfmt = new NumFmt({locale:"ku-IQ", type:"percentage", useNative:false});
+        var pctfmt = new NumFmt({locale:"ku-Arab-IQ", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), '{n} ٪');
         test.equal(li.getNegativePercentageFormat(), '‏-{n} ٪');
         test.equal(pctfmt.format(34), '34 ٪');
 
-        var curfmt = new NumFmt({locale: "ku-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
+        var curfmt = new NumFmt({locale: "ku-Arab-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '‏-{n} {s}');
         test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
