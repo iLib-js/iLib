@@ -1,7 +1,7 @@
 /*
  * LocaleMatcher.js - Locale matcher definition
  *
- * Copyright © 2013-2015, 2018-2019, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -153,13 +153,13 @@ LocaleMatcher.prototype = {
             partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(undefined, locale.region, undefined, locale.script, ).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, locale.region, undefined, locale.script).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
             partial = this.info.likelyLocales[new Locale(undefined, locale.region, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(undefined, undefined, locale.script, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, undefined, undefined, locale.script).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
             return locale;
