@@ -2,7 +2,7 @@
  * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2022 JEDLSoft
+ * Copyright © 2013-2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ if (process.argv.length <= 2) {
 }
 
 console.log("gennumfmts - generate number formats information files.\n" +
-    "Copyright (c) 2013-2022 JEDLSoft");
+    "Copyright (c) 2013-2022, 2026 JEDLSoft");
 
 console.log("Output dir: " + toDir );
 
@@ -398,9 +398,9 @@ function getNativeDigits(script) {
 console.log("Reading locale data into memory...");
 
 var list = require("cldr-core/availableLocales.json").availableLocales.full;
-// Although CLDR 48 defines ku-Arab-IQ as Kurdish (Kurmanji, Arabic script, Iraq),
-// the actual language represented in webOS depends on when and how this locale
-// was adopted, as ku-Arab historically referred to Sorani (ckb) in earlier systems.
+// Although CLDR 48 defines ku-Arab as Kurdish (Kurmanji, Arabic script),
+// the semantic meaning of ku-Arab-IQ in webOS may vary depending on its historical adoption,
+// given that some earlier systems used ku-Arab-IQ as a proxy for Central Kurdish (ckb).
 list.push("ku-Arab-IQ");
 
 list.forEach(function(loc) {
