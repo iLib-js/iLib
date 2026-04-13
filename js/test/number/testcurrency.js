@@ -1,7 +1,7 @@
 /*
  * testcurrency.js - test the currency routines
  *
- * Copyright © 2012-2017, 2020-2024 JEDLSoft
+ * Copyright © 2012-2017, 2020-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1680,7 +1680,7 @@ module.exports.testcurrency = {
         test.expect(2);
         var info = new LocaleInfo("sn-ZW");
         test.ok(info !== null);
-        test.equal(info.getCurrency(), "USD");
+        test.equal(info.getCurrency(), "ZWG");
         test.done();
     }
 };

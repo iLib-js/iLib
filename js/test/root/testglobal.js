@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  *
- * Copyright © 2012-2015, 2017-2024 JEDLSoft
+ * Copyright © 2012-2015, 2017-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
