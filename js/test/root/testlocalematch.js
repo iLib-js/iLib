@@ -2832,5 +2832,60 @@ module.exports.testlocalematch = {
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ko-CN");
         test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_ko_CN: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "und-Arab"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ar-Arab-EG");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByUndLanguageAndScriptHans: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "und-Hans"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zh-Hans-CN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByUndLanguageAndScriptCyrl: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "und-Cyrl"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ru-Cyrl-RU");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByRegionAndScript2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Arab-IN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ur-Arab-IN");
+        test.done();
+    },
+    testLocaleMatcherGetLikelyLocaleByRegionAndScript3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Deva-PK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "btv-Deva-PK");
+        test.done();
     }
 };
