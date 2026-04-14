@@ -2,11 +2,10 @@
     "generated": true,
     "native_numfmt": {
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "-{s}{n}"
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
         },
         "decimalChar": ".",
-        "digits": "०१२३४५६७८९",
         "exponential": "E",
         "groupChar": ",",
         "negativenumFmt": "-{n}",
@@ -15,15 +14,12 @@
         "pctFmt": "{n}%",
         "prigroupSize": 3,
         "roundingMode": "halfdown",
-        "script": "Deva",
-        "secgroupSize": 2,
-        "useNative": true
+        "script": "Latn",
+        "useNative": false
     },
     "numfmt": {
-        "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "-{s}{n}"
-        },
-        "secgroupSize": 2
+        "digits": "𞅀𞅁𞅂𞅃𞅄𞅅𞅆𞅇𞅈𞅉",
+        "script": "Hmnp",
+        "useNative": true
     }
 }

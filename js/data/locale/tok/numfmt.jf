@@ -7,8 +7,6 @@
         },
         "decimalChar": ",",
         "groupChar": " ",
-        "negativepctFmt": "-%{n}",
-        "pctFmt": "%{n}",
         "prigroupSize": 2
     }
 }

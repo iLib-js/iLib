@@ -3,9 +3,11 @@
     "numfmt": {
         "currencyFormats": {
             "common": "{s} {n}",
-            "commonNegative": "{s}-{n}"
+            "commonNegative": "-{s} {n}"
         },
         "decimalChar": ".",
-        "groupChar": "'"
+        "groupChar": ",",
+        "negativepctFmt": "-{n}%",
+        "pctFmt": "{n}%"
     }
 }
