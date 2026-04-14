@@ -1,7 +1,7 @@
  /*
  * testWeekDate.js - test the weekdata information
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -284,7 +284,7 @@ module.exports.testweekdata = {
         var info = new LocaleInfo("en-IS");
         test.ok(info !== null);
 
-        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getFirstDayOfWeek(), 0);
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
@@ -814,7 +814,7 @@ module.exports.testweekdata = {
         var info = new LocaleInfo("is-IS");
         test.ok(info !== null);
 
-        test.equal(info.getFirstDayOfWeek(), 1);
+        test.equal(info.getFirstDayOfWeek(), 0);
         test.equal(info.getWeekEndStart(), 6);
         test.equal(info.getWeekEndEnd(), 0);
         test.done();

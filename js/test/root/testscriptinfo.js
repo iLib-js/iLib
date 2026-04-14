@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  *
- * Copyright © 2013-2017, 2019-2022, 2024 JEDLSoft
+ * Copyright © 2013-2017, 2019-2022, 2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -171,7 +171,7 @@ module.exports.testscriptinfo = {
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
 
-        test.equal(scripts.length, 223);
+        test.equal(scripts.length, 224);
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");
         test.equal(scripts[2], "Aghb");
@@ -247,6 +247,20 @@ module.exports.testscriptinfo = {
         test.equal(si.getScriptDirection(), "ltr");
         test.ok(!si.getNeedsIME());
         test.ok(!si.getCasing());
+        test.done();
+    },
+    testScriptGetDefaultLongCode_Berf: function(test) {
+        test.expect(8);
+        var si = new ScriptInfo("Berf");
+        test.ok(si !== null);
+
+        test.equal(si.getCode(), "Berf");
+        test.equal(si.getCodeNumber(), 258);
+        test.equal(si.getName(), "Beria Erfe");
+        test.equal(si.getLongCode(), "Beria_Erfe");
+        test.equal(si.getScriptDirection(), "ltr");
+        test.ok(!si.getNeedsIME());
+        test.ok(si.getCasing());
         test.done();
     },
     testScriptInfo_ar_EG: function(test) {
