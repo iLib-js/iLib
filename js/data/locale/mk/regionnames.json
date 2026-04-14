@@ -643,12 +643,6 @@
             "name": "Чубут"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "TAS",
             "name": "Тасманија"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1153,6 +1135,10 @@
             "name": "Мајмансинг"
         },
         {
+            "code": "G",
+            "name": "Силет"
+        },
+        {
             "code": "05",
             "name": "Bagerhat"
         },
@@ -1423,10 +1409,6 @@
         {
             "code": "60",
             "name": "Sylhet"
-        },
-        {
-            "code": "G",
-            "name": "Sylhet Division"
         },
         {
             "code": "63",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6075,6 +6039,10 @@
             "name": "Мајен"
         },
         {
+            "code": "976",
+            "name": "Мајот"
+        },
+        {
             "code": "50",
             "name": "Манш"
         },
@@ -6251,10 +6219,6 @@
             "name": "Corsica"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         }
@@ -6361,6 +6325,10 @@
         {
             "code": "WIL",
             "name": "Вилтшир"
+        },
+        {
+            "code": "WRL",
+            "name": "Вирал"
         },
         {
             "code": "WOK",
@@ -7291,10 +7259,6 @@
             "name": "Windsor and Maidenhead"
         },
         {
-            "code": "WRL",
-            "name": "Wirral"
-        },
-        {
             "code": "WLV",
             "name": "Wolverhampton"
         },
@@ -7385,12 +7349,6 @@
         {
             "code": "AB",
             "name": "Abkhazia"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8081,12 +8033,6 @@
             "name": "Jutiapa"
         }
     ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
-        }
-    ],
     "GW": [
         {
             "code": "BS",
@@ -8342,7 +8288,7 @@
     "HT": [
         {
             "code": "AR",
-            "name": "Artibonite"
+            "name": "Артибонит (департман)"
         },
         {
             "code": "CE",
@@ -8553,12 +8499,6 @@
         {
             "code": "SN",
             "name": "Шопрон"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10635,12 +10575,12 @@
             "name": "Чујска област"
         },
         {
-            "code": "B",
-            "name": "Batken"
+            "code": "J",
+            "name": "Џалалабадска Област"
         },
         {
-            "code": "J",
-            "name": "Jalal-Abad"
+            "code": "B",
+            "name": "Batken"
         },
         {
             "code": "N",
@@ -11023,10 +10963,6 @@
             "name": "Алмати²"
         },
         {
-            "code": "ALM",
-            "name": "Алмати²"
-        },
-        {
             "code": "71",
             "name": "Астана"
         },
@@ -11097,6 +11033,10 @@
         {
             "code": "AKT",
             "name": "Aktobe"
+        },
+        {
+            "code": "ALM",
+            "name": "Almaty Region"
         },
         {
             "code": "ATY",
@@ -12967,6 +12907,22 @@
             "name": "Гагаузија"
         },
         {
+            "code": "GL",
+            "name": "Глодени (реон)"
+        },
+        {
+            "code": "DO",
+            "name": "Дондушени (реон)"
+        },
+        {
+            "code": "DR",
+            "name": "Дрокија (реон)"
+        },
+        {
+            "code": "ED",
+            "name": "Единец (реон)"
+        },
+        {
             "code": "CU",
             "name": "Кишињев"
         },
@@ -12975,8 +12931,24 @@
             "name": "Нови Анени (реон)"
         },
         {
+            "code": "OC",
+            "name": "Окница (реон)"
+        },
+        {
+            "code": "RI",
+            "name": "Ришкани (реон)"
+        },
+        {
+            "code": "SI",
+            "name": "Синџереј (реон)"
+        },
+        {
             "code": "SO",
             "name": "Сорока (реон)"
+        },
+        {
+            "code": "FA",
+            "name": "Фалешт (реон)"
         },
         {
             "code": "SV",
@@ -13007,32 +12979,12 @@
             "name": "Criuleni"
         },
         {
-            "code": "DO",
-            "name": "Dondușeni"
-        },
-        {
-            "code": "DR",
-            "name": "Drochia"
-        },
-        {
             "code": "DU",
             "name": "Dubăsari"
         },
         {
-            "code": "ED",
-            "name": "Edineț"
-        },
-        {
-            "code": "FA",
-            "name": "Fălești"
-        },
-        {
             "code": "FL",
             "name": "Florești"
-        },
-        {
-            "code": "GL",
-            "name": "Glodeni"
         },
         {
             "code": "HI",
@@ -13051,24 +13003,12 @@
             "name": "Nisporeni"
         },
         {
-            "code": "OC",
-            "name": "Ocniţa"
-        },
-        {
             "code": "OR",
             "name": "Orhei"
         },
         {
             "code": "RE",
             "name": "Rezina"
-        },
-        {
-            "code": "RI",
-            "name": "Rîșcani"
-        },
-        {
-            "code": "SI",
-            "name": "Sîngerei"
         },
         {
             "code": "SD",
@@ -13142,7 +13082,7 @@
         },
         {
             "code": "12",
-            "name": "Nikšić"
+            "name": "Никшиќ"
         },
         {
             "code": "13",
@@ -13195,12 +13135,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13923,24 +13857,6 @@
             "name": "Архангај"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -14038,7 +13954,7 @@
         },
         {
             "code": "09",
-            "name": "Floriana"
+            "name": "Флориана"
         },
         {
             "code": "10",
@@ -14082,7 +13998,7 @@
         },
         {
             "code": "20",
-            "name": "Senglea"
+            "name": "Сенглеа"
         },
         {
             "code": "21",
@@ -14118,7 +14034,7 @@
         },
         {
             "code": "29",
-            "name": "Mdina"
+            "name": "Имдина"
         },
         {
             "code": "30",
@@ -14138,7 +14054,7 @@
         },
         {
             "code": "34",
-            "name": "Msida"
+            "name": "Имсида"
         },
         {
             "code": "35",
@@ -14889,12 +14805,6 @@
         {
             "code": "OT",
             "name": "Oshikoto"
-        }
-    ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -15771,12 +15681,6 @@
             "name": "Lima"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16369,18 +16273,6 @@
             "name": "Западнопоморско Војводство"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16703,12 +16595,6 @@
             "name": "Ash Shīḩānīyah"
         }
     ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
-        }
-    ],
     "RO": [
         {
             "code": "AB",
@@ -16949,6 +16835,10 @@
             "name": "Поморавски Округ"
         },
         {
+            "code": "27",
+            "name": "Призренски Управен Округ"
+        },
+        {
             "code": "24",
             "name": "Пчињски округ"
         },
@@ -17003,10 +16893,6 @@
         {
             "code": "26",
             "name": "Peć"
-        },
-        {
-            "code": "27",
-            "name": "Prizren"
         }
     ],
     "RU": [
@@ -17954,7 +17840,7 @@
         },
         {
             "code": "048",
-            "name": "Kočevje"
+            "name": "Општина Кочевје"
         },
         {
             "code": "049",
@@ -18853,6 +18739,10 @@
             "name": "Парамарибо (округ)"
         },
         {
+            "code": "SI",
+            "name": "Сипаливини"
+        },
+        {
             "code": "CM",
             "name": "Commewijne"
         },
@@ -18871,10 +18761,6 @@
         {
             "code": "SA",
             "name": "Saramacca"
-        },
-        {
-            "code": "SI",
-            "name": "Sipaliwini"
         },
         {
             "code": "WA",
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "RA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "ILA",
             "name": "Yilan"
         },
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Џонстонов Атол"
         },
@@ -21583,12 +21443,6 @@
             "name": "Capital"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "DN",
@@ -21605,6 +21459,10 @@
         {
             "code": "SG",
             "name": "Хо Ши Мин"
+        },
+        {
+            "code": "26",
+            "name": "Хуе"
         },
         {
             "code": "44",
@@ -21815,10 +21673,6 @@
             "name": "Thanh Hóa"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
             "code": "46",
             "name": "Tiền Giang"
         },
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

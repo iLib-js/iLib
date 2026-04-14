@@ -3,9 +3,11 @@ Release Notes for Version 14
 
 Build 034
 -------
-Published as version 14.21.4
+Published as version 14.22.0
 
 New Features:
+* Update to CLDR v48.2 data
+* Update to Unicode Character Database (UCD) version 17.0.0
 
 Bug Fixes:
 * Fixes a bug in `LocaleMatcher` where locale parsing information is passed incorrectly.

@@ -40,7 +40,7 @@
         },
         {
             "code": "DU",
-            "name": "Dubai"
+            "name": "Dubajaus emyratas"
         },
         {
             "code": "FU",
@@ -643,12 +643,6 @@
             "name": "Ugnies Žemės, Antarktidos ir Pietų Atlanto salų provincija"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Viktorija"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1301,6 +1283,10 @@
             "name": "Magura"
         },
         {
+            "code": "H",
+            "name": "Maimensingho sritis"
+        },
+        {
             "code": "33",
             "name": "Manikganj"
         },
@@ -1315,10 +1301,6 @@
         {
             "code": "34",
             "name": "Mymensingh"
-        },
-        {
-            "code": "H",
-            "name": "Mymensingh Division"
         },
         {
             "code": "35",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zu departamentas"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vičados departamentas"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TA",
             "name": "Tarafalis"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5603,16 +5567,16 @@
             "name": "Pietinių Tautų, Tautybių ir Žmonių regionas"
         },
         {
+            "code": "SW",
+            "name": "Pietvakarių Etiopijos tautų regionas"
+        },
+        {
             "code": "SI",
-            "name": "Sidama"
+            "name": "Sidamų regionas"
         },
         {
             "code": "SO",
             "name": "Somalių regionas"
-        },
-        {
-            "code": "SW",
-            "name": "Southwest Ethiopia Peoples"
         },
         {
             "code": "TI",
@@ -5778,7 +5742,7 @@
         },
         {
             "code": "YAP",
-            "name": "Yap"
+            "name": "Japas (valstija)"
         },
         {
             "code": "KSA",
@@ -6839,10 +6803,6 @@
             "name": "Merton"
         },
         {
-            "code": "MUL",
-            "name": "Mid Ulster"
-        },
-        {
             "code": "MEA",
             "name": "Midas"
         },
@@ -7251,6 +7211,10 @@
             "name": "Vestminsterio miestas"
         },
         {
+            "code": "MUL",
+            "name": "Vidurio Alsteris"
+        },
+        {
             "code": "WIL",
             "name": "Viltšyras"
         },
@@ -7385,12 +7349,6 @@
         {
             "code": "TB",
             "name": "Tbilisis"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "TO",
             "name": "Togės prefektūra"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Chutiapos departamentas"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegersegas"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "D",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Archangajaus aimakas"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Ošanos regionas"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "Ukajalio departamentas"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16369,18 +16273,6 @@
             "name": "Vakarų Pamario vaivadija"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16450,7 +16342,7 @@
     "PT": [
         {
             "code": "01",
-            "name": "Aveiro"
+            "name": "Aveiro apskritis"
         },
         {
             "code": "02",
@@ -16462,7 +16354,7 @@
         },
         {
             "code": "04",
-            "name": "Bragança"
+            "name": "Bragansos apskritis"
         },
         {
             "code": "05",
@@ -16482,7 +16374,7 @@
         },
         {
             "code": "09",
-            "name": "Guarda"
+            "name": "Gvardos apskritis"
         },
         {
             "code": "10",
@@ -16490,15 +16382,15 @@
         },
         {
             "code": "11",
-            "name": "Lisbon"
+            "name": "Lisabonos apskritis"
         },
         {
             "code": "12",
-            "name": "Portalegre"
+            "name": "Portalegrės apskritis"
         },
         {
             "code": "13",
-            "name": "Porto"
+            "name": "Porto apskritis"
         },
         {
             "code": "14",
@@ -16514,7 +16406,7 @@
         },
         {
             "code": "17",
-            "name": "Vila Real"
+            "name": "Vila Realo apskritis"
         },
         {
             "code": "18",
@@ -16701,12 +16593,6 @@
         {
             "code": "WA",
             "name": "Vakra"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,24 +18901,18 @@
             "name": "Usulutano departamentas"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
             "name": "Alepo muchafaza"
         },
         {
-            "code": "DI",
-            "name": "Damascus"
-        },
-        {
             "code": "RD",
             "name": "Damasko muchafaza"
+        },
+        {
+            "code": "DI",
+            "name": "Damasko muchafaza²"
         },
         {
             "code": "DR",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Šiselvenio rajonas"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "MC",
             "name": "Vidurio Šario regionas"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20269,10 +20137,6 @@
             "name": "Taipėjus"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taojuano apskritis"
         }
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Džonstono atolas"
         },
@@ -21583,12 +21443,6 @@
             "name": "Venesuelos sostinės apygarda"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uveja"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taiz gubernija"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

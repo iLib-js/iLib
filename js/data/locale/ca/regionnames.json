@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -875,6 +857,10 @@
             "name": "Gandja"
         },
         {
+            "code": "QAZ",
+            "name": "Gazakh"
+        },
+        {
             "code": "QOB",
             "name": "Gobustan"
         },
@@ -939,10 +925,6 @@
             "name": "Qakh"
         },
         {
-            "code": "QAZ",
-            "name": "Qazakh"
-        },
-        {
             "code": "QBI",
             "name": "Qubadli"
         },
@@ -995,16 +977,16 @@
             "name": "Sharur"
         },
         {
-            "code": "SR",
-            "name": "Shirvan"
-        },
-        {
             "code": "SUS",
             "name": "Shusha"
         },
         {
             "code": "SIY",
             "name": "Siazan"
+        },
+        {
+            "code": "SR",
+            "name": "Şirvan"
         },
         {
             "code": "XA",
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2657,6 +2633,10 @@
             "name": "Província d’Alt Katanga"
         },
         {
+            "code": "TA",
+            "name": "província de Tanganyika"
+        },
+        {
             "code": "BC",
             "name": "Província del Baix Congo"
         },
@@ -2667,10 +2647,6 @@
         {
             "code": "SU",
             "name": "Sud-Ubangi"
-        },
-        {
-            "code": "TA",
-            "name": "Tanganyika"
         },
         {
             "code": "TO",
@@ -2962,7 +2938,7 @@
         },
         {
             "code": "GD",
-            "name": "Gôh-Djiboua"
+            "name": "Go-Djibúa"
         },
         {
             "code": "02",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4440,7 +4404,7 @@
         },
         {
             "code": "03",
-            "name": "Laghouat"
+            "name": "Província de Laghouat"
         },
         {
             "code": "04",
@@ -7407,24 +7371,10 @@
             "name": "Xida Kartli"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
             "name": "Ahafo"
-        },
-        {
-            "code": "BO",
-            "name": "Bono"
-        },
-        {
-            "code": "BE",
-            "name": "Bono East"
         },
         {
             "code": "BA",
@@ -7445,6 +7395,14 @@
         {
             "code": "CP",
             "name": "Regió Central"
+        },
+        {
+            "code": "BO",
+            "name": "Regió de Bono"
+        },
+        {
+            "code": "BE",
+            "name": "Regió de Bono Oriental"
         },
         {
             "code": "AA",
@@ -7699,12 +7657,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8155,12 +8107,6 @@
         {
             "code": "10",
             "name": "Suchitepéquez"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8629,12 +8575,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9543,6 +9483,10 @@
             "name": "Norðurþing"
         },
         {
+            "code": "SOL",
+            "name": "Ölfus"
+        },
+        {
             "code": "RGE",
             "name": "Rangárþing eystra"
         },
@@ -9637,10 +9581,6 @@
         {
             "code": "SHF",
             "name": "Sveitarfélagið Hornafjörður"
-        },
-        {
-            "code": "SOL",
-            "name": "Sveitarfélagið Ölfus"
         },
         {
             "code": "SSF",
@@ -10678,7 +10618,7 @@
         },
         {
             "code": "42",
-            "name": "Trans Nzoia"
+            "name": "Trans-Nzoia"
         },
         {
             "code": "43",
@@ -11277,16 +11217,16 @@
             "name": "Província de Sainyabuli"
         },
         {
+            "code": "SL",
+            "name": "província de Salavan"
+        },
+        {
             "code": "SV",
             "name": "província de Savannakhet"
         },
         {
             "code": "XI",
             "name": "Província de Xiangkhoang"
-        },
-        {
-            "code": "SL",
-            "name": "Salavan"
         },
         {
             "code": "XE",
@@ -11308,7 +11248,7 @@
         },
         {
             "code": "BH",
-            "name": "Baalbek-Hermel"
+            "name": "governació de Baalbek-Hermel"
         },
         {
             "code": "BA",
@@ -13277,12 +13217,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13534,7 +13468,7 @@
         },
         {
             "code": "204",
-            "name": "Zrnovci"
+            "name": "municipi de Zrnovtsi"
         },
         {
             "code": "205",
@@ -13542,7 +13476,7 @@
         },
         {
             "code": "206",
-            "name": "Kočani"
+            "name": "Kòtxani"
         },
         {
             "code": "207",
@@ -13570,7 +13504,7 @@
         },
         {
             "code": "303",
-            "name": "Debar"
+            "name": "municipi de Dèbar"
         },
         {
             "code": "304",
@@ -13618,7 +13552,7 @@
         },
         {
             "code": "405",
-            "name": "Gevgelija"
+            "name": "municipi de Guevguèlia"
         },
         {
             "code": "406",
@@ -13726,7 +13660,7 @@
         },
         {
             "code": "704",
-            "name": "Lipkovo"
+            "name": "municipi de Lípkovo"
         },
         {
             "code": "705",
@@ -13802,7 +13736,7 @@
         },
         {
             "code": "817",
-            "name": "Šuto Orizari †"
+            "name": "Šuto Orizari"
         }
     ],
     "ML": [
@@ -14001,24 +13935,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14971,12 +14887,6 @@
             "name": "Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15458,7 +15368,7 @@
         },
         {
             "code": "P3",
-            "name": "Province 3"
+            "name": "província de Bagmati"
         },
         {
             "code": "P5",
@@ -15851,12 +15761,6 @@
             "name": "Regió de Tumbes"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -15881,10 +15785,6 @@
         {
             "code": "EPW",
             "name": "Enga"
-        },
-        {
-            "code": "GPK",
-            "name": "Gulf"
         },
         {
             "code": "HLA",
@@ -15925,6 +15825,10 @@
         {
             "code": "NIK",
             "name": "Província de Nova Irlanda"
+        },
+        {
+            "code": "GPK",
+            "name": "Província del Golf"
         },
         {
             "code": "SHM",
@@ -16449,18 +16353,6 @@
             "name": "Voivodat de Pomerània Occidental"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "HBN",
@@ -16781,12 +16673,6 @@
         {
             "code": "US",
             "name": "Umm Salal (municipi)"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -18182,7 +18068,7 @@
         },
         {
             "code": "085",
-            "name": "Novo Mesto"
+            "name": "Novo mesto"
         },
         {
             "code": "086",
@@ -18733,12 +18619,12 @@
             "name": "North Western"
         },
         {
-            "code": "N",
-            "name": "Northern"
-        },
-        {
             "code": "E",
             "name": "Província Oriental (Sierra Leone)"
+        },
+        {
+            "code": "N",
+            "name": "Província Septentrional"
         },
         {
             "code": "S",
@@ -18806,7 +18692,7 @@
         },
         {
             "code": "KE",
-            "name": "Kédougou"
+            "name": "Kedougou"
         },
         {
             "code": "KD",
@@ -18933,6 +18819,10 @@
             "name": "Districte de Commewijne"
         },
         {
+            "code": "SI",
+            "name": "Districte de Sipaliwini"
+        },
+        {
             "code": "MA",
             "name": "Marowijne"
         },
@@ -18951,10 +18841,6 @@
         {
             "code": "SA",
             "name": "Saramacca"
-        },
-        {
-            "code": "SI",
-            "name": "Sipaliwini"
         },
         {
             "code": "WA",
@@ -19095,12 +18981,6 @@
             "name": "Departament de Sonsonate"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19175,12 +19055,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19277,12 +19151,6 @@
             "name": "Wadi Fira"
         }
     ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
-        }
-    ],
     "TG": [
         {
             "code": "C",
@@ -19323,10 +19191,6 @@
             "name": "Bueng Kan"
         },
         {
-            "code": "31",
-            "name": "Buri Ram"
-        },
-        {
             "code": "24",
             "name": "Chachoengsao"
         },
@@ -19365,10 +19229,6 @@
         {
             "code": "62",
             "name": "Kamphaeng Phet"
-        },
-        {
-            "code": "71",
-            "name": "Kanchanaburi"
         },
         {
             "code": "40",
@@ -19443,10 +19303,6 @@
             "name": "Nonthaburi"
         },
         {
-            "code": "13",
-            "name": "Pathum Thani"
-        },
-        {
             "code": "S",
             "name": "Pattaya"
         },
@@ -19495,6 +19351,14 @@
             "name": "Prachuap Khiri Khan"
         },
         {
+            "code": "31",
+            "name": "província de Buriram"
+        },
+        {
+            "code": "71",
+            "name": "província de Kanchanaburi"
+        },
+        {
             "code": "52",
             "name": "província de Lampang"
         },
@@ -19503,12 +19367,20 @@
             "name": "Província de Lamphun"
         },
         {
+            "code": "13",
+            "name": "província de Pathum Thani"
+        },
+        {
             "code": "94",
             "name": "Província de Pattani"
         },
         {
             "code": "83",
             "name": "Província de Phuket"
+        },
+        {
+            "code": "74",
+            "name": "província de Samut Sakhon"
         },
         {
             "code": "32",
@@ -19541,10 +19413,6 @@
         {
             "code": "11",
             "name": "Samut Prakan"
-        },
-        {
-            "code": "74",
-            "name": "Samut Sakhon"
         },
         {
             "code": "75",
@@ -20341,10 +20209,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -20664,7 +20528,7 @@
         },
         {
             "code": "220",
-            "name": "Bukwa"
+            "name": "Bukwo"
         },
         {
             "code": "225",
@@ -21152,10 +21016,6 @@
         }
     ],
     "UM": [
-        {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
         {
             "code": "67",
             "name": "Atol Johnston"
@@ -21663,12 +21523,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21685,10 +21539,6 @@
         {
             "code": "53",
             "name": "Bắc Kạn"
-        },
-        {
-            "code": "55",
-            "name": "Bạc Liêu"
         },
         {
             "code": "56",
@@ -21839,6 +21689,10 @@
             "name": "Phú Yên"
         },
         {
+            "code": "55",
+            "name": "província de Bạc Liêu"
+        },
+        {
             "code": "59",
             "name": "Província de Cà Mau"
         },
@@ -21961,10 +21815,6 @@
         {
             "code": "SG",
             "name": "Sigave"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22103,12 +21953,6 @@
             "name": "Sanà"
         }
     ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
-        }
-    ],
     "ZA": [
         {
             "code": "WC",
@@ -22191,10 +22035,6 @@
     ],
     "ZW": [
         {
-            "code": "HA",
-            "name": "Harare"
-        },
-        {
             "code": "MA",
             "name": "Manicaland"
         },
@@ -22225,6 +22065,10 @@
         {
             "code": "BU",
             "name": "província de Bulawayo"
+        },
+        {
+            "code": "HA",
+            "name": "Provincia de Harare"
         },
         {
             "code": "MV",

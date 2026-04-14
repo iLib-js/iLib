@@ -643,12 +643,6 @@
             "name": "リオネグロ州"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "SA",
             "name": "南オーストラリア州"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "リトラル県"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "TU",
@@ -2173,10 +2149,6 @@
     ],
     "BS": [
         {
-            "code": "NP",
-            "name": "New Providence"
-        },
-        {
             "code": "AK",
             "name": "アクリンズ"
         },
@@ -2239,6 +2211,10 @@
         {
             "code": "CE",
             "name": "セントラル・エルーセラ"
+        },
+        {
+            "code": "NP",
+            "name": "ニュープロビデンス"
         },
         {
             "code": "NO",
@@ -3421,12 +3397,6 @@
             "name": "リサラルダ県"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3621,12 +3591,6 @@
             "name": "リベイラ・ブラヴァ"
         }
     ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
-        }
-    ],
     "CY": [
         {
             "code": "01",
@@ -3677,10 +3641,6 @@
         {
             "code": "411",
             "name": "Cheb"
-        },
-        {
-            "code": "531",
-            "name": "Chrudim"
         },
         {
             "code": "421",
@@ -3759,10 +3719,6 @@
             "name": "Most"
         },
         {
-            "code": "523",
-            "name": "Náchod"
-        },
-        {
             "code": "804",
             "name": "Nový Jičín"
         },
@@ -3781,10 +3737,6 @@
         {
             "code": "806",
             "name": "Ostrava"
-        },
-        {
-            "code": "532",
-            "name": "Pardubice"
         },
         {
             "code": "633",
@@ -3907,10 +3859,6 @@
             "name": "Prague-West"
         },
         {
-            "code": "20B",
-            "name": "Příbram"
-        },
-        {
             "code": "20C",
             "name": "Rakovník"
         },
@@ -3995,6 +3943,10 @@
             "name": "カルロヴィ・ヴァリ州"
         },
         {
+            "code": "531",
+            "name": "クルディム郡"
+        },
+        {
             "code": "721",
             "name": "クロミェジージュ郡"
         },
@@ -4023,8 +3975,20 @@
             "name": "チェスキー・クルムロフ郡"
         },
         {
+            "code": "523",
+            "name": "ナーハト郡"
+        },
+        {
+            "code": "532",
+            "name": "パルドゥビツェ郡"
+        },
+        {
             "code": "53",
             "name": "パルドゥビツェ州"
+        },
+        {
+            "code": "20B",
+            "name": "プシーブラム郡"
         },
         {
             "code": "644",
@@ -5919,10 +5883,6 @@
             "name": "Maine-et-Loire"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         },
@@ -6201,6 +6161,10 @@
         {
             "code": "53",
             "name": "マイエンヌ県"
+        },
+        {
+            "code": "976",
+            "name": "マヨット"
         },
         {
             "code": "972",
@@ -7387,12 +7351,6 @@
             "name": "トビリシ"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "BA",
@@ -7679,12 +7637,6 @@
         {
             "code": "N",
             "name": "ンゼレコレ州"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "フティアパ県"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "JN",
             "name": "ヤース・ナジクン・ソルノク県"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "アルハンガイ県"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "東カバンゴ州"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15333,10 +15243,6 @@
             "name": "Gandaki²"
         },
         {
-            "code": "P3",
-            "name": "Province 3"
-        },
-        {
             "code": "P6",
             "name": "カルナリ・プラデーシュ州"
         },
@@ -15415,6 +15321,10 @@
         {
             "code": "P5",
             "name": "第五州"
+        },
+        {
+            "code": "P3",
+            "name": "第三州"
         },
         {
             "code": "P7",
@@ -15769,12 +15679,6 @@
         {
             "code": "HUV",
             "name": "ワンカベリカ県"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16369,18 +16273,6 @@
             "name": "西ポモージェ県"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "RBH",
@@ -16701,12 +16593,6 @@
         {
             "code": "RA",
             "name": "ライヤーン"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "ラリベルタ県 (エルサルバドル)"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
@@ -19095,12 +18975,6 @@
         {
             "code": "LU",
             "name": "ルボンボ"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "ME",
             "name": "東マヨ・ケッビ州"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20185,10 +20053,6 @@
     ],
     "TW": [
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "YUN",
             "name": "雲林県"
         },
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "ジョンストン島"
         },
@@ -21583,20 +21443,10 @@
             "name": "首都地区"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "43",
             "name": "Bà Rịa–Vũng Tàu"
-        },
-        {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
         },
         {
             "code": "44",
@@ -21807,6 +21657,10 @@
             "name": "フート省"
         },
         {
+            "code": "26",
+            "name": "フエ市"
+        },
+        {
             "code": "66",
             "name": "フンイエン省"
         },
@@ -21870,10 +21724,6 @@
         }
     ],
     "WF": [
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
-        },
         {
             "code": "AL",
             "name": "アロ首長国"
@@ -22021,12 +21871,6 @@
         {
             "code": "LA",
             "name": "ラヒジュ県"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

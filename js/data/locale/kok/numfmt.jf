@@ -16,6 +16,14 @@
         "prigroupSize": 3,
         "roundingMode": "halfdown",
         "script": "Deva",
+        "secgroupSize": 2,
         "useNative": true
+    },
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "-{s}{n}"
+        },
+        "secgroupSize": 2
     }
 }

@@ -22,7 +22,7 @@
         },
         {
             "code": "07",
-            "name": "Andorra la Vella"
+            "name": "အင်ဒိုရာလာဗီလာမြို့"
         },
         {
             "code": "08",
@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "ACT",
             "name": "Australian Capital Territory"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1149,6 +1131,10 @@
     ],
     "BD": [
         {
+            "code": "B",
+            "name": "စစ်တကောင်းတိုင်း"
+        },
+        {
             "code": "05",
             "name": "Bagerhat"
         },
@@ -1187,10 +1173,6 @@
         {
             "code": "10",
             "name": "Chittagong"
-        },
-        {
-            "code": "B",
-            "name": "Chittagong Division"
         },
         {
             "code": "12",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3159,6 +3135,10 @@
             "name": "ကျဲ့ကျန်းပြည်နယ်"
         },
         {
+            "code": "GZ",
+            "name": "ကွေ့ကျိုး"
+        },
+        {
             "code": "GD",
             "name": "ကွမ်တုန်းပြည်နယ်"
         },
@@ -3225,10 +3205,6 @@
         {
             "code": "AH",
             "name": "အန်းဟွေးပြည်နယ်"
-        },
-        {
-            "code": "GZ",
-            "name": "Guizhou"
         },
         {
             "code": "HI",
@@ -3419,12 +3395,6 @@
         {
             "code": "VID",
             "name": "Vichada"
-        }
-    ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5795,16 +5759,68 @@
             "name": "ကော်စီကာ"
         },
         {
+            "code": "GES",
+            "name": "ဂရံတဲ့စ်တ်တိုင်း"
+        },
+        {
             "code": "971",
             "name": "ဂွါဒလ်ကျွန်း"
+        },
+        {
+            "code": "CVL",
+            "name": "ဆံတရ-ဗာလ် ဒ လွာရ်တိုင်း"
+        },
+        {
+            "code": "NAQ",
+            "name": "နူဗဲလ်-အာကီတဲန်တိုင်း"
+        },
+        {
+            "code": "NOR",
+            "name": "နောရ်မံဒီတိုင်း"
+        },
+        {
+            "code": "PAC",
+            "name": "ပရောဗံ့စ်-အာလ်ပ်-ကို့တ် ဒါဂျူရ်တိုင်း"
         },
         {
             "code": "75C",
             "name": "ပါရီမြို့"
         },
         {
+            "code": "PDL",
+            "name": "ပယ်အီ ဒ လာ လွာရ်တိုင်း"
+        },
+        {
+            "code": "973",
+            "name": "ပြင်သစ်ပိုင် ဂီယာနာ"
+        },
+        {
+            "code": "BRE",
+            "name": "ဘရတာညီတိုင်း"
+        },
+        {
+            "code": "BFC",
+            "name": "ဘူရ်ဂေါ်ညီ-ဖရံရှ်-ကောင်တေတိုင်း"
+        },
+        {
             "code": "972",
             "name": "မာတီနစ်"
+        },
+        {
+            "code": "IDF",
+            "name": "အီလ်-ဒ-ဖရံ့စ်တိုင်း"
+        },
+        {
+            "code": "OCC",
+            "name": "အော့က်ဆီတာနီတိုင်း"
+        },
+        {
+            "code": "ARA",
+            "name": "အိုဗဲရ်ညီ-ရွန်-အာလ်ပ်တိုင်း"
+        },
+        {
+            "code": "HDF",
+            "name": "အို့-ဒ-ဖရံ့စ်တိုင်း"
         },
         {
             "code": "01",
@@ -5851,10 +5867,6 @@
             "name": "Aude"
         },
         {
-            "code": "ARA",
-            "name": "Auvergne-Rhône-Alpes"
-        },
-        {
             "code": "12",
             "name": "Aveyron"
         },
@@ -5867,24 +5879,12 @@
             "name": "Bouches-du-Rhône"
         },
         {
-            "code": "BRE",
-            "name": "Brittany"
-        },
-        {
-            "code": "BFC",
-            "name": "Burgundy-Franche-Comté"
-        },
-        {
             "code": "14",
             "name": "Calvados"
         },
         {
             "code": "15",
             "name": "Cantal"
-        },
-        {
-            "code": "CVL",
-            "name": "Centre-Val de Loire"
         },
         {
             "code": "16",
@@ -5967,14 +5967,6 @@
             "name": "Gironde"
         },
         {
-            "code": "GES",
-            "name": "Grand-Est"
-        },
-        {
-            "code": "973",
-            "name": "Guyane (française)"
-        },
-        {
             "code": "68",
             "name": "Haut-Rhin"
         },
@@ -6015,20 +6007,12 @@
             "name": "Hautes-Pyrénées"
         },
         {
-            "code": "HDF",
-            "name": "Hauts-de-France"
-        },
-        {
             "code": "92",
             "name": "Hauts-de-Seine"
         },
         {
             "code": "34",
             "name": "Hérault"
-        },
-        {
-            "code": "IDF",
-            "name": "Île-de-France²"
         },
         {
             "code": "35",
@@ -6135,18 +6119,6 @@
             "name": "Nord"
         },
         {
-            "code": "NOR",
-            "name": "Normandie"
-        },
-        {
-            "code": "NAQ",
-            "name": "Nouvelle-Aquitaine"
-        },
-        {
-            "code": "OCC",
-            "name": "Occitanie"
-        },
-        {
             "code": "60",
             "name": "Oise"
         },
@@ -6157,14 +6129,6 @@
         {
             "code": "62",
             "name": "Pas-de-Calais"
-        },
-        {
-            "code": "PDL",
-            "name": "Pays-de-la-Loire"
-        },
-        {
-            "code": "PAC",
-            "name": "Provence-Alpes-Côte-d’Azur"
         },
         {
             "code": "63",
@@ -6308,7 +6272,7 @@
         },
         {
             "code": "SCT",
-            "name": "စကော့တလန်နိုင်ငံ"
+            "name": "စကော့တလန်"
         },
         {
             "code": "STH",
@@ -6336,7 +6300,7 @@
         },
         {
             "code": "WLS",
-            "name": "ဝေလနိုင်ငံ"
+            "name": "ဝေလ"
         },
         {
             "code": "ABE",
@@ -6360,7 +6324,7 @@
         },
         {
             "code": "ENG",
-            "name": "အင်္ဂလန်နိုင်ငံ"
+            "name": "အင်္ဂလန်"
         },
         {
             "code": "IOW",
@@ -7387,12 +7351,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8555,12 +8501,6 @@
             "name": "Zalaegerszeg"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "JK",
@@ -8897,6 +8837,10 @@
             "name": "ကာနာတာကာပြည်နယ်"
         },
         {
+            "code": "KL",
+            "name": "ကေရလပြည်နယ်"
+        },
+        {
             "code": "AN",
             "name": "ကပ္ပလီကျွန်း"
         },
@@ -9023,10 +8967,6 @@
         {
             "code": "DD",
             "name": "Daman and Diu"
-        },
-        {
-            "code": "KL",
-            "name": "Kerala"
         },
         {
             "code": "LD",
@@ -10252,15 +10192,15 @@
         },
         {
             "code": "03",
-            "name": "Iwate"
+            "name": "အိဝတဲခရိုင်"
         },
         {
             "code": "04",
-            "name": "Miyagi"
+            "name": "မိယဂိခရိုင်"
         },
         {
             "code": "05",
-            "name": "Akita"
+            "name": "အခိတခရိုင်"
         },
         {
             "code": "06",
@@ -10344,11 +10284,11 @@
         },
         {
             "code": "26",
-            "name": "Kyōto"
+            "name": "ကျိုတိုစီရင်စု"
         },
         {
             "code": "27",
-            "name": "Ōsaka"
+            "name": "အိုဆာကာခရိုင်"
         },
         {
             "code": "28",
@@ -10356,7 +10296,7 @@
         },
         {
             "code": "29",
-            "name": "Nara"
+            "name": "နာရစီရင်စု"
         },
         {
             "code": "30",
@@ -10862,39 +10802,39 @@
         },
         {
             "code": "02",
-            "name": "South Pyongan"
+            "name": "ဖျောင်းအန်းတောင်တိုင်း"
         },
         {
             "code": "03",
-            "name": "North Pyongan"
+            "name": "ဖျောင်းအန်းမြောက်တိုင်း"
         },
         {
             "code": "04",
-            "name": "Chagang"
+            "name": "ဂျာဂံတိုင်း"
         },
         {
             "code": "05",
-            "name": "South Hwanghae"
+            "name": "ဟွမ်းဟယ်တောင်တိုင်း"
         },
         {
             "code": "06",
-            "name": "North Hwanghae"
+            "name": "ဟွမ်းဟယ်မြောက်တိုင်း"
         },
         {
             "code": "07",
-            "name": "Kangwon"
+            "name": "ဂံဝန်းတိုင်း (မြောက်ကိုရီးယား)"
         },
         {
             "code": "08",
-            "name": "South Hamgyong"
+            "name": "ဟမ်းဂယောင်းတောင်တိုင်း"
         },
         {
             "code": "09",
-            "name": "North Hamgyong"
+            "name": "ဟမ်းဂယောင်းမြောက်တိုင်း"
         },
         {
             "code": "10",
-            "name": "Ryanggang"
+            "name": "လျံဂံတိုင်း"
         },
         {
             "code": "13",
@@ -10944,35 +10884,35 @@
         },
         {
             "code": "42",
-            "name": "Gangwon"
+            "name": "ဂံဝန်းတိုင်း (တောင်ကိုရီးယား)"
         },
         {
             "code": "43",
-            "name": "North Chungcheong"
+            "name": "ချုံးချောင်းမြောက်တိုင်း"
         },
         {
             "code": "44",
-            "name": "South Chungcheong"
+            "name": "ချုံးချောင်းတောင်တိုင်း"
         },
         {
             "code": "45",
-            "name": "North Jeolla"
+            "name": "ဂျော်လာမြောက်တိုင်း"
         },
         {
             "code": "46",
-            "name": "South Jeolla"
+            "name": "ဂျော်လာတောင်တိုင်း"
         },
         {
             "code": "47",
-            "name": "North Gyeongsang"
+            "name": "ဂယောင်းဆံမြောက်တိုင်း"
         },
         {
             "code": "48",
-            "name": "South Gyeongsang"
+            "name": "ဂယောင်းဆံတောင်တိုင်း"
         },
         {
             "code": "49",
-            "name": "Jeju"
+            "name": "ဂျဲဂျူတိုင်း"
         },
         {
             "code": "50",
@@ -11340,7 +11280,7 @@
         },
         {
             "code": "11",
-            "name": "Vaduz"
+            "name": "ဖာဒုစ်"
         }
     ],
     "LK": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16369,18 +16273,6 @@
             "name": "West Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19197,12 +19071,6 @@
             "name": "Wadi Fira"
         }
     ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
-        }
-    ],
     "TG": [
         {
             "code": "C",
@@ -19235,12 +19103,48 @@
             "name": "ကန်ချနဘူရီ ခရိုင်"
         },
         {
+            "code": "24",
+            "name": "ချာချင်ဆာဝ်ပြည်နယ်"
+        },
+        {
+            "code": "50",
+            "name": "ချင်းမိုင်ခရိုင်"
+        },
+        {
+            "code": "57",
+            "name": "ချင်းရိုင်ခရိုင်"
+        },
+        {
             "code": "20",
             "name": "ချွန်ဘူရီ ပြည်နယ်"
         },
         {
+            "code": "22",
+            "name": "စန္ဒပုရီပြည်နယ်"
+        },
+        {
+            "code": "27",
+            "name": "ဆာကယ်ဝ်ပြည်နယ်"
+        },
+        {
+            "code": "36",
+            "name": "ဇယဘူမိပြည်နယ်"
+        },
+        {
+            "code": "23",
+            "name": "တရတ်ခရိုင်"
+        },
+        {
             "code": "63",
             "name": "တာ့ခ်ခရိုင်"
+        },
+        {
+            "code": "26",
+            "name": "နဂရနာယကပြည်နယ်"
+        },
+        {
+            "code": "30",
+            "name": "နဂရရာဇသီမာပြည်နယ်"
         },
         {
             "code": "55",
@@ -19251,8 +19155,20 @@
             "name": "နွန်ထဘူရီပြည်နယ်"
         },
         {
+            "code": "13",
+            "name": "ပဒုမဌာနီပြည်နယ်"
+        },
+        {
             "code": "77",
             "name": "ပရာချုပ်ဂီရီခဏ္ဍပြည်နယ်"
+        },
+        {
+            "code": "25",
+            "name": "ပရာစီနပုရီပြည်နယ်"
+        },
+        {
+            "code": "31",
+            "name": "ပုရီရမ္မပြည်နယ်"
         },
         {
             "code": "S",
@@ -19265,6 +19181,10 @@
         {
             "code": "10",
             "name": "ဘန်ကောက်မြို့"
+        },
+        {
+            "code": "19",
+            "name": "သရပုရီပြည်နယ်"
         },
         {
             "code": "61",
@@ -19283,32 +19203,8 @@
             "name": "Bueng Kan"
         },
         {
-            "code": "31",
-            "name": "Buri Ram"
-        },
-        {
-            "code": "24",
-            "name": "Chachoengsao"
-        },
-        {
             "code": "18",
             "name": "Chai Nat"
-        },
-        {
-            "code": "36",
-            "name": "Chaiyaphum"
-        },
-        {
-            "code": "22",
-            "name": "Chanthaburi"
-        },
-        {
-            "code": "50",
-            "name": "Chiang Mai"
-        },
-        {
-            "code": "57",
-            "name": "Chiang Rai"
         },
         {
             "code": "86",
@@ -19355,20 +19251,12 @@
             "name": "Mukdahan"
         },
         {
-            "code": "26",
-            "name": "Nakhon Nayok"
-        },
-        {
             "code": "73",
             "name": "Nakhon Pathom"
         },
         {
             "code": "48",
             "name": "Nakhon Phanom"
-        },
-        {
-            "code": "30",
-            "name": "Nakhon Ratchasima"
         },
         {
             "code": "60",
@@ -19389,10 +19277,6 @@
         {
             "code": "43",
             "name": "Nong Khai"
-        },
-        {
-            "code": "13",
-            "name": "Pathum Thani"
         },
         {
             "code": "94",
@@ -19435,10 +19319,6 @@
             "name": "Phuket"
         },
         {
-            "code": "25",
-            "name": "Prachin Buri"
-        },
-        {
             "code": "85",
             "name": "Ranong"
         },
@@ -19455,10 +19335,6 @@
             "name": "Roi Et"
         },
         {
-            "code": "27",
-            "name": "Sa Kaeo"
-        },
-        {
             "code": "47",
             "name": "Sakon Nakhon"
         },
@@ -19473,10 +19349,6 @@
         {
             "code": "75",
             "name": "Samut Songkhram"
-        },
-        {
-            "code": "19",
-            "name": "Saraburi"
         },
         {
             "code": "91",
@@ -19513,10 +19385,6 @@
         {
             "code": "92",
             "name": "Trang"
-        },
-        {
-            "code": "23",
-            "name": "Trat"
         },
         {
             "code": "34",
@@ -20259,10 +20127,6 @@
         {
             "code": "TTT",
             "name": "Taitung"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         },
         {
             "code": "TAO",
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21583,12 +21443,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "CT",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

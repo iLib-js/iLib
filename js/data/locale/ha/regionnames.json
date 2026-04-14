@@ -105,10 +105,6 @@
             "name": "Helmand"
         },
         {
-            "code": "HER",
-            "name": "Herat"
-        },
-        {
             "code": "JOW",
             "name": "Jowzjan"
         },
@@ -139,6 +135,10 @@
         {
             "code": "LAG",
             "name": "Laghman"
+        },
+        {
+            "code": "HER",
+            "name": "Lardin Herat"
         },
         {
             "code": "LOG",
@@ -224,7 +224,7 @@
         },
         {
             "code": "10",
-            "name": "Barbuda"
+            "name": "Yanayin yankin Barbuda"
         },
         {
             "code": "11",
@@ -506,7 +506,7 @@
         },
         {
             "code": "HUA",
-            "name": "Huambo"
+            "name": "Huambo Province"
         },
         {
             "code": "HUI",
@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "WA",
             "name": "Western Australia"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1061,10 +1043,6 @@
             "name": "Central Bosnia"
         },
         {
-            "code": "BIH",
-            "name": "Federation of Bosnia and Herzegovina"
-        },
-        {
             "code": "07",
             "name": "Herzegovina-Neretva"
         },
@@ -1083,6 +1061,10 @@
         {
             "code": "09",
             "name": "Sarajevo"
+        },
+        {
+            "code": "BIH",
+            "name": "Tarayyar Bosnia da Herzegovina"
         },
         {
             "code": "03",
@@ -1155,10 +1137,6 @@
         {
             "code": "01",
             "name": "Bandarban"
-        },
-        {
-            "code": "02",
-            "name": "Barguna"
         },
         {
             "code": "A",
@@ -1235,6 +1213,10 @@
         {
             "code": "17",
             "name": "Gopalganj"
+        },
+        {
+            "code": "02",
+            "name": "Gundumar Barguna"
         },
         {
             "code": "20",
@@ -1406,7 +1388,7 @@
         },
         {
             "code": "59",
-            "name": "Sirajganj"
+            "name": "Sirajganj District"
         },
         {
             "code": "61",
@@ -1613,6 +1595,10 @@
             "name": "Kourwéogo"
         },
         {
+            "code": "YAG",
+            "name": "Lardin Yagha"
+        },
+        {
             "code": "LER",
             "name": "Léraba"
         },
@@ -1703,10 +1689,6 @@
         {
             "code": "TUI",
             "name": "Tuy"
-        },
-        {
-            "code": "YAG",
-            "name": "Yagha"
         },
         {
             "code": "YAT",
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2107,10 +2083,6 @@
             "name": "Mato Grosso"
         },
         {
-            "code": "MS",
-            "name": "Mato Grosso do Sul"
-        },
-        {
             "code": "MG",
             "name": "Minas Gerais"
         },
@@ -2169,6 +2141,10 @@
         {
             "code": "TO",
             "name": "Tocantins"
+        },
+        {
+            "code": "MS",
+            "name": "Yanayin ƙasa na Mato Grosso do Sul"
         }
     ],
     "BS": [
@@ -2573,10 +2549,6 @@
             "name": "Bas-Uélé"
         },
         {
-            "code": "EQ",
-            "name": "Équateur"
-        },
-        {
             "code": "HK",
             "name": "Haut-Katanga"
         },
@@ -2625,6 +2597,14 @@
             "name": "Kwilu"
         },
         {
+            "code": "EQ",
+            "name": "Lardin Ecuador"
+        },
+        {
+            "code": "MO",
+            "name": "Lardin Moyen-Congo"
+        },
+        {
             "code": "LO",
             "name": "Lomami"
         },
@@ -2639,10 +2619,6 @@
         {
             "code": "MA",
             "name": "Maniema"
-        },
-        {
-            "code": "MO",
-            "name": "Mongala"
         },
         {
             "code": "NU",
@@ -2712,7 +2688,7 @@
         },
         {
             "code": "HS",
-            "name": "Mambéré-Kadéï"
+            "name": "Mambere-Kadei"
         },
         {
             "code": "MB",
@@ -3075,12 +3051,12 @@
             "name": "Libertador General Bernardo O’Higgins"
         },
         {
-            "code": "LL",
-            "name": "Los Lagos"
-        },
-        {
             "code": "LR",
             "name": "Los Ríos"
+        },
+        {
+            "code": "LL",
+            "name": "Los waniyanki ne Birni Lagos"
         },
         {
             "code": "MA",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "B",
             "name": "Tsibirin Barlavento"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4718,7 +4682,7 @@
         },
         {
             "code": "M",
-            "name": "Manabí"
+            "name": "Manabi province"
         },
         {
             "code": "S",
@@ -5571,10 +5535,6 @@
             "name": "Addis Ababa"
         },
         {
-            "code": "AF",
-            "name": "Afar"
-        },
-        {
             "code": "AM",
             "name": "Amhara"
         },
@@ -5617,6 +5577,10 @@
         {
             "code": "TI",
             "name": "Tigray"
+        },
+        {
+            "code": "AF",
+            "name": "Yankin Afar"
         }
     ],
     "FI": [
@@ -7391,12 +7355,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "NE",
@@ -7683,12 +7641,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8559,12 +8505,6 @@
             "name": "Zalaegerszeg"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8793,6 +8733,10 @@
             "name": "Kilkenny"
         },
         {
+            "code": "WH",
+            "name": "Ƙasar Westmeath"
+        },
+        {
             "code": "LS",
             "name": "Laois"
         },
@@ -8855,10 +8799,6 @@
         {
             "code": "WD",
             "name": "Waterford"
-        },
-        {
-            "code": "WH",
-            "name": "Westmeath"
         },
         {
             "code": "WX",
@@ -9484,7 +9424,7 @@
         },
         {
             "code": "RKV",
-            "name": "Reykjavíkurborg"
+            "name": "Reykjavik"
         },
         {
             "code": "SEL",
@@ -11519,6 +11459,10 @@
             "name": "Grand Kru"
         },
         {
+            "code": "RG",
+            "name": "Kaear River Gee"
+        },
+        {
             "code": "LO",
             "name": "Lofa"
         },
@@ -11537,10 +11481,6 @@
         {
             "code": "NI",
             "name": "Nimba"
-        },
-        {
-            "code": "RG",
-            "name": "River Gee"
         },
         {
             "code": "RI",
@@ -13205,12 +13145,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13931,24 +13865,6 @@
             "name": "Arkhangai"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -14605,10 +14521,6 @@
             "name": "Baja California"
         },
         {
-            "code": "BCS",
-            "name": "Baja California Sur"
-        },
-        {
             "code": "CAM",
             "name": "Campeche"
         },
@@ -14649,16 +14561,16 @@
             "name": "Jalisco"
         },
         {
+            "code": "MEX",
+            "name": "Jihar Mexico"
+        },
+        {
             "code": "CMX",
             "name": "Mexico"
         },
         {
             "code": "DIF",
             "name": "Mexico City"
-        },
-        {
-            "code": "MEX",
-            "name": "Mexico State"
         },
         {
             "code": "MIC",
@@ -14721,12 +14633,16 @@
             "name": "Veracruz"
         },
         {
-            "code": "YUC",
-            "name": "Yucatán"
+            "code": "BCS",
+            "name": "Yanayin yanayi na Baja California Sur"
         },
         {
             "code": "ZAC",
-            "name": "Zacatecas"
+            "name": "Yanayin yanayi na Zacatecas"
+        },
+        {
+            "code": "YUC",
+            "name": "Yucatán"
         }
     ],
     "MY": [
@@ -14897,12 +14813,6 @@
         {
             "code": "CA",
             "name": "Zambezi"
-        }
-    ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -15779,12 +15689,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16330,7 +16234,7 @@
         },
         {
             "code": "10",
-            "name": "Łódź"
+            "name": "Ƙasar Łódź"
         },
         {
             "code": "12",
@@ -16338,7 +16242,7 @@
         },
         {
             "code": "14",
-            "name": "Mazovia"
+            "name": "Masovian Voivodeship"
         },
         {
             "code": "16",
@@ -16375,18 +16279,6 @@
         {
             "code": "32",
             "name": "West Pomerania"
-        }
-    ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17056,7 +16942,7 @@
         },
         {
             "code": "BU",
-            "name": "Buryat"
+            "name": "Buryatia"
         },
         {
             "code": "CE",
@@ -17168,7 +17054,7 @@
         },
         {
             "code": "LEN",
-            "name": "Leningrad"
+            "name": "Leningrad Oblast"
         },
         {
             "code": "LIP",
@@ -17223,10 +17109,6 @@
             "name": "Omsk"
         },
         {
-            "code": "ORE",
-            "name": "Orenburg"
-        },
-        {
             "code": "ORL",
             "name": "Oryol"
         },
@@ -17249,10 +17131,6 @@
         {
             "code": "ROS",
             "name": "Rostov"
-        },
-        {
-            "code": "RYA",
-            "name": "Ryazan"
         },
         {
             "code": "SPE",
@@ -17341,6 +17219,14 @@
         {
             "code": "YAN",
             "name": "Yamalo-Nenets Okrug"
+        },
+        {
+            "code": "ORE",
+            "name": "Yanayin yankin Orenburg"
+        },
+        {
+            "code": "RYA",
+            "name": "Yanayin yankin Ryazan"
         },
         {
             "code": "YAR",
@@ -19023,12 +18909,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "OD",
             "name": "Yankin Ouaddai"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19696,7 +19564,7 @@
         },
         {
             "code": "41",
-            "name": "Kairouan"
+            "name": "Kairouan Governorate"
         },
         {
             "code": "42",
@@ -19956,7 +19824,7 @@
         },
         {
             "code": "47",
-            "name": "Mardin"
+            "name": "Mardin Province"
         },
         {
             "code": "48",
@@ -20269,10 +20137,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -20316,7 +20180,7 @@
         },
         {
             "code": "08",
-            "name": "Kigoma"
+            "name": "Yankin Kigoma"
         },
         {
             "code": "09",
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21512,7 +21372,7 @@
         },
         {
             "code": "F",
-            "name": "Bolívar"
+            "name": "Bolivar"
         },
         {
             "code": "A",
@@ -21548,7 +21408,7 @@
         },
         {
             "code": "L",
-            "name": "Mérida"
+            "name": "Mérida (jiha)"
         },
         {
             "code": "M",
@@ -21589,12 +21449,6 @@
         {
             "code": "V",
             "name": "Zulia"
-        }
-    ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
         }
     ],
     "VN": [
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "AM",
             "name": "ʼAmran Governorate"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

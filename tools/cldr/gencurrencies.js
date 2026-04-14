@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2020, 2022-2023 JEDLSoft
+ * Copyright © 2016, 2018-2020, 2022-2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +44,16 @@ function getUsingCurrency(object) {
     for (i = 0; i < object.length; i++) {
         for (curObj in object[i]) {
             if(object[i][curObj]._to === undefined && object[i][curObj]._from !== undefined && object[i][curObj]._tender === undefined) {
-                ret.push(curObj);
+                ret.push({ name: curObj, from: object[i][curObj]._from });
             }
         }
     }
-    return ret;
+    // Sort ascending by _from date so the most recent currency is last.
+    // The caller writes each currency to currency.jf in order, so the last one
+    // (most recently introduced) becomes the primary currency for the region.
+    // This prevents the result from depending on the order of entries in the CLDR data.
+    ret.sort(function(a, b) { return a.from.localeCompare(b.from); });
+    return ret.map(function(item) { return item.name; });
 }
 
 function getDecimals(currency, fractions) {
