@@ -643,12 +643,6 @@
             "name": "Tierra del Fuego, Antaktiki na Visiwa vya Atlantiki Kusini"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2430,7 +2406,7 @@
         },
         {
             "code": "SP",
-            "name": "Selibe Phikwe"
+            "name": "Selebi-Phikwe"
         },
         {
             "code": "SE",
@@ -2661,16 +2637,16 @@
             "name": "Mkoa wa Tshuapa"
         },
         {
+            "code": "NU",
+            "name": "Mkoa wa Ubangi Kaskazini"
+        },
+        {
             "code": "BU",
             "name": "Mkoa wa Wele Chini"
         },
         {
             "code": "HU",
             "name": "Mkoa wa Wele Juu"
-        },
-        {
-            "code": "NU",
-            "name": "Nord-Ubangi"
         },
         {
             "code": "OR",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5313,10 +5277,6 @@
             "name": "Basque Country"
         },
         {
-            "code": "CC",
-            "name": "Cáceres"
-        },
-        {
             "code": "CB",
             "name": "Cantabria"
         },
@@ -5403,6 +5363,10 @@
         {
             "code": "BU",
             "name": "Mkoa wa Burgos"
+        },
+        {
+            "code": "CC",
+            "name": "Mkoa wa Cáceres"
         },
         {
             "code": "CA",
@@ -7387,12 +7351,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "BA",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -12719,6 +12659,10 @@
             "name": "Midelt"
         },
         {
+            "code": "SIB",
+            "name": "Mkoa wa Sidi Bennour"
+        },
+        {
             "code": "MOH",
             "name": "Mohammedia"
         },
@@ -12785,10 +12729,6 @@
         {
             "code": "SET",
             "name": "Settat"
-        },
-        {
-            "code": "SIB",
-            "name": "Sidi Bennour"
         },
         {
             "code": "SIF",
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Mkoa wa Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -14928,7 +14838,7 @@
         },
         {
             "code": "7",
-            "name": "Zinder"
+            "name": "Mkoa wa zinder"
         },
         {
             "code": "8",
@@ -15775,12 +15685,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "CPM",
@@ -16373,18 +16277,6 @@
             "name": "West Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19019,12 +18905,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19101,32 +18981,22 @@
             "name": "Shiselweni"
         }
     ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
-        }
-    ],
     "TD": [
         {
             "code": "BG",
-            "name": "Bahr el Gazel"
-        },
-        {
-            "code": "BA",
-            "name": "Batha"
+            "name": "Bahr el Gazel (mkoa wa Chad)"
         },
         {
             "code": "BO",
-            "name": "Borkou"
+            "name": "Borkou (mkoa wa Chad)"
         },
         {
             "code": "CB",
-            "name": "Chari-Baguirmi"
+            "name": "Chari-Baguirmi (mkoa)"
         },
         {
             "code": "EE",
-            "name": "Ennedi-Est"
+            "name": "Ennedi Mashariki"
         },
         {
             "code": "EO",
@@ -19138,7 +19008,7 @@
         },
         {
             "code": "HL",
-            "name": "Hadjer-Lamis"
+            "name": "Hadjer-Lamis (mkoa)"
         },
         {
             "code": "KA",
@@ -19167,6 +19037,10 @@
         {
             "code": "MO",
             "name": "Mayo-Kebbi Ouest"
+        },
+        {
+            "code": "BA",
+            "name": "Mkoa wa Batha"
         },
         {
             "code": "MC",
@@ -19198,13 +19072,7 @@
         },
         {
             "code": "WF",
-            "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
+            "name": "Wadi Fira (mkoa)"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21587,12 +21447,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "CT",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22027,12 +21877,6 @@
             "name": "Wilaya ya Taizz"
         }
     ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
-        }
-    ],
     "ZA": [
         {
             "code": "FS",
@@ -22110,7 +21954,7 @@
         },
         {
             "code": "10",
-            "name": "Muchinga"
+            "name": "Mkoa wa Muchinga"
         }
     ],
     "ZW": [

@@ -643,12 +643,6 @@
             "name": "لا ریوجا صوبہ، ارجنٹین"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "وکٹوریہ (آسٹریلیا)"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "MO",
             "name": "مونو محکمہ"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "ہوئلا محکمہ"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "MO",
             "name": "موستییروس"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6171,6 +6135,10 @@
             "name": "ماین"
         },
         {
+            "code": "976",
+            "name": "مایوٹ"
+        },
+        {
             "code": "54",
             "name": "مرتے-اے-موزیل"
         },
@@ -6251,10 +6219,6 @@
             "name": "Corsica"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         }
@@ -6323,12 +6287,12 @@
             "name": "انجوس"
         },
         {
-            "code": "ENG",
-            "name": "انگلستان"
-        },
-        {
             "code": "AGY",
             "name": "انگلسی"
+        },
+        {
+            "code": "ENG",
+            "name": "انگلینڈ"
         },
         {
             "code": "IVC",
@@ -7387,12 +7351,6 @@
             "name": "متسختا-متیانتی"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "UE",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "یومو پرفکترے"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "خوتیاپا محکمہ"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "SN",
             "name": "Sopron"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -11336,7 +11276,7 @@
         },
         {
             "code": "10",
-            "name": "Triesenberg"
+            "name": "تریسنبرگ"
         },
         {
             "code": "11",
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "ارخانگائی صوبہ"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "ہارداپ علاقہ"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15373,6 +15283,10 @@
             "name": "سیتی زون"
         },
         {
+            "code": "P3",
+            "name": "صوبہ باگمتی"
+        },
+        {
             "code": "P6",
             "name": "صوبہ کرنالی"
         },
@@ -15435,10 +15349,6 @@
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         }
     ],
     "NR": [
@@ -15777,12 +15687,6 @@
         {
             "code": "CAL",
             "name": "El Callao"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16377,18 +16281,6 @@
             "name": "مغربی پومرانیا صوبہ"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "JRH",
@@ -16711,12 +16603,6 @@
             "name": "Ash Shīḩānīyah"
         }
     ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
-        }
-    ],
     "RO": [
         {
             "code": "AB",
@@ -16973,6 +16859,10 @@
             "name": "شومادیا ضلع"
         },
         {
+            "code": "KM",
+            "name": "قوصوہ و متوخیہ"
+        },
+        {
             "code": "28",
             "name": "کوسووسکا میتروویتسا ضلع"
         },
@@ -17011,10 +16901,6 @@
         {
             "code": "VO",
             "name": "وئوودینا"
-        },
-        {
-            "code": "KM",
-            "name": "Kosovo-Metohija"
         }
     ],
     "RU": [
@@ -19023,12 +18909,6 @@
             "name": "مورازان محکمہ"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "LA",
@@ -19103,12 +18983,6 @@
         {
             "code": "HH",
             "name": "ہوہو علاقہ"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "WF",
             "name": "وادی فیرا علاقہ"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20279,10 +20147,6 @@
         {
             "code": "LIE",
             "name": "Lienchiang"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "جزیرہ جانسٹن"
         },
@@ -21591,12 +21451,6 @@
             "name": "یارکے"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "وویا"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "MA",
             "name": "محافظہ مآرب"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

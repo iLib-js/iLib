@@ -555,6 +555,10 @@
             "name": "ലോസ് ഗ്ലേസിയേഴ്സ് നാഷണൽ പാർക്ക്"
         },
         {
+            "code": "J",
+            "name": "സാൻ ജുവാൻ പ്രവിശ്യ"
+        },
+        {
             "code": "B",
             "name": "Buenos Aires Province"
         },
@@ -619,10 +623,6 @@
             "name": "Salta"
         },
         {
-            "code": "J",
-            "name": "San Juan"
-        },
-        {
             "code": "D",
             "name": "San Luis"
         },
@@ -641,12 +641,6 @@
         {
             "code": "T",
             "name": "Tucumán"
-        }
-    ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
         }
     ],
     "AT": [
@@ -719,18 +713,6 @@
         {
             "code": "ACT",
             "name": "Australian Capital Territory"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "P",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5301,6 +5265,10 @@
             "name": "കാറ്റലോണിയ"
         },
         {
+            "code": "ML",
+            "name": "മെലില്ല"
+        },
+        {
             "code": "C",
             "name": "A Coruña"
         },
@@ -5479,10 +5447,6 @@
         {
             "code": "MA",
             "name": "Málaga"
-        },
-        {
-            "code": "ML",
-            "name": "Melilla"
         },
         {
             "code": "MU",
@@ -5823,6 +5787,10 @@
             "name": "ബാസ്-റിൻ"
         },
         {
+            "code": "976",
+            "name": "മായോട്ടെ"
+        },
+        {
             "code": "89",
             "name": "യോന്നെ"
         },
@@ -6115,10 +6083,6 @@
             "name": "Mayenne"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         },
@@ -6380,7 +6344,7 @@
         },
         {
             "code": "WLS",
-            "name": "വേൽസ്"
+            "name": "വെയിൽസ്"
         },
         {
             "code": "ZET",
@@ -6388,7 +6352,7 @@
         },
         {
             "code": "SCT",
-            "name": "സ്കോട്ട് ലൻഡ്"
+            "name": "സ്‌കോട്ട്‌ലന്റ്"
         },
         {
             "code": "RDG",
@@ -7387,12 +7351,6 @@
             "name": "റ്റ്ബിലിസി"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AH",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NCD",
@@ -16369,18 +16273,6 @@
             "name": "West Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19197,12 +19071,6 @@
             "name": "Wadi Fira"
         }
     ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
-        }
-    ],
     "TG": [
         {
             "code": "C",
@@ -19227,20 +19095,72 @@
     ],
     "TH": [
         {
+            "code": "37",
+            "name": "അംനാത് ചാരോൻ പ്രവിശ്യ"
+        },
+        {
             "code": "41",
             "name": "ഉഡോൺ താനി പ്രവിശ്യ"
+        },
+        {
+            "code": "53",
+            "name": "ഉത്തരാദിത് പ്രവിശ്യ"
+        },
+        {
+            "code": "34",
+            "name": "ഉബോൺ രാച്ചതാനി പ്രവിശ്യ"
+        },
+        {
+            "code": "46",
+            "name": "കലാസിൻ പ്രവിശ്യ"
         },
         {
             "code": "71",
             "name": "കാഞ്ചനബുരി പ്രവിശ്യ"
         },
         {
+            "code": "22",
+            "name": "ചന്തബുരി പ്രവിശ്യ"
+        },
+        {
+            "code": "18",
+            "name": "ചായ് നാറ്റ് പ്രവിശ്യ"
+        },
+        {
             "code": "50",
             "name": "ചിയാങ് മായി പ്രവിശ്യ"
         },
         {
+            "code": "57",
+            "name": "ചിയാങ് റായ് പ്രവിശ്യ"
+        },
+        {
+            "code": "86",
+            "name": "ചുംഫോൺ പ്രവിശ്യ"
+        },
+        {
+            "code": "36",
+            "name": "ചൈയാഫം പ്രവിശ്യ"
+        },
+        {
+            "code": "92",
+            "name": "ട്രാങ് പ്രവിശ്യ"
+        },
+        {
             "code": "63",
             "name": "തക് പ്രവിശ്യ"
+        },
+        {
+            "code": "73",
+            "name": "നഖോൺ പാതോം പ്രവിശ്യ"
+        },
+        {
+            "code": "60",
+            "name": "നഖോൺ സവാൻ"
+        },
+        {
+            "code": "80",
+            "name": "നഖോൺ സി തമ്മാരാത് പ്രവിശ്യ"
         },
         {
             "code": "55",
@@ -19263,6 +19183,14 @@
             "name": "ഫിറ്റ്സാനുലോക്ക് പ്രവിശ്യ"
         },
         {
+            "code": "76",
+            "name": "ഫെച്ചാബുരി പ്രവിശ്യ"
+        },
+        {
+            "code": "67",
+            "name": "ഫെത്ചാബൻ പ്രവിശ്യ"
+        },
+        {
             "code": "14",
             "name": "ഫ്രാ നഘോൺ സി അയുത്ഥയ പ്രവിശ്യ"
         },
@@ -19271,16 +19199,64 @@
             "name": "ബാങ്കോക്ക്"
         },
         {
+            "code": "44",
+            "name": "മഹാ സാരഖം പ്രവിശ്യ"
+        },
+        {
+            "code": "95",
+            "name": "യാല പ്രവിശ്യ"
+        },
+        {
+            "code": "70",
+            "name": "രാച്ചബുരി പ്രവിശ്യ"
+        },
+        {
             "code": "52",
             "name": "ലമ്പാങ് പ്രവിശ്യ"
+        },
+        {
+            "code": "51",
+            "name": "ലാംഫൂൺ പ്രവിശ്യ"
         },
         {
             "code": "16",
             "name": "ലോപ്ബുരി പ്രവിശ്യ"
         },
         {
+            "code": "74",
+            "name": "സമുത് സഖോൺ പ്രവിശ്യ"
+        },
+        {
+            "code": "75",
+            "name": "സമുത് സോങ്ഖ്റാം പ്രവിശ്യ"
+        },
+        {
             "code": "19",
             "name": "സരാബുരി പ്രവിശ്യ"
+        },
+        {
+            "code": "47",
+            "name": "സാക്കോൺ നഖോൺ പ്രവിശ്യ"
+        },
+        {
+            "code": "91",
+            "name": "സാറ്റൺ പ്രവിശ്യ"
+        },
+        {
+            "code": "17",
+            "name": "സിങ് ബുരി പ്രവിശ്യ"
+        },
+        {
+            "code": "33",
+            "name": "സിസാകെത് പ്രവിശ്യ"
+        },
+        {
+            "code": "64",
+            "name": "സുഖോതായ് പ്രവിശ്യ"
+        },
+        {
+            "code": "72",
+            "name": "സുഫാൻ ബുരി പ്രവിശ്യ"
         },
         {
             "code": "84",
@@ -19291,8 +19267,8 @@
             "name": "സോങ്ഖ്ല പ്രവിശ്യ"
         },
         {
-            "code": "37",
-            "name": "Amnat Charoen"
+            "code": "85",
+            "name": "റാനോങ് പ്രവിശ്യ"
         },
         {
             "code": "15",
@@ -19311,32 +19287,8 @@
             "name": "Chachoengsao"
         },
         {
-            "code": "18",
-            "name": "Chai Nat"
-        },
-        {
-            "code": "36",
-            "name": "Chaiyaphum"
-        },
-        {
-            "code": "22",
-            "name": "Chanthaburi"
-        },
-        {
-            "code": "57",
-            "name": "Chiang Rai"
-        },
-        {
             "code": "20",
             "name": "Chon Buri"
-        },
-        {
-            "code": "86",
-            "name": "Chumphon"
-        },
-        {
-            "code": "46",
-            "name": "Kalasin"
         },
         {
             "code": "62",
@@ -19351,20 +19303,12 @@
             "name": "Krabi"
         },
         {
-            "code": "51",
-            "name": "Lamphun"
-        },
-        {
             "code": "42",
             "name": "Loei"
         },
         {
             "code": "58",
             "name": "Mae Hong Son"
-        },
-        {
-            "code": "44",
-            "name": "Maha Sarakham"
         },
         {
             "code": "49",
@@ -19375,24 +19319,12 @@
             "name": "Nakhon Nayok"
         },
         {
-            "code": "73",
-            "name": "Nakhon Pathom"
-        },
-        {
             "code": "48",
             "name": "Nakhon Phanom"
         },
         {
             "code": "30",
             "name": "Nakhon Ratchasima"
-        },
-        {
-            "code": "60",
-            "name": "Nakhon Sawan"
-        },
-        {
-            "code": "80",
-            "name": "Nakhon Si Thammarat"
         },
         {
             "code": "39",
@@ -19427,14 +19359,6 @@
             "name": "Phayao"
         },
         {
-            "code": "67",
-            "name": "Phetchabun"
-        },
-        {
-            "code": "76",
-            "name": "Phetchaburi"
-        },
-        {
             "code": "66",
             "name": "Phichit"
         },
@@ -19451,14 +19375,6 @@
             "name": "Prachin Buri"
         },
         {
-            "code": "85",
-            "name": "Ranong"
-        },
-        {
-            "code": "70",
-            "name": "Ratchaburi"
-        },
-        {
             "code": "21",
             "name": "Rayong"
         },
@@ -19471,68 +19387,20 @@
             "name": "Sa Kaeo"
         },
         {
-            "code": "47",
-            "name": "Sakon Nakhon"
-        },
-        {
             "code": "11",
             "name": "Samut Prakan"
-        },
-        {
-            "code": "74",
-            "name": "Samut Sakhon"
-        },
-        {
-            "code": "75",
-            "name": "Samut Songkhram"
-        },
-        {
-            "code": "91",
-            "name": "Satun"
-        },
-        {
-            "code": "33",
-            "name": "Si Sa Ket"
-        },
-        {
-            "code": "17",
-            "name": "Sing Buri"
-        },
-        {
-            "code": "64",
-            "name": "Sukhothai"
-        },
-        {
-            "code": "72",
-            "name": "Suphanburi"
         },
         {
             "code": "32",
             "name": "Surin"
         },
         {
-            "code": "92",
-            "name": "Trang"
-        },
-        {
             "code": "23",
             "name": "Trat"
         },
         {
-            "code": "34",
-            "name": "Ubon Ratchathani"
-        },
-        {
             "code": "61",
             "name": "Uthai Thani"
-        },
-        {
-            "code": "53",
-            "name": "Uttaradit"
-        },
-        {
-            "code": "95",
-            "name": "Yala"
         },
         {
             "code": "35",
@@ -20259,10 +20127,6 @@
         {
             "code": "TTT",
             "name": "Taitung"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         },
         {
             "code": "TAO",
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "ജോൺസ്റ്റൺ അറ്റോൾ"
         },
@@ -21583,12 +21443,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "30",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

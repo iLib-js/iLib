@@ -643,12 +643,6 @@
             "name": "高連特斯省"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "WA",
             "name": "西澳洲"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1077,10 +1059,6 @@
             "name": "Posavina"
         },
         {
-            "code": "SRP",
-            "name": "Republika Srpska"
-        },
-        {
             "code": "09",
             "name": "Sarajevo"
         },
@@ -1099,6 +1077,10 @@
         {
             "code": "04",
             "name": "Zenica-Doboj"
+        },
+        {
+            "code": "SRP",
+            "name": "塞族共和國"
         }
     ],
     "BB": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "波哥大"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5795,10 +5759,6 @@
             "name": "Corsica"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         },
@@ -6243,6 +6203,10 @@
             "name": "馬提尼克"
         },
         {
+            "code": "976",
+            "name": "馬約特"
+        },
+        {
             "code": "53",
             "name": "馬耶訥"
         },
@@ -6591,10 +6555,6 @@
             "name": "Hillingdon"
         },
         {
-            "code": "HNS",
-            "name": "Hounslow"
-        },
-        {
             "code": "IVC",
             "name": "Inverclyde"
         },
@@ -6839,10 +6799,6 @@
             "name": "South Gloucestershire"
         },
         {
-            "code": "SLK",
-            "name": "South Lanarkshire"
-        },
-        {
             "code": "STY",
             "name": "South Tyneside"
         },
@@ -7001,6 +6957,10 @@
         {
             "code": "NYK",
             "name": "北約郡"
+        },
+        {
+            "code": "SLK",
+            "name": "南拉納克郡"
         },
         {
             "code": "CRF",
@@ -7271,6 +7231,10 @@
             "name": "諾福郡"
         },
         {
+            "code": "HNS",
+            "name": "豪士羅區"
+        },
+        {
             "code": "HRT",
             "name": "赫福郡"
         },
@@ -7385,12 +7349,6 @@
         {
             "code": "AJ",
             "name": "阿查拉"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "C",
             "name": "康納克立"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "SK",
             "name": "蘇諾"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "後杭愛"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15037,10 +14947,6 @@
             "name": "Nasarawa"
         },
         {
-            "code": "NI",
-            "name": "Niger"
-        },
-        {
             "code": "OG",
             "name": "Ogun"
         },
@@ -15079,6 +14985,10 @@
         {
             "code": "ZA",
             "name": "Zamfara"
+        },
+        {
+            "code": "NI",
+            "name": "尼日爾州"
         },
         {
             "code": "AN",
@@ -15775,12 +15685,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16373,18 +16277,6 @@
             "name": "西波美拉尼亞省"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "DA",
             "name": "多哈"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -18202,7 +18088,7 @@
         },
         {
             "code": "109",
-            "name": "Semič"
+            "name": "賽米奇市鎮"
         },
         {
             "code": "110",
@@ -19019,12 +18905,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "DI",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "ND",
             "name": "恩賈梅納"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20189,10 +20057,6 @@
     ],
     "TW": [
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "NAN",
             "name": "南投縣"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "強斯頓環礁"
         },
@@ -21587,12 +21447,6 @@
             "name": "亞馬遜州"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "22",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "SA",
             "name": "薩那"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

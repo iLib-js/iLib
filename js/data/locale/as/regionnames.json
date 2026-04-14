@@ -548,7 +548,7 @@
     "AR": [
         {
             "code": "C",
-            "name": "Buenos Aires"
+            "name": "ব্যুনেচ আইৰিচ"
         },
         {
             "code": "B",
@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "WA",
             "name": "Western Australia"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1157,6 +1139,10 @@
             "name": "ব্ৰাহ্মণবাৰিয়া জিলা"
         },
         {
+            "code": "H",
+            "name": "মৈমনসিং"
+        },
+        {
             "code": "05",
             "name": "Bagerhat"
         },
@@ -1325,10 +1311,6 @@
             "name": "Mymensingh"
         },
         {
-            "code": "H",
-            "name": "Mymensingh Division"
-        },
-        {
             "code": "48",
             "name": "Naogaon"
         },
@@ -1439,12 +1421,12 @@
     ],
     "BE": [
         {
-            "code": "VAN",
-            "name": "Antwerp"
+            "code": "BRU",
+            "name": "ব্ৰুচেলছ"
         },
         {
-            "code": "BRU",
-            "name": "Brussels"
+            "code": "VAN",
+            "name": "Antwerp"
         },
         {
             "code": "VOV",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -2561,6 +2537,10 @@
     ],
     "CD": [
         {
+            "code": "KN",
+            "name": "কিনশাচা"
+        },
+        {
             "code": "BN",
             "name": "Bandundu"
         },
@@ -2611,10 +2591,6 @@
         {
             "code": "KA",
             "name": "Katanga"
-        },
-        {
-            "code": "KN",
-            "name": "Kinshasa"
         },
         {
             "code": "KG",
@@ -3289,6 +3265,10 @@
     ],
     "CO": [
         {
+            "code": "DC",
+            "name": "বগোটা"
+        },
+        {
             "code": "AMA",
             "name": "Amazonas"
         },
@@ -3315,10 +3295,6 @@
         {
             "code": "CAL",
             "name": "Caldas"
-        },
-        {
-            "code": "DC",
-            "name": "Capital District"
         },
         {
             "code": "CAQ",
@@ -3419,12 +3395,6 @@
         {
             "code": "VID",
             "name": "Vichada"
-        }
-    ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3621,12 +3591,6 @@
             "name": "Tarrafal de São Nicolau"
         }
     ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
-        }
-    ],
     "CY": [
         {
             "code": "01",
@@ -3654,6 +3618,10 @@
         }
     ],
     "CZ": [
+        {
+            "code": "10",
+            "name": "প্ৰাগ"
+        },
         {
             "code": "201",
             "name": "Benešov"
@@ -3987,10 +3955,6 @@
             "name": "Prague-West"
         },
         {
-            "code": "10",
-            "name": "Prague, Hlavní mešto"
-        },
-        {
             "code": "714",
             "name": "Přerov"
         },
@@ -4105,16 +4069,16 @@
     ],
     "DE": [
         {
+            "code": "BE",
+            "name": "বাৰ্লিন"
+        },
+        {
             "code": "BW",
             "name": "Baden-Württemberg"
         },
         {
             "code": "BY",
             "name": "Bavaria"
-        },
-        {
-            "code": "BE",
-            "name": "Berlin"
         },
         {
             "code": "BB",
@@ -6311,8 +6275,16 @@
             "name": "লণ্ডন"
         },
         {
+            "code": "WLS",
+            "name": "ৱেলছ্"
+        },
+        {
             "code": "SHF",
             "name": "শ্বেফিল্ড"
+        },
+        {
+            "code": "SCT",
+            "name": "স্কটলেণ্ড"
         },
         {
             "code": "ABE",
@@ -7079,10 +7051,6 @@
             "name": "Sandwell"
         },
         {
-            "code": "SCT",
-            "name": "Scotland"
-        },
-        {
             "code": "SCB",
             "name": "Scottish Borders"
         },
@@ -7221,10 +7189,6 @@
         {
             "code": "WKF",
             "name": "Wakefield"
-        },
-        {
-            "code": "WLS",
-            "name": "Wales"
         },
         {
             "code": "WLL",
@@ -7385,12 +7349,6 @@
         {
             "code": "TB",
             "name": "Tbilisi"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13782,7 +13716,7 @@
         },
         {
             "code": "02",
-            "name": "Bago"
+            "name": "বাগো অঞ্চল"
         },
         {
             "code": "03",
@@ -13810,7 +13744,7 @@
         },
         {
             "code": "12",
-            "name": "Kayah"
+            "name": "কায়াহ ৰাজ্য"
         },
         {
             "code": "13",
@@ -13830,7 +13764,7 @@
         },
         {
             "code": "17",
-            "name": "Shan"
+            "name": "ছান ৰাজ্য"
         },
         {
             "code": "18",
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14593,6 +14509,10 @@
     ],
     "MX": [
         {
+            "code": "CMX",
+            "name": "মেক্সিকো চিটি"
+        },
+        {
             "code": "AGU",
             "name": "Aguascalientes"
         },
@@ -14615,10 +14535,6 @@
         {
             "code": "CHH",
             "name": "Chihuahua"
-        },
-        {
-            "code": "CMX",
-            "name": "Ciudad de Mexico"
         },
         {
             "code": "COA",
@@ -14893,12 +14809,6 @@
         {
             "code": "CA",
             "name": "Zambezi"
-        }
-    ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -15775,12 +15685,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16275,12 +16179,12 @@
     ],
     "PK": [
         {
-            "code": "JK",
-            "name": "Azad Kashmir"
+            "code": "BA",
+            "name": "বেলুচিস্তান"
         },
         {
-            "code": "BA",
-            "name": "Balochistan"
+            "code": "JK",
+            "name": "Azad Kashmir"
         },
         {
             "code": "TA",
@@ -16371,18 +16275,6 @@
         {
             "code": "32",
             "name": "West Pomerania"
-        }
-    ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -16707,12 +16599,6 @@
             "name": "Umm Salal"
         }
     ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
-        }
-    ],
     "RO": [
         {
             "code": "AB",
@@ -17015,6 +16901,14 @@
     ],
     "RU": [
         {
+            "code": "SPE",
+            "name": "ছেইণ্ট পিটাৰ্ছবাৰ্গ"
+        },
+        {
+            "code": "MOW",
+            "name": "মস্কো"
+        },
+        {
             "code": "AD",
             "name": "Adygea"
         },
@@ -17183,10 +17077,6 @@
             "name": "Mordovia"
         },
         {
-            "code": "MOW",
-            "name": "Moscow"
-        },
-        {
             "code": "MOS",
             "name": "Moscow Province"
         },
@@ -17249,10 +17139,6 @@
         {
             "code": "RYA",
             "name": "Ryazan"
-        },
-        {
-            "code": "SPE",
-            "name": "Saint Petersburg"
         },
         {
             "code": "SA",
@@ -19019,12 +18905,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21587,12 +21447,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

@@ -170,7 +170,7 @@
         },
         {
             "code": "PAN",
-            "name": "Panjshir"
+            "name": "Pandžšīras province"
         },
         {
             "code": "PAR",
@@ -330,7 +330,7 @@
         },
         {
             "code": "07",
-            "name": "Kukës County"
+            "name": "Kukesi ķarka"
         },
         {
             "code": "KB",
@@ -341,16 +341,16 @@
             "name": "Lezhë"
         },
         {
-            "code": "08",
-            "name": "Lezhë County"
-        },
-        {
             "code": "LB",
             "name": "Librazhd"
         },
         {
             "code": "LU",
             "name": "Lushnjë"
+        },
+        {
+            "code": "08",
+            "name": "Ļežas ķarka"
         },
         {
             "code": "MM",
@@ -643,12 +643,6 @@
             "name": "Tukumanas province"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NT",
             "name": "Ziemeļu teritorija"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1161,12 +1143,12 @@
             "name": "Barguna"
         },
         {
-            "code": "A",
-            "name": "Barisal"
-        },
-        {
             "code": "06",
             "name": "Barisālas apgabals"
+        },
+        {
+            "code": "A",
+            "name": "Barisālas apgabals²"
         },
         {
             "code": "07",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zu departaments"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Ziemeļsantanderas departaments"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarafala du Sanikolava"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5162,7 +5126,7 @@
         },
         {
             "code": "ASN",
-            "name": "Aswan"
+            "name": "Asuānas muhāfaza"
         },
         {
             "code": "BNS",
@@ -5186,7 +5150,7 @@
         },
         {
             "code": "FYM",
-            "name": "Faiyum"
+            "name": "Faijūmas muhāfaza"
         },
         {
             "code": "GH",
@@ -6059,12 +6023,12 @@
             "name": "Luarē"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "53",
             "name": "Majenna"
+        },
+        {
+            "code": "976",
+            "name": "Majota"
         },
         {
             "code": "50",
@@ -6112,7 +6076,7 @@
         },
         {
             "code": "NOR",
-            "name": "Normandie"
+            "name": "Normandija"
         },
         {
             "code": "10",
@@ -6360,15 +6324,15 @@
         },
         {
             "code": "BDG",
-            "name": "Barking and Dagenham"
+            "name": "Bārkinga un Degenema"
         },
         {
             "code": "BNE",
-            "name": "Barnet"
+            "name": "Bārneta"
         },
         {
             "code": "BNS",
-            "name": "Barnsley"
+            "name": "Bārnsli (boro)"
         },
         {
             "code": "BAS",
@@ -6383,24 +6347,28 @@
             "name": "Bekingemšīra"
         },
         {
+            "code": "BEX",
+            "name": "Beksli"
+        },
+        {
             "code": "BFS",
             "name": "Belfast"
         },
         {
-            "code": "BEX",
-            "name": "Bexley"
+            "code": "BUR",
+            "name": "Beri (boro)"
         },
         {
             "code": "BIR",
             "name": "Birmingema"
         },
         {
-            "code": "BBD",
-            "name": "Blackburn with Darwen"
+            "code": "BGW",
+            "name": "Blainaiguenta"
         },
         {
-            "code": "BGW",
-            "name": "Blaenau Gwent"
+            "code": "BBD",
+            "name": "Blekbērna ar Darvenu"
         },
         {
             "code": "BPL",
@@ -6408,7 +6376,7 @@
         },
         {
             "code": "BOL",
-            "name": "Bolton"
+            "name": "Boltona (boro)"
         },
         {
             "code": "BCP",
@@ -6419,12 +6387,12 @@
             "name": "Bournemouth"
         },
         {
-            "code": "BRD",
-            "name": "Bradford"
-        },
-        {
             "code": "BNH",
             "name": "Braitona un Hova"
+        },
+        {
+            "code": "BRD",
+            "name": "Bredforda (boro)"
         },
         {
             "code": "BRC",
@@ -6432,11 +6400,11 @@
         },
         {
             "code": "BEN",
-            "name": "Brent"
+            "name": "Brenta"
         },
         {
             "code": "BGE",
-            "name": "Bridgend"
+            "name": "Bridženda (grāfistes boro)"
         },
         {
             "code": "BST",
@@ -6444,27 +6412,7 @@
         },
         {
             "code": "BRY",
-            "name": "Bromley"
-        },
-        {
-            "code": "BUR",
-            "name": "Bury"
-        },
-        {
-            "code": "CAY",
-            "name": "Caerphilly"
-        },
-        {
-            "code": "CLD",
-            "name": "Calderdale"
-        },
-        {
-            "code": "CMD",
-            "name": "Camden"
-        },
-        {
-            "code": "CMN",
-            "name": "Carmarthenshire"
+            "name": "Bromli"
         },
         {
             "code": "CKF",
@@ -6483,28 +6431,12 @@
             "name": "Centrālā Bedfordšīra"
         },
         {
-            "code": "CGN",
-            "name": "Ceredigion"
-        },
-        {
-            "code": "CHE",
-            "name": "Cheshire East"
-        },
-        {
-            "code": "CHW",
-            "name": "Cheshire West and Chester"
-        },
-        {
             "code": "CLK",
             "name": "Clackmannanshire"
         },
         {
             "code": "CLR",
             "name": "Coleraine"
-        },
-        {
-            "code": "CWY",
-            "name": "Conwy"
         },
         {
             "code": "CKT",
@@ -6515,8 +6447,16 @@
             "name": "Craigavon"
         },
         {
-            "code": "CRY",
-            "name": "Croydon"
+            "code": "CHE",
+            "name": "Češīras Austrumi"
+        },
+        {
+            "code": "CHW",
+            "name": "Češīras Rietumi un Čestera"
+        },
+        {
+            "code": "DUD",
+            "name": "Dadli (boro)"
         },
         {
             "code": "DND",
@@ -6536,11 +6476,11 @@
         },
         {
             "code": "DAL",
-            "name": "Darlington"
+            "name": "Dārlingtona (boro)"
         },
         {
             "code": "DEN",
-            "name": "Denbighshire"
+            "name": "Denbišīra"
         },
         {
             "code": "DRY",
@@ -6559,8 +6499,12 @@
             "name": "Dienvidglosteršīra"
         },
         {
+            "code": "STY",
+            "name": "Dienvidtainsaida"
+        },
+        {
             "code": "DNC",
-            "name": "Doncaster"
+            "name": "Donkastera (boro)"
         },
         {
             "code": "DOR",
@@ -6571,20 +6515,12 @@
             "name": "Down"
         },
         {
-            "code": "DUD",
-            "name": "Dudley"
-        },
-        {
             "code": "DGY",
             "name": "Dumfries and Galloway"
         },
         {
             "code": "DGN",
             "name": "Dungannon and South Tyrone"
-        },
-        {
-            "code": "EAL",
-            "name": "Ealing"
         },
         {
             "code": "EAY",
@@ -6608,7 +6544,7 @@
         },
         {
             "code": "ENF",
-            "name": "Enfield"
+            "name": "Enfīlda"
         },
         {
             "code": "EAW",
@@ -6640,11 +6576,15 @@
         },
         {
             "code": "FLN",
-            "name": "Flintshire"
+            "name": "Flintšīra"
         },
         {
             "code": "GAT",
-            "name": "Gateshead"
+            "name": "Geitsheda (boro)"
+        },
+        {
+            "code": "VGL",
+            "name": "Glamorganas Ieleja"
         },
         {
             "code": "GLG",
@@ -6660,27 +6600,15 @@
         },
         {
             "code": "GWN",
-            "name": "Gwynedd"
+            "name": "Guineza"
         },
         {
-            "code": "HCK",
-            "name": "Hackney"
-        },
-        {
-            "code": "HAL",
-            "name": "Halton"
+            "code": "HLD",
+            "name": "Hailenda"
         },
         {
             "code": "HMF",
-            "name": "Hammersmith and Fulham"
-        },
-        {
-            "code": "HRY",
-            "name": "Haringey"
-        },
-        {
-            "code": "HRW",
-            "name": "Harrow"
+            "name": "Hamersmita un Fulema"
         },
         {
             "code": "HRT",
@@ -6688,11 +6616,19 @@
         },
         {
             "code": "HPL",
-            "name": "Hartlepool"
+            "name": "Hārtlpūla (boro)"
+        },
+        {
+            "code": "HNS",
+            "name": "Haunslova"
         },
         {
             "code": "HAV",
-            "name": "Havering"
+            "name": "Heiveringa"
+        },
+        {
+            "code": "HCK",
+            "name": "Hekni"
         },
         {
             "code": "HAM",
@@ -6703,28 +6639,36 @@
             "name": "Herefordšīra"
         },
         {
-            "code": "HLD",
-            "name": "Highland"
+            "code": "HRY",
+            "name": "Heringeja"
+        },
+        {
+            "code": "HRW",
+            "name": "Herova"
         },
         {
             "code": "HIL",
-            "name": "Hillingdon"
+            "name": "Hilingdona"
         },
         {
-            "code": "HNS",
-            "name": "Hounslow"
+            "code": "HAL",
+            "name": "Holtona"
+        },
+        {
+            "code": "EAL",
+            "name": "Īlinga"
         },
         {
             "code": "IVC",
             "name": "Inverclyde"
         },
         {
-            "code": "ISL",
-            "name": "Islington"
-        },
-        {
             "code": "ESX",
             "name": "Īstsaseksa"
+        },
+        {
+            "code": "ISL",
+            "name": "Izlingtona"
         },
         {
             "code": "YOR",
@@ -6743,32 +6687,52 @@
             "name": "Kārdifa"
         },
         {
+            "code": "CAY",
+            "name": "Kārfili"
+        },
+        {
+            "code": "CMN",
+            "name": "Karmārtenšīra"
+        },
+        {
             "code": "CAM",
             "name": "Kembridžšīra"
         },
         {
+            "code": "CMD",
+            "name": "Kemdena"
+        },
+        {
             "code": "KEC",
-            "name": "Kensington and Chelsea"
+            "name": "Kensingtona un Čelsi"
         },
         {
             "code": "KEN",
             "name": "Kenta"
         },
         {
-            "code": "KTT",
-            "name": "Kingston upon Thames"
+            "code": "CGN",
+            "name": "Keredigjona"
+        },
+        {
+            "code": "KIR",
+            "name": "Kērklīsa"
         },
         {
             "code": "KHL",
             "name": "Kingstona pie Hallas"
         },
         {
-            "code": "KIR",
-            "name": "Kirklees"
+            "code": "KTT",
+            "name": "Kingstona pie Temzas"
         },
         {
-            "code": "KWL",
-            "name": "Knowsley"
+            "code": "CLD",
+            "name": "Kolderdeila"
+        },
+        {
+            "code": "CWY",
+            "name": "Konuja (grāfistes boro)"
         },
         {
             "code": "CON",
@@ -6779,16 +6743,16 @@
             "name": "Koventrija"
         },
         {
+            "code": "CRY",
+            "name": "Kroidona"
+        },
+        {
             "code": "LAN",
             "name": "Lankašīra"
         },
         {
             "code": "LRN",
             "name": "Larne"
-        },
-        {
-            "code": "LDS",
-            "name": "Leeds"
         },
         {
             "code": "LBH",
@@ -6803,8 +6767,8 @@
             "name": "Lesteršīra"
         },
         {
-            "code": "LEW",
-            "name": "Lewisham"
+            "code": "LDS",
+            "name": "Līdsa (boro)"
         },
         {
             "code": "GBN",
@@ -6835,6 +6799,10 @@
             "name": "Londonas Sitija"
         },
         {
+            "code": "LEW",
+            "name": "Lūišema"
+        },
+        {
             "code": "LUT",
             "name": "Luton"
         },
@@ -6852,7 +6820,7 @@
         },
         {
             "code": "MTY",
-            "name": "Merthyr Tydfil"
+            "name": "Mērtirtidvila (grāfistes boro)"
         },
         {
             "code": "MRT",
@@ -6884,23 +6852,11 @@
         },
         {
             "code": "MON",
-            "name": "Monmouthshire"
+            "name": "Monmutšīra"
         },
         {
             "code": "MRY",
             "name": "Moray"
-        },
-        {
-            "code": "NTL",
-            "name": "Neath Port Talbot"
-        },
-        {
-            "code": "NWM",
-            "name": "Newham"
-        },
-        {
-            "code": "NWP",
-            "name": "Newport"
         },
         {
             "code": "NYM",
@@ -6913,6 +6869,10 @@
         {
             "code": "NTA",
             "name": "Newtownabbey"
+        },
+        {
+            "code": "NTL",
+            "name": "Nīta Porttolbota"
         },
         {
             "code": "NFK",
@@ -6931,24 +6891,12 @@
             "name": "North Down"
         },
         {
-            "code": "NEL",
-            "name": "North East Lincolnshire"
-        },
-        {
             "code": "NLK",
             "name": "North Lanarkshire"
         },
         {
-            "code": "NLN",
-            "name": "North Lincolnshire"
-        },
-        {
             "code": "NNH",
             "name": "North Northamptonshire"
-        },
-        {
-            "code": "NTY",
-            "name": "North Tyneside"
         },
         {
             "code": "NTH",
@@ -6967,8 +6915,20 @@
             "name": "Notingemšīra"
         },
         {
+            "code": "KWL",
+            "name": "Nousli"
+        },
+        {
+            "code": "NWM",
+            "name": "Ņūema"
+        },
+        {
             "code": "NET",
             "name": "Ņūkāsla pie Tainas"
+        },
+        {
+            "code": "NWP",
+            "name": "Ņūporta (grāfistes boro)"
         },
         {
             "code": "OXF",
@@ -6976,7 +6936,7 @@
         },
         {
             "code": "OLD",
-            "name": "Oldham"
+            "name": "Oldema (boro)"
         },
         {
             "code": "OMH",
@@ -6987,12 +6947,8 @@
             "name": "Orkneju salas"
         },
         {
-            "code": "ELS",
-            "name": "Outer Hebrides"
-        },
-        {
             "code": "PEM",
-            "name": "Pembrokeshire"
+            "name": "Pembrukšīra"
         },
         {
             "code": "PKN",
@@ -7016,7 +6972,7 @@
         },
         {
             "code": "POW",
-            "name": "Powys"
+            "name": "Povisa"
         },
         {
             "code": "RUT",
@@ -7024,59 +6980,63 @@
         },
         {
             "code": "RDB",
-            "name": "Redbridge"
-        },
-        {
-            "code": "RCC",
-            "name": "Redcar and Cleveland"
+            "name": "Redbridža"
         },
         {
             "code": "RDG",
             "name": "Redinga"
         },
         {
+            "code": "RCC",
+            "name": "Redkāra un Klīvlenda"
+        },
+        {
+            "code": "WRX",
+            "name": "Reksema (grāfistes boro)"
+        },
+        {
             "code": "RFW",
             "name": "Renfrewshire"
         },
         {
-            "code": "RCT",
-            "name": "Rhondda Cynon Taf"
-        },
-        {
             "code": "RIC",
-            "name": "Richmond upon Thames"
+            "name": "Ričmonda pie Temzas"
         },
         {
             "code": "WBK",
             "name": "Rietumbārkšīra"
         },
         {
+            "code": "ELS",
+            "name": "Rietumu salas"
+        },
+        {
             "code": "RCH",
-            "name": "Rochdale"
+            "name": "Ročdeila (boro)"
+        },
+        {
+            "code": "RCT",
+            "name": "Ronda Kinona Tāva"
         },
         {
             "code": "ROT",
-            "name": "Rotherham"
+            "name": "Roterema (boro)"
         },
         {
             "code": "SFK",
             "name": "Safolka"
         },
         {
-            "code": "SHN",
-            "name": "Saint Helens"
-        },
-        {
-            "code": "SLF",
-            "name": "Salford"
-        },
-        {
-            "code": "SAW",
-            "name": "Sandwell"
+            "code": "SND",
+            "name": "Sanderlenda (boro)"
         },
         {
             "code": "SRY",
             "name": "Sareja"
+        },
+        {
+            "code": "STN",
+            "name": "Satona"
         },
         {
             "code": "STH",
@@ -7092,7 +7052,15 @@
         },
         {
             "code": "SFT",
-            "name": "Sefton"
+            "name": "Seftona"
+        },
+        {
+            "code": "SAW",
+            "name": "Sendvela"
+        },
+        {
+            "code": "SHN",
+            "name": "Senthelensa (boro)"
         },
         {
             "code": "IOS",
@@ -7107,8 +7075,12 @@
             "name": "Slau (boro)"
         },
         {
+            "code": "SLF",
+            "name": "Solforda (boro)"
+        },
+        {
             "code": "SOL",
-            "name": "Solihull"
+            "name": "Solihala (boro)"
         },
         {
             "code": "SOM",
@@ -7123,10 +7095,6 @@
             "name": "South Lanarkshire"
         },
         {
-            "code": "STY",
-            "name": "South Tyneside"
-        },
-        {
             "code": "SOS",
             "name": "Southend-on-Sea"
         },
@@ -7139,28 +7107,20 @@
             "name": "Stirling"
         },
         {
-            "code": "SKP",
-            "name": "Stockport"
-        },
-        {
-            "code": "STT",
-            "name": "Stockton-on-Tees"
-        },
-        {
             "code": "STE",
             "name": "Stoka pie Trentas"
         },
         {
+            "code": "SKP",
+            "name": "Stokporta (boro)"
+        },
+        {
+            "code": "STT",
+            "name": "Stoktona pie Tīsas (boro)"
+        },
+        {
             "code": "STB",
             "name": "Strabane"
-        },
-        {
-            "code": "SND",
-            "name": "Sunderland"
-        },
-        {
-            "code": "STN",
-            "name": "Sutton"
         },
         {
             "code": "SWD",
@@ -7183,16 +7143,20 @@
             "name": "Šropšīra"
         },
         {
-            "code": "TAM",
-            "name": "Tameside"
-        },
-        {
             "code": "THR",
             "name": "Taroka"
         },
         {
+            "code": "TWH",
+            "name": "Tauerhemletsa"
+        },
+        {
+            "code": "TAM",
+            "name": "Teimsaida"
+        },
+        {
             "code": "TFW",
-            "name": "Telford and Wrekin"
+            "name": "Telforda un Rīkina"
         },
         {
             "code": "TOB",
@@ -7200,23 +7164,19 @@
         },
         {
             "code": "TOF",
-            "name": "Torfaen"
-        },
-        {
-            "code": "TWH",
-            "name": "Tower Hamlets"
+            "name": "Torvaina"
         },
         {
             "code": "TRF",
-            "name": "Trafford"
+            "name": "Treforda"
         },
         {
             "code": "IOW",
             "name": "Vaita"
         },
         {
-            "code": "VGL",
-            "name": "Vale of Glamorgan"
+            "code": "WKF",
+            "name": "Veikfīlda (boro)"
         },
         {
             "code": "WLS",
@@ -7231,6 +7191,10 @@
             "name": "Vestsaseksa"
         },
         {
+            "code": "WGN",
+            "name": "Vigana (boro)"
+        },
+        {
             "code": "WIL",
             "name": "Viltšīra"
         },
@@ -7239,8 +7203,20 @@
             "name": "Vindzora un Meidenheda"
         },
         {
+            "code": "WRL",
+            "name": "Virala"
+        },
+        {
             "code": "WOK",
             "name": "Vokingema (boro)"
+        },
+        {
+            "code": "WLL",
+            "name": "Volsola (boro)"
+        },
+        {
+            "code": "WFT",
+            "name": "Voltemforesta"
         },
         {
             "code": "WND",
@@ -7251,28 +7227,16 @@
             "name": "Vorikšīra"
         },
         {
+            "code": "WRT",
+            "name": "Voringtona (boro)"
+        },
+        {
             "code": "WLV",
             "name": "Vulverhemptona"
         },
         {
             "code": "WOR",
             "name": "Vusteršīra"
-        },
-        {
-            "code": "WKF",
-            "name": "Wakefield"
-        },
-        {
-            "code": "WLL",
-            "name": "Walsall"
-        },
-        {
-            "code": "WFT",
-            "name": "Waltham Forest"
-        },
-        {
-            "code": "WRT",
-            "name": "Warrington"
         },
         {
             "code": "WDU",
@@ -7287,24 +7251,24 @@
             "name": "West Northamptonshire"
         },
         {
-            "code": "WGN",
-            "name": "Wigan"
-        },
-        {
-            "code": "WRL",
-            "name": "Wirral"
-        },
-        {
-            "code": "WRX",
-            "name": "Wrexham"
+            "code": "NEL",
+            "name": "Ziemeļaustrumu Linkolnšīra"
         },
         {
             "code": "NIR",
             "name": "Ziemeļīrija"
         },
         {
+            "code": "NLN",
+            "name": "Ziemeļlinkolnšīra"
+        },
+        {
             "code": "NSM",
             "name": "Ziemeļsomerseta"
+        },
+        {
+            "code": "NTY",
+            "name": "Ziemeļtainsaida"
         }
     ],
     "GD": [
@@ -7385,12 +7349,6 @@
         {
             "code": "TB",
             "name": "Tbilisi"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "TO",
             "name": "Tuges prefektūra"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8081,12 +8033,6 @@
             "name": "Hutjapas departaments"
         }
     ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
-        }
-    ],
     "GW": [
         {
             "code": "BA",
@@ -8416,7 +8362,7 @@
         },
         {
             "code": "DU",
-            "name": "Dunaújváros"
+            "name": "Dunaūjvāroša"
         },
         {
             "code": "EG",
@@ -8424,7 +8370,7 @@
         },
         {
             "code": "ER",
-            "name": "Érd"
+            "name": "Ērda"
         },
         {
             "code": "FE",
@@ -8448,7 +8394,7 @@
         },
         {
             "code": "HV",
-            "name": "Hódmezővásárhely"
+            "name": "Hodmezēvāšārheja"
         },
         {
             "code": "JN",
@@ -8553,12 +8499,6 @@
         {
             "code": "ZA",
             "name": "Zalas meģe"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -8679,10 +8619,6 @@
             "name": "Moluku salas"
         },
         {
-            "code": "KU",
-            "name": "North Kalimantan"
-        },
-        {
             "code": "PA",
             "name": "Papua"
         },
@@ -8729,6 +8665,10 @@
         {
             "code": "SM",
             "name": "Sumatra"
+        },
+        {
+            "code": "KU",
+            "name": "Ziemeļkalimantāna"
         },
         {
             "code": "SA",
@@ -11224,11 +11164,11 @@
     "LB": [
         {
             "code": "AK",
-            "name": "Akkar"
+            "name": "Akāras muhāfaza"
         },
         {
             "code": "BH",
-            "name": "Baalbek-Hermel"
+            "name": "Baalbekas-Hermelas muhāfaza"
         },
         {
             "code": "BA",
@@ -11236,7 +11176,11 @@
         },
         {
             "code": "BI",
-            "name": "Beqaa"
+            "name": "Bekaas muhāfaza"
+        },
+        {
+            "code": "JA",
+            "name": "Dienvidu muhāfaza"
         },
         {
             "code": "JL",
@@ -11245,10 +11189,6 @@
         {
             "code": "NA",
             "name": "Nabatijas muhāfaza"
-        },
-        {
-            "code": "JA",
-            "name": "South"
         },
         {
             "code": "AS",
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13856,7 +13790,7 @@
         },
         {
             "code": "043",
-            "name": "Khovd"
+            "name": "Hovdas aimaks"
         },
         {
             "code": "046",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Arhangaja aimaks"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Zambezi reģions"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15050,7 +14960,7 @@
         },
         {
             "code": "OY",
-            "name": "Oyo"
+            "name": "Ojo"
         },
         {
             "code": "ON",
@@ -15104,7 +15014,7 @@
         },
         {
             "code": "GR",
-            "name": "Granada"
+            "name": "Granadas departaments"
         },
         {
             "code": "JI",
@@ -15116,7 +15026,7 @@
         },
         {
             "code": "LE",
-            "name": "León"
+            "name": "Leonas departaments"
         },
         {
             "code": "MD",
@@ -15144,7 +15054,7 @@
         },
         {
             "code": "RI",
-            "name": "Rivas"
+            "name": "Rivasas departaments"
         },
         {
             "code": "AN",
@@ -15771,12 +15681,6 @@
             "name": "Vanuko departaments"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "EBR",
@@ -15812,7 +15716,7 @@
         },
         {
             "code": "HLA",
-            "name": "Hela"
+            "name": "Helas province"
         },
         {
             "code": "NIK",
@@ -15820,7 +15724,7 @@
         },
         {
             "code": "JWK",
-            "name": "Jiwaka"
+            "name": "Jivakas province"
         },
         {
             "code": "MPM",
@@ -15855,16 +15759,16 @@
             "name": "Rietumu kalnienes province"
         },
         {
+            "code": "WPD",
+            "name": "Rietumu province (Papua-Jaungvineja)"
+        },
+        {
             "code": "SAN",
             "name": "Sandaunas province"
         },
         {
             "code": "CPK",
             "name": "Simbu (Čimbu) province"
-        },
-        {
-            "code": "WPD",
-            "name": "Western"
         }
     ],
     "PH": [
@@ -16369,18 +16273,6 @@
             "name": "Rietumpomožes vojevodiste"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16621,10 +16513,6 @@
             "name": "Centrālais departaments"
         },
         {
-            "code": "1",
-            "name": "Concepción"
-        },
-        {
             "code": "4",
             "name": "Gvaira"
         },
@@ -16645,6 +16533,10 @@
             "name": "Kanindegu"
         },
         {
+            "code": "1",
+            "name": "Konsepsjonas departaments (Paragvaja)"
+        },
+        {
             "code": "3",
             "name": "Kordiljera"
         },
@@ -16658,7 +16550,7 @@
         },
         {
             "code": "9",
-            "name": "Paraguarí"
+            "name": "Paragvari departaments"
         },
         {
             "code": "15",
@@ -16701,12 +16593,6 @@
         {
             "code": "ZA",
             "name": "Zaājīna"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17368,7 +17254,7 @@
     "SA": [
         {
             "code": "01",
-            "name": "Riyadh"
+            "name": "Rijādas mintaka"
         },
         {
             "code": "02",
@@ -19015,12 +18901,6 @@
             "name": "Usulutanas departaments"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Šiselveni reģions"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "MC",
             "name": "Vidusšari reģions"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20269,10 +20137,6 @@
             "name": "Tainana"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taojuaņas speciālā municipalitāte"
         }
@@ -20288,7 +20152,7 @@
         },
         {
             "code": "03",
-            "name": "Dodoma"
+            "name": "Dodomas reģions"
         },
         {
             "code": "04",
@@ -20320,7 +20184,7 @@
         },
         {
             "code": "11",
-            "name": "Zanzibar Central/South"
+            "name": "Dienvidzanzibāras reģions"
         },
         {
             "code": "12",
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Džonstona atols"
         },
@@ -21583,12 +21443,6 @@
             "name": "Venecuēlas Federālie valdījumi"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taizas muhāfaza"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

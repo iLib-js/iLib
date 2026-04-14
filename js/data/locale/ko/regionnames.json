@@ -643,12 +643,6 @@
             "name": "후후이 주"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "TAS",
             "name": "태즈메이니아 주"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "PL",
             "name": "플라토 주"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "푸투마요 주"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "G",
@@ -3619,12 +3589,6 @@
         {
             "code": "RB",
             "name": "히베이라브라바 시"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5919,6 +5883,10 @@
             "name": "마옌 주"
         },
         {
+            "code": "976",
+            "name": "마요트"
+        },
+        {
             "code": "50",
             "name": "망슈 주"
         },
@@ -6281,10 +6249,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -6936,7 +6900,7 @@
         },
         {
             "code": "WLS",
-            "name": "웨일스"
+            "name": "웨일즈"
         },
         {
             "code": "WGN",
@@ -7419,20 +7383,26 @@
             "name": "트빌리시"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AA",
             "name": "그레이터아크라 주"
         },
         {
+            "code": "NE",
+            "name": "노스이스트주"
+        },
+        {
             "code": "EP",
             "name": "동부 주"
+        },
+        {
+            "code": "BE",
+            "name": "보노이스트주"
+        },
+        {
+            "code": "BO",
+            "name": "보노주"
         },
         {
             "code": "TV",
@@ -7447,12 +7417,20 @@
             "name": "브롱아하포 주"
         },
         {
+            "code": "SV",
+            "name": "사바나주"
+        },
+        {
             "code": "WP",
             "name": "서부 주"
         },
         {
             "code": "AH",
             "name": "아샨티 주"
+        },
+        {
+            "code": "AF",
+            "name": "아하포주"
         },
         {
             "code": "UW",
@@ -7463,36 +7441,16 @@
             "name": "어퍼이스트 주"
         },
         {
-            "code": "CP",
-            "name": "중앙 주"
-        },
-        {
-            "code": "AF",
-            "name": "Ahafo"
-        },
-        {
-            "code": "BO",
-            "name": "Bono"
-        },
-        {
-            "code": "BE",
-            "name": "Bono East"
-        },
-        {
-            "code": "NE",
-            "name": "North East"
-        },
-        {
             "code": "OT",
-            "name": "Oti"
-        },
-        {
-            "code": "SV",
-            "name": "Savannah"
+            "name": "오티주"
         },
         {
             "code": "WN",
-            "name": "Western North"
+            "name": "웨스턴노스주"
+        },
+        {
+            "code": "CP",
+            "name": "중앙 주"
         }
     ],
     "GL": [
@@ -7711,12 +7669,6 @@
         {
             "code": "NZ",
             "name": "Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8201,12 +8153,6 @@
             "name": "후티아파주"
         }
     ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
-        }
-    ],
     "GW": [
         {
             "code": "GA",
@@ -8675,16 +8621,14 @@
             "name": "호드메죄바샤르헤이"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "GO",
             "name": "고론탈로 주"
+        },
+        {
+            "code": "PD",
+            "name": "남서파푸아주"
         },
         {
             "code": "PS",
@@ -8857,10 +8801,6 @@
         {
             "code": "PB",
             "name": "파푸아바랏 주"
-        },
-        {
-            "code": "PD",
-            "name": "Papua Barat Daya"
         }
     ],
     "IE": [
@@ -13321,12 +13261,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "M",
@@ -14319,24 +14253,6 @@
             "name": "아르항가이 주"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -15287,12 +15203,6 @@
             "name": "호마스 주"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15757,6 +15667,10 @@
             "name": "룸비니주"
         },
         {
+            "code": "P2",
+            "name": "마데시주"
+        },
+        {
             "code": "MA",
             "name": "마하칼리 구"
         },
@@ -15767,6 +15681,10 @@
         {
             "code": "BA",
             "name": "바그마티 구"
+        },
+        {
+            "code": "P3",
+            "name": "바그마티주"
         },
         {
             "code": "BH",
@@ -15815,14 +15733,6 @@
         {
             "code": "P1",
             "name": "Province 1"
-        },
-        {
-            "code": "P2",
-            "name": "Province 2"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "P7",
@@ -16165,12 +16075,6 @@
         {
             "code": "CAL",
             "name": "El Callao"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16765,18 +16669,6 @@
             "name": "서포모제 주"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "GZA",
@@ -17097,12 +16989,6 @@
         {
             "code": "SH",
             "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19411,12 +19297,6 @@
             "name": "쿠스카틀란 주"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "DR",
@@ -19491,12 +19371,6 @@
         {
             "code": "HH",
             "name": "호호 구"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19591,12 +19465,6 @@
         {
             "code": "EO",
             "name": "Ennedi-Ouest"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20667,10 +20535,6 @@
         {
             "code": "HUA",
             "name": "화롄 현"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21469,10 +21333,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "존스턴 환초"
         },
@@ -21979,12 +21839,6 @@
             "name": "포르투게사 주"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "59",
@@ -22277,10 +22131,6 @@
         {
             "code": "UV",
             "name": "우베아"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22417,12 +22267,6 @@
         {
             "code": "HU",
             "name": "호데이다 주"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

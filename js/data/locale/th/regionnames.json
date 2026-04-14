@@ -643,12 +643,6 @@
             "name": "รัฐเอนเตรรีโอส"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "ACT",
             "name": "ออสเตรเลียนแคพิทอลเทร์ริทอรี"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "AQ",
             "name": "อาต์ลองตีก"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "ายุเปส ดีพาทเม้น"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "G",
@@ -3619,12 +3589,6 @@
         {
             "code": "S",
             "name": "Sotavento Islands"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6239,6 +6203,10 @@
             "name": "เฟรนช์เกียนา"
         },
         {
+            "code": "976",
+            "name": "มายอต"
+        },
+        {
             "code": "972",
             "name": "มาร์ตีนิก"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -6343,6 +6307,10 @@
             "name": "เคมบริดจ์เชอร์"
         },
         {
+            "code": "ZET",
+            "name": "เชตแลนด์"
+        },
+        {
             "code": "SHF",
             "name": "เชฟฟีลด์"
         },
@@ -6357,6 +6325,10 @@
         {
             "code": "SRY",
             "name": "เซอร์รีย์"
+        },
+        {
+            "code": "SLK",
+            "name": "เซาท์แลนาร์กเชอร์"
         },
         {
             "code": "STH",
@@ -6447,18 +6419,6 @@
             "name": "ไบรตันและโฮฟ"
         },
         {
-            "code": "WLS",
-            "name": "ประเทศเวลส์"
-        },
-        {
-            "code": "SCT",
-            "name": "ประเทศสกอตแลนด์"
-        },
-        {
-            "code": "ENG",
-            "name": "ประเทศอังกฤษ"
-        },
-        {
             "code": "PTE",
             "name": "ปีเตอร์โบโร"
         },
@@ -6469,6 +6429,10 @@
         {
             "code": "POR",
             "name": "พอร์ตสมัท"
+        },
+        {
+            "code": "PEM",
+            "name": "เพมโบรกเชอร์"
         },
         {
             "code": "MDB",
@@ -6485,6 +6449,10 @@
         {
             "code": "KEC",
             "name": "รอยัลโบโรออฟเคนซิงทันแอนด์เชลซี"
+        },
+        {
+            "code": "RUT",
+            "name": "รัตแลนด์"
         },
         {
             "code": "RDG",
@@ -6519,6 +6487,10 @@
             "name": "แลงคาเชอร์"
         },
         {
+            "code": "WAR",
+            "name": "วอริกเชอร์"
+        },
+        {
             "code": "WIL",
             "name": "วิลต์เชอร์"
         },
@@ -6531,8 +6503,16 @@
             "name": "วุลเวอร์แฮมป์ตัน"
         },
         {
+            "code": "WLS",
+            "name": "เวลส์"
+        },
+        {
             "code": "WSX",
             "name": "เวสต์ซัสเซกซ์"
+        },
+        {
+            "code": "SCT",
+            "name": "สกอตแลนด์"
         },
         {
             "code": "STS",
@@ -6561,6 +6541,10 @@
         {
             "code": "ORK",
             "name": "ออร์กนีย์"
+        },
+        {
+            "code": "ENG",
+            "name": "อังกฤษ"
         },
         {
             "code": "ESX",
@@ -7079,10 +7063,6 @@
             "name": "Omagh"
         },
         {
-            "code": "PEM",
-            "name": "Pembrokeshire"
-        },
-        {
             "code": "PKN",
             "name": "Perth and Kinross"
         },
@@ -7123,10 +7103,6 @@
             "name": "Rotherham"
         },
         {
-            "code": "RUT",
-            "name": "Rutland"
-        },
-        {
             "code": "SHN",
             "name": "Saint Helens"
         },
@@ -7145,10 +7121,6 @@
         {
             "code": "SFT",
             "name": "Sefton"
-        },
-        {
-            "code": "ZET",
-            "name": "Shetland"
         },
         {
             "code": "SHR",
@@ -7173,10 +7145,6 @@
         {
             "code": "SGC",
             "name": "South Gloucestershire"
-        },
-        {
-            "code": "SLK",
-            "name": "South Lanarkshire"
         },
         {
             "code": "STY",
@@ -7265,10 +7233,6 @@
         {
             "code": "WRT",
             "name": "Warrington"
-        },
-        {
-            "code": "WAR",
-            "name": "Warwickshire"
         },
         {
             "code": "WBK",
@@ -7385,12 +7349,6 @@
         {
             "code": "SK",
             "name": "ิซิดา กราทิล"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "NZ",
             "name": "Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8147,12 +8099,6 @@
         {
             "code": "JA",
             "name": "ฮลาปา"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8623,12 +8569,6 @@
             "name": "Sopron"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "JW",
@@ -8813,6 +8753,10 @@
     ],
     "IE": [
         {
+            "code": "C",
+            "name": "คอนนอต"
+        },
+        {
             "code": "MH",
             "name": "คันทรี่ มีทฮ์"
         },
@@ -8859,6 +8803,10 @@
         {
             "code": "OY",
             "name": "มณฑลออฟฟาลี"
+        },
+        {
+            "code": "M",
+            "name": "มันสเตอร์"
         },
         {
             "code": "WX",
@@ -8917,20 +8865,12 @@
             "name": "อัลสเตอร์"
         },
         {
-            "code": "C",
-            "name": "Connacht"
-        },
-        {
             "code": "D",
             "name": "Dublin"
         },
         {
             "code": "L",
             "name": "Leinster"
-        },
-        {
-            "code": "M",
-            "name": "Munster"
         }
     ],
     "IL": [
@@ -9857,6 +9797,10 @@
             "name": "จังหวัดทารันโต"
         },
         {
+            "code": "BZ",
+            "name": "จังหวัดทีโรลใต้"
+        },
+        {
             "code": "TV",
             "name": "จังหวัดเทรวิโซ"
         },
@@ -10195,10 +10139,6 @@
         {
             "code": "RM",
             "name": "Rome"
-        },
-        {
-            "code": "BZ",
-            "name": "South Tyrol"
         },
         {
             "code": "SU",
@@ -12969,6 +12909,10 @@
             "name": "มอนาโก-วีล"
         },
         {
+            "code": "SD",
+            "name": "ราแว็งเดอแซ็งต์-เดว็อต"
+        },
+        {
             "code": "CO",
             "name": "ลากงดามีน"
         },
@@ -13003,10 +12947,6 @@
         {
             "code": "PH",
             "name": "Port Hercules"
-        },
-        {
-            "code": "SD",
-            "name": "Sainte-Dévote Chapel"
         },
         {
             "code": "SR",
@@ -13271,12 +13211,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13997,24 +13931,6 @@
         {
             "code": "073",
             "name": "จังหวัดอาร์ฮังไก"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14967,12 +14883,6 @@
             "name": "Omaheke"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15457,6 +15367,10 @@
             "name": "รัฐโกศี"
         },
         {
+            "code": "P3",
+            "name": "รัฐพาคมตี"
+        },
+        {
             "code": "P2",
             "name": "รัฐมเธศ"
         },
@@ -15491,10 +15405,6 @@
         {
             "code": "2",
             "name": "Madhya Pashchimanchal"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "4",
@@ -15845,12 +15755,6 @@
         {
             "code": "HUC",
             "name": "อัวนูโก"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16445,18 +16349,6 @@
             "name": "จังหวัดปอมอแชซาคอดแญ"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "NGZ",
@@ -16777,12 +16669,6 @@
         {
             "code": "SH",
             "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19001,6 +18887,10 @@
     ],
     "ST": [
         {
+            "code": "P",
+            "name": "ภูมิภาคปกครองตนเองปริงซีป"
+        },
+        {
             "code": "01",
             "name": "Água Grande"
         },
@@ -19023,10 +18913,6 @@
         {
             "code": "06",
             "name": "Mé-Zóchi"
-        },
-        {
-            "code": "P",
-            "name": "Príncipe"
         },
         {
             "code": "S",
@@ -19089,12 +18975,6 @@
         {
             "code": "US",
             "name": "จังหวัดอูซูลูตัง"
-        }
-    ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
         }
     ],
     "SY": [
@@ -19171,12 +19051,6 @@
         {
             "code": "LU",
             "name": "ลูบอมโบ"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19271,12 +19145,6 @@
         {
             "code": "EO",
             "name": "Ennedi-Ouest"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20347,10 +20215,6 @@
         {
             "code": "LIE",
             "name": "Lienchiang"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21149,10 +21013,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "จอห์นสตันอะทอลล์"
         },
@@ -21659,12 +21519,6 @@
             "name": "รัฐอารากวา"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "CT",
@@ -21957,10 +21811,6 @@
         {
             "code": "AL",
             "name": "อะโล"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22097,12 +21947,6 @@
         {
             "code": "IB",
             "name": "อิบบ์"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [
