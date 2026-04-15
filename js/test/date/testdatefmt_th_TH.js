@@ -1714,7 +1714,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29 กันยายน 2554");
+        test.equal(fmt.format(date), "พฤหัสที่ 29 กันยายน 2554");
         test.done();
     },
     testDateFmtFullDMWY_th_TH: function(test) {
@@ -1858,7 +1858,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29 กันยายน");
+        test.equal(fmt.format(date), "พฤหัสที่ 29 กันยายน");
         test.done();
     },
     testDateFmtFullDMW_th_TH: function(test) {
@@ -2074,7 +2074,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29");
+        test.equal(fmt.format(date), "พฤหัสที่ 29");
         test.done();
     },
     testDateFmtFullDW_th_TH: function(test) {

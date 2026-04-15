@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.11, во 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31.12.2011 г., 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtMKRangeinDayMedium: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31.12.2011 г., во 13:45 – 14:30');
+        test.equal(fmt.format(start, end), '31 дек. 2011 г., во 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtMKRangeinDayLong: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.11, во 13:45 – 31.12.11, во 14:30");
+        test.equal(fmt.format(start, end), "30.12.2011 г., 13:45 – 31.12.2011 г., 14:30");
         test.done();
     },
     testDateRngFmtMKRangeNextDayMedium: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30.12.2011 г., во 13:45 – 31.12.2011 г., во 14:30');
+        test.equal(fmt.format(start, end), '30 дек. 2011 г., во 13:45 – 31 дек. 2011 г., во 14:30');
         test.done();
     },
     testDateRngFmtMKRangeNextDayLong: function(test) {
@@ -263,7 +263,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31.12.11");
+        test.equal(fmt.format(start, end), "20 – 31.12.2011 г.");
         test.done();
     },
     testDateRngFmtMKRangeMultiDayMedium: function(test) {
@@ -289,7 +289,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20 – 31.12.2011 г.');
+        test.equal(fmt.format(start, end), '20 – 31 дек. 2011 г.');
         test.done();
     },
     testDateRngFmtMKRangeMultiDayLong: function(test) {
@@ -367,7 +367,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11 – 31.12.11");
+        test.equal(fmt.format(start, end), "20.11 – 31.12.2011 г.");
         test.done();
     },
     testDateRngFmtMKRangeNextMonthMedium: function(test) {
@@ -393,7 +393,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20.11 – 31.12.2011 г.');
+        test.equal(fmt.format(start, end), '20 ное. – 31 дек. 2011 г.');
         test.done();
     },
     testDateRngFmtMKRangeNextMonthLong: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11.11 – 31.1.12");
+        test.equal(fmt.format(start, end), "20.11.2011 г. – 31.1.2012 г.");
         test.done();
     },
     testDateRngFmtMKRangeNextYearMedium: function(test) {
@@ -497,7 +497,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '20.11.2011 г. – 31.1.2012 г.');
+        test.equal(fmt.format(start, end), '20 ное. 2011 г. – 31 јан. 2012 г.');
         test.done();
     },
     testDateRngFmtMKRangeNextYearLong: function(test) {
@@ -575,7 +575,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11.11 – 1.14");
+        test.equal(fmt.format(start, end), "11.2011 г. – 1.2014 г.");
         test.done();
     },
     testDateRngFmtMKRangeMultiYearMedium: function(test) {
@@ -601,7 +601,7 @@ module.exports.testdatefmtrange_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '11.2011 г. – 1.2014 г.');
+        test.equal(fmt.format(start, end), 'ное. 2011 г. – јан. 2014 г.');
         test.done();
     },
     testDateRngFmtMKRangeMultiYearLong: function(test) {

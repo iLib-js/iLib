@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ PM – २:३० PM");
+        test.equal(fmt.format(start, end), "३१ डिसेंबर, २०११ रोजी १:४५ PM वाजता – २:३० PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_mr_IN: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ PM – ३१ डिसेंबर, २०११ रोजी २:३० PM");
+        test.equal(fmt.format(start, end), "३० डिसेंबर, २०११ रोजी १:४५ PM वाजता – ३१ डिसेंबर, २०११ रोजी २:३० PM वाजता");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_mr_IN: function(test) {

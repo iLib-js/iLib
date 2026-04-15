@@ -8,27 +8,27 @@
                 "s": "dd"
             },
             "dm": {
-                "f": "MMMM d",
-                "l": "MMMM d",
-                "m": "MMM d",
+                "f": "MMM 'la' 'suno' #d",
+                "l": "MMMM 'la' 'tenpo' 'suno' #d",
+                "m": "MMM 'la' 'suno' #d",
                 "s": "MM-dd"
             },
             "dmw": {
-                "f": "MMMM d, EEEE",
-                "l": "MMMM d, EEE",
-                "m": "MMM d, EE",
-                "s": "MM-dd, E"
+                "f": "'sike' #MMM 'la' 'suno' #d",
+                "l": "'sike' #MMMM 'la' 'tenpo' 'suno' #d",
+                "m": "'sike' #MMM 'la' 'suno' #d",
+                "s": "'sike' #MM-dd"
             },
             "dmwy": {
-                "f": "yyyy MMMM d, EEEE",
-                "l": "yyyy MMMM d, EEE",
-                "m": "yyyy MMM d, EE",
-                "s": "yyyy-MM-dd, E"
+                "f": "'sike' #'sike' #yyyy 'la' MMM 'la' 'suno' #d",
+                "l": "'sike' #'tenpo' 'sike' #yyyy 'la' 'tenpo' MMMM 'la' 'tenpo' 'suno' #d",
+                "m": "'sike' #'sike' #yyyy 'la' MMM 'la' 'suno' #d",
+                "s": "'sike' #yyyy-MM-dd"
             },
             "dmy": {
-                "f": "yyyy MMMM d",
-                "l": "yyyy MMMM d",
-                "m": "yyyy MMM d",
+                "f": "'sike' #yyyy 'la' MMM 'la' 'suno' #d",
+                "l": "'tenpo' 'sike' #yyyy 'la' 'tenpo' MMMM 'la' 'tenpo' 'suno' #d",
+                "m": "'sike' #yyyy 'la' MMM 'la' 'suno' #d",
                 "s": "yyyy-MM-dd"
             },
             "dw": {
@@ -38,78 +38,68 @@
                 "s": "dd, E"
             },
             "m": {
-                "f": "MMMM",
+                "f": "MMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
             },
             "my": {
-                "f": "yyyy MMMM",
-                "l": "yyyy MMMM",
-                "m": "yyyy MMM",
+                "f": "'sike' #yyyy 'la' MMM",
+                "l": "'tenpo' 'sike' #yyyy 'la' 'tenpo' MMMM",
+                "m": "'sike' #yyyy 'la' MMM",
                 "s": "yyyy-MM"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
-        "order": "{date} {time}",
         "range": {
             "c00": {
-                "f": "{sy} {sm} {sd} {st} – {et}",
-                "l": "{sy} {sm} {sd} {st} – {et}",
-                "m": "{sy} {sm} {sd} {st} – {et}",
+                "f": "sike #{sy} la {sm} la suno #{sd} {st} – {et}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} {st} – {et}",
+                "m": "sike #{sy} la {sm} la suno #{sd} {st} – {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {et}"
             },
             "c01": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "sike #{sy} la {sm} la suno #{sd} {st} – sike #{ey} la {em} la suno #{ed} {et}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} {st} – tenpo sike #{ey} la tenpo {em} la tenpo suno #{ed} {et}",
+                "m": "sike #{sy} la {sm} la suno #{sd} {st} – sike #{ey} la {em} la suno #{ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c02": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "sike #{sy} la {sm} la suno #{sd} {st} – sike #{ey} la {em} la suno #{ed} {et}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} {st} – tenpo sike #{ey} la tenpo {em} la tenpo suno #{ed} {et}",
+                "m": "sike #{sy} la {sm} la suno #{sd} {st} – sike #{ey} la {em} la suno #{ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c03": {
-                "f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
-                "m": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+                "f": "sike #{sy} la {sm} la suno #{sd} {st} – sike {ey} la {em} la suno #{ed} {et}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} {st} – tenpo sike {ey} la tenpo {em} la tenpo suno #{ed} {et}",
+                "m": "sike #{sy} la {sm} la suno #{sd} {st} – sike {ey} la {em} la suno #{ed} {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}"
             },
             "c10": {
-                "f": "{sy} {sm} {sd} – {ed}",
-                "l": "{sy} {sm} {sd} – {ed}",
-                "m": "{sy} {sm} {sd} – {ed}",
+                "f": "sike #{sy} la {sm} la suno #{sd} – {ed}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} – {ed}",
+                "m": "sike #{sy} la {sm} la suno #{sd} – {ed}",
                 "s": "{sy}-{sm}-{sd} – {ed}"
             },
             "c11": {
-                "f": "{sy} {sm} {sd} – {em} {ed}",
-                "l": "{sy} {sm} {sd} – {em} {ed}",
-                "m": "{sy} {sm} {sd} – {ey} {em} {ed}",
+                "f": "sike #{sy} la {sm} la suno #{sd} – sike la {em} la suno #{ed}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} – tenpo sike la tenpo {em} la tenpo suno #{ed}",
+                "m": "sike #{sy} la {sm} la suno #{sd} – sike {ey} la {em} la suno #{ed}",
                 "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c12": {
-                "f": "{sy} {sm} {sd} – {ey} {em} {ed}",
-                "l": "{sy} {sm} {sd} – {ey} {em} {ed}",
-                "m": "{sy} {sm} {sd} – {ey} {em} {ed}",
+                "f": "sike #{sy} la {sm} la suno #{sd} – sike {ey} la {em} la suno #{ed}",
+                "l": "tenpo sike #{sy} la tenpo {sm} la tenpo suno #{sd} – tenpo sike {ey} la tenpo {em} la tenpo suno #{ed}",
+                "m": "sike #{sy} la {sm} la suno #{sd} – sike {ey} la {em} la suno #{ed}",
                 "s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}"
             },
             "c20": {
-                "f": "{sy} {sm} – {ey} {em}",
-                "l": "{sy} {sm} – {ey} {em}",
-                "m": "{sy} {sm} – {ey} {em}",
+                "f": "sike #{sy} la {sm} – sike {ey} la {em}",
+                "l": "tenpo sike #{sy} la tenpo {sm} – tenpo sike {ey} la tenpo {em}",
+                "m": "sike #{sy} la {sm} – sike {ey} la {em}",
                 "s": "{sy}-{sm} – {ey}-{em}"
             },
             "c30": {
@@ -121,34 +111,25 @@
         },
         "time": {
             "12": {
-                "ah": "h a",
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z",
-                "h": "h",
-                "hm": "h:mm",
-                "hms": "h:mm:ss",
-                "hmsz": "h:mm:ss z",
-                "hmz": "h:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "ah": "'tenpo' 'ilo' #h a",
+                "ahm": "'tenpo' 'ilo' #h:mm",
+                "ahms": "'tenpo' 'ilo' #h:mm:ss",
+                "ahmsz": "z 'la' 'tenpo' 'ilo' #h:mm:ss",
+                "ahmz": "z 'la' 'tenpo' 'ilo' #h:mm",
+                "hmsz": "z 'la' h:mm:ss",
+                "hmz": "z 'la' h:mm"
             },
             "24": {
                 "ah": "HH",
                 "ahm": "HH:mm",
                 "ahms": "HH:mm:ss",
-                "ahmsz": "HH:mm:ss z",
-                "ahmz": "HH:mm z",
+                "ahmsz": "z 'la' HH:mm:ss",
+                "ahmz": "z 'la' HH:mm",
                 "h": "HH",
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
-                "hmsz": "HH:mm:ss z",
-                "hmz": "HH:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmsz": "z 'la' HH:mm:ss",
+                "hmz": "z 'la' HH:mm"
             }
         }
     }

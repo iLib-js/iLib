@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/31 下午1:45 – 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/31 下午1:45 – 下午2:30");
         test.done();
     },
     testDateRngFmtTWRangeInDayMedium: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011/12/30 下午1:45 – 2011/12/31 下午2:30");
+        test.equal(fmt.format(start, end), "2011/12/30 下午1:45 – 2011/12/31 下午2:30");
         test.done();
     },
     testDateRngFmtTWRangeNextDayMedium: function(test) {

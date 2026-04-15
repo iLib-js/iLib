@@ -3,6 +3,7 @@
     "#{num}d": "#ɔj {num}",
     "#{num}s": "#{num} ìsh àáy",
     "#{num}w": "#{num} ɔsh",
+    "#{num}y": "#{num} ɔd",
     "#{num}y ago": "#Ɔdún {num} sɛ́yìn",
     "1#1 day|#{num} days": "#ɔj {num}",
     "1#1 dy|#{num} dys": "#ɔj {num}",
@@ -18,6 +19,7 @@
     "1#1 week|#{num} weeks": "#{num} ɔsh",
     "1#1 wk|#{num} wks": "#{num} ɔsh",
     "1#1 year ago|#{num} years ago": "#{num} Ɔdún sɛ́yìn",
+    "1#1 year|#{num} years": "#{num} ɔ̀dún",
     "1#1 yr ago|#{num} yrs ago": "#{num} Ɔdún sɛ́yìn",
     "1#1 yr|#{num} yrs": "#{num} ɔd",
     "1#in 1 year|#in {num} years": "#ní {num} Ɔdún",
@@ -100,6 +102,7 @@
     "cccc6": "Àbámɛ́ta",
     "durationLongDays": "#{num} ɔj",
     "durationMediumWeeks": "#{num} ɔsh",
+    "durationMediumYears": "#{num} ɔd",
     "durationShortMinutes": "#{num}/ìsh",
     "durationShortMonths": "#{num} oshù"
 }

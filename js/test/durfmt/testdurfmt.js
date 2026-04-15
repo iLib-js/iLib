@@ -1,7 +1,7 @@
 /*
  * testdurfmt.js - test the duration formatter object
  *
- * Copyright © 2012-2024, JEDLSoft
+ * Copyright © 2012-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -419,7 +419,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms");
+        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1h, 1 Min., 1 Sek., 1ms');
         test.done();
     },
     testDurFmtFormatShortDEText: function(test) {
@@ -441,7 +441,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), "1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms");
+        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1h, 1 Min., 1 Sek., 1ms');
         test.done();
     },
     testDurFmtFormatShortDEClock: function(test) {
@@ -484,7 +484,7 @@ module.exports.testdurfmt = {
             second: 1,
             millisecond: 1
         });
-        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1 Std., 1 Min., 1 Sek., 1 ms');
+        test.equal(duration.toString(), '1 J, 1 M, 1 W, 1 T, 1h, 1 Min., 1 Sek., 1ms');
         test.done();
     },
     testDurFmtFormatLongDESingle: function(test) {
@@ -2064,7 +2064,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s');
+        test.equal(duration.toString(), '1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtFRCAFormatFull: function(test) {
@@ -2084,7 +2084,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
+        test.equal(duration.toString(), '1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute et 1 seconde');
         test.done();
     },
     //test cases for ga-IE
@@ -3007,7 +3007,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '1 ವರ್ಷವು, 1 ತಿಂಗಳು, 1 ವಾರವು, 1 ದಿನವು, 1 ಗಂಟೆಯು, 1 ನಿಮಿಷವು, 1 ಸೆಕೆಂಡ್');
+        test.equal(duration.toString(), '1 ವರ್ಷ, 1 ತಿಂಗಳು, 1 ವಾರವು, 1 ದಿನವು, 1 ಗಂಟೆ, 1 ನಿಮಿಷವು, 1 ಸೆಕೆಂಡ್');
         test.done();
     },
     //test cases for tamil(ta-IN)
@@ -3110,7 +3110,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம், 1 விநாடி");
+        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 ம., 1 நிமி., 1 விநாடி");
         test.done();
     },
     testDurFmtTAFormatFull: function(test) {
@@ -3130,7 +3130,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம், 1 விநாடி");
+        test.equal(duration.toString(), "1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள், 1 ம., 1 நிமி., 1 விநாடி");
         test.done();
     },
     //test cases for Malaylam(ml-IN)
@@ -3544,7 +3544,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘন্টা, ১ মিনিট, ১ সেকেন্ড");
+        test.equal(duration.toString(), "১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘণ্টা, ১ মিনিট, ১ সেকেন্ড");
         test.done();
     },
     testDurFmtBNFormatFull: function(test) {
@@ -3564,7 +3564,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘন্টা, ১ মিনিট, ১ সেকেন্ড");
+        test.equal(duration.toString(), "১ বছর, ১ মাস, ১ সপ্তাহ, ১ দিন, ১ ঘণ্টা, ১ মিনিট, ১ সেকেন্ড");
         test.done();
     },
     //test cases for Assamese(as-IN)

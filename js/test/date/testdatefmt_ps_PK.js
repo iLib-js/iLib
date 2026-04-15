@@ -237,7 +237,7 @@ module.exports.testdatefmt_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏2021 سېپتمبر 29 ‏1:45 غ.و.');
+        test.equal(fmt.format(date), '‏2021 سېپتمبر 29 په ‏1:45 غ.و.');
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ps_PK: function(test) {
@@ -255,7 +255,7 @@ module.exports.testdatefmt_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏2021 د سېپتمبر 29 ‏1:45 غ.و.');
+        test.equal(fmt.format(date), '‏2021 د سېپتمبر 29 په ‏1:45 غ.و.');
         test.done();
     },
     testDateFmtTemplateCalendar_ps_PK: function(test) {

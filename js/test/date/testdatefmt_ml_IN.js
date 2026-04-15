@@ -71,7 +71,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റം 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റം 29");
         test.done();
     },
     testDateFmtINSimpleLong_ml_IN: function(test) {
@@ -89,7 +89,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
     testDateFmtINSimpleFull_ml_IN: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
     //needs to have translations for a.m.-p.m.
@@ -743,7 +743,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ");
         test.done();
     },
     testDateFmtINFullDateComponentsDMY_ml_IN: function(test) {
@@ -761,7 +761,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
     testDateFmtINFullDateComponentsWDM_ml_IN: function(test) {
@@ -797,7 +797,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച");
         test.done();
     },
     testDateFmtINShortTimeComponentsS_ml_IN: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bs_Cyrl_BA.js - test the date formatter object in Cyrillic Bosnian
  *
- * Copyright © 2012-2015,2017-2018,2020 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2020, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -579,7 +579,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9.11.");
+        test.equal(fmt.format(date), "9. 2011.");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_bs_Cyrl_BA: function(test) {

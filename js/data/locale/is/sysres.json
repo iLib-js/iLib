@@ -73,12 +73,9 @@
     "B5": "síðdegis",
     "B6": "e.h.",
     "B7": "að kvöldi",
-    "E0": "S",
-    "E1": "M",
     "E2": "Þ",
     "E3": "M",
     "E4": "F",
-    "E5": "F",
     "E6": "L",
     "EE0": "su.",
     "EE1": "má.",
@@ -165,8 +162,5 @@
     "finalSeparatorLong": " og ",
     "finalSeparatorMedium": " og ",
     "finalSeparatorShort": " og ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

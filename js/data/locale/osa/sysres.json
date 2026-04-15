@@ -93,8 +93,6 @@
     "EEEE4": "𐒹𐓘͘𐓬𐓘 𐓏𐓟𐓰𐓪𐓬𐓘",
     "EEEE5": "𐒹𐓘͘𐓬𐓘 𐓈𐓘 𐓵𐓘𐓲𐓘 𐓻𐓣͘",
     "EEEE6": "𐒹𐓘͘𐓬𐓘 𐓂𐓤𐓘𐓸𐓟 𐓣͘𐓤𐓟",
-    "G-1": "BCE",
-    "G1": "CE",
     "MMM1": "𐓄𐓘𐓡𐓛͘𐓧𐓟",
     "MMM10": "𐒿𐓟𐓜𐓛",
     "MMM11": "𐒰𐓧𐓣 𐓏𐓣͘𐓸𐓲𐓣",
@@ -143,8 +141,6 @@
     "NN7": "𐓄",
     "NN8": "𐒼",
     "NN9": "𐒿",
-    "a0": "AM",
-    "a1": "PM",
     "c0": "S",
     "c1": "M",
     "c2": "T",
@@ -185,8 +181,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

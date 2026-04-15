@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), "31/12/11, 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayMedium_ml_IN: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസം 31 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസം 31, 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayLong_ml_IN: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 31 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 31, 1:45 PM-ന് – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_ml_IN: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 31 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 31, 1:45 PM-ന് – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayShort_ml_IN: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 1:45 PM – 31/12/11 2:30 PM");
+        test.equal(fmt.format(start, end), "30/12/11, 1:45 PM – 31/12/11, 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_ml_IN: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസം 30 1:45 PM – 2011, ഡിസം 31 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസം 30, 1:45 PM – 2011 ഡിസം 31, 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_ml_IN: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 30, 1:45 PM-ന് – 2011 ഡിസംബർ 31, 2:30 PM-ന്");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ml_IN: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 30 1:45 PM – 2011, ഡിസംബർ 31 2:30 PM");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 30, 1:45 PM-ന് – 2011 ഡിസംബർ 31, 2:30 PM-ന്");
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_ml_IN: function(test) {
@@ -291,7 +291,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസം 20 – 31");
+        test.equal(fmt.format(start, end), "2011 ഡിസം 20 – 31");
         test.done();
     },
     testDateRngFmtRangeMultiDayLong_ml_IN: function(test) {
@@ -317,7 +317,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 20 – 31");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 20 – 31");
         test.done();
     },
     testDateRngFmtRangeMultiDayFull_ml_IN: function(test) {
@@ -343,7 +343,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, ഡിസംബർ 20 – 31");
+        test.equal(fmt.format(start, end), "2011 ഡിസംബർ 20 – 31");
         test.done();
     },
     testDateRngFmtRangeNextMonthShort_ml_IN: function(test) {
@@ -395,7 +395,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവം 20 – 2011, ഡിസം 31");
+        test.equal(fmt.format(start, end), "2011 നവം 20 – 2011 ഡിസം 31");
         test.done();
     },
     testDateRngFmtRangeNextMonthLong_ml_IN: function(test) {
@@ -421,7 +421,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ 20 – ഡിസംബർ 31");
+        test.equal(fmt.format(start, end), "2011 നവംബർ 20 – ഡിസംബർ 31");
         test.done();
     },
     testDateRngFmtRangeNextMonthFull_ml_IN: function(test) {
@@ -447,7 +447,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ 20 – ഡിസംബർ 31");
+        test.equal(fmt.format(start, end), "2011 നവംബർ 20 – ഡിസംബർ 31");
         test.done();
     },
     testDateRngFmtRangeNextYearShort_ml_IN: function(test) {
@@ -499,7 +499,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവം 20 – 2012, ജനു 31");
+        test.equal(fmt.format(start, end), "2011 നവം 20 – 2012 ജനു 31");
         test.done();
     },
     testDateRngFmtRangeNextYearLong_ml_IN: function(test) {
@@ -525,7 +525,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ 20 – 2012, ജനുവരി 31");
+        test.equal(fmt.format(start, end), "2011 നവംബർ 20 – 2012 ജനുവരി 31");
         test.done();
     },
     testDateRngFmtRangeNextYearFull_ml_IN: function(test) {
@@ -551,7 +551,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ 20 – 2012, ജനുവരി 31");
+        test.equal(fmt.format(start, end), "2011 നവംബർ 20 – 2012 ജനുവരി 31");
         test.done();
     },
     testDateRngFmtRangeMultiYearShort_ml_IN: function(test) {
@@ -603,7 +603,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവം – 2014, ജനു");
+        test.equal(fmt.format(start, end), "2011 നവം – 2014 ജനു");
         test.done();
     },
     testDateRngFmtRangeMultiYearLong_ml_IN: function(test) {
@@ -629,7 +629,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ – 2014, ജനുവരി");
+        test.equal(fmt.format(start, end), "2011 നവംബർ – 2014 ജനുവരി");
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_ml_IN: function(test) {
@@ -655,7 +655,7 @@ module.exports.testdatefmtrange_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011, നവംബർ – 2014, ജനുവരി");
+        test.equal(fmt.format(start, end), "2011 നവംബർ – 2014 ജനുവരി");
         test.done();
     },
     testDateRngFmtManyYearsFull_ml_IN: function(test) {

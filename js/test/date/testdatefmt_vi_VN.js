@@ -165,7 +165,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Th 5, 29 tháng 9, 2011");
+        test.equal(fmt.format(date), "Thứ 5, 29 tháng 9, 2011");
         test.done();
     },
     testDateFmtAllComponentsFull_vi_VN: function(test) {

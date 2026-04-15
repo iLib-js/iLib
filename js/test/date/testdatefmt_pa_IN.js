@@ -128,7 +128,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeShort_pa_IN1: function(test) {
@@ -146,7 +146,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeMedium_pa_IN: function(test) {
@@ -164,7 +164,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeLong_pa_IN: function(test) {
@@ -182,7 +182,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeFull_pa_IN: function(test) {
@@ -200,7 +200,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleShort_pa_IN: function(test) {
@@ -218,7 +218,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11, 1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "29/9/11, 1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleMedium_pa_IN: function(test) {
@@ -236,7 +236,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ਸਤੰ 2011, 1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "29 ਸਤੰ 2011, 1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleLong_pa_IN: function(test) {
@@ -254,7 +254,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_pa_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "29 ਸਤੰਬਰ 2011 1:45 PM");
         test.done();
     },
     testDateFmtINTemplateCalendar_pa_IN: function(test) {
@@ -470,7 +470,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINTypeDateTime_pa_IN: function(test) {
@@ -488,7 +488,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/11, 1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "29/9/11, 1:45 PM");
         test.done();
     },
     testDateFmtINShortDateComponentsY_pa_IN: function(test) {
@@ -902,7 +902,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMZ_pa_IN: function(test) {
@@ -924,7 +924,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMAZ_pa_IN: function(test) {
@@ -947,7 +947,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSA_pa_IN: function(test) {
@@ -965,7 +965,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSZ_pa_IN: function(test) {
@@ -988,7 +988,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINShortTimeComponentsHMSAZ_pa_IN: function(test) {
@@ -1011,7 +1011,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsS_pa_IN: function(test) {
@@ -1086,7 +1086,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMS_pa_IN: function(test) {
@@ -1104,7 +1104,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMA_pa_IN: function(test) {
@@ -1122,7 +1122,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
 
@@ -1149,7 +1149,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSA_pa_IN: function(test) {
@@ -1167,7 +1167,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSZ_pa_IN: function(test) {
@@ -1191,7 +1191,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINFullTimeComponentsHMSAZ_pa_IN: function(test) {
@@ -1215,7 +1215,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     testDateFmtINWithTimeZoneAndNoDST_pa_IN: function(test) {
@@ -1239,7 +1239,7 @@ module.exports.testdatefmt_pa_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 ਬਾ.ਦੁ. IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     //should be uncommented after getting the translations for punjabi

@@ -201,7 +201,7 @@ module.exports.testdatefmt_zh_Hant_HK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/2011 下午1:45");
+        test.equal(fmt.format(date), "29/9/2011 下午1:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_zh_Hant_HK: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_zh_Hant_HK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/9/2011 下午1:45");
+        test.equal(fmt.format(date), "29/9/2011 下午1:45");
         test.done();
     },
     testDateFmtShortDateComponentsY_zh_Hant_HK: function(test) {

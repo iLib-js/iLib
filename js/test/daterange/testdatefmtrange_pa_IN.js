@@ -55,7 +55,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11, 1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "31/12/11, 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayMedium_pa_IN: function(test) {
@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ਦਸੰ 2011, 1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "31 ਦਸੰ 2011, 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayLong_pa_IN: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ਦਸੰਬਰ 2011 1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "31 ਦਸੰਬਰ 2011 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_pa_IN: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ਦਸੰਬਰ 2011 1:45 ਬਾ.ਦੁ. – 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "31 ਦਸੰਬਰ 2011 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayShort_pa_IN: function(test) {
@@ -159,7 +159,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11, 1:45 ਬਾ.ਦੁ. – 31/12/11, 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "30/12/11, 1:45 PM – 31/12/11, 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_pa_IN: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ਦਸੰ 2011, 1:45 ਬਾ.ਦੁ. – 31 ਦਸੰ 2011, 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "30 ਦਸੰ 2011, 1:45 PM – 31 ਦਸੰ 2011, 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_pa_IN: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ਦਸੰਬਰ 2011 1:45 ਬਾ.ਦੁ. – 31 ਦਸੰਬਰ 2011 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "30 ਦਸੰਬਰ 2011 1:45 PM – 31 ਦਸੰਬਰ 2011 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_pa_IN: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_pa_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ਦਸੰਬਰ 2011 1:45 ਬਾ.ਦੁ. – 31 ਦਸੰਬਰ 2011 2:30 ਬਾ.ਦੁ.");
+        test.equal(fmt.format(start, end), "30 ਦਸੰਬਰ 2011 1:45 PM – 31 ਦਸੰਬਰ 2011 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_pa_IN: function(test) {

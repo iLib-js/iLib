@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 de diciembre de 2011, 1:45 p. m. – 2:30 p. m.');
+        test.equal(fmt.format(start, end), '31 de diciembre de 2011 a las 1:45 p. m. – 2:30 p. m.');
         test.done();
     },
     testDateRngFmtUYRangeinDayFull: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_es_UY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 de diciembre de 2011, 1:45 p. m. – 31 de diciembre de 2011, 2:30 p. m.');
+        test.equal(fmt.format(start, end), '30 de diciembre de 2011 a las 1:45 p. m. – 31 de diciembre de 2011 a las 2:30 p. m.');
         test.done();
     },
     testDateRngFmtUYRangeNextDayFull: function(test) {

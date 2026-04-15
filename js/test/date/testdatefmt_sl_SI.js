@@ -57,7 +57,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 11");
+        test.equal(fmt.format(date), "29. 9. 2011");
         test.done();
     },
     testDateFmtSimpleMedium_sl_SI: function(test) {
@@ -201,7 +201,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 11, 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011, 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_sl_SI: function(test) {
@@ -435,7 +435,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 11");
+        test.equal(fmt.format(date), "29. 9. 2011");
         test.done();
     },
     testDateFmtTypeTime_sl_SI: function(test) {
@@ -471,7 +471,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 11, 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011, 13:45");
         test.done();
     },
     testDateFmtShortDateComponentsY_sl_SI: function(test) {
@@ -489,7 +489,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), "2011");
         test.done();
     },
     testDateFmtShortDateComponentsM_sl_SI: function(test) {
@@ -579,7 +579,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9. 11");
+        test.equal(fmt.format(date), "9. 2011");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_sl_SI: function(test) {
@@ -597,7 +597,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. 9. 11");
+        test.equal(fmt.format(date), "29. 9. 2011");
         test.done();
     },
     testDateFmtShortDateComponentsWDM_sl_SI: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmt_sl_SI = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "č, 29. 9. 11");
+        test.equal(fmt.format(date), "č, 29. 9. 2011");
         test.done();
     },
     testDateFmtFullDateComponentsY_sl_SI: function(test) {

@@ -237,7 +237,7 @@ module.exports.testdatefmt_es_CO = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 de septiembre de 2011, 1:45 p. m.");
+        test.equal(fmt.format(date), "29 de septiembre de 2011 a las 1:45 p. m.");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_es_CO: function(test) {

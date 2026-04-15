@@ -57,7 +57,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11");
+        test.equal(fmt.format(date), "29.9.2011 г.");
         test.done();
     },
     testDateFmtSimpleMedium_mk_MK: function(test) {
@@ -75,7 +75,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.9.2011 г.');
+        test.equal(fmt.format(date), '29 сеп. 2011 г.');
         test.done();
     },
     testDateFmtSimpleLong_mk_MK: function(test) {
@@ -201,7 +201,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11, во 13:45");
+        test.equal(fmt.format(date), "29.9.2011 г., 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_mk_MK: function(test) {
@@ -219,7 +219,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29.9.2011 г., во 13:45');
+        test.equal(fmt.format(date), '29 сеп. 2011 г., во 13:45');
         test.done();
     },
     testDateFmtDateTimeSimpleLong_mk_MK: function(test) {
@@ -435,7 +435,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), "2011");
         test.done();
     },
     testDateFmtShortDateComponentsM_mk_MK: function(test) {
@@ -525,7 +525,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9.11");
+        test.equal(fmt.format(date), "9.2011 г.");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_mk_MK: function(test) {
@@ -543,7 +543,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11");
+        test.equal(fmt.format(date), "29.9.2011 г.");
         test.done();
     },
     testDateFmtShortDateComponentsWDM_mk_MK: function(test) {
@@ -579,7 +579,7 @@ module.exports.testdatefmt_mk_MK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ч, 29.9.11");
+        test.equal(fmt.format(date), "ч, 29.9.2011 г.");
         test.done();
     },
     testDateFmtFullDateComponentsY_mk_MK: function(test) {

@@ -81,7 +81,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැ 31, 13.45 – 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 31, 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeInDayLong: function(test) {
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 31 දින 13.45 – 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 31 දින 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeInDayFull: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 31 දින 13.45 – 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 31 දින 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayShort: function(test) {
@@ -185,7 +185,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැ 30, 13.45 – 2011 දෙසැ 31, 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 30, 13.45 – 2011 උඳුවප් 31, 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayLong: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 30 දින 13.45 – 2011 දෙසැම්බර් 31 දින 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 30 දින 13.45 – 2011 උඳුවප් 31 දින 14.30');
         test.done();
     },
     testDateRngFmtLKRangeNextDayFull: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 දෙසැම්බර් 30 දින 13.45 – 2011 දෙසැම්බර් 31 දින 14.30');
+        test.equal(fmt.format(start, end), '2011 උඳුවප් 30 දින 13.45 – 2011 උඳුවප් 31 දින 14.30');
         test.done();
     },
     testDateRngFmtLKRangeMultiDayShort: function(test) {
@@ -289,7 +289,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැ 20 – 31");
+        test.equal(fmt.format(start, end), "2011 උඳුවප් 20 – 31");
         test.done();
     },
     testDateRngFmtLKRangeMultiDayLong: function(test) {
@@ -315,7 +315,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 20 – 31");
+        test.equal(fmt.format(start, end), "2011 උඳුවප් 20 – 31");
         test.done();
     },
     testDateRngFmtLKRangeMultiDayFull: function(test) {
@@ -341,7 +341,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 දෙසැම්බර් 20 – 31");
+        test.equal(fmt.format(start, end), "2011 උඳුවප් 20 – 31");
         test.done();
     },
     testDateRngFmtLKRangeNextMonthShort: function(test) {
@@ -393,7 +393,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැ 20 – 2011 දෙසැ 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – 2011 උඳුවප් 31");
         test.done();
     },
     testDateRngFmtLKRangeNextMonthLong: function(test) {
@@ -419,7 +419,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් 20 – දෙසැම්බර් 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – උඳුවප් 31");
         test.done();
     },
     testDateRngFmtLKRangeNextMonthFull: function(test) {
@@ -445,7 +445,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් 20 – දෙසැම්බර් 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – උඳුවප් 31");
         test.done();
     },
     testDateRngFmtLKRangeNextYearShort: function(test) {
@@ -497,7 +497,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැ 20 – 2012 ජන 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – 2012 දුරුතු 31");
         test.done();
     },
     testDateRngFmtLKRangeNextYearLong: function(test) {
@@ -523,7 +523,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් 20 – 2012 ජනවාරි 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – 2012 දුරුතු 31");
         test.done();
     },
     testDateRngFmtLKRangeNextYearFull: function(test) {
@@ -549,7 +549,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් 20 – 2012 ජනවාරි 31");
+        test.equal(fmt.format(start, end), "2011 ඉල් 20 – 2012 දුරුතු 31");
         test.done();
     },
     testDateRngFmtLKRangeMultiYearShort: function(test) {
@@ -601,7 +601,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැ – 2014 ජන");
+        test.equal(fmt.format(start, end), "2011 ඉල් – 2014 දුරුතු");
         test.done();
     },
     testDateRngFmtLKRangeMultiYearLong: function(test) {
@@ -627,7 +627,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් – 2014 ජනවාරි");
+        test.equal(fmt.format(start, end), "2011 ඉල් – 2014 දුරුතු");
         test.done();
     },
     testDateRngFmtLKRangeMultiYearFull: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmtrange_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 නොවැම්බර් – 2014 ජනවාරි");
+        test.equal(fmt.format(start, end), "2011 ඉල් – 2014 දුරුතු");
         test.done();
     },
     testDateRngFmtLKManyYearsFull: function(test) {
