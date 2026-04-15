@@ -2833,7 +2833,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ko-CN");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_ko_CN: function(test) {
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocale_ar_Arab_EG: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "und-Arab"
