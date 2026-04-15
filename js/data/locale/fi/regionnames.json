@@ -643,12 +643,6 @@
             "name": "Tulimaan, Etelämantereen ja Etelä-Atlantin saarten provinssi"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zoun depatermentti"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -3987,12 +3951,12 @@
             "name": "Prague-East"
         },
         {
-            "code": "20A",
-            "name": "Prague-West"
-        },
-        {
             "code": "10",
             "name": "Praha"
+        },
+        {
+            "code": "20A",
+            "name": "Praha-Západin piirikunta"
         },
         {
             "code": "714",
@@ -4028,7 +3992,7 @@
         },
         {
             "code": "316",
-            "name": "Strakonice"
+            "name": "Strakonicen piirikunta"
         },
         {
             "code": "715",
@@ -5481,11 +5445,11 @@
             "name": "Melilla"
         },
         {
-            "code": "MC",
+            "code": "MU",
             "name": "Murcia"
         },
         {
-            "code": "MU",
+            "code": "MC",
             "name": "Murcia"
         },
         {
@@ -7387,12 +7351,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7436,11 +7394,11 @@
         },
         {
             "code": "OT",
-            "name": "Oti"
+            "name": "Otin hallintoalue"
         },
         {
             "code": "SV",
-            "name": "Savannah"
+            "name": "Savannah hallintoalue"
         },
         {
             "code": "UE",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomoun prefektuuri"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "19",
             "name": "Zacapan depatermentti"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8559,12 +8505,6 @@
             "name": "Zalaegerszeg"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8589,6 +8529,10 @@
         {
             "code": "KS",
             "name": "Etelä-Kalimantan"
+        },
+        {
+            "code": "PS",
+            "name": "Etelä-Papua"
         },
         {
             "code": "SN",
@@ -8643,12 +8587,20 @@
             "name": "Keski-Kalimantan"
         },
         {
+            "code": "PT",
+            "name": "Keski-Papua"
+        },
+        {
             "code": "ST",
             "name": "Keski-Sulawesi"
         },
         {
             "code": "LA",
             "name": "Lampung"
+        },
+        {
+            "code": "PD",
+            "name": "Lounais-Papua"
         },
         {
             "code": "JB",
@@ -8691,22 +8643,6 @@
             "name": "Papua"
         },
         {
-            "code": "PD",
-            "name": "Papua Barat Daya"
-        },
-        {
-            "code": "PE",
-            "name": "Papua Pengunungan"
-        },
-        {
-            "code": "PS",
-            "name": "Papua Selatan"
-        },
-        {
-            "code": "PT",
-            "name": "Papua Tengah"
-        },
-        {
             "code": "NU",
             "name": "Pienet Sundasaaret"
         },
@@ -8741,6 +8677,10 @@
         {
             "code": "SM",
             "name": "Sumatra"
+        },
+        {
+            "code": "PE",
+            "name": "Ylänkö-Papua"
         },
         {
             "code": "YO",
@@ -10442,11 +10382,11 @@
     "KE": [
         {
             "code": "01",
-            "name": "Baringo"
+            "name": "Baringon piirikunta"
         },
         {
             "code": "02",
-            "name": "Bomet"
+            "name": "Bometin piirikunta"
         },
         {
             "code": "03",
@@ -10454,7 +10394,7 @@
         },
         {
             "code": "04",
-            "name": "Busia"
+            "name": "Busian piirikunta"
         },
         {
             "code": "05",
@@ -10466,15 +10406,15 @@
         },
         {
             "code": "07",
-            "name": "Garissa"
+            "name": "Garissan piirikunta"
         },
         {
             "code": "08",
-            "name": "Homa Bay"
+            "name": "Homa Bayn piirikunta"
         },
         {
             "code": "09",
-            "name": "Isiolo"
+            "name": "Isiolon piirikunta"
         },
         {
             "code": "10",
@@ -10506,7 +10446,7 @@
         },
         {
             "code": "17",
-            "name": "Kisumu"
+            "name": "Kisumun piirikunta"
         },
         {
             "code": "18",
@@ -10514,11 +10454,11 @@
         },
         {
             "code": "19",
-            "name": "Kwale"
+            "name": "Kwalen piirikunta"
         },
         {
             "code": "20",
-            "name": "Laikipia"
+            "name": "Laikipian piirikunta"
         },
         {
             "code": "21",
@@ -10530,7 +10470,7 @@
         },
         {
             "code": "23",
-            "name": "Makueni"
+            "name": "Makuenin piirikunta"
         },
         {
             "code": "24",
@@ -10538,7 +10478,7 @@
         },
         {
             "code": "25",
-            "name": "Marsabit"
+            "name": "Marsabitin piirikunta"
         },
         {
             "code": "26",
@@ -10570,11 +10510,11 @@
         },
         {
             "code": "33",
-            "name": "Narok"
+            "name": "Narokin piirikunta"
         },
         {
             "code": "34",
-            "name": "Nyamira"
+            "name": "Nyamiran piirikunta"
         },
         {
             "code": "35",
@@ -10586,15 +10526,15 @@
         },
         {
             "code": "37",
-            "name": "Samburu"
+            "name": "Samburun piirikunta"
         },
         {
             "code": "38",
-            "name": "Siaya"
+            "name": "Siayan piirikunta"
         },
         {
             "code": "39",
-            "name": "Taita-Taveta"
+            "name": "Taita-Tavetan piirikunta"
         },
         {
             "code": "40",
@@ -10602,11 +10542,11 @@
         },
         {
             "code": "41",
-            "name": "Tharaka-Nithi"
+            "name": "Tharaka-Nithin piirikunta"
         },
         {
             "code": "42",
-            "name": "Trans Nzoia"
+            "name": "Trans-Nzoian piirikunta"
         },
         {
             "code": "43",
@@ -10614,15 +10554,15 @@
         },
         {
             "code": "44",
-            "name": "Uasin Gishu"
+            "name": "Uasin Gishun piirikunta"
         },
         {
             "code": "45",
-            "name": "Vihiga"
+            "name": "Vihigan piirikunta"
         },
         {
             "code": "46",
-            "name": "Wajir"
+            "name": "Wajirin piirikunta"
         },
         {
             "code": "47",
@@ -11890,7 +11830,7 @@
         },
         {
             "code": "ES",
-            "name": "Esch-sur-Alzette"
+            "name": "Esch-sur-Alzette (kantoni)"
         },
         {
             "code": "GR",
@@ -13205,12 +13145,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15112,7 +15022,7 @@
         },
         {
             "code": "GR",
-            "name": "Granada"
+            "name": "Granada (departementti)"
         },
         {
             "code": "JI",
@@ -15120,7 +15030,7 @@
         },
         {
             "code": "LE",
-            "name": "León"
+            "name": "León (departementti)"
         },
         {
             "code": "MD",
@@ -15156,7 +15066,7 @@
         },
         {
             "code": "RI",
-            "name": "Rivas"
+            "name": "Rivas (departementti)"
         }
     ],
     "NL": [
@@ -15779,12 +15689,6 @@
             "name": "Ucayalin alue"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16377,18 +16281,6 @@
             "name": "Länsi-Pommerin voivodikunta"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19023,12 +18909,6 @@
             "name": "Usulutánin departmentti"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitungn kunta"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan City"
         },
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnstonin atolli"
         },
@@ -21591,12 +21451,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "TA",
             "name": "Taizz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

@@ -643,12 +643,6 @@
             "name": "Чубут"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "TAS",
             "name": "Тасманія"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "PL",
             "name": "Регіон Плато"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Чоко"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "MA",
             "name": "Maio"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6059,6 +6023,10 @@
             "name": "Майєнн"
         },
         {
+            "code": "976",
+            "name": "Майотта"
+        },
+        {
             "code": "50",
             "name": "Манш"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -7387,12 +7351,6 @@
             "name": "Шида Картлі"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "NZ",
             "name": "Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Хутьяпа"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8555,12 +8501,6 @@
             "name": "Яс-Надькун-Сольнок"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8675,6 +8615,10 @@
             "name": "Південний Калімантан"
         },
         {
+            "code": "PD",
+            "name": "Південно-Західне Папуа"
+        },
+        {
             "code": "SG",
             "name": "Південно-Східне Сулавесі"
         },
@@ -8737,10 +8681,6 @@
         {
             "code": "JW",
             "name": "Ява"
-        },
-        {
-            "code": "PD",
-            "name": "Papua Barat Daya"
         }
     ],
     "IE": [
@@ -8925,6 +8865,10 @@
             "name": "Гуджарат"
         },
         {
+            "code": "DH",
+            "name": "Дадра і Нагар Хавелі, Даман і Діу"
+        },
+        {
             "code": "DN",
             "name": "Дадра і Нагар-Хавелі"
         },
@@ -9047,10 +8991,6 @@
         {
             "code": "CT",
             "name": "Чхаттісґарх"
-        },
-        {
-            "code": "DH",
-            "name": "Dādra and Nagar Haveli and Damān and Diu"
         },
         {
             "code": "TG",
@@ -9677,6 +9617,10 @@
             "name": "Неаполь"
         },
         {
+            "code": "SU",
+            "name": "Південна Сардинія"
+        },
+        {
             "code": "AV",
             "name": "Провінція Авелліно"
         },
@@ -10131,10 +10075,6 @@
         {
             "code": "36",
             "name": "Фріулі-Венеція-Джулія"
-        },
-        {
-            "code": "SU",
-            "name": "Sud Sardegna"
         }
     ],
     "JM": [
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13931,24 +13865,6 @@
             "name": "Архангай"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -14475,6 +14391,10 @@
             "name": "Блантайр"
         },
         {
+            "code": "ZO",
+            "name": "Зомба (дистрикт)"
+        },
+        {
             "code": "KR",
             "name": "Каронга (дистрикт)"
         },
@@ -14589,10 +14509,6 @@
         {
             "code": "TH",
             "name": "Thyolo"
-        },
-        {
-            "code": "ZO",
-            "name": "Zomba"
         }
     ],
     "MX": [
@@ -14897,12 +14813,6 @@
         {
             "code": "HA",
             "name": "Хардап"
-        }
-    ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -15779,12 +15689,6 @@
             "name": "Хунін"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16377,18 +16281,6 @@
             "name": "Західнопоморське воєводство"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16691,6 +16583,10 @@
             "name": "Аль-Хор"
         },
         {
+            "code": "SH",
+            "name": "Аль-Шаханія"
+        },
+        {
             "code": "RA",
             "name": "Ар-Раян"
         },
@@ -16705,16 +16601,6 @@
         {
             "code": "US",
             "name": "Умм-Салаль"
-        },
-        {
-            "code": "SH",
-            "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19023,12 +18909,6 @@
             "name": "Чалатенанго"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "Шіселвені"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "EO",
             "name": "Ennedi-Ouest"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20279,10 +20147,6 @@
         {
             "code": "CYQ",
             "name": "Цзяї"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Джонстон"
         },
@@ -21591,12 +21451,6 @@
             "name": "Яракуй"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Увеа"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "SH",
             "name": "Шабва"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

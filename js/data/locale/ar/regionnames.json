@@ -204,7 +204,7 @@
         },
         {
             "code": "04",
-            "name": "Saint John"
+            "name": "أبرشية سانت جونز"
         },
         {
             "code": "05",
@@ -643,12 +643,6 @@
             "name": "نيوكوين"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "ولاية فيكتوريا"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1221,12 +1203,72 @@
             "name": "مقاطعة سيلهيت"
         },
         {
+            "code": "52",
+            "name": "منطقة بنجغر"
+        },
+        {
             "code": "63",
             "name": "منطقة تانغيل"
         },
         {
+            "code": "25",
+            "name": "منطقة جالكاتي"
+        },
+        {
+            "code": "24",
+            "name": "منطقة جيفورهات"
+        },
+        {
+            "code": "59",
+            "name": "منطقة سراجغنج"
+        },
+        {
+            "code": "64",
+            "name": "منطقة طاغورجام"
+        },
+        {
+            "code": "19",
+            "name": "منطقة غايباندا"
+        },
+        {
+            "code": "51",
+            "name": "منطقة فتواخالي"
+        },
+        {
+            "code": "28",
+            "name": "منطقة كريجام"
+        },
+        {
+            "code": "30",
+            "name": "منطقة كشتيا"
+        },
+        {
+            "code": "32",
+            "name": "منطقة لالمنيرهات"
+        },
+        {
+            "code": "44",
+            "name": "منطقة ناتور"
+        },
+        {
             "code": "48",
             "name": "منطقة ناوغاون"
+        },
+        {
+            "code": "43",
+            "name": "منطقة نرائل"
+        },
+        {
+            "code": "45",
+            "name": "منطقة نوابغنج"
+        },
+        {
+            "code": "46",
+            "name": "منطقة نيلفاماري"
+        },
+        {
+            "code": "07",
+            "name": "منطقغ شهبازفور الجنوبية"
         },
         {
             "code": "39",
@@ -1241,12 +1283,20 @@
             "name": "ناحية جانديفور"
         },
         {
+            "code": "23",
+            "name": "ناحية جنيدهة"
+        },
+        {
             "code": "13",
             "name": "ناحية دكا"
         },
         {
             "code": "15",
             "name": "ناحية فريدبور"
+        },
+        {
+            "code": "26",
+            "name": "ناحية كشورغنج"
         },
         {
             "code": "11",
@@ -1257,8 +1307,16 @@
             "name": "ناحية كوميلا"
         },
         {
+            "code": "34",
+            "name": "ناحية مؤمنشاهي"
+        },
+        {
             "code": "36",
             "name": "ناحية مداربور"
+        },
+        {
+            "code": "41",
+            "name": "ناحية نتركونا"
         },
         {
             "code": "05",
@@ -1271,10 +1329,6 @@
         {
             "code": "02",
             "name": "Barguna"
-        },
-        {
-            "code": "07",
-            "name": "Bhola"
         },
         {
             "code": "03",
@@ -1293,10 +1347,6 @@
             "name": "Feni"
         },
         {
-            "code": "19",
-            "name": "Gaibandha"
-        },
-        {
             "code": "18",
             "name": "Gazipur"
         },
@@ -1313,18 +1363,6 @@
             "name": "Jamalpur"
         },
         {
-            "code": "25",
-            "name": "Jhalokati"
-        },
-        {
-            "code": "23",
-            "name": "Jhenaidah"
-        },
-        {
-            "code": "24",
-            "name": "Joypurhat"
-        },
-        {
             "code": "29",
             "name": "Khagrachari"
         },
@@ -1333,24 +1371,8 @@
             "name": "Khulna"
         },
         {
-            "code": "26",
-            "name": "Kishoreganj"
-        },
-        {
-            "code": "28",
-            "name": "Kurigram"
-        },
-        {
-            "code": "30",
-            "name": "Kushtia"
-        },
-        {
             "code": "31",
             "name": "Lakshmipur"
-        },
-        {
-            "code": "32",
-            "name": "Lalmonirhat"
         },
         {
             "code": "37",
@@ -1365,14 +1387,6 @@
             "name": "Maulvi Bazar"
         },
         {
-            "code": "34",
-            "name": "Mymensingh"
-        },
-        {
-            "code": "43",
-            "name": "Narail"
-        },
-        {
             "code": "40",
             "name": "Narayanganj"
         },
@@ -1381,32 +1395,8 @@
             "name": "Narsingdi"
         },
         {
-            "code": "44",
-            "name": "Natore"
-        },
-        {
-            "code": "45",
-            "name": "Nawabganj"
-        },
-        {
-            "code": "41",
-            "name": "Netrokona"
-        },
-        {
-            "code": "46",
-            "name": "Nilphamari"
-        },
-        {
             "code": "47",
             "name": "Noakhali"
-        },
-        {
-            "code": "52",
-            "name": "Panchagarh"
-        },
-        {
-            "code": "51",
-            "name": "Patuakhali"
         },
         {
             "code": "53",
@@ -1425,16 +1415,8 @@
             "name": "Sherpur"
         },
         {
-            "code": "59",
-            "name": "Sirajganj"
-        },
-        {
             "code": "61",
             "name": "Sunamganj"
-        },
-        {
-            "code": "64",
-            "name": "Thakurgaon"
         }
     ],
     "BE": [
@@ -1985,12 +1967,6 @@
             "name": "مقاطعة أويميه"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BM",
@@ -2189,6 +2165,10 @@
             "name": "إيناغوا"
         },
         {
+            "code": "NP",
+            "name": "بروفيدانس الجديدة"
+        },
+        {
             "code": "BP",
             "name": "بلاك بوينت"
         },
@@ -2295,10 +2275,6 @@
         {
             "code": "WG",
             "name": "ويست غراند بهاما"
-        },
-        {
-            "code": "NP",
-            "name": "New Providence"
         }
     ],
     "BT": [
@@ -2597,6 +2573,10 @@
             "name": "مانيما"
         },
         {
+            "code": "SA",
+            "name": "ولاية سنكورة"
+        },
+        {
             "code": "BN",
             "name": "Bandundu"
         },
@@ -2659,10 +2639,6 @@
         {
             "code": "OR",
             "name": "Orientale"
-        },
-        {
-            "code": "SA",
-            "name": "Sankuru"
         },
         {
             "code": "SU",
@@ -3421,12 +3397,6 @@
             "name": "سانتاندير"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3464,7 +3434,7 @@
         },
         {
             "code": "03",
-            "name": "Havana"
+            "name": "إقليم هافانا"
         },
         {
             "code": "04",
@@ -3619,12 +3589,6 @@
         {
             "code": "SM",
             "name": "São Miguel"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6203,6 +6167,10 @@
             "name": "ماين ولوار"
         },
         {
+            "code": "976",
+            "name": "مايوت"
+        },
+        {
             "code": "56",
             "name": "موربيهان"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "89",
             "name": "يون"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -6329,6 +6293,10 @@
         {
             "code": "OXF",
             "name": "أكسفوردشير"
+        },
+        {
+            "code": "SCB",
+            "name": "الحدود الاسكتلندية"
         },
         {
             "code": "UKM",
@@ -6457,6 +6425,10 @@
         {
             "code": "TWH",
             "name": "حي تاور هامليتس، لندن"
+        },
+        {
+            "code": "DUD",
+            "name": "حي دودلي الحضري"
         },
         {
             "code": "GRE",
@@ -6715,6 +6687,14 @@
             "name": "منطقة أنفيلد"
         },
         {
+            "code": "BDG",
+            "name": "منطقة باركينغ وداغنهام في لندن"
+        },
+        {
+            "code": "BNE",
+            "name": "منطقة بارنت في لندن"
+        },
+        {
             "code": "BRY",
             "name": "منطقة بروملي"
         },
@@ -6879,14 +6859,6 @@
             "name": "Banbridge"
         },
         {
-            "code": "BDG",
-            "name": "Barking and Dagenham"
-        },
-        {
-            "code": "BNE",
-            "name": "Barnet"
-        },
-        {
             "code": "BNS",
             "name": "Barnsley"
         },
@@ -7009,10 +6981,6 @@
         {
             "code": "DOW",
             "name": "Down"
-        },
-        {
-            "code": "DUD",
-            "name": "Dudley"
         },
         {
             "code": "DGN",
@@ -7211,10 +7179,6 @@
             "name": "Saint Helens"
         },
         {
-            "code": "SCB",
-            "name": "Scottish Borders"
-        },
-        {
             "code": "SFT",
             "name": "Sefton"
         },
@@ -7385,12 +7349,6 @@
         {
             "code": "MM",
             "name": "متسخيتا-متيانيتي"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "F",
             "name": "Faranah Region"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8095,12 +8047,6 @@
         {
             "code": "QZ",
             "name": "قسم كويتزالتينانغو"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8569,12 +8515,6 @@
         {
             "code": "HV",
             "name": "هدمزوفازارهلي"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10494,7 +10434,7 @@
         },
         {
             "code": "11",
-            "name": "Kakamega"
+            "name": "مقاطعة كاكاميغا"
         },
         {
             "code": "12",
@@ -13217,12 +13157,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "D",
@@ -13943,24 +13877,6 @@
             "name": "محافظة أرخانغاي"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -14282,7 +14198,7 @@
         },
         {
             "code": "65",
-            "name": "Żebbuġ Gozo"
+            "name": "الزبوج"
         },
         {
             "code": "66",
@@ -14369,6 +14285,14 @@
     ],
     "MV": [
         {
+            "code": "01",
+            "name": "آتول أدو"
+        },
+        {
+            "code": "08",
+            "name": "آتول ذا"
+        },
+        {
             "code": "07",
             "name": "آتول ها ألف"
         },
@@ -14445,10 +14369,6 @@
             "name": "ها دالو أتول"
         },
         {
-            "code": "01",
-            "name": "Addu"
-        },
-        {
             "code": "CE",
             "name": "Central Province"
         },
@@ -14467,10 +14387,6 @@
         {
             "code": "SU",
             "name": "South Province"
-        },
-        {
-            "code": "08",
-            "name": "Thaa"
         },
         {
             "code": "UN",
@@ -14909,12 +14825,6 @@
         {
             "code": "KW",
             "name": "Kavango West"
-        }
-    ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
         }
     ],
     "NE": [
@@ -15791,12 +15701,6 @@
             "name": "منطقة أنكاش"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "GPK",
@@ -16389,18 +16293,6 @@
             "name": "محافظة غرب بوميرانيا"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "JRH",
@@ -16721,12 +16613,6 @@
         {
             "code": "US",
             "name": "بلدية أم صلال"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19035,12 +18921,6 @@
             "name": "La Unión"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "ID",
@@ -19115,12 +18995,6 @@
         {
             "code": "HH",
             "name": "مقاطعة هوهو"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19215,12 +19089,6 @@
         {
             "code": "OD",
             "name": "منطقة وداي"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20291,10 +20159,6 @@
         {
             "code": "LIE",
             "name": "Lienchiang"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21093,10 +20957,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "جزيرة جونستون المرجانية"
         },
@@ -21603,12 +21463,6 @@
             "name": "ياراكوي"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "DN",
@@ -21901,10 +21755,6 @@
         {
             "code": "SG",
             "name": "مدينة سيغاف"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22041,12 +21891,6 @@
         {
             "code": "MA",
             "name": "محافظة مأرب"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

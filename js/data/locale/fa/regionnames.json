@@ -643,12 +643,6 @@
             "name": "بوئنوس آیرس"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "ویکتوریا"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "AK",
             "name": "ناحیه آتاکورا"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "واوپس دپارتمنت"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "H",
@@ -3577,6 +3547,22 @@
             "name": "سانتا کروز (دماغه سبز)"
         },
         {
+            "code": "PR",
+            "name": "شهرداری پرایا"
+        },
+        {
+            "code": "TA",
+            "name": "شهرداری تارفال"
+        },
+        {
+            "code": "RG",
+            "name": "شهرداری ریبیرا گرانده"
+        },
+        {
+            "code": "MO",
+            "name": "شهرداری مستروس"
+        },
+        {
             "code": "BV",
             "name": "Boa Vista"
         },
@@ -3589,20 +3575,8 @@
             "name": "Maio"
         },
         {
-            "code": "MO",
-            "name": "Mosteiros"
-        },
-        {
-            "code": "PR",
-            "name": "Praia"
-        },
-        {
             "code": "RB",
             "name": "Ribeira Brava"
-        },
-        {
-            "code": "RG",
-            "name": "Ribeira Grande"
         },
         {
             "code": "SL",
@@ -3613,18 +3587,8 @@
             "name": "São Vicente"
         },
         {
-            "code": "TA",
-            "name": "Tarrafal"
-        },
-        {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6175,6 +6139,10 @@
             "name": "ماین"
         },
         {
+            "code": "976",
+            "name": "مایوت"
+        },
+        {
             "code": "51",
             "name": "مرن"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -7087,10 +7051,6 @@
             "name": "وارینگتون"
         },
         {
-            "code": "WLS",
-            "name": "ولز"
-        },
-        {
             "code": "WLV",
             "name": "ولورهمپتون"
         },
@@ -7105,6 +7065,10 @@
         {
             "code": "WIL",
             "name": "ویلتشایر"
+        },
+        {
+            "code": "WLS",
+            "name": "ویلز"
         },
         {
             "code": "HAL",
@@ -7385,12 +7349,6 @@
         {
             "code": "MM",
             "name": "متسختا-متیانتی"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "HE",
             "name": "هیویس"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10662,7 +10602,7 @@
     "KH": [
         {
             "code": "1",
-            "name": "Banteay Meanchey"
+            "name": "استان بانتی می چی"
         },
         {
             "code": "2",
@@ -10710,7 +10650,7 @@
         },
         {
             "code": "13",
-            "name": "Preah Vihear"
+            "name": "استان پره ویهار"
         },
         {
             "code": "14",
@@ -11549,12 +11489,24 @@
             "name": "منطقه موکاتلانگ"
         },
         {
+            "code": "D",
+            "name": "ناحیه برئا"
+        },
+        {
             "code": "B",
             "name": "ناحیه بوتا-بوته"
         },
         {
+            "code": "K",
+            "name": "ناحیه تهبا-تسکا"
+        },
+        {
             "code": "G",
             "name": "ناحیه قوتینگ"
+        },
+        {
+            "code": "C",
+            "name": "ناحیه لریبه"
         },
         {
             "code": "A",
@@ -11565,24 +11517,12 @@
             "name": "ناحیه مافتنگ"
         },
         {
+            "code": "F",
+            "name": "ناحیه موهالس هوک"
+        },
+        {
             "code": "H",
             "name": "ناحیه نک قچا"
-        },
-        {
-            "code": "D",
-            "name": "Berea"
-        },
-        {
-            "code": "C",
-            "name": "Leribe"
-        },
-        {
-            "code": "F",
-            "name": "Mohale’s Hoek"
-        },
-        {
-            "code": "K",
-            "name": "Thaba-Tseka"
         }
     ],
     "LT": [
@@ -11597,6 +11537,18 @@
         {
             "code": "06",
             "name": "شهرداری ناحیه بیرژای"
+        },
+        {
+            "code": "47",
+            "name": "شهرداری ناحیه شیروینتوس"
+        },
+        {
+            "code": "21",
+            "name": "شهرداری ناحیه کلایپدا"
+        },
+        {
+            "code": "28",
+            "name": "شهرداری نرینگا"
         },
         {
             "code": "AL",
@@ -11707,10 +11659,6 @@
             "name": "Kelmė"
         },
         {
-            "code": "21",
-            "name": "Klaipėda"
-        },
-        {
             "code": "20",
             "name": "Klaipėdos Municipality"
         },
@@ -11737,10 +11685,6 @@
         {
             "code": "27",
             "name": "Molėtai"
-        },
-        {
-            "code": "28",
-            "name": "Neringa"
         },
         {
             "code": "29",
@@ -11813,10 +11757,6 @@
         {
             "code": "46",
             "name": "Šilutė"
-        },
-        {
-            "code": "47",
-            "name": "Širvintos"
         },
         {
             "code": "48",
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "استان آرخانگای"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "منطقه هارداپ"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15337,6 +15247,10 @@
             "name": "استان شماره ۲"
         },
         {
+            "code": "P3",
+            "name": "استان شماره ۳"
+        },
+        {
             "code": "P5",
             "name": "استان شماره ۵"
         },
@@ -15407,10 +15321,6 @@
         {
             "code": "NA",
             "name": "Narayani"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "4",
@@ -15675,6 +15585,10 @@
             "name": "پیورا"
         },
         {
+            "code": "CAL",
+            "name": "کالائو"
+        },
+        {
             "code": "AYA",
             "name": "منطقه آیاکوچو"
         },
@@ -15765,16 +15679,6 @@
         {
             "code": "ANC",
             "name": "ناحیه انکاش"
-        },
-        {
-            "code": "CAL",
-            "name": "El Callao"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16369,18 +16273,6 @@
             "name": "استان پومرانی غربی"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "JRH",
@@ -16506,7 +16398,7 @@
         },
         {
             "code": "15",
-            "name": "Setúbal"
+            "name": "ناحیه سوتوبال"
         },
         {
             "code": "16",
@@ -16701,12 +16593,6 @@
         {
             "code": "SH",
             "name": "شحانیه"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17838,7 +17724,7 @@
         },
         {
             "code": "019",
-            "name": "Divača"
+            "name": "شهرداری دیواچا"
         },
         {
             "code": "020",
@@ -17954,7 +17840,7 @@
         },
         {
             "code": "048",
-            "name": "Kočevje"
+            "name": "شهرداری کوچوه"
         },
         {
             "code": "049",
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "ID",
@@ -19095,12 +18975,6 @@
         {
             "code": "HH",
             "name": "ناحیه هووهو"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "OD",
             "name": "ودای"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20269,10 +20137,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "YUN",
             "name": "Yunlin"
         }
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "جزیره جانستون"
         },
@@ -21583,12 +21443,6 @@
             "name": "Federal Dependencies"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21835,12 +21689,12 @@
             "name": "هایفونگ"
         },
         {
-            "code": "SG",
-            "name": "هوشی‌مین"
+            "code": "26",
+            "name": "هوئه"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
+            "code": "SG",
+            "name": "هوشی‌مین"
         }
     ],
     "VU": [
@@ -21881,10 +21735,6 @@
         {
             "code": "SG",
             "name": "Sigave"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "SA",
             "name": "صنعا"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

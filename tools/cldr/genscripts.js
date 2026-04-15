@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013 - 2017, 2020-2022 JEDLSoft
+ * Copyright © 2013 - 2017, 2020-2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ if (process.argv.length > 1) {
 }
 
 console.log("genscripts - generate scripts data.\n" +
-        "Copyright (c) 2012-2017, 2020-2022 JEDLSoft");
+        "Copyright (c) 2012-2017, 2020-2022, 2026 JEDLSoft");
 
 if (!fs.existsSync(toDir)) {
     console.error("Could not access target directory " + toDir);
@@ -75,6 +75,15 @@ var row, scriptName, range;
 var scriptToRange = {};
 var ranges = [];
 var rangeToScript = [];
+
+// iso-15924 v3.2.0 does not have Berf script
+var hardCodeData =  {
+    "Berf": {
+        "nb": 258,
+        "nm": "Beria Erfe",
+        "lid": "Beria_Erfe"
+    }
+};
 
 function compareByStart(left, right) {
     return left[1] - right[1];
@@ -98,6 +107,13 @@ import("iso-15924").then(function(isoModule) {
         scripts[entry.code] = script;
         if (longCode.length > 0) {
             fullToShortMap[longCode.toLowerCase()] = entry.code;
+        }
+    }
+
+    for (var script in hardCodeData){
+        if (scripts[script] === undefined) {
+            scripts[script] = hardCodeData[script];
+            fullToShortMap[hardCodeData[script].lid.toLowerCase()] = script;
         }
     }
 

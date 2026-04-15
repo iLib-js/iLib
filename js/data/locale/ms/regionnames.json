@@ -643,12 +643,6 @@
             "name": "Wilayah Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NT",
             "name": "Wilayah Utara"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1842,11 +1824,11 @@
     "BH": [
         {
             "code": "13",
-            "name": "Capital"
+            "name": "Pentadbiran Ibu Kota"
         },
         {
             "code": "14",
-            "name": "Southern"
+            "name": "Pentadbiran Selatan"
         },
         {
             "code": "15",
@@ -1858,7 +1840,7 @@
         },
         {
             "code": "17",
-            "name": "Northern"
+            "name": "Pentadbiran Utara"
         }
     ],
     "BI": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou Department"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Pentadbiran Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de Sao Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4624,43 +4588,43 @@
         },
         {
             "code": "49",
-            "name": "Timimoun"
+            "name": "Wilayah Timimoun"
         },
         {
             "code": "50",
-            "name": "Bordj Badji Mokhtar"
+            "name": "Wilayah Bordj Badji Mokhtar"
         },
         {
             "code": "51",
-            "name": "Ouled Djellal"
+            "name": "Wilayah Ouled Djellal"
         },
         {
             "code": "52",
-            "name": "Béni Abbès"
+            "name": "Wilayah Béni Abbès"
         },
         {
             "code": "53",
-            "name": "In Salah"
+            "name": "Wilayah In Salah"
         },
         {
             "code": "54",
-            "name": "In Guezzam"
+            "name": "Wilayah In Guezzam"
         },
         {
             "code": "55",
-            "name": "Touggourt"
+            "name": "Wilayah Touggourt"
         },
         {
             "code": "56",
-            "name": "Djanet"
+            "name": "Wilayah Djanet"
         },
         {
             "code": "57",
-            "name": "El Meghaier"
+            "name": "Wilayah El M’Ghair"
         },
         {
             "code": "58",
-            "name": "El Meniaa"
+            "name": "Wilayah El Menia"
         }
     ],
     "EC": [
@@ -4836,7 +4800,7 @@
         },
         {
             "code": "130",
-            "name": "Alutaguse"
+            "name": "Paroki Alutaguse"
         },
         {
             "code": "141",
@@ -4844,11 +4808,11 @@
         },
         {
             "code": "142",
-            "name": "Antsla"
+            "name": "Kariah Antsla"
         },
         {
             "code": "171",
-            "name": "Elva"
+            "name": "Daerah Elva"
         },
         {
             "code": "184",
@@ -5000,7 +4964,7 @@
         },
         {
             "code": "586",
-            "name": "Peipsiääre"
+            "name": "Paroki Peipsiääre"
         },
         {
             "code": "615",
@@ -5048,7 +5012,7 @@
         },
         {
             "code": "698",
-            "name": "Rõuge"
+            "name": "Kariah Rõuge"
         },
         {
             "code": "708",
@@ -5956,7 +5920,7 @@
         },
         {
             "code": "GES",
-            "name": "Grand-Est"
+            "name": "Grand Est"
         },
         {
             "code": "971",
@@ -6615,10 +6579,6 @@
             "name": "East Dunbartonshire"
         },
         {
-            "code": "ELN",
-            "name": "East Lothian"
-        },
-        {
             "code": "ERW",
             "name": "East Renfrewshire"
         },
@@ -6704,7 +6664,7 @@
         },
         {
             "code": "HMF",
-            "name": "Hammersmith and Fulham"
+            "name": "Hammersmith dan Fulham"
         },
         {
             "code": "HAM",
@@ -6829,6 +6789,10 @@
         {
             "code": "LIV",
             "name": "Liverpool"
+        },
+        {
+            "code": "ELN",
+            "name": "Lothian Timur"
         },
         {
             "code": "LUT",
@@ -7387,12 +7351,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou Prefecture"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa Department"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10768,7 +10708,7 @@
     "KI": [
         {
             "code": "G",
-            "name": "Gilbert Islands"
+            "name": "Kepulauan Gilbert"
         },
         {
             "code": "L",
@@ -10989,20 +10929,20 @@
             "name": "Al Ahmadi Governorate"
         },
         {
-            "code": "KU",
-            "name": "Al Asimah"
-        },
-        {
             "code": "FA",
             "name": "Al Farwaniyah Governorate"
         },
         {
-            "code": "JA",
-            "name": "Al Jahra"
-        },
-        {
             "code": "HA",
             "name": "Hawalli Governorate"
+        },
+        {
+            "code": "KU",
+            "name": "Kegabenoran Al-Asimah"
+        },
+        {
+            "code": "JA",
+            "name": "Kegabenoran Jahra"
         },
         {
             "code": "MU",
@@ -12421,20 +12361,36 @@
             "name": "Al Kufrah"
         },
         {
-            "code": "WA",
-            "name": "Al Wahat"
-        },
-        {
             "code": "BA",
             "name": "Benghazi"
+        },
+        {
+            "code": "WA",
+            "name": "Daerah Al Wahat"
+        },
+        {
+            "code": "DR",
+            "name": "Daerah Derna"
+        },
+        {
+            "code": "JG",
+            "name": "Daerah Jabal al Gharbi"
         },
         {
             "code": "MI",
             "name": "Daerah Misrata"
         },
         {
-            "code": "DR",
-            "name": "Derna"
+            "code": "NL",
+            "name": "Daerah Nalut"
+        },
+        {
+            "code": "SR",
+            "name": "Daerah Sirte"
+        },
+        {
+            "code": "TB",
+            "name": "Daerah Tripoli"
         },
         {
             "code": "GT",
@@ -12443,10 +12399,6 @@
         {
             "code": "JA",
             "name": "Jabal al Akhdar"
-        },
-        {
-            "code": "JG",
-            "name": "Jabal al Gharbi"
         },
         {
             "code": "JU",
@@ -12459,10 +12411,6 @@
         {
             "code": "MQ",
             "name": "Murzuq District"
-        },
-        {
-            "code": "NL",
-            "name": "Nalut"
         },
         {
             "code": "NQ",
@@ -12479,14 +12427,6 @@
         {
             "code": "SB",
             "name": "Sabha District"
-        },
-        {
-            "code": "SR",
-            "name": "Sirte"
-        },
-        {
-            "code": "TB",
-            "name": "Tripoli"
         },
         {
             "code": "WD",
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13927,24 +13861,6 @@
             "name": "Arkhangai Province"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "01",
@@ -13996,15 +13912,15 @@
         },
         {
             "code": "13",
-            "name": "Nouakchott Ouest"
+            "name": "Nouakchott-Ouest"
         },
         {
             "code": "14",
-            "name": "Nouakchott Nord"
+            "name": "Nouakchott-Nord"
         },
         {
             "code": "15",
-            "name": "Nouakchott Sud"
+            "name": "Nouakchott-Sud"
         }
     ],
     "MT": [
@@ -14895,12 +14811,6 @@
             "name": "Otjozondjupa Region"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15587,6 +15497,10 @@
             "name": "Dhofar Governorate"
         },
         {
+            "code": "BS",
+            "name": "Kegabenoran Al Batinah Utara"
+        },
+        {
             "code": "MU",
             "name": "Musandam"
         },
@@ -15597,10 +15511,6 @@
         {
             "code": "SS",
             "name": "Pentadbiran Ash Sharqiyah Utara"
-        },
-        {
-            "code": "BS",
-            "name": "Shamal al Batinah"
         },
         {
             "code": "DA",
@@ -15773,12 +15683,6 @@
         {
             "code": "TUM",
             "name": "Wilayah Tumbes"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16373,18 +16277,6 @@
             "name": "Wilayah Barat Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal Municipality"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19019,28 +18905,14 @@
             "name": "Usulutan Department"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
             "name": "Al-Hasakah Governorate"
         },
         {
-            "code": "RA",
-            "name": "Ar-Raqqah"
-        },
-        {
             "code": "SU",
             "name": "As-Suwayda Governorate"
-        },
-        {
-            "code": "DR",
-            "name": "Daraa"
         },
         {
             "code": "DY",
@@ -19063,8 +18935,16 @@
             "name": "Kegabenoran Damsyik"
         },
         {
+            "code": "DR",
+            "name": "Kegabenoran Daraa"
+        },
+        {
             "code": "LA",
             "name": "Kegabenoran Latakia"
+        },
+        {
+            "code": "RA",
+            "name": "Kegabenoran Raqqa"
         },
         {
             "code": "HI",
@@ -19101,12 +18981,6 @@
             "name": "Shiselweni District"
         }
     ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
-        }
-    ],
     "TD": [
         {
             "code": "BG",
@@ -19125,12 +18999,12 @@
             "name": "Chari-Baguirmi Region"
         },
         {
-            "code": "EE",
-            "name": "Ennedi-Est"
+            "code": "EO",
+            "name": "Ennedi Barat"
         },
         {
-            "code": "EO",
-            "name": "Ennedi-Ouest"
+            "code": "EE",
+            "name": "Ennedi Timur"
         },
         {
             "code": "HL",
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira Region"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung County"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Atol Johnston"
         },
@@ -21587,12 +21447,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "43",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -21939,10 +21789,6 @@
     ],
     "YE": [
         {
-            "code": "AD",
-            "name": "’Adan"
-        },
-        {
             "code": "AB",
             "name": "Abyan Governorate"
         },
@@ -21971,10 +21817,6 @@
             "name": "Al Mahwit Governorate"
         },
         {
-            "code": "SU",
-            "name": "Arkhabil Suqutra"
-        },
-        {
             "code": "DH",
             "name": "Dhamar Governorate"
         },
@@ -21991,8 +21833,20 @@
             "name": "Ibb Governorate"
         },
         {
+            "code": "AD",
+            "name": "Kegabenoran Aden"
+        },
+        {
             "code": "LA",
-            "name": "Lahij"
+            "name": "Kegabenoran Lahij"
+        },
+        {
+            "code": "SN",
+            "name": "Kegabenoran Sanaa"
+        },
+        {
+            "code": "SU",
+            "name": "Kegabenoran Socotra"
         },
         {
             "code": "MA",
@@ -22015,22 +21869,12 @@
             "name": "Sana’a"
         },
         {
-            "code": "SN",
-            "name": "Sana’a"
-        },
-        {
             "code": "SH",
             "name": "Shabwah Governorate"
         },
         {
             "code": "TA",
             "name": "Ta’izz Governorate"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

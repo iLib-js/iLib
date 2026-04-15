@@ -643,12 +643,6 @@
             "name": "Tulemaa provints"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -721,18 +715,6 @@
             "name": "Victoria"
         }
     ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
-        }
-    ],
     "AZ": [
         {
             "code": "ABS",
@@ -740,7 +722,7 @@
         },
         {
             "code": "AGM",
-            "name": "Agdam"
+            "name": "Ağdam"
         },
         {
             "code": "AGS",
@@ -991,16 +973,16 @@
             "name": "Sharur"
         },
         {
-            "code": "SR",
-            "name": "Shirvan"
-        },
-        {
             "code": "SUS",
             "name": "Shusha"
         },
         {
             "code": "SIY",
             "name": "Siazan"
+        },
+        {
+            "code": "SR",
+            "name": "Şirvan"
         },
         {
             "code": "SM",
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2012,7 +1988,7 @@
     "BO": [
         {
             "code": "H",
-            "name": "Chuquisaca"
+            "name": "Chuquisaca departemang"
         },
         {
             "code": "C",
@@ -2024,7 +2000,7 @@
         },
         {
             "code": "L",
-            "name": "La Paz"
+            "name": "La Pazi departemang"
         },
         {
             "code": "O",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3621,12 +3591,6 @@
             "name": "Tuulepealsed saared"
         }
     ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
-        }
-    ],
     "CY": [
         {
             "code": "01",
@@ -3656,115 +3620,115 @@
     "CZ": [
         {
             "code": "201",
-            "name": "Benešov"
+            "name": "Benešovi ringkond"
         },
         {
             "code": "202",
-            "name": "Beroun"
+            "name": "Berouni ringkond"
         },
         {
             "code": "641",
-            "name": "Blansko"
+            "name": "Blansko ringkond"
         },
         {
             "code": "644",
-            "name": "Břeclav"
+            "name": "Břeclavi ringkond"
+        },
+        {
+            "code": "643",
+            "name": "Brno maaringkond"
         },
         {
             "code": "642",
             "name": "Brno-město"
         },
         {
-            "code": "643",
-            "name": "Brno-venkov"
-        },
-        {
             "code": "801",
-            "name": "Bruntál"
+            "name": "Bruntáli ringkond"
         },
         {
             "code": "511",
-            "name": "Česká Lípa"
+            "name": "Česká Lípa ringkond"
         },
         {
             "code": "311",
-            "name": "České Budějovice"
+            "name": "České Budějovice ringkond"
         },
         {
             "code": "312",
-            "name": "Český Krumlov"
+            "name": "Český Krumlovi ringkond"
         },
         {
             "code": "411",
-            "name": "Cheb"
+            "name": "Chebi ringkond"
         },
         {
             "code": "422",
-            "name": "Chomutov"
+            "name": "Chomutovi ringkond"
         },
         {
             "code": "531",
-            "name": "Chrudim"
+            "name": "Chrudimi ringkond"
         },
         {
             "code": "421",
-            "name": "Děčín"
+            "name": "Děčíni ringkond"
         },
         {
             "code": "321",
-            "name": "Domažlice"
+            "name": "Domažlice ringkond"
         },
         {
             "code": "802",
-            "name": "Frýdek-Místek"
+            "name": "Frýdek-Místeki ringkond"
         },
         {
             "code": "631",
-            "name": "Havlíčkův Brod"
+            "name": "Havlíčkův Brodi ringkond"
         },
         {
             "code": "645",
-            "name": "Hodonín"
-        },
-        {
-            "code": "521",
-            "name": "Hradec Králové"
+            "name": "Hodoníni ringkond"
         },
         {
             "code": "52",
             "name": "Hradec Králové maakond"
         },
         {
+            "code": "521",
+            "name": "Hradec Králové ringkond"
+        },
+        {
             "code": "512",
-            "name": "Jablonec nad Nisou"
+            "name": "Jablonec nad Nisou ringkond"
         },
         {
             "code": "711",
-            "name": "Jeseník"
+            "name": "Jeseníki ringkond"
         },
         {
             "code": "522",
-            "name": "Jičín"
+            "name": "Jičíni ringkond"
         },
         {
             "code": "632",
-            "name": "Jihlava"
+            "name": "Jihlava ringkond"
         },
         {
             "code": "313",
-            "name": "Jindřichův Hradec"
-        },
-        {
-            "code": "412",
-            "name": "Karlovy Vary"
+            "name": "Jindřichův Hradeci ringkond"
         },
         {
             "code": "41",
             "name": "Karlovy Vary maakond"
         },
         {
+            "code": "412",
+            "name": "Karlovy Vary ringkond"
+        },
+        {
             "code": "803",
-            "name": "Karviná"
+            "name": "Karviná ringkond"
         },
         {
             "code": "20",
@@ -3772,39 +3736,39 @@
         },
         {
             "code": "203",
-            "name": "Kladno"
+            "name": "Kladno ringkond"
         },
         {
             "code": "322",
-            "name": "Klatovy"
+            "name": "Klatovy ringkond"
         },
         {
             "code": "204",
-            "name": "Kolín"
+            "name": "Kolíni ringkond"
         },
         {
             "code": "721",
-            "name": "Kroměříž"
+            "name": "Kroměříži ringkond"
         },
         {
             "code": "205",
-            "name": "Kutná Hora"
-        },
-        {
-            "code": "513",
-            "name": "Liberec"
+            "name": "Kutná Hora ringkond"
         },
         {
             "code": "51",
             "name": "Libereci maakond"
         },
         {
+            "code": "513",
+            "name": "Libereci ringkond"
+        },
+        {
             "code": "423",
-            "name": "Litoměřice"
+            "name": "Litoměřice ringkond"
         },
         {
             "code": "424",
-            "name": "Louny"
+            "name": "Louny ringkond"
         },
         {
             "code": "64",
@@ -3816,11 +3780,11 @@
         },
         {
             "code": "206",
-            "name": "Mělník"
+            "name": "Mělníki ringkond"
         },
         {
             "code": "207",
-            "name": "Mladá Boleslav"
+            "name": "Mladá Boleslavi ringkond"
         },
         {
             "code": "80",
@@ -3828,71 +3792,71 @@
         },
         {
             "code": "425",
-            "name": "Most"
+            "name": "Mosti ringkond"
         },
         {
             "code": "523",
-            "name": "Náchod"
+            "name": "Náchodi ringkond"
         },
         {
             "code": "804",
-            "name": "Nový Jičín"
+            "name": "Nový Jičíni ringkond"
         },
         {
             "code": "208",
-            "name": "Nymburk"
-        },
-        {
-            "code": "712",
-            "name": "Olomouc"
+            "name": "Nymburki ringkond"
         },
         {
             "code": "71",
             "name": "Olomouci maakond"
         },
         {
+            "code": "712",
+            "name": "Olomouci ringkond"
+        },
+        {
             "code": "805",
-            "name": "Opava"
+            "name": "Opava ringkond"
         },
         {
             "code": "806",
             "name": "Ostrava"
         },
         {
-            "code": "532",
-            "name": "Pardubice"
-        },
-        {
             "code": "53",
             "name": "Pardubice maakond"
         },
         {
+            "code": "532",
+            "name": "Pardubice ringkond"
+        },
+        {
             "code": "633",
-            "name": "Pelhřimov"
+            "name": "Pelhřimovi ringkond"
         },
         {
             "code": "314",
-            "name": "Písek"
+            "name": "Píseki ringkond"
         },
         {
             "code": "323",
             "name": "Plzeň"
         },
         {
-            "code": "325",
-            "name": "Plzeň-North"
-        },
-        {
             "code": "324",
-            "name": "Plzeň-South"
+            "name": "Plzeňi lõunaringkond"
         },
         {
             "code": "32",
             "name": "Plzeňi maakond"
         },
         {
+            "code": "325",
+            "name": "Plzeňi põhjaringkond"
+        },
+        {
             "code": "315",
-            "name": "Prachatice"
+            "name": "Prachatice ringkond"
         },
         {
             "code": "101",
@@ -3983,100 +3947,100 @@
             "name": "Prague 9"
         },
         {
-            "code": "209",
-            "name": "Prague-East"
-        },
-        {
-            "code": "20A",
-            "name": "Prague-West"
-        },
-        {
             "code": "10",
             "name": "Praha"
         },
         {
+            "code": "209",
+            "name": "Praha idaringkond"
+        },
+        {
+            "code": "20A",
+            "name": "Praha lääneringkond"
+        },
+        {
             "code": "714",
-            "name": "Přerov"
+            "name": "Přerovi ringkond"
         },
         {
             "code": "20B",
-            "name": "Příbram"
+            "name": "Příbrami ringkond"
         },
         {
             "code": "713",
-            "name": "Prostějov"
+            "name": "Prostějovi ringkond"
         },
         {
             "code": "20C",
-            "name": "Rakovník"
+            "name": "Rakovníki ringkond"
         },
         {
             "code": "326",
-            "name": "Rokycany"
+            "name": "Rokycany ringkond"
         },
         {
             "code": "524",
-            "name": "Rychnov nad Kněžnou"
+            "name": "Rychnov nad Kněžnou ringkond"
         },
         {
             "code": "514",
-            "name": "Semily"
+            "name": "Semily ringkond"
         },
         {
             "code": "413",
-            "name": "Sokolov"
+            "name": "Sokolovi ringkond"
         },
         {
             "code": "316",
-            "name": "Strakonice"
+            "name": "Strakonice ringkond"
         },
         {
             "code": "533",
-            "name": "Svitavy"
+            "name": "Svitavy ringkond"
         },
         {
             "code": "715",
-            "name": "Šumperk"
-        },
-        {
-            "code": "724",
-            "name": "Zlín"
+            "name": "Šumperki ringkond"
         },
         {
             "code": "72",
             "name": "Zlíni maakond"
         },
         {
+            "code": "724",
+            "name": "Zlíni ringkond"
+        },
+        {
             "code": "647",
-            "name": "Znojmo"
+            "name": "Znojmo ringkond"
         },
         {
             "code": "635",
-            "name": "Žďár nad Sázavou"
+            "name": "Žďár nad Sázavou ringkond"
         },
         {
             "code": "317",
-            "name": "Tábor"
+            "name": "Tábori ringkond"
         },
         {
             "code": "327",
-            "name": "Tachov"
+            "name": "Tachovi ringkond"
         },
         {
             "code": "426",
-            "name": "Teplice"
+            "name": "Teplice ringkond"
         },
         {
             "code": "634",
-            "name": "Třebíč"
+            "name": "Třebíči ringkond"
         },
         {
             "code": "525",
-            "name": "Trutnov"
+            "name": "Trutnovi ringkond"
         },
         {
             "code": "722",
-            "name": "Uherské Hradiště"
+            "name": "Uherské Hradiště ringkond"
         },
         {
             "code": "42",
@@ -4084,15 +4048,15 @@
         },
         {
             "code": "427",
-            "name": "Ústí nad Labem"
+            "name": "Ústí nad Labemi ringkond"
         },
         {
             "code": "534",
-            "name": "Ústí nad Orlicí"
+            "name": "Ústí nad Orlicí ringkond"
         },
         {
             "code": "723",
-            "name": "Vsetín"
+            "name": "Vsetíni ringkond"
         },
         {
             "code": "63",
@@ -4100,7 +4064,7 @@
         },
         {
             "code": "646",
-            "name": "Vyškov"
+            "name": "Vyškovi ringkond"
         }
     ],
     "DE": [
@@ -6128,19 +6092,19 @@
         },
         {
             "code": "NOR",
-            "name": "Normandie"
+            "name": "Normandia"
         },
         {
             "code": "NAQ",
             "name": "Nouvelle-Aquitaine"
         },
         {
-            "code": "OCC",
-            "name": "Occitanie"
-        },
-        {
             "code": "60",
             "name": "Oise’i departemang"
+        },
+        {
+            "code": "OCC",
+            "name": "Oksitaania (haldusüksus)"
         },
         {
             "code": "61",
@@ -7387,12 +7351,6 @@
             "name": "Thbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8555,12 +8501,6 @@
             "name": "Veszprémi komitaat"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8601,6 +8541,10 @@
         {
             "code": "NT",
             "name": "East Nusa Tenggara"
+        },
+        {
+            "code": "PD",
+            "name": "Edela-Paapua provints"
         },
         {
             "code": "GO",
@@ -8665,10 +8609,6 @@
         {
             "code": "PA",
             "name": "Paapua provints"
-        },
-        {
-            "code": "PD",
-            "name": "Papua Barat Daya"
         },
         {
             "code": "PP",
@@ -12531,6 +12471,10 @@
             "name": "Ben Slimane"
         },
         {
+            "code": "05",
+            "name": "Béni Mellal-Khénifra piirkond"
+        },
+        {
             "code": "BEM",
             "name": "Béni-Mellal"
         },
@@ -12555,8 +12499,8 @@
             "name": "Casablanca"
         },
         {
-            "code": "09",
-            "name": "Chaouia-Ouardigha"
+            "code": "06",
+            "name": "Casablanca-Settati piirkond"
         },
         {
             "code": "CHE",
@@ -12571,8 +12515,8 @@
             "name": "Chtouka Aït Baha"
         },
         {
-            "code": "10",
-            "name": "Doukkala-Abda"
+            "code": "08",
+            "name": "Drâa-Tafilaleti piirkond"
         },
         {
             "code": "DRI",
@@ -12607,8 +12551,8 @@
             "name": "Fès"
         },
         {
-            "code": "05",
-            "name": "Fès-Boulemane"
+            "code": "03",
+            "name": "Fès-Meknèsi piirkond"
         },
         {
             "code": "FIG",
@@ -12619,20 +12563,16 @@
             "name": "Fquih Ben Salah"
         },
         {
-            "code": "02",
-            "name": "Gharb-Chrarda-Béni Hssen"
-        },
-        {
-            "code": "08",
-            "name": "Grand Casablanca"
-        },
-        {
             "code": "GUE",
             "name": "Guelmim"
         },
         {
             "code": "14",
             "name": "Guelmim-Es Semara"
+        },
+        {
+            "code": "10",
+            "name": "Guelmim-Oued Nouni piirkond"
         },
         {
             "code": "GUF",
@@ -12695,6 +12635,10 @@
             "name": "Marrakech-Medina"
         },
         {
+            "code": "07",
+            "name": "Marrakech-Safi piirkond"
+        },
+        {
             "code": "MMN",
             "name": "Marrakech²"
         },
@@ -12713,10 +12657,6 @@
         {
             "code": "MEK",
             "name": "Meknès"
-        },
-        {
-            "code": "06",
-            "name": "Meknès-Tafilalet"
         },
         {
             "code": "MID",
@@ -12739,8 +12679,8 @@
             "name": "Nouaceur"
         },
         {
-            "code": "04",
-            "name": "Oriental"
+            "code": "02",
+            "name": "Orientali piirkond"
         },
         {
             "code": "OUA",
@@ -12767,8 +12707,8 @@
             "name": "Rabat"
         },
         {
-            "code": "07",
-            "name": "Rabat-Salé-Zemmour-Zaer"
+            "code": "04",
+            "name": "Rabat-Salé-Kénitra piirkond"
         },
         {
             "code": "REH",
@@ -12811,6 +12751,10 @@
             "name": "Skhirat-Témara"
         },
         {
+            "code": "09",
+            "name": "Souss-Massa piirkond"
+        },
+        {
             "code": "13",
             "name": "Souss-Massa-Drâa"
         },
@@ -12832,7 +12776,7 @@
         },
         {
             "code": "01",
-            "name": "Tangier-Tétouan"
+            "name": "Tanger-Tétouan-Al Hoceïma piirkond"
         },
         {
             "code": "TAO",
@@ -12853,10 +12797,6 @@
         {
             "code": "TAZ",
             "name": "Taza"
-        },
-        {
-            "code": "03",
-            "name": "Taza-Al Hoceima-Taounate"
         },
         {
             "code": "TAT",
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13328,7 +13262,7 @@
         },
         {
             "code": "UTI",
-            "name": "Utirik Atoll"
+            "name": "Utirik"
         },
         {
             "code": "WTH",
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arhangaj aimakk"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Otjozondjupa ringkond"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15337,6 +15247,10 @@
             "name": "Bagmati"
         },
         {
+            "code": "P3",
+            "name": "Bāgmatī provints"
+        },
+        {
             "code": "BH",
             "name": "Bheri"
         },
@@ -15369,6 +15283,10 @@
             "name": "Karnali²"
         },
         {
+            "code": "P1",
+            "name": "Koshī provints"
+        },
+        {
             "code": "KO",
             "name": "Kosi"
         },
@@ -15393,16 +15311,8 @@
             "name": "Narayani"
         },
         {
-            "code": "P1",
-            "name": "Province 1"
-        },
-        {
             "code": "P2",
             "name": "Province 2"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "P5",
@@ -15498,11 +15408,11 @@
     "NZ": [
         {
             "code": "AUK",
-            "name": "Auckland"
+            "name": "Aucklandi piirkond"
         },
         {
             "code": "BOP",
-            "name": "Bay of Plenty"
+            "name": "Bay of Plenty piirkond"
         },
         {
             "code": "CAN",
@@ -15514,19 +15424,19 @@
         },
         {
             "code": "GIS",
-            "name": "Gisborne"
+            "name": "Gisborne’i piirkond"
         },
         {
             "code": "HKB",
-            "name": "Hawke’s Bay"
+            "name": "Hawke’s Bay piirkond"
         },
         {
             "code": "MWT",
-            "name": "Manawatu-Wanganui"
+            "name": "Manawatu-Whanganui piirkond"
         },
         {
             "code": "MBH",
-            "name": "Marl"
+            "name": "Marlborough’ piirkond"
         },
         {
             "code": "NSN",
@@ -15534,35 +15444,35 @@
         },
         {
             "code": "NTL",
-            "name": "Northland"
+            "name": "Northlandi piirkond"
         },
         {
             "code": "OTA",
-            "name": "Otago"
+            "name": "Otago piirkond"
         },
         {
             "code": "STL",
-            "name": "Southland"
+            "name": "Southlandi piirkond"
         },
         {
             "code": "TKI",
-            "name": "Taranaki"
+            "name": "Taranaki piirkond"
         },
         {
             "code": "TAS",
-            "name": "Tasman"
+            "name": "Tasmani piirkond"
         },
         {
             "code": "WKO",
-            "name": "Waikato"
+            "name": "Waikato piirkond"
         },
         {
             "code": "WGN",
-            "name": "Wellington"
+            "name": "Wellingtoni piirkond"
         },
         {
             "code": "WTC",
-            "name": "West Coast"
+            "name": "West Coasti piirkond"
         }
     ],
     "OM": [
@@ -15773,12 +15683,6 @@
         {
             "code": "UCA",
             "name": "Ucayali piirkond"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16373,18 +16277,6 @@
             "name": "Lääne-Pomorze vojevoodkond"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16396,7 +16288,7 @@
         },
         {
             "code": "GZA",
-            "name": "Gaza"
+            "name": "Gaza kubernerkond"
         },
         {
             "code": "HBN",
@@ -16454,19 +16346,19 @@
     "PT": [
         {
             "code": "01",
-            "name": "Aveiro"
+            "name": "Aveiro ringkond"
         },
         {
             "code": "02",
-            "name": "Beja"
+            "name": "Beja ringkond"
         },
         {
             "code": "03",
-            "name": "Braga"
+            "name": "Braga ringkond"
         },
         {
             "code": "04",
-            "name": "Bragança"
+            "name": "Bragança ringkond"
         },
         {
             "code": "05",
@@ -16482,7 +16374,7 @@
         },
         {
             "code": "08",
-            "name": "Faro"
+            "name": "Faro ringkond"
         },
         {
             "code": "09",
@@ -16544,7 +16436,7 @@
         },
         {
             "code": "010",
-            "name": "Angaur"
+            "name": "Angauri osariik"
         },
         {
             "code": "050",
@@ -16576,11 +16468,11 @@
         },
         {
             "code": "224",
-            "name": "Ngatpang"
+            "name": "Ngatpangi osariik"
         },
         {
             "code": "226",
-            "name": "Ngchesar"
+            "name": "Ngchesari osariik"
         },
         {
             "code": "227",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19019,12 +18905,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19356,7 +19224,7 @@
         },
         {
             "code": "80",
-            "name": "Nakhon Si Thammarat"
+            "name": "Nakhon Si Thammarati provints"
         },
         {
             "code": "55",
@@ -20237,10 +20105,6 @@
             "name": "Nantou"
         },
         {
-            "code": "NWT",
-            "name": "New Taipei"
-        },
-        {
             "code": "PEN",
             "name": "Penghu"
         },
@@ -20265,12 +20129,12 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
+        },
+        {
+            "code": "NWT",
+            "name": "Uus Taipei linn"
         },
         {
             "code": "ILA",
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnstoni atoll"
         },
@@ -21587,12 +21447,6 @@
             "name": "Yaracuy"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21644,7 +21498,7 @@
         },
         {
             "code": "CT",
-            "name": "Can Tho"
+            "name": "Cần Thơ"
         },
         {
             "code": "04",
@@ -21713,6 +21567,10 @@
         {
             "code": "14",
             "name": "Hòa Bình"
+        },
+        {
+            "code": "26",
+            "name": "Huế"
         },
         {
             "code": "66",
@@ -21819,10 +21677,6 @@
             "name": "Thanh Hóa"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
             "code": "46",
             "name": "Tiền Giang"
         },
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

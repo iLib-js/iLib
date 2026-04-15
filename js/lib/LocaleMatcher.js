@@ -1,7 +1,7 @@
 /*
  * LocaleMatcher.js - Locale matcher definition
  *
- * Copyright © 2013-2015, 2018-2019, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,22 +144,22 @@ LocaleMatcher.prototype = {
 
         if (typeof(this.info.likelyLocales[locale.getSpec()]) === 'undefined') {
             // try various partials before giving up
-            var partial = this.info.likelyLocales[new Locale(locale.language, undefined, locale.region).getSpec()];
+            var partial = this.info.likelyLocales[new Locale(locale.language, locale.region, undefined, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(locale.language, locale.script, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined, locale.script).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
             partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(undefined, locale.script, locale.region).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, locale.region, undefined, locale.script).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(undefined, undefined, locale.region).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, locale.region, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            partial = this.info.likelyLocales[new Locale(undefined, locale.script, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, undefined, undefined, locale.script).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
             return locale;
@@ -214,7 +214,7 @@ LocaleMatcher.prototype = {
         var fullLocale = this._getLikelyLocale(this.locale);
         var langLocale = this._getLikelyLocale(new Locale(fullLocale.language));
         return fullLocale.script === langLocale.script && !multiScriptLanguages[fullLocale.language] ?
-            new Locale(fullLocale.language, undefined, fullLocale.region) :
+            new Locale(fullLocale.language, fullLocale.region, undefined) :
             fullLocale;
     },
 

@@ -643,12 +643,6 @@
             "name": "Tierra del Fuego Province"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "WA",
             "name": "Western Australia"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "Zou (Benin)"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2570,7 +2546,7 @@
         },
         {
             "code": "BU",
-            "name": "Bas-Uélé"
+            "name": "Bas-Uele"
         },
         {
             "code": "EQ",
@@ -2586,7 +2562,7 @@
         },
         {
             "code": "HU",
-            "name": "Haut-Uélé"
+            "name": "Haut-Uele"
         },
         {
             "code": "IT",
@@ -2597,12 +2573,12 @@
             "name": "Kasaï"
         },
         {
-            "code": "KC",
-            "name": "Kasaï Central"
-        },
-        {
             "code": "KE",
             "name": "Kasaï Oriental"
+        },
+        {
+            "code": "KC",
+            "name": "Kasaï-Central"
         },
         {
             "code": "KW",
@@ -2622,19 +2598,19 @@
         },
         {
             "code": "KL",
-            "name": "Kwilu"
+            "name": "Kwilu (provins)"
         },
         {
             "code": "LO",
-            "name": "Lomami"
+            "name": "Lomami (provins)"
         },
         {
             "code": "LU",
-            "name": "Lualaba"
+            "name": "Lualaba (provins)"
         },
         {
             "code": "MN",
-            "name": "Mai-Ndombe"
+            "name": "Mai-Ndombe (provins)"
         },
         {
             "code": "MA",
@@ -2658,7 +2634,7 @@
         },
         {
             "code": "SA",
-            "name": "Sankuru"
+            "name": "Sankuru (provins)"
         },
         {
             "code": "SK",
@@ -2666,19 +2642,19 @@
         },
         {
             "code": "SU",
-            "name": "Sud-Ubangi"
+            "name": "Syd-Ubangi"
         },
         {
             "code": "TA",
-            "name": "Tanganyika"
+            "name": "Tanganyika (provins)"
         },
         {
             "code": "TO",
-            "name": "Tshopo"
+            "name": "Tshopo (provins)"
         },
         {
             "code": "TU",
-            "name": "Tshuapa"
+            "name": "Tshuapa (provins)"
         }
     ],
     "CF": [
@@ -2930,7 +2906,7 @@
         },
         {
             "code": "CM",
-            "name": "Comoé"
+            "name": "Comoé (distrikt)"
         },
         {
             "code": "10",
@@ -2962,7 +2938,7 @@
         },
         {
             "code": "LC",
-            "name": "Lacs²"
+            "name": "Lacs (distrikt)"
         },
         {
             "code": "01",
@@ -2970,7 +2946,7 @@
         },
         {
             "code": "LG",
-            "name": "Lagunes²"
+            "name": "Lagunes"
         },
         {
             "code": "12",
@@ -2978,7 +2954,7 @@
         },
         {
             "code": "MG",
-            "name": "Montagnes"
+            "name": "Montagnes (distrikt)"
         },
         {
             "code": "19",
@@ -3421,12 +3397,6 @@
             "name": "Vichada Department"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5048,7 +5012,7 @@
         },
         {
             "code": "698",
-            "name": "Rõuge"
+            "name": "Rõuge vald"
         },
         {
             "code": "708",
@@ -5481,11 +5445,11 @@
             "name": "Melilla"
         },
         {
-            "code": "MC",
+            "code": "MU",
             "name": "Murcia"
         },
         {
-            "code": "MU",
+            "code": "MC",
             "name": "Murcia"
         },
         {
@@ -6428,7 +6392,7 @@
         },
         {
             "code": "BGE",
-            "name": "Bridgend"
+            "name": "Bridgend County Borough"
         },
         {
             "code": "BNH",
@@ -6452,7 +6416,7 @@
         },
         {
             "code": "CAY",
-            "name": "Caerphilly"
+            "name": "Caerphilly County Borough"
         },
         {
             "code": "CLD",
@@ -6860,7 +6824,7 @@
         },
         {
             "code": "MTY",
-            "name": "Merthyr Tydfil"
+            "name": "Merthyr Tydfil County Borough"
         },
         {
             "code": "MRT",
@@ -7387,16 +7351,10 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
-            "name": "Ahafo"
+            "name": "Ahafo (region)"
         },
         {
             "code": "AH",
@@ -7404,7 +7362,7 @@
         },
         {
             "code": "BO",
-            "name": "Bono"
+            "name": "Bono (region)"
         },
         {
             "code": "BE",
@@ -7428,7 +7386,7 @@
         },
         {
             "code": "NE",
-            "name": "North East"
+            "name": "Nordøstregionen (Ghana)"
         },
         {
             "code": "NP",
@@ -7436,11 +7394,11 @@
         },
         {
             "code": "OT",
-            "name": "Oti"
+            "name": "Oti (region)"
         },
         {
             "code": "SV",
-            "name": "Savannah"
+            "name": "Savannah (region)"
         },
         {
             "code": "UE",
@@ -7460,7 +7418,7 @@
         },
         {
             "code": "WN",
-            "name": "Western North"
+            "name": "Western North (region)"
         }
     ],
     "GL": [
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou Prefecture"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10602,7 +10542,7 @@
         },
         {
             "code": "42",
-            "name": "Trans Nzoia"
+            "name": "Trans-Nzoia"
         },
         {
             "code": "43",
@@ -12368,7 +12308,7 @@
         },
         {
             "code": "113",
-            "name": "Valmieras Novads"
+            "name": "Valmieras novads"
         },
         {
             "code": "102",
@@ -12933,12 +12873,12 @@
             "name": "Port Hercules"
         },
         {
-            "code": "SR",
-            "name": "Saint Roman"
+            "code": "SD",
+            "name": "Ravin de Sainte-Dévote"
         },
         {
-            "code": "SD",
-            "name": "Sainte-Dévote Chapel"
+            "code": "SR",
+            "name": "Saint Roman"
         },
         {
             "code": "SP",
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangaj"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Zambezi Region"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15775,12 +15685,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16373,18 +16277,6 @@
             "name": "Województwo zachodniopomorskie"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19019,12 +18905,6 @@
             "name": "Usulután Department"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni District"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung County"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan City"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21587,12 +21447,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "TA",
             "name": "Ta’izz Governorate"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

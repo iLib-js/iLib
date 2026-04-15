@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "MO",
             "name": "Mono"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Valle del Cauca"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de Sao Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6344,7 +6308,7 @@
         },
         {
             "code": "ENG",
-            "name": "Anh"
+            "name": "Anh Quốc"
         },
         {
             "code": "ANT",
@@ -7259,10 +7223,6 @@
             "name": "Wakefield"
         },
         {
-            "code": "WLS",
-            "name": "Wales"
-        },
-        {
             "code": "WLL",
             "name": "Walsall"
         },
@@ -7329,6 +7289,10 @@
         {
             "code": "WRX",
             "name": "Wrexham"
+        },
+        {
+            "code": "WLS",
+            "name": "Xứ Wales"
         },
         {
             "code": "YOR",
@@ -7413,12 +7377,6 @@
         {
             "code": "TB",
             "name": "Tbilisi"
-        }
-    ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
         }
     ],
     "GH": [
@@ -7707,12 +7665,6 @@
         {
             "code": "PI",
             "name": "Tỉnh Pita"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8107,12 +8059,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8583,12 +8529,6 @@
             "name": "Zalaegerszeg"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8777,10 +8717,6 @@
             "name": "Connacht"
         },
         {
-            "code": "D",
-            "name": "Dublin"
-        },
-        {
             "code": "CW",
             "name": "Hạt Carlow"
         },
@@ -8799,6 +8735,10 @@
         {
             "code": "DL",
             "name": "Hạt Donegal"
+        },
+        {
+            "code": "D",
+            "name": "Hạt Dublin"
         },
         {
             "code": "G",
@@ -11063,11 +11003,11 @@
             "name": "Almaty"
         },
         {
-            "code": "75",
-            "name": "Almaty²"
+            "code": "ALM",
+            "name": "Almaty Region"
         },
         {
-            "code": "ALM",
+            "code": "75",
             "name": "Almaty²"
         },
         {
@@ -13229,12 +13169,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13953,24 +13887,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14923,12 +14839,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15361,6 +15271,10 @@
     ],
     "NP": [
         {
+            "code": "P3",
+            "name": "Bagmati"
+        },
+        {
             "code": "4",
             "name": "Đông Nepal"
         },
@@ -15391,10 +15305,6 @@
         {
             "code": "P2",
             "name": "Madhesh"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "P7",
@@ -15801,12 +15711,6 @@
         {
             "code": "AYA",
             "name": "Vùng Ayacucho"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16401,18 +16305,6 @@
             "name": "Zachodniopomorskie"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "GZA",
@@ -16733,12 +16625,6 @@
         {
             "code": "MS",
             "name": "Madinat ash Shamal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19047,12 +18933,6 @@
             "name": "Tỉnh La Paz"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19127,12 +19007,6 @@
         {
             "code": "SH",
             "name": "Quận Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19227,12 +19101,6 @@
         {
             "code": "ND",
             "name": "N’Djamena"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20289,10 +20157,6 @@
             "name": "Nghi Lan"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "NWT",
             "name": "Tân Bắc"
         },
@@ -20352,7 +20216,7 @@
         },
         {
             "code": "11",
-            "name": "Zanzibar Central/South"
+            "name": "Zanzibar South and Central (vùng)"
         },
         {
             "code": "12",
@@ -21105,10 +20969,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Đảo Johnston"
         },
@@ -21615,12 +21475,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21913,10 +21767,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22053,12 +21903,6 @@
         {
             "code": "TA",
             "name": "Tỉnh Ta’izz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

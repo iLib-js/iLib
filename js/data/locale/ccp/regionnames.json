@@ -643,12 +643,6 @@
             "name": "𑄥𑄣𑄴𑄑"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "𑄞𑄨𑄇𑄴𑄑𑄮𑄢𑄨𑄠"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "LI",
             "name": "𑄣𑄨𑄑𑄳𑄦𑄧𑄢𑄣𑄴"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3557,12 +3533,6 @@
             "name": "𑄦𑄭𑄪𑄣"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3755,12 +3725,6 @@
         {
             "code": "S",
             "name": "𑄥𑄮𑄑𑄞𑄬𑄚𑄴𑄑𑄮 𑄃𑄨𑄌𑄴𑄣𑄳𑄠𑄚𑄳𑄓𑄴𑄥𑄴"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6759,20 +6723,8 @@
             "name": "Bournemouth, Christchurch and Poole"
         },
         {
-            "code": "ENG",
-            "name": "England"
-        },
-        {
             "code": "NNH",
             "name": "North Northamptonshire"
-        },
-        {
-            "code": "SCT",
-            "name": "Scotland"
-        },
-        {
-            "code": "WLS",
-            "name": "Wales"
         },
         {
             "code": "WNH",
@@ -6859,6 +6811,10 @@
             "name": "𑄃𑄨𑄠𑄧𑄢𑄴𑄇𑄴"
         },
         {
+            "code": "ENG",
+            "name": "𑄃𑄨𑄁𑄣𑄳𑄠𑄚𑄳𑄓𑄴"
+        },
+        {
             "code": "EAW",
             "name": "𑄃𑄨𑄁𑄣𑄳𑄠𑄚𑄳𑄓𑄴 𑄃𑄳𑄃 𑄃𑄮𑄠𑄬𑄣𑄴"
         },
@@ -6909,6 +6865,10 @@
         {
             "code": "WSM",
             "name": "𑄃𑄮𑄠𑄬𑄌𑄴𑄟𑄨𑄚𑄴𑄌𑄳𑄑𑄢𑄴"
+        },
+        {
+            "code": "WLS",
+            "name": "𑄃𑄮𑄠𑄬𑄣𑄴"
         },
         {
             "code": "OLD",
@@ -7085,6 +7045,10 @@
         {
             "code": "SCB",
             "name": "𑄌𑄳𑄇𑄧𑄑𑄨𑄌𑄴 𑄝𑄧𑄢𑄴𑄓𑄢𑄴"
+        },
+        {
+            "code": "SCT",
+            "name": "𑄌𑄳𑄇𑄧𑄖𑄴𑄣𑄳𑄠𑄚𑄳𑄓𑄴"
         },
         {
             "code": "STS",
@@ -7843,12 +7807,6 @@
             "name": "𑄥𑄳𑄠𑄟𑄴𑄉𑄳𑄢𑄬𑄣𑄮-𑄎𑄬𑄟𑄮 𑄞𑄚𑄬𑄑𑄨"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -8135,12 +8093,6 @@
         {
             "code": "SI",
             "name": "𑄥𑄨𑄉𑄭𑄪𑄢𑄨"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8625,12 +8577,6 @@
             "name": "𑄦𑄨𑄅𑄪𑄦𑄨𑄅𑄪𑄑𑄬𑄋𑄴𑄉𑄮"
         }
     ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
-        }
-    ],
     "GW": [
         {
             "code": "OI",
@@ -9097,12 +9043,6 @@
         {
             "code": "HV",
             "name": "𑄦𑄮𑄖𑄴𑄟𑄬𑄎𑄮𑄞𑄥𑄢𑄴𑄦𑄬𑄣𑄨"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13769,12 +13709,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -14767,24 +14701,6 @@
             "name": "𑄃𑄢𑄴𑄈𑄚𑄴𑄉𑄭"
         }
     ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
-        }
-    ],
     "MR": [
         {
             "code": "07",
@@ -15739,12 +15655,6 @@
             "name": "𑄦𑄢𑄴𑄓𑄛𑄴"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -16647,12 +16557,6 @@
             "name": "𑄦𑄪𑄠𑄚𑄴𑄇𑄞𑄬𑄣𑄨𑄇"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "CPM",
@@ -17309,18 +17213,6 @@
             "name": "𑄥𑄭𑄣𑄬𑄥𑄨𑄠"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "NGZ",
@@ -17641,12 +17533,6 @@
         {
             "code": "MS",
             "name": "𑄟𑄓𑄨𑄚𑄖𑄴 𑄃𑄌𑄴 𑄥𑄳𑄠𑄟𑄧𑄣𑄴"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19959,12 +19845,6 @@
             "name": "𑄥𑄮𑄚𑄴𑄥𑄮𑄚𑄬𑄖𑄴"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "SU",
@@ -20039,12 +19919,6 @@
         {
             "code": "HH",
             "name": "𑄦𑄮𑄦𑄮"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -20139,12 +20013,6 @@
         {
             "code": "HL",
             "name": "𑄦𑄖𑄴𑄎𑄬𑄢𑄴-𑄣𑄟𑄨𑄌𑄴"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -21141,10 +21009,6 @@
     ],
     "TW": [
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "YUN",
             "name": "𑄃𑄨𑄅𑄪𑄚𑄴𑄣𑄨𑄚𑄴"
         },
@@ -22045,10 +21909,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "𑄎𑄧𑄚𑄴𑄑𑄧𑄚𑄴 𑄃𑄑𑄮𑄣𑄴"
         },
@@ -22579,12 +22439,6 @@
             "name": "𑄥𑄇𑄳𑄢𑄬"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -22867,10 +22721,6 @@
     ],
     "WF": [
         {
-            "code": "",
-            "name": "Wallis & Futuna"
-        },
-        {
             "code": "AL",
             "name": "𑄃𑄣𑄮"
         },
@@ -23017,12 +22867,6 @@
         {
             "code": "HD",
             "name": "𑄦𑄓𑄳𑄢𑄭𑄟𑄧𑄅𑄪𑄖𑄴"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

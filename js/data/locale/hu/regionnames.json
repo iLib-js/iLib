@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada megye"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5622,7 +5586,7 @@
     "FI": [
         {
             "code": "02",
-            "name": "South Karelia"
+            "name": "Dél-Karjala"
         },
         {
             "code": "03",
@@ -7387,12 +7351,6 @@
             "name": "Tbiliszi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa megye"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9749,6 +9689,10 @@
             "name": "Cuneo megye"
         },
         {
+            "code": "SU",
+            "name": "Dél-Szardínia megye"
+        },
+        {
             "code": "45",
             "name": "Emilia-Romagna"
         },
@@ -10027,10 +9971,6 @@
         {
             "code": "SO",
             "name": "Sondrio megye"
-        },
-        {
-            "code": "SU",
-            "name": "Sud Sardegna"
         },
         {
             "code": "SR",
@@ -10686,7 +10626,7 @@
         },
         {
             "code": "7",
-            "name": "Kampot"
+            "name": "Kampot tartomány"
         },
         {
             "code": "8",
@@ -11128,7 +11068,7 @@
         },
         {
             "code": "61",
-            "name": "Türkistan oblysy"
+            "name": "Türkisztán"
         },
         {
             "code": "62",
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Észak-Hangáj tartomány"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15316,7 +15226,7 @@
         },
         {
             "code": "46",
-            "name": "Vestland"
+            "name": "Vestland megye"
         },
         {
             "code": "50",
@@ -15769,12 +15679,6 @@
         {
             "code": "UCA",
             "name": "Ucayali megye"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16369,18 +16273,6 @@
             "name": "Nyugat-Pomerániai vajdaság"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -17782,11 +17668,11 @@
         },
         {
             "code": "005",
-            "name": "Borovnica"
+            "name": "Borovnica község"
         },
         {
             "code": "006",
-            "name": "Bovec"
+            "name": "Bovec község"
         },
         {
             "code": "007",
@@ -17818,7 +17704,7 @@
         },
         {
             "code": "014",
-            "name": "Cerkno"
+            "name": "Cerkno község"
         },
         {
             "code": "015",
@@ -17838,7 +17724,7 @@
         },
         {
             "code": "019",
-            "name": "Divača"
+            "name": "Divača község"
         },
         {
             "code": "020",
@@ -17846,15 +17732,15 @@
         },
         {
             "code": "021",
-            "name": "Dobrova–Polhov Gradec"
+            "name": "Dobrova–Polhov Gradec község"
         },
         {
             "code": "022",
-            "name": "Dol pri Ljubljani"
+            "name": "Dol pri Ljubljani község"
         },
         {
             "code": "023",
-            "name": "Domžale"
+            "name": "Domžale község"
         },
         {
             "code": "024",
@@ -17862,7 +17748,7 @@
         },
         {
             "code": "025",
-            "name": "Dravograd"
+            "name": "Dravograd község"
         },
         {
             "code": "026",
@@ -17870,11 +17756,11 @@
         },
         {
             "code": "027",
-            "name": "Gorenja Vas–Poljane"
+            "name": "Gorenja Vas–Poljane község"
         },
         {
             "code": "028",
-            "name": "Gorišnica"
+            "name": "Gorišnica község"
         },
         {
             "code": "029",
@@ -17882,7 +17768,7 @@
         },
         {
             "code": "030",
-            "name": "Gornji Grad"
+            "name": "Gornji Grad község"
         },
         {
             "code": "031",
@@ -17898,15 +17784,15 @@
         },
         {
             "code": "034",
-            "name": "Hrastnik"
+            "name": "Hrastnik község"
         },
         {
             "code": "035",
-            "name": "Hrpelje–Kozina"
+            "name": "Hrpelje-Kozina község"
         },
         {
             "code": "036",
-            "name": "Idrija"
+            "name": "Idrija község"
         },
         {
             "code": "037",
@@ -17914,7 +17800,7 @@
         },
         {
             "code": "038",
-            "name": "Ilirska Bistrica"
+            "name": "Ilirska Bistrica község"
         },
         {
             "code": "039",
@@ -17934,11 +17820,11 @@
         },
         {
             "code": "043",
-            "name": "Kamnik"
+            "name": "Kamnik község"
         },
         {
             "code": "044",
-            "name": "Kanal"
+            "name": "Kanal ob Soči község"
         },
         {
             "code": "045",
@@ -17966,7 +17852,7 @@
         },
         {
             "code": "051",
-            "name": "Kozje"
+            "name": "Kozje község"
         },
         {
             "code": "052",
@@ -17978,11 +17864,11 @@
         },
         {
             "code": "054",
-            "name": "Krško"
+            "name": "Krško városi község"
         },
         {
             "code": "055",
-            "name": "Kungota"
+            "name": "Kungota község"
         },
         {
             "code": "056",
@@ -17994,7 +17880,7 @@
         },
         {
             "code": "058",
-            "name": "Lenart"
+            "name": "Lenart község"
         },
         {
             "code": "059",
@@ -18002,7 +17888,7 @@
         },
         {
             "code": "060",
-            "name": "Litija"
+            "name": "Litija község"
         },
         {
             "code": "061",
@@ -18010,7 +17896,7 @@
         },
         {
             "code": "062",
-            "name": "Ljubno"
+            "name": "Ljubno község"
         },
         {
             "code": "063",
@@ -18022,19 +17908,19 @@
         },
         {
             "code": "065",
-            "name": "Loška Dolina"
+            "name": "Loška Dolina község"
         },
         {
             "code": "066",
-            "name": "Loški Potok"
+            "name": "Loški Potok község"
         },
         {
             "code": "067",
-            "name": "Luče"
+            "name": "Luče község"
         },
         {
             "code": "068",
-            "name": "Lukovica"
+            "name": "Lukovica község"
         },
         {
             "code": "069",
@@ -18050,27 +17936,27 @@
         },
         {
             "code": "072",
-            "name": "Mengeš"
+            "name": "Mengeš község"
         },
         {
             "code": "073",
-            "name": "Metlika"
+            "name": "Metlika község"
         },
         {
             "code": "074",
-            "name": "Mežica"
+            "name": "Mežica község"
         },
         {
             "code": "075",
-            "name": "Miren–Kostanjevica"
+            "name": "Miren-Kostanjevica község"
         },
         {
             "code": "076",
-            "name": "Mislinja"
+            "name": "Mislinja község"
         },
         {
             "code": "077",
-            "name": "Moravče"
+            "name": "Moravče község"
         },
         {
             "code": "078",
@@ -18078,7 +17964,7 @@
         },
         {
             "code": "079",
-            "name": "Mozirje"
+            "name": "Mozirje község"
         },
         {
             "code": "080",
@@ -18086,15 +17972,15 @@
         },
         {
             "code": "081",
-            "name": "Muta"
+            "name": "Muta község"
         },
         {
             "code": "082",
-            "name": "Naklo"
+            "name": "Naklo község"
         },
         {
             "code": "083",
-            "name": "Nazarje"
+            "name": "Nazarje község"
         },
         {
             "code": "084",
@@ -18118,7 +18004,7 @@
         },
         {
             "code": "089",
-            "name": "Pesnica"
+            "name": "Pesnica község"
         },
         {
             "code": "090",
@@ -18126,23 +18012,23 @@
         },
         {
             "code": "091",
-            "name": "Pivka"
+            "name": "Pivka község"
         },
         {
             "code": "092",
-            "name": "Podčetrtek"
+            "name": "Podčetrtek község"
         },
         {
             "code": "093",
-            "name": "Podvelka"
+            "name": "Podvelka község"
         },
         {
             "code": "094",
-            "name": "Postojna"
+            "name": "Postojna község"
         },
         {
             "code": "095",
-            "name": "Preddvor"
+            "name": "Preddvor község"
         },
         {
             "code": "096",
@@ -18158,7 +18044,7 @@
         },
         {
             "code": "099",
-            "name": "Radeče"
+            "name": "Radeče község"
         },
         {
             "code": "100",
@@ -18166,11 +18052,11 @@
         },
         {
             "code": "101",
-            "name": "Radlje ob Dravi"
+            "name": "Radlje ob Dravi község"
         },
         {
             "code": "102",
-            "name": "Radovljica"
+            "name": "Radovljica község"
         },
         {
             "code": "103",
@@ -18186,11 +18072,11 @@
         },
         {
             "code": "106",
-            "name": "Rogaška Slatina"
+            "name": "Rogaška Slatina község"
         },
         {
             "code": "107",
-            "name": "Rogatec"
+            "name": "Rogatec község"
         },
         {
             "code": "108",
@@ -18202,15 +18088,15 @@
         },
         {
             "code": "110",
-            "name": "Sevnica"
+            "name": "Sevnica község"
         },
         {
             "code": "111",
-            "name": "Sežana"
+            "name": "Sežana község"
         },
         {
             "code": "112",
-            "name": "Slovenj Gradec"
+            "name": "Slovenj Gradec városi község"
         },
         {
             "code": "113",
@@ -18230,15 +18116,15 @@
         },
         {
             "code": "117",
-            "name": "Šenčur"
+            "name": "Šenčur község"
         },
         {
             "code": "118",
-            "name": "Šentilj"
+            "name": "Šentilj község"
         },
         {
             "code": "119",
-            "name": "Šentjernej"
+            "name": "Šentjernej község"
         },
         {
             "code": "120",
@@ -18246,19 +18132,19 @@
         },
         {
             "code": "121",
-            "name": "Škocjan"
+            "name": "Škocjan község"
         },
         {
             "code": "122",
-            "name": "Škofja Loka"
+            "name": "Škofja Loka község"
         },
         {
             "code": "123",
-            "name": "Škofljica"
+            "name": "Škofljica község"
         },
         {
             "code": "124",
-            "name": "Šmarje pri Jelšah"
+            "name": "Šmarje pri Jelšah község"
         },
         {
             "code": "125",
@@ -18266,11 +18152,11 @@
         },
         {
             "code": "126",
-            "name": "Šoštanj"
+            "name": "Šoštanj község"
         },
         {
             "code": "127",
-            "name": "Štore"
+            "name": "Štore község"
         },
         {
             "code": "128",
@@ -18286,7 +18172,7 @@
         },
         {
             "code": "131",
-            "name": "Tržič"
+            "name": "Tržič község"
         },
         {
             "code": "132",
@@ -18294,11 +18180,11 @@
         },
         {
             "code": "133",
-            "name": "Velenje"
+            "name": "Velenje városi község"
         },
         {
             "code": "134",
-            "name": "Velike Lašče"
+            "name": "Velike Lašče község"
         },
         {
             "code": "135",
@@ -18306,15 +18192,15 @@
         },
         {
             "code": "136",
-            "name": "Vipava"
+            "name": "Vipava község"
         },
         {
             "code": "137",
-            "name": "Vitanje"
+            "name": "Vitanje község"
         },
         {
             "code": "138",
-            "name": "Vodice"
+            "name": "Vodice község"
         },
         {
             "code": "139",
@@ -18326,7 +18212,7 @@
         },
         {
             "code": "141",
-            "name": "Vuzenica"
+            "name": "Vuzenica község"
         },
         {
             "code": "142",
@@ -18334,7 +18220,7 @@
         },
         {
             "code": "143",
-            "name": "Zavrč"
+            "name": "Zavrč község"
         },
         {
             "code": "144",
@@ -18342,11 +18228,11 @@
         },
         {
             "code": "146",
-            "name": "Železniki"
+            "name": "Železniki község"
         },
         {
             "code": "147",
-            "name": "Žiri"
+            "name": "Žiri község"
         },
         {
             "code": "148",
@@ -18354,7 +18240,7 @@
         },
         {
             "code": "149",
-            "name": "Bistrica ob Sotli"
+            "name": "Bistrica ob Sotli község"
         },
         {
             "code": "150",
@@ -18362,7 +18248,7 @@
         },
         {
             "code": "151",
-            "name": "Braslovče"
+            "name": "Braslovče község"
         },
         {
             "code": "152",
@@ -18370,7 +18256,7 @@
         },
         {
             "code": "153",
-            "name": "Cerkvenjak"
+            "name": "Cerkvenjak község"
         },
         {
             "code": "154",
@@ -18378,7 +18264,7 @@
         },
         {
             "code": "155",
-            "name": "Dobrna"
+            "name": "Dobrna község"
         },
         {
             "code": "156",
@@ -18410,11 +18296,11 @@
         },
         {
             "code": "163",
-            "name": "Jezersko"
+            "name": "Jezersko község"
         },
         {
             "code": "164",
-            "name": "Komenda"
+            "name": "Komenda község"
         },
         {
             "code": "165",
@@ -18422,7 +18308,7 @@
         },
         {
             "code": "166",
-            "name": "Križevci"
+            "name": "Križevci község"
         },
         {
             "code": "167",
@@ -18434,7 +18320,7 @@
         },
         {
             "code": "169",
-            "name": "Miklavž na Dravskem Polju"
+            "name": "Miklavž na Dravskem polju község"
         },
         {
             "code": "170",
@@ -18446,19 +18332,19 @@
         },
         {
             "code": "172",
-            "name": "Podlehnik"
+            "name": "Podlehnik község"
         },
         {
             "code": "173",
-            "name": "Polzela"
+            "name": "Polzela község"
         },
         {
             "code": "174",
-            "name": "Prebold"
+            "name": "Prebold község"
         },
         {
             "code": "175",
-            "name": "Prevalje"
+            "name": "Prevalje község"
         },
         {
             "code": "176",
@@ -18466,15 +18352,15 @@
         },
         {
             "code": "177",
-            "name": "Ribnica na Pohorju"
+            "name": "Ribnica na Pohorju község"
         },
         {
             "code": "178",
-            "name": "Selnica ob Dravi"
+            "name": "Selnica ob Dravi község"
         },
         {
             "code": "179",
-            "name": "Sodražica"
+            "name": "Sodražica község"
         },
         {
             "code": "180",
@@ -18482,7 +18368,7 @@
         },
         {
             "code": "181",
-            "name": "Sveta Ana"
+            "name": "Sveta Ana község"
         },
         {
             "code": "182",
@@ -18494,15 +18380,15 @@
         },
         {
             "code": "184",
-            "name": "Tabor"
+            "name": "Tabor község"
         },
         {
             "code": "185",
-            "name": "Trnovska Vas"
+            "name": "Trnovska vas község"
         },
         {
             "code": "186",
-            "name": "Trzin"
+            "name": "Trzin község"
         },
         {
             "code": "187",
@@ -18514,19 +18400,19 @@
         },
         {
             "code": "189",
-            "name": "Vransko"
+            "name": "Vransko község"
         },
         {
             "code": "190",
-            "name": "Žalec"
+            "name": "Žalec község"
         },
         {
             "code": "191",
-            "name": "Žetale"
+            "name": "Žetale község"
         },
         {
             "code": "192",
-            "name": "Žirovnica"
+            "name": "Žirovnica község"
         },
         {
             "code": "193",
@@ -18534,15 +18420,15 @@
         },
         {
             "code": "194",
-            "name": "Šmartno pri Litiji"
+            "name": "Šmartno pri Litiji község"
         },
         {
             "code": "195",
-            "name": "Apače"
+            "name": "Apače község"
         },
         {
             "code": "196",
-            "name": "Cirkulane"
+            "name": "Cirkulane község"
         },
         {
             "code": "197",
@@ -18550,11 +18436,11 @@
         },
         {
             "code": "198",
-            "name": "Makole"
+            "name": "Makole község"
         },
         {
             "code": "199",
-            "name": "Mokronog–Trebelno"
+            "name": "Mokronog-Trebelno község"
         },
         {
             "code": "200",
@@ -18578,23 +18464,23 @@
         },
         {
             "code": "205",
-            "name": "Sveti Tomaž"
+            "name": "Sveti Tomaž község"
         },
         {
             "code": "206",
-            "name": "Šmarješke Toplice"
+            "name": "Šmarješke Toplice község"
         },
         {
             "code": "207",
-            "name": "Gorje"
+            "name": "Gorje község"
         },
         {
             "code": "208",
-            "name": "Log–Dragomer"
+            "name": "Log-Dragomer község"
         },
         {
             "code": "209",
-            "name": "Rečica ob Savinji"
+            "name": "Rečica ob Savinji község"
         },
         {
             "code": "210",
@@ -18602,11 +18488,11 @@
         },
         {
             "code": "211",
-            "name": "Šentrupert"
+            "name": "Šentrupert község"
         },
         {
             "code": "212",
-            "name": "Mirna"
+            "name": "Mirna község"
         },
         {
             "code": "213",
@@ -19015,12 +18901,6 @@
             "name": "Usulután megye"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
@@ -19043,6 +18923,10 @@
             "name": "Daraa"
         },
         {
+            "code": "QU",
+            "name": "el-Kunítra kormányzóság"
+        },
+        {
             "code": "HM",
             "name": "Hamá kormányzóság"
         },
@@ -19061,10 +18945,6 @@
         {
             "code": "LA",
             "name": "Latakia kormányzóság"
-        },
-        {
-            "code": "QU",
-            "name": "Quneitra"
         },
         {
             "code": "RA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -19431,12 +19299,12 @@
             "name": "Prachuap Khiri Khan"
         },
         {
-            "code": "85",
-            "name": "Ranong"
+            "code": "70",
+            "name": "Racsaburi"
         },
         {
-            "code": "70",
-            "name": "Ratchaburi"
+            "code": "85",
+            "name": "Ranong"
         },
         {
             "code": "21",
@@ -20247,10 +20115,6 @@
         {
             "code": "TTT",
             "name": "Taitung"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         },
         {
             "code": "TXG",
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston-atoll"
         },
@@ -21583,12 +21443,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "TA",
             "name": "Taizz kormányzóság"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

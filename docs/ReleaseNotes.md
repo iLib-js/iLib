@@ -6,9 +6,12 @@ Build 034
 Published as version 14.22.0
 
 New Features:
-* Add the `assembleJson.mjs` file to enable generating the final merged `[locale].json` files by using the `ilib-assemble tool`.
+* Update to CLDR v48.2 data
+* Update to Unicode Character Database (UCD) version 17.0.0
+* Add the `assemble.mjs` file to enable generating the final merged `[locale].json` files by using the `ilib-assemble tool`.
 
 Bug Fixes:
+* Fixes a bug in `LocaleMatcher` where locale parsing information is passed incorrectly.
 
 
 Build 033
