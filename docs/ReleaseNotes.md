@@ -10,6 +10,8 @@ New Features:
 * Update to Unicode Character Database (UCD) version 17.0.0
 
 Bug Fixes:
+* Fixes a bug in `LocaleMatcher` where locale parsing information is passed incorrectly.
+
 
 Build 033
 -------

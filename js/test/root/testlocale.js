@@ -1,7 +1,7 @@
 /*
  * testlocale.js - test the locale object
  *
- * Copyright © 2012-2015, 2017-2018, 2020-2021 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2020-2021, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -392,6 +392,43 @@ module.exports.testlocale = {
         test.ok(typeof(loc.getVariant()) === "undefined");
         test.done();
     },
+    testLocaleConstructorPartial2: function(test) {
+        test.expect(5);
+
+        var loc = new Locale("en", "US", undefined, "Latn");
+        test.ok(loc !== null);
+
+        test.equal(loc.getLanguage(), "en");
+        test.equal(loc.getRegion(), "US");
+        test.equal(loc.getVariant(), undefined);
+        test.equal(loc.getScript(), "Latn");
+        test.done();
+    },
+
+    testLocaleConstructorPartial_incorrectParams: function(test) {
+        test.expect(4);
+
+        var loc = new Locale("en", "Latn", "US");
+        test.ok(loc !== null);
+
+        test.equal(loc.getLanguage(), "en");
+        test.equal(loc.getRegion(), "LATN");
+        test.equal(loc.getVariant(), "US");
+        test.done();
+    },
+
+    testLocaleConstructorPartial_incorrectParams2: function(test) {
+        test.expect(4);
+
+        var loc = new Locale("en", undefined, "US");
+        test.ok(loc !== null);
+
+        test.equal(loc.getLanguage(), "en");
+        test.ok(typeof(loc.getRegion()) === "undefined");
+        test.equal(loc.getVariant(), "US");
+        test.done();
+    },
+
     testLocaleConstructorSpecWithUnderscores1: function(test) {
         test.expect(5);
         // some locales like those in java properties file names
