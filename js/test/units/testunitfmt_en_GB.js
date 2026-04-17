@@ -494,7 +494,7 @@ module.exports.testunitfmt_en_GB = {
             length: "short",
         });
         var str = uf.format(m1);
-        test.equal(str, "1 pt(i)");
+        test.equal(str, "1 pt Imp.");
         test.done();
     },
     testUnitFormatWithUsageDrinkVolume_Long_en_GB: function(test) {
@@ -510,7 +510,7 @@ module.exports.testunitfmt_en_GB = {
             length: "long",
         });
         var str = uf.format(m1);
-        test.equal(str, "1 imperial pint");
+        test.equal(str, "1 pint Imperial");
         test.done();
     },
     testUnitFormatWithUsageGasVolume_short_en_GB: function(test) {
