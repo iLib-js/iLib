@@ -1,7 +1,7 @@
 /*
  * testunitfmt_en_GB.js - test the unitfmt for en-GB
  *
- * Copyright © 2021 JEDLSoft
+ * Copyright © 2021, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
