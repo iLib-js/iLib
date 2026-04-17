@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_pa_IN.js - test the date range formatter object in Punjabi/India
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2017, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

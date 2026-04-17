@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_mk_MK.js - test the date range formatter object in Macedonian/Macedonia
  *
- * Copyright © 2012-2017,2021, 2024 JEDLSoft
+ * Copyright © 2012-2017,2021, 2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

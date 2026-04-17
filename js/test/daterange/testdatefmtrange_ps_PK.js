@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ps_PK.js - test the date range formatter object Pashto-Pakistan
  *
- * Copyright © 2022, 2024 JEDLSoft
+ * Copyright © 2022, 2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

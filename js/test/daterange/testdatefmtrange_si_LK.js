@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_si_LK.js - test the date range formatter object in Sinhala/Sri Lanka
  *
- * Copyright © 2017,2023 JEDLSoft
+ * Copyright © 2017, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
