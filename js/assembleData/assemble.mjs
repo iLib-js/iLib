@@ -135,6 +135,90 @@ function extractData(jsFiles, fileCache) {
 }
 
 /**
+ * Assembles locale JSON data in a hierarchical structure: instead of one merged
+ * file per full locale, each sublocale level (root, language, und/region,
+ * language/region) is written as its own file containing only that level's delta.
+ *
+ * @param {string[]} ilibFiles - List of ilib JS filenames to analyze
+ * @param {object} options - ilib-assemble options object
+ * @param {object} options.opt - CLI/config options
+ * @param {string[]} [options.opt.locales] - Target locale list (BCP-47)
+ * @param {string} [options.opt.customLocalePath] - Custom locale data directory path
+ * @returns {object} Data map keyed by sublocale path (e.g. "root", "en", "en/US")
+ */
+export function assembleHierarchical(ilibFiles, options) {
+    const locales = options.opt?.locales || [];
+    const localeDataPath = path.join(process.cwd(), "js/data/locale");
+    const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
+        ? options.opt.customLocalePath
+        : null;
+
+    const dataNames = readJSFiles(ilibFiles);
+    const regularNames = dataNames.filter(name => name !== "zoneinfo");
+
+    const result = readJSONDataHierarchical(regularNames, locales, localeDataPath);
+    if (customLocaleDataPath) {
+        const customResult = readJSONDataHierarchical(regularNames, locales, customLocaleDataPath);
+        for (const key in customResult) {
+            result[key] = JSUtils.merge(result[key] || {}, customResult[key], true);
+        }
+    }
+
+    if (dataNames.includes("zoneinfo")) {
+        const zoneinfoData = assembleZoneinfoData(path.join(localeDataPath, "zoneinfo"), readFile);
+        if (!result["root"]) result["root"] = {};
+        result["root"]["ilib.data.zoneinfo"] = zoneinfoData;
+    }
+
+    return result;
+}
+
+/**
+ * Reads JSON locale data files for each sublocale level independently (no merging).
+ * Each file's content is stored under its directory-based sublocale key.
+ *
+ * @param {string[]} dataNames - List of data names to load
+ * @param {string[]} locales - Target locale list (BCP-47)
+ * @param {string} dataPath - Directory path where JSON data files are located
+ * @returns {object} Data map keyed by sublocale path ("root", "en", "en/US", etc.)
+ */
+function readJSONDataHierarchical(dataNames, locales, dataPath) {
+    const sublocaleData = {};
+    const processedFiles = new Set();
+
+    locales.forEach(locale => {
+        dataNames.forEach(name => {
+            const locFiles = Utils.getLocFiles(locale, name + ".json");
+            locFiles.forEach(file => {
+                const fullPath = path.join(dataPath, file);
+                if (processedFiles.has(fullPath)) return;
+                processedFiles.add(fullPath);
+
+                const dir = path.dirname(file);
+                const sublocaleKey = dir === "." ? "root" : dir;
+                const dataKey = "ilib.data." + name;
+
+                if (!sublocaleData[sublocaleKey]) sublocaleData[sublocaleKey] = {};
+                if (!sublocaleData[sublocaleKey][dataKey]) sublocaleData[sublocaleKey][dataKey] = {};
+
+                if (existsSync(fullPath)) {
+                    const fileContent = readFile(fullPath);
+                    if (fileContent) {
+                        sublocaleData[sublocaleKey][dataKey] = JSUtils.merge(
+                            sublocaleData[sublocaleKey][dataKey],
+                            JSON.parse(fileContent),
+                            true
+                        );
+                    }
+                }
+            });
+        });
+    });
+
+    return sublocaleData;
+}
+
+/**
  * Reads and merges JSON locale data files for each locale and data name.
  * Sublocale files are merged in order from least to most specific.
  *
