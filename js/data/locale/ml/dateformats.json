@@ -160,22 +160,22 @@
                 "ah": "h a",
                 "ahm": "h:mm a",
                 "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss az h:mm:ss a",
-                "ahmz": "h:mm az h:mm:ss a",
-                "hmsz": "h:mm:ssz h:mm:ss a",
-                "hmz": "h:mmz h:mm:ss a"
+                "ahmsz": "z h:mm:ss a",
+                "ahmz": "z h:mm a",
+                "hmsz": "z h:mm:ss",
+                "hmz": "z h:mm"
             },
             "24": {
                 "ah": "HH",
                 "ahm": "HH:mm",
                 "ahms": "HH:mm:ss",
-                "ahmsz": "HH:mm:ssz h:mm:ss a",
-                "ahmz": "HH:mmz h:mm:ss a",
+                "ahmsz": "z HH:mm:ss",
+                "ahmz": "z HH:mm",
                 "h": "HH",
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
-                "hmsz": "HH:mm:ssz h:mm:ss a",
-                "hmz": "HH:mmz h:mm:ss a"
+                "hmsz": "z HH:mm:ss",
+                "hmz": "z HH:mm"
             }
         }
     }

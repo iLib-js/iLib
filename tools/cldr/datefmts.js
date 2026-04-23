@@ -202,6 +202,8 @@ function timeOrder(fmt) {
         return "haz";
     } else if (stripped.match(/z.*H/) || stripped.match(/z.*[aB].*[hK]/)) {
         return "zah";
+    } else if (stripped.match(/z.*[hK].*[aB]/)) {
+        return "zha";
     } else if (stripped.match(/[Ba].*[hK]/)) {
         return "ahz";
     } else if (stripped.match(/[hK].*[aB]/)) {
@@ -847,6 +849,7 @@ module.exports = {
                             break;
 
                         case 'zah':
+                        case 'zha':
                             begin = scanForChars(longtime, "H");
 
                             zTemplate = longtime.substring(0, begin) + "{time}";
@@ -863,6 +866,7 @@ module.exports = {
 
                     switch (order) {
                         case 'haz':
+                        case 'zha':
                             end = scanForChars(available["h"], "aB");
                             i = end;
                             while (((available["h"].charAt(i) !== ' ') && (available["h"].charAt(i) !== ' ')) && i > 0) {
@@ -954,6 +958,22 @@ module.exports = {
                             i = i < begin ? end : i;
                             zTemplate = "{time}" + longtime.substring(i);
                             break;
+                        case 'zha':
+                            begin = scanForLastChars(shorttime, "m");
+                            end = scanForChars(shorttime, "a");
+                            i = end;
+                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== ' ' && i > begin) {
+                                i--;
+                            }
+                            i = i < begin ? end : i;
+                            aTemplate = "{time}" + shorttime.substring(i);
+
+                            calendar.time["12"]["hm"] = rtlify(shorttime.substring(0, i).trim());
+
+                            begin = scanForChars(longtime, "h");
+                            zTemplate = longtime.substring(0, begin) + "{time}";
+                            break;
+
                     }
 
                     begin = scanForChars(mediumtime, "m");
@@ -971,6 +991,7 @@ module.exports = {
                             break;
 
                         case 'haz':
+                        case 'zha':
                             begin = scanForChars(mediumtime, "a");
                             calendar.time["12"]["hms"] = rtlify(mediumtime.substring(0, begin).trim());
                             break;
