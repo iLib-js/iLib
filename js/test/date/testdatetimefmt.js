@@ -2359,7 +2359,7 @@ module.exports.testdatetimeformat = {
         test.equal(result2, "d/M/yy, E, h:mm a");
 
         result1 = new DateFmt({locale:"ml-IN", type:"time", time:"ahmsz", length:"full", useNative:false, timezone:"local"}).template;
-        test.equal(result1, "h:mm:ss az h:mm:ss a");
+        test.equal(result1, "z h:mm:ss a");
 
         test.done();
     },

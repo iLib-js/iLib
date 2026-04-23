@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+if (typeof(JulianDate) === "undefined") {
+    var JulianDate = require("../../lib/JulianDate.js");
+}
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../../lib/GregorianDate.js");
 }
@@ -1675,6 +1678,29 @@ module.exports.testdatefmt_ml_IN = {
             millisecond: 0
         });
         test.equal(fmt.format(date), "IST 1:45:37 PM");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMZ_ml_IN: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "ml-IN",
+            calendar: "gregorian",
+            type: "time",
+            time: "hmz"
+        });
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "ml-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "IST 1:45");
         test.done();
     },
 };
