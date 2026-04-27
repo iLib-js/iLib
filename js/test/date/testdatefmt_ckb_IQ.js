@@ -1,7 +1,7 @@
 /*
- * testdatefmt_ku_Arab_IQ.js - test the date formatter object in Kurdish Arabic
+ * testdatefmt_ckb_IQ.js - test the date formatter object in Kurdish Arabic
  *
- * Copyright © 2012-2015,2017, 2026 JEDLSoft
+ * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,18 +30,18 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testdatefmt_ku_Arab_IQ = {
+module.exports.testdatefmt_ckb_IQ = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
     },
-    testDateFmtSimpleShort_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleShort_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "short"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -50,16 +50,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
-    testDateFmtSimpleMedium_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleMedium_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "medium"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -68,16 +68,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-    testDateFmtSimpleLong_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleLong_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "long"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -86,16 +86,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29');
+        test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١');
         test.done();
     },
-    testDateFmtSimpleFull_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleFull_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -104,16 +104,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-    testDateFmtSimpleTimeShort_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleTimeShort_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short", type: "time"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "short", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -122,16 +122,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtSimpleTimeMedium_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleTimeMedium_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium", type: "time"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "medium", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -140,16 +140,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtSimpleTimeLong_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleTimeLong_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long", type: "time"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "long", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -158,16 +158,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtSimpleTimeFull_ku_Arab_IQ: function(test) {
+    testDateFmtSimpleTimeFull_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", type: "time"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -176,16 +176,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtDateTimeSimpleShort_ku_Arab_IQ: function(test) {
+    testDateFmtDateTimeSimpleShort_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "short", type: "datetime"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "short", type: "datetime"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -194,16 +194,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29 1:45 PM');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtDateTimeSimpleMedium_ku_Arab_IQ: function(test) {
+    testDateFmtDateTimeSimpleMedium_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "medium", type: "datetime"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -212,16 +212,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29 1:45 PM');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtDateTimeSimpleLong_ku_Arab_IQ: function(test) {
+    testDateFmtDateTimeSimpleLong_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "long", type: "datetime"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "long", type: "datetime"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -230,16 +230,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29 1:45 PM');
+        test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١ ‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtDateTimeSimpleFull_ku_Arab_IQ: function(test) {
+    testDateFmtDateTimeSimpleFull_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", type: "datetime"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", type: "datetime"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -248,16 +248,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29 1:45 PM');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtTemplateCalendar_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateCalendar_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", calendar: "julian", template: "yyyy-MM-dd"});
+        var fmt = new DateFmt({locale: "ckb-IQ", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
 
         var date = new JulianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -266,19 +266,19 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29');
+        test.equal(fmt.format(date), '٢٠١١-٠٩-٢٩');
         test.done();
     },
 
 
 
-    testDateFmtTemplateClock12SwitchHH_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateClock12SwitchHH_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "12", template: "HH:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -287,16 +287,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '01:45');
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-    testDateFmtTemplateClock12Switchkk_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateClock12Switchkk_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "12", template: "kk:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -305,16 +305,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '01:45');
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-    testDateFmtTemplateClock24Switchhh_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateClock24Switchhh_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "24", template: "hh:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -323,16 +323,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-    testDateFmtTemplateClock24SwitchKK_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateClock24SwitchKK_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", clock: "24", template: "KK:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -341,16 +341,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "hh:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", locale: "ckb-IQ", template: "hh:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -359,16 +359,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '01:45');
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "KK:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", locale: "ckb-IQ", template: "KK:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -377,16 +377,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '01:45');
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "HH:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", locale: "ckb-IQ", template: "HH:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -395,16 +395,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '13:45');
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
-    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ku_Arab_IQ: function(test) {
+    testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", locale: "ku-Arab-IQ", template: "kk:mm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", locale: "ckb-IQ", template: "kk:mm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -413,16 +413,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),  '13:45');
+        test.equal(fmt.format(date),  '١٣:٤٥');
         test.done();
     },
-    testDateFmtTypeDate_ku_Arab_IQ: function(test) {
+    testDateFmtTypeDate_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "date"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "date"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -431,16 +431,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
-    testDateFmtTypeTime_ku_Arab_IQ: function(test) {
+    testDateFmtTypeTime_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -449,16 +449,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtTypeDateTime_ku_Arab_IQ: function(test) {
+    testDateFmtTypeDateTime_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "datetime"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "datetime"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -467,16 +467,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29 1:45 PM');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtShortDateComponentsY_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "y"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "y"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -485,16 +485,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011');
+        test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
-    testDateFmtShortDateComponentsM_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "m"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "m"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -503,16 +503,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'M0');
+        test.equal(fmt.format(date), '٠٩');
         test.done();
     },
-    testDateFmtShortDateComponentsD_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsD_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "d"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "d"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -521,16 +521,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29');
+        test.equal(fmt.format(date), '٢٩');
         test.done();
     },
-    testDateFmtShortDateComponentsDM_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsDM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "dm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "dm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -539,16 +539,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09-29');
+        test.equal(fmt.format(date), '‏٠٩-٢٩');
         test.done();
     },
-    testDateFmtShortDateComponentsMY_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "my"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "my"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -557,16 +557,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩');
         test.done();
     },
-    testDateFmtShortDateComponentsDMY_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsDMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "dmy"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "dmy"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -576,17 +576,17 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), '2011-09-29');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
 
     },
-    testDateFmtShortDateComponentsWDM_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsWDM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "wdm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "wdm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -595,17 +595,17 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '09-29, T');
+        test.equal(fmt.format(date), '‏٠٩-٢٩, پ');
         test.done();
 
     },
-    testDateFmtShortDateComponentsWDMY_ku_Arab_IQ: function(test) {
+    testDateFmtShortDateComponentsWDMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", date: "wdmy"});
+        var fmt = new DateFmt({locale: "ckb-IQ", date: "wdmy"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -614,17 +614,17 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011-09-29, T');
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩, پ');
         test.done();
 
     },
-    testDateFmtFullDateComponentsY_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "y"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "y"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -633,16 +633,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011');
+        test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
-    testDateFmtFullDateComponentsM_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "m"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "m"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -651,16 +651,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'M09');
+        test.equal(fmt.format(date), 'ئەیلوول');
         test.done();
     },
-    testDateFmtFullDateComponentsD_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsD_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "d"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "d"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -669,16 +669,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29');
+        test.equal(fmt.format(date), '٢٩');
         test.done();
     },
-    testDateFmtFullDateComponentsDM_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsDM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "dm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "dm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -687,16 +687,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'M09 29');
+        test.equal(fmt.format(date), 'ئەیلوول ٢٩');
         test.done();
     },
-    testDateFmtFullDateComponentsMY_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "my"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "my"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -705,16 +705,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول');
         test.done();
     },
-    testDateFmtFullDateComponentsDMY_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsDMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "dmy"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "dmy"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -723,16 +723,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '2011 M09 29');
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
-    testDateFmtFullDateComponentsWDM_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsWDM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "wdm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "wdm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -741,16 +741,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'M09 29, Thu');
+        test.equal(fmt.format(date), 'ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
-    testDateFmtFullDateComponentsWDMY_ku_Arab_IQ: function(test) {
+    testDateFmtFullDateComponentsWDMY_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full", date: "wdmy"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -759,16 +759,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),  '2011 M09 29, Thu');
+        test.equal(fmt.format(date),  '‏٢٠١١ ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
-    testDateFmtShortTimeComponentsS_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "s"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "s"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -777,16 +777,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '37');
+        test.equal(fmt.format(date), '٣٧');
         test.done();
     },
-    testDateFmtShortTimeComponentsM_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "m"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "m"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -795,16 +795,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '45');
+        test.equal(fmt.format(date), '٤٥');
         test.done();
     },
-    testDateFmtShortTimeComponentsH_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsH_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "h"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "h"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -813,16 +813,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1');
+        test.equal(fmt.format(date), '١');
         test.done();
     },
-    testDateFmtShortTimeComponentsMS_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsMS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "ms"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "ms"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -831,16 +831,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '45:37');
+        test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
-    testDateFmtShortTimeComponentsHM_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "hm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -849,16 +849,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45');
+        test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMS_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hms"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "hms"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -867,16 +867,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMA_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMA_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hma"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "hma"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -885,20 +885,20 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             time: "hmz"
         });
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -907,20 +907,20 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMAZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             time: "hmaz"
         });
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -929,16 +929,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMSA_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", time: "hmsa"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -947,20 +947,20 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 PM');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMSZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             time: "hmsz"
         });
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -969,20 +969,20 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ: function(test) {
+    testDateFmtShortTimeComponentsHMSAZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -991,16 +991,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 PM +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtFullTimeComponentsS_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "s"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1009,16 +1009,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '37');
+        test.equal(fmt.format(date), '٣٧');
         test.done();
     },
-    testDateFmtFullTimeComponentsM_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "m"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1027,16 +1027,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '45');
+        test.equal(fmt.format(date), '٤٥');
         test.done();
     },
-    testDateFmtFullTimeComponentsH_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsH_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "h"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1045,16 +1045,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1');
+        test.equal(fmt.format(date), '١');
         test.done();
     },
-    testDateFmtFullTimeComponentsMS_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsMS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "ms"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1063,16 +1063,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '45:37');
+        test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
-    testDateFmtFullTimeComponentsHM_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHM_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hm"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1081,16 +1081,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45');
+        test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMS_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMS_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hms"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1099,16 +1099,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMA_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMA_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hma"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1117,13 +1117,13 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             length: "full",
             time: "hmz"
@@ -1131,7 +1131,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1140,13 +1140,13 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMAZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             length: "full",
             time: "hmaz"
@@ -1154,7 +1154,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1163,16 +1163,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45 PM +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMSA_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", type: "time", length: "full", time: "hmsa"});
+        var fmt = new DateFmt({locale: "ckb-IQ", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1181,13 +1181,13 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 PM');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMSZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             length: "full",
             time: "hmsz"
@@ -1195,7 +1195,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1204,13 +1204,13 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ: function(test) {
+    testDateFmtFullTimeComponentsHMSAZ_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             length: "full",
             time: "hmsaz"
@@ -1218,7 +1218,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 29,
@@ -1227,13 +1227,13 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 PM +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ: function(test) {
+    testDateFmtWithTimeZoneAndNoDST_ckb_IQ: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             type: "time",
             length: "full",
             time: "hmsz"
@@ -1241,7 +1241,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
 
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 12,
             day: 29,
@@ -1250,16 +1250,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '1:45:37 +03/+04');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
-    testDateFmtFormatRelativeWithinMinuteAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinMinuteAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1269,7 +1269,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1278,16 +1278,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+30 s");
+        test.equal(fmt.formatRelative(reference, date), "‏+30 s");
         test.done();
     },
-    testDateFmtFormatRelativeWithinMinuteBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinMinuteBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1297,7 +1297,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1306,16 +1306,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-30 s");
+        test.equal(fmt.formatRelative(reference, date), "‏-30 s");
         test.done();
     },
-    testDateFmtFormatRelativeWithinHourAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinHourAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1325,7 +1325,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1334,16 +1334,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+10 min");
+        test.equal(fmt.formatRelative(reference, date), "‏+10 min");
         test.done();
     },
-    testDateFmtFormatRelativeWithinHourBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinHourBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1353,7 +1353,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1362,16 +1362,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-10 min");
+        test.equal(fmt.formatRelative(reference, date), "‏-10 min");
         test.done();
     },
-    testDateFmtFormatRelativeWithinDayAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinDayAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1381,7 +1381,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1390,16 +1390,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+4 h");
+        test.equal(fmt.formatRelative(reference, date), "‏+4 h");
         test.done();
     },
-    testDateFmtFormatRelativeWithinDayBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinDayBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1409,7 +1409,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1418,16 +1418,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-4 h");
+        test.equal(fmt.formatRelative(reference, date), "‏-4 h");
         test.done();
     },
-    testDateFmtFormatRelativeWithinFortnightAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinFortnightAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1437,7 +1437,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 24,
@@ -1446,16 +1446,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+4 d");
+        test.equal(fmt.formatRelative(reference, date), "‏+4 d");
         test.done();
     },
-    testDateFmtFormatRelativeWithinFortnightBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinFortnightBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 20,
@@ -1465,7 +1465,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 16,
@@ -1474,16 +1474,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-4 d");
+        test.equal(fmt.formatRelative(reference, date), "‏-4 d");
         test.done();
     },
-    testDateFmtFormatRelativeWithinQuarterAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinQuarterAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1493,7 +1493,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 11,
             day: 24,
@@ -1502,16 +1502,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+9 w");
+        test.equal(fmt.formatRelative(reference, date), "‏+9 w");
         test.done();
     },
-    testDateFmtFormatRelativeWithinQuarterBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinQuarterBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1521,7 +1521,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 7,
             day: 18,
@@ -1530,16 +1530,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-9 w");
+        test.equal(fmt.formatRelative(reference, date), "‏-9 w");
         test.done();
     },
-    testDateFmtFormatRelativeWithinTwoYearsAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1549,7 +1549,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2013,
             month: 1,
             day: 24,
@@ -1558,16 +1558,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+16 m");
+        test.equal(fmt.formatRelative(reference, date), "‏+16 m");
         test.done();
     },
-    testDateFmtFormatRelativeWithinTwoYearsBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeWithinTwoYearsBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1577,7 +1577,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2010,
             month: 7,
             day: 18,
@@ -1586,16 +1586,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-14 m");
+        test.equal(fmt.formatRelative(reference, date), "‏-14 m");
         test.done();
     },
-    testDateFmtFormatRelativeYearsAfter_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeYearsAfter_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1605,7 +1605,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2025,
             month: 10,
             day: 24,
@@ -1614,16 +1614,16 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "+14 y");
+        test.equal(fmt.formatRelative(reference, date), "‏+14 y");
         test.done();
     },
-    testDateFmtFormatRelativeYearsBefore_ku_Arab_IQ: function(test) {
+    testDateFmtFormatRelativeYearsBefore_ckb_IQ: function(test) {
         test.expect(2);
-        var fmt = new DateFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateFmt({locale: "ckb-IQ", length: "full"});
         test.ok(fmt !== null);
 
         var reference = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 2011,
             month: 9,
             day: 20,
@@ -1633,7 +1633,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
         var date = new GregorianDate({
-            locale: "ku-Arab-IQ",
+            locale: "ckb-IQ",
             year: 1990,
             month: 7,
             day: 18,
@@ -1642,7 +1642,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "-21 y");
+        test.equal(fmt.formatRelative(reference, date), "‏-21 y");
         test.done();
     }
 };

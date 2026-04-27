@@ -109,6 +109,16 @@ module.exports.testmeridiems = {
 
         test.done();
     },
+    testMeridiem_ckb_IQ: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ckb-IQ"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'ب.ن');
+        test.equal(fmt[1].name, 'د.ن');
+
+        test.done();
+    },
     testMeridiem_cs_CZ: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"cs-CZ"});
@@ -882,8 +892,18 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ku-IQ"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'ب.ن');
-        test.equal(fmt[1].name, 'د.ن');
+        test.equal(fmt[0].name, 'BN');
+        test.equal(fmt[1].name, 'PN');
+
+        test.done();
+    },
+    testMeridiem_ku_TR: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ku-TR"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'BN');
+        test.equal(fmt[1].name, 'PN');
 
         test.done();
     },

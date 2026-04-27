@@ -299,6 +299,51 @@ module.exports.testmonthtranslation = {
 
         test.done();
     },
+    testMonthTranslate_ckb_IQ: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ckb-IQ", date:"m", length: "full", useNative:false, timezone:"local"});
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "کانوونی دووەم");
+        test.equal(value[1], "شوبات");
+        test.equal(value[2], "ئازار");
+        test.equal(value[3], "نیسان");
+        test.equal(value[4], "ئایار");
+        test.equal(value[5], "حوزەیران");
+        test.equal(value[6], "تەمووز");
+        test.equal(value[7], "ئاب");
+        test.equal(value[8], "ئەیلوول");
+        test.equal(value[9], "تشرینی یەکەم");
+        test.equal(value[10], "تشرینی دووەم");
+        test.equal(value[11], "کانونی یەکەم");
+
+        var fmt = new DateFmt({locale:"ckb-IQ", date:"m", length: "medium", useNative:false, timezone:"local"});
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "کانوونی دووەم");
+        test.equal(value[1], "شوبات");
+        test.equal(value[2], "ئازار");
+        test.equal(value[3], "نیسان");
+        test.equal(value[4], "ئایار");
+        test.equal(value[5], "حوزەیران");
+        test.equal(value[6], "تەمووز");
+        test.equal(value[7], "ئاب");
+        test.equal(value[8], "ئەیلوول");
+        test.equal(value[9], "تشرینی یەکەم");
+        test.equal(value[10], "تشرینی دووەم");
+        test.equal(value[11], "کانونی یەکەم");
+
+        test.done();
+    },
     testMonthTranslate_cs_CZ: function(test) {
         test.expect(12);
 
@@ -3451,39 +3496,85 @@ module.exports.testmonthtranslation = {
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "کانوونی دووەم");
-        test.equal(value[1], "شوبات");
-        test.equal(value[2], "ئازار");
-        test.equal(value[3], "نیسان");
-        test.equal(value[4], "ئایار");
-        test.equal(value[5], "حوزەیران");
-        test.equal(value[6], "تەمووز");
-        test.equal(value[7], "ئاب");
-        test.equal(value[8], "ئەیلوول");
-        test.equal(value[9], "تشرینی یەکەم");
-        test.equal(value[10], "تشرینی دووەم");
-        test.equal(value[11], "کانونی یەکەم");
+        test.equal(value[0], "rêbendan");
+        test.equal(value[1], "sibat");
+        test.equal(value[2], "adar");
+        test.equal(value[3], "nîsan");
+        test.equal(value[4], "gulan");
+        test.equal(value[5], "hezîran");
+        test.equal(value[6], "tîrmeh");
+        test.equal(value[7], "tebax");
+        test.equal(value[8], "îlon");
+        test.equal(value[9], "cotmeh");
+        test.equal(value[10], "mijdar");
+        test.equal(value[11], "berfanbar");
 
         var fmt = new DateFmt({locale:"ku-IQ", date:"m", length: "medium", useNative:false, timezone:"local"});
 
         for (i=0; i < 12; i++) {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "کانوونی دووەم");
-        test.equal(value[1], "شوبات");
-        test.equal(value[2], "ئازار");
-        test.equal(value[3], "نیسان");
-        test.equal(value[4], "ئایار");
-        test.equal(value[5], "حوزەیران");
-        test.equal(value[6], "تەمووز");
-        test.equal(value[7], "ئاب");
-        test.equal(value[8], "ئەیلوول");
-        test.equal(value[9], "تشرینی یەکەم");
-        test.equal(value[10], "تشرینی دووەم");
-        test.equal(value[11], "کانونی یەکەم");
+        test.equal(value[0], "rbn");
+        test.equal(value[1], "sbt");
+        test.equal(value[2], "adr");
+        test.equal(value[3], "nsn");
+        test.equal(value[4], "gln");
+        test.equal(value[5], "hzr");
+        test.equal(value[6], "trm");
+        test.equal(value[7], "tbx");
+        test.equal(value[8], "îln");
+        test.equal(value[9], "cot");
+        test.equal(value[10], "mjd");
+        test.equal(value[11], "brf");
 
         test.done();
     },
+    testMonthTranslate_ku_TR: function(test) {
+        test.expect(24);
+
+        // full, long: MMMM
+        // medium: MMM
+        // short: MM
+
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ku-TR", date:"m", length: "full", useNative:false, timezone:"local"});
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "rêbendan");
+        test.equal(value[1], "sibat");
+        test.equal(value[2], "adar");
+        test.equal(value[3], "nîsan");
+        test.equal(value[4], "gulan");
+        test.equal(value[5], "hezîran");
+        test.equal(value[6], "tîrmeh");
+        test.equal(value[7], "tebax");
+        test.equal(value[8], "îlon");
+        test.equal(value[9], "cotmeh");
+        test.equal(value[10], "mijdar");
+        test.equal(value[11], "berfanbar");
+
+        var fmt = new DateFmt({locale:"ku-TR", date:"m", length: "medium", useNative:false, timezone:"local"});
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
+        }
+        test.equal(value[0], "rbn");
+        test.equal(value[1], "sbt");
+        test.equal(value[2], "adr");
+        test.equal(value[3], "nsn");
+        test.equal(value[4], "gln");
+        test.equal(value[5], "hzr");
+        test.equal(value[6], "trm");
+        test.equal(value[7], "tbx");
+        test.equal(value[8], "îln");
+        test.equal(value[9], "cot");
+        test.equal(value[10], "mjd");
+        test.equal(value[11], "brf");
+
+        test.done();
+    },
+
     testMonthTranslate_lt_LT: function(test) {
         test.expect(12);
 

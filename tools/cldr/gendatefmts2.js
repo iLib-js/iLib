@@ -298,7 +298,7 @@ aux.mergeFormats(systemResources, systemResources, []);
 console.log("\nReading CLDR data ...");
 
 //these locales have the wrong data in CLDR and need to be skipped for now
-var skipList = ["cop", "ku"];
+var skipList = ["cop"];
 
 locales.forEach(function (file) {
     var locale = file ? new Locale(file) : undefined;

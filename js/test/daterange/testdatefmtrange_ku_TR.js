@@ -1,8 +1,8 @@
 /*
- * testdatefmtrange_ku_Arab_IQ.js - test the date range formatter object in
- * Kurdish for Iraq in Arabic script
+ * testdatefmtrange_ku_TR.js - test the date range formatter object in
+ * Kurdish for Turkey in Latin script
  *
- * Copyright © 2012-2017, 2026 JEDLSoft
+ * Copyright © 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,14 +28,14 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
-module.exports.testdatefmtrange_ku_Arab_IQ = {
+module.exports.testdatefmtrange_ku_IR = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
     },
     testDateRngFmtKuRangeInDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -56,12 +56,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-12-31 1:45 PM – 2:30 PM');
+        test.equal(fmt.format(start, end), '‏31.12.2011 ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeInDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -82,12 +82,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 31 1:45 PM – 2:30 PM');
+        test.equal(fmt.format(start, end), '‏31 brf, 2011 ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeInDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -108,12 +108,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 31 1:45 PM – 2:30 PM');
+        test.equal(fmt.format(start, end), '‏31ê berfanbara 2011an ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeInDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -134,12 +134,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 31 1:45 PM – 2:30 PM');
+        test.equal(fmt.format(start, end), '‏31ê berfanbara 2011an ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeNextDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -160,12 +160,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-12-30 1:45 PM – 2011-12-31 2:30 PM');
+        test.equal(fmt.format(start, end), '‏30.12.2011 ‏13:45 – ‏31.12.2011 ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeNextDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -186,12 +186,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 30 1:45 PM – 2011 M12 31 2:30 PM');
+        test.equal(fmt.format(start, end), '‏30 brf, 2011 ‏13:45 – ‏31 brf, 2011 ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeNextDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -212,12 +212,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 30 1:45 PM – 2011 M12 31 2:30 PM');
+        test.equal(fmt.format(start, end), '‏30ê berfanbara 2011an ‏13:45 – ‏31ê berfanbara 2011an ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeNextDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -238,12 +238,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 30 1:45 PM – 2011 M12 31 2:30 PM');
+        test.equal(fmt.format(start, end), '‏30ê berfanbara 2011an ‏13:45 – ‏31ê berfanbara 2011an ‏14:30');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -264,12 +264,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-12-20 – 31');
+        test.equal(fmt.format(start, end), '‏20 – ‏31.12.2011');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -290,12 +290,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 20 – 31');
+        test.equal(fmt.format(start, end), '‏20 – ‏31 brf, 2011');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -316,12 +316,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 20 – 31');
+        test.equal(fmt.format(start, end), '‏20 – ‏31ê berfanbara 2011an');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -342,12 +342,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M12 20 – 31');
+        test.equal(fmt.format(start, end), '‏20 – ‏31ê berfanbara 2011an');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -368,12 +368,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-11-20 – 2011-12-31');
+        test.equal(fmt.format(start, end), '‏20.11 – ‏31.12.2011');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -394,12 +394,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 20 – 2011 M12 31');
+        test.equal(fmt.format(start, end), '‏20 mjd – ‏31 brf, 2011');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -420,12 +420,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 20 – M12 31');
+        test.equal(fmt.format(start, end), '‏20ê mijdar – ‏31ê berfanbara 2011an');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -446,12 +446,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 20 – M12 31');
+        test.equal(fmt.format(start, end), '‏20ê mijdar – ‏31ê berfanbara 2011an');
         test.done();
     },
     testDateRngFmtKuRangeNextYearShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -472,12 +472,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-11-20 – 2012-01-31');
+        test.equal(fmt.format(start, end), '‏20.11.2011 – ‏31.01.2012');
         test.done();
     },
     testDateRngFmtKuRangeNextYearMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -498,12 +498,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 20 – 2012 M01 31');
+        test.equal(fmt.format(start, end), '‏20 mjd, 2011 – ‏31 rbn, 2012');
         test.done();
     },
     testDateRngFmtKuRangeNextYearLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -524,12 +524,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 20 – 2012 M01 31');
+        test.equal(fmt.format(start, end), '‏20ê mijdara 2011an – ‏31ê rêbendana 2012an');
         test.done();
     },
     testDateRngFmtKuRangeNextYearFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -550,12 +550,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end),  '2011 M11 20 – 2012 M01 31');
+        test.equal(fmt.format(start, end),  '‏20ê mijdara 2011an – ‏31ê rêbendana 2012an');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearShort: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "short"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "short"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -576,12 +576,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011-11 – 2014-01');
+        test.equal(fmt.format(start, end), '‏11.2011 – ‏01.2014');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearMedium: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "medium"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "medium"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -602,12 +602,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 – 2014 M01');
+        test.equal(fmt.format(start, end), 'mjd, 2011 – rbn, 2014');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearLong: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "long"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "long"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -628,12 +628,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 – 2014 M01');
+        test.equal(fmt.format(start, end), 'mijdara 2011an – rêbendana 2014an');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -654,12 +654,12 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 M11 – 2014 M01');
+        test.equal(fmt.format(start, end), 'mijdara 2011an – rêbendana 2014an');
         test.done();
     },
     testDateRngFmtKuManyYearsFull: function(test) {
         test.expect(2);
-        var fmt = new DateRngFmt({locale: "ku-Arab-IQ", length: "full"});
+        var fmt = new DateRngFmt({locale: "ku-TR", length: "full"});
         test.ok(fmt !== null);
 
         var start = new GregorianDate({
@@ -680,7 +680,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '2011 – 2064');
+        test.equal(fmt.format(start, end), '‏2011 – 2064');
         test.done();
     }
 };
