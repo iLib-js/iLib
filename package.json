@@ -104,12 +104,12 @@
         "build.web": "webpack -p",
         "clean": "rm -rf assembled",
         "watch": "webpack --watch",
-        "build:mergeJson-compressed": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData --compressed assembled",
-        "build:mergeJson": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled",
-        "debug:mergeJson": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled",
-        "build:splitLocale": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled",
-        "build:splitLocale-compressed": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData --compressed assembled",
-        "debug:splitLocale": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --customLocalePath ./js/assembleData/customData assembled"
+        "build:mergeJson-compressed": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --compressed assembled",
+        "build:mergeJson": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
+        "debug:mergeJson": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
+        "build:splitLocale": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
+        "build:splitLocale-compressed": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --compressed assembled",
+        "debug:splitLocale": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled"
     },
     "publishConfig": {
         "tag": "experimental"
