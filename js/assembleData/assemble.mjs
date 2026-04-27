@@ -165,23 +165,20 @@ function readJSONDataHierarchical(dataNames, locales, dataPath) {
                 if (processedFiles.has(fullPath)) return;
                 processedFiles.add(fullPath);
 
+                if (!existsSync(fullPath)) return;
+                const fileContent = readFile(fullPath);
+                if (!fileContent) return;
+
                 const dir = path.dirname(file);
                 const sublocaleKey = dir === "." ? "root" : dir;
                 const dataKey = "ilib.data." + name;
 
                 if (!sublocaleData[sublocaleKey]) sublocaleData[sublocaleKey] = {};
-                if (!sublocaleData[sublocaleKey][dataKey]) sublocaleData[sublocaleKey][dataKey] = {};
-
-                if (existsSync(fullPath)) {
-                    const fileContent = readFile(fullPath);
-                    if (fileContent) {
-                        sublocaleData[sublocaleKey][dataKey] = JSUtils.merge(
-                            sublocaleData[sublocaleKey][dataKey],
-                            JSON.parse(fileContent),
-                            true
-                        );
-                    }
-                }
+                sublocaleData[sublocaleKey][dataKey] = JSUtils.merge(
+                    sublocaleData[sublocaleKey][dataKey] || {},
+                    JSON.parse(fileContent),
+                    true
+                );
             });
         });
     });
