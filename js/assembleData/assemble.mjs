@@ -38,27 +38,36 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  */
 export function assemble(ilibFiles, options) {
     const locales = options.opt?.locales || [];
+    const isSplit = options.opt?.splitLocale || false;
     const localeDataPath = path.join(process.cwd(), "js/data/locale");
     const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
         ? options.opt.customLocalePath
         : null;
-    
+
     const dataNames = readJSFiles(ilibFiles);
     const regularNames = dataNames.filter(name => name !== "zoneinfo");
 
-    const localeData = readJSONData(regularNames, locales, localeDataPath);
-    let result = customLocaleDataPath
-        ? JSUtils.merge(localeData, readJSONData(regularNames, locales, customLocaleDataPath), true)
-        : localeData;
+    const readFn = isSplit ? readJSONDataHierarchical : readJSONData;
+    const result = readFn(regularNames, locales, localeDataPath);
+
+    if (customLocaleDataPath) {
+        const customResult = readFn(regularNames, locales, customLocaleDataPath);
+        for (const key in customResult) {
+            result[key] = JSUtils.merge(result[key] || {}, customResult[key], true);
+        }
+    }
 
     if (dataNames.includes("zoneinfo")) {
         const zoneinfoData = assembleZoneinfoData(path.join(localeDataPath, "zoneinfo"), readFile);
-        locales.forEach(locale => {
-            if (!result[locale]) {
-                result[locale] = {};
-            }
-            result[locale]["ilib.data.zoneinfo"] = zoneinfoData;
-        });
+        if (isSplit) {
+            if (!result["root"]) result["root"] = {};
+            result["root"]["ilib.data.zoneinfo"] = zoneinfoData;
+        } else {
+            locales.forEach(locale => {
+                if (!result[locale]) result[locale] = {};
+                result[locale]["ilib.data.zoneinfo"] = zoneinfoData;
+            });
+        }
     }
 
     return result;
@@ -134,44 +143,6 @@ function extractData(jsFiles, fileCache) {
     return [...dataNames];
 }
 
-/**
- * Assembles locale JSON data in a hierarchical structure: instead of one merged
- * file per full locale, each sublocale level (root, language, und/region,
- * language/region) is written as its own file containing only that level's delta.
- *
- * @param {string[]} ilibFiles - List of ilib JS filenames to analyze
- * @param {object} options - ilib-assemble options object
- * @param {object} options.opt - CLI/config options
- * @param {string[]} [options.opt.locales] - Target locale list (BCP-47)
- * @param {string} [options.opt.customLocalePath] - Custom locale data directory path
- * @returns {object} Data map keyed by sublocale path (e.g. "root", "en", "en/US")
- */
-export function assembleHierarchical(ilibFiles, options) {
-    const locales = options.opt?.locales || [];
-    const localeDataPath = path.join(process.cwd(), "js/data/locale");
-    const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
-        ? options.opt.customLocalePath
-        : null;
-
-    const dataNames = readJSFiles(ilibFiles);
-    const regularNames = dataNames.filter(name => name !== "zoneinfo");
-
-    const result = readJSONDataHierarchical(regularNames, locales, localeDataPath);
-    if (customLocaleDataPath) {
-        const customResult = readJSONDataHierarchical(regularNames, locales, customLocaleDataPath);
-        for (const key in customResult) {
-            result[key] = JSUtils.merge(result[key] || {}, customResult[key], true);
-        }
-    }
-
-    if (dataNames.includes("zoneinfo")) {
-        const zoneinfoData = assembleZoneinfoData(path.join(localeDataPath, "zoneinfo"), readFile);
-        if (!result["root"]) result["root"] = {};
-        result["root"]["ilib.data.zoneinfo"] = zoneinfoData;
-    }
-
-    return result;
-}
 
 /**
  * Reads JSON locale data files for each sublocale level independently (no merging).
