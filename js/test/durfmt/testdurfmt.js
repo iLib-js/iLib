@@ -1098,8 +1098,131 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1 godina, 1 mjesec, 1 sedmica, 1 dan, 1 sat, 1 minuta i 1 sekunda");
         test.done();
     },
-    //test cases for cs-CZ
+    // test cases for ckb-IQ
+    testDurFmtCKBFormatShortDefaultStyle: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "short"
+        });
+        test.ok(fmt !== null);
 
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ١ h, ١ min, ١ s');
+        test.done();
+    },
+    testDurFmtCKBFormatShortText: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "short",
+            style: "text"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ١ h, ١ min, ١ s');
+
+        test.done();
+    },
+    testDurFmtCKBFormatShortClock: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "short",
+            style: "clock"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ‏١:٠١:٠١');
+        test.done();
+    },
+    testDurFmtCKBFormatMedium: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "medium"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ١ h, ١ min, ١ s');
+        test.done();
+    },
+    testDurFmtCKBFormatLong: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "long"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ١ h, ١ min, ١ s');
+        test.done();
+    },
+    testDurFmtCKBFormatFull: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ckb-IQ",
+            length: "full"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏١ y, ١ m, ١ w, ١ d, ١ h, ١ min, ١ s');
+        test.done();
+    },
+    //test cases for cs-CZ
     testDurFmtCSFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -4830,7 +4953,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtKUFormatShortText: function(test) {
@@ -4851,7 +4974,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s');
 
         test.done();
     },
@@ -4873,7 +4996,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ‏١:٠١:٠١');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1:01:01');
         test.done();
     },
     testDurFmtKUFormatMedium: function(test) {
@@ -4893,7 +5016,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtKUFormatLong: function(test) {
@@ -4913,7 +5036,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١ ساڵ ١ مانگ ١ هەفتە ١ رۆژ ١ کاتژ ١ خول ١ چرک');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s');
         test.done();
     },
     testDurFmtKUFormatFull: function(test) {
@@ -4933,9 +5056,133 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏١ ساڵ, ١ مانگ, ١ هەفتە, ١ رۆژ, ١ کاتژمێر, ١ خولەک,  ١ چرکە');
+        test.equal(duration.toString(), '‏1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s');
         test.done();
     },
+    // test cases for ku-TR
+    testDurFmtFormatShortDefaultStyleKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "short"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+        test.done();
+    },
+    testDurFmtFormatShortTextKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "short",
+            style: "text"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+
+        test.done();
+    },
+    testDurFmtFormatShortClockKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "short",
+            style: "clock"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1sl 1m 1hf 1r ‏01:01:01');
+        test.done();
+    },
+    testDurFmtFormatMediumKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "medium"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+        test.done();
+    },
+    testDurFmtFormatLongKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "long"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1 sal, 1 m, 1 hf, 1 roj, 1 st, 1 d, 1 sn');
+        test.done();
+    },
+    testDurFmtFormatFullKUTR: function(test) {
+        test.expect(2);
+        var fmt = new DurationFmt({
+            locale: "ku-TR",
+            length: "full"
+        });
+        test.ok(fmt !== null);
+
+        var duration = fmt.format({
+            year: 1,
+            month: 1,
+            week: 1,
+            day: 1,
+            hour: 1,
+            minute: 1,
+            second: 1
+        });
+        test.equal(duration.toString(), '‏1 sal, 1 meh, 1 hefte, 1 roj, 1 saet, 1 deqîqe û 1 sanîye');
+        test.done();
+    },    
     //test cases for lt-LT
     testDurFmtLTFormatShortDefaultStyle: function(test) {
         test.expect(2);
