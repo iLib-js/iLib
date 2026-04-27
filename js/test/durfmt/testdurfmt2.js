@@ -510,6 +510,47 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
+    testDurFmt_ckb_IQ: function(test) {
+        test.expect(16);
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ckb-IQ", style:"text", length:length[i], useNative:false});
+
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+        }
+
+        test.equal(textformatted_1[0], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[1], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[2], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[3], '‏1 y, 1 m, 1 w, 1 d');
+
+        test.equal(textformatted_2[0], '‏2 y, 2 m, 2 w, 2 d');
+        test.equal(textformatted_2[1], '‏2 y, 2 m, 2 w, 2 d');
+        test.equal(textformatted_2[2], '‏2 y, 2 m, 2 w, 2 d');
+        test.equal(textformatted_2[3], '‏2 y, 2 m, 2 w, 2 d');
+
+        test.equal(clockformatted_1[0], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '‏1 h, 1 min, 1 s');
+
+        test.equal(clockformatted_2[0], '‏2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[1], '‏2 h, 2 min, 2 s');
+        test.equal(clockformatted_2[2], '‏2 h, 2 min, 2 s' );
+        test.equal(clockformatted_2[3], '‏2 h, 2 min, 2 s' );
+
+        test.done();
+    },
     testDurFmt_cs_CZ: function(test) {
         test.expect(24);
         // 1,2,5
@@ -3874,25 +3915,67 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '‏1 ساڵ, 1 مانگ, 1 هەفتە,  1 رۆژ');
-        test.equal(textformatted_1[1], '‏1 ساڵ 1 مانگ 1 هەفتە 1 رۆژ');
-        test.equal(textformatted_1[2], '‏1س 1م 1ﻪـ 1ر');
-        test.equal(textformatted_1[3], '‏1س 1م 1ﻪـ 1ر');
+        test.equal(textformatted_1[0], '‏1 sal, 1 meh, 1 hefte û 1 roj');
+        test.equal(textformatted_1[1], '‏1 sal, 1 m, 1 hf, 1 roj');
+        test.equal(textformatted_1[2], '‏1sl 1m 1hf 1r');
+        test.equal(textformatted_1[3], '‏1sl 1m 1hf 1r');
 
-        test.equal(textformatted_2[0], '‏2 ساڵ, 2 مانگ, 2 هەفتە,  2 رۆژ');
-        test.equal(textformatted_2[1], '‏2 ساڵ 2 مانگ 2 هەفتە 2 رۆژ');
-        test.equal(textformatted_2[2], '‏2س 2م 2ﻪـ 2ر');
-        test.equal(textformatted_2[3], '‏2س 2م 2ﻪـ 2ر');
+        test.equal(textformatted_2[0], '‏2 sal, 2 meh, 2 hefte û 2 roj');
+        test.equal(textformatted_2[1], '‏2 sal, 2 m, 2 hf, 2 roj');
+        test.equal(textformatted_2[2], '‏2sl 2m 2hf 2r');
+        test.equal(textformatted_2[3], '‏2sl 2m 2hf 2r');
 
-        test.equal(clockformatted_1[0], '‏1 کاتژمێر, 1 خولەک,  1 چرکە');
-        test.equal(clockformatted_1[1], '‏1 کاتژ 1 خول 1 چرک');
-        test.equal(clockformatted_1[2], '‏1ک 1خ 1چ');
-        test.equal(clockformatted_1[3], '‏1ک 1خ 1چ');
+        test.equal(clockformatted_1[0], '‏1 saet, 1 deqîqe û 1 sanîye');
+        test.equal(clockformatted_1[1], '‏1 st, 1 d, 1 sn');
+        test.equal(clockformatted_1[2], '‏1st 1d 1sn');
+        test.equal(clockformatted_1[3], '‏1st 1d 1sn');
 
-        test.equal(clockformatted_2[0], '‏2 کاتژمێر, 2 خولەک,  2 چرکە');
-        test.equal(clockformatted_2[1], '‏2 کاتژ 2 خول 2 چرک');
-        test.equal(clockformatted_2[2], '‏2ک 2خ 2چ' );
-        test.equal(clockformatted_2[3], '‏2ک 2خ 2چ' );
+        test.equal(clockformatted_2[0], '‏2 saet, 2 deqîqe û 2 saniye');
+        test.equal(clockformatted_2[1], '‏2 st, 2 d, 2 sn');
+        test.equal(clockformatted_2[2], '‏2st 2d 2sn' );
+        test.equal(clockformatted_2[3], '‏2st 2d 2sn' );
+
+        test.done();
+    },
+    testDurFmt_ku_TR: function(test) {
+        test.expect(16);
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
+        for (var i=0; i<4; i++) {
+            textfmt = new DurationFmt({locale: "ku-TR", style:"text", length:length[i], useNative:false});
+
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+        }
+
+        test.equal(textformatted_1[0], '‏1 sal, 1 meh, 1 hefte û 1 roj');
+        test.equal(textformatted_1[1], '‏1 sal, 1 m, 1 hf, 1 roj');
+        test.equal(textformatted_1[2], '‏1sl 1m 1hf 1r');
+        test.equal(textformatted_1[3], '‏1sl 1m 1hf 1r');
+
+        test.equal(textformatted_2[0], '‏2 sal, 2 meh, 2 hefte û 2 roj');
+        test.equal(textformatted_2[1], '‏2 sal, 2 m, 2 hf, 2 roj');
+        test.equal(textformatted_2[2], '‏2sl 2m 2hf 2r');
+        test.equal(textformatted_2[3], '‏2sl 2m 2hf 2r');
+
+        test.equal(clockformatted_1[0], '‏1 saet, 1 deqîqe û 1 sanîye');
+        test.equal(clockformatted_1[1], '‏1 st, 1 d, 1 sn');
+        test.equal(clockformatted_1[2], '‏1st 1d 1sn');
+        test.equal(clockformatted_1[3], '‏1st 1d 1sn');
+
+        test.equal(clockformatted_2[0], '‏2 saet, 2 deqîqe û 2 saniye');
+        test.equal(clockformatted_2[1], '‏2 st, 2 d, 2 sn');
+        test.equal(clockformatted_2[2], '‏2st 2d 2sn' );
+        test.equal(clockformatted_2[3], '‏2st 2d 2sn' );
 
         test.done();
     },

@@ -3307,6 +3307,86 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
+    // test cases for ckb-IQ
+    testLocaleInfoGetDecimalSeparatorfor_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+        test.equal(info.getDecimalSeparator(),  '٫');
+        test.done();
+    },
+    testLocaleInfoGetGroupingSeparatorfor_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getGroupingSeparator(), '٬');
+        test.done();
+    },
+    testLocaleInfoGetPercentageFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPercentageFormat(), '{n} ٪');
+        test.done();
+    },
+    testLocaleInfoGetCurrencyFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().common, '{n} {s}');
+        test.done();
+    },
+    testLocaleInfoGetNegativeNumberFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativeNumberFormat(), '‏-{n}');
+        test.done();
+    },
+    testLocaleInfoGetNegativePercentageFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.done();
+    },
+    testLocaleInfoGetNegativeCurrencyFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.done();
+    },
+    testLocaleInfoGetPrimaryGroupingDigits_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPrimaryGroupingDigits(), 3);
+        test.done();
+    },
+    testLocaleInfoGetSecondaryGroupingDigits_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getSecondaryGroupingDigits(), 0);
+        test.done();
+    },
+    testLocaleInfoRoundingMode_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getRoundingMode(), "halfdown");
+        test.done();
+    },
     //test cases for de-AT
     testLocaleInfoGetDecimalSeparatorfor_de_AT: function(test) {
         test.expect(2);
@@ -5628,17 +5708,17 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-    //test cases for ku-IR
+    //test cases for ku-TR
     testLocaleInfoGetDecimalSeparatorfor_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ',');
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getGroupingSeparator(), '.');
@@ -5646,7 +5726,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetPercentageFormat_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getPercentageFormat(), '%{n}');
@@ -5654,7 +5734,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetCurrencyFormat_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getCurrencyFormats().common, '{n} {s}' );
@@ -5662,7 +5742,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetNegativeNumberFormat_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getNegativeNumberFormat(), '-{n}');
@@ -5670,7 +5750,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetNegativePercentageFormat_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getNegativePercentageFormat(), '-%{n}');
@@ -5678,7 +5758,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetNegativeCurrencyFormat_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
@@ -5686,7 +5766,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetPrimaryGroupingDigits_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5694,7 +5774,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoGetSecondaryGroupingDigits_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5702,7 +5782,7 @@ module.exports.testlocaleinfo = {
     },
     testLocaleInfoRoundingMode_ku_IR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5713,7 +5793,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(),  '٫');
+        test.equal(info.getDecimalSeparator(),  '.');
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_ku_Arab_IQ: function(test) {
@@ -5721,7 +5801,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), '٬');
+        test.equal(info.getGroupingSeparator(), ',');
         test.done();
     },
     testLocaleInfoGetPercentageFormat_ku_Arab_IQ: function(test) {
@@ -5729,7 +5809,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), '{n} ٪');
+        test.equal(info.getPercentageFormat(), '{n}%');
         test.done();
     },
     testLocaleInfoGetCurrencyFormat_ku_Arab_IQ: function(test) {
@@ -5737,7 +5817,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, '{n} {s}');
+        test.equal(info.getCurrencyFormats().common, '{s} {n}');
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_ku_Arab_IQ: function(test) {
@@ -5745,7 +5825,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getNegativeNumberFormat(), '‏-{n}');
+        test.equal(info.getNegativeNumberFormat(), '-{n}');
         test.done();
     },
     testLocaleInfoGetNegativePercentageFormat_ku_Arab_IQ: function(test) {
@@ -5753,7 +5833,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.equal(info.getNegativePercentageFormat(), '-{n}%');
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_ku_Arab_IQ: function(test) {
@@ -5761,7 +5841,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.equal(info.getCurrencyFormats().commonNegative, '-{s} {n}');
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_ku_Arab_IQ: function(test) {

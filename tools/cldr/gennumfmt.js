@@ -398,22 +398,17 @@ function getNativeDigits(script) {
 console.log("Reading locale data into memory...");
 
 var list = require("cldr-core/availableLocales.json").availableLocales.full;
-// Although CLDR 48 defines ku-Arab as Kurdish (Kurmanji, Arabic script),
-// the semantic meaning of ku-Arab-IQ in webOS may vary depending on its historical adoption,
-// given that some earlier systems used ku-Arab-IQ as a proxy for Central Kurdish (ckb).
-list.push("ku-Arab-IQ");
 
 list.forEach(function(loc) {
     var locale = loc ? new Locale(loc) : undefined;
 
     console.log(loc);
 
-    var spec = (loc === "ku-Arab-IQ") ? "ckb" : loc;
-    var sourceDir = path.join("cldr-numbers-full/main", spec);
+    var sourceDir = path.join("cldr-numbers-full/main", loc);
 
     if (loc === "und" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier
-        getLocaleData(sourceDir, (loc === "und") ? undefined : locale, spec);
+        getLocaleData(sourceDir, (loc === "und") ? undefined : locale, loc);
     }
 });
 
