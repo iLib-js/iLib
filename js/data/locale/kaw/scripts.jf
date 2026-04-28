@@ -1,7 +1,8 @@
 {
     "generated": true,
     "scripts": [
-        "Cyrl",
-        "Latn"
+        "Bali",
+        "Java",
+        "Kawi"
     ]
 }
