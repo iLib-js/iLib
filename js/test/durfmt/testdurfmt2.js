@@ -3915,25 +3915,25 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '‏1 sal, 1 meh, 1 hefte û 1 roj');
-        test.equal(textformatted_1[1], '‏1 sal, 1 m, 1 hf, 1 roj');
-        test.equal(textformatted_1[2], '‏1sl 1m 1hf 1r');
-        test.equal(textformatted_1[3], '‏1sl 1m 1hf 1r');
+        test.equal(textformatted_1[0], '1 sal, 1 meh, 1 hefte û 1 roj');
+        test.equal(textformatted_1[1], '1 sal, 1 m, 1 hf, 1 roj');
+        test.equal(textformatted_1[2], '1sl, 1m, 1hf, 1r');
+        test.equal(textformatted_1[3], '1sl 1m 1hf 1r');
 
-        test.equal(textformatted_2[0], '‏2 sal, 2 meh, 2 hefte û 2 roj');
-        test.equal(textformatted_2[1], '‏2 sal, 2 m, 2 hf, 2 roj');
-        test.equal(textformatted_2[2], '‏2sl 2m 2hf 2r');
-        test.equal(textformatted_2[3], '‏2sl 2m 2hf 2r');
+        test.equal(textformatted_2[0], '2 sal, 2 meh, 2 hefte û 2 roj');
+        test.equal(textformatted_2[1], '2 sal, 2 m, 2 hf, 2 roj');
+        test.equal(textformatted_2[2], '2sl, 2m, 2hf, 2r');
+        test.equal(textformatted_2[3], '2sl 2m 2hf 2r');
 
-        test.equal(clockformatted_1[0], '‏1 saet, 1 deqîqe û 1 sanîye');
-        test.equal(clockformatted_1[1], '‏1 st, 1 d, 1 sn');
-        test.equal(clockformatted_1[2], '‏1st 1d 1sn');
-        test.equal(clockformatted_1[3], '‏1st 1d 1sn');
+        test.equal(clockformatted_1[0], '1 saet, 1 deqîqe û 1 sanîye');
+        test.equal(clockformatted_1[1], '1 st, 1 d, 1 sn');
+        test.equal(clockformatted_1[2], '1st, 1d, 1sn');
+        test.equal(clockformatted_1[3], '1st 1d 1sn');
 
-        test.equal(clockformatted_2[0], '‏2 saet, 2 deqîqe û 2 saniye');
-        test.equal(clockformatted_2[1], '‏2 st, 2 d, 2 sn');
-        test.equal(clockformatted_2[2], '‏2st 2d 2sn' );
-        test.equal(clockformatted_2[3], '‏2st 2d 2sn' );
+        test.equal(clockformatted_2[0], '2 saet, 2 deqîqe û 2 saniye');
+        test.equal(clockformatted_2[1], '2 st, 2 d, 2 sn');
+        test.equal(clockformatted_2[2], '2st, 2d, 2sn' );
+        test.equal(clockformatted_2[3], '2st 2d 2sn' );
 
         test.done();
     },
@@ -3957,25 +3957,25 @@ module.exports.testdurfmt2 = {
             clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
-        test.equal(textformatted_1[0], '‏1 sal, 1 meh, 1 hefte û 1 roj');
-        test.equal(textformatted_1[1], '‏1 sal, 1 m, 1 hf, 1 roj');
-        test.equal(textformatted_1[2], '‏1sl 1m 1hf 1r');
-        test.equal(textformatted_1[3], '‏1sl 1m 1hf 1r');
+        test.equal(textformatted_1[0], '1 sal, 1 meh, 1 hefte û 1 roj');
+        test.equal(textformatted_1[1], '1 sal, 1 m, 1 hf, 1 roj');
+        test.equal(textformatted_1[2], '1sl, 1m, 1hf, 1r');
+        test.equal(textformatted_1[3], '1sl 1m 1hf 1r');
 
-        test.equal(textformatted_2[0], '‏2 sal, 2 meh, 2 hefte û 2 roj');
-        test.equal(textformatted_2[1], '‏2 sal, 2 m, 2 hf, 2 roj');
-        test.equal(textformatted_2[2], '‏2sl 2m 2hf 2r');
-        test.equal(textformatted_2[3], '‏2sl 2m 2hf 2r');
+        test.equal(textformatted_2[0], '2 sal, 2 meh, 2 hefte û 2 roj');
+        test.equal(textformatted_2[1], '2 sal, 2 m, 2 hf, 2 roj');
+        test.equal(textformatted_2[2], '2sl, 2m, 2hf, 2r');
+        test.equal(textformatted_2[3], '2sl 2m 2hf 2r');
 
-        test.equal(clockformatted_1[0], '‏1 saet, 1 deqîqe û 1 sanîye');
-        test.equal(clockformatted_1[1], '‏1 st, 1 d, 1 sn');
-        test.equal(clockformatted_1[2], '‏1st 1d 1sn');
-        test.equal(clockformatted_1[3], '‏1st 1d 1sn');
+        test.equal(clockformatted_1[0], '1 saet, 1 deqîqe û 1 sanîye');
+        test.equal(clockformatted_1[1], '1 st, 1 d, 1 sn');
+        test.equal(clockformatted_1[2], '1st, 1d, 1sn');
+        test.equal(clockformatted_1[3], '1st 1d 1sn');
 
-        test.equal(clockformatted_2[0], '‏2 saet, 2 deqîqe û 2 saniye');
-        test.equal(clockformatted_2[1], '‏2 st, 2 d, 2 sn');
-        test.equal(clockformatted_2[2], '‏2st 2d 2sn' );
-        test.equal(clockformatted_2[3], '‏2st 2d 2sn' );
+        test.equal(clockformatted_2[0], '2 saet, 2 deqîqe û 2 saniye');
+        test.equal(clockformatted_2[1], '2 st, 2 d, 2 sn');
+        test.equal(clockformatted_2[2], '2st, 2d, 2sn' );
+        test.equal(clockformatted_2[3], '2st 2d 2sn' );
 
         test.done();
     },

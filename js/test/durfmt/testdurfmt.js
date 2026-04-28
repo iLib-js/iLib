@@ -5077,7 +5077,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+        test.equal(duration.toString(), '1sl 1m 1hf 1r 1st 1d 1sn');
         test.done();
     },
     testDurFmtFormatShortTextKUTR: function(test) {
@@ -5098,7 +5098,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+        test.equal(duration.toString(), '1sl 1m 1hf 1r 1st 1d 1sn');
 
         test.done();
     },
@@ -5120,7 +5120,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1sl 1m 1hf 1r ‏01:01:01');
+        test.equal(duration.toString(), '1sl 1m 1hf 1r ‏01:01:01');
         test.done();
     },
     testDurFmtFormatMediumKUTR: function(test) {
@@ -5140,7 +5140,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1sl 1m 1hf 1r 1st 1d 1sn');
+        test.equal(duration.toString(), '1sl, 1m, 1hf, 1r, 1st, 1d, 1sn');
         test.done();
     },
     testDurFmtFormatLongKUTR: function(test) {
@@ -5160,7 +5160,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1 sal, 1 m, 1 hf, 1 roj, 1 st, 1 d, 1 sn');
+        test.equal(duration.toString(), '1 sal, 1 m, 1 hf, 1 roj, 1 st, 1 d, 1 sn');
         test.done();
     },
     testDurFmtFormatFullKUTR: function(test) {
@@ -5180,7 +5180,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), '‏1 sal, 1 meh, 1 hefte, 1 roj, 1 saet, 1 deqîqe û 1 sanîye');
+        test.equal(duration.toString(), '1 sal, 1 meh, 1 hefte, 1 roj, 1 saet, 1 deqîqe û 1 sanîye');
         test.done();
     },    
     //test cases for lt-LT
