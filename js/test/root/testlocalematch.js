@@ -1447,6 +1447,17 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ku-Arab-IQ");
         test.done();
     },
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_ku_TR: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ku-TR"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ku-Latn-TR");
+        test.done();
+    },
     testLocaleMatcherGetLikelyLocaleByLocaleCode_ps_PK: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
