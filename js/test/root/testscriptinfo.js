@@ -343,6 +343,16 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_ckb_IQ: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("ckb-IQ");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Arab");
+        test.equal(scinfo.getScriptDirection(), "rtl");
+        test.done();
+    },
     testScriptInfo_cs_CZ: function(test) {
         test.expect(4);
         var li = new LocaleInfo("cs-CZ");

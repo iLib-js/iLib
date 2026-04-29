@@ -5709,14 +5709,14 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ku-TR
-    testLocaleInfoGetDecimalSeparatorfor_ku_IR: function(test) {
+    testLocaleInfoGetDecimalSeparatorfor_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ',');
         test.done();
     },
-    testLocaleInfoGetGroupingSeparatorfor_ku_IR: function(test) {
+    testLocaleInfoGetGroupingSeparatorfor_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5724,7 +5724,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getGroupingSeparator(), '.');
         test.done();
     },
-    testLocaleInfoGetPercentageFormat_ku_IR: function(test) {
+    testLocaleInfoGetPercentageFormat_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5732,7 +5732,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPercentageFormat(), '%{n}');
         test.done();
     },
-    testLocaleInfoGetCurrencyFormat_ku_IR: function(test) {
+    testLocaleInfoGetCurrencyFormat_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5740,7 +5740,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().common, '{n} {s}' );
         test.done();
     },
-    testLocaleInfoGetNegativeNumberFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativeNumberFormat_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5748,7 +5748,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativeNumberFormat(), '-{n}');
         test.done();
     },
-    testLocaleInfoGetNegativePercentageFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativePercentageFormat_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5756,7 +5756,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativePercentageFormat(), '-%{n}');
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativeCurrencyFormat_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5764,7 +5764,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
         test.done();
     },
-    testLocaleInfoGetPrimaryGroupingDigits_ku_IR: function(test) {
+    testLocaleInfoGetPrimaryGroupingDigits_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5772,7 +5772,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPrimaryGroupingDigits(), 3);
         test.done();
     },
-    testLocaleInfoGetSecondaryGroupingDigits_ku_IR: function(test) {
+    testLocaleInfoGetSecondaryGroupingDigits_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
@@ -5780,7 +5780,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getSecondaryGroupingDigits(), 0);
         test.done();
     },
-    testLocaleInfoRoundingMode_ku_IR: function(test) {
+    testLocaleInfoRoundingMode_ku_TR: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
