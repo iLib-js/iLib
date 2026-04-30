@@ -327,12 +327,12 @@
     "IQD": {
         "name": "Iraqi Dinar",
         "decimals": 0,
-        "sign": "ﺩ.ﻉ."
+        "sign": "د.ع.‏"
     },
     "IRR": {
         "name": "Iranian Rial",
         "decimals": 0,
-        "sign": "﷼"
+        "sign": "ریال"
     },
     "ISK": {
         "name": "Icelandic Króna",
