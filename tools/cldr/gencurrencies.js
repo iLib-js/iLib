@@ -143,6 +143,35 @@ var currencyObj = {}; // for saving currency.jf in each directory
 var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
 
+
+// Override map for currency signs:
+// currency code -> locale used to source a preferred sign for exceptional cases.
+//   key   : ISO 4217 currency code
+//   value : CLDR locale identifier
+var currencySignOverrideLocaleMap = {
+    IQD: "ar-IQ", // "د.ع.‏"
+    IRR: "fa", // "ریال"
+
+}
+// For each mapped currency, build an explicit sign override.
+// Keep the same precedence as getNameAndSign: narrow > variant > symbol.
+var currencySignOverrides = {};
+Object.keys(currencySignOverrideLocaleMap).forEach(function(currency) {
+    var locale = currencySignOverrideLocaleMap[currency];
+    var localeData = require("cldr-numbers-full/main/" + locale + "/currencies.json");
+    var currencies = localeData.main[locale].numbers.currencies;
+    if (currencies && currencies[currency]) {
+        var currencySymbols = currencies[currency];
+        if (currencySymbols['symbol-alt-narrow'] !== undefined) {
+            currencySignOverrides[currency] = currencySymbols['symbol-alt-narrow'];
+        } else if (currencySymbols['symbol-alt-variant'] !== undefined) {
+            currencySignOverrides[currency] = currencySymbols['symbol-alt-variant'];
+        } else if (currencySymbols.symbol !== undefined) {
+            currencySignOverrides[currency] = currencySymbols.symbol;
+        }
+    }
+});
+
 var rootCurrency = {"currency": "USD"}
 fs.writeFileSync(path.join(toDir, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
@@ -172,7 +201,7 @@ for (var region in currencyData.region) {
             console.log(region + '/' + cur[i]);
             currencyInfoObj[cur[i]].name = nameAndSign['name'];
             currencyInfoObj[cur[i]].decimals = getDecimals(cur[i], currencyData.fractions);
-            currencyInfoObj[cur[i]].sign = nameAndSign['sign'];
+            currencyInfoObj[cur[i]].sign = currencySignOverrides[cur[i]] || nameAndSign['sign'];
             fn = path.join(filename, "currency.jf");
             fs.writeFileSync(fn, stringify(currencyObj, {space: 4}), "utf-8");
         }
