@@ -69,7 +69,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ar-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '‏{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '؜-‏{n} {s}');
-        test.equal(curfmt.format(57.05), '‏57 ﺩ.ﻉ.');  //IQD
+        test.equal(curfmt.format(57.05), '‏57 د.ع.‏');  //IQD
         test.done();
     },
     testNumFmt_ar_MA: function(test) {
@@ -204,7 +204,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ckb-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '‏-{n} {s}');
-        test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
+        test.equal(curfmt.format(57.05), '57 د.ع.‏'); //IQD
 
         test.done();
     },
@@ -1300,7 +1300,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "fa-IR", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '‎{s}{n}');
         test.equal(li.getCurrencyFormats().commonNegative, '‎−‎{s}{n}');
-        test.equal(curfmt.format(57.05), '‎﷼57');  //IRR
+        test.equal(curfmt.format(57.05), '‎ریال57');  //IRR
 
         test.done();
     },
@@ -1739,7 +1739,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ku-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '-{n} {s}');
-        test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
+        test.equal(curfmt.format(57.05), '57 د.ع.‏'); //IQD
 
         test.done();
     },
@@ -1759,7 +1759,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ku-Arab-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{s} {n}');
         test.equal(li.getCurrencyFormats().commonNegative, '-{s} {n}');
-        test.equal(curfmt.format(57.05), 'ﺩ.ﻉ. 57'); //IQD
+        test.equal(curfmt.format(57.05), 'د.ع.‏ 57'); //IQD
 
         test.done();
     },
