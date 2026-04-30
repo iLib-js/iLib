@@ -38,7 +38,7 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  */
 export function assemble(ilibFiles, options) {
     const locales = options.opt?.locales || [];
-    const isSplit = options.opt?.splitLocale || false;
+    const isSplit = options.opt?.splitByLocale || false;
     const localeDataPath = path.join(process.cwd(), "js/data/locale");
     const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
         ? options.opt.customLocalePath

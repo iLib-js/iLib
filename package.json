@@ -107,9 +107,9 @@
         "build:mergeJson-compressed": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --compressed assembled",
         "build:mergeJson": "ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
         "debug:mergeJson": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
-        "build:splitLocale": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
-        "build:splitLocale-compressed": "ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --compressed assembled",
-        "debug:splitLocale": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --splitLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled"
+        "build:splitByLocale": "ilib-assemble --mergeJson --splitByLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled",
+        "build:splitByLocale-compressed": "ilib-assemble --mergeJson --splitByLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json --compressed assembled",
+        "debug:splitByLocale": "node --inspect-brk node_modules/.bin/ilib-assemble --mergeJson --splitByLocale --ilibincPath ./js/assembleData/ilib-inc.js --localefile ./js/assembleData/locales.json assembled"
     },
     "publishConfig": {
         "tag": "experimental"
