@@ -3916,7 +3916,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(100110.57), "‎ریال۱۰۰٬۱۱۱");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_fa_IR: function(test) {
@@ -3928,7 +3928,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "‎−‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(-100110.57), "‎−‎ریال۱۰۰٬۱۱۱");
         test.done();
     },
     testNumFmtPercentageFormatRegular_fa_IR: function(test) {
