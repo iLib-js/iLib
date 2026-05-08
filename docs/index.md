@@ -20,6 +20,7 @@ View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
     * [Unit Conversion and Formatting](tutorial/units.md)
     * [Character Set Mapping](tutorial/charmap.md)
 * Architecture and Process
+    * [Contributing / development workflow](Contributing.md)
     * [Overall Architecture](Architecture.md)
     * [CommonJS Modularization Support](tutorial/modules.md) as of 11.0
         * For ES6-style modules, see the [ilib-es6](https://github.com/ilib-js/ilib-es6/) project
