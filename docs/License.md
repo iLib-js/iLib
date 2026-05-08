@@ -1,6 +1,6 @@
 # License #
 
-iLib is copyright &copy; 2012 JEDL Software, Inc. All rights are reserved.
+iLib is copyright &copy; 2011–2026 JEDLSoft. See the root **[LICENSE](../LICENSE)** file for the authoritative notice.
 
 ## Open Source ##
 

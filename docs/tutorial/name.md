@@ -8,9 +8,10 @@ Motivation
 
 Why would you want to parse and format names?
 Let's say you have a part of your web site that allows your users to enter some contacts. You may have a name field and an email field. The name field is a single field where they can type the whole name of their contact. Now, you would probably also have a page that lists the contacts in alphabetical order, and the user may be able to click on the last name or first name column to sort by that field.
-The problem is... what is the last name or each contact? What is the first name? In English, you might be tempted to just take the first word in the whole name as the first name, and the last word as the last name. But what if the user has typed in a prefix or suffix like "Dr. John Smith, PhD."? That algorithm won't even work in English, as that contact's name would end up being "Dr. PhD.".
-Now things get even more complicated when you have to support multiple languages. Some languages typically reverse the order of the names. For this reason, iLib never deals with "first" and "last" name, as it doesn't even make sense for those languages. Instead, it uses the terms "given name" and "family name", which are unambiguous and do not depend on order.
-There is even more fun to be had if you try to parse names in other langauges. Here is a table of example names in various languages and how they are parsed.
+The problem is: what is the last name of each contact? What is the first name? In English, you might be tempted to just take the first word in the whole name as the first name, and the last word as the last name. But what if the user has typed in a prefix or suffix like "Dr. John Smith, PhD."? That algorithm won't even work in English, as that contact's name would end up being "Dr. PhD.".
+Now things get even more complicated when you have to support multiple languages. Some languages typically reverse the order of names. For this reason, iLib never deals with **first** and **last** name in the English sense, because that ordering does not apply everywhere. Instead, it uses **given name** and **family name**, which are unambiguous and do not depend on display order.
+
+There is even more complexity when you parse names in other languages. Here is a table of example names in various languages and how they are parsed.
 
 | Locale                           | Name                          | prefix | given  | middle | family            | suffix |
 |----------------------------------|-------------------------------|--------|--------|--------|-------------------|--------|
@@ -18,7 +19,7 @@ There is even more fun to be had if you try to parse names in other langauges. H
 | German for Germany (de-DE)       | Ludwig von Beethoven          |        | Ludwig |        | von Beethoven     |        |
 | Spanish for Spain (es-ES)        | Jose Manuel Rodriguez Mendoza |        | Jose   | Manuel | Rodriguez Mendoza |        |
 | Korean for South Korea (ko-KR)   | 김인환                        |        | 인환   |        | 김                |        |
-| Indonesian for Indonesia (id-ID) | Sukarno                       |        | Sukamo |        |                   |        |
+| Indonesian for Indonesia (id-ID) | Sukarno                       |        | Sukarno |        |                   |        |
 
 Note that in English example, we have the prefixes and suffixes to deal with. It turns out that many other languages have prefixes and suffixes too.
 
@@ -28,7 +29,7 @@ In Spain, many people have a given name first, followed by one or more middle na
 
 In Korean, as in Chinese and Japanese, the family name comes first, followed by the given name with no space in between. In Chinese and Japanese, sometimes only the first character is the family name, and some times up to 3 characters. Either way, the parts of the name have to be teased apart without help from a separating space.
 
-Other languages have reversed order as well. In Hungarian, it is common to have reverse order, as in "Kovacs Ernie" instead of "Ernie Kovacs" as he is known in the US. In Russian, it is even more complicated, as it is common to write names both in western order and in reverse. Russian speakers can recognize the order easily, as they are very familiar with customs used to create names. Ilyanov is a patronymic name form, and any Russian speaker would recognize it immediately as a family name, no matter where it appeared in the whole name.
+Other languages use different ordering conventions as well. In Hungarian, it is common to put the family name first, as in **Kovács Ernő** versus **Ernő Kovács** as he is known in the US. In Russian, names may appear in Western order or with the family name first; readers infer structure from grammar and familiar patterns (including patronymics), not from a single global rule.
 
 In Indonesia, it is common for people to have only a given name, especially for older folks or people who live outside of large metropolises, or even to have multiple names but no family name. You might be identified more specifically by naming your parents, such as "Sukarno child of Suparman and Wulandari". Relatively recently, it has become more common to have a patronymic name appended to your given name, such as "Sukarno Suparmanputra". Appending patronymics is also common in Iceland as well.
 

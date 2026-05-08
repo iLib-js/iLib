@@ -10,13 +10,13 @@ We use **test-driven development** by default.
 
 1. Introduce the **public API skeleton** and **JSDoc** first.
 2. Get **review/approval** on the API shape before investing in implementation.
-3. Write **unit tests** that specify behavior; get approval on the tests.
+3. Write **unit tests** that specify behaviour; get approval on the tests.
 4. Implement (or complete) code so **tests pass** without watering down assertions.
 5. If a test turns out to be wrong, **discuss with reviewers** before changing the test.
 
-### Bug fixes and behavior changes
+### Bug fixes and behaviour changes
 
-1. Add or change a **unit test** that **fails** on the current code and demonstrates the bug or required behavior.
+1. Add or change a **unit test** that **fails** on the current code and demonstrates the bug or required behaviour.
 2. Get agreement on that test before landing the **library** change.
 3. Fix the implementation so the test passes.
 

@@ -85,4 +85,4 @@ When in doubt, read [package.json](package.json) `scripts` and [README.md](READM
 
 ## Cursor / AGENTS.md
 
-**AGENTS.md is not a substitute for Cursor Rules.** Cursor’s primary always-on project instructions live in [`.cursor/rules/`](.cursor/rules/) (`.mdc` files with frontmatter). **Root `AGENTS.md` is a conventional place to stash repo orientation** so agents and developers can read it quickly; Cursor may include it in context when working in this workspace (e.g. along with README), but **behavior depends on Cursor version and settings**. For instructions that must apply to every chat, add or extend a rule under `.cursor/rules/`.
+**AGENTS.md is not a substitute for Cursor Rules.** Cursor’s primary always-on project instructions live in [`.cursor/rules/`](.cursor/rules/) (`.mdc` files with frontmatter). **Root `AGENTS.md` is a conventional place to stash repo orientation** so agents and developers can read it quickly; Cursor may include it in context when working in this workspace (e.g. along with README), but **behaviour depends on Cursor version and settings**. For instructions that must apply to every chat, add or extend a rule under `.cursor/rules/`.

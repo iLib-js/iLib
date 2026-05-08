@@ -26,7 +26,7 @@ View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
         * For ES6-style modules, see the [ilib-es6](https://github.com/ilib-js/ilib-es6/) project
           which provides wrappers for all ilib classes
     * [Updating the time zone information](tutorial/timezone.md)
-    * [Running unit test on QT/QML](QtTest.md)
+    * [Running unit tests in Qt/QML](QtTest.md)
 * API Reference: 
     * [10.0](https://ilib-js.github.io/iLib/docs/api/10.0/jsdoc/index.html)
     * [11.0](https://ilib-js.github.io/iLib/docs/api/11.0/jsdoc/index.html)
@@ -45,8 +45,8 @@ View this documentation on [github pages](https://ilib-js.github.io/iLib/docs/)
 # Download #
 
 * [All Release Notes](ReleaseNotes.md)
-* [Latest Stable Release](https://github.com/iLib-js/iLib/releases/tag/v12.0.4) is version 12.0.4
-* [Latest Development Release](https://github.com/iLib-js/iLib/releases/) is version 13.0
+* **Releases:** see [GitHub Releases](https://github.com/iLib-js/iLib/releases/) for the current stable tag (version numbers change frequently).
+* Day-to-day integration work targets the **`development`** branch; releases are merged to **`main`** (see [Contributing.md](Contributing.md)).
 
 # Project Management #
 

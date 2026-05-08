@@ -4,10 +4,10 @@ iLib owes much of its intellectual heritage to the [Enyo project](http://www.eny
 
 Enyo 1.0 and 2.0 were both open-sourced by HP in February of 2012, and HP laid off much of the original Palm team in May 2012. The international portions were removed from Enyo 2.0 for various reasons, hence the iLib project.
 
-The goals of iLib project are:
+The goals of the iLib project are:
 
 * To produce a general internationalization library written in Javascript that does not require the use of the entire Enyo framework, so that it may be used with any framework, or just by itself without any other frameworks
-* Allow iLib to run in any web page on any browser that supports standard Javascript (EMCAScript), and on any Javascript engine
+* Allow iLib to run in any web page on any browser that supports standard JavaScript (ECMAScript), and on any JavaScript engine
 * Be relatively efficient and small, yet flexible and complete
 
 Despite its heritage, almost all of the code in iLib has been redesigned to solve oddities in the original Enyo code and to add more flexibility, and then rewritten from scratch. That is, it does not use actual code taken from Enyo, but it uses ideas from it which were updated and reimplemented. Some locale data from Enyo was, however, reused. The way people in a culture format dates or numbers just does not change very often, so there is not much reason to rewrite that data.
