@@ -1,0 +1,37 @@
+---
+description: TDD workflow, approval gates, and test-first fixes for iLib
+alwaysApply: true
+---
+
+# Development process (agent)
+
+Follow **test-driven development** unless the user explicitly directs otherwise.
+
+## New class or substantial new API
+
+1. Add the **API skeleton** and **JSDoc** only (signatures, options, behaviour described; minimal or stub implementation if needed to load).
+2. **Stop and wait** for explicit user approval before continuing.
+3. After approval, write **unit tests** that define the intended behaviour.
+4. **Stop and wait** for user approval of the tests.
+5. Only after tests are approved, implement code until tests pass.
+6. Prefer **changing implementation** to satisfy tests. **Do not** weaken or rewrite tests just to turn them green.
+7. If a test likely reflects a wrong expectation, **stop and ask the user** before changing the test.
+
+## Bug fixes or behaviour changes in existing code
+
+1. **Add or adjust unit tests first** so the bug or gap is **reproduced** (failing test).
+2. **Stop and wait** for user approval of that test (or test change) before editing production code.
+3. Then fix **`js/lib`** (or relevant code) so tests pass, using the same rules as above about not “fixing” tests without user confirmation.
+
+## Pull requests and CI
+
+- **All unit tests must pass** in CI before a PR is merge-ready (enforced by GitHub checks).
+- **Local verification:** follow **[docs/Contributing.md](../../docs/Contributing.md)**—Node tests need **`JAVA_HOME`** (JDK **24+**), **`ant`**, then **`cd js` && `ant test`**; browser tests use **`ant test.remote`** and **http://localhost:9090/**; Qt uses **[docs/QtTest.md](../../docs/QtTest.md)**.
+
+## Git branches (summary)
+
+- **`development`** is the main integration branch for day-to-day work.
+- **Feature branches** branch from **`development`** and merge back via PR to **`development`**.
+- **Releases:** merge **`development`** → **`main`** via PR when ready; **annotated tags** are created on **`main`** only.
+
+For full branching, release, and platform coverage details, see **`docs/Contributing.md`**.

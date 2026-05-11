@@ -1,27 +1,27 @@
-# Welcome to the iLib Project #
+# Welcome to the iLib project
 
-## What is iLib? ##
+## What is iLib?
 
-iLib is a library of internationalization (i18n) routines and classes written in Javascript.
+iLib is a library of internationalization (i18n) routines and classes written in JavaScript.
 
-## Why iLib? ##
+## Why iLib?
 
-With the advent of AJAX, it is no longer possible to avoid doing internationalization (i18n) in Javascript. Previously, your web application could format dates in the user's locale on the server side and send the correctly-formatted date across the net to the browser side, written as text in the HTML. 
+With AJAX and rich client-side apps, internationalization in the browser is hard to avoid. Previously, many apps formatted dates and numbers on the server and sent HTML already localized. Today, pages often call web APIs that return neutral data—for example, Unix timestamps in milliseconds. Formatting then has to happen in JavaScript. The built-in APIs are limited: they do not offer ICU-style control, consistent behaviour across older engines, or the breadth of calendars, locales, and types that iLib supports.
 
-In the last few years, the popularity of AJAX and the proliferation of web sites that offer web services means that sometimes a web page may not interact with its own web server, and therefore cannot expect the results of a web service call to come back already formatted for the user's locale. The page can call web services via AJAX that give results such as time stamps encoded as unix time (milliseconds since Jan 1, 1970 UTC). With a time stamp like that, the formatting has to be done in the browser. The standard Javascript library is inadequate to format it flexibly in any given locale, as it produces a very verbose output for one locale only.
+iLib lets you format and parse data correctly for many locales directly in the browser (or in Node.js and other engines), without relying on server-side formatting for every case.
 
-Enter iLib. Now you can do the date formatting properly, right in the browser. It's not even difficult or slow!
+## What can iLib do?
 
-## What Can iLib Do? ##
+Besides date and time formatting, iLib can format durations (for example, media length), date ranges with explicit start and end, numbers, currency, and percentages. It provides calendar and time-zone support, collation, address and phone handling, measurement units, Unicode normalization, resource bundles for translation, and other locale-sensitive helpers.
 
-Date formatting is not all that iLib can do. It can format time durations like the lengths of songs or videos, date ranges (date formats with a specific start and stop time), numbers, currency, and percentages. It can also give you information about calendars and time zones, as well as other locale specific information. Additionally, it can help you localize the Javascript code in your web page by giving you a class to translate strings and a class to format them. It also includes the equivalent of the C runtime library CType functions to help you parse strings.
+Support continues to grow across locales and features.
 
-More classes are on the way, and support for many more locales.
+## How do you use it?
 
-## How do You Use it? ##
+Include a pre-built bundle (for example **`ilib-full-compiled.js`**) in your page, or load modular builds via npm and webpack (see the [Installation](Installation.md) guide and the main [README](../README.md)).
 
-Using it is easy. Just include iliball-compiled.js in your HTML, et voila, the iLib classes are all available to your code. The classes are very loosely modeled after the i18n classes in Java. For example, to format a date, you have to instantiate a date formatter object, and then ask it to format a date for you. You can keep the formatter around to format many dates, such as when you are populating the rows of  a table that include a date as one of the columns.
+The API is loosely modeled on Java/ICU-style usage: you construct a formatter (or parser), then call methods on it. You can reuse one formatter for many values—for example, when filling a table column.
 
-If you don't need everything in iLib for your web site, iLib comes with a tool that allows you to reassemble a new, smaller file that only contains the classes you need, and all the classes they depend on. 
+If you do not need the entire library, use the webpack loader/plugin or assembly tooling to ship only the classes and locales you need.
 
-For more detailed instructions, see the [Getting Started Guide](Getting Started) or the full [iLib Tutorial](iLib1.0JSTutorial.pdf). If you are an old pro at APIs or Javascript, you can skip directly to the [API Reference Documentation](http://www.translationcircle.com/ilib/doc/jsdoc/).
+For more detail, see the [Getting Started](GettingStarted.md) guide and the [hosted API reference](https://ilib-js.github.io/iLib/docs/api/jsdoc/index.html). An older [PDF tutorial](iLib1.0JSTutorial.pdf) still illustrates many concepts but may not match current module paths.

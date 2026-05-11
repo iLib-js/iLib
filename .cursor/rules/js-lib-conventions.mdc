@@ -1,0 +1,69 @@
+---
+description: iLib js/lib and js/test ES5 style, headers, JSDoc, and assembly directives
+globs: js/lib/**/*.js,js/test/**/*.js
+alwaysApply: false
+---
+
+# iLib `js/lib` and `js/test` coding conventions
+
+Follow patterns already used in neighboring files. This codebase is **ES5-only** CommonJS—**no** optional chaining, `class`, `const`/`let`, or other syntax that breaks older engines unless the project explicitly upgrades.
+
+**Scope:** These rules apply to **project-authored** files under `js/lib/` and `js/test/`. Do **not** restyle or “modernize” vendored code under **`js/test/nodeunit/`**.
+
+## File header
+
+- Start with the standard **Apache 2.0** block comment.
+- First line: `Filename.js - short description` (tests often use a `test…` prefix and describe the scenario).
+- `Copyright ©` with year list and **JEDLSoft**
+
+## Assembly directives (library code only)
+
+Under **`js/lib/`** only—immediately after the license block when the assembler needs them:
+
+- `// !depends Other.js ...` — dependencies for `ilib-assemble` (order matters; no cycles).
+- `// !data name ...` — locale JSON keys under `js/locale/`.
+
+If you add imports or locale usage, **update `!depends` / `!data`**. Ordinary **`js/test/`** files do **not** use these directives.
+
+## Modules and `require`
+
+**`js/lib/`**
+
+- **`var X = require("./X.js");`** (explicit `.js`), often one per line.
+- **`require("../index.js")`** vs **`require("./ilib.js")`** — match nearby modules in the same area.
+- Main export: **`module.exports = Name;`** at end of file.
+
+**`js/test/`**
+
+- Load implementation with **`require("../../lib/SomeClass.js")`** (depth varies by subdirectory—match sibling tests in the same folder).
+- Some tests use **`if (typeof(Foo) === "undefined") { var Foo = require(...); }`** so suites work when globals are preloaded; **keep that pattern** when adding to those files.
+- **Nodeunit:** export a suite object, e.g. **`module.exports.testdatefmt_en_US = { setUp: function (callback) { … }, testSomething: function (test) { test.expect(n); … test.done(); } };`** — match existing suites in the same directory.
+
+## Naming
+
+- Constructors / classes: **PascalCase** (`DateFmt`, `INumber`).
+- Methods and locals: **camelCase**.
+- **`I`-prefixed** ilib types where builtins would collide (`INumber`, `IString`, `IDate`).
+
+## Style
+
+- **`var`** and `function`; **`prototype`** methods where that pattern already exists in the file.
+- **`typeof`**: library code often uses **single-quoted** type names (`'string'`). Tests sometimes use **`"undefined"`** with parentheses—**match the surrounding file**.
+- Spacing: **space after `function`** is common (`function (` … `)`); stay consistent within the file you edit.
+
+## JSDoc
+
+- **`js/lib/`:** use JSDoc for public APIs (`@class`, `@constructor`, `@param`, `@return`, `@static`, `@protected`). Long docs often use HTML (`<p>`, `<ul>`, `<li>`, `<i>`)—see `DateFmt.js` / `INumber.js`.
+- **`js/test/`:** JSDoc is optional unless you add shared helpers; keep comments minimal unless the suite already documents heavily.
+
+## iLib runtime patterns (mostly `js/lib/`)
+
+- **Sync vs async:** `sync`, `onLoad`, `loadParams` on constructors that load data—follow the family you’re editing.
+- Some modules use **`._init(sync, loadParams, onLoad)`** for ctype/data loading (e.g. `isDigit.js`).
+
+## What not to do
+
+- Do not refactor unrelated files, rename suite exports, or modernize syntax opportunistically.
+- Do not drop or shorten the license header on new files.
+
+For repo layout and tooling, see [AGENTS.md](../../AGENTS.md) at the repository root.

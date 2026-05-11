@@ -14,7 +14,7 @@ The problem is... what is the country, or zip or city for each address? It turns
 
 Now things get even more complicated when you have to support multiple languages or scripts. Some places typically reverse the order of the address parts. For example, in Chinese, you would typically write the parts in order from largest (country "China") to medium (city "Beijing") to smallest (street address). It gets even more complicated in places with complicated histories, such as Hong Kong, where you would write the exact same address in Chinese order when you are writing with Chinese characters, and in British order when writing in Latin characters.
 
-There is even more fun to be had if you try to parse names in other countries where that other country uses a different script or order. For example, you may have a US contact list with a Chinese address for one of your contacts. In that case, the address would probably have have something like "China" or "PRC" at the end of it in Latin characters so that the US post office knows to send the letter to China. But, the rest of the address is written in Chinese with Chinese order. This is a sort of hybrid address.
+There is additional complexity when you parse addresses for regions that use a different script or field order than your default locale. For example, a US contact list might include a Chinese address: the block often ends with **China** or **PRC** in Latin letters so carriers recognise the destination country, while the preceding lines follow Chinese ordering and script. That yields a **hybrid** address.
 
 Given all the above, the humble Javascript programmer needs a little help to parse and format addresses so they don't have to be an expert in the address formats for a large number of countries. Enter iLib.
 
@@ -75,7 +75,7 @@ Parsing Addresses with Latin Script
 
 Let's say your US contact list contains an address outside of the US. Parsing would be a little more difficult if the foreign address is in a different script than the US (ie. non-Latin characters). 
 
-Fortunately, the Address parser can recognize the foreign country, and can automatically use the rules of that country to parse the rest of the address. Note that for many countries, you can write addresses in Latin or the native script, and Address will use the correct set of rules to parse each of them, depending on what characters it finds in the string. Here is an example:
+Fortunately, the Address parser can recognise the foreign country, and can automatically use the rules of that country to parse the rest of the address. Note that for many countries, you can write addresses in Latin or the native script, and Address will use the correct set of rules to parse each of them, depending on what characters it finds in the string. Here is an example:
 
 ~~~~~~
 var ilib = require("ilib");
