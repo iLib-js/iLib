@@ -842,7 +842,7 @@ module.exports = {
                             end = scanForChars(longtime, "z");
 
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
@@ -869,7 +869,7 @@ module.exports = {
                         case 'zha':
                             end = scanForChars(available["h"], "aB");
                             i = end;
-                            while (((available["h"].charAt(i) !== ' ') && (available["h"].charAt(i) !== ' ')) && i > 0) {
+                            while (((available["h"].charAt(i) !== ' ') && (available["h"].charAt(i) !== '\u202F')) && i > 0) {
                                 i--;
                             }
                             i = i < 1 ? end : i;
@@ -921,7 +921,7 @@ module.exports = {
                             begin = scanForLastChars(longtime, "s");
                             end = scanForChars(longtime, "z");
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
@@ -941,7 +941,7 @@ module.exports = {
                             begin = scanForLastChars(shorttime, "m");
                             end = scanForChars(shorttime, "a");
                             i = end;
-                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== ' ' && i > begin) {
+                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             i = i < begin ? end : i;
@@ -952,7 +952,7 @@ module.exports = {
                             begin = scanForLastChars(longtime, "a");
                             end = scanForChars(longtime, "z");
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             i = i < begin ? end : i;
@@ -962,7 +962,7 @@ module.exports = {
                             begin = scanForLastChars(shorttime, "m");
                             end = scanForChars(shorttime, "a");
                             i = end;
-                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== ' ' && i > begin) {
+                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             i = i < begin ? end : i;
