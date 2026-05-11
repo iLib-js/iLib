@@ -29,12 +29,34 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  * Assembles locale JSON data by analyzing ilib JS files and merging
  * data files for the given locales.
  *
+ * When `splitByLocale` is **false** (default), all sublocale data files are
+ * merged into a single object per locale. For example, for locale `"en-US"`,
+ * the root, `"en"`, and `"en/US"` data files are deep-merged together and
+ * returned under the `"en-US"` key:
+ * ```
+ * { "en-US": { "ilib.data.localematch": { ... merged ... } } }
+ * ```
+ * Output files: `en-US.json`, `de-DE.json`, ...
+ *
+ * When `splitByLocale` is **true**, each sublocale level is kept as a
+ * separate entry so consumers can load only the layers they need. The keys
+ * are directory-style sublocale paths (`"root"`, `"en"`, `"en/US"`, etc.):
+ * ```
+ * {
+ *   "root":  { "ilib.data.localematch": { ... root data ... } },
+ *   "en":    { "ilib.data.localematch": { ... en data ... } },
+ *   "en/US": { "ilib.data.localematch": { ... en/US data ... } }
+ * }
+ * ```
+ * Output files: `root.json`, `en.json`, `en-US.json`, ...
+ *
  * @param {string[]} ilibFiles - List of ilib JS filenames to analyze
  * @param {object} options - ilib-assemble options object
  * @param {object} options.opt - CLI/config options
  * @param {string[]} [options.opt.locales] - Target locale list (BCP-47)
+ * @param {boolean} [options.opt.splitByLocale] - When true, produce per-sublocale files (root, language, region) instead of one merged file per locale
  * @param {string} [options.opt.customLocalePath] - Custom locale data directory path
- * @returns {object} Merged JSON data map keyed by locale
+ * @returns {object} Merged JSON data map keyed by locale (or by sublocale path when splitByLocale is true)
  */
 export function assemble(ilibFiles, options) {
     const locales = options.opt?.locales || [];
