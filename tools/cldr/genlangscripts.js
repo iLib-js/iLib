@@ -46,7 +46,7 @@ process.argv.forEach(function (val, index, array) {
 toDir = process.argv[2] || "tmp";
 
 console.log("genlangscripts - generate the localeinfo scripts.jf files.\n" +
-    "Copyright (c) 2013-2018, 2020-2022, 2024 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020-2022, 2024, 2026 JEDLSoft");
 
 console.log("output dir: " + toDir);
 
