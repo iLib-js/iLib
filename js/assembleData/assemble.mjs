@@ -31,7 +31,7 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  *
  * When `splitByLocale` is **false** (default), all sublocale data files are
  * merged into a single object per locale. For example, for locale `"en-US"`,
- * the root, `"en"`, and `"en/US"` data files are deep-merged together and
+ * the root, `"en"`, `"und/US"`, and `"en/US"` data files are deep-merged together and
  * returned under the `"en-US"` key:
  * ```
  * { "en-US": { "ilib.data.localematch": { ... merged ... } } }
@@ -40,11 +40,12 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  *
  * When `splitByLocale` is **true**, each sublocale level is kept as a
  * separate entry so consumers can load only the layers they need. The keys
- * are directory-style sublocale paths (`"root"`, `"en"`, `"en/US"`, etc.):
+ * are directory-style sublocale paths (`"root"`, `"en"`, `"und/US"`, `"en/US"`, etc.):
  * ```
  * {
  *   "root":  { "ilib.data.localematch": { ... root data ... } },
  *   "en":    { "ilib.data.localematch": { ... en data ... } },
+ *   "und/US": { "ilib.data.localematch": { ... und/US data ... } },
  *   "en/US": { "ilib.data.localematch": { ... en/US data ... } }
  * }
  * ```
