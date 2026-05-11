@@ -1,22 +1,20 @@
-# Installation #
+# Installation
 
-iLib comes with pre-assembled and pre-compiled copies of the iLib file of various sizes (core, standard, & full).
-The compiled versions are minified using uglify-js. This tool compresses all the white space, removes comments, and
-makes private symbol names shorter, saving a significant amount of bytes.
+iLib ships with **pre-assembled** builds in several sizes (**core**, **standard**, **full**). Minified builds are produced with tools such as UglifyJS: whitespace and comments are stripped and internal names may be shortened.
 
-These pre-assembled copies of iLib contain different numbers of the iLib classes and the data for those classes
-for a number of popular locales. However, this might be more than what your project needs. With the new webpack
-support, you can create your own custom version of ilib with a selected subset of the classes
-and the data only for those locales that your project needs. See the documentation for
-(ilib-webpack-loader)[https://github.com/ilib-js/ilib-webpack-loader] for details on how to do this.
+Those bundles include a fixed set of classes and locale data for commonly used locales. If that is more than your app needs, use the **[ilib-webpack-loader](https://github.com/iLib-js/ilib-webpack-loader)** (and related plugin) to tree-shake classes and limit locale data. See that project’s README for details.
 
-In order to build this project from scratch, you will need to install a few things and make them available in your path:
+## Building from source
 
-* A JDK. Either OpenJDK <http://openjdk.java.net> or the standard Sun JDK <http://www.oracle.com/technetwork/java/javase/downloads/> will work, version 1.6 or later
-* Apache ant <http://ant.apache.org/bindownload.cgi>
-* Nodejs 6.0 or later
-* Run "npm install" in the root to get all of the development dependencies.
-* Add "node_modules/.bin" to your shell PATH so that uglify and webpack, etc. are available
-* Optionally, if you are interested in the Qt support, install Qt 5.9.0 or later. The Qt support is not built by default.
+From a clean checkout, install toolchain prerequisites and Node dependencies:
 
-iLib comes with everything else needed to assemble your own copy of it.
+* **JDK** — OpenJDK or another distribution; for running the full JS test suite via Ant, the project currently expects a recent JDK (see **[Contributing.md](Contributing.md)** for **`JAVA_HOME`** / version notes).
+* **Apache Ant** — [https://ant.apache.org/](https://ant.apache.org/)
+* **Node.js** — matches **`engines`** in the root **`package.json`** (run **`npm install`** at the repository root).
+* Add **`node_modules/.bin`** to your **`PATH`** if you invoke **`webpack`**, **`uglifyjs`**, or other local binaries directly.
+
+Optional:
+
+* **Qt** — only if you work on Qt/QML integration; see **[QtTest.md](QtTest.md)**.
+
+Everything else needed to assemble locale data and run builds is pulled in through **`npm install`** and the repository layout.

@@ -3,7 +3,7 @@ Unit Conversion and Formatting in iLib
 
 In many parts of a UI, especially for mobile devices, you will want to format measurements that your device makes in a way that the user can understand. This includes scaling the number to be a reasonable size and precision, as well as using the correct units for the user's locale, and using the translated name for the units.
 
-For example, if you have a GPS built in to your device, the driver probably returns you measurements of velocity in meters per second. That is all very nice, but most users don't think in meters per second. They would want to see their velocity kilometers per hour in most of the world, or miles per hour in a few countries. That would make more sense to them.
+For example, if your device has a built-in GPS, the driver may report velocity in meters per second. Most users do not think in meters per second; they expect **kilometers per hour** in much of the world, or **miles per hour** in a few countries.
 
 Similarly in terms of scaling, if a file is 1284234564 bytes long, it would be more understandable to the user to show "1.2GB" instead of "1,284,234,564 bytes" on the screen. That is, the number is scaled to a more easy-to-understand range.
 
@@ -14,18 +14,17 @@ iLib provides classes that can do conversion, scaling, and formatting of measure
 Conversion
 ----------
 
-Conversion between measurement units occurs using the Measurement class. The idea is that you create an instance of a measurement that has both an amount and a measurement unit
-(eg. "5 meters"), and you can use this to convert to other units.
+Conversion between measurement units uses the **`MeasurementFactory`** function (in **`ilib/lib/MeasurementFactory.js`**), which constructs the correct **`Measurement`** subclass for the unit you pass. Each instance holds an amount and a normalized unit (for example **5 meters**), and you can derive other units from it.
 
-Each measurement unit has a type such as "length", "velocity", or "digital storage". Units can only be converted within that type. That is, "meter" can be converted to "yard" because they are both units of length, but not to "degrees Celcius" which of course is a unit of temperature.
+Each measurement unit has a type such as **length**, **velocity**, or **digital storage**. Units convert only within that type: **meter** can convert to **yard**, but not to **degrees Celsius**, which is a temperature unit.
 
-Creating a measurement is a simple matter of making a new instance:
+Creating a measurement:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 5,
     unit: "meters"
 });
@@ -39,13 +38,13 @@ To convert using a new measurement instance, you can use the first measurement a
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 
-var m1 = new Measurement({
+var m1 = MeasurementFactory({
     amount: 5,
     unit: "meters"
 });
-var m2 = new Measurement({
+var m2 = MeasurementFactory({
     amount: m1,
     unit: "feet"
 });
@@ -62,18 +61,16 @@ The variable "m2" will now contain the value:
 
 Notice that the amount is converted into feet, and the unit itself has been changed via the aliases to "foot".
 
-To convert using the static convert method is also simple enough. You will need to know what type of measurement you are dealing with in order to get the subclass of Measurement that you need.
-
-Let's say you want to do the exact same conversion as the previous example. In this case, we are converting lengths, so we need to use the convert method on the subclass Measurement.Length:
+To convert using a **static `convert` method** on a specific subclass, require that subclass—for lengths, **`LengthUnit`**:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var LengthUnit = require("ilib/lib/LengthUnit.js");
 
-var numFeet = Measurement.Length.convert("feet", "meter", 5);
+var numFeet = LengthUnit.convert("feet", "meter", 5);
 ~~~~~
 
-Now the variable "numFeet" will contain the value 16.4042. In fact, the first method of conversion relies on this static method to do conversions, but the Measurement constructor automatically selects the right subclass based on the units.
+Now the variable **`numFeet`** will contain a value such as **16.4042**. The **`MeasurementFactory`** path ultimately uses the same conversion tables as **`LengthUnit.convert`** for compatible units.
 
 
 Basic Formatting of Measurements
@@ -85,10 +82,10 @@ Here is a basic example:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 16.4042,
     unit: "foot"
 });
@@ -98,21 +95,21 @@ var str = uf.format(m);
 
 Now the variable "str" will contain the string "16.4042 feet".
 
-The idea is that the measurement can be extracted from a device or service and represented exactly and unambiguously using Measurement, and it is the job of UnitFmt to transform that measurement into a string that the user can understand. The program using iLib does not need to know the specifics. It just need to extract a measurement and format it.
+The idea is that the measurement can be extracted from a device or service and represented exactly and unambiguously as a **`Measurement`** instance; **`UnitFmt`** turns that into a user-visible string. Your application does not need low-level unit rules—it only needs to build the measurement and pass it to the formatter.
 
 Automatic Conversion While Formatting
 --------------------
 
-Let's say we got out first example measurement of "5 meters" from the device driver and we want to format it, and let's assume that our current locale is "en-US". In this case, the units formatter can automatically convert the units to the correct type for US users.
+Let's say we obtained our first example measurement of **5 meters** from the device driver and want to format it, and assume the current locale is **en-US**. The unit formatter can convert to locale-appropriate units for display.
 
 Here is an auto-conversion example:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 5,
     unit: "m"
 });
@@ -126,10 +123,10 @@ If we really want to show meters instead, even though our locale is "en-US", we 
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 5,
     unit: "m"
 });
@@ -152,10 +149,10 @@ Let's take the example from the beginning of this document. We have a file that 
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 1284234564,
     unit: "bytes"
 });
@@ -169,10 +166,10 @@ In order to get the unit formatter to NOT scale automatically, you will have to 
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 1284234564,
     unit: "bytes"
 });
@@ -197,10 +194,10 @@ Here is how you would format the short version:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 1284234564,
     unit: "bytes"
 });
@@ -219,10 +216,10 @@ Now let's try the long version of the same amount:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 1284234564,
     unit: "bytes"
 });
@@ -244,10 +241,10 @@ Here is what a format would look like:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 123232,
     unit: "bytes"
 });
@@ -270,10 +267,10 @@ In this example, let's use the locale is bn-IN (Bengali for India), which is one
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
- var m = new Measurement({
+var m = MeasurementFactory({
     amount: 123232,
     unit: "bytes"
 });
@@ -310,10 +307,10 @@ Example in Russian:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 123232,
     unit: "meters"
 });
@@ -338,10 +335,10 @@ Here is an example of formatting with the list style:
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 1.125,
     unit: "cups"
 });
@@ -368,10 +365,10 @@ For example, a person's height in the US is most frequently given as feet and in
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 5.5,
     unit: "feet"
 });
@@ -420,10 +417,10 @@ For example, the "vehicleSpeed" usage specifies a maxFractionDigits of 0 because
 
 ~~~~~
 var ilib = require("ilib");
-var Measurement = require("ilib/lib/Measurement");
+var MeasurementFactory = require("ilib/lib/MeasurementFactory.js");
 var UnitFmt = require("ilib/lib/UnitFmt");
 
-var m = new Measurement({
+var m = MeasurementFactory({
     amount: 0.4543023,
     unit: "miles per hour"
 });

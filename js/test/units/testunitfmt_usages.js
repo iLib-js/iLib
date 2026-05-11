@@ -1,7 +1,7 @@
 /*
  * testunits_usages.js - test the units formatter object with various usages
  *
- * Copyright © 2018, 2021-2024 JEDLSoft
+ * Copyright © 2018, 2021-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1643,7 +1643,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 c(i), 2 oz(i), 2.4 tsp(i)");
+        test.equal(str, "1 cup Imp., 2 oz(i), 2.4 tsp(i)");
         test.done();
     },
     testUnitFormatWithUsageLiquidFoodVolumeKO: function(test) {
@@ -1835,7 +1835,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial cups, 3 imperial tablespoons");
+        test.equal(str, "2 cups Imperial, 3 imperial tablespoons");
         test.done();
     },
     testUnitFormatWithUsageDryFoodVolumeConvertGB2: function(test) {
@@ -1851,7 +1851,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 c(i), 4 tbsp(i)");
+        test.equal(str, "1 cup Imp., 4 tbsp(i)");
         test.done();
     },
     testUnitFormatWithUsageDryFoodVolumeKO: function(test) {
@@ -2009,7 +2009,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 imperial pint");
+        test.equal(str, "1 pint Imperial");
         test.done();
     },
     testUnitFormatWithUsageDrinkVolumeShortGB: function(test) {
@@ -2613,7 +2613,7 @@ module.exports.testunitfmt_usages = {
             locale: "fr-CA"
         });
         var str = uf.format(m1);
-        test.equal(str, "2,5 mètres cubes");
+        test.equal(str, "2,5 mètres cubes");
         test.done();
     },
     testUnitFormatWithUsageStorageVolumeBY: function(test) {
@@ -2753,7 +2753,7 @@ module.exports.testunitfmt_usages = {
             locale: "fr-CA"
         });
         var str = uf.format(m1);
-        test.equal(str, "2,5 mètres cubes");
+        test.equal(str, "2,5 mètres cubes");
         test.done();
     },
     testUnitFormatWithUsageGasVolumeBY: function(test) {

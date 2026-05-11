@@ -37,7 +37,7 @@ That's it! The variable "pn" now contains the parsed phone number. Here are the 
 
 Note that the parts only contain dialable digits, and all the formatting characters are gone.
 
-The phone number code defaults to parsing using the rules of the current country, which it gets from the current ilib locale. For the most calls, people are in their home country, so this works fine. (See the section below about options if you are currently in another country.)
+The phone number code defaults to parsing using the rules of the current country, which it gets from the current ilib locale. In most cases, people are in their home country, so this works fine. (See the section below about options if you are currently in another country.)
 
 The fields it can find are the following:
 
@@ -57,7 +57,7 @@ The fields it can find are the following:
 Options
 -------
 
-The phone number takes options as well that help you parse phone numbers. One of the most important ones is the "mcc", which is the Mobile Carrier Code. This tells the phone number parser which carrier you are connected to at moment (perhaps while roaming outside your usual country/region), and therefore also which region/country you are currently located in. When a call comes in to the phone, the carrier sends the number along with it. This number will be appropriate for the current region/country's dialing plan, not for your home dialing plan. Therefore, you must use the dialing plan of your location in order to parse that number. Implementors that use this code on actual mobile phones should always pass the mcc of the mobile carrier when parsing a number from that carrier.
+The phone number takes options as well that help you parse phone numbers. One of the most important ones is the "mcc", which is the Mobile Carrier Code. This tells the phone number parser which carrier you are connected to **at the moment** (for example while roaming outside your usual country or region), and therefore which region or country’s dialing plan applies. When a call comes in to the phone, the carrier sends the number along with it. This number will be appropriate for the current region/country's dialing plan, not for your home dialing plan. Therefore, you must use the dialing plan of your location in order to parse that number. Implementors that use this code on actual mobile phones should always pass the mcc of the mobile carrier when parsing a number from that carrier.
 
 Here's how you do it:
 
@@ -98,7 +98,7 @@ var number = "+33 1 12 34 56 78";
 var pn = new PhoneNumber(number);
 ~~~~~~
 
-The iLib code recognizes "33" as the country code for France, and then loads in the data it needs to parse the rest of the number in France. This is why you have to pass to the format method various options like a callback function if you want to have asynchronous loading of locale data. By default, the parser acts synchronously. 
+The iLib code recognises "33" as the country code for France, and then loads in the data it needs to parse the rest of the number in France. This is why you have to pass to the format method various options like a callback function if you want to have asynchronous loading of locale data. By default, the parser acts synchronously. 
 
 The above example number will be parsed as:
 
@@ -228,7 +228,7 @@ var fmt = new PhoneFmt(); // use default style and locale
 var reformatted = fmt.format(pn);
 ~~~~~~
 
-In this case, the IDD prefix and country code are recognized, but area code and such are not. The reformatted phone number ends up being: "+994 124980335"
+In this case, the IDD prefix and country code are recognised, but area code and such are not. The reformatted phone number ends up being: "+994 124980335"
 
 Partial vs. Whole Phone Numbers
 -------------------------------
@@ -268,7 +268,7 @@ Normalization
 Normalization is used in various circumstances:
 
 - when dialing a number from the user's contact list where there may be parts missing or when matching an incoming number (CNAP or caller ID number) against the numbers in the user's contact list
-- when dialing a number from the user's contact list while traveling to other countries
+- when dialing a number from the user's contact list while travelling to other countries
 
 Each of these has slightly different requirements. iLib has two types of normalization to support both of the above scenarios:
 
@@ -331,7 +331,7 @@ In Verizon Assisted Dialing (VAD), there are 3 countries you have to keep in min
 * the target country. This is the country that you are trying to dial to.
 * the current country. This is where you are currently located, which may be different than the other two countries
 
-For example, let's say that you have a US CDMA phone, and you are trying to dial your friend Luigi in Rome, Italy while you are traveling in France to let him know when you are planning to arrive in Rome later in your trip. In this case, the home country is "US", the current country is "FR", and the target country is "IT".
+For example, let's say that you have a US CDMA phone, and you are trying to dial your friend Luigi in Rome, Italy while you are travelling in France to let him know when you are planning to arrive in Rome later in your trip. In this case, the home country is "US", the current country is "FR", and the target country is "IT".
 
 There are a few special things in this example. In Italy, you do not drop the trunk code when dialing from abroad, whereas in most countries you do. Also, since you are on a CDMA phone, you have to dial a numeric IDD prefix in order to dial internationally.
 
