@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ckb_IQ.js - test the date formatter object in Kurdish Arabic
  *
- * Copyright © 2012-2015, 2017, 2026 JEDLSoft
+ * Copyright © 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
