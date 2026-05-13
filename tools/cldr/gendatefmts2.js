@@ -307,7 +307,7 @@ locales.forEach(function (file) {
         return;
     }
 
-    // Skip locales listed here and any of their sublocales (for example, ku-*).
+    // Skip locales listed here and any of their sublocales
     if (skipList.indexOf(file.split("-")[0]) > -1) {
         // skip these, as the CLDR data has problems
         return;
