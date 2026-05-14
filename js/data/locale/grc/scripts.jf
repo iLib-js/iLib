@@ -1,8 +1,6 @@
 {
     "generated": true,
     "scripts": [
-        "Cprt",
-        "Grek",
-        "Linb"
+        "Grek"
     ]
 }
