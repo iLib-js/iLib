@@ -1,7 +1,7 @@
 /*
  * testWeekdayTranslation.js - test the weekday's translation
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5676,7 +5676,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧਵਾਰ");
         test.equal(value[4], "ਵੀਰਵਾਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰਵਾਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰਵਾਰ");
+        test.equal(value[6], "ਸ਼ਨੀਵਾਰ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "long", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -5688,7 +5688,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "medium", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -5700,7 +5700,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕ");
-        test.equal(value[6], "ਸ਼ਨਿੱ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -6886,13 +6886,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+4, type:"thaisolar"}));
         }
-        test.equal(value[0], "อา.");
-        test.equal(value[1], "จ.");
-        test.equal(value[2], "อ.");
-        test.equal(value[3], "พ.");
-        test.equal(value[4], "พฤ.");
-        test.equal(value[5], "ศ.");
-        test.equal(value[6], "ส.");
+        test.equal(value[0], "อาทิตย์");
+        test.equal(value[1], "จันทร์");
+        test.equal(value[2], "อังคาร");
+        test.equal(value[3], "พุธ");
+        test.equal(value[4], "พฤหัส");
+        test.equal(value[5], "ศุกร์");
+        test.equal(value[6], "เสาร์");
 
         fmt = new DateFmt({locale:"th-TH", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -7342,12 +7342,12 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "CN");
-        test.equal(value[1], "Th 2");
-        test.equal(value[2], "Th 3");
-        test.equal(value[3], "Th 4");
-        test.equal(value[4], "Th 5");
-        test.equal(value[5], "Th 6");
-        test.equal(value[6], "Th 7");
+        test.equal(value[1], "Thứ 2");
+        test.equal(value[2], "Thứ 3");
+        test.equal(value[3], "Thứ 4");
+        test.equal(value[4], "Thứ 5");
+        test.equal(value[5], "Thứ 6");
+        test.equal(value[6], "Thứ 7");
 
         fmt = new DateFmt({locale:"vi-VN", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10815,7 +10815,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧਵਾਰ");
         test.equal(value[4], "ਵੀਰਵਾਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰਵਾਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰਵਾਰ");
+        test.equal(value[6], "ਸ਼ਨੀਵਾਰ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10827,7 +10827,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10839,7 +10839,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕ");
-        test.equal(value[6], "ਸ਼ਨਿੱ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {

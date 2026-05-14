@@ -1,7 +1,7 @@
 /*
  * testdatefmt_si_LK.js - test the date formatter object in Sri Lanka
  *
- * Copyright © 2017-2018,2023 JEDLSoft
+ * Copyright © 2017-2018, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප් 29");
+        test.equal(fmt.format(date), "2011 බිනර 29");
         test.done();
     },
     testDateFmtSimpleLong_si_LK: function(test) {
@@ -94,7 +94,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
+        test.equal(fmt.format(date), "2011 බිනර 29");
         test.done();
     },
     testDateFmtSimpleFull_si_LK: function(test) {
@@ -112,7 +112,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
+        test.equal(fmt.format(date), "2011 බිනර 29");
         test.done();
     },
     testDateFmtSimpleTimeShort_si_LK: function(test) {
@@ -220,7 +220,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප් 29, 13.45");
+        test.equal(fmt.format(date), "2011 බිනර 29, 13.45");
         test.done();
     },
     testDateFmtDateTimeSimpleLong_si_LK: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmt_si_LK = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 දින 13.45");
+        test.equal(fmt.format(date), "2011 බිනර 29 දින 13.45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_si_LK: function(test) {
@@ -257,7 +257,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29 දින 13.45");
+        test.equal(fmt.format(date), "2011 බිනර 29 දින 13.45");
         test.done();
     },
     testDateFmtTemplateCalendar_si_LK: function(test) {
@@ -530,7 +530,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ස");
+        test.equal(fmt.format(date), "බ");
         test.done();
     },
     testDateFmtShortDateComponentsD_si_LK: function(test) {
@@ -710,7 +710,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "සැප්තැම්බර් 29");
+        test.equal(fmt.format(date), "බිනර 29");
         test.done();
     },
     testDateFmtFullDateComponentsMY_si_LK: function(test) {
@@ -728,7 +728,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර්");
+        test.equal(fmt.format(date), "2011 බිනර");
         test.done();
     },
     testDateFmtFullDateComponentsDMY_si_LK: function(test) {
@@ -746,7 +746,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29");
+        test.equal(fmt.format(date), "2011 බිනර 29");
         test.done();
     },
     testDateFmtFullDateComponentsDMW_si_LK: function(test) {
@@ -764,7 +764,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "සැප්තැම්බර් 29, බ්‍රහස්පතින්දා");
+        test.equal(fmt.format(date), "බිනර 29, බ්‍රහස්පතින්දා");
         test.done();
     },
     testDateFmtFullDateComponentsDMWY_si_LK: function(test) {
@@ -782,7 +782,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 සැප්තැම්බර් 29, බ්‍රහස්පතින්දා");
+        test.equal(fmt.format(date), "2011 බිනර 29, බ්‍රහස්පතින්දා");
         test.done();
     },
     testDateFmtShortTimeComponentsS_si_LK: function(test) {

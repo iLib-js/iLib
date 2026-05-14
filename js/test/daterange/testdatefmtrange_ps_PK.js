@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ps_PK.js - test the date range formatter object Pashto-Pakistan
  *
- * Copyright © 2022, 2024 JEDLSoft
+ * Copyright © 2022, 2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏2011 دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 دسمبر 31 په ‏1:45 غ.و. – ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeInDayFull_ps_PK: function(test) {
@@ -133,7 +133,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏2011 د دسمبر 31 ‏1:45 غ.و. – ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 د دسمبر 31 په ‏1:45 غ.و. – ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_ps_PK: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏2011 دسمبر 30 ‏1:45 غ.و. – ‏2011 دسمبر 31 ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 دسمبر 30 په ‏1:45 غ.و. – ‏2011 دسمبر 31 په ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ps_PK: function(test) {
@@ -237,7 +237,7 @@ module.exports.testdatefmtrange_ps_PK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '‏2011 د دسمبر 30 ‏1:45 غ.و. – ‏2011 د دسمبر 31 ‏2:30 غ.و.');
+        test.equal(fmt.format(start, end), '‏2011 د دسمبر 30 په ‏1:45 غ.و. – ‏2011 د دسمبر 31 په ‏2:30 غ.و.');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_ps_PK: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_zh_Hant_TW.js - test the date formatter object in Chinese (traditional) for Taiwan
  *
- * Copyright © 2012-2015,2017,2021 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2021, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,7 +201,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011/9/29 下午1:45");
+        test.equal(fmt.format(date), "2011/9/29 下午1:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_zh_Hant_TW: function(test) {
@@ -490,7 +490,7 @@ module.exports.testdatefmt_zh_Hant_TW = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011/9/29 下午1:45");
+        test.equal(fmt.format(date), "2011/9/29 下午1:45");
         test.done();
     },
     testDateFmtShortDateComponentsY_zh_Hant_TW: function(test) {

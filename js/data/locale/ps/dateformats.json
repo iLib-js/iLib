@@ -44,10 +44,8 @@
                 "s": "L"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
-                "m": "MMM",
-                "s": "M"
+                "m": "MMM"
             },
             "my": {
                 "f": "‏yyyy د MMMM",
@@ -55,42 +53,38 @@
                 "m": "‏yyyy MMM",
                 "s": "‏yyyy/M"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} په {time}",
+            "l": "{date} په {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "range": {
             "c00": {
-                "f": "‏{sy} د {sm} {sd} {st} – {et}",
-                "l": "‏{sy} {sm} {sd} {st} – {et}",
+                "f": "‏{sy} د {sm} {sd} په {st} – {et}",
+                "l": "‏{sy} {sm} {sd} په {st} – {et}",
                 "m": "‏{sy} {sm} {sd} {st} – {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – {et}"
             },
             "c01": {
-                "f": "‏{sy} د {sm} {sd} {st} – ‏{ey} د {em} {ed} {et}",
-                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "f": "‏{sy} د {sm} {sd} په {st} – ‏{ey} د {em} {ed} په {et}",
+                "l": "‏{sy} {sm} {sd} په {st} – ‏{ey} {em} {ed} په {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
             "c02": {
-                "f": "‏{sy} د {sm} {sd} {st} – ‏{ey} د {em} {ed} {et}",
-                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "f": "‏{sy} د {sm} {sd} په {st} – ‏{ey} د {em} {ed} په {et}",
+                "l": "‏{sy} {sm} {sd} په {st} – ‏{ey} {em} {ed} په {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
             "c03": {
-                "f": "‏{sy} د {sm} {sd} {st} – ‏{ey} د {em} {ed} {et}",
-                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "f": "‏{sy} د {sm} {sd} په {st} – ‏{ey} د {em} {ed} په {et}",
+                "l": "‏{sy} {sm} {sd} په {st} – ‏{ey} {em} {ed} په {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
@@ -132,14 +126,10 @@
                 "ahms": "‏h:mm:ss a",
                 "ahmsz": "‏h:mm:ss a (z)",
                 "ahmz": "‏h:mm a (z)",
-                "h": "h",
                 "hm": "‏h:mm",
                 "hms": "‏h:mm:ss",
                 "hmsz": "‏h:mm:ss (z)",
-                "hmz": "‏h:mm (z)",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "‏h:mm (z)"
             },
             "24": {
                 "ah": "‏H",
@@ -147,14 +137,10 @@
                 "ahms": "‏H:mm:ss",
                 "ahmsz": "‏H:mm:ss (z)",
                 "ahmz": "‏H:mm (z)",
-                "h": "H",
                 "hm": "‏H:mm",
                 "hms": "‏H:mm:ss",
                 "hmsz": "‏H:mm:ss (z)",
-                "hmz": "‏H:mm (z)",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "‏H:mm (z)"
             }
         }
     },
@@ -173,28 +159,28 @@
                 "s": "‏M/d"
             },
             "dmw": {
-                "f": "EEEE MMMM d",
-                "l": "EEE MMMM d",
-                "m": "EE MMM d",
-                "s": "E ‏M/d"
+                "f": "MMMM d, EEEE",
+                "l": "MMMM d, EEE",
+                "m": "MMM d, EE",
+                "s": "‏M/d, E"
             },
             "dmwy": {
-                "f": "EEEE د yyyy د MMMM d",
-                "l": "EEE د yyyy د MMMM d",
-                "m": "EE yyyy MMM d",
-                "s": "E yyyy/M/d"
+                "f": "‏yyyy MMMM d, EEEE",
+                "l": "‏yyyy MMMM d, EEE",
+                "m": "‏yyyy MMM d, EE",
+                "s": "‏yyyy/M/d, E"
             },
             "dmy": {
-                "f": "د yyyy د MMMM d",
-                "l": "د yyyy د MMMM d",
+                "f": "‏yyyy MMMM d",
+                "l": "‏yyyy MMMM d",
                 "m": "‏yyyy MMM d",
                 "s": "‏yyyy/M/d"
             },
             "dw": {
-                "f": "EEEE d",
-                "l": "EEE d",
-                "m": "EE d",
-                "s": "E d"
+                "f": "‏d, EEEE",
+                "l": "‏d, EEE",
+                "m": "‏d, EE",
+                "s": "‏d, E"
             },
             "m": {
                 "f": "MMMM",
@@ -203,8 +189,8 @@
                 "s": "M"
             },
             "my": {
-                "f": "د yyyy د MMMM",
-                "l": "د yyyy د MMMM",
+                "f": "‏yyyy MMMM",
+                "l": "‏yyyy MMMM",
                 "m": "‏yyyy MMM",
                 "s": "‏yyyy/M"
             },
@@ -224,50 +210,50 @@
         "order": "{date} {time}",
         "range": {
             "c00": {
-                "f": "د {sy} د {sm} {sd} {st} – {et}",
-                "l": "د {sy} د {sm} {sd} {st} – {et}",
+                "f": "‏{sy} {sm} {sd} {st} – {et}",
+                "l": "‏{sy} {sm} {sd} {st} – {et}",
                 "m": "‏{sy} {sm} {sd} {st} – {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – {et}"
             },
             "c01": {
-                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
-                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "f": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
             "c02": {
-                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
-                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "f": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
             "c03": {
-                "f": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
-                "l": "د {sy} د {sm} {sd} {st} – د {ey} د {em} {ed} {et}",
+                "f": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
+                "l": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "m": "‏{sy} {sm} {sd} {st} – ‏{ey} {em} {ed} {et}",
                 "s": "‏{sy}/{sm}/{sd} {st} – ‏{ey}/{em}/{ed} {et}"
             },
             "c10": {
-                "f": "د {sy} د {sm} {sd} – {ed}",
-                "l": "د {sy} د {sm} {sd} – {ed}",
+                "f": "‏{sy} {sm} {sd} – {ed}",
+                "l": "‏{sy} {sm} {sd} – {ed}",
                 "m": "‏{sy} {sm} {sd} – {ed}",
                 "s": "‏{sy}/{sm}/{sd} – {ed}"
             },
             "c11": {
-                "f": "د {sy} د {sm} {sd} – د {em} {ed}",
-                "l": "د {sy} د {sm} {sd} – د {em} {ed}",
+                "f": "‏{sy} {sm} {sd} – ‏{em} {ed}",
+                "l": "‏{sy} {sm} {sd} – ‏{em} {ed}",
                 "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
                 "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
             },
             "c12": {
-                "f": "د {sy} د {sm} {sd} – د {ey} د {em} {ed}",
-                "l": "د {sy} د {sm} {sd} – د {ey} د {em} {ed}",
+                "f": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
+                "l": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
                 "m": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
                 "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
             },
             "c20": {
-                "f": "د {sy} د {sm} – د {ey} د {em}",
-                "l": "د {sy} د {sm} – د {ey} د {em}",
+                "f": "‏{sy} {sm} – ‏{ey} {em}",
+                "l": "‏{sy} {sm} – ‏{ey} {em}",
                 "m": "‏{sy} {sm} – ‏{ey} {em}",
                 "s": "‏{sy}/{sm} – ‏{ey}/{em}"
             },

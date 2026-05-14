@@ -1,7 +1,7 @@
 /*
  * testMonthTranslation.js - test the month's translation
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -173,8 +173,8 @@ module.exports.testmonthtranslation = {
             value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        test.equal(value[0], "জানুয়ারী");
-        test.equal(value[1], "ফেব্রুয়ারী");
+        test.equal(value[0], "জানুয়ারি");
+        test.equal(value[1], "ফেব্রুয়ারি");
         test.equal(value[2], "মার্চ");
         test.equal(value[3], "এপ্রিল");
         test.equal(value[4], "মে");
@@ -655,8 +655,8 @@ module.exports.testmonthtranslation = {
         test.equal(value[2], "Mar");
         test.equal(value[3], "Apr");
         test.equal(value[4], "May");
-        test.equal(value[5], "June");
-        test.equal(value[6], "July");
+        test.equal(value[5], "Jun");
+        test.equal(value[6], "Jul");
         test.equal(value[7], "Aug");
         test.equal(value[8], "Sept");
         test.equal(value[9], "Oct");
@@ -2967,7 +2967,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[6], "जुलाई");
         test.equal(value[7], "अगस्त");
         test.equal(value[8], "सितंबर");
-        test.equal(value[9], "अक्तूबर");
+        test.equal(value[9], "अक्टूबर");
         test.equal(value[10], "नवंबर");
         test.equal(value[11], "दिसंबर");
 
@@ -2985,7 +2985,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[6], "जुल॰");
         test.equal(value[7], "अग॰");
         test.equal(value[8], "सित॰");
-        test.equal(value[9], "अक्तू॰");
+        test.equal(value[9], "अक्टू॰");
         test.equal(value[10], "नव॰");
         test.equal(value[11], "दिस॰");
 

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_th_TH.js - test the date formatter object in พฤaiLand
  *
- * Copyright © 2012-2015,2017-2018,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1714,7 +1714,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29 กันยายน 2554");
+        test.equal(fmt.format(date), "พฤหัสที่ 29 กันยายน 2554");
         test.done();
     },
     testDateFmtFullDMWY_th_TH: function(test) {
@@ -1858,7 +1858,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29 กันยายน");
+        test.equal(fmt.format(date), "พฤหัสที่ 29 กันยายน");
         test.done();
     },
     testDateFmtFullDMW_th_TH: function(test) {
@@ -2074,7 +2074,7 @@ module.exports.testdatefmt_th_TH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "พฤ.ที่ 29");
+        test.equal(fmt.format(date), "พฤหัสที่ 29");
         test.done();
     },
     testDateFmtFullDW_th_TH: function(test) {

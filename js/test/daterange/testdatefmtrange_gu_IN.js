@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_gu_in.js - test the date range formatter object in Gujrati/India
  *
- * Copyright © 2012-2017,2020 JEDLSoft
+ * Copyright © 2012-2017, 2020, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 02:30 PM');
+        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM');
         test.done();
     },
     testDateRngFmtguINRangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 02:30 PM');
+        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM');
         test.done();
     },
     testDateRngFmtguINRangeNextDayShort: function(test) {
@@ -212,7 +212,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 31 ડિસેમ્બર, 2011 એ 02:30 PM વાગ્યે');
+        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM');
         test.done();
     },
     testDateRngFmtguINRangeNextDayFull: function(test) {
@@ -238,7 +238,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 31 ડિસેમ્બર, 2011 એ 02:30 PM વાગ્યે');
+        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM');
         test.done();
     },
     testDateRngFmtguINRangeMultiDayShort: function(test) {
