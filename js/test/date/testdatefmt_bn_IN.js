@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bn_IN.js - test the date formatter object in bengali for India
  *
- * Copyright © 2013-2015,2017-2018,2023 JEDLSoft
+ * Copyright © 2013-2015,2017-2018, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1403,7 +1403,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 ঘন্টায়");
+        test.equal(fmt.formatRelative(reference, date), "4 ঘণ্টায়");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_bn_IN: function(test) {
@@ -1431,7 +1431,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 ঘন্টা আগে");
+        test.equal(fmt.formatRelative(reference, date), "4 ঘণ্টা আগে");
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightAfter_bn_IN: function(test) {

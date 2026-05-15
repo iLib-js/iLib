@@ -93,8 +93,6 @@
     "EEEE4": "Ọjọ́bọ",
     "EEEE5": "Ọjọ́ Ẹtì",
     "EEEE6": "Ọjọ́ Àbámẹ́ta",
-    "G-1": "BCE",
-    "G1": "CE",
     "MMM1": "Oṣù Ṣẹ́rẹ́",
     "MMM10": "Oṣù Ọ̀wàrà",
     "MMM11": "Oṣù Bélú",
@@ -120,7 +118,6 @@
     "MMMM8": "Oṣù Ògún",
     "MMMM9": "Oṣù Owewe",
     "N1": "O",
-    "N10": "O",
     "N11": "O",
     "N12": "O",
     "N2": "O",
@@ -185,8 +182,5 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

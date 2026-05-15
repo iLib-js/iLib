@@ -65,7 +65,6 @@
     "1#in 1 wk|#in {num} wks": "#+{num} w",
     "1#in 1 year|#in {num} years": "#+{num} y",
     "1#in 1 yr|#in {num} yrs": "#+{num} y",
-    "E0": "S",
     "E1": "J",
     "E2": "J",
     "E3": "J",
@@ -157,8 +156,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

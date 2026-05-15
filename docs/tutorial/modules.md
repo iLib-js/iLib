@@ -5,9 +5,9 @@ In iLib version 1.0 through 10.0, all functions and classes appeared underneath 
 
 In an attempt to make that a little better, 3 sizes were introduced: core, standard, and full. These included various classes in ilib that many apps might use. If you wanted something different than those three sizes, you had to roll your own copy of ilib. But what if different parts of your app used different classes within iLib? Can't we just load and use those parts we really need?
 
-In 11.0, we are introducing a major refactoring of the code to support modularization in a CommonJS style which can be used directly in nodejs, local web pages via the file: protocol, even within Qt/QML. When Ecmascript 6 (ES6) is finally approved, it will be easy to move from the CommonJS style modules to the ES6 ones and we can start to use those modules directly in browsers as well with remote web pages.
+In 11.0, iLib gained **CommonJS** modularization so classes load from **`require("ilib/lib/...")`** in Node.js, from assembled bundles in browsers, over the **`file:`** protocol, and in Qt/QML. ES module workflows are covered by separate tooling (for example **[ilib-es6](https://github.com/iLib-js/ilib-es6)**).
 
-But wait, I hear you thinking, am I going to have to change my app just to upgrade to iLib 11.0? The answer is yes, but not for a while. there is a set of backwards-compatibility stubs that allow your code to work as-is without any modifications with 11.0. This buys you time to update your code to the new modularized scheme when you are ready.
+Do you have to rewrite immediately? Preferably you migrate to **`require`** style over time, but **compatibility stubs** allowed older **`ilib.*`** call sites to keep working while projects caught up.
 
 Changes
 -------
@@ -16,7 +16,7 @@ Most classes have become their own first class modules. For example, the "ilib.D
 
 Included at the end of this wiki page is the mapping between the old class name and the new ones. For the most part, classes have the same name as before without the "ilib." namespace at the beginning, although a few of the classes have changed names to make them more clear. For example, "ilib.GeoLocator" has become "PhoneGeoLocator" to make it more clear what kind of locator it is. With the new name, you can tell that it is *not* an IP address locator (which is what you think of normally for a geolocator), but one for phone numbers instead.
 
-Static functions have remained under a namespace, though there are now under new sub-namespaces that group together related functions. For example, the adjusted modulo function "ilib.amod" is now in the MathUtils namespace. The next section will give you examples of how you can access and use these namespaces.
+Static helpers remain grouped under namespaces—now clearer sub-namespaces such as **`MathUtils`** instead of ad hoc **`ilib.*`** globals. For example, the adjusted modulo function "ilib.amod" is now in the MathUtils namespace. The next section will give you examples of how you can access and use these namespaces.
 
 Accessing the New Classes and Functions
 -------------------------

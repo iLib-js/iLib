@@ -52,28 +52,28 @@
             }
         },
         "order": {
-            "f": "{date}, {time} 'baje'",
-            "l": "{date}, {time} 'baje'"
+            "f": "{date}, {time} 'par'",
+            "l": "{date}, {time} 'par'"
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy}, {st} baje – {et}",
-                "l": "{sd} {sm}, {sy}, {st} baje – {et}",
+                "f": "{sd} {sm} {sy}, {st} par – {et}",
+                "l": "{sd} {sm}, {sy}, {st} par – {et}",
                 "m": "{sd} {sm}, {sy}, {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm} {sy}, {st} baje – {ed} {em} {ey}, {et} baje",
-                "l": "{sd} {sm}, {sy}, {st} baje – {ed} {em}, {ey}, {et} baje",
+                "f": "{sd} {sm} {sy}, {st} par – {ed} {em} {ey}, {et} par",
+                "l": "{sd} {sm}, {sy}, {st} par – {ed} {em}, {ey}, {et} par",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
             },
             "c02": {
-                "f": "{sd} {sm} {sy}, {st} baje – {ed} {em} {ey}, {et} baje",
-                "l": "{sd} {sm}, {sy}, {st} baje – {ed} {em}, {ey}, {et} baje",
+                "f": "{sd} {sm} {sy}, {st} par – {ed} {em} {ey}, {et} par",
+                "l": "{sd} {sm}, {sy}, {st} par – {ed} {em}, {ey}, {et} par",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
             },
             "c03": {
-                "f": "{sd} {sm} {sy}, {st} baje – {ed} {em} {ey}, {et} baje",
-                "l": "{sd} {sm}, {sy}, {st} baje – {ed} {em}, {ey}, {et} baje",
+                "f": "{sd} {sm} {sy}, {st} par – {ed} {em} {ey}, {et} par",
+                "l": "{sd} {sm}, {sy}, {st} par – {ed} {em}, {ey}, {et} par",
                 "m": "{sd} {sm}, {sy}, {st} – {ed} {em}, {ey}, {et}"
             },
             "c10": {

@@ -1,7 +1,7 @@
 /*
  * datefmts.js - auxillary tools used to generate the dateformats.json files
  *
- * Copyright © 2015-2024, JEDLSoft
+ * Copyright © 2015-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,6 +202,8 @@ function timeOrder(fmt) {
         return "haz";
     } else if (stripped.match(/z.*H/) || stripped.match(/z.*[aB].*[hK]/)) {
         return "zah";
+    } else if (stripped.match(/z.*[hK].*[aB]/)) {
+        return "zha";
     } else if (stripped.match(/[Ba].*[hK]/)) {
         return "ahz";
     } else if (stripped.match(/[hK].*[aB]/)) {
@@ -840,13 +842,14 @@ module.exports = {
                             end = scanForChars(longtime, "z");
 
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
                             break;
 
                         case 'zah':
+                        case 'zha':
                             begin = scanForChars(longtime, "H");
 
                             zTemplate = longtime.substring(0, begin) + "{time}";
@@ -863,9 +866,10 @@ module.exports = {
 
                     switch (order) {
                         case 'haz':
+                        case 'zha':
                             end = scanForChars(available["h"], "aB");
                             i = end;
-                            while (((available["h"].charAt(i) !== ' ') && (available["h"].charAt(i) !== ' ')) && i > 0) {
+                            while (((available["h"].charAt(i) !== ' ') && (available["h"].charAt(i) !== '\u202F')) && i > 0) {
                                 i--;
                             }
                             i = i < 1 ? end : i;
@@ -917,7 +921,7 @@ module.exports = {
                             begin = scanForLastChars(longtime, "s");
                             end = scanForChars(longtime, "z");
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             zTemplate = "{time}" + longtime.substring(i < begin ? end : i);
@@ -937,7 +941,7 @@ module.exports = {
                             begin = scanForLastChars(shorttime, "m");
                             end = scanForChars(shorttime, "a");
                             i = end;
-                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== ' ' && i > begin) {
+                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             i = i < begin ? end : i;
@@ -948,12 +952,28 @@ module.exports = {
                             begin = scanForLastChars(longtime, "a");
                             end = scanForChars(longtime, "z");
                             i = end;
-                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== ' ' && i > begin) {
+                            while (longtime.charAt(i) !== ' ' && longtime.charAt(i) !== '\u202F' && i > begin) {
                                 i--;
                             }
                             i = i < begin ? end : i;
                             zTemplate = "{time}" + longtime.substring(i);
                             break;
+                        case 'zha':
+                            begin = scanForLastChars(shorttime, "m");
+                            end = scanForChars(shorttime, "a");
+                            i = end;
+                            while (shorttime.charAt(i) !== ' ' && shorttime.charAt(i) !== '\u202F' && i > begin) {
+                                i--;
+                            }
+                            i = i < begin ? end : i;
+                            aTemplate = "{time}" + shorttime.substring(i);
+
+                            calendar.time["12"]["hm"] = rtlify(shorttime.substring(0, i).trim());
+
+                            begin = scanForChars(longtime, "h");
+                            zTemplate = longtime.substring(0, begin) + "{time}";
+                            break;
+
                     }
 
                     begin = scanForChars(mediumtime, "m");
@@ -971,6 +991,7 @@ module.exports = {
                             break;
 
                         case 'haz':
+                        case 'zha':
                             begin = scanForChars(mediumtime, "a");
                             calendar.time["12"]["hms"] = rtlify(mediumtime.substring(0, begin).trim());
                             break;

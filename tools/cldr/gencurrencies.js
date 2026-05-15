@@ -2,7 +2,7 @@
  * gencurrencies.js - ilib tool to generate the json data about currency
  * the CLDR data files
  *
- * Copyright © 2016, 2018-2020, 2022-2023 JEDLSoft
+ * Copyright © 2016, 2018-2020, 2022-2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +44,16 @@ function getUsingCurrency(object) {
     for (i = 0; i < object.length; i++) {
         for (curObj in object[i]) {
             if(object[i][curObj]._to === undefined && object[i][curObj]._from !== undefined && object[i][curObj]._tender === undefined) {
-                ret.push(curObj);
+                ret.push({ name: curObj, from: object[i][curObj]._from });
             }
         }
     }
-    return ret;
+    // Sort ascending by _from date so the most recent currency is last.
+    // The caller writes each currency to currency.jf in order, so the last one
+    // (most recently introduced) becomes the primary currency for the region.
+    // This prevents the result from depending on the order of entries in the CLDR data.
+    ret.sort(function(a, b) { return a.from.localeCompare(b.from); });
+    return ret.map(function(item) { return item.name; });
 }
 
 function getDecimals(currency, fractions) {
@@ -138,6 +143,35 @@ var currencyObj = {}; // for saving currency.jf in each directory
 var currencyInfoObj = {}; // currency information object for currency.json
 var filename, nameAndSign = [], cur = [];
 
+
+// Override map for currency signs:
+// currency code -> locale used to source a preferred sign for exceptional cases.
+//   key   : ISO 4217 currency code
+//   value : CLDR locale identifier
+var currencySignOverrideLocaleMap = {
+    IQD: "ar-IQ", // "د.ع.‏"
+    IRR: "fa", // "ریال"
+
+}
+// For each mapped currency, build an explicit sign override.
+// Keep the same precedence as getNameAndSign: narrow > variant > symbol.
+var currencySignOverrides = {};
+Object.keys(currencySignOverrideLocaleMap).forEach(function(currency) {
+    var locale = currencySignOverrideLocaleMap[currency];
+    var localeData = require("cldr-numbers-full/main/" + locale + "/currencies.json");
+    var currencies = localeData.main[locale].numbers.currencies;
+    if (currencies && currencies[currency]) {
+        var currencySymbols = currencies[currency];
+        if (currencySymbols['symbol-alt-narrow'] !== undefined) {
+            currencySignOverrides[currency] = currencySymbols['symbol-alt-narrow'];
+        } else if (currencySymbols['symbol-alt-variant'] !== undefined) {
+            currencySignOverrides[currency] = currencySymbols['symbol-alt-variant'];
+        } else if (currencySymbols.symbol !== undefined) {
+            currencySignOverrides[currency] = currencySymbols.symbol;
+        }
+    }
+});
+
 var rootCurrency = {"currency": "USD"}
 fs.writeFileSync(path.join(toDir, "currency.jf"), stringify(rootCurrency, {space: 4}), "utf-8");
 
@@ -167,7 +201,7 @@ for (var region in currencyData.region) {
             console.log(region + '/' + cur[i]);
             currencyInfoObj[cur[i]].name = nameAndSign['name'];
             currencyInfoObj[cur[i]].decimals = getDecimals(cur[i], currencyData.fractions);
-            currencyInfoObj[cur[i]].sign = nameAndSign['sign'];
+            currencyInfoObj[cur[i]].sign = currencySignOverrides[cur[i]] || nameAndSign['sign'];
             fn = path.join(filename, "currency.jf");
             fs.writeFileSync(fn, stringify(currencyObj, {space: 4}), "utf-8");
         }

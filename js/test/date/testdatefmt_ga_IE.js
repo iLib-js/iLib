@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ga_IE.js - test the date formatter object in Irish Gaelic
  *
- * Copyright © 2012-2015,2017-2018,2021,2023 JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, 2021, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
     testDateFmtSimpleMedium_ga_IE: function(test) {
@@ -201,7 +201,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 13:45");
+        test.equal(fmt.format(date), "29/9/11, 13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleMedium_ga_IE: function(test) {
@@ -454,7 +454,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011");
+        test.equal(fmt.format(date), "11");
         test.done();
     },
     testDateFmtShortDateComponentsM_ga_IE: function(test) {
@@ -472,7 +472,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
     testDateFmtShortDateComponentsN_ga_IE: function(test) {
@@ -526,7 +526,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09");
+        test.equal(fmt.format(date), "29/9");
         test.done();
     },
     testDateFmtShortDateComponentsMY_ga_IE: function(test) {
@@ -544,7 +544,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09/2011");
+        test.equal(fmt.format(date), "9/11");
         test.done();
     },
     testDateFmtShortDateComponentsDMY_ga_IE: function(test) {
@@ -562,7 +562,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
     testDateFmtShortDateComponentsWDM_ga_IE: function(test) {
@@ -580,7 +580,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "D 29/09");
+        test.equal(fmt.format(date), "D 29/9");
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_ga_IE: function(test) {
@@ -598,7 +598,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "D 29/09/2011");
+        test.equal(fmt.format(date), "D 29/9/11");
         test.done();
     },
     testDateFmtFullDateComponentsY_ga_IE: function(test) {

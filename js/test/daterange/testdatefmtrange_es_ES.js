@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_es_ES.js - test the date range formatter object in Spanish/Spain
  *
- * Copyright © 2012-2017, 2021 JEDLSoft
+ * Copyright © 2012-2017, 2021, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 de diciembre de 2011, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), "31 de diciembre de 2011 a las 13:45 – 14:30");
         test.done();
     },
     testDateRngFmtESRangeinDayFull: function(test) {
@@ -211,7 +211,7 @@ module.exports.testdatefmtrange_es_ES = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 de diciembre de 2011, 13:45 – 31 de diciembre de 2011, 14:30");
+        test.equal(fmt.format(start, end), "30 de diciembre de 2011 a las 13:45 – 31 de diciembre de 2011 a las 14:30");
         test.done();
     },
     testDateRngFmtESRangeNextDayFull: function(test) {

@@ -474,7 +474,7 @@
     "AO": [
         {
             "code": "BGO",
-            "name": "Bengo"
+            "name": "Bengo provinsiyasi"
         },
         {
             "code": "BGU",
@@ -556,7 +556,7 @@
         },
         {
             "code": "K",
-            "name": "Catamarca"
+            "name": "Catamarca provinsiyasi"
         },
         {
             "code": "X",
@@ -564,7 +564,7 @@
         },
         {
             "code": "W",
-            "name": "Corrientes"
+            "name": "Corrientes provinsiyasi"
         },
         {
             "code": "E",
@@ -572,7 +572,7 @@
         },
         {
             "code": "P",
-            "name": "Formosa"
+            "name": "Formosa Provinsiyasi"
         },
         {
             "code": "L",
@@ -584,11 +584,11 @@
         },
         {
             "code": "M",
-            "name": "Mendoza"
+            "name": "Mendoza provinsiyasi"
         },
         {
             "code": "N",
-            "name": "Misiones"
+            "name": "Misiones provinsiyasi"
         },
         {
             "code": "Q",
@@ -596,11 +596,11 @@
         },
         {
             "code": "R",
-            "name": "Río Negro"
+            "name": "Río Negro provinsiyasi"
         },
         {
             "code": "A",
-            "name": "Salta"
+            "name": "Salta viloyati"
         },
         {
             "code": "J",
@@ -620,7 +620,7 @@
         },
         {
             "code": "G",
-            "name": "Santiago del Estero"
+            "name": "Santiago del Estero provinsiyasi"
         },
         {
             "code": "V",
@@ -628,7 +628,7 @@
         },
         {
             "code": "T",
-            "name": "Tucumán"
+            "name": "Tucuman provinsiyasi"
         },
         {
             "code": "Y",
@@ -636,17 +636,11 @@
         },
         {
             "code": "H",
-            "name": "Chaco"
+            "name": "Chaco provinsiyasi"
         },
         {
             "code": "U",
             "name": "Chubut"
-        }
-    ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
         }
     ],
     "AT": [
@@ -656,7 +650,7 @@
         },
         {
             "code": "2",
-            "name": "Carinthia"
+            "name": "Karintiya"
         },
         {
             "code": "3",
@@ -719,18 +713,6 @@
         {
             "code": "WA",
             "name": "Gʻarbiy avstraliya"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1077,12 +1059,12 @@
             "name": "Posavina"
         },
         {
-            "code": "SRP",
-            "name": "Republika Srpska"
-        },
-        {
             "code": "09",
             "name": "Sarajevo"
+        },
+        {
+            "code": "SRP",
+            "name": "Serb Respublikasi"
         },
         {
             "code": "03",
@@ -1460,7 +1442,7 @@
         },
         {
             "code": "WHT",
-            "name": "Hainaut"
+            "name": "Hainaut provinsiyasi"
         },
         {
             "code": "WLG",
@@ -1744,7 +1726,7 @@
         },
         {
             "code": "05",
-            "name": "Vidin"
+            "name": "Vidin provinsiyasi"
         },
         {
             "code": "06",
@@ -1752,11 +1734,11 @@
         },
         {
             "code": "07",
-            "name": "Gabrovo"
+            "name": "Gabrovo provinsiyasi"
         },
         {
             "code": "08",
-            "name": "Dobrich"
+            "name": "Dobrich provinsiyasi"
         },
         {
             "code": "09",
@@ -1764,7 +1746,7 @@
         },
         {
             "code": "10",
-            "name": "Kyustendil"
+            "name": "Kyustendil provinsiyasi"
         },
         {
             "code": "11",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zu"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3310,7 +3286,7 @@
         },
         {
             "code": "BOL",
-            "name": "Bolívar"
+            "name": "Bolivar departamenti"
         },
         {
             "code": "BOY",
@@ -3374,7 +3350,7 @@
         },
         {
             "code": "NSA",
-            "name": "Norte de Santander"
+            "name": "Norte de Santander departamenti"
         },
         {
             "code": "PUT",
@@ -3394,7 +3370,7 @@
         },
         {
             "code": "SAN",
-            "name": "Santander"
+            "name": "Santander departamenti"
         },
         {
             "code": "SUC",
@@ -3402,11 +3378,11 @@
         },
         {
             "code": "TOL",
-            "name": "Tolima"
+            "name": "Tolima departamenti"
         },
         {
             "code": "VAC",
-            "name": "Valle del Cauca"
+            "name": "Valle del Cauca departamenti"
         },
         {
             "code": "VAU",
@@ -3419,12 +3395,6 @@
         {
             "code": "CHO",
             "name": "Chocó"
-        }
-    ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
         }
     ],
     "CR": [
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6084,7 +6048,7 @@
         },
         {
             "code": "976",
-            "name": "Mayotte"
+            "name": "Mayotta"
         },
         {
             "code": "69M",
@@ -7387,12 +7351,6 @@
             "name": "Shida-Kartli"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8555,12 +8501,6 @@
             "name": "Zalaegerseg"
         }
     ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
-        }
-    ],
     "ID": [
         {
             "code": "AC",
@@ -8998,7 +8938,7 @@
         },
         {
             "code": "PY",
-            "name": "Puducherry"
+            "name": "Pondisheri"
         },
         {
             "code": "RJ",
@@ -9238,7 +9178,7 @@
         },
         {
             "code": "24",
-            "name": "Hamadan"
+            "name": "Ardabil ustoni"
         },
         {
             "code": "25",
@@ -9638,7 +9578,7 @@
         },
         {
             "code": "75",
-            "name": "Apulia"
+            "name": "Apuliya"
         },
         {
             "code": "AR",
@@ -9954,7 +9894,7 @@
         },
         {
             "code": "21",
-            "name": "Piedmont"
+            "name": "Piemont"
         },
         {
             "code": "PI",
@@ -10348,7 +10288,7 @@
         },
         {
             "code": "26",
-            "name": "Kyōto"
+            "name": "Kioto prefekturasi"
         },
         {
             "code": "27",
@@ -11036,7 +10976,7 @@
         },
         {
             "code": "ALM",
-            "name": "Almati²"
+            "name": "Almaty Region"
         },
         {
             "code": "15",
@@ -11243,20 +11183,20 @@
             "name": "Beqaa"
         },
         {
-            "code": "JL",
-            "name": "Mount Lebanon"
+            "code": "JA",
+            "name": "Janubiy Livan muhofazasi"
         },
         {
             "code": "NA",
             "name": "Nabatieh"
         },
         {
-            "code": "AS",
-            "name": "North"
+            "code": "JL",
+            "name": "Togʻli Livan muhofazasi"
         },
         {
-            "code": "JA",
-            "name": "South"
+            "code": "AS",
+            "name": "Shimoliy Livan muhofazasi"
         }
     ],
     "LC": [
@@ -12743,10 +12683,6 @@
             "name": "Ouezzane"
         },
         {
-            "code": "OUJ",
-            "name": "Oujda-Angad"
-        },
-        {
             "code": "04",
             "name": "Rabat-Salé-Kénitra"
         },
@@ -12764,7 +12700,7 @@
         },
         {
             "code": "SAL",
-            "name": "Salé"
+            "name": "Sale"
         },
         {
             "code": "SEF",
@@ -12857,6 +12793,10 @@
         {
             "code": "TIZ",
             "name": "Tiznit"
+        },
+        {
+            "code": "OUJ",
+            "name": "Ujda"
         },
         {
             "code": "YUS",
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15775,12 +15685,6 @@
             "name": "Ucayali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16310,7 +16214,7 @@
     "PL": [
         {
             "code": "02",
-            "name": "Lower Silesia"
+            "name": "Quyi Sileziya voyevodaligi"
         },
         {
             "code": "04",
@@ -16318,7 +16222,7 @@
         },
         {
             "code": "06",
-            "name": "Lublin"
+            "name": "Lublin voyevodaligi"
         },
         {
             "code": "08",
@@ -16330,11 +16234,11 @@
         },
         {
             "code": "12",
-            "name": "Lesser Poland"
+            "name": "Kichik Polsha"
         },
         {
             "code": "14",
-            "name": "Mazovia"
+            "name": "Mazoviya"
         },
         {
             "code": "16",
@@ -16362,7 +16266,7 @@
         },
         {
             "code": "28",
-            "name": "Warmia-Masuria"
+            "name": "Warmian-Masurian voyevodaligi"
         },
         {
             "code": "30",
@@ -16371,18 +16275,6 @@
         {
             "code": "32",
             "name": "Gʻarbiy Pomeran Voivodligi"
-        }
-    ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
         }
     ],
     "PS": [
@@ -16707,12 +16599,6 @@
             "name": "Umm Salal"
         }
     ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
-        }
-    ],
     "RO": [
         {
             "code": "AB",
@@ -16876,7 +16762,7 @@
         },
         {
             "code": "VS",
-            "name": "Vaslui"
+            "name": "Vaslui okrugi"
         },
         {
             "code": "VN",
@@ -19019,12 +18905,6 @@
             "name": "Chalatenango"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "CB",
             "name": "Chari-Baguirmi"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20245,10 +20113,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TXG",
             "name": "Taichung"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21330,11 +21190,11 @@
         },
         {
             "code": "CA",
-            "name": "Canelones"
+            "name": "Canelones departamenti"
         },
         {
             "code": "CL",
-            "name": "Cerro Largo"
+            "name": "Cerro Largo departmenti"
         },
         {
             "code": "CO",
@@ -21346,11 +21206,11 @@
         },
         {
             "code": "FS",
-            "name": "Flores"
+            "name": "Flores departamenti"
         },
         {
             "code": "FD",
-            "name": "Florida"
+            "name": "Florida departmenti"
         },
         {
             "code": "LA",
@@ -21378,7 +21238,7 @@
         },
         {
             "code": "RO",
-            "name": "Rocha"
+            "name": "Rocha departamenti"
         },
         {
             "code": "SA",
@@ -21386,7 +21246,7 @@
         },
         {
             "code": "SJ",
-            "name": "San José"
+            "name": "San José departmenti"
         },
         {
             "code": "SO",
@@ -21585,12 +21445,6 @@
         {
             "code": "V",
             "name": "Zulia"
-        }
-    ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
         }
     ],
     "VN": [
@@ -21807,10 +21661,6 @@
             "name": "Thanh Hóa"
         },
         {
-            "code": "26",
-            "name": "Thừa Thiên–Huế"
-        },
-        {
             "code": "46",
             "name": "Tiền Giang"
         },
@@ -21841,6 +21691,10 @@
         {
             "code": "SG",
             "name": "Xoshimin"
+        },
+        {
+            "code": "26",
+            "name": "Xyue"
         },
         {
             "code": "06",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "SH",
             "name": "Shabwah"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

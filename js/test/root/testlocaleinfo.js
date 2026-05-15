@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  *
- * Copyright © 2012-2017, 2020-2024 JEDLSoft
+ * Copyright © 2012-2017, 2020-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3307,6 +3307,86 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
+    // test cases for ckb-IQ
+    testLocaleInfoGetDecimalSeparatorfor_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+        test.equal(info.getDecimalSeparator(),  '٫');
+        test.done();
+    },
+    testLocaleInfoGetGroupingSeparatorfor_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getGroupingSeparator(), '٬');
+        test.done();
+    },
+    testLocaleInfoGetPercentageFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPercentageFormat(), '{n} ٪');
+        test.done();
+    },
+    testLocaleInfoGetCurrencyFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().common, '{n} {s}');
+        test.done();
+    },
+    testLocaleInfoGetNegativeNumberFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativeNumberFormat(), '‏-{n}');
+        test.done();
+    },
+    testLocaleInfoGetNegativePercentageFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.done();
+    },
+    testLocaleInfoGetNegativeCurrencyFormat_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.done();
+    },
+    testLocaleInfoGetPrimaryGroupingDigits_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPrimaryGroupingDigits(), 3);
+        test.done();
+    },
+    testLocaleInfoGetSecondaryGroupingDigits_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getSecondaryGroupingDigits(), 0);
+        test.done();
+    },
+    testLocaleInfoRoundingMode_ckb_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ckb-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getRoundingMode(), "halfdown");
+        test.done();
+    },
     //test cases for de-AT
     testLocaleInfoGetDecimalSeparatorfor_de_AT: function(test) {
         test.expect(2);
@@ -3960,7 +4040,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("fr-CH");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), " ");
+        test.equal(info.getGroupingSeparator(), "'");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_fr_CH: function(test) {
@@ -5081,7 +5161,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("it-CH");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), "’");
+        test.equal(info.getGroupingSeparator(), "'");
         test.done();
     },
     testLocaleInfoGetPercentageFormat_it_CH: function(test) {
@@ -5553,7 +5633,7 @@ module.exports.testlocaleinfo = {
         test.expect(2);
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(),  '٫');
+        test.equal(info.getDecimalSeparator(),  ',');
         test.done();
     },
     testLocaleInfoGetGroupingSeparatorfor_ku: function(test) {
@@ -5561,7 +5641,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getGroupingSeparator(), '٬');
+        test.equal(info.getGroupingSeparator(), '.');
         test.done();
     },
     testLocaleInfoGetPercentageFormat_ku: function(test) {
@@ -5569,7 +5649,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), '{n} ٪');
+        test.equal(info.getPercentageFormat(), '%{n}');
         test.done();
     },
     testLocaleInfoGetCurrencyFormat_ku: function(test) {
@@ -5585,7 +5665,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getNegativeNumberFormat(), '‏-{n}');
+        test.equal(info.getNegativeNumberFormat(), '-{n}');
         test.done();
     },
     testLocaleInfoGetNegativePercentageFormat_ku: function(test) {
@@ -5593,7 +5673,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.equal(info.getNegativePercentageFormat(), '-%{n}');
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_ku: function(test) {
@@ -5601,7 +5681,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ku-IQ");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_ku: function(test) {
@@ -5628,81 +5708,161 @@ module.exports.testlocaleinfo = {
         test.equal(info.getRoundingMode(), "halfdown");
         test.done();
     },
-    //test cases for ku-I
-    testLocaleInfoGetDecimalSeparatorfor_ku_IR: function(test) {
+    //test cases for ku-TR
+    testLocaleInfoGetDecimalSeparatorfor_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
-        test.equal(info.getDecimalSeparator(), '٫');
+        test.equal(info.getDecimalSeparator(), ',');
         test.done();
     },
-    testLocaleInfoGetGroupingSeparatorfor_ku_IR: function(test) {
+    testLocaleInfoGetGroupingSeparatorfor_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
-        test.ok(info !== null);
-
-        test.equal(info.getGroupingSeparator(), '٬');
-        test.done();
-    },
-    testLocaleInfoGetPercentageFormat_ku_IR: function(test) {
-        test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
-        test.equal(info.getPercentageFormat(), '{n} ٪');
+        test.equal(info.getGroupingSeparator(), '.');
         test.done();
     },
-    testLocaleInfoGetCurrencyFormat_ku_IR: function(test) {
+    testLocaleInfoGetPercentageFormat_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
+        test.ok(info !== null);
+
+        test.equal(info.getPercentageFormat(), '%{n}');
+        test.done();
+    },
+    testLocaleInfoGetCurrencyFormat_ku_TR: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getCurrencyFormats().common, '{n} {s}' );
         test.done();
     },
-    testLocaleInfoGetNegativeNumberFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativeNumberFormat_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
-        test.equal(info.getNegativeNumberFormat(), '‏-{n}');
+        test.equal(info.getNegativeNumberFormat(), '-{n}');
         test.done();
     },
-    testLocaleInfoGetNegativePercentageFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativePercentageFormat_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
-        test.equal(info.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.equal(info.getNegativePercentageFormat(), '-%{n}');
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_ku_IR: function(test) {
+    testLocaleInfoGetNegativeCurrencyFormat_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.equal(info.getCurrencyFormats().commonNegative, '-{n} {s}');
         test.done();
     },
-    testLocaleInfoGetPrimaryGroupingDigits_ku_IR: function(test) {
+    testLocaleInfoGetPrimaryGroupingDigits_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getPrimaryGroupingDigits(), 3);
         test.done();
     },
-    testLocaleInfoGetSecondaryGroupingDigits_ku_IR: function(test) {
+    testLocaleInfoGetSecondaryGroupingDigits_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
         test.ok(info !== null);
 
         test.equal(info.getSecondaryGroupingDigits(), 0);
         test.done();
     },
-    testLocaleInfoRoundingMode_ku_IR: function(test) {
+    testLocaleInfoRoundingMode_ku_TR: function(test) {
         test.expect(2);
-        var info = new LocaleInfo("ku-IR");
+        var info = new LocaleInfo("ku-TR");
+        test.ok(info !== null);
+
+        test.equal(info.getRoundingMode(), "halfdown");
+        test.done();
+    },
+    // test cases for ku-Arab-IQ
+    testLocaleInfoGetDecimalSeparatorfor_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+        test.equal(info.getDecimalSeparator(),  '.');
+        test.done();
+    },
+    testLocaleInfoGetGroupingSeparatorfor_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getGroupingSeparator(), ',');
+        test.done();
+    },
+    testLocaleInfoGetPercentageFormat_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPercentageFormat(), '{n}%');
+        test.done();
+    },
+    testLocaleInfoGetCurrencyFormat_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().common, '{s} {n}');
+        test.done();
+    },
+    testLocaleInfoGetNegativeNumberFormat_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativeNumberFormat(), '-{n}');
+        test.done();
+    },
+    testLocaleInfoGetNegativePercentageFormat_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getNegativePercentageFormat(), '-{n}%');
+        test.done();
+    },
+    testLocaleInfoGetNegativeCurrencyFormat_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getCurrencyFormats().commonNegative, '-{s} {n}');
+        test.done();
+    },
+    testLocaleInfoGetPrimaryGroupingDigits_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getPrimaryGroupingDigits(), 3);
+        test.done();
+    },
+    testLocaleInfoGetSecondaryGroupingDigits_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
+        test.ok(info !== null);
+
+        test.equal(info.getSecondaryGroupingDigits(), 0);
+        test.done();
+    },
+    testLocaleInfoRoundingMode_ku_Arab_IQ: function(test) {
+        test.expect(2);
+        var info = new LocaleInfo("ku-Arab-IQ");
         test.ok(info !== null);
 
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9809,7 +9969,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().common, "{s} {n}");
+        test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_ur_IN: function(test) {
@@ -9833,7 +9993,7 @@ module.exports.testlocaleinfo = {
         var info = new LocaleInfo("ur-IN");
         test.ok(info !== null);
 
-        test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
+        test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s}{n}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_ur_IN: function(test) {
@@ -12103,6 +12263,16 @@ module.exports.testlocaleinfo = {
 
         test.equal(info.getDelimiterQuotationStart(), '„');
         test.equal(info.getDelimiterQuotationEnd(), "”");
+        test.equal(info.getPaperSize(), "A4");
+        test.done();
+    },
+    testLocaleInfoQuotation_ht_HT: function(test) {
+        test.expect(4);
+        var info = new LocaleInfo("ht-HT");
+        test.ok(info !== null);
+
+        test.equal(info.getDelimiterQuotationStart(), "«");
+        test.equal(info.getDelimiterQuotationEnd(), "»");
         test.equal(info.getPaperSize(), "A4");
         test.done();
     }

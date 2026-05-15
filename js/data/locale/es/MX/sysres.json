@@ -1,6 +1,6 @@
 {
     "#in {num}d": "one#en {num} día|#en {num} días",
-    "#in {num}h": "one#en {num} h|#en {num} n",
+    "#in {num}h": "one#en {num} h|#en {num} h",
     "#in {num}mo": "one#en {num} m|#en {num} m",
     "#in {num}s": "one#en {num} s|#en {num} s",
     "#in {num}w": "one#en {num} sem.|#en {num} sem.",

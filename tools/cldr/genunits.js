@@ -1,7 +1,7 @@
 /*
  * genunits.js - ilib tool to generate the json data about unit formats
  *
- * Copyright © 2013, 2018, 2020-2024 JEDLSoft
+ * Copyright © 2013, 2018, 2020-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,46 +32,6 @@ var makeDirs = common.makeDirs;
 var cldrCore = require("cldr-core/availableLocales.json").availableLocales.full;
 
 var hardCodeData = {
-    "ig": {
-        "unitfmt": {
-            "long": {
-                "revolution": "#{n} mgbanwe",
-                "radian": "#{n} radian",
-                "square-kilometer": "#{n} square-kilomita",
-                "square-meter": "#{n} square mita",
-                "square-centimeter": "#{n} square sentimita",
-                "kilowatt-hour": "#{n} kilowatt awa",
-                "kilometer": "#{n} kilomita",
-                "meter": "#{n} mita",
-                "decimeter": "#{n} decimita",
-                "centimeter": "#{n} centimita",
-                "kilogram": "#{n} kilogram",
-                "gram": "#{n} gram",
-                "liter": "#{n} lita",
-                "deciliter": "#{n} deciliter",
-                "centiliter": "#{n} centimita",
-                "milliliter": "#{n} milliliter",
-                "kilometer-per-second": "#{n} kilomita kwa nkeji",
-                "mile-per-second": "#{n} mile kwa nkeji",
-                "kilometer-per-liter": "#{n} kilomita kwa lita",
-                "bit-per-second": "#{n} bit-kwa-sekọnd",
-                "kilobit-per-second": "#{n} kilobit kwa nkeji",
-                "megabit-per-second": "#{n} megabit kwa nkeji",
-                "gigabit-per-second": "#{n} gigabit kwa nkeji",
-                "terabit-per-second": "#{n} erabit kwa nkeji",
-                "byte-per-second": "#{n} byte kwa nkeji",
-                "kilobyte-per-second": "#{n} kilobyte kwa nkeji",
-                "megabyte-per-second": "#{n} megabyte kwa nkeji",
-                "gigabyte-per-second": "#{n} gigabyte kwa nkeji",
-                "terabyte-per-second": "#{n} terabyte kwa nkeji",
-                "byte-per-hour": "#{n} byte kwa elekere",
-                "kilobyte-per-hour": "#{n} kilobyte kwa elekere",
-                "megabyte-per-hour": "#{n} megabyte kwa elekere",
-                "gigabyte-per-hour": "#{n} gigabyte kwa elekere",
-                "terabyte-per-hour": "#{n} terabyte kwa elekere"
-            }
-        }
-    },
     "mt": {
         "unitfmt": {
             "long": {

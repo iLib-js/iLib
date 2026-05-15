@@ -103,7 +103,7 @@
     "G-1": "ईसवी पूर्व",
     "G1": "ईसवी",
     "MMM1": "जन॰",
-    "MMM10": "अक्तू॰",
+    "MMM10": "अक्टू॰",
     "MMM11": "नव॰",
     "MMM12": "दिस॰",
     "MMM2": "फ़र॰",
@@ -115,7 +115,7 @@
     "MMM8": "अग॰",
     "MMM9": "सित॰",
     "MMMM1": "जनवरी",
-    "MMMM10": "अक्तूबर",
+    "MMMM10": "अक्टूबर",
     "MMMM11": "नवंबर",
     "MMMM12": "दिसंबर",
     "MMMM2": "फ़रवरी",
@@ -164,8 +164,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

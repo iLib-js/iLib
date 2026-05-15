@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ml_IN.js - test the date formatter object in Malyalam for India
  *
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015, 2017, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+if (typeof(JulianDate) === "undefined") {
+    var JulianDate = require("../../lib/JulianDate.js");
+}
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../../lib/GregorianDate.js");
 }
@@ -71,7 +74,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റം 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റം 29");
         test.done();
     },
     testDateFmtINSimpleLong_ml_IN: function(test) {
@@ -89,7 +92,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
     testDateFmtINSimpleFull_ml_IN: function(test) {
@@ -107,11 +110,10 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
-    //needs to have translations for a.m.-p.m.
-    /*
+
     testDateFmtINSimpleTimeShort_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ml-IN", length: "short", type: "time"});
@@ -127,7 +129,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeShort_ml_IN1: function(test) {
@@ -145,7 +147,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeMedium_ml_IN: function(test) {
@@ -163,7 +165,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeLong_ml_IN: function(test) {
@@ -181,7 +183,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINSimpleTimeFull_ml_IN: function(test) {
@@ -199,7 +201,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleShort_ml_IN: function(test) {
@@ -217,7 +219,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न 29/9/11");
+        test.equal(fmt.format(date), "29/9/11, 1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleMedium_ml_IN: function(test) {
@@ -235,7 +237,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न 11, സെപ്റ്റം 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റം 29, 1:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleLong_ml_IN: function(test) {
@@ -253,7 +255,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न 2011 സെപ്റ്റം 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29, 1:45 PM-ന്");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_ml_IN: function(test) {
@@ -271,7 +273,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 अपराह्न 2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29, 1:45 PM-ന്");
         test.done();
     },
     testDateFmtINTemplateCalendar_ml_IN: function(test) {
@@ -291,8 +293,6 @@ module.exports.testdatefmt_ml_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    */
-
 
     testDateFmtINTemplateClock12SwitchHH_ml_IN: function(test) {
         test.expect(2);
@@ -743,7 +743,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ");
         test.done();
     },
     testDateFmtINFullDateComponentsDMY_ml_IN: function(test) {
@@ -761,7 +761,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29");
         test.done();
     },
     testDateFmtINFullDateComponentsWDM_ml_IN: function(test) {
@@ -797,7 +797,7 @@ module.exports.testdatefmt_ml_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011, സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച");
+        test.equal(fmt.format(date), "2011 സെപ്റ്റംബർ 29, വ്യാഴാഴ്‌ച");
         test.done();
     },
     testDateFmtINShortTimeComponentsS_ml_IN: function(test) {
@@ -1657,5 +1657,50 @@ module.exports.testdatefmt_ml_IN = {
         });
         test.equal(fmt.formatRelative(reference, date), "21 വർഷം മുമ്പ്");
         test.done();
-    }
+    },
+    testDateFmtINShortTimeComponentsHMZ_ml_IN: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "ml-IN",
+            type: "time",
+            time: "ahmsz"
+        });
+        test.ok(typeof(fmt) !== "undefined");
+
+        var date = new GregorianDate({
+            locale: "ml-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "IST 1:45:37 PM");
+        test.done();
+    },
+    testDateFmtShortTimeComponentsHMZ_ml_IN: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({
+            locale: "ml-IN",
+            calendar: "gregorian",
+            type: "time",
+            time: "hmz"
+        });
+        test.ok(fmt !== null);
+
+        var date = new GregorianDate({
+            locale: "ml-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "IST 1:45");
+        test.done();
+    },
 };

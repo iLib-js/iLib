@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ps_AF.js - test the date formatter object in Pashto-Afghanistan
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ 29');
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29');
         test.done();
     },
     testDateFmtSimpleFull_ps_AF: function(test) {
@@ -113,7 +113,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ 29');
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29');
         test.done();
     },
     testDateFmtSimpleTimeShort_ps_AF: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ 29 ‏13:45' );
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29 ‏13:45' );
         test.done();
     },
     testDateFmtDateTimeSimpleFull_ps_AF: function(test) {
@@ -257,7 +257,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ 29 ‏13:45' );
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29 ‏13:45' );
         test.done();
     },
     testDateFmtTemplateCalendar_ps_AF: function(test) {
@@ -618,7 +618,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'T ‏9/29');
+        test.equal(fmt.format(date), '‏9/29, T');
         test.done();
     },
     testDateFmtShortDateComponentsWDMY_ps_AF: function(test) {
@@ -636,7 +636,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'T 2021/9/29');
+        test.equal(fmt.format(date), '‏2021/9/29, T');
         test.done();
     },
     testDateFmtLongDateComponentsWDM_ps_AF: function(test) {
@@ -654,7 +654,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'درېنۍ لیندۍ 29');
+        test.equal(fmt.format(date), 'لیندۍ 29, درېنۍ');
         test.done();
     },
     testDateFmtFullDateComponentsY_ps_AF: function(test) {
@@ -744,7 +744,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ');
+        test.equal(fmt.format(date), '‏2021 لیندۍ');
         test.done();
     },
     testDateFmtFullDateComponentsDMY_ps_AF: function(test) {
@@ -762,7 +762,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'د 2021 د لیندۍ 29');
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29');
         test.done();
     },
     testDateFmtFullDateComponentsWDM_ps_AF: function(test) {
@@ -780,7 +780,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'درېنۍ لیندۍ 29');
+        test.equal(fmt.format(date), 'لیندۍ 29, درېنۍ');
         test.done();
     },
     testDateFmtFullDateComponentsWDMY_ps_AF: function(test) {
@@ -798,7 +798,7 @@ module.exports.testdatefmt_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), 'درېنۍ د 2021 د لیندۍ 29');
+        test.equal(fmt.format(date), '‏2021 لیندۍ 29, درېنۍ');
         test.done();
     },
     testDateFmtShortTimeComponentsS_ps_AF: function(test) {

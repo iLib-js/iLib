@@ -132,7 +132,7 @@
     "LLL8": "अग॰",
     "LLL9": "सित॰",
     "LLLL1": "जनवरी",
-    "LLLL10": "अक्टूबर",
+    "LLLL10": "अक्तूबर",
     "LLLL11": "नवंबर",
     "LLLL12": "दिसंबर",
     "LLLL2": "फरवरी",
@@ -205,8 +205,6 @@
     "finalSeparatorLong": ", और ",
     "finalSeparatorMedium": ", और ",
     "finalSeparatorShort": ", और ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

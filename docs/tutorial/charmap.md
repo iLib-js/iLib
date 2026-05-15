@@ -1,39 +1,35 @@
 Character Set Mapping in iLib
 =============================
 
-Javascript runs with the base character set encoding "UTF-16", an encoding of Unicode, which allows for a wide range of characters that encompass the vast majority of text written on the Internet today. For the most part, Javascript programs simply read and write UTF-16 text and everything is happy. However, there are occasions when you have to deal with legacy systems or data and you need to convert the text to/from Unicode in order to use those systems or files.
+JavaScript normally works with **UTF-16** strings—Unicode text stored as 16-bit code units—which covers the vast majority of text on the web. Sometimes legacy systems or files expose another **encoding**; you must map bytes to Unicode before treating them as JavaScript strings.
 
 When Do You Need Character Set Mapping?
 ------
 
-In some cases, especially when dealing with 3rd party web APIs or with content in files, text may be returned to a Javascript program in a different character set than UTF-16 and there is no other code that can convert the character set to UTF. In these cases, the text needs to be converted (mapped) to UTF-16 before it can be manipulated.
+Third-party APIs or file pipelines may hand you bytes labelled as **ISO-8859-1**, **Shift_JIS**, **EUC-KR**, and so on. If nothing else in your stack decodes them, you map those bytes to Unicode before using normal string APIs.
 
-In other cases, web pages are written in the native character set, so characters must be converted to Unicode before they can be manipulated with Javascript.
-
-Because some platforms and JS engines do not expose a way of doing character set mapping (charmapping), ILib now includes classes written in pure Javascript that allow you to do such conversions when you need it. Some of the charmapping data is huge, especially for East Asian character sets, so doing charmapping should be a special case in your program, but at least it is now possible if you need it. 
-
-See the section below on platform support for mapping to see if you need to use iLib's support or not. You should prefer the platform's support of charmapping rather than iLib's, as the native implementations are probably a lot faster than this pure Javascript version.
+Some platforms expose iconv-like APIs—**prefer native conversion when it is available**; it is usually faster than pure JavaScript. iLib’s charmaps help when no decoder exists or you need bundled, deterministic behaviour. Tables can be large (especially for East Asian sets), so treat charset conversion as an intentional dependency. Platform-by-platform notes appear later in this page.
 
 Character Sets
 ----------
 
 First, a few definitions. 
 
-**Charset**. A "character set" is litterally a set of characters collected together to write text in a particular script. In software, each character in a character set is typically assign a particular unique number that represents that character in memory, on disk, and in fonts. This unique number is called a code point. Character sets are often abbreviated as "charsets" for convenience.
+**Character set (charset).** In informal usage, a charset is the abstract repertoire of characters for a script or standard, each identified by a numeric **code point**.
 
-**Encoding**. A "character set encoding" or simply "an encoding" is a way of encoding those unique numbers in a well-known manner that can be interpretted easily by any program that knows that encoding. For example, the Latin letter "A" is given the unique code point "65" in Unicode. Code points in Unicode are often written in the form U+0041, with a "U" followed by a plus, followed by 4 hex digits. The "A" can be encoded on disk as UTF-16 (Unicode Transformation Format 16-bit) for example, which encodes every Unicode character as either 2 bytes, or a pair of two 2-byte characters. The letter "A" would be encoded as the two bytes 0x00 0x41. Now many software systems do not like null bytes in the middle of strings, so an alternate way of encoding Unicode called UTF-8 (Unicode Transformation Format 8-bit) was invented to get around that. The letter "A" would be encoded in UTF-8 as simply the single byte 0x41. 
+**Encoding.** An encoding defines how code points become bytes (or, historically, words) on disk or on the wire. For Unicode, **UTF-8**, **UTF-16**, and **UTF-32** are encodings of the **same** character set; the letter **A** is always **U+0041**, but its UTF-8 bytes differ from its UTF-16 code units.
 
-For many charsets where there are less than 256 characters in the set, every character in the set has a code point that is less than 256 and therefore can be encoded easily in a single byte. The encoding of the charset becomes trivial -- each byte in the encoding is assigned the code point for that character. Such simple encodings often leads people to confuse character sets and encodings with each other and often the two are used interchangably in various texts. Please note that they are indeed different. The difference is subtle but important.
+For legacy byte-oriented charsets with at most 256 characters, code points and single-byte encodings are often conflated—the distinction still matters when you map those bytes into Unicode.
 
-**Charmap**. A character set mapping (or "charmap" as it is often referred to colloquially) is a mapping between *character set encodings*, not character sets. When you map between encodings, you are mapping between the encoding of a particular character in a charset to the *exact same character* in a different encoding. For example, if you look at the encoding ISO-8859-1, which for many years was the standard default encoding for HTML, the encoding of the letter "A" is simply the single byte 0x41. This can be mapped to Unicode UTF-16 as two bytes 0x00 0x41 or in UTF-8 as 0x41 (ie. the same thing).
+**Charmap (in iLib).** A mapping translates **between encodings** of the same logical text—for example **ISO-8859-1** bytes ↔ UTF-16—rather than inventing new characters.
 
-As a side note, Unicode was originally designed to be a superset of all known national standard charsets, so that its encodings could be the target of a mapping from any encodings of the national charsets and therefore it could support all characters in one single encoding, which is very convenient for programmers and software and simplifies a lot of very complicated parts of operating systems. UTF-8 was designed in such a way that it was "backward compatible" with many types of existing software because all Unicode characters with code points less than 128, such as all the Latin characters, are encoded as a single byte that happens to match the encoding of many other charsets. This set of characters with encodings less than 128 is known as ASCII, and forms the lower 128 code points for many national character sets.
+Unicode aims to unify legacy national standards so software can target one repertoire (**Unicode**) and choose an encoding (**UTF-8**, **UTF-16**, …). **UTF-8** aligns US-ASCII bytes (**0x00–0x7F**) with ASCII, which eased adoption on byte-oriented systems.
 
-**Double Byte and Multibyte Encodings**. Some character sets include many more than 256 characters, especially the East Asian ones where there are thousands of characters. In this case, a single byte is insufficient to encode each code point. There are multiple ways of handling the encoding of large charsets:
+**Double-byte and multibyte encodings.** Large East Asian character sets need more than one byte per character. Historically:
 
-* **Double byte** Each and every code point is encoded as two bytes, even for ASCII. Up to the 1980s, memory and disk were relatively expensive, so programmers did not want to waste two bytes on every character when it wasn't needed. Double byte encodings were not often used for mixed language text until Unicode. Now UTF-16, which is also a double-byte encoding, is ubiquitous because memory and disk space is relatively cheap.
-* **Shifted Encoding**. In this scheme, a set of escape sequences indicates which encoding to use. A string is parsed from the beginning with a default encoding and when an escape sequence is encountered, a new encoding is used from that point in the string onwards until the end of the string or until the next escape sequence changes it again. This scheme solved the problem of space, because you should shift in to a single-byte encoding for English text, and then shift in to a double-byte encoding for Japanese or Chinese text. While cleverly saving space, this encoding scheme was very difficult to deal with algorithmically because you had to start at the beginning of a possibly very long string and parse all of it in order to know if you were in 1, 2, or even 3 byte mode at any given point in the string.
-* **Multibyte Encoding**. One solution to the problem of saving space without creating a difficult-to-parse string is the multibyte encoding. Basically, each character in a multibyte encoding may be encoded using 1 or more bytes, and the value of the first byte is cleverly designed to indicate if this characters is encoded with more bytes. That means each  character in a string might be encoded with a different number of bytes, hence "multibyte". Typically, Latin characters are assigned encodings that are 1 byte long and matched up with ASCII encodings, and other characters such as Japanese or Chinese ideographs were assigned encodings that are 2 or 3 bytes long. UTF-8 is an example of a multibyte encoding of Unicode.
+* **Pure double-byte** schemes use two bytes per code point (even for Latin letters in some legacy sets).
+* **Shifted encoding.** Escape sequences switch the active encoding along the byte stream—compact for mixed scripts, but you often must scan from the start to know which mode applies at a given offset.
+* **Multibyte encoding.** Leading bytes indicate how many trailing bytes belong to one character (UTF-8 works this way). Latin letters often occupy one byte aligned with ASCII; other scripts use longer sequences.
 
 
 Charset Encoding Names and Aliases
@@ -41,14 +37,14 @@ Charset Encoding Names and Aliases
 
 There is a great variety of ways of referring to any given charset encoding. Often, there are multiple ways of referring to the exact same encoding because these names came from widely different and competing operating systems. There was no widely accepted standard for encoding names or name syntax in the early days of computing, so the names just proliferated. For example, all of these names refer to the exact same encoding: "Latin1", "Latin-1", "8859-1", "ISO-8859-1", "ISO_8859_1", "ISO 8859-1" etc.
 
-The Internet Assigned Names Authority (IANA), the folks who manage domain names, time zones, and other such Internet standards, have attempted to collected all these names and create [a registry of encodings](http://www.iana.org/assignments/character-sets/character-sets.xhtml) and their aliases with specific rules as to how encoding names should be structured. These do not form a formal standard, but the IANA encoding aliases are now accepted as a de-facto standard on the Internet. iLib now uses the names from the IANA registry as its internal standard. It also includes the list of aliases, so you can use any name on that list and iLib will still be able to find its information correctly.
+The **Internet Assigned Numbers Authority (IANA)** maintains a [charset registry](http://www.iana.org/assignments/character-sets/character-sets.xhtml) of canonical names and aliases. iLib treats those names as its primary vocabulary so callers can pass familiar labels (**Latin1**, **ISO-8859-1**, **UTF-8**, …).
 
 Getting Charset Information With iLib
 -----
 
-ILib now contains a new information class *Charset* which gives you information about a charset encoding. This class can tell you the standard IANA name of an encoding and whether it is a single-, double-, shifted, or multibyte encoding. It can also tell you the minimum and maximum size in bytes of the encodings of all characters in the set. This might be helpful in preallocating a buffer to hold a mapped string.
+The **`Charset`** class describes an encoding: canonical **IANA** name, whether it is single-, double-, shifted-, or multibyte, and min/max byte widths (useful when sizing buffers).
 
-To create a new Charset instance:
+Example:
 
 ~~~~~~~
 var ilib = require("ilib");
@@ -60,9 +56,11 @@ console.log("Standard name is: " + cs.getName());
 console.log("Min char width is: " + cs.getMinCharWidth());
 console.log("Max char width is: " + cs.getMaxCharWidth());
 console.log("Is multibyte: " + cs.isMultibyte());
+~~~~~~~
 
-should produce the output:
+Expected output:
 
+~~~~~~~
 Standard name is: UTF-8
 Min char width is: 1
 Max char width is: 3
@@ -143,13 +141,15 @@ var map = CharmapFactory({
 var uni = "안녕하세요 สวัสดี"; 
 var native = map.mapToNative(uni);
 
-native now contains the byte encoding of a string that looks like this:
-'안녕하세요 &#x0E2A;&#x0E27;&#x0E31;&#x0E2A;&#x0E14;&#x0E35;'
+**`native`** is now the byte encoding of a string that looks like this:
+
+`'안녕하세요 &#x0E2A;&#x0E27;&#x0E31;&#x0E2A;&#x0E14;&#x0E35;'`
+
 ~~~~~
 
 Other escape styles available correspond to the types of programming languages or environments that will use or display the target strings. They include "html", "js", "c" (also handles C++), "java", or "perl".
 
-Currently, the Charmap code do not parse and interpret escape sequences in the source string. They only produce them in the target string. That means you cannot do a reverse mapping using only ilib code. You will have to post-process the target string to replace the escape sequences with target characters as appropriate.
+Currently, Charmap **does not** parse escape sequences in the source string; it only **emits** escapes in the target when configured to do so. Round-tripping therefore requires any unescaping step your application supplies.
 
 More Examples
 ------
@@ -208,9 +208,9 @@ Platform Support for Mapping
 * XmlHttpRequest does not allow you to choose an arbitrary character set. So if your page is in a native charset, and you want to communicate to a 3rd party server in UTF-8, you will have to convert to UTF-8 first using iLib, and then send the results as a binary.
 * Be careful of XmlHttpRequest.sendAsBinary() directly. This will truncate Unicode characters instead of converting to a native encoding. Instead, first map your Unicode string to native buffer using iLib, and then send the buffer as a binary.
 
-**Chrome** - Modern versions of Chrome are based on the same engine as nodejs, but they do not have the same packages available. While Chrome does implement the experimental [TextEncoder](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/TextEncoder) and [TextDecoder](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) classes, as of the time of this writing, they only supports the charsets 'utf-8', 'utf-16', or 'utf-16be'.
+**Chrome** — Like Node.js, Chromium-based browsers ship **`TextEncoder`** / **`TextDecoder`**, but in browsers those APIs historically exposed only **`utf-8`**, **`utf-16`**, and **`utf-16le`**/**`utf-16be`** (exact labels vary by engine version). Anything beyond that still depends on iLib or server-side conversion.
 
-**Firefox** - Firefox has the same support for the encoder classes as Chrome does, only supporting 'utf-8', 'utf-16', or 'utf-16be'. You will need iLib for any other charset until the encoder classes are filled out properly.
+**Firefox** — Similar **`TextEncoder`** / **`TextDecoder`** coverage to Chromium for common Unicode encodings; legacy national charsets still require iLib or native helpers outside the web standard.
 
 **IE** - (TODO: find out about IE)
 
@@ -230,6 +230,6 @@ Platform Support for Mapping
 
 **Rhino, Nashorn, or RingoJS** - Because these platforms have full access to any Java routines, you can use [java.lang.String.getBytes(encoding)](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#getBytes-java.lang.String-) to map to a native charset, or [java.lang.String(bytes, encoding)](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#String-byte:A-java.nio.charset.Charset-) to map to Unicode in memory, or you can go directly to the [CharsetEncoder](https://docs.oracle.com/javase/8/docs/api/java/nio/charset/CharsetEncoder.html) to get the mapping done. You can also use the [InputStreamReader](https://docs.oracle.com/javase/8/docs/api/java/io/InputStreamReader.html) and [OutputStreamWriter](https://docs.oracle.com/javase/8/docs/api/java/io/OutputStreamWriter.html#OutputStreamWriter-java.io.OutputStream-java.lang.String-) classes to do conversion for you. You will not need iLib's charset mapping for these platforms.
 
-**Safari** - (TODO: find out about Opera)
+**Safari** — behaviour varies by version; when in doubt, test your target WebKit build or rely on iLib for charset coverage beyond UTF-8/UTF-16.
 
 **webOS** - WebOS has no support for character mapping in its Javascript engine or in the enyo framework. You must rely on iLib to perform mapping.

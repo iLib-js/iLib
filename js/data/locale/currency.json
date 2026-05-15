@@ -21,7 +21,7 @@
     },
     "PKR": {
         "name": "Pakistani Rupee",
-        "decimals": 2,
+        "decimals": 0,
         "sign": "Rs"
     },
     "KRW": {
@@ -104,11 +104,6 @@
         "decimals": 2,
         "sign": "৳"
     },
-    "BGN": {
-        "name": "Bulgarian Lev",
-        "decimals": 2,
-        "sign": "лв"
-    },
     "BHD": {
         "name": "Bahraini Dinar",
         "decimals": 3,
@@ -186,7 +181,7 @@
     },
     "COP": {
         "name": "Colombian Peso",
-        "decimals": 2,
+        "decimals": 0,
         "sign": "$"
     },
     "CRC": {
@@ -311,12 +306,12 @@
     },
     "HUF": {
         "name": "Hungarian Forint",
-        "decimals": 2,
+        "decimals": 0,
         "sign": "Ft"
     },
     "IDR": {
         "name": "Indonesian Rupiah",
-        "decimals": 2,
+        "decimals": 0,
         "sign": "Rp"
     },
     "ILS": {
@@ -332,12 +327,12 @@
     "IQD": {
         "name": "Iraqi Dinar",
         "decimals": 0,
-        "sign": "ﺩ.ﻉ."
+        "sign": "د.ع.‏"
     },
     "IRR": {
         "name": "Iranian Rial",
         "decimals": 0,
-        "sign": "﷼"
+        "sign": "ریال"
     },
     "ISK": {
         "name": "Icelandic Króna",
@@ -360,7 +355,7 @@
         "sign": "¥"
     },
     "KGS": {
-        "name": "Kyrgystani Som",
+        "name": "Kyrgyz Som",
         "decimals": 2,
         "sign": "⃀"
     },
@@ -566,7 +561,7 @@
     },
     "RSD": {
         "name": "Serbian Dinar",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "дин."
     },
     "RWF": {
@@ -577,7 +572,7 @@
     "SAR": {
         "name": "Saudi Riyal",
         "decimals": 2,
-        "sign": "ر.س"
+        "sign": "⃁"
     },
     "SBD": {
         "name": "Solomon Islands Dollar",

@@ -105,6 +105,14 @@
         "nm": "Bengali (Bangla)",
         "rtl": false
     },
+    "Berf": {
+        "casing": true,
+        "ime": false,
+        "lid": "Beria_Erfe",
+        "nb": 258,
+        "nm": "Beria Erfe",
+        "rtl": false
+    },
     "Bhks": {
         "casing": false,
         "ime": false,
@@ -1253,9 +1261,12 @@
         "rtl": false
     },
     "Sidt": {
+        "casing": false,
+        "ime": false,
         "lid": "Sidetic",
         "nb": 180,
-        "nm": "Sidetic"
+        "nm": "Sidetic",
+        "rtl": true
     },
     "Sind": {
         "casing": false,
@@ -1409,9 +1420,12 @@
         "rtl": false
     },
     "Tayo": {
+        "casing": false,
+        "ime": false,
         "lid": "Tai_Yo",
         "nb": 380,
-        "nm": "Tai Yo"
+        "nm": "Tai Yo",
+        "rtl": false
     },
     "Telu": {
         "casing": false,
@@ -1491,9 +1505,12 @@
         "rtl": false
     },
     "Tols": {
+        "casing": false,
+        "ime": false,
         "lid": "Tolong_Siki",
         "nb": 299,
-        "nm": "Tolong Siki"
+        "nm": "Tolong Siki",
+        "rtl": false
     },
     "Toto": {
         "casing": false,

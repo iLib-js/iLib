@@ -1,7 +1,7 @@
 /*
  * testdatefmt_gu_IN.js - test the date formatter object in gujrati for India
  *
- * Copyright © 2013-2015,2017,2023 JEDLSoft
+ * Copyright © 2013-2015, 2017, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -254,7 +254,7 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_gu_IN: function(test) {
@@ -272,7 +272,7 @@ module.exports.testdatefmt_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 એ 01:45 PM વાગ્યે");
+        test.equal(fmt.format(date), "29 સપ્ટેમ્બર, 2011 01:45 PM");
         test.done();
     },
     testDateFmtINTemplateCalendar_gu_IN: function(test) {

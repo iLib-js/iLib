@@ -643,12 +643,6 @@
             "name": "सैन्ता क्रुज प्रान्त"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "विक्टोरिया"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1049,8 +1031,16 @@
     ],
     "BA": [
         {
+            "code": "BIH",
+            "name": "बोस्निया और हर्ज़ेगोविना संघ"
+        },
+        {
             "code": "BRC",
             "name": "ब्राको जिला"
+        },
+        {
+            "code": "SRP",
+            "name": "सर्पस्का गणराज्य"
         },
         {
             "code": "05",
@@ -1059,10 +1049,6 @@
         {
             "code": "06",
             "name": "Central Bosnia"
-        },
-        {
-            "code": "BIH",
-            "name": "Federation of Bosnia and Herzegovina"
         },
         {
             "code": "07",
@@ -1075,10 +1061,6 @@
         {
             "code": "02",
             "name": "Posavina"
-        },
-        {
-            "code": "SRP",
-            "name": "Republika Srpska"
         },
         {
             "code": "09",
@@ -1983,12 +1965,6 @@
         {
             "code": "LI",
             "name": "लिटोरल विभाग"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "हुइला विभाग"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3621,16 +3591,10 @@
             "name": "Sotavento Islands"
         }
     ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
-        }
-    ],
     "CY": [
         {
             "code": "01",
-            "name": "Nicosia"
+            "name": "निकोसिया ज़िला"
         },
         {
             "code": "02",
@@ -3646,7 +3610,7 @@
         },
         {
             "code": "05",
-            "name": "Paphos"
+            "name": "पाफ़ोस ज़िला"
         },
         {
             "code": "06",
@@ -6095,6 +6059,10 @@
             "name": "मेयेन"
         },
         {
+            "code": "976",
+            "name": "मेयोट"
+        },
+        {
             "code": "57",
             "name": "मॉसेल"
         },
@@ -6251,10 +6219,6 @@
             "name": "Corsica"
         },
         {
-            "code": "976",
-            "name": "Mayotte"
-        },
-        {
             "code": "69M",
             "name": "Métropole de Lyon"
         }
@@ -6304,7 +6268,7 @@
         },
         {
             "code": "ENG",
-            "name": "इंग्लैण्ड"
+            "name": "इंग्लैंड"
         },
         {
             "code": "ISL",
@@ -6668,7 +6632,7 @@
         },
         {
             "code": "SCT",
-            "name": "स्कॉटलैण्ड"
+            "name": "स्कॉटलैंड"
         },
         {
             "code": "STS",
@@ -7387,12 +7351,6 @@
             "name": "सम्सकी-जावखेती"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AH",
@@ -7679,12 +7637,6 @@
         {
             "code": "NZ",
             "name": "Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "जुतियापा विभाग"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "PE",
             "name": "Pest"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13197,12 +13137,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "अरख़ानगई प्रांत"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Kavango West"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15312,15 +15222,15 @@
         },
         {
             "code": "42",
-            "name": "Agder"
+            "name": "अगदर"
         },
         {
             "code": "46",
-            "name": "Vestland"
+            "name": "वेस्टलैंड"
         },
         {
             "code": "50",
-            "name": "Trøndelag"
+            "name": "ट्रोंडेलाग"
         },
         {
             "code": "54",
@@ -15367,6 +15277,10 @@
         {
             "code": "P6",
             "name": "प्रदेश संख्या ६"
+        },
+        {
+            "code": "P3",
+            "name": "बागमती प्रदेश"
         },
         {
             "code": "BA",
@@ -15427,10 +15341,6 @@
         {
             "code": "LU",
             "name": "Lumbini"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         }
     ],
     "NR": [
@@ -15769,12 +15679,6 @@
         {
             "code": "PUN",
             "name": "Puno"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16369,18 +16273,6 @@
             "name": "पश्चिम पोमेररेनियन वोइवोडीशिप"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "NGZ",
@@ -16701,12 +16593,6 @@
         {
             "code": "SH",
             "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "सोनसोनाते प्रदेश"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "RA",
@@ -19095,12 +18975,6 @@
         {
             "code": "HH",
             "name": "होहो जिला"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "HL",
             "name": "हद्जर-लामिस क्षेत्र"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20271,10 +20139,6 @@
         {
             "code": "PEN",
             "name": "Penghu"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "जॉनस्टन एटोल"
         },
@@ -21583,12 +21443,6 @@
             "name": "सूकर"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21881,10 +21735,6 @@
         {
             "code": "SG",
             "name": "सिगेव"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "SU",
             "name": "Arkhabil Suqutra"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

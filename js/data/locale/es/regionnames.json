@@ -643,12 +643,6 @@
             "name": "Provincia del Chubut"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "Zou"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BM",
@@ -2286,7 +2262,7 @@
         },
         {
             "code": "NP",
-            "name": "New Providence"
+            "name": "Nueva Providencia"
         },
         {
             "code": "SS",
@@ -2941,6 +2917,10 @@
             "name": "Distrito de Bas-Sassandra"
         },
         {
+            "code": "LC",
+            "name": "Distrito de los Lagos"
+        },
+        {
             "code": "06",
             "name": "Dix-Huit Montagnes"
         },
@@ -2959,10 +2939,6 @@
         {
             "code": "07",
             "name": "Lacs"
-        },
-        {
-            "code": "LC",
-            "name": "Lacs²"
         },
         {
             "code": "01",
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "H",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4988,7 +4952,7 @@
         },
         {
             "code": "514",
-            "name": "Narva-Jõesuu"
+            "name": "Narva-Jõesuu (municipio)"
         },
         {
             "code": "528",
@@ -6563,6 +6527,10 @@
             "name": "Distrito de Derry y Strabane"
         },
         {
+            "code": "OLD",
+            "name": "distrito metropolitano de Oldham"
+        },
+        {
             "code": "DOR",
             "name": "Dorset"
         },
@@ -7015,10 +6983,6 @@
             "name": "Nottinghamshire"
         },
         {
-            "code": "OLD",
-            "name": "Oldham"
-        },
-        {
             "code": "OMH",
             "name": "Omagh"
         },
@@ -7391,12 +7355,6 @@
             "name": "Tiflis"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "UW",
@@ -7683,12 +7641,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8557,12 +8503,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13213,12 +13153,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13941,24 +13875,6 @@
         {
             "code": "073",
             "name": "Arhangay"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14911,12 +14827,6 @@
             "name": "Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15358,7 +15268,7 @@
         },
         {
             "code": "P3",
-            "name": "Province 3"
+            "name": "Provincia de Bagmati"
         },
         {
             "code": "P6",
@@ -15789,12 +15699,6 @@
         {
             "code": "LMA",
             "name": "Provincia de Lima"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16389,18 +16293,6 @@
             "name": "Voivodato de Pomerania Occidental"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16721,12 +16613,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -18122,7 +18008,7 @@
         },
         {
             "code": "085",
-            "name": "Novo Mesto"
+            "name": "Novo mesto"
         },
         {
             "code": "086",
@@ -19035,12 +18921,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
@@ -19115,12 +18995,6 @@
         {
             "code": "SH",
             "name": "Shishelweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19215,12 +19089,6 @@
         {
             "code": "ND",
             "name": "Yamena"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20289,10 +20157,6 @@
             "name": "Taipéi"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         }
@@ -21093,10 +20957,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Atolón Johnston"
         },
@@ -21603,12 +21463,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21901,10 +21755,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22041,12 +21891,6 @@
         {
             "code": "SA",
             "name": "Saná"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

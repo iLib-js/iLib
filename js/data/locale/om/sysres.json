@@ -71,7 +71,6 @@
     "E3": "R",
     "E4": "K",
     "E5": "J",
-    "E6": "S",
     "EE0": "Dil",
     "EE1": "Wix",
     "EE2": "Kib",
@@ -120,7 +119,6 @@
     "MMMM8": "Hagayya",
     "MMMM9": "Fulbaana",
     "N1": "A",
-    "N10": "O",
     "N11": "S",
     "N12": "M",
     "N2": "G",
@@ -157,8 +155,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

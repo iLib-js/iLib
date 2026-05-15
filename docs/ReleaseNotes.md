@@ -1,6 +1,26 @@
 Release Notes for Version 14
 ============================
 
+Build 034
+-------
+Published as version 14.22.0
+
+New Features:
+* Update to CLDR v48.2 data
+* Update to Unicode Character Database (UCD) version 17.0.0
+* Add the `assemble.mjs` file to enable generating the final merged `[locale].json` files using the **`ilib-assemble`** tool.
+* Update `assemble.mjs` to support the `--splitByLocale` option. When enabled,
+  locale data is written as a hierarchy of separate files (`root.json`,
+  `en.json`, `en-US.json`, etc.) instead of one fully-merged file per locale.
+  Each file contains only the data for that specific sublocale level, allowing
+  consumers to load exactly the layers they need. The `--splitByLocale` flag
+  requires `--mergeJson`; a warning is printed if used without it.
+
+
+Bug Fixes:
+* Fixes a bug in `LocaleMatcher` where locale parsing information is passed incorrectly.
+
+
 Build 033
 -------
 Published as version 14.21.3

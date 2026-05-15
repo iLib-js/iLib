@@ -1,7 +1,7 @@
  /*
  * testMeridiems.js - test the meridiems data
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,8 +64,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"as-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "পূৰ্বাহ্ন");
+        test.equal(fmt[1].name, "অপৰাহ্ন");
 
         test.done();
     },
@@ -106,6 +106,16 @@ module.exports.testmeridiems = {
 
         test.equal(fmt[0].name, "prijepodne");
         test.equal(fmt[1].name, "popodne");
+
+        test.done();
+    },
+    testMeridiem_ckb_IQ: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ckb-IQ"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'ب.ن');
+        test.equal(fmt[1].name, 'د.ن');
 
         test.done();
     },
@@ -882,8 +892,18 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ku-IQ"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'ب.ن');
-        test.equal(fmt[1].name, 'د.ن');
+        test.equal(fmt[0].name, 'BN');
+        test.equal(fmt[1].name, 'PN');
+
+        test.done();
+    },
+    testMeridiem_ku_TR: function(test) {
+        test.expect(3);
+        var fmt = DateFmt.getMeridiemsRange({locale:"ku-TR"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt[0].name, 'BN');
+        test.equal(fmt[1].name, 'PN');
 
         test.done();
     },
@@ -982,8 +1002,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-Guru-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ਪੂ.ਦੁ.");
-        test.equal(fmt[1].name, "ਬਾ.ਦੁ.");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
 
         test.done();
     },
@@ -1310,8 +1330,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"en-GE"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "am");
+        test.equal(fmt[1].name, "pm");
 
         test.done();
     },
@@ -2140,8 +2160,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, 'ਪੂ.ਦੁ.');
-        test.equal(fmt[1].name, 'ਬਾ.ਦੁ.');
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
         test.done();
     },
     testMeridiem_pa_IN_Custom: function(test) {

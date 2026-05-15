@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  *
- * Copyright © 2012-2015, 2017, 2020-2024 JEDLSoft
+ * Copyright © 2012-2015, 2017, 2020-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -982,7 +982,7 @@ module.exports.testdatefmt = {
 
         var arrDays = fmt.getDaysOfWeek({length: 'long'});
 
-        var expected = ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."];
+        var expected = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์"];
         test.deepEqual(arrDays, expected);
         test.done();
     },
@@ -3547,8 +3547,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "pa-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ਪੂ.ਦੁ.");
-        test.equal(fmt[1].name, "ਬਾ.ਦੁ.");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_ta_IN_locale: function(test) {
@@ -3583,8 +3583,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "পূৰ্বাহ্ন");
+        test.equal(fmt[1].name, "অপৰাহ্ন");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_hi_IN_locale: function(test) {
@@ -3685,7 +3685,7 @@ module.exports.testdatefmt = {
         var fmt = new DateFmt({locale: "ak-GH"})
         test.ok(fmt !== null);
 
-        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.equal(fmt.getDateComponentOrder(), "dmy");
         test.done();
     },
     testDateFmtGetDateComponentOrderLV: function(test) {

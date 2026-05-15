@@ -643,12 +643,6 @@
             "name": "provincia di Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Victoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "dipartimento di Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "dipartimento di Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "S",
             "name": "Ilhas do Sotavento"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -7387,12 +7351,6 @@
             "name": "Tbilisi"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "CP",
@@ -7679,12 +7637,6 @@
         {
             "code": "N",
             "name": "regione di Nzérékoré"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "dipartimento di Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -13096,7 +13036,7 @@
         },
         {
             "code": "SN",
-            "name": "Transnistria"
+            "name": "unità amministrative territoriali della sponda sinistra del Dnestr"
         }
     ],
     "ME": [
@@ -13199,12 +13139,6 @@
         {
             "code": "25",
             "name": "Comune di Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "provincia dell’Arhangaj"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "regione di Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15341,6 +15251,10 @@
             "name": "Bagmati"
         },
         {
+            "code": "P3",
+            "name": "Bagmati Pradesh"
+        },
+        {
             "code": "BH",
             "name": "Bheri"
         },
@@ -15387,10 +15301,6 @@
         {
             "code": "NA",
             "name": "Narayani"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         },
         {
             "code": "P1",
@@ -15777,12 +15687,6 @@
         {
             "code": "UCA",
             "name": "regione di Ucayali"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16377,18 +16281,6 @@
             "name": "voivodato della Pomerania Occidentale"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19023,12 +18909,6 @@
             "name": "La Paz"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "RD",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "distretto di Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "WF",
             "name": "regione di Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20277,10 +20145,6 @@
             "name": "Taipei"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         }
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Atollo Johnston"
         },
@@ -21591,12 +21451,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "CT",
@@ -21889,10 +21743,6 @@
         {
             "code": "UV",
             "name": "Wallis (Wallis e Futuna)"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "SA",
             "name": "Sana’a"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

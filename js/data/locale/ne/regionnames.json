@@ -643,12 +643,6 @@
             "name": "Tucumán"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NT",
             "name": "Northern Territory"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1301,6 +1283,10 @@
             "name": "मयमनसिङ्ह जिल्ला"
         },
         {
+            "code": "H",
+            "name": "मयमनसिंह विभाग"
+        },
+        {
             "code": "37",
             "name": "मागुरा जिल्ला"
         },
@@ -1415,10 +1401,6 @@
         {
             "code": "31",
             "name": "Lakshmipur"
-        },
-        {
-            "code": "H",
-            "name": "Mymensingh Division"
         },
         {
             "code": "47",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "TS",
             "name": "Tarrafal de São Nicolau"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -6303,10 +6267,6 @@
             "name": "अक्सफोर्डसायर"
         },
         {
-            "code": "ENG",
-            "name": "इङ्गल्यान्ड"
-        },
-        {
             "code": "NIR",
             "name": "उत्तरी आयरल्यान्ड"
         },
@@ -6325,6 +6285,10 @@
         {
             "code": "GRE",
             "name": "ग्रेनिच"
+        },
+        {
+            "code": "ENG",
+            "name": "बेलायत"
         },
         {
             "code": "MAN",
@@ -6352,7 +6316,7 @@
         },
         {
             "code": "SCT",
-            "name": "स्कटल्यान्ड"
+            "name": "स्कटल्याण्ड"
         },
         {
             "code": "STS",
@@ -7387,12 +7351,6 @@
             "name": "Shida Kartli"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9178,7 +9118,7 @@
         },
         {
             "code": "10",
-            "name": "Khuzestan"
+            "name": "इस्फहान प्रदेश"
         },
         {
             "code": "11",
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13925,24 +13859,6 @@
         {
             "code": "073",
             "name": "Arkhangai"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14895,12 +14811,6 @@
             "name": "Zambezi"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15377,6 +15287,10 @@
             "name": "बागमती अञ्चल"
         },
         {
+            "code": "P3",
+            "name": "बागमती प्रदेश"
+        },
+        {
             "code": "BH",
             "name": "भेरी अञ्चल"
         },
@@ -15431,10 +15345,6 @@
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         }
     ],
     "NR": [
@@ -15773,12 +15683,6 @@
         {
             "code": "UCA",
             "name": "Ucayali"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16373,18 +16277,6 @@
             "name": "West Pomerania"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16705,12 +16597,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19019,12 +18905,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19099,12 +18979,6 @@
         {
             "code": "SH",
             "name": "Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19199,12 +19073,6 @@
         {
             "code": "WF",
             "name": "Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20265,10 +20133,6 @@
             "name": "Taitung"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TAO",
             "name": "Taoyuan"
         },
@@ -21077,10 +20941,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston Atoll"
         },
@@ -21587,12 +21447,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "HN",
@@ -21885,10 +21739,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22025,12 +21875,6 @@
         {
             "code": "TA",
             "name": "Taiz"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

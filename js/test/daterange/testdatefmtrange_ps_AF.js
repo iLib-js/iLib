@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_ps_AF.js - test the date range formatter object Pashto-Afghanistan
  *
- * Copyright © 2022, JEDLSoft
+ * Copyright © 2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,7 +112,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 31 ‏13:45 – ‏14:30');
+        test.equal(fmt.format(start, end), '‏2011 کب 31 ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtRangeInDayFull_ps_AF: function(test) {
@@ -138,7 +138,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 31 ‏13:45 – ‏14:30');
+        test.equal(fmt.format(start, end), '‏2011 کب 31 ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayShort_ps_AF: function(test) {
@@ -216,7 +216,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 30 ‏13:45 – د 2011 د کب 31 ‏14:30');
+        test.equal(fmt.format(start, end), '‏2011 کب 30 ‏13:45 – ‏2011 کب 31 ‏14:30');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ps_AF: function(test) {
@@ -242,7 +242,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 30 ‏13:45 – د 2011 د کب 31 ‏14:30');
+        test.equal(fmt.format(start, end), '‏2011 کب 30 ‏13:45 – ‏2011 کب 31 ‏14:30');
         test.done();
     },
     testDateRngFmtRangeMultiDayShort_ps_AF: function(test) {
@@ -320,7 +320,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 20 – 31');
+        test.equal(fmt.format(start, end), '‏2011 کب 20 – 31');
         test.done();
     },
     testDateRngFmtRangeMultiDayFull_ps_AF: function(test) {
@@ -346,7 +346,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د کب 20 – 31');
+        test.equal(fmt.format(start, end), '‏2011 کب 20 – 31');
         test.done();
     },
     testDateRngFmtRangeNextMonthShort_ps_AF: function(test) {
@@ -424,7 +424,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د سلواغه 20 – د کب 31');
+        test.equal(fmt.format(start, end), '‏2011 سلواغه 20 – ‏کب 31');
         test.done();
     },
     testDateRngFmtRangeNextMonthFull_ps_AF: function(test) {
@@ -450,7 +450,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د سلواغه 20 – د کب 31');
+        test.equal(fmt.format(start, end), '‏2011 سلواغه 20 – ‏کب 31');
         test.done();
     },
     testDateRngFmtRangeNextYearShort_ps_AF: function(test) {
@@ -528,7 +528,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د سلواغه 20 – د 2012 د وری 31');
+        test.equal(fmt.format(start, end), '‏2011 سلواغه 20 – ‏2012 وری 31');
         test.done();
     },
     testDateRngFmtRangeNextYearFull_ps_AF: function(test) {
@@ -554,7 +554,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د سلواغه 20 – د 2012 د وری 31');
+        test.equal(fmt.format(start, end), '‏2011 سلواغه 20 – ‏2012 وری 31');
         test.done();
     },
     testDateRngFmtRangeMultiYearShort_ps_AF: function(test) {
@@ -632,7 +632,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), 'د 2011 د سلواغه – د 2014 د وری');
+        test.equal(fmt.format(start, end), '‏2011 سلواغه – ‏2014 وری');
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_ps_AF: function(test) {
@@ -658,7 +658,7 @@ module.exports.testdatefmtrange_ps_AF = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end),  'د 2011 د سلواغه – د 2014 د وری');
+        test.equal(fmt.format(start, end),  '‏2011 سلواغه – ‏2014 وری');
         test.done();
     },
     testDateRngFmtManyYearsFull_ps_AF: function(test) {
