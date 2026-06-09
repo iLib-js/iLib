@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.22.0",
+    "version": "14.22.1",
     "main": "js/index.js",
     "engines": {
         "node": ">=8 <25"
