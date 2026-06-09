@@ -18,12 +18,27 @@
  */
 
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { readFileSync, existsSync } from 'node:fs';
 import {JSUtils, Utils} from 'ilib-common';
 import assembleZoneinfoData from './assembleZoneinfoData.mjs';
 
 const reDependentPattern = /require\(\s*["']\.*\/([^"']+\.js)["']\);/g;
 const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
+const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+const ilibRoot = path.resolve(moduleDir, '..', '..');
+const ilibLibPath = path.join(ilibRoot, 'js/lib');
+const ilibLocaleDataPath = path.join(ilibRoot, 'js/data/locale');
+
+function validateRequiredIlibPaths() {
+    if (!existsSync(ilibLibPath)) {
+        throw new Error(`iLib JS library directory not found: ${ilibLibPath}`);
+    }
+
+    if (!existsSync(ilibLocaleDataPath)) {
+        throw new Error(`iLib locale data directory not found: ${ilibLocaleDataPath}`);
+    }
+}
 
 /**
  * Assembles locale JSON data by analyzing ilib JS files and merging
@@ -60,9 +75,11 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
  * @returns {object} Merged JSON data map keyed by locale (or by sublocale path when splitByLocale is true)
  */
 export function assemble(ilibFiles, options) {
+    validateRequiredIlibPaths();
+
     const locales = options.opt?.locales || [];
     const isSplit = options.opt?.splitByLocale || false;
-    const localeDataPath = path.join(process.cwd(), "js/data/locale");
+    const localeDataPath = ilibLocaleDataPath;
     const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
         ? options.opt.customLocalePath
         : null;
@@ -126,7 +143,7 @@ function readJSFiles(ilibFiles) {
 
     while (queue.length > 0) {
         const file = queue.shift();
-        const fileContent = readFile(path.join(process.cwd(), "js/lib", file));
+        const fileContent = readFile(path.join(ilibLibPath, file));
         if (fileContent) {
             fileCache.set(file, fileContent);
             for (const match of fileContent.matchAll(reDependentPattern)) {
@@ -153,7 +170,7 @@ function extractData(jsFiles, fileCache) {
     const dataNames = new Set();
 
     jsFiles.forEach(file => {
-        const fileContent = fileCache.get(file) || readFile(path.join(process.cwd(), "js/lib", file));
+        const fileContent = fileCache.get(file) || readFile(path.join(ilibLibPath, file));
         if (fileContent) {
             for (const match of fileContent.matchAll(reDataPattern)) {
                 match[1].trim().split(/\s+/).forEach(name => {
