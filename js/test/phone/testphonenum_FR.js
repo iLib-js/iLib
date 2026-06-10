@@ -367,7 +367,7 @@ module.exports.phonenum_FR = {
         test.done();
     },
     // for NOV-113777
-    testParseFRLocalNumber: function(test) {
+    testParseFRLocalNumber2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("41551735", {locale: "fr-FR"});
         test.ok(typeof(parsed) !== "undefined");

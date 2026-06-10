@@ -858,7 +858,7 @@ module.exports.testdurfmt_ar_SA = {
         test.equal(duration.toString(), "‏سنة، وشهر، وأسبوع، ويوم، وساعة، ودقيقة، وثانية");
         test.done();
     },
-    testDurFmtARAsync2: function(test) {
+    testDurFmtARAsyncUseNativeFalse2: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "ar-SA",
@@ -882,7 +882,7 @@ module.exports.testdurfmt_ar_SA = {
             }
         });
     },
-    testDurFmtARAsyncWithLocale2: function(test) {
+    testDurFmtARAsyncWithLocaleUseNativeFalse2: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "ar-SA",

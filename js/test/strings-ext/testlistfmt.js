@@ -529,7 +529,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format([""]), "");
         test.done();
     },
-    testListFmtazLatnAZNumberFormatOne: function(test) {
+    testListFmtazLatnAZUnitFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "az-Latn-AZ",
             style : "unit",
@@ -959,7 +959,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["en", "to", "tre", "fire"]), "en, to, tre el. fire");
         test.done();
     },
-    testListFmtdaDKNumberFormatFourDisjunction: function(test) {
+    testListFmtdaDKNumberFormatFourDisjunctionFull: function(test) {
         var fmt = new ListFmt({
             locale: "da-DK",
             style: "disjunction",
@@ -1275,7 +1275,7 @@ module.exports.testlistfmt = {
         test.done();
     },
     // ga-IE
-    testListFmtgaIENumberFormatOne: function(test) {
+    testListFmtUnitStylegaIENumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ga-IE",
             style: "unit"
@@ -1286,7 +1286,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann"]), "ceann");
         test.done();
     },
-    testListFmtgaIENumberFormatTwo: function(test) {
+    testListFmtUnitStylegaIENumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "ga-IE",
             style: "unit"
@@ -1297,7 +1297,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann", "dhá"]), "ceann, dhá");
         test.done();
     },
-    testListFmtgaIENumberFormatThree: function(test) {
+    testListFmtUnitStylegaIENumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "ga-IE",
             style: "unit"
@@ -1308,7 +1308,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, trí");
         test.done();
     },
-    testListFmtgaIENumberFormatFour: function(test) {
+    testListFmtUnitStylegaIENumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "ga-IE",
             style: "unit"
@@ -1408,7 +1408,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy", "kettő", "három", "négy"]), "egy, kettő, három és négy");
         test.done();
     },
-    testListFmthuHUNumberFormatOne: function(test) {
+    testListFmtUnitStylehuHUNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "hu-HU",
             style: "unit"
@@ -1419,7 +1419,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy"]), "egy");
         test.done();
     },
-    testListFmthuHUNumberFormatTwo: function(test) {
+    testListFmtUnitStylehuHUNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "hu-HU",
             style: "unit"
@@ -1430,7 +1430,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy", "kettő"]), "egy és kettő");
         test.done();
     },
-    testListFmthuHUNumberFormatThree: function(test) {
+    testListFmtUnitStylehuHUNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "hu-HU",
             style: "unit"
@@ -1441,7 +1441,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["egy", "kettő", "három"]), "egy, kettő és három");
         test.done();
     },
-    testListFmthuHUNumberFormatFour: function(test) {
+    testListFmtUnitStylehuHUNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "hu-HU",
             style: "unit"
@@ -1755,7 +1755,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), "бір, Екі, Үшеуі Төртеуі Төртеуі");
         test.done();
     },
-    testListFmtkkKZNumberFormatOne: function(test) {
+    testListFmtUnitStylekkKZNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
             style: "unit"
@@ -1766,7 +1766,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір"]), "бір");
         test.done();
     },
-    testListFmtkkKZNumberFormatTwo: function(test) {
+    testListFmtUnitStylekkKZNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
             style: "unit"
@@ -1777,7 +1777,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі"]), "бір Екі");
         test.done();
     },
-    testListFmtkkKZNumberFormatThree: function(test) {
+    testListFmtUnitStylekkKZNumberFormatThree: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
             style: "unit"
@@ -1788,7 +1788,7 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір Екі Үшеуі");
         test.done();
     },
-    testListFmtkkKZNumberFormatFour: function(test) {
+    testListFmtUnitStylekkKZNumberFormatFour: function(test) {
         var fmt = new ListFmt({
             locale: "kk-KZ",
             style: "unit"

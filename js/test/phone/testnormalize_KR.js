@@ -93,7 +93,7 @@ module.exports.normalize_KR = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-    testKRLDNumberUsingKRMCC: function(test) {
+    testKRLDNumberUsingKRMCCFromDELocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
         var hints = {

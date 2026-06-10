@@ -607,7 +607,7 @@ module.exports.testlocale = {
         test.ok(!loc.isPseudo(loc));
         test.done();
     },
-    testLocaleIsPseudoFalse: function(test) {
+    testLocaleIsPseudoFalseXXRegion: function(test) {
         test.expect(2);
         var loc = new Locale("en-XX");
 

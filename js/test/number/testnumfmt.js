@@ -285,7 +285,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400E+28");
         test.done();
     },
-    testNumFmtNumberStyleScientificWithMinFractionDigits: function(test) {
+    testNumFmtNumberStyleScientificWithMinFractionDigits2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             style: "scientific",
@@ -1126,7 +1126,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(1234567.745), "1 234 567,745");
         test.done();
     },
-    testNumFmtNumberFormatDESimple: function(test) {
+    testNumFmtNumberFormatDESimple2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "de-DE"
@@ -2533,7 +2533,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(57.8), "੫੭.੮%");
         test.done();
     },
-    testNumFmtPercentageFormatRegular_pa_IN: function(test) {
+    testNumFmtPercentageNegativeFormatRegular_pa_IN: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
         locale: "pa-IN",
@@ -2556,7 +2556,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
-    testNumFmtPercentageNativeFormatRegular_pa_IN: function(test) {
+    testNumFmtPercentageNativeNegativeFormatRegular_pa_IN: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
         locale: "pa-IN",
@@ -5750,7 +5750,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
-    testNumFmt_ja_JP: function(test) {
+    testNumFmt_ja_JP2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "ja-JP",
@@ -5761,7 +5761,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(-123456.785), "-123,456.78");
         test.done();
     },
-    testNumFmt_pt_BR: function(test) {
+    testNumFmt_pt_BR2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "pt-BR",
@@ -5772,7 +5772,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
-    testNumFmt_de_DE: function(test) {
+    testNumFmt_de_DE2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "de-DE",
@@ -5783,7 +5783,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
     },
-    testNumFmt_id_ID: function(test) {
+    testNumFmt_id_ID2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "id-ID",
@@ -5805,7 +5805,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(-123456.785), "-123 456,78");
         test.done();
     },
-    testNumFmt_it_IT: function(test) {
+    testNumFmt_it_IT2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "it-IT",
@@ -6040,7 +6040,7 @@ module.exports.testnumfmt = {
         test.equal(fmt.format(123.57), "၁၂၄ K");
         test.done();
     },
-    testNumFmtPercentageFormatRegular_my_MM: function(test) {
+    testNumFmtPercentageFormatRegularLargeNumber_my_MM: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "my-MM",

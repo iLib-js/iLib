@@ -46,7 +46,7 @@ module.exports.testname_fi = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_fi_FI: function(test) {
+    testParseSimpleNameWithPrefix_fi_FI: function(test) {
         test.expect(2);
         var parsed = new Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");

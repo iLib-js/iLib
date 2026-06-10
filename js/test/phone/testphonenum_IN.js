@@ -236,7 +236,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -249,7 +249,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial3: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -262,7 +262,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial4: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -276,7 +276,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial5: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -290,7 +290,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial6: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -305,7 +305,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial7: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -320,7 +320,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial8: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420123", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -335,7 +335,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial9: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201234", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -350,7 +350,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial10: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -365,7 +365,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420123456", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -380,7 +380,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201234567", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -395,7 +395,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPlusIDDToGBPartial1: function(test) {
+    testParseINPlusIDDToGBPartial13: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345678", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -588,7 +588,7 @@ module.exports.phonenum_IN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseINPartial11: function(test) {
+    testParseINPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("011123456789", {locale: "en-IN"});
         test.ok(typeof(parsed) !== "undefined");

@@ -338,7 +338,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatLocalNumberWithFRMCC: function(test) {
+    testFormatLocalNumberWithFRMCC2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -352,7 +352,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatLocalNumberWithFRMCCNoLocale: function(test) {
+    testFormatLocalNumberWithFRMCCNoLocale2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -396,7 +396,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatLocalNumberWithMXMCC: function(test) {
+    testFormatLocalNumberWithMXMCC2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -410,7 +410,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatLocalNumberWithMXMCCNoLocale: function(test) {
+    testFormatLocalNumberWithMXMCCNoLocale2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -698,7 +698,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatWithParamsStyle0PartialLocal8: function(test) {
+    testFormatWithParamsStyle0PartialLocal9: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -740,7 +740,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatWithParamsStyle0PartialTrunk1: function(test) {
+    testFormatWithParamsStyle0PartialTrunk1b: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -1183,7 +1183,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatWithParamsStyle1PartialLocal8: function(test) {
+    testFormatWithParamsStyle1PartialLocal9: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -1225,7 +1225,7 @@ module.exports.phonefmt_MX = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatWithParamsStyle1PartialTrunk1: function(test) {
+    testFormatWithParamsStyle1PartialTrunk1b: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

@@ -740,7 +740,7 @@ module.exports.testtimezone = {
         test.deepEqual(tz.getOffset(date), {h:-8});
         test.done();
     },
-    testTZGetOffsetRightAfterDSTEnd: function(test) {
+    testTZGetOffsetRightAfterDSTEndJSDate: function(test) {
         test.expect(2);
         var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);

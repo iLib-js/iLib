@@ -1879,7 +1879,7 @@ module.exports.testdatefmt_th_TH = {
         test.equal(fmt.format(date), "วันพฤหัสบดีที่ 29 กันยายน");
         test.done();
     },
-    testDateFmtShortDMW_th_TH: function(test) {
+    testDateFmtShortDM_th_TH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dm"});
         test.ok(fmt !== null);

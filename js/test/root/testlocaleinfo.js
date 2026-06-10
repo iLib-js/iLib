@@ -234,7 +234,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getUnits(), "metric");
         test.done();
     },
-    testLocaleInfoGetCalendarDE: function(test) {
+    testLocaleInfoGetUnitsDE: function(test) {
         test.expect(2);
         var info = new LocaleInfo("de-DE");
         test.ok(info !== null);
@@ -5469,14 +5469,14 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for ko-KR
-    testLocaleInfoGetDecimalSeparatorfor_ko_KR: function(test) {
+    testLocaleInfoGetDecimalSeparatorfor_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
-    testLocaleInfoGetGroupingSeparatorfor_ko_KR: function(test) {
+    testLocaleInfoGetGroupingSeparatorfor_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -5484,7 +5484,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getGroupingSeparator(), ",");
         test.done();
     },
-    testLocaleInfoGetPercentageFormat_ko_KR: function(test) {
+    testLocaleInfoGetPercentageFormat_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -5492,7 +5492,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPercentageFormat(), "{n}%");
         test.done();
     },
-    testLocaleInfoGetCurrencyFormat_ko_KR: function(test) {
+    testLocaleInfoGetCurrencyFormat_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -5500,7 +5500,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
         test.done();
     },
-    testLocaleInfoGetNegativeNumberFormat_ko_KR: function(test) {
+    testLocaleInfoGetNegativeNumberFormat_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -5508,7 +5508,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativeNumberFormat(), "-{n}");
         test.done();
     },
-    testLocaleInfoGetNegativePercentageFormat_ko_KR: function(test) {
+    testLocaleInfoGetNegativePercentageFormat_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -5516,7 +5516,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_ko_KR: function(test) {
+    testLocaleInfoGetNegativeCurrencyFormat_ko_KR2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ko-KR");
         test.ok(info !== null);
@@ -7709,14 +7709,14 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     //test cases for pt-PT
-    testLocaleInfoGetDecimalSeparatorfor_pt_PT: function(test) {
+    testLocaleInfoGetDecimalSeparatorfor_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
-    testLocaleInfoGetGroupingSeparatorfor_pt_PT: function(test) {
+    testLocaleInfoGetGroupingSeparatorfor_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -7724,7 +7724,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getGroupingSeparator(), " ");
         test.done();
     },
-    testLocaleInfoGetPercentageFormat_pt_PT: function(test) {
+    testLocaleInfoGetPercentageFormat_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -7732,7 +7732,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPercentageFormat(), "{n}%");
         test.done();
     },
-    testLocaleInfoGetCurrencyFormat_pt_PT: function(test) {
+    testLocaleInfoGetCurrencyFormat_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -7740,7 +7740,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
         test.done();
     },
-    testLocaleInfoGetNegativeNumberFormat_pt_PT: function(test) {
+    testLocaleInfoGetNegativeNumberFormat_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -7748,7 +7748,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativeNumberFormat(), "-{n}");
         test.done();
     },
-    testLocaleInfoGetNegativePercentageFormat_pt_PT: function(test) {
+    testLocaleInfoGetNegativePercentageFormat_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -7756,7 +7756,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
-    testLocaleInfoGetNegativeCurrencyFormat_pt_PT: function(test) {
+    testLocaleInfoGetNegativeCurrencyFormat_pt_PT2: function(test) {
         test.expect(2);
         var info = new LocaleInfo("pt-PT");
         test.ok(info !== null);
@@ -11763,7 +11763,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
-    testLocaleInfoGetWeekendIN: function(test) {
+    testLocaleInfoGetWeekendAZ: function(test) {
         test.expect(3);
         var info = new LocaleInfo("az-Latn-AZ");
         test.ok(info !== null);
@@ -12096,7 +12096,7 @@ module.exports.testlocaleinfo = {
         test.equal(info.getPaperSize(), "A4");
         test.done();
     },
-    testLocaleInfoQuotation_hy_AM: function(test) {
+    testLocaleInfoQuotationWithPaperSize_hy_AM: function(test) {
         test.expect(4);
         var info = new LocaleInfo("hy-AM");
         test.ok(info !== null);

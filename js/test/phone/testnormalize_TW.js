@@ -93,7 +93,7 @@ module.exports.normalize_TW = {
         test.equal(parsed.normalize(hints), expected); // 'zh-TW'
         test.done();
     },
-    testTWLDNumberUsingTWMCC: function(test) {
+    testTWLDNumberUsingTWMCCFromDELocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
         var hints = {

@@ -725,7 +725,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    testDurFmtAMAsync2: function(test) {
+    testDurFmtAMAsyncUseNativeFalse2: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "am-ET",
@@ -749,7 +749,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    testDurFmtAMAsyncWithLocale2: function(test) {
+    testDurFmtAMAsyncWithLocaleUseNativeFalse2: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "am-ET",

@@ -2343,7 +2343,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    testScriptInfo_es_ES: function(test) {
+    testScriptInfo_ca_ES: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ca-ES");
         var scinfo = new ScriptInfo(li.getScript());
@@ -2453,7 +2453,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    testScriptInfo_ha: function(test) {
+    testScriptInfo_ha2: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ha");
         var scinfo = new ScriptInfo(li.getScript());

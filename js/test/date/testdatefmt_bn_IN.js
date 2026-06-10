@@ -1131,7 +1131,7 @@ module.exports.testdatefmt_bn_IN = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-    testDateFmtINFullTimeComponentsHMA_bn_IN: function(test) {
+    testDateFmtINFullTimeComponentsHMA_bn_IN2: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bn-IN", type: "time", length: "full", time: "hma"});
         test.ok(typeof(fmt) !== "undefined");
@@ -1176,7 +1176,7 @@ module.exports.testdatefmt_bn_IN = {
         test.equal(fmt.format(date), "১:৪৫:৩৭ PM IST");
         test.done();
     },
-    testDateFmtINFullTimeComponentsHMSA_bn_IN: function(test) {
+    testDateFmtINFullTimeComponentsHMSA_bn_IN2: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bn-IN", type: "time", length: "full", time: "hmsa"});
         test.ok(typeof(fmt) !== "undefined");

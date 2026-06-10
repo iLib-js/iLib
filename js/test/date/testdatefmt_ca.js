@@ -2025,7 +2025,7 @@ module.exports.testdatefmt_ca = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    testDateFmtTemplateClock24SwitchKK: function(test) {
+    testDateFmtTemplateClock24SwitchKK_ca_ES: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ca-ES", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);

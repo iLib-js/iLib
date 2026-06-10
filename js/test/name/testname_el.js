@@ -45,7 +45,7 @@ module.exports.testname_el = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_el_GR: function(test) {
+    testParseSimpleName_el_GR2: function(test) {
         test.expect(2);
         var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");

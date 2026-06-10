@@ -92,7 +92,7 @@ module.exports.normalize_RU = {
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
-    testRULDNumberUsingRUMCC: function(test) {
+    testRULDNumberUsingRUMCCFromDELocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
         var hints = {

@@ -71,7 +71,7 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    testParseAddressINKNNoZip: function(test) {
+    testParseAddressINKNNoZip2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
 
@@ -149,7 +149,7 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    testParseAddressINHINoZip: function(test) {
+    testParseAddressINHINoZip2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\nभारत", {locale: 'hi-IN'});
 

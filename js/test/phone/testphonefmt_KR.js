@@ -366,7 +366,7 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatKRStyle0Partial10: function(test) {
+    testFormatKRStyle0Partial11: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

@@ -363,7 +363,7 @@ module.exports.phonefmt_IT = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatITStyle0Partial12: function(test) {
+    testFormatITStyle0Partial13: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

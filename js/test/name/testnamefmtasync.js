@@ -121,7 +121,7 @@ module.exports.testnamefmtasync = {
             }
         });
     },
-    testNameFmtAsyncZHFormalLong: function(test) {
+    testNameFmtAsyncKOFormalLong: function(test) {
         test.expect(1);
         new Name({
             honorific: "닥터",
