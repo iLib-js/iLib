@@ -64,10 +64,6 @@ module.exports.testglobal = {
         test.done();
     },
     testGetVersion: function(test) {
-        if (ilib._getPlatform() === "qt" ) {
-            test.done();
-            return;
-        }
         test.expect(1);
         test.equal(ilib.getVersion().substring(0,5), "14.22");
         test.done();
@@ -962,36 +958,6 @@ module.exports.testglobal = {
         ilib._platform = undefined;
         ilib.locale = undefined;
         global.navigator = undefined;
-
-        test.done();
-    },
-    testGetLocaleSimulateQt: function(test) {
-        if (ilib._getPlatform() !== "nodejs") {
-            // only test this in nodejs
-            test.done();
-            return;
-        }
-
-        ilib._platform = "qt";
-        ilib.locale = undefined;
-
-        var loc = "";
-
-        global.Qt = {
-            locale: function() {
-                return {
-                    name: "fr-FR"
-                };
-            }
-        };
-
-        test.expect(1);
-        test.equal(ilib.getLocale(), "fr-FR");
-
-        // clean up
-        ilib._platform = undefined;
-        ilib.locale = undefined;
-        global.Qt = undefined;
 
         test.done();
     },

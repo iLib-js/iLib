@@ -154,9 +154,6 @@ ilib._getPlatform = function () {
                 ((global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') ||
                 (typeof(global.process.iotjs) !== "undefined"))) {
             ilib._platform = "nodejs";
-        } else if (typeof(Qt) !== 'undefined') {
-            ilib._platform = "qt";
-            ilib._cacheMerged = true; // qt is too slow, so we need to cache the already-merged locale data
         } else if ((typeof(PalmSystem) !== 'undefined') || (typeof(webOSSystem) !== 'undefined')) {
             ilib._platform = (typeof(window) !== 'undefined') ? "webos-webapp" : "webos";
         } else if (typeof(window) !== 'undefined') {
@@ -422,11 +419,6 @@ ilib.getLocale = function () {
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 ilib.locale = parseLocale(lang);
-                break;
-            case 'qt':
-                // running in the Javascript engine under Qt/QML
-                var locobj = Qt.locale();
-                ilib.locale = parseLocale(locobj.name || "en-US");
                 break;
         }
         // test for posix "C" locale
