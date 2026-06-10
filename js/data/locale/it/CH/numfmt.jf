@@ -6,6 +6,6 @@
             "commonNegative": "{s}-{n}"
         },
         "decimalChar": ".",
-        "groupChar": "’"
+        "groupChar": "'"
     }
 }

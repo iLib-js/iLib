@@ -1,7 +1,7 @@
 /*
  * testWeekdayTranslation.js - test the weekday's translation
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -491,6 +491,63 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[4], "č");
         test.equal(value[5], "p");
         test.equal(value[6], "s");
+
+        test.done();
+    },
+    testWeekdayTranslation_ckb_IQ: function(test) {
+        test.expect(28);
+        var fmt, value = [], i;
+        // full -> wide, long -> abbreviate
+        // medium: short
+        // short: narrow
+
+        fmt = new DateFmt({locale:"ckb-IQ", date:"w", length: "full", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "یەکشەممە");
+        test.equal(value[1], "دووشەممە");
+        test.equal(value[2], "سێشەممە");
+        test.equal(value[3], "چوارشەممە");
+        test.equal(value[4], "پێنجشەممە");
+        test.equal(value[5], "ھەینی");
+        test.equal(value[6], "شەممە");
+
+        fmt = new DateFmt({locale:"ckb-IQ", date:"w", length: "long", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "یەکشەممە");
+        test.equal(value[1], "دووشەممە");
+        test.equal(value[2], "سێشەممە");
+        test.equal(value[3], "چوارشەممە");
+        test.equal(value[4], "پێنجشەممە");
+        test.equal(value[5], "ھەینی");
+        test.equal(value[6], "شەممە");
+
+        fmt = new DateFmt({locale:"ckb-IQ", date:"w", length: "medium", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "١ش");
+        test.equal(value[1], "٢ش");
+        test.equal(value[2], "٣ش");
+        test.equal(value[3], "٤ش");
+        test.equal(value[4], "٥ش");
+        test.equal(value[5], "ھ");
+        test.equal(value[6], "ش");
+
+        fmt = new DateFmt({locale:"ckb-IQ", date:"w", length: "short", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "ی");
+        test.equal(value[1], "د");
+        test.equal(value[2], "س");
+        test.equal(value[3], "چ");
+        test.equal(value[4], "پ");
+        test.equal(value[5], "ھ");
+        test.equal(value[6], "ش");
 
         test.done();
     },
@@ -5103,49 +5160,106 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "یەکشەممە");
-        test.equal(value[1], "دووشەممە");
-        test.equal(value[2], "سێشەممە");
-        test.equal(value[3], "چوارشەممە");
-        test.equal(value[4], "پێنجشەممە");
-        test.equal(value[5], "ھەینی");
-        test.equal(value[6], "شەممە");
+        test.equal(value[0], "Sun");
+        test.equal(value[1], "Mon");
+        test.equal(value[2], "Tue");
+        test.equal(value[3], "Wed");
+        test.equal(value[4], "Thu");
+        test.equal(value[5], "Fri");
+        test.equal(value[6], "Sat");
 
         fmt = new DateFmt({locale:"ku-Arab-IQ", date:"w", length: "long", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "یەکشەممە");
-        test.equal(value[1], "دووشەممە");
-        test.equal(value[2], "سێشەممە");
-        test.equal(value[3], "چوارشەممە");
-        test.equal(value[4], "پێنجشەممە");
-        test.equal(value[5], "ھەینی");
-        test.equal(value[6], "شەممە");
+        test.equal(value[0], "Sun");
+        test.equal(value[1], "Mon");
+        test.equal(value[2], "Tue");
+        test.equal(value[3], "Wed");
+        test.equal(value[4], "Thu");
+        test.equal(value[5], "Fri");
+        test.equal(value[6], "Sat");
 
         fmt = new DateFmt({locale:"ku-Arab-IQ", date:"w", length: "medium", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "١ش");
-        test.equal(value[1], "٢ش");
-        test.equal(value[2], "٣ش");
-        test.equal(value[3], "٤ش");
-        test.equal(value[4], "٥ش");
-        test.equal(value[5], "ھ");
-        test.equal(value[6], "ش");
+        test.equal(value[0], "Sun");
+        test.equal(value[1], "Mon");
+        test.equal(value[2], "Tue");
+        test.equal(value[3], "Wed");
+        test.equal(value[4], "Thu");
+        test.equal(value[5], "Fri");
+        test.equal(value[6], "Sat");
 
         fmt = new DateFmt({locale:"ku-Arab-IQ", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ی");
-        test.equal(value[1], "د");
-        test.equal(value[2], "س");
-        test.equal(value[3], "چ");
-        test.equal(value[4], "پ");
-        test.equal(value[5], "ھ");
-        test.equal(value[6], "ش");
+        test.equal(value[0], "S");
+        test.equal(value[1], "M");
+        test.equal(value[2], "T");
+        test.equal(value[3], "W");
+        test.equal(value[4], "T");
+        test.equal(value[5], "F");
+        test.equal(value[6], "S");
+
+        test.done();
+    },
+    testWeekdayTranslation_ku_TR: function(test) {
+        test.expect(28);
+        var fmt, value = [], i;
+        // full -> wide, long -> abbreviate
+        // medium: short
+        // short: narrow
+
+        fmt = new DateFmt({locale:"ku-TR", date:"w", length: "full", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "yekşem");
+        test.equal(value[1], "duşem");
+        test.equal(value[2], "sêşem");
+        test.equal(value[3], "çarşem");
+        test.equal(value[4], "pêncşem");
+        test.equal(value[5], "înî");
+        test.equal(value[6], "şemî");
+
+        fmt = new DateFmt({locale:"ku-TR", date:"w", length: "long", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "yşm");
+        test.equal(value[1], "dşm");
+        test.equal(value[2], "sşm");
+        test.equal(value[3], "çşm");
+        test.equal(value[4], "pşm");
+        test.equal(value[5], "înî");
+        test.equal(value[6], "şem");
+
+        fmt = new DateFmt({locale:"ku-TR", date:"w", length: "medium", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "yş");
+        test.equal(value[1], "dş");
+        test.equal(value[2], "sş");
+        test.equal(value[3], "çş");
+        test.equal(value[4], "pş");
+        test.equal(value[5], "în");
+        test.equal(value[6], "şm");
+
+        fmt = new DateFmt({locale:"ku-TR", date:"w", length: "short", useNative:false, timezone:"local"});
+        for (i=0; i < 7; i++) {
+            value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
+        }
+        test.equal(value[0], "Y");
+        test.equal(value[1], "D");
+        test.equal(value[2], "S");
+        test.equal(value[3], "Ç");
+        test.equal(value[4], "P");
+        test.equal(value[5], "Î");
+        test.equal(value[6], "Ş");
 
         test.done();
     },
@@ -5676,7 +5790,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧਵਾਰ");
         test.equal(value[4], "ਵੀਰਵਾਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰਵਾਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰਵਾਰ");
+        test.equal(value[6], "ਸ਼ਨੀਵਾਰ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "long", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -5688,7 +5802,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "medium", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -5700,7 +5814,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕ");
-        test.equal(value[6], "ਸ਼ਨਿੱ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-Guru-IN", date:"w", length: "short", useNative:false, timezone:"local"});
         for (i=0; i < 7; i++) {
@@ -6886,13 +7000,13 @@ module.exports.testWeekdayTranslation = {
         for (i=0; i < 7; i++) {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+4, type:"thaisolar"}));
         }
-        test.equal(value[0], "อา.");
-        test.equal(value[1], "จ.");
-        test.equal(value[2], "อ.");
-        test.equal(value[3], "พ.");
-        test.equal(value[4], "พฤ.");
-        test.equal(value[5], "ศ.");
-        test.equal(value[6], "ส.");
+        test.equal(value[0], "อาทิตย์");
+        test.equal(value[1], "จันทร์");
+        test.equal(value[2], "อังคาร");
+        test.equal(value[3], "พุธ");
+        test.equal(value[4], "พฤหัส");
+        test.equal(value[5], "ศุกร์");
+        test.equal(value[6], "เสาร์");
 
         fmt = new DateFmt({locale:"th-TH", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -7342,12 +7456,12 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt.format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "CN");
-        test.equal(value[1], "Th 2");
-        test.equal(value[2], "Th 3");
-        test.equal(value[3], "Th 4");
-        test.equal(value[4], "Th 5");
-        test.equal(value[5], "Th 6");
-        test.equal(value[6], "Th 7");
+        test.equal(value[1], "Thứ 2");
+        test.equal(value[2], "Thứ 3");
+        test.equal(value[3], "Thứ 4");
+        test.equal(value[4], "Thứ 5");
+        test.equal(value[5], "Thứ 6");
+        test.equal(value[6], "Thứ 7");
 
         fmt = new DateFmt({locale:"vi-VN", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10815,7 +10929,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧਵਾਰ");
         test.equal(value[4], "ਵੀਰਵਾਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰਵਾਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰਵਾਰ");
+        test.equal(value[6], "ਸ਼ਨੀਵਾਰ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "long", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10827,7 +10941,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕਰ");
-        test.equal(value[6], "ਸ਼ਨਿੱਚਰ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {
@@ -10839,7 +10953,7 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[3], "ਬੁੱਧ");
         test.equal(value[4], "ਵੀਰ");
         test.equal(value[5], "ਸ਼ੁੱਕ");
-        test.equal(value[6], "ਸ਼ਨਿੱ");
+        test.equal(value[6], "ਸ਼ਨੀ");
 
         fmt = new DateFmt({locale:"pa-PK", date:"w", length: "short", useNative:false, timezone:"local"})
         for (i=0; i < 7; i++) {

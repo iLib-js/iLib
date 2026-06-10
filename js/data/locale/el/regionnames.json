@@ -643,12 +643,6 @@
             "name": "Φορμόσα"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "TAS",
             "name": "Τασμανία"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1985,12 +1967,6 @@
             "name": "Ουεμέ"
         }
     ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
-        }
-    ],
     "BN": [
         {
             "code": "BE",
@@ -2253,6 +2229,10 @@
             "name": "Νησιά Μπέρι"
         },
         {
+            "code": "NP",
+            "name": "Νιου Πρόβιντενς"
+        },
+        {
             "code": "NS",
             "name": "Νορθ Άντρος"
         },
@@ -2295,10 +2275,6 @@
         {
             "code": "HT",
             "name": "Χόουπ Τάουν"
-        },
-        {
-            "code": "NP",
-            "name": "New Providence"
         }
     ],
     "BT": [
@@ -3421,12 +3397,6 @@
             "name": "Χουίλα"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3621,12 +3591,6 @@
             "name": "Sotavento Islands"
         }
     ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
-        }
-    ],
     "CY": [
         {
             "code": "01",
@@ -3654,6 +3618,10 @@
         }
     ],
     "CZ": [
+        {
+            "code": "805",
+            "name": "διαμέρισμα Οπάβα"
+        },
         {
             "code": "643",
             "name": "Επαρχία Μπρνο"
@@ -3877,10 +3845,6 @@
         {
             "code": "712",
             "name": "Olomouc"
-        },
-        {
-            "code": "805",
-            "name": "Opava"
         },
         {
             "code": "806",
@@ -4844,7 +4808,7 @@
         },
         {
             "code": "142",
-            "name": "Antsla"
+            "name": "Δήμος Άντσλα"
         },
         {
             "code": "171",
@@ -4884,7 +4848,7 @@
         },
         {
             "code": "255",
-            "name": "Järva"
+            "name": "δήμος Γιέρβα"
         },
         {
             "code": "272",
@@ -6035,6 +5999,10 @@
             "name": "Μαγιέν"
         },
         {
+            "code": "976",
+            "name": "Μαγιότ"
+        },
+        {
             "code": "49",
             "name": "Μαιν-ε-Λουάρ"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "COR",
             "name": "Corsica"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -6708,7 +6672,7 @@
         },
         {
             "code": "SCT",
-            "name": "Σκωτία"
+            "name": "Σκοτία"
         },
         {
             "code": "SLG",
@@ -7387,12 +7351,6 @@
             "name": "Τιφλίδα"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "UW",
@@ -7679,12 +7637,6 @@
         {
             "code": "FR",
             "name": "Φριά"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8083,12 +8035,6 @@
         {
             "code": "13",
             "name": "Χουεχουετενάνγκο"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8557,12 +8503,6 @@
         {
             "code": "PE",
             "name": "Pest"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -11873,8 +11813,16 @@
     ],
     "LU": [
         {
+            "code": "RM",
+            "name": "Καντόνι του Ρέμιχ"
+        },
+        {
             "code": "ES",
             "name": "Καντόνιο της Ες-συρ-Αλζέτ"
+        },
+        {
+            "code": "CL",
+            "name": "Καντόνιο του Κλερβώ"
         },
         {
             "code": "LU",
@@ -11883,10 +11831,6 @@
         {
             "code": "CA",
             "name": "Capellen"
-        },
-        {
-            "code": "CL",
-            "name": "Clervaux"
         },
         {
             "code": "DI",
@@ -11907,10 +11851,6 @@
         {
             "code": "RD",
             "name": "Redange"
-        },
-        {
-            "code": "RM",
-            "name": "Remich"
         },
         {
             "code": "VD",
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -14073,24 +14007,6 @@
         {
             "code": "073",
             "name": "Αρκανγκάι"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -15043,12 +14959,6 @@
             "name": "Omaheke"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15923,12 +15833,6 @@
             "name": "Puno"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "EHG",
@@ -16521,18 +16425,6 @@
             "name": "Δυτική Πομερανία"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16853,12 +16745,6 @@
         {
             "code": "SH",
             "name": "Ash Shīḩānīyah"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19167,12 +19053,6 @@
             "name": "Διαμέρισμα Τσαλατενάνγκο"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19247,12 +19127,6 @@
         {
             "code": "HH",
             "name": "Χνόχο"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19347,12 +19221,6 @@
         {
             "code": "EO",
             "name": "Ennedi-Ouest"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20423,10 +20291,6 @@
         {
             "code": "PEN",
             "name": "Penghu"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21225,10 +21089,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Ατόλλη Τζόνστον"
         },
@@ -21735,12 +21595,6 @@
             "name": "Φεουδαρχικές Περιοχές Βενεζουέλας"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -22033,10 +21887,6 @@
         {
             "code": "SG",
             "name": "Σιγκάβε"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22173,12 +22023,6 @@
         {
             "code": "SN",
             "name": "Sana’a"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

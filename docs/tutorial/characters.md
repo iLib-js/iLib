@@ -1,19 +1,19 @@
 Glyphs, Characters, and Character Normalization
 ===============================================
 
-Javascript uses Unicode as its base character set, and UTF-16 as its base encoding. The character set is literally the set of characters that can be represented in strings in that language. The encoding is how those characters are encoded as numbers in memory.
+JavaScript strings are Unicode text encoded in **UTF-16**. The **character repertoire** is the set of Unicode scalar values your code can represent; **UTF-16** is how those values are stored in memory (16-bit code units).
 
-In the deep dark past of the Internet (the early nineties), Unicode only had code points between 0x0000 and 0xFFFF. That is, it could be represented as 2 bytes, and encoded in the UCS-2 encoding where each code point was the same as the encoding in UCS-2.
+Early Unicode fit entirely in the range **U+0000–U+FFFF** (the Basic Multilingual Plane, BMP). **UCS-2** treated each code unit as one character; that model breaks once code points extend past **U+FFFF**.
 
-Since that time, it became clear that the 65536 characters that you can encode in 2 bytes were not enough to represent all characters from all languages, past and present. So, a third byte was added. This gives you various "planes" of 2 byte code spaces, with the zero plane of course being the same thing as the old Unicode. That means that Unicode code points currently range from 0x00000 through 0x1FFFFF. 
+Unicode now assigns code points up to **U+10FFFF**, organised into **17 planes**. The BMP remains plane 0; supplementary characters live in higher planes. 
 
-In order to remain compatible with the UCS-2 encoding, the Unicode folks invented the encoding UTF-16. The way it works is that every character is still 2 bytes. For those Unicode characters that are above 0xFFFF (2 bytes), you represent them using two "surrogate" characters. There are particular ranges in UCS-2 that are defined for this purpose, so they don't conflict with any existing characters. The first (or "high") UCS-2 surrogate character plus a second ("low") UCS-2 surrogate character are bit-fiddled together to get the Unicode code point somewhere above 2 bytes. That is, it ends up somewhere in the range 0x10000 to 0x1FFFFF.
+**UTF-16** keeps a 16-bit code-unit representation: BMP characters use one code unit; supplementary characters (**U+10000** and above) use a **surrogate pair** (one high surrogate **U+D800–U+DBFF** plus one low surrogate **U+DC00–U+DFFF**). Those surrogate code units do not represent characters on their own; together they encode one supplementary code point.
 
-The only problem is that the Javascript engine does not do this bit fiddling for you. If you run through a string character-by-character, Javascript will give you each surrogate character separately. The same thing will happen if you call String.charAt(). It will give you surrogates characters. Similarly, String.charCodeAt() will give you the code points of the surrogate characters instead of the whole Unicode character. This is not so useful of course, as it would make more sense to get the whole code point, rather than the two separate surrogates, so you can do things with the whole code point like look up stuff based on it.
+JavaScript does not automatically merge surrogate pairs when you index a string. **`charAt`**, older loops, and **`charCodeAt`** operate on **UTF-16 code units**, so you may see two “characters” where there is only one Unicode code point. For many algorithms you want the full **code point**, not the raw surrogate halves.
 
 Speaking of "whole" characters, what happens if some code comes along and truncates a string at N characters? That Nth character in a UTF-16 encoding may be the high surrogate character, and now it has been separated from its low surrogate partner. Now you cannot get that character back! There is no good way in Javascript to know when you are splitting surrogates like that.
 
-Also consider the following. Unicode allows for many types of "combining" characters. They are called this because when rendered on screen with the appropriate font, the characters combine together in various complicated ways. The easiest to understand for English-speaking audiences are accented Latin character. For example, you can represent the character "&uuml;" in Unicode as the the pre-composed character "&uuml;" (U+00FC) or as two Unicode characters, "u" (U+0075) plus the combining dieresis character " &nbsp;&#776; " (U+0308). When combined on the screen, they look like one character, but they are two separate Unicode code points.
+Unicode also defines **combining characters**—marks that merge visually with a base letter. For example, **ü** can be encoded as the single precomposed character **U+00FC**, or as **U+0075** (u) plus **U+0308** (combining diaeresis). On screen they can look identical, but the underlying code-point sequences differ.
 
 Thai and many of the Indic languages make heavy use of combining characters for accents, vowels, and other letters. Some combining characters, especially accents, do not take more horizontal space than the base character alone, but many of them do.
 
@@ -21,10 +21,10 @@ Now consider what would happen if you were to truncate a string right in between
 
 This might even happen automatically if you use the directives "text-overflow: clip;" or "text-overflow: ellipsis;" in your CSS file. CSS as implemented in many browsers definitely does not know about surrogates or combining characters, and will happily truncate strings between base characters and combining characters. This will be fixed in the future, but for now, you can assume the vast majority of browsers do not do this properly.
 
-How iLib Can Help
+How iLib can help
 -----------------
 
-ILib now contains classes that help you deal with deficiencies in the Javascript or CSS implementation. What it can do for you:
+iLib includes classes that address these JavaScript and CSS limitations. It can:
 
 * Iterate through strings code point by code point
 * Iterate through strings glyph by glyph. (A glyph in this case is a base character plus all its combining accent characters that do not use up more horizontal space.)
@@ -54,7 +54,7 @@ while (it.hasNext()) {
 }
 ~~~~~~
 
-Alternately, you can use the more Javscript-y way of doing this using an anonymous function:
+Alternatively, you can use a more idiomatic JavaScript style with a callback:
 
 ~~~~~~
 var ilib = require("ilib");

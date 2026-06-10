@@ -20,5 +20,6 @@
 module.exports.files = [
     "testset.js",
     "testutils.js",
-    "testpath.js"
+    "testpath.js",
+    "testTestingSupport.js"
 ];

@@ -35,7 +35,7 @@
     "1#1 mi|#{num} min": "one#{num} ደ|#{num} ደ",
     "1#1 mon ago|#{num} mons ago": "one#ቅድሚ {num} ወርሒ|#ቅድሚ {num} ወርሒ",
     "1#1 month ago|#{num} months ago": "one#ቅድሚ {num} ወርሒ|#ቅድሚ {num} ወርሒ",
-    "1#1 month|#{num} months": "one#{num}/ወርሒ|#{num}/ኣዋርሕ",
+    "1#1 month|#{num} months": "one#{num} ወርሒ|#{num}/ኣዋርሕ",
     "1#1 mon|#{num} mons": "one#{num}/ኣዋርሕ|#{num}/ኣዋርሕ",
     "1#1 mo|#{num} mos": "one#{num}/ወ|#{num}/ወ",
     "1#1 sec ago|#{num} sec ago": "one#ቅድሚ {num} ካልኢት|#ቅድሚ {num} ካልኢት",
@@ -159,6 +159,5 @@
     "finalSeparatorShort": " ",
     "separatorFull": "፣ ",
     "separatorLong": "፣ ",
-    "separatorMedium": "፣ ",
-    "separatorShort": " "
+    "separatorMedium": "፣ "
 }

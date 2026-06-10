@@ -52,8 +52,7 @@ From the root of ilib, enter:
 > ant
 ~~~~~
 
-You need to make sure you have ant 1.9 or later and JDK 1.7 or later 
-in your path, as ilib uses ant and java to compile zic.
+You need **Apache Ant** and a suitable **JDK** on your **`PATH`** so the Java tooling can compile **`zic`**. For JDK versions used elsewhere in this repo (including tests), see **[Contributing.md](../Contributing.md)**.
 
 3. Convert the IANA Data
 ------------------------

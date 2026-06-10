@@ -1,7 +1,7 @@
 /*
  * testdatefmt_az_Latn_AZ.js - test the date formatter object in Latin Azerbaijani
  *
- * Copyright © 2016-2017,2020-2023 JEDLSoft
+ * Copyright © 2016-2017,2020-2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -284,7 +284,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "29 sentyabr 2011 at 13:45");
+        test.equal(fmt.format(date), "29 sentyabr 2011/13:45");
         test.done();
     },
     testDateFmtDateTimeSimpleFull_az_Latn_AZ: function(test) {

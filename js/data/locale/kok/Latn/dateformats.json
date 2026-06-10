@@ -81,11 +81,15 @@
         },
         "time": {
             "12": {
-                "ah": "a h",
+                "ah": "a h 'vaztam'",
                 "ahm": "a h:mm",
                 "ahms": "a h:mm:ss",
                 "ahmsz": "a h:mm:ss z",
                 "ahmz": "a h:mm z"
+            },
+            "24": {
+                "ah": "HH'v'",
+                "h": "HH'v'"
             }
         }
     }

@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  *
- * Copyright © 2012-2015, 2017-2024 JEDLSoft
+ * Copyright © 2012-2015, 2017-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,12 +69,12 @@ module.exports.testglobal = {
             return;
         }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.21");
+        test.equal(ilib.getVersion().substring(0,5), "14.22");
         test.done();
     },
     testGetCldrVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getCLDRVersion().substring(0,4), "46.0");
+        test.equal(ilib.getCLDRVersion().substring(0,4), "48.2");
         test.done();
     },
     testGetTimeZoneDefault: function(test) {
@@ -718,9 +718,13 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            language: "ja-JP"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        // Node.js has a default Navigator object that prevents simple assignment
+        Object.defineProperty(global, 'navigator', {
+            value: {language: "ja-JP"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "ja-JP");
@@ -744,9 +748,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            language: "ja"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {language: "ja"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "ja");
@@ -770,9 +777,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            language: "zh-Hans-CN"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {language: "zh-Hans-CN"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "zh-Hans-CN");
@@ -796,9 +806,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            language: "ja_jp"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {language: "ja_jp"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "ja-JP");
@@ -822,9 +835,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            browserLanguage: "ja-JP"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {browserLanguage: "ja-JP"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "ja-JP");
@@ -848,9 +864,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            userLanguage: "ko-KR"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {userLanguage: "ko-KR"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "ko-KR");
@@ -874,9 +893,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            systemLanguage: "zh-CN"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {systemLanguage: "zh-CN"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "zh-CN");
@@ -926,9 +948,12 @@ module.exports.testglobal = {
 
         var loc = "";
 
-        global.navigator = {
-            systemLanguage: "zh-Hans-CN"
-        };
+        // Use Object.defineProperty to properly set global.navigator in Node.js
+        Object.defineProperty(global, 'navigator', {
+            value: {systemLanguage: "zh-Hans-CN"},
+            writable: true,
+            configurable: true
+        });
 
         test.expect(1);
         test.equal(ilib.getLocale(), "zh-Hans-CN");

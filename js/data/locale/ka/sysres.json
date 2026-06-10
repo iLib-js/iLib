@@ -151,8 +151,6 @@
     "NN7": "ივ",
     "NN8": "აგ",
     "NN9": "სე",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} დღე|#{num} დღე",
     "durationMediumHours": "one#{num}სთ|#{num}სთ",
     "durationMediumMillis": "one#{num} მწმ|#{num} მწმ",
@@ -165,8 +163,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

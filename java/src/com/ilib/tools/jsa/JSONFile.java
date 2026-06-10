@@ -23,7 +23,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.ilib.IlibLocale;
 
@@ -33,7 +34,7 @@ import com.ilib.IlibLocale;
 public class JSONFile
 	extends AssemblyFile
 {
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
     protected String baseName = null;
     
 	public JSONFile(File root, File file, String baseName)

@@ -76,7 +76,6 @@
                 "s": "LL"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -92,18 +91,6 @@
                 "l": "LLLL, yyyy թ.",
                 "m": "LLL, yyyy թ.",
                 "s": "MM.yy"
-            },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
-            "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
-                "s": "yy"
             }
         },
         "order": "{date}, {time}",
@@ -166,18 +153,10 @@
         "time": {
             "12": {
                 "ah": "h a",
-                "ahm": "h:mma",
-                "ahms": "h:mm:ssa",
-                "ahmsz": "h:mm:ssa z",
-                "ahmz": "h:mma z",
-                "h": "h",
-                "hm": "h:mm",
-                "hms": "h:mm:ss",
-                "hmsz": "h:mm:ss z",
-                "hmz": "h:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "ahm": "h:mm a",
+                "ahms": "h:mm:ss a",
+                "ahmsz": "h:mm:ss a z",
+                "ahmz": "h:mm a z"
             },
             "24": {
                 "ah": "HH",
@@ -189,10 +168,7 @@
                 "hm": "HH:mm",
                 "hms": "HH:mm:ss",
                 "hmsz": "HH:mm:ss z",
-                "hmz": "HH:mm z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": "HH:mm z"
             }
         }
     }

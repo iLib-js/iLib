@@ -75,11 +75,9 @@
     "B7": "da noite",
     "E0": "D",
     "E1": "S",
-    "E2": "T",
     "E3": "Q",
     "E4": "Q",
     "E5": "S",
-    "E6": "S",
     "EE0": "dom.",
     "EE1": "seg.",
     "EE2": "ter.",
@@ -151,8 +149,6 @@
     "NN7": "ju",
     "NN8": "ag",
     "NN9": "se",
-    "a0": "AM",
-    "a1": "PM",
     "durationLongDays": "one#{num} dia|#{num} dias",
     "durationMediumHours": "#{num} h",
     "durationMediumMillis": "#{num} ms",
@@ -165,8 +161,5 @@
     "finalSeparatorLong": " e ",
     "finalSeparatorMedium": " e ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

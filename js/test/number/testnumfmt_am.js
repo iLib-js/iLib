@@ -1,7 +1,7 @@
 /*
  * testnumfmt_am.js - test the number formatter object for Amharic language
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -219,7 +219,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(0.000001234567890123456), "1.234567890123456E-6");
         test.done();
     },
-    testNumFmtNumberETStyleScientificWithMinFractionDigits: function(test) {
+    testNumFmtNumberETStyleScientificWithMinFractionDigits1: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "am-ET",
@@ -232,7 +232,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(12340000000000000000000000000.0), "1.23400E+28");
         test.done();
     },
-    testNumFmtNumberETStyleScientificWithMinFractionDigits: function(test) {
+    testNumFmtNumberETStyleScientificWithMinFractionDigits2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "am-ET",
@@ -424,7 +424,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.8), "57.8%");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault1: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -437,7 +437,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.05), "Br57.05");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -449,7 +449,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.05), "Br57.05");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault3: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -459,7 +459,7 @@ module.exports.testnumfmt_am = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.056), "Br57,06");
+        test.equal(fmt.format(57.056), "Br57.06");
         test.done();
     },
     testNumFmtCurrencyUseCorrectFractionDigitsForLocale: function(test) {
@@ -476,7 +476,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.getMinFractionDigits(), 2);
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault4: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -486,10 +486,10 @@ module.exports.testnumfmt_am = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57), "Br57,00");
+        test.equal(fmt.format(57), "Br57.00");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault5: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -502,7 +502,7 @@ module.exports.testnumfmt_am = {
         test.equal(fmt.format(57.1), "Br57.10");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault6: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -513,10 +513,10 @@ module.exports.testnumfmt_am = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "BR57.10000");
+        test.equal(fmt.format(57.1), "Br57.10000");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault7: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -527,10 +527,10 @@ module.exports.testnumfmt_am = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "ETB57,10000");
+        test.equal(fmt.format(57.1), "ETB57.10");
         test.done();
     },
-    testNumFmtCurrencyFormatETDefault: function(test) {
+    testNumFmtCurrencyFormatETDefault8: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",

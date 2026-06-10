@@ -81,7 +81,7 @@
     "CN": "Chine",
     "CO": "Colombie",
     "CP": "Île Clipperton",
-    "CQ": "Sark",
+    "CQ": "Sercq",
     "CR": "Costa Rica",
     "CU": "Cuba",
     "CV": "Cap-Vert",
@@ -293,5 +293,5 @@
     "ZA": "Afrique du Sud",
     "ZM": "Zambie",
     "ZW": "Zimbabwe",
-    "ZZ": "région indéterminée"
+    "ZZ": "région inconnue"
 }

@@ -38,7 +38,6 @@
                 "s": "dd, E"
             },
             "m": {
-                "f": "MMMM",
                 "l": "MMMM",
                 "m": "MMM",
                 "s": "MM"
@@ -49,20 +48,10 @@
                 "m": "yyyy MMM",
                 "s": "yyyy-MM"
             },
-            "w": {
-                "f": "EEEE",
-                "l": "EEE",
-                "m": "EE",
-                "s": "E"
-            },
             "y": {
-                "f": "yyyy",
-                "l": "yyyy",
-                "m": "yyyy",
                 "s": "yyyy"
             }
         },
-        "order": "{date} {time}",
         "range": {
             "c00": {
                 "f": "{sy} {sm} {sd} {st} – {et}",
@@ -126,14 +115,10 @@
                 "ahms": "HH:mm:ss",
                 "ahmsz": "HH:mm:ss z",
                 "ahmz": "HH:mm z",
-                "h": "h",
                 "hm": "",
                 "hms": "",
                 "hmsz": " z",
-                "hmz": " z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": " z"
             },
             "24": {
                 "ah": "HH",
@@ -145,10 +130,7 @@
                 "hm": "",
                 "hms": "",
                 "hmsz": " z",
-                "hmz": " z",
-                "m": "mm",
-                "ms": "mm:ss",
-                "s": "ss"
+                "hmz": " z"
             }
         }
     }

@@ -26,6 +26,26 @@
                 "s": "c"
             }
         },
+        "order": {
+            "f": "{date} {time}",
+            "l": "{date} {time}",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
+        "range": {
+            "c00": {
+                "s": "{sy}/{sm}/{sd} {st} – {et}"
+            },
+            "c01": {
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            },
+            "c02": {
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            },
+            "c03": {
+                "s": "{sy}/{sm}/{sd} {st} – {ey}/{em}/{ed} {et}"
+            }
+        },
         "time": {
             "12": {
                 "ah": "Bh時",

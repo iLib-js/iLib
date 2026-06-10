@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_bn_IN.js - test the date range formatter object in Bengali/india
  *
- * Copyright © 2012-2017,2023 JEDLSoft
+ * Copyright © 2012-2017, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -523,7 +523,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানুয়ারী, ২০১২");
+        test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানুয়ারি, ২০১২");
         test.done();
     },
     testDateRngFmtRangeNextYearFull_bn_IN: function(test) {
@@ -549,7 +549,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানুয়ারী, ২০১২");
+        test.equal(fmt.format(start, end), "২০ নভেম্বর, ২০১১ – ৩১ জানুয়ারি, ২০১২");
         test.done();
     },
     testDateRngFmtRangeMultiYearShort_bn_IN: function(test) {
@@ -627,7 +627,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "নভেম্বর, ২০১১ – জানুয়ারী, ২০১৪");
+        test.equal(fmt.format(start, end), "নভেম্বর, ২০১১ – জানুয়ারি, ২০১৪");
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_bn_IN: function(test) {
@@ -653,7 +653,7 @@ module.exports.testdatefmtrange_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "নভেম্বর, ২০১১ – জানুয়ারী, ২০১৪");
+        test.equal(fmt.format(start, end), "নভেম্বর, ২০১১ – জানুয়ারি, ২০১৪");
         test.done();
     },
     testDateRngFmtManyYearsFull_bn_IN: function(test) {

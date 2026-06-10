@@ -1,83 +1,96 @@
-# How to Test 
+# Running unit tests in Qt/QML
 
-In order to run a test on QT/QML environment, You need to some settings in advance.
+To run iLib’s Qt/QML tests, configure your environment first.
 
-## 1. QT Installation 
-You need to install [QT](https://www.qt.io/download) on your machine first. [Qt Downloads](https://download.qt.io/archive/qt/)  
-To run Qt 6.0+ on Linux machine, The Ubuntu version requires `20.04`. [link](https://doc.qt.io/qt-6/supported-platforms.html#availability-of-packages).
+## 1. Install Qt
 
-## 2. Modify qt/build.properties file
-When you checkout iLib sources, Default values in `qt/build.properties` is `QTBIN=/opt/qt55/bin`.   
-If you install different locations, You need to modify this file.
+Install [Qt](https://www.qt.io/download) on your machine. Archived installers are available from [Qt Downloads](https://download.qt.io/archive/qt/).
 
-### Additional Information
-If your machine still doesn't point QT where you want, Please modify `default.conf` the following way.
+To run Qt 6.0+ on Linux, Ubuntu **20.04** or newer is required for supported packages. See Qt’s [supported platforms](https://doc.qt.io/qt-6/supported-platforms.html#availability-of-packages).
 
-[qtchooser](https://www.systutorials.com/docs/linux/man/1-qtchooser/): a wrapper used to select between Qt development binary versions
+## 2. Configure `qt/build.properties`
 
-a. Check current system status first by qtchooser command
-~~~~~
-> qtchooser –print-env
-~~~~~
-b. Modify `defult.conf`
-It's a system-wide configuration file. If it is provided, the settings from it will be automatically used in case nothing else is selected.
-~~~~~
-> sudo vi /usr/lib/x86_64-linux-gnu/qtchooser/default.conf
-~~~~~
-i.e)
-~~~~~
-/home/goun/Qt_6.3/6.3.0/gcc_64/bin
-/home/goun/Qt_6.3/6.3.0/gcc_64
-~~~~~
+After cloning iLib, open **`qt/build.properties`**. The default **`QTBIN`** path is **`/opt/qt55/bin`**.
 
-## 3. Update Qt related paths
-You need to check `LD_LIBRARY_PATH` and `QT_PLUGIN_PATH`. You could set options in `~/.bashrc` file.  
-i.e) 
-~~~~
-export LD_LIBRARY_PATH=/home/goun/Qt_6.3/6.3.0/gcc_64/lib
-export QT_PLUGIN_PATH=/home/goun/Qt_6.3/6.3.0/gcc_64/plugins
-~~~~
+If Qt is installed elsewhere, set **`QTBIN`** (and any related paths) to match your installation.
 
-## 4. Run Qt/QML Test by executing ant
-Executing the below command under qt/ directory.  
-The difference between the two test commands is whether JS files are minified or not.
-~~~~~
-> ant test.all
-or
-> ant test.all.compiled
-~~~~~
+### Qtchooser (Linux)
 
-### Trouble Shooting 
+If commands such as `qmake` still do not point at the Qt version you want, use [qtchooser](https://linux.die.net/man/1/qtchooser) to select Qt binaries system-wide.
 
-#### case 1)
-If you faced an error as below,
-~~~~~
-- cannot find -lGL `  
-- /usr/bin/ld: cannot find -lpgm
-~~~~~
-You might need to install the packages below:
+a. Inspect the current configuration:
 
-~~~~~
- > sudo apt-get install libnetpbm10-dev
- > sudo apt-get install libglu1-mesa-dev
-~~~~~
+```text
+qtchooser -print-env
+```
 
-#### case 2)
-When you faced errors as below,
+b. Edit the system-wide defaults if needed (paths vary by distribution):
 
-~~~~
-/bin/qmlscene: relocation error: symbol _ZN10QQmlEngine4exitEi, version Qt_5 not defined in file libQt5Qml.so.5 with link time reference
-~~~~
-~~~~
-Failed to load platform plugin ”xcb“
-~~~~
+```text
+sudo vi /usr/lib/x86_64-linux-gnu/qtchooser/default.conf
+```
 
-You might need to check `LD_LIBRARY_PATH`.
-I've set that option in `~/.bashrc file`.
-~~~~
-export LD_LIBRARY_PATH=/home/goun/Qt5.9.0/5.9/gcc_64/lib
-~~~~
+Example entries (adjust to your Qt install):
 
+```text
+/home/youruser/Qt/6.3.0/gcc_64/bin
+/home/youruser/Qt/6.3.0/gcc_64
+```
 
-## More Reading
-If you want to know regarding How to use iLib on QT/QML. Please visit this [page](https://github.com/iLib-js/iLib/blob/development/docs/tutorial/modules.md#new-platforms).
+## 3. Library and plugin paths
+
+Ensure **`LD_LIBRARY_PATH`** and **`QT_PLUGIN_PATH`** include your Qt installation’s **`lib`** and **`plugins`** directories. You can export them in **`~/.bashrc`** or your shell profile.
+
+Example:
+
+```bash
+export LD_LIBRARY_PATH=/home/youruser/Qt/6.3.0/gcc_64/lib
+export QT_PLUGIN_PATH=/home/youruser/Qt/6.3.0/gcc_64/plugins
+```
+
+## 4. Run tests with Ant
+
+From the **`qt/`** directory:
+
+```text
+ant test.all
+```
+
+or, to run against minified JS:
+
+```text
+ant test.all.compiled
+```
+
+The difference is whether the JavaScript under test is minified.
+
+## Troubleshooting
+
+### Missing OpenGL or Netpbm (`-lGL`, `-lpgm`)
+
+If linking fails with errors such as **`cannot find -lGL`** or **`cannot find -lpgm`**, install the development packages your distribution provides, for example on Debian/Ubuntu:
+
+```text
+sudo apt-get install libnetpbm10-dev
+sudo apt-get install libglu1-mesa-dev
+```
+
+### Wrong Qt libraries at runtime (`relocation error`, `xcb` plugin)
+
+Errors such as:
+
+```text
+relocation error: symbol ... Qt_5 not defined in file libQt5Qml.so.5
+```
+
+or:
+
+```text
+Failed to load platform plugin "xcb"
+```
+
+often mean the loader is picking up the wrong **`libQt5*.so`** files. Confirm **`LD_LIBRARY_PATH`** points at the **`lib`** directory of the Qt version you intend to use (and that it matches the **`QTBIN`** / qtchooser configuration).
+
+## Further reading
+
+For using iLib inside Qt/QML applications, see [tutorial/modules.md — New Platforms](https://github.com/iLib-js/iLib/blob/development/docs/tutorial/modules.md#new-platforms).

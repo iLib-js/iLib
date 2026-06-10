@@ -24,7 +24,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * ZoneInfoFile - models a zone information file, which contains a number
@@ -37,7 +38,7 @@ public class ZoneInfoFile
     protected BufferedReader in;
     protected File file;
     protected String buffer = null;
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
 
     protected String getLine()
         throws IOException

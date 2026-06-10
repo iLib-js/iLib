@@ -643,12 +643,6 @@
             "name": "Ziemia Ognista"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "VIC",
             "name": "Wiktoria"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1177,10 +1159,6 @@
             "name": "Brahmanbaria"
         },
         {
-            "code": "09",
-            "name": "Chandpur"
-        },
-        {
             "code": "10",
             "name": "Chittagong"
         },
@@ -1195,6 +1173,10 @@
         {
             "code": "11",
             "name": "Cox’s Bazar"
+        },
+        {
+            "code": "09",
+            "name": "Ćandpur"
         },
         {
             "code": "B",
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "Departament Zou"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Vichada"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "B",
             "name": "Wyspy Zawietrzne"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4848,7 +4812,7 @@
         },
         {
             "code": "171",
-            "name": "Elva"
+            "name": "Gmina Elva"
         },
         {
             "code": "184",
@@ -7387,12 +7351,6 @@
             "name": "Wewnętrzna Kartlia"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "UE",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "Prefektura Yomou"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Jutiapa"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZE",
             "name": "Zalaegerszeg"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -11919,14 +11859,6 @@
     ],
     "LV": [
         {
-            "code": "111",
-            "name": "Augšdaugavas novads"
-        },
-        {
-            "code": "112",
-            "name": "Dienvidkurzemes Novads"
-        },
-        {
             "code": "DGV",
             "name": "Dyneburg"
         },
@@ -12371,6 +12303,10 @@
             "name": "Gmina Zilupe"
         },
         {
+            "code": "111",
+            "name": "Górna Dźwina"
+        },
+        {
             "code": "JKB",
             "name": "Jēkabpils"
         },
@@ -12381,6 +12317,10 @@
         {
             "code": "JUR",
             "name": "Jurmała"
+        },
+        {
+            "code": "112",
+            "name": "Kurlandia Południowa"
         },
         {
             "code": "LPX",
@@ -12400,7 +12340,7 @@
         },
         {
             "code": "113",
-            "name": "Valmieras Novads"
+            "name": "Valmiera (novads)"
         },
         {
             "code": "VEN",
@@ -12763,12 +12703,12 @@
             "name": "Safi"
         },
         {
-            "code": "SAL",
-            "name": "Sala"
+            "code": "SEF",
+            "name": "Safru"
         },
         {
-            "code": "SEF",
-            "name": "Sefrou"
+            "code": "SAL",
+            "name": "Sala"
         },
         {
             "code": "SET",
@@ -13195,12 +13135,6 @@
         {
             "code": "25",
             "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
         }
     ],
     "MG": [
@@ -13921,24 +13855,6 @@
         {
             "code": "073",
             "name": "Ajmak północnochangajski"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14891,12 +14807,6 @@
             "name": "Otjozondjupa"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15771,12 +15681,6 @@
             "name": "Region Ukajali"
         }
     ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
-        }
-    ],
     "PG": [
         {
             "code": "NSB",
@@ -16369,18 +16273,6 @@
             "name": "województwo zachodniopomorskie"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "KYS",
@@ -16701,12 +16593,6 @@
         {
             "code": "US",
             "name": "Umm Salal"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19015,12 +18901,6 @@
             "name": "Usulután"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HA",
@@ -19095,12 +18975,6 @@
         {
             "code": "SH",
             "name": "Dystrykt Shiselweni"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19195,12 +19069,6 @@
         {
             "code": "WF",
             "name": "Region Wadi Fira"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20241,10 +20109,6 @@
             "name": "Tainan"
         },
         {
-            "code": "",
-            "name": "Taiwan"
-        },
-        {
             "code": "TXG",
             "name": "Taizhong"
         },
@@ -21073,10 +20937,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Johnston"
         },
@@ -21583,12 +21443,6 @@
             "name": "Zulia"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "CT",
@@ -21881,10 +21735,6 @@
         {
             "code": "UV",
             "name": "Uvea"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22021,12 +21871,6 @@
         {
             "code": "DH",
             "name": "Zamar"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

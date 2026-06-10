@@ -153,8 +153,6 @@
     "NN7": "iy",
     "NN8": "av",
     "NN9": "se",
-    "a0": "AM",
-    "a1": "PM",
     "c0": "7",
     "c1": "1",
     "c2": "2",
@@ -195,8 +193,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

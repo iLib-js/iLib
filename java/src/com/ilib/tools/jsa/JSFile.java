@@ -32,7 +32,8 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -47,7 +48,7 @@ import com.ilib.IlibLocale;
 public class JSFile
 	extends AssemblyFile
 {
-    protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = LogManager.getLogger(this.getClass());
     protected ArrayList<Pattern> dependsPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> dataPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> macroPatterns = new ArrayList<Pattern>();

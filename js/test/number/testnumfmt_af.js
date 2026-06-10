@@ -1,7 +1,7 @@
 /*
  * testnumfmt_af.js - test the number formatter object for Afrikaans language
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -420,7 +420,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault1: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -433,7 +433,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.05), "R57,05");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -445,7 +445,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.05), "R57.05");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault3: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -472,7 +472,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.getMinFractionDigits(), 2);
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault4: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -485,7 +485,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57), "R57,00");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault5: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -498,7 +498,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.1), "R57,10");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault6: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -512,7 +512,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.1), "R57,10000");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault7: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -523,10 +523,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "ZAR57,10000");
+        test.equal(fmt.format(57.1), "ZAR57,10");
         test.done();
     },
-    testNumFmtCurrencyFormatZADefault: function(test) {
+    testNumFmtCurrencyFormatZADefault8: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -943,7 +943,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.format(57.8), "57,8%");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault1: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -953,10 +953,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.05), "$ 57,05");
+        test.equal(fmt.format(57.05), "$57,05");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault2: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -965,10 +965,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.05), "$ 57.05");
+        test.equal(fmt.format(57.05), "$57.05");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault3: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -978,7 +978,7 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.056), "$ 57,06");
+        test.equal(fmt.format(57.056), "$57,06");
         test.done();
     },
     testNumFmtCurrencyUseCorrectFractionDigitsForLocale: function(test) {
@@ -995,7 +995,7 @@ module.exports.testnumfmt_af = {
         test.equal(fmt.getMinFractionDigits(), 2);
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault4: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -1005,10 +1005,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57), "$ 57,00");
+        test.equal(fmt.format(57), "$57,00");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault5: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -1018,10 +1018,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "$ 57,10");
+        test.equal(fmt.format(57.1), "$57,10");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault6: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -1032,10 +1032,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "$ 57,10000");
+        test.equal(fmt.format(57.1), "$57,10000");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault7: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",
@@ -1046,10 +1046,10 @@ module.exports.testnumfmt_af = {
 
         test.ok(fmt !== null);
 
-        test.equal(fmt.format(57.1), "NAD57,10000");
+        test.equal(fmt.format(57.1), "NAD57,10");
         test.done();
     },
-    testNumFmtCurrencyFormatNADefault: function(test) {
+    testNumFmtCurrencyFormatNADefault8: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
             type: "currency",

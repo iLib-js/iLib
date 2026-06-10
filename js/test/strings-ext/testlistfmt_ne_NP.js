@@ -1,7 +1,7 @@
 /*
  * testlistfmt_ne_NP.js - test the list formatter object
  *
- * Copyright © 2020, JEDLSoft
+ * Copyright © 2020, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक,दुई र तीन');
+        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक, दुई र तीन');
         test.done();
     },
     testListFmtneNPNumberFormatFour: function(test) {
@@ -67,7 +67,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक,दुई, तीन र चार');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक, दुई, तीन र चार');
         test.done();
     },
     testListFmtneNPNumberFormatFive: function(test) {
@@ -77,7 +77,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक,दुई, तीन, चार र पाँच');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक, दुई, तीन, चार र पाँच');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatOneShort: function(test) {
@@ -110,7 +110,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक,दुई,तीन');
+        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक, दुई, तीन');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatFourShort: function(test) {
@@ -121,7 +121,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक,दुई, तीन,चार');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक, दुई, तीन, चार');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatFiveShort: function(test) {
@@ -132,7 +132,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक,दुई, तीन, चार,पाँच');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक, दुई, तीन, चार, पाँच');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatOneFull: function(test) {
@@ -156,7 +156,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई"]), 'एक,दुई');
+        test.equal(fmt.format(["एक", "दुई"]), 'एक, दुई');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatThreeFull: function(test) {
@@ -168,7 +168,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक,दुई,तीन');
+        test.equal(fmt.format(["एक", "दुई", "तीन"]), 'एक, दुई, तीन');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatFourFull: function(test) {
@@ -180,7 +180,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक,दुई, तीन,चार');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार"]), 'एक, दुई, तीन, चार');
         test.done();
     },
     testListFmtUnitStyleneNPNumberFormatFiveFull: function(test) {
@@ -192,7 +192,7 @@ module.exports.testlistfmt_ne_NP = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक,दुई, तीन, चार,पाँच');
+        test.equal(fmt.format(["एक", "दुई", "तीन", "चार", "पाँच"]), 'एक, दुई, तीन, चार, पाँच');
         test.done();
     },
     testListFmtORStyleneNPNumberFormatOne: function(test) {

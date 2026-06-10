@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -343,7 +344,7 @@ public class AreaCodeTableMaker {
 	public static void main(String[] args) {
 		Date start = new Date();
 		System.out.println("iLib Phone Number Prefix table maker\nCopyright (c) 2014 JEDLSoft. All Rights Reserved.");
-		logger = Logger.getLogger(AreaCodeTableMaker.class);
+		logger = LogManager.getLogger(AreaCodeTableMaker.class);
 
 		int arg = 0;
 		BufferedReader fis = null;

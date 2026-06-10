@@ -9,12 +9,6 @@
             }
         },
         "time": {
-            "12": {
-                "ahm": "h:mm a",
-                "ahms": "h:mm:ss a",
-                "ahmsz": "h:mm:ss a z",
-                "ahmz": "h:mm a z"
-            },
             "24": {
                 "ah": "HH",
                 "ahm": "HH:mm",

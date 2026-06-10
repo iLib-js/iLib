@@ -643,12 +643,6 @@
             "name": "Энтре-Риос"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "SA",
             "name": "Южная Австралия"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "OU",
             "name": "Уэме"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "Чоко"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "SM",
             "name": "São Miguel"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -4422,7 +4386,7 @@
         },
         {
             "code": "41",
-            "name": "Valdesia"
+            "name": "Валдесиа"
         },
         {
             "code": "42",
@@ -4628,7 +4592,7 @@
         },
         {
             "code": "50",
-            "name": "Bordj Badji Mokhtar"
+            "name": "Бурж-Баджи-Мухтар"
         },
         {
             "code": "51",
@@ -5703,6 +5667,10 @@
             "name": "Западный округ"
         },
         {
+            "code": "03",
+            "name": "Какаудрове"
+        },
+        {
             "code": "04",
             "name": "Кандаву"
         },
@@ -5743,12 +5711,12 @@
             "name": "Серуа"
         },
         {
-            "code": "C",
-            "name": "Центральный округ"
+            "code": "14",
+            "name": "Талиеву"
         },
         {
-            "code": "03",
-            "name": "Cakaudrove"
+            "code": "C",
+            "name": "Центральный округ"
         },
         {
             "code": "07",
@@ -5765,10 +5733,6 @@
         {
             "code": "12",
             "name": "Rewa"
-        },
-        {
-            "code": "14",
-            "name": "Tailevu"
         }
     ],
     "FM": [
@@ -7387,12 +7351,6 @@
             "name": "Тбилиси"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "FO",
             "name": "Форекариа"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "Хутьяпа"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "JN",
             "name": "Яс-Надькун-Сольнок"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -9407,6 +9347,10 @@
             "name": "Фльоутсдальсхреппюр"
         },
         {
+            "code": "FJL",
+            "name": "Фьядлабиггд"
+        },
+        {
             "code": "FJD",
             "name": "Фьярдабиггд"
         },
@@ -9453,10 +9397,6 @@
         {
             "code": "DJU",
             "name": "Djúpavogshreppur"
-        },
-        {
-            "code": "FJL",
-            "name": "Fjallabyggð"
         },
         {
             "code": "FLD",
@@ -13201,12 +13141,6 @@
             "name": "Zeta"
         }
     ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
-        }
-    ],
     "MG": [
         {
             "code": "T",
@@ -13937,24 +13871,6 @@
         {
             "code": "073",
             "name": "Архангай"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14907,12 +14823,6 @@
             "name": "Эронго"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15365,6 +15275,10 @@
             "name": "Багмати"
         },
         {
+            "code": "P3",
+            "name": "Багмати-Прадеш"
+        },
+        {
             "code": "BH",
             "name": "Бхери"
         },
@@ -15443,10 +15357,6 @@
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         }
     ],
     "NR": [
@@ -15785,12 +15695,6 @@
         {
             "code": "JUN",
             "name": "Хунин"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16385,18 +16289,6 @@
             "name": "Западно-Поморское воеводство"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "BTH",
@@ -16717,12 +16609,6 @@
         {
             "code": "SH",
             "name": "Эш-Шахания"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19031,12 +18917,6 @@
             "name": "Чалатенанго"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "DI",
@@ -19111,12 +18991,6 @@
         {
             "code": "SH",
             "name": "Шиселвени"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19211,12 +19085,6 @@
         {
             "code": "CB",
             "name": "Шари-Багирми"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20287,10 +20155,6 @@
         {
             "code": "YUN",
             "name": "Юньлинь"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21089,10 +20953,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "Джонстон"
         },
@@ -21599,12 +21459,6 @@
             "name": "Яракуй"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21897,10 +21751,6 @@
         {
             "code": "UV",
             "name": "Увеа"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22037,12 +21887,6 @@
         {
             "code": "SU",
             "name": "Arkhabil Suqutra"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

@@ -102,7 +102,7 @@
     "EEEE4": "बिहिबार",
     "EEEE5": "शुक्रबार",
     "EEEE6": "शनिबार",
-    "G-1": "इस्वीपूर्व",
+    "G-1": "ईसा पूर्व",
     "G1": "ईसा काल",
     "L1": "जन",
     "L10": "अक्टो",
@@ -210,12 +210,9 @@
     "durationShortMillis": "one#{num}मि.से.|#{num}मि.से.",
     "durationShortMinutes": "one#{num} मिनेट|#{num} मिनेट",
     "durationShortMonths": "one#{num} महिना|#{num} महिना",
-    "finalSeparatorFull": ",",
-    "finalSeparatorLong": ",",
-    "finalSeparatorMedium": ",",
+    "finalSeparatorFull": ", ",
+    "finalSeparatorLong": ", ",
+    "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": ""
+    "separatorMedium": ", "
 }

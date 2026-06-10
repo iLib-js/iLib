@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   test:
+    resource_class: large
     parameters:
         docker_image:
           type: string
@@ -61,16 +62,14 @@ workflows:
   test-all-node-versions:
     jobs:
       - test:
-          docker_image: cimg/node:8.17.0
-      - test:
           docker_image: cimg/node:10.24.1-browsers
       - test:
-          docker_image: cimg/node:12.22.12-browsers
-      - test:
           docker_image: cimg/node:14.21.3-browsers
-      - test:
-          docker_image: cimg/node:16.20.2-browsers
       - test:
           docker_image: cimg/node:18.20.4-browsers
       - test:
           docker_image: cimg/node:20.15.1-browsers
+      - test:
+          docker_image: cimg/node:22.11.0-browsers
+      - test:
+          docker_image: cimg/node:24.1.0-browsers

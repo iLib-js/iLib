@@ -1,7 +1,7 @@
  /*
  * testnumfmt2.js - test the number formatter object
  *
- * Copyright © 2019-2024, JEDLSoft
+ * Copyright © 2019-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ar-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '‏{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '؜-‏{n} {s}');
-        test.equal(curfmt.format(57.05), '‏57 ﺩ.ﻉ.');  //IQD
+        test.equal(curfmt.format(57.05), '‏57 د.ع.‏');  //IQD
         test.done();
     },
     testNumFmt_ar_MA: function(test) {
@@ -127,7 +127,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "bg-BG", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 лв"); // BGN
+        test.equal(curfmt.format(57.05), "57,05 €");
         test.done();
     },
     testNumFmt_bn_IN: function(test) {
@@ -185,6 +185,27 @@ module.exports.testnumfmt2 = {
         test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.equal(curfmt.format(57.05), "57,05 €"); //EUR
+        test.done();
+    },
+    testNumFmt_ckb_IQ: function(test) {
+        test.expect(9);
+
+        var li = new LocaleInfo("ckb-IQ");
+        var fmt = new NumFmt({locale:"ckb-IQ", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), "٫");
+        test.equal(li.getGroupingSeparator(), "٬");
+        test.equal(fmt.format(123456789.45), "123٬456٬789٫45");
+
+        var pctfmt = new NumFmt({locale:"ckb-IQ", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '{n} ٪');
+        test.equal(li.getNegativePercentageFormat(), '‏-{n} ٪');
+        test.equal(pctfmt.format(34), '34 ٪');
+
+        var curfmt = new NumFmt({locale: "ckb-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, '{n} {s}');
+        test.equal(li.getCurrencyFormats().commonNegative, '‏-{n} {s}');
+        test.equal(curfmt.format(57.05), '57 د.ع.‏'); //IQD
+
         test.done();
     },
     testNumFmt_cs_CZ: function(test) {
@@ -249,8 +270,8 @@ module.exports.testnumfmt2 = {
         var li = new LocaleInfo("de-CH");
         var fmt = new NumFmt({locale:"de-CH", type:"standard", useNative:false});
         test.equal(li.getDecimalSeparator(), ".");
-        test.equal(li.getGroupingSeparator(),  "’");
-        test.equal(fmt.format(123456789.45), "123’456’789.45");
+        test.equal(li.getGroupingSeparator(),  "'");
+        test.equal(fmt.format(123456789.45), "123'456'789.45");
 
         var pctfmt = new NumFmt({locale:"de-CH", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");
@@ -920,7 +941,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "es-CO", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s} {n}");
-        test.equal(curfmt.format(57.05), "$ 57,05"); //COP
+        test.equal(curfmt.format(57.05), "$ 57"); //COP
 
         test.done();
     },
@@ -1279,7 +1300,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "fa-IR", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '‎{s}{n}');
         test.equal(li.getCurrencyFormats().commonNegative, '‎−‎{s}{n}');
-        test.equal(curfmt.format(57.05), '‎﷼57');  //IRR
+        test.equal(curfmt.format(57.05), '‎ریال57');  //IRR
 
         test.done();
     },
@@ -1348,8 +1369,8 @@ module.exports.testnumfmt2 = {
         var li = new LocaleInfo("fr-CH");
         var fmt = new NumFmt({locale:"fr-CH", type:"standard", useNative:false});
         test.equal(li.getDecimalSeparator(), ",");
-        test.equal(li.getGroupingSeparator(), ' ');
-        test.equal(fmt.format(123456789.45), '123 456 789,45');
+        test.equal(li.getGroupingSeparator(), "'");
+        test.equal(fmt.format(123456789.45), "123'456'789,45");
 
         var pctfmt = new NumFmt({locale:"fr-CH", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");
@@ -1539,7 +1560,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "hr-HU", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common,  "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "−{n} {s}");
-        test.equal(curfmt.format(57.05), "57,05 Ft");//HUF
+        test.equal(curfmt.format(57.05), '57 Ft');//HUF
 
         test.done();
     },
@@ -1559,7 +1580,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "id-ID", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "Rp57,05"); //IDR
+        test.equal(curfmt.format(57.05), 'Rp57'); //IDR
 
         test.done();
     },
@@ -1588,8 +1609,8 @@ module.exports.testnumfmt2 = {
         var li = new LocaleInfo("it-CH");
         var fmt = new NumFmt({locale:"it-CH", type:"standard", useNative:false});
         test.equal(li.getDecimalSeparator(), ".");
-        test.equal(li.getGroupingSeparator(), "’");
-        test.equal(fmt.format(123456789.45), "123’456’789.45");
+        test.equal(li.getGroupingSeparator(), "'");
+        test.equal(fmt.format(123456789.45), "123'456'789.45");
 
         var pctfmt = new NumFmt({locale:"it-CH", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");
@@ -1707,18 +1728,59 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("ku-IQ");
         var fmt = new NumFmt({locale:"ku-IQ", type:"standard", useNative:false});
-        test.equal(li.getDecimalSeparator(), "٫");
-        test.equal(li.getGroupingSeparator(), "٬");
-        test.equal(fmt.format(123456789.45), "123٬456٬789٫45");
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), '123.456.789,45');
         var pctfmt = new NumFmt({locale:"ku-IQ", type:"percentage", useNative:false});
-        test.equal(li.getPercentageFormat(), '{n} ٪');
-        test.equal(li.getNegativePercentageFormat(), '‏-{n} ٪');
-        test.equal(pctfmt.format(34), '34 ٪');
+        test.equal(li.getPercentageFormat(), '%{n}');
+        test.equal(li.getNegativePercentageFormat(), '-%{n}');
+        test.equal(pctfmt.format(34), '%34');
 
         var curfmt = new NumFmt({locale: "ku-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{n} {s}');
-        test.equal(li.getCurrencyFormats().commonNegative, '‏-{n} {s}');
-        test.equal(curfmt.format(57.05), '57 ﺩ.ﻉ.'); //IQD
+        test.equal(li.getCurrencyFormats().commonNegative, '-{n} {s}');
+        test.equal(curfmt.format(57.05), '57 د.ع.‏'); //IQD
+
+        test.done();
+    },
+    testNumFmt_ku_Arab_IQ: function(test) {
+        test.expect(9);
+        var li = new LocaleInfo("ku-Arab-IQ");
+        var fmt = new NumFmt({locale:"ku-Arab-IQ", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ".");
+        test.equal(li.getGroupingSeparator(), ",");
+        test.equal(fmt.format(123456789.45), '123,456,789.45');
+
+        var pctfmt = new NumFmt({locale:"ku-Arab-IQ", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '{n}%');
+        test.equal(li.getNegativePercentageFormat(), '-{n}%');
+        test.equal(pctfmt.format(34), '34%');
+
+        var curfmt = new NumFmt({locale: "ku-Arab-IQ", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, '{s} {n}');
+        test.equal(li.getCurrencyFormats().commonNegative, '-{s} {n}');
+        test.equal(curfmt.format(57.05), 'د.ع.‏ 57'); //IQD
+
+        test.done();
+    },
+    testNumFmt_ku_TR: function(test) {
+        test.expect(9);
+
+        var li = new LocaleInfo("ku-TR");
+        var fmt = new NumFmt({locale:"ku-TR", type:"standard", useNative:false});
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), ".");
+        test.equal(fmt.format(123456789.45), '123.456.789,45');
+
+        var pctfmt = new NumFmt({locale:"ku-TR", type:"percentage", useNative:false});
+        test.equal(li.getPercentageFormat(), '%{n}');
+        test.equal(li.getNegativePercentageFormat(), '-%{n}');
+        test.equal(pctfmt.format(34), '%34');
+
+        var curfmt = new NumFmt({locale: "ku-TR", type: "currency", useNative:false, currency:li.getCurrency()});
+        test.equal(li.getCurrencyFormats().common, '{n} {s}');
+        test.equal(li.getCurrencyFormats().commonNegative, '-{n} {s}');
+        test.equal(curfmt.format(57.05), '57,05 ₺');
 
         test.done();
     },
@@ -2004,7 +2066,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "sr-Cyrl-RS", type: "currency", useNative:false, currency:li.getCurrency()});
        test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57 дин."); //RSD
+        test.equal(curfmt.format(57.05), '57,05 дин.'); //RSD
         test.done();
     },
     testNumFmt_sr_Latn_RS: function(test) {
@@ -2023,7 +2085,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "sr-Latn-RS", type: "currency", useNative:false, currency:li.getCurrency()});
        test.equal(li.getCurrencyFormats().common, "{n} {s}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
-        test.equal(curfmt.format(57.05), "57 дин.");//RSD
+        test.equal(curfmt.format(57.05), '57,05 дин.');//RSD
         test.done();
     },
     testNumFmt_ru_BY: function(test) {
@@ -2420,9 +2482,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "ur-IN", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
-        test.equal(curfmt.format(57.05), "₹ 57٫05"); //INR
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
+        test.equal(li.getCurrencyFormats().commonNegative, "‎-‎{s}{n}");
+        test.equal(curfmt.format(57.05), "₹57٫05"); //INR
         test.done();
     },
     testNumFmt_uz_Latn_UZ: function(test) {
@@ -2524,9 +2586,9 @@ module.exports.testnumfmt2 = {
         test.expect(9);
         var li = new LocaleInfo("en-GE");
         var fmt = new NumFmt({locale:"en-GE", type:"standard", useNative:false});
-        test.equal(li.getDecimalSeparator(), ".");
-        test.equal(li.getGroupingSeparator(), ",");
-        test.equal(fmt.format(123456789.45), "123,456,789.45");
+        test.equal(li.getDecimalSeparator(), ",");
+        test.equal(li.getGroupingSeparator(), " ");
+        test.equal(fmt.format(123456789.45), "123 456 789,45");
 
         var pctfmt = new NumFmt({locale:"en-GE", type:"percentage", useNative:false});
         test.equal(li.getPercentageFormat(), "{n}%");
@@ -2534,9 +2596,9 @@ module.exports.testnumfmt2 = {
         test.equal(pctfmt.format(34), "34%");
 
         var curfmt = new NumFmt({locale: "en-GE", type: "currency", useNative:false, currency:li.getCurrency()});
-        test.equal(li.getCurrencyFormats().common, "{s}{n}");
-        test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "₾57.05"); //GEL
+        test.equal(li.getCurrencyFormats().common, "{n} {s}");
+        test.equal(li.getCurrencyFormats().commonNegative, "-{n} {s}");
+        test.equal(curfmt.format(57.05), "57,05 ₾"); //GEL
         test.done();
     },
     testNumFmt_en_CN: function(test) {
@@ -2992,7 +3054,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ar-SA", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '‏{n} {s}');
         test.equal(li.getCurrencyFormats().commonNegative, '؜-‏{n} {s}');
-        test.equal(curfmt.format(57.05), '‏57٫05 ر.س');//SAR
+        test.equal(curfmt.format(57.05), '‏57٫05 ⃁' );//SAR
         test.done();
     },
     testNumFmt_ar_SD: function(test) {
@@ -3144,7 +3206,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "en-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, "-{s}{n}");
-        test.equal(curfmt.format(57.05), "Rs57.05"); //PKR
+        test.equal(curfmt.format(57.05), 'Rs57'); //PKR
         test.done();
     },
     testNumFmt_en_RW: function(test) {
@@ -3638,7 +3700,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "pa-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
         test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{s} {n}');
-        test.equal(curfmt.format(57.05), 'Rs 57٫05'); //PKR
+        test.equal(curfmt.format(57.05), 'Rs 57'); //PKR
         test.done();
     },
     testNumFmt_pt_AO: function(test) {
@@ -3714,7 +3776,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ur-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getCurrencyFormats().commonNegative, '‎-{s}{n}');
-        test.equal(curfmt.format(57.05), 'Rs57.05'); //PKR
+        test.equal(curfmt.format(57.05), 'Rs57'); //PKR
         test.done();
     },
     testNumFmt_zh_Hans_SG: function(test) {
@@ -4110,7 +4172,7 @@ module.exports.testnumfmt2 = {
         var curfmt = new NumFmt({locale: "ps-PK", type: "currency", useNative:false, currency:li.getCurrency()});
         test.equal(li.getCurrencyFormats().common, '{s} {n}');
         test.equal(li.getCurrencyFormats().commonNegative, '‎-‎{s} {n}');
-        test.equal(curfmt.format(57.05), 'Rs 57٫05');
+        test.equal(curfmt.format(57.05), 'Rs 57');
         test.done();
     },
     testNumFmt_ps_AF: function(test) {

@@ -99,14 +99,6 @@
                 "m": "{sm} {sy} – {em} {ey}",
                 "s": "{sy}/{sm} – {ey}/{em}"
             }
-        },
-        "time": {
-            "12": {
-                "ahm": "h:mma",
-                "ahms": "h:mm:ssa",
-                "ahmsz": "h:mm:ssa z",
-                "ahmz": "h:mma z"
-            }
         }
     }
 }

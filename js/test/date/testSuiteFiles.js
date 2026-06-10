@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  *
- * Copyright © 2017-2018, 2020-2022 JEDLSoft
+ * Copyright © 2017-2018, 2020-2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ module.exports.files = [
     "testdatefmt_bs_Cyrl_BA.js",
     "testdatefmt_bs_Latn_BA.js",
     "testdatefmt_ca.js",
+    "testdatefmt_ckb_IQ.js",
     "testdatefmt_cop_EG.js",
     "testdatefmt_cs_CZ.js",
     "testdatefmt_da_DK.js",
@@ -77,6 +78,7 @@ module.exports.files = [
     "testdatefmt_kn_IN.js",
     "testdatefmt_ko_KR.js",
     "testdatefmt_ku_Arab_IQ.js",
+    "testdatefmt_ku_TR.js",
     "testdatefmt_ky_KG.js",
     "testdatefmt_lb_LU.js",
     "testdatefmt_lo_LA.js",

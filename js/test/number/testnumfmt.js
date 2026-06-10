@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2018, 2020-2024 JEDLSoft
+ * Copyright © 2012-2018, 2020-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2602,7 +2602,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(100110.57), "₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtCurrencyFormatNegativeNativeCurrencyForLocale_ur_IN1: function(test) {
@@ -2615,7 +2615,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "‎-‎₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(-100110.57), "‎-‎₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectCurrencyForLocale_ur_IN: function(test) {
@@ -2627,7 +2627,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "₹ ۱۰۰٬۱۱۰٫۵۷");
+        test.equal(fmt.format(100110.57), "₹۱۰۰٬۱۱۰٫۵۷");
         test.done();
     },
     testNumFmtPercentageFormatRegular_ur_IN: function(test) {
@@ -3163,7 +3163,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "$ 100.110,57");
+        test.equal(fmt.format(100110.57), "$ 100.111");
         test.done();
     },
     testNumFmtPercentageFormatRegular_es_CO: function(test) {
@@ -3454,7 +3454,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "100 110,57 Ft");
+        test.equal(fmt.format(100110.57), "100 111 Ft");
         test.done();
     },
     testNumFmtPercentageFormatRegular_hu_HU: function(test) {
@@ -3673,7 +3673,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), '‏١٠٠٬١١٠٫٥٧ ر.س');
+        test.equal(fmt.format(100110.57), '‏١٠٠٬١١٠٫٥٧ ⃁');
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_ar_SA: function(test) {
@@ -3685,7 +3685,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), '؜-‏١٠٠٬١١٠٫٥٧ ر.س');
+        test.equal(fmt.format(-100110.57),  '؜-‏١٠٠٬١١٠٫٥٧ ⃁' );
         test.done();
     },
     testNumFmtPercentageFormatRegular_ar_SA: function(test) {
@@ -3727,11 +3727,11 @@ module.exports.testnumfmt = {
         var fmt = new NumFmt({
             type: "currency",
             locale: "bg-BG",
-            currency: "BGN"
+            currency: "EUR"
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "100 110,57 лв");
+        test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
     testNumFmtPercentageFormatRegular_bg_BG: function(test) {
@@ -3916,7 +3916,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(100110.57), "‎ریال۱۰۰٬۱۱۱");
         test.done();
     },
     testNumFmtCurrencyFormatCorrectNegativeCurrencyForLocale_fa_IR: function(test) {
@@ -3928,7 +3928,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "‎−‎﷼۱۰۰٬۱۱۱");
+        test.equal(fmt.format(-100110.57), "‎−‎ریال۱۰۰٬۱۱۱");
         test.done();
     },
     testNumFmtPercentageFormatRegular_fa_IR: function(test) {
@@ -4079,7 +4079,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "Rp100.110,57");
+        test.equal(fmt.format(100110.57), "Rp100.111");
         test.done();
     },
     testNumFmtPercentageFormatRegular_id_ID: function(test) {
@@ -4862,7 +4862,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(100110.57), "Rs100,110.57");
+        test.equal(fmt.format(100110.57), "Rs100,111");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_PK: function(test) {
@@ -4885,7 +4885,7 @@ module.exports.testnumfmt = {
         });
 
         test.ok(fmt);
-        test.equal(fmt.format(-100110.57), "-Rs100,110.57");
+        test.equal(fmt.format(-100110.57), "-Rs100,111");
         test.done();
     },
     //test cases for en-PH

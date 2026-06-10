@@ -643,12 +643,6 @@
             "name": "图库曼省"
         }
     ],
-    "AS": [
-        {
-            "code": "",
-            "name": "American Samoa"
-        }
-    ],
     "AT": [
         {
             "code": "1",
@@ -719,18 +713,6 @@
         {
             "code": "NSW",
             "name": "新南威爾士州"
-        }
-    ],
-    "AW": [
-        {
-            "code": "",
-            "name": "Aruba"
-        }
-    ],
-    "AX": [
-        {
-            "code": "",
-            "name": "Åland Islands"
         }
     ],
     "AZ": [
@@ -1983,12 +1965,6 @@
         {
             "code": "ZO",
             "name": "祖省"
-        }
-    ],
-    "BL": [
-        {
-            "code": "",
-            "name": "St. Barthélemy"
         }
     ],
     "BN": [
@@ -3421,12 +3397,6 @@
             "name": "亚马孙省"
         }
     ],
-    "CP": [
-        {
-            "code": "",
-            "name": "Clipperton Island"
-        }
-    ],
     "CR": [
         {
             "code": "A",
@@ -3619,12 +3589,6 @@
         {
             "code": "B",
             "name": "向风群岛"
-        }
-    ],
-    "CW": [
-        {
-            "code": "",
-            "name": "Curaçao"
         }
     ],
     "CY": [
@@ -5481,6 +5445,10 @@
             "name": "梅利利亚"
         },
         {
+            "code": "MU",
+            "name": "穆尔西亚省"
+        },
+        {
             "code": "MC",
             "name": "穆尔西亚自治区"
         },
@@ -5559,10 +5527,6 @@
         {
             "code": "M",
             "name": "Madrid Province"
-        },
-        {
-            "code": "MU",
-            "name": "Murcia"
         }
     ],
     "ET": [
@@ -6059,6 +6023,10 @@
             "name": "马耶讷省"
         },
         {
+            "code": "976",
+            "name": "马约特"
+        },
+        {
             "code": "972",
             "name": "馬提尼克"
         },
@@ -6249,10 +6217,6 @@
         {
             "code": "CVL",
             "name": "中央"
-        },
-        {
-            "code": "976",
-            "name": "Mayotte"
         },
         {
             "code": "69M",
@@ -6996,7 +6960,7 @@
         },
         {
             "code": "SCT",
-            "name": "蘇格蘭"
+            "name": "苏格兰"
         },
         {
             "code": "SCB",
@@ -7060,7 +7024,7 @@
         },
         {
             "code": "WLS",
-            "name": "威爾斯"
+            "name": "威尔士"
         },
         {
             "code": "WIL",
@@ -7387,12 +7351,6 @@
             "name": "伊梅列季亞州"
         }
     ],
-    "GF": [
-        {
-            "code": "",
-            "name": "French Guiana"
-        }
-    ],
     "GH": [
         {
             "code": "AF",
@@ -7679,12 +7637,6 @@
         {
             "code": "YO",
             "name": "約穆省"
-        }
-    ],
-    "GP": [
-        {
-            "code": "",
-            "name": "Guadeloupe"
         }
     ],
     "GQ": [
@@ -8079,12 +8031,6 @@
         {
             "code": "22",
             "name": "胡蒂亞帕省"
-        }
-    ],
-    "GU": [
-        {
-            "code": "",
-            "name": "Guam"
         }
     ],
     "GW": [
@@ -8553,12 +8499,6 @@
         {
             "code": "ZA",
             "name": "佐洛州"
-        }
-    ],
-    "IC": [
-        {
-            "code": "",
-            "name": "Canary Islands"
         }
     ],
     "ID": [
@@ -10694,7 +10634,7 @@
         },
         {
             "code": "8",
-            "name": "Kandal"
+            "name": "干丹省"
         },
         {
             "code": "9",
@@ -13202,13 +13142,7 @@
         },
         {
             "code": "25",
-            "name": "Zeta"
-        }
-    ],
-    "MF": [
-        {
-            "code": "",
-            "name": "St. Martin"
+            "name": "澤塔市鎮"
         }
     ],
     "MG": [
@@ -13929,24 +13863,6 @@
         {
             "code": "073",
             "name": "后杭爱省"
-        }
-    ],
-    "MO": [
-        {
-            "code": "",
-            "name": "Macao SAR China"
-        }
-    ],
-    "MP": [
-        {
-            "code": "",
-            "name": "Northern Mariana Islands"
-        }
-    ],
-    "MQ": [
-        {
-            "code": "",
-            "name": "Martinique"
         }
     ],
     "MR": [
@@ -14899,12 +14815,6 @@
             "name": "西卡万戈区"
         }
     ],
-    "NC": [
-        {
-            "code": "",
-            "name": "New Caledonia"
-        }
-    ],
     "NE": [
         {
             "code": "1",
@@ -15349,6 +15259,10 @@
             "name": "第七省"
         },
         {
+            "code": "P3",
+            "name": "第三省"
+        },
+        {
             "code": "P1",
             "name": "第一省"
         },
@@ -15435,10 +15349,6 @@
         {
             "code": "P4",
             "name": "Gandaki²"
-        },
-        {
-            "code": "P3",
-            "name": "Province 3"
         }
     ],
     "NR": [
@@ -15777,12 +15687,6 @@
         {
             "code": "ICA",
             "name": "伊卡大区"
-        }
-    ],
-    "PF": [
-        {
-            "code": "",
-            "name": "French Polynesia"
         }
     ],
     "PG": [
@@ -16377,18 +16281,6 @@
             "name": "西波美拉尼亚省"
         }
     ],
-    "PM": [
-        {
-            "code": "",
-            "name": "St. Pierre & Miquelon"
-        }
-    ],
-    "PR": [
-        {
-            "code": "",
-            "name": "Puerto Rico"
-        }
-    ],
     "PS": [
         {
             "code": "NGZ",
@@ -16709,12 +16601,6 @@
         {
             "code": "US",
             "name": "烏姆錫拉勒"
-        }
-    ],
-    "RE": [
-        {
-            "code": "",
-            "name": "Réunion"
         }
     ],
     "RO": [
@@ -19023,12 +18909,6 @@
             "name": "乌苏卢坦省"
         }
     ],
-    "SX": [
-        {
-            "code": "",
-            "name": "Sint Maarten"
-        }
-    ],
     "SY": [
         {
             "code": "HL",
@@ -19103,12 +18983,6 @@
         {
             "code": "SH",
             "name": "希塞卢韦尼"
-        }
-    ],
-    "TA": [
-        {
-            "code": "",
-            "name": "Tristan da Cunha"
         }
     ],
     "TD": [
@@ -19203,12 +19077,6 @@
         {
             "code": "MC",
             "name": "中沙里區"
-        }
-    ],
-    "TF": [
-        {
-            "code": "",
-            "name": "French Southern Territories"
         }
     ],
     "TG": [
@@ -20279,10 +20147,6 @@
         {
             "code": "CHA",
             "name": "彰化縣"
-        },
-        {
-            "code": "",
-            "name": "Taiwan"
         }
     ],
     "TZ": [
@@ -21081,10 +20945,6 @@
     ],
     "UM": [
         {
-            "code": "",
-            "name": "U.S. Outlying Islands"
-        },
-        {
             "code": "67",
             "name": "约翰斯顿环礁"
         },
@@ -21591,12 +21451,6 @@
             "name": "亞馬遜州"
         }
     ],
-    "VI": [
-        {
-            "code": "",
-            "name": "U.S. Virgin Islands"
-        }
-    ],
     "VN": [
         {
             "code": "44",
@@ -21889,10 +21743,6 @@
         {
             "code": "SG",
             "name": "锡加韦"
-        },
-        {
-            "code": "",
-            "name": "Wallis & Futuna"
         }
     ],
     "WS": [
@@ -22029,12 +21879,6 @@
         {
             "code": "DH",
             "name": "扎玛尔省"
-        }
-    ],
-    "YT": [
-        {
-            "code": "",
-            "name": "Mayotte"
         }
     ],
     "ZA": [

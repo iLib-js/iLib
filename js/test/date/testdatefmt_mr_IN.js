@@ -1,7 +1,7 @@
 /*
  * testdatefmt_mr_IN.js - test the date formatter object in Marathi for India
  *
- * Copyright © 2013-2015,2017-2018,2021,2023 JEDLSoft
+ * Copyright © 2013-2015, 2017-2018, 2021, 2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -254,7 +254,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '29 सप्टेंबर, 2011 रोजी 1:45 PM');
+        test.equal(fmt.format(date), '29 सप्टेंबर, 2011 रोजी 1:45 PM वाजता');
         test.done();
     },
     testDateFmtINDateTimeSimpleFull_mr_IN: function(test) {

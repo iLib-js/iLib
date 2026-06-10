@@ -1,7 +1,7 @@
 /*
  * testunitfmt_ig_NG.js - test the unitfmt for Igbo - Nigeria
  *
- * Copyright © 2022 JEDLSoft
+ * Copyright © 2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -118,7 +118,7 @@ module.exports.testunitfmt_ig_NG = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "2 square sentimita");
+        test.equal(str, "2 square centimita");
         test.done();
     },
     testUnitFormatArea3_ig_NG: function(test) {
@@ -152,7 +152,7 @@ module.exports.testunitfmt_ig_NG = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "10 square-kilomita");
+        test.equal(str, "10 square kilomita");
         test.done();
     },
     testUnitFormatFuelConsumption1_ig_NG: function(test) {
@@ -184,7 +184,7 @@ module.exports.testunitfmt_ig_NG = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 kilomita kwa lita");
+        test.equal(str, "2 kilomita kwa liter");
         test.done();
     },
     testUnitFormatLength1_ig_NG: function(test) {
@@ -268,7 +268,7 @@ module.exports.testunitfmt_ig_NG = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "9.09 l");
+        test.equal(str, "9.09 L");
         test.done();
     },
     testUnitFormatWithUsageFuelVolume2_ig_NG: function(test) {
@@ -286,7 +286,7 @@ module.exports.testunitfmt_ig_NG = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "9.09 lita");
+        test.equal(str, "9.09 liter");
         test.done();
     },
     testUnitFormatWithUsageOverrideSignificantDigits1_ig_NG: function(test) {
@@ -324,7 +324,7 @@ module.exports.testunitfmt_ig_NG = {
         });
 
         var str = uf.format(m1);
-        test.equal(str, "102.338 kilowatt awa");
+        test.equal(str, "102.338 kilowatt-hour");
         test.done();
     }
 }

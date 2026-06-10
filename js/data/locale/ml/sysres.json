@@ -154,8 +154,6 @@
     "NN7": "ജൂ",
     "NN8": "ഓഗ",
     "NN9": "സെ",
-    "a0": "AM",
-    "a1": "PM",
     "c0": "ഞാ",
     "c1": "തി",
     "c2": "ചൊ",
@@ -196,8 +194,5 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": " ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
-    "separatorMedium": ", ",
-    "separatorShort": " "
+    "separatorMedium": ", "
 }

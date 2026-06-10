@@ -2,7 +2,7 @@
  * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2022, JEDLSoft
+ * Copyright © 2013-2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -298,7 +298,7 @@ aux.mergeFormats(systemResources, systemResources, []);
 console.log("\nReading CLDR data ...");
 
 //these locales have the wrong data in CLDR and need to be skipped for now
-var skipList = ["ku"];
+var skipList = ["cop"];
 
 locales.forEach(function (file) {
     var locale = file ? new Locale(file) : undefined;
@@ -307,7 +307,8 @@ locales.forEach(function (file) {
         return;
     }
 
-    if (skipList.indexOf(file) > -1) {
+    // Skip locales listed here and any of their sublocales
+    if (skipList.indexOf(file.split("-")[0]) > -1) {
         // skip these, as the CLDR data has problems
         return;
     }

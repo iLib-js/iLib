@@ -7,7 +7,7 @@
     "#in {num}w": "one#en {num} sem.|#en {num} sem.",
     "#in {num}y": "one#en {num} ano|#en {num} anos",
     "#{num} ms": "#{num} ms",
-    "#{num}d": "one#{num} d|#{num} d",
+    "#{num}d": "one#{num} d.|#{num} d.",
     "#{num}d ago": "one#hai {num} día|#hai {num} días",
     "#{num}h": "#{num} h",
     "#{num}h ago": "one#hai {num} h|#hai {num} h",
@@ -22,7 +22,7 @@
     "1#1 day ago|#{num} days ago": "one#hai {num} día|#hai {num} días",
     "1#1 day|#{num} days": "one#{num} día|#{num} días",
     "1#1 dy ago|#{num} dys ago": "one#hai {num} día|#hai {num} días",
-    "1#1 dy|#{num} dys": "one#{num} d|#{num} d",
+    "1#1 dy|#{num} dys": "one#{num} d.|#{num} d.",
     "1#1 hour ago|#{num} hours ago": "one#hai {num} hora|#hai {num} horas",
     "1#1 hour|#{num} hours": "one#{num} hora|#{num} horas",
     "1#1 hr ago|#{num} hrs ago": "one#hai {num} hora|#hai {num} horas",
@@ -241,8 +241,6 @@
     "finalSeparatorLong": ", ",
     "finalSeparatorMedium": ", ",
     "finalSeparatorShort": ", ",
-    "separatorFull": ", ",
-    "separatorLong": ", ",
     "separatorMedium": ", ",
     "separatorShort": ", "
 }

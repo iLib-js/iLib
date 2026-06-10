@@ -21,7 +21,8 @@ package com.ilib.tools.zic;
 import java.io.File;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * ZoneInfoCompiler
@@ -49,7 +50,7 @@ public class ZoneInfoCompiler
     {
         int i = 0;
         String infoDirName = ".";
-        logger = Logger.getLogger(ZoneInfoCompiler.class);
+        logger = LogManager.getLogger(ZoneInfoCompiler.class);
         HashMap<String,Zone> zones = new HashMap<String,Zone>();
         HashMap<String,RuleSet> ruleSets = new HashMap<String,RuleSet>();
         boolean currentOnly = true;

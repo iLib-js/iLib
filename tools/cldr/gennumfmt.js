@@ -2,7 +2,7 @@
  * gennumfmt.js - ilib tool to generate the  number json fragments from
  * the CLDR data files
  *
- * Copyright © 2013-2022 JEDLSoft
+ * Copyright © 2013-2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,7 @@ if (process.argv.length <= 2) {
 }
 
 console.log("gennumfmts - generate number formats information files.\n" +
-    "Copyright (c) 2013-2022 JEDLSoft");
+    "Copyright (c) 2013-2022, 2026 JEDLSoft");
 
 console.log("Output dir: " + toDir );
 
@@ -404,12 +404,11 @@ list.forEach(function(loc) {
 
     console.log(loc);
 
-    var spec = (loc === "ku") ? "ckb" : loc;
-    var sourceDir = path.join("cldr-numbers-full/main", spec);
+    var sourceDir = path.join("cldr-numbers-full/main", loc);
 
     if (loc === "und" || typeof (locale.getVariant()) === 'undefined') {
         // special case because "root" is not a valid locale specifier
-        getLocaleData(sourceDir, (loc === "und") ? undefined : locale, spec);
+        getLocaleData(sourceDir, (loc === "und") ? undefined : locale, loc);
     }
 });
 
