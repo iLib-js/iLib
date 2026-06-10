@@ -65,7 +65,7 @@ module.exports.testglobal = {
     },
     testGetVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.22");
+        test.equal(ilib.getVersion().substring(0,4), "15.0");
         test.done();
     },
     testGetCldrVersion: function(test) {
