@@ -31,7 +31,7 @@ var ilib = require("ilib"); // initializes loaders for this environment
 var DateFmt = require("ilib/lib/DateFmt");
 ```
 
-The first call sets up iLib for Node, browsers, Rhino, RingoJS, Qt, and other supported environments. Additional classes load from **`ilib/lib/...`**.
+The first call sets up iLib for Node, browsers, Rhino, RingoJS, and other supported environments. Additional classes load from **`ilib/lib/...`**.
 
 ## Types of classes
 

@@ -1,5 +1,26 @@
-Release Notes for Version 14
+Release Notes for Version 15
 ============================
+
+Build 035
+-------
+Published as version 15.0.0
+
+Breaking Changes:
+* Removed Qt/QML platform support. The following have been removed:
+    * `js/lib/ilib-qt.js` and `js/lib/QMLLoader.js` runtime modules
+    * Qt platform branch in `js/index.js` and Qt-specific code in `IString.js`,
+      `NormString.js`, and `ilib.js`
+    * `qt/FileReader/` — C++/QML native plugin (FileReader) for locale data loading
+    * `qt/NodeunitTest/` — QML-based nodeunit test runner (`NodeunitRun*.qml`,
+      `NodeunitRunAll.qml`, `TestEnvironment.qml`, etc.)
+    * Qt build targets in `build.xml`, `js/build.xml`, and `Gruntfile.js`
+    * All Qt-specific test code and environment detection removed from
+      `testingSupport.js`, `testutils.js`, `testglobal.js`, `testrequire.js`,
+      `teststrings.js`, `testnorm.js`, `testcharmapasync.js`, and `testdatefmt.js`
+
+  Applications using iLib on Qt/QML platforms will need to pin to a previous
+  version of iLib.
+
 
 Build 034
 -------
