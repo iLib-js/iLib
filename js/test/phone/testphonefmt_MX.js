@@ -732,7 +732,7 @@ module.exports.phonefmt_MX = {
         var parsed = new PhoneNumber({
                 trunkAccess: "01"
         });
-        var expected = "01";
+        var expected = "0";
 
         var fmt = new PhoneFmt({locale: "es-MX"});
         formatted = fmt.format(parsed, {partial: true});
@@ -1217,7 +1217,7 @@ module.exports.phonefmt_MX = {
         var parsed = new PhoneNumber({
                 trunkAccess: "01"
         });
-        var expected = "01";
+        var expected = "0";
 
         var fmt = new PhoneFmt({locale: "es-MX", style: "paréntesis"});
         formatted = fmt.format(parsed, {partial: true});

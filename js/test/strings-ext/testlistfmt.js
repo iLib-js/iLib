@@ -1261,7 +1261,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, agus trí");
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), 'ceann, dhá agus trí');
         test.done();
     },
     testListFmtgaIENumberFormatFour: function(test) {
@@ -1271,7 +1271,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, agus ceithre");
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), 'ceann, dhá, trí agus ceithre');
         test.done();
     },
     // ga-IE
@@ -1732,7 +1732,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бір", "Екі"]), "бір Төртеуі Екі");
+        test.equal(fmt.format(["бір", "Екі"]), 'бір және Екі');
         test.done();
     },
     testListFmtkkKZNumberFormatThree: function(test) {
@@ -1742,7 +1742,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір, Екі Төртеуі Үшеуі");
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), 'бір, Екі, Үшеуі');
         test.done();
     },
     testListFmtkkKZNumberFormatFour: function(test) {
@@ -1752,7 +1752,7 @@ module.exports.testlistfmt = {
 
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), "бір, Екі, Үшеуі Төртеуі Төртеуі");
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), 'бір, Екі, Үшеуі, Төртеуі');
         test.done();
     },
     testListFmtUnitStylekkKZNumberFormatOne: function(test) {

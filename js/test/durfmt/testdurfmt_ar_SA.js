@@ -606,7 +606,7 @@ module.exports.testdurfmt_ar_SA = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "‏سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان");
+                test.equal(duration.toString(), "‏سنتان، وشهران، وأسبوعان، ويومان، وساعتان، ودقيقتان، وثانيتان");
                 test.done();
             }
         });

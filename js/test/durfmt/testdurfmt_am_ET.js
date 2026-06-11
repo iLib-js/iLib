@@ -581,7 +581,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች");
+                test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች እና 2 ሰከንዶች");
                 test.done();
             }
         });
@@ -604,7 +604,7 @@ module.exports.testdurfmt_am_ET = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች");
+                test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች እና 2 ሰከንዶች");
                 test.done();
             }
         });
@@ -725,7 +725,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    testDurFmtAMAsyncUseNativeFalse2: function(test) {
+    testDurFmtAMAsync2useNativeFalse: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "am-ET",
@@ -749,7 +749,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    testDurFmtAMAsyncWithLocaleUseNativeFalse2: function(test) {
+    testDurFmtAMAsyncWithLocale2useNativeFalse: function(test) {
         test.expect(2);
         new DurationFmt({
             locale: "am-ET",

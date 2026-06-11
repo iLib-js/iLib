@@ -474,13 +474,6 @@ module.exports.testglyphstr = {
         test.expect(1);
         var s = new GlyphString("ಭೆನಿಬೇನಿೇ");
 
-        test.equal(s.ellipsize(5), "ಭೆನಿ…");
-        test.done();
-    },
-    testGlyphStrEllipsizeKannadaSkipSpacing5b: function(test) {
-        test.expect(1);
-        var s = new GlyphString("ಭೆನಿಬೇನಿೇ");
-
         test.equal(s.ellipsize(5), "ಭೆನಿಬೇ…");
         test.done();
     },

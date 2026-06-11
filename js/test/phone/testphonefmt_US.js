@@ -1718,7 +1718,7 @@ module.exports.phonefmt_US = {
         var parsed = new PhoneNumber({
             trunkAccess: "1"
         });
-        var expected = "1-";
+        var expected = "1";
 
         var fmt = new PhoneFmt({locale: "en-US", style: "dashes"});
         formatted = fmt.format(parsed, {partial: true});
