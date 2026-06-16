@@ -136,6 +136,19 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
+    testParseAddressurINHINoZip: function(test) {
+        test.expect(7);
+        var parsedAddress = new Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\n کولکتہ\nمغربی بنگال\nبھارت", {locale: 'ur-IN'});
+
+        test.ok(typeof(parsedAddress) !== "undefined");
+        test.equal(parsedAddress.streetAddress, "125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی");
+        test.equal(parsedAddress.locality, "کولکتہ");
+        test.equal(parsedAddress.region, "مغربی بنگال");
+        test.equal(parsedAddress.country, "بھارت");
+        test.equal(parsedAddress.countryCode, "IN");
+        test.ok(typeof(parsedAddress.postalCode) === "undefined");
+        test.done();
+    },
     testParseAddressINHINoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\nभारत", {locale: 'hi-IN'});
