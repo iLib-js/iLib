@@ -136,7 +136,7 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    testParseAddressurINHINoZip: function(test) {
+    testParseAddressINURNoZip: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\n کولکتہ\nمغربی بنگال\nبھارت", {locale: 'ur-IN'});
 
