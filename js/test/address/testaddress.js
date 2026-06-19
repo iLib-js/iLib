@@ -1509,42 +1509,6 @@ module.exports.testaddress = {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
 
-        var info = formatter.getFormatInfo();
-
-        test.ok(info);
-
-        for (var i = 0; i < info.length; i++) {
-            for (var j = 0; j < info[i].length; j++) {
-                if (info[i][j].component === "region") {
-                    test.equal(info[i][j], "Prefecture");
-                }
-            }
-        }
-
-        test.done();
-    },
-    testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
-        test.expect(2);
-        var formatter = new AddressFmt({locale: 'ja-JP'});
-
-        var info = formatter.getFormatInfo();
-
-        test.ok(info);
-
-        for (var i = 0; i < info.length; i++) {
-            for (var j = 0; j < info[i].length; j++) {
-                if (info[i][j].component === "region") {
-                    test.equal(info[i][j], "Prefecture");
-                }
-            }
-        }
-
-        test.done();
-    },
-    testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
-        test.expect(2);
-        var formatter = new AddressFmt({locale: 'ja-JP'});
-
         var info = formatter.getFormatInfo("en");
 
         test.ok(info);

@@ -876,7 +876,7 @@ module.exports.teststrings = {
         test.equal(str.indexOf("lmno"), 11);
         test.done();
     },
-    testStringDelegateIndexOf: function(test) {
+    testStringDelegateLastIndexOf: function(test) {
         test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
         test.ok(str !== null);

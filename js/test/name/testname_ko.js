@@ -166,7 +166,7 @@ module.exports.testname_ko = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseWithLongMixedName2_ko_KR: function(test) {
+    testParseWithLongMixedName3_ko_KR: function(test) {
         test.expect(2);
         var parsed = new Name("김Jinah/Software Engineer", {locale: "ko-KR"});
         test.ok(typeof(parsed) !== "undefined");

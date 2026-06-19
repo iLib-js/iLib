@@ -1136,7 +1136,7 @@ module.exports.testlistfmt_ar = {
         test.done();
     },
     // ar-SD
-    testListFmtUnitStylearJONumberFormatOne: function(test) {
+    testListFmtUnitStylearSDNumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "ar-SD",
             style: "unit"

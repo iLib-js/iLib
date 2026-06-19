@@ -1248,7 +1248,7 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
-    testExtendSubobjectsAddProps: function(test) {
+    testExtendSubobjectsAddProps2: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};

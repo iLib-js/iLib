@@ -594,7 +594,7 @@ module.exports.phonefmt_RU = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatRUStyle1Partial10: function(test) {
+    testFormatRUStyle1Partial11: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("881223456789", {locale: "ru-RU"});

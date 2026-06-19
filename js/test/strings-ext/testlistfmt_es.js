@@ -1072,7 +1072,7 @@ module.exports.testlistfmt_es = {
         test.done();
     },
     // es-UY
-    testListFmtUnitStyleesHNNumberFormatOneLong: function(test) {
+    testListFmtUnitStyleesUYNumberFormatOneLong: function(test) {
         var fmt = new ListFmt({
             locale: "es-UY",
             style: "unit",

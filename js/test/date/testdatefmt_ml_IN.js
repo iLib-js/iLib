@@ -1658,7 +1658,7 @@ module.exports.testdatefmt_ml_IN = {
         test.equal(fmt.formatRelative(reference, date), "21 വർഷം മുമ്പ്");
         test.done();
     },
-    testDateFmtINShortTimeComponentsHMZ_ml_IN: function(test) {
+    testDateFmtShortTimeComponentsHMZGregorian_ml_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
             locale: "ml-IN",

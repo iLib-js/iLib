@@ -462,7 +462,7 @@ module.exports.testutils = {
         test.equal(MathUtils.significant(0.000123456, 2), 0.00012);
         test.done();
     },
-    testSignificantZero: function(test) {
+    testSignificantOfZero: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(0, 2), 0);
         test.done();
@@ -599,7 +599,7 @@ module.exports.testutils = {
         test.deepEqual(actual, expected);
         test.done();
     },
-    testMergeSubobjectsAddProps: function(test) {
+    testMergeSubobjectsAddProps2: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
@@ -821,7 +821,7 @@ module.exports.testutils = {
         test.equal(MathUtils.signum(-1), -1);
         test.done();
     },
-    testSignumPositiveLarge: function(test) {
+    testSignumNegativeLarge: function(test) {
         test.expect(1);
         test.equal(MathUtils.signum(-13234), -1);
         test.done();
@@ -1043,7 +1043,7 @@ module.exports.testutils = {
 
         test.done();
     },
-    testMergeLocDataNoLocale: function(test) {
+    testMergeLocDataCurrentLocale: function(test) {
         test.expect(4);
         ilib.data.foobar = {
             a: "b",

@@ -493,7 +493,7 @@ module.exports.phonefmt_IN = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatINMobile: function(test) {
+    testFormatINMobile2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

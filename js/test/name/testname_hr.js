@@ -45,7 +45,7 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_hr_HR: function(test) {
+    testParseSimpleNameWithPrefix_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("G. Kertu Pavlović", {locale: 'hr-HR'});
         test.ok(typeof(parsed) !== "undefined");
@@ -60,7 +60,7 @@ module.exports.testname_hr = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_hr_HR: function(test) {
+    testParseSimpleNameWithLongPrefix_hr_HR: function(test) {
         test.expect(2);
         var parsed = new Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
         test.ok(typeof(parsed) !== "undefined");

@@ -71,7 +71,7 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    testParseAddressINKNNoZip: function(test) {
+    testParseAddressINKNNoZip2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
 
@@ -136,13 +136,13 @@ module.exports.testaddress_IN = {
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
         test.done();
     },
-    testParseAddressINHINoZip: function(test) {
+    testParseAddressINURNoZip: function(test) {
         test.expect(7);
-        var parsedAddress = new Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\nn کولکتہ\nمغربی بنگال\nبھارت", {locale: 'hi-IN'});
+        var parsedAddress = new Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\n کولکتہ\nمغربی بنگال\nبھارت", {locale: 'ur-IN'});
 
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی");
-        test.equal(parsedAddress.locality, "n کولکتہ");
+        test.equal(parsedAddress.locality, "کولکتہ");
         test.equal(parsedAddress.region, "مغربی بنگال");
         test.equal(parsedAddress.country, "بھارت");
         test.equal(parsedAddress.countryCode, "IN");
