@@ -265,7 +265,7 @@ module.exports.testdatefmt = {
         test.equal(fmt.getTimeComponents(), "hms");
         test.done();
     },
-    testDateFmtGetTimeComponentsICUSkeleton3: function(test) {
+    testDateFmtGetTimeComponentsICUSkeleton4: function(test) {
         test.expect(2);
         var fmt = new DateFmt({time: "yMdhms"});
         test.ok(fmt !== null);

@@ -544,7 +544,7 @@ module.exports.phonefmt_CN = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatMobile: function(test) {
+    testFormatMobile2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -559,7 +559,7 @@ module.exports.phonefmt_CN = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatMobileInternational: function(test) {
+    testFormatMobileInternational2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

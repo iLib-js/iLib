@@ -920,7 +920,7 @@ module.exports.testctype = {
         test.ok(CType.withinRange("\u10AA", "Georgian"));
         test.done();
     },
-    testWithinRangeGeorgian: function(test) {
+    testWithinRangeGeorgian2: function(test) {
         test.expect(1);
         test.ok(CType.withinRange("\u2D0A", "Georgian"));
         test.done();
@@ -1508,7 +1508,7 @@ module.exports.testctype = {
         test.ok(CType.withinRange(str, "cyrillic"));
         test.done();
     },
-    testWithinRangeMongolian: function(test) {
+    testWithinRangeMongolian2: function(test) {
         test.expect(1);
         var str = IString.fromCodePoint(0x11660);
         test.ok(CType.withinRange(str, "mongolian"));
@@ -1532,7 +1532,7 @@ module.exports.testctype = {
         test.ok(CType.withinRange(str, "tangut"));
         test.done();
     },
-    testWithinRangeGlagolitic: function(test) {
+    testWithinRangeGlagolitic2: function(test) {
         test.expect(1);
         var str = IString.fromCodePoint(0x1e000);
         test.ok(CType.withinRange(str, "glagolitic"));

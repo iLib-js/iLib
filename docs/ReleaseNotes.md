@@ -21,6 +21,9 @@ Breaking Changes:
   Applications using iLib on Qt/QML platforms will need to pin to a previous
   version of iLib.
 
+Bug Fixes:
+* Fix path resolution in `assemble.mjs` from module directory
+
 
 Build 034
 -------

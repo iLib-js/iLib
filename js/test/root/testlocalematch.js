@@ -346,7 +346,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "af-Latn-ZA");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeAF: function(test) {
+    testLocaleMatcherGetLikelyLocaleByLocaleRegionCodeAF_NA: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "af-NA"
@@ -1568,7 +1568,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "gl-Latn-ES");
         test.done();
     },
-   testLocaleMatcherGetLikelyLocaleByLocaleCode66: function(test) {
+   testLocaleMatcherGetLikelyLocaleByLocaleCode_eu_ES: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "eu-ES"
@@ -1579,7 +1579,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "eu-Latn-ES");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleByLocaleCode67: function(test) {
+    testLocaleMatcherGetLikelyLocaleByLocaleCode_eu: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "eu"
@@ -1898,7 +1898,7 @@ module.exports.testlocalematch = {
 
         test.done();
     },
-    testLocaleMatcherMatchExactDefaultScript: function(test) {
+    testLocaleMatcherMatchExactDefaultScriptEN: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
             locale: "en-Latn-US"
@@ -2074,7 +2074,7 @@ module.exports.testlocalematch = {
 
         test.done();
     },
-    testLocaleMatcherGetMacroLanguageNO: function(test) {
+    testLocaleMatcherGetMacroLanguageNO2: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
             locale: "nn-NO"
@@ -2261,7 +2261,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "ka-GE");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleMinimalByLanguage4: function(test) {
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage5: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "be"
@@ -2294,7 +2294,7 @@ module.exports.testlocalematch = {
         test.equal(locale.getSpec(), "gl-ES");
         test.done();
     },
-    testLocaleMatcherGetLikelyLocaleMinimalByLanguage5: function(test) {
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage7: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "eu"

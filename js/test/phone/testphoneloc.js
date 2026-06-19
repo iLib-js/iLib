@@ -77,7 +77,7 @@ module.exports.phoneloc = {
         test.equal(loc.getRegion(), "US");
         test.done();
     },
-    testGetByCC1: function(test) {
+    testGetByCC44: function(test) {
         test.expect(2);
         var loc = new PhoneLocale({countryCode: "44"});
         test.ok(typeof(loc) !== "undefined");

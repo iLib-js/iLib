@@ -45,7 +45,7 @@ module.exports.testname_et = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_et_EE: function(test) {
+    testParseSimpleNameWithPrefix_et_EE: function(test) {
         test.expect(2);
         var parsed = new Name("professor Kertu Sepp", {locale: 'et-EE'});
         test.ok(typeof(parsed) !== "undefined");

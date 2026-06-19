@@ -195,7 +195,7 @@ module.exports.testaddress_RU = {
         test.done();
 
     },
-    testFormatAddressRU2: function(test) {
+    testFormatAddressRU2b: function(test) {
         test.expect(6);
 
         var parsedAddress = new Address("ул. Победы, д. 20, кв. 29 пос., Октябрьский,Борский р-н,нижегородская область,Россия,606480",{locale: 'ru-RU'});

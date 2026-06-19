@@ -2407,7 +2407,7 @@ module.exports.testcollation_general = {
         test.ok(col.compare("1 box", "2 boxes") < 0);
         test.done();
     },
-    testJSCollatorNumericWithText_it: function(test) {
+    testJSCollatorNumericWithText2_it: function(test) {
         test.expect(2);
         var col = new Collator({
             locale: "it-IT",
@@ -2421,7 +2421,7 @@ module.exports.testcollation_general = {
         test.ok(col.compare("20 boxes", "2 boxes") > 0);
         test.done();
     },
-    testJSCollatorNumericWithText2_it: function(test) {
+    testJSCollatorNumericWithText3_it: function(test) {
         test.expect(2);
         var col = new Collator({
             locale: "it-IT",

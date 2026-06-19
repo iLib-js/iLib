@@ -182,7 +182,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -195,7 +195,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial3: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -208,7 +208,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial4: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -222,7 +222,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial5: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -236,7 +236,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial6: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -251,7 +251,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial7: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -266,7 +266,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial8: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420123", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -281,7 +281,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial9: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201234", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -296,7 +296,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial10: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+442012345", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -311,7 +311,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial11: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+4420123456", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");
@@ -326,7 +326,7 @@ module.exports.phonenum_CN = {
         test.ok(parsed.equals(expected));
         test.done();
     },
-    testParseCNPlusIDDToGBPartial1: function(test) {
+    testParseCNPlusIDDToGBPartial12: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("+44201234567", {locale: "zh-CN"});
         test.ok(typeof(parsed) !== "undefined");

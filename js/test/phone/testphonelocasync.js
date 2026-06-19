@@ -61,7 +61,7 @@ module.exports.phonelocasync = {
             }
         });
     },
-    testPhoneLocAsyncCC1: function(test) {
+    testPhoneLocAsyncCC44: function(test) {
         test.expect(2);
         new PhoneLocale({
             countryCode: "44",

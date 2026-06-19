@@ -45,7 +45,7 @@ module.exports.testaddress_GQ = {
         test.equal(parsedAddress.countryCode, "GQ");
         test.done();
     },
-    testParseAddressGQNormal: function(test) {
+    testParseAddressGQNormal2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
 
@@ -194,7 +194,7 @@ module.exports.testaddress_GQ = {
         test.equal(parsedAddress.countryCode, "GQ");
         test.done();
     },
-    testFRParseAddressNormal: function(test) {
+    testFRParseAddressNormal2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
 
@@ -341,7 +341,7 @@ module.exports.testaddress_GQ = {
         test.equal(parsedAddress.countryCode, "GQ");
         test.done();
     },
-    testPTParseAddressNormal: function(test) {
+    testPTParseAddressNormal2: function(test) {
         test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
 
