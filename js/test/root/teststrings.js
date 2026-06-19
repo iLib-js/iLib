@@ -3695,7 +3695,7 @@ module.exports.teststrings = {
             // CLDR 42 changed the behavior for lb-LU
             var expected = (cldrVersion !== undefined && cldrVersion >= 42) ? "Default items" : "The items are many";
             test.equal(str.formatChoice(30), expected);
-        } else { //qt
+        } else {
             test.equal(str.formatChoice(30), "Default items");
         }
         test.done();

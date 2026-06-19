@@ -1445,9 +1445,8 @@ module.exports.testutils = {
     testHashCodeEqualFunctionDifferentSpacing: function(test) {
         test.expect(1);
         var plat = ilib._getPlatform();
-        if (plat === "qt" || plat === "rhino" || plat === "trireme") {
-            // the qt javascript engine doesn't allow you to see the code of a function, so all
-            // functions should have the same hash. On Rhino, you can see the code, but the white
+        if (plat === "rhino" || plat === "trireme") {
+            // On Rhino, you can see the code, but the white
             // space is all normalized nicely to the same thing, so logically equivalent functions
             // that only differ in white space compare the same. (This seems the most logical to
             // me out of all of these!)
@@ -1467,15 +1466,8 @@ module.exports.testutils = {
     },
     testHashCodeNotEqualFunctionDifferentContents: function(test) {
         test.expect(1);
-        if (ilib._getPlatform() === "qt") {
-            // the qt javascript engine doesn't allow you to see the code of a function, so all
-            // functions should have the same hash
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.equal(JSUtils.hashCode(function a() { return "b"; }), expected);
-        } else {
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.notEqual(JSUtils.hashCode(function a() { return "b"; }), expected);
-        }
+        var expected = JSUtils.hashCode(function a() { return "a"; });
+        test.notEqual(JSUtils.hashCode(function a() { return "b"; }), expected);
         test.done();
     },
     testHashCodeEqualObjects: function(test) {

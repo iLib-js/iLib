@@ -15,6 +15,6 @@ From a clean checkout, install toolchain prerequisites and Node dependencies:
 
 Optional:
 
-* **Qt** — only if you work on Qt/QML integration; see **[QtTest.md](QtTest.md)**.
+* **Qt** — supported up to iLib v14.x; see **[QtTest.md](QtTest.md)** for historical reference.
 
 Everything else needed to assemble locale data and run builds is pulled in through **`npm install`** and the repository layout.

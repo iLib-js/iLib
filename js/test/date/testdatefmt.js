@@ -704,32 +704,29 @@ module.exports.testdatefmt = {
         test.done();
     },
     testDateFmtAlternateInputs1: function(test) {
-        // toUTCString doesn't work properly on qt, so we can't do this test
-        if (ilib._getPlatform() !== "qt") {
-            test.expect(2);
-            var fmt = new DateFmt({
-                timezone: "Etc/UTC",
-                template: "EEE, d MMM yyyy kk:mm:ss z"
-            });
-            test.ok(fmt !== null);
+        test.expect(2);
+        var fmt = new DateFmt({
+            timezone: "Etc/UTC",
+            template: "EEE, d MMM yyyy kk:mm:ss z"
+        });
+        test.ok(fmt !== null);
 
-            var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
-            var ildMyBday = DateFactory({
-                timezone: "Etc/UTC",
-                year: 1982,
-                month: 8,
-                day: 13,
-                hour: 20,
-                minute: 37,
-                second: 35
-            });
-            var strFormattedDate1 = datMyBday.toUTCString();
-            var strFormattedDate2 = fmt.format(ildMyBday);
-            strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
-            strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
+        var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
+        var ildMyBday = DateFactory({
+            timezone: "Etc/UTC",
+            year: 1982,
+            month: 8,
+            day: 13,
+            hour: 20,
+            minute: 37,
+            second: 35
+        });
+        var strFormattedDate1 = datMyBday.toUTCString();
+        var strFormattedDate2 = fmt.format(ildMyBday);
+        strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
+        strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
 
-            test.equal(strFormattedDate2, strFormattedDate1);
-        }
+        test.equal(strFormattedDate2, strFormattedDate1);
         test.done();
     },
     testDateFmtFormatJSDate1: function(test) {

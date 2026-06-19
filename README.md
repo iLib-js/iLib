@@ -4,7 +4,7 @@ iLib
 ==== 
 
 iLib is an internationalization library written in pure ES5 Javascript. It does not require any other libraries to function,
-and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
+and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS,
 RingoJS, React/Enact, or rhino/nashorn.
 
 More elaborate documentation can be found [here](https://ilib-js.github.io/iLib/docs/)
@@ -70,7 +70,7 @@ ILib has been tested in the following environments:
     * Internet Explorer 8+
 * Rhino on JDK 1.7+ and 1.8 with Trireme (0.8.5)
 * RingoJS 0.11+
-* Qt 5.4+
+* Qt 5.4+ (supported up to iLib v14.x)
 
 Those environments have been tested on the following platforms where possible:
 

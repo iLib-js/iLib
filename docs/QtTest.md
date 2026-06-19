@@ -1,5 +1,8 @@
 # Running unit tests in Qt/QML
 
+> **Note:** Qt/QML support was available up to iLib **v14.x** and has been removed as of v15.0.0.
+> The instructions below apply only to iLib v14.x and earlier.
+
 To run iLib’s Qt/QML tests, configure your environment first.
 
 ## 1. Install Qt
