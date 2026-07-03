@@ -46,6 +46,8 @@
         "lib",
         "locale",
         "index.js",
+        "assemble.mjs",
+        "assembleZoneinfoData.mjs",
         "README.md",
         "LICENSE"
     ],
