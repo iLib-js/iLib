@@ -26,11 +26,37 @@ import assembleZoneinfoData from './assembleZoneinfoData.mjs';
 const reDependentPattern = /require\(\s*["']\.*\/([^"']+\.js)["']\);/g;
 const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
 const moduleDir = path.dirname(fileURLToPath(import.meta.url));
-const ilibRoot = path.resolve(moduleDir, '..', '..');
 
-// These can be overridden by options.opt?.ilibPath in assemble()
-let libPath = path.join(ilibRoot, 'js/lib');
-let localeDataPath = path.join(ilibRoot, 'js/data/locale');
+/**
+ * Resolves the ilib `lib` and locale data directories for a given root,
+ * supporting both layouts this module can run from:
+ *   - source tree:       <root>/js/lib   and <root>/js/data/locale
+ *   - published package: <root>/lib      and <root>/locale
+ *
+ * @param {string} root - Directory to resolve the ilib data paths against
+ * @returns {{libPath: string, localeDataPath: string}}
+ */
+function resolveDataPaths(root) {
+    if (existsSync(path.join(root, 'js', 'lib'))) {
+        return {
+            libPath: path.join(root, 'js', 'lib'),
+            localeDataPath: path.join(root, 'js', 'data', 'locale')
+        };
+    }
+    return {
+        libPath: path.join(root, 'lib'),
+        localeDataPath: path.join(root, 'locale')
+    };
+}
+
+// In the source tree this file lives at js/assembleData/, so the ilib root is
+// two levels up. In the published package it sits at the package root next to
+// the lib/ and locale/ directories.
+// These can be overridden by options.opt?.ilibPath in assemble().
+const defaultRoot = existsSync(path.join(moduleDir, 'lib'))
+    ? moduleDir
+    : path.resolve(moduleDir, '..', '..');
+let { libPath, localeDataPath } = resolveDataPaths(defaultRoot);
 
 /**
  * Assembles locale JSON data by analyzing ilib JS files and merging
@@ -72,8 +98,7 @@ export function assemble(ilibFiles, options) {
 
     // Override paths if ilibPath is provided
     if (options.opt?.ilibPath) {
-        libPath = path.join(options.opt.ilibPath, 'js/lib');
-        localeDataPath = path.join(options.opt.ilibPath, 'js/data/locale');
+        ({ libPath, localeDataPath } = resolveDataPaths(options.opt.ilibPath));
     }
 
     // Validate paths

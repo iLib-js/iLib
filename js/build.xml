@@ -464,6 +464,12 @@ limitations under the License.
                 <include name="../README.md"/>
             </fileset>
         </copy>
+        <copy todir="${build.export}/package">
+            <fileset dir="${build.base}/assembleData">
+                <include name="assemble.mjs"/>
+                <include name="assembleZoneinfoData.mjs"/>
+            </fileset>
+        </copy>
         <mkdir dir="${build.export}/package/lib"/>
         <copy todir="${build.export}/package/lib">
             <fileset dir="${build.export}/js/dyncode">

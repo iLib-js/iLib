@@ -21,6 +21,14 @@ Breaking Changes:
   Applications using iLib on Qt/QML platforms will need to pin to a previous
   version of iLib.
 
+New Features:
+* Bundle `assemble.mjs` and `assembleZoneinfoData.mjs` into the published npm
+  package so consumers can assemble locale data with the **`ilib-assemble`**
+  tool directly from the installed package.
+* Support both the source-tree layout (`js/lib`, `js/data/locale`) and the
+  published-package layout (`lib`, `locale`) when `assemble.mjs` resolves the
+  ilib library and locale data directories.
+
 Bug Fixes:
 * Fix path resolution in `assemble.mjs` from module directory
 
