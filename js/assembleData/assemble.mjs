@@ -18,12 +18,45 @@
  */
 
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { readFileSync, existsSync } from 'node:fs';
 import {JSUtils, Utils} from 'ilib-common';
 import assembleZoneinfoData from './assembleZoneinfoData.mjs';
 
 const reDependentPattern = /require\(\s*["']\.*\/([^"']+\.js)["']\);/g;
 const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
+const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+
+/**
+ * Resolves the ilib `lib` and locale data directories for a given root,
+ * supporting both layouts this module can run from:
+ *   - source tree:       <root>/js/lib   and <root>/js/data/locale
+ *   - published package: <root>/lib      and <root>/locale
+ *
+ * @param {string} root - Directory to resolve the ilib data paths against
+ * @returns {{libPath: string, localeDataPath: string}}
+ */
+function resolveDataPaths(root) {
+    if (existsSync(path.join(root, 'js', 'lib'))) {
+        return {
+            libPath: path.join(root, 'js', 'lib'),
+            localeDataPath: path.join(root, 'js', 'data', 'locale')
+        };
+    }
+    return {
+        libPath: path.join(root, 'lib'),
+        localeDataPath: path.join(root, 'locale')
+    };
+}
+
+// In the source tree this file lives at js/assembleData/, so the ilib root is
+// two levels up. In the published package it sits at the package root next to
+// the lib/ and locale/ directories.
+// These can be overridden by options.opt?.ilibPath in assemble().
+const defaultRoot = existsSync(path.join(moduleDir, 'lib'))
+    ? moduleDir
+    : path.resolve(moduleDir, '..', '..');
+let { libPath, localeDataPath } = resolveDataPaths(defaultRoot);
 
 /**
  * Assembles locale JSON data by analyzing ilib JS files and merging
@@ -62,7 +95,20 @@ const reDataPattern = /\/\/\s*!data\s+([^\n\r]+)/g;
 export function assemble(ilibFiles, options) {
     const locales = options.opt?.locales || [];
     const isSplit = options.opt?.splitByLocale || false;
-    const localeDataPath = path.join(process.cwd(), "js/data/locale");
+
+    // Override paths if ilibPath is provided
+    if (options.opt?.ilibPath) {
+        ({ libPath, localeDataPath } = resolveDataPaths(options.opt.ilibPath));
+    }
+
+    // Validate paths
+    if (!existsSync(libPath)) {
+        throw new Error(`iLib JS library directory not found: ${libPath}`);
+    }
+    if (!existsSync(localeDataPath)) {
+        throw new Error(`iLib locale data directory not found: ${localeDataPath}`);
+    }
+
     const customLocaleDataPath = options.opt?.customLocalePath && existsSync(options.opt.customLocalePath)
         ? options.opt.customLocalePath
         : null;
@@ -126,7 +172,7 @@ function readJSFiles(ilibFiles) {
 
     while (queue.length > 0) {
         const file = queue.shift();
-        const fileContent = readFile(path.join(process.cwd(), "js/lib", file));
+        const fileContent = readFile(path.join(libPath, file));
         if (fileContent) {
             fileCache.set(file, fileContent);
             for (const match of fileContent.matchAll(reDependentPattern)) {
@@ -153,7 +199,7 @@ function extractData(jsFiles, fileCache) {
     const dataNames = new Set();
 
     jsFiles.forEach(file => {
-        const fileContent = fileCache.get(file) || readFile(path.join(process.cwd(), "js/lib", file));
+        const fileContent = fileCache.get(file) || readFile(path.join(libPath, file));
         if (fileContent) {
             for (const match of fileContent.matchAll(reDataPattern)) {
                 match[1].trim().split(/\s+/).forEach(name => {

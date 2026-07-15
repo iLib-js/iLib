@@ -424,27 +424,7 @@ NormString.prototype.normalize = function (form) {
     }
 
     function sortChars(arr, comp) {
-        // qt/qml's Javascript engine re-arranges entries that are equal to
-        // each other. Technically, that is a correct behaviour, but it is
-        // not desirable. All the other engines leave equivalent entries
-        // where they are. This bubblesort emulates what the other engines
-        // do. Fortunately, the arrays we are sorting are a max of 5 or 6
-        // entries, so performance is not a big deal here.
-        if (ilib._getPlatform() === "qt") {
-            var tmp;
-            for (var i = arr.length-1; i > 0; i--) {
-                for (var j = 0; j < i; j++) {
-                    if (comp(arr[j], arr[j+1]) > 0) {
-                        tmp = arr[j];
-                        arr[j] = arr[j+1];
-                        arr[j+1] = tmp;
-                    }
-                }
-            }
-            return arr;
-        } else {
-            return arr.sort(comp);
-        }
+        return arr.sort(comp);
     }
 
     var dstr = new IString(decomp);

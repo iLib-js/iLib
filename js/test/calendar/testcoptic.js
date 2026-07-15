@@ -142,28 +142,28 @@ module.exports.testcoptic = {
         test.ok(cal.isLeapYear(1731));
         test.done();
     },
-    testCopticIsLeapYear: function(test) {
+    testCopticIsLeapYearNotLeap1732: function(test) {
         test.expect(1);
         var cal = new CopticCal();
 
         test.ok(!cal.isLeapYear(1732));
         test.done();
     },
-    testCopticIsLeapYear: function(test) {
+    testCopticIsLeapYearNotLeap1733: function(test) {
         test.expect(1);
         var cal = new CopticCal();
 
         test.ok(!cal.isLeapYear(1733));
         test.done();
     },
-    testCopticIsLeapYear: function(test) {
+    testCopticIsLeapYearNotLeap1734: function(test) {
         test.expect(1);
         var cal = new CopticCal();
 
         test.ok(!cal.isLeapYear(1734));
         test.done();
     },
-    testCopticIsLeapYear: function(test) {
+    testCopticIsLeapYear1735: function(test) {
         test.expect(1);
         var cal = new CopticCal();
 

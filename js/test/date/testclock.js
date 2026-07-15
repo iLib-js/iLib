@@ -241,7 +241,7 @@ module.exports.testclock = {
         test.equal(info.getClock(), 24);
         test.done();
     },
-    testClock_en_IS: function(test) {
+    testClock_en_IL: function(test) {
         test.expect(2);
         var info = new LocaleInfo("en-IL");
         test.ok(info !== null);

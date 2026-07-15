@@ -280,7 +280,6 @@ var legacyCalls = {
     "ilib.Measurement.Volume": "VolumeUnit",
     "ilib.Measurement": "MeasurementFactory",
     "webLoader": "WebLoader",
-    "qmlLoader": "QMLLoader",
 
     "cli.TestSuite": "TestSuite",
 

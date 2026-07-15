@@ -507,7 +507,7 @@ module.exports.phonenum_ES = {
         test.done();
     },
     //for CFISH-7040
-    testParseESMobileNumber: function(test) {
+    testParseESMobileNumber2: function(test) {
         test.expect(2);
         var parsed = new PhoneNumber("665 545 880", {locale: "es-ES"});
         test.ok(typeof(parsed) !== "undefined");

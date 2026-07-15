@@ -252,7 +252,7 @@ module.exports.phonefmt_FR = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatIEMobile: function(test) {
+    testFormatIEMobile2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

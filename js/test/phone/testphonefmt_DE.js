@@ -179,7 +179,7 @@ module.exports.phonefmt_DE = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatDEMobile: function(test) {
+    testFormatDELocalMobile: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

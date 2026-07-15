@@ -725,7 +725,7 @@ module.exports.testname_bg = {
         test.contains(parsed, expected);
         test.done();
     },
-    testDEParseTitle_da_DK: function(test) {
+    testDEParseTitle_da_DK2: function(test) {
         test.expect(2);
         var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");

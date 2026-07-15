@@ -89,7 +89,7 @@ module.exports.numplan = {
         test.equal(plan.getContextFree(), false);
         test.done();
     },
-    testGetContextFreeContent: function(test) {
+    testGetContextFreeContentUS: function(test) {
         test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
         test.ok(typeof(plan) !== "undefined");

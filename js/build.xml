@@ -112,7 +112,6 @@ limitations under the License.
         <delete file="${build.demo}/scripts/webpack.config.js"/>
         <delete file="${build.base}/package.json"/>
         <delete file="${build.test}/nodeunit/nodeunit-qml.jsc"/>
-        <delete file="${build.lib}/ilib-qt.jsc"/>
         <delete dir="${build.locale}"/>
         <delete dir="${build.apidocs}"/>
     </target>
@@ -361,7 +360,6 @@ limitations under the License.
             </fileset>
             <fileset dir="${build.lib}">
                 <include name="ilib-node*"/>
-                <include name="ilib-qt*"/>
                 <include name="ilib-webpack*"/>
                 <include name="ilib-unpack.js"/>
                 <include name="ilib-web.js"/>
@@ -381,7 +379,7 @@ limitations under the License.
             <arg value="-c"/>
             <arg value="--verbose"/>
             <fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-            <fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+            <fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js"/>
             <mapper type="glob" from="*.js" to="*.js"/>
         </apply>
         <apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
@@ -389,7 +387,7 @@ limitations under the License.
             <srcfile/>
             <targetfile/>
             <fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-            <fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+            <fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js"/>
             <mapper type="glob" from="*.js" to="*.js"/>
         </apply>
         <apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false" force="true">
@@ -397,7 +395,7 @@ limitations under the License.
             <srcfile/>
             <targetfile/>
             <fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-            <fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+            <fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js"/>
             <mapper type="glob" from="*.js" to="*.js"/>
         </apply>
     </target>
@@ -466,13 +464,18 @@ limitations under the License.
                 <include name="../README.md"/>
             </fileset>
         </copy>
+        <copy todir="${build.export}/package">
+            <fileset dir="${build.base}/assembleData">
+                <include name="assemble.mjs"/>
+                <include name="assembleZoneinfoData.mjs"/>
+            </fileset>
+        </copy>
         <mkdir dir="${build.export}/package/lib"/>
         <copy todir="${build.export}/package/lib">
             <fileset dir="${build.export}/js/dyncode">
                 <include name="**/*"/>
                 <exclude name="*Loader.js"/>
                 <exclude name="ilib-web.js"/>
-                <exclude name="ilib-qt.js"/>
                 <exclude name="ilib-rhino.js"/>
                 <exclude name="ilib-enyo.js"/>
                 <exclude name="index.js"/>

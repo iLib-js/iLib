@@ -587,7 +587,7 @@ module.exports.phonefmt_IE = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatIEStyle1Partial11: function(test) {
+    testFormatIEStyle1Partial12: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({

@@ -93,7 +93,7 @@ module.exports.normalize_JP = {
         test.equal(parsed.normalize(hints), expected); // 'ja-JP'
         test.done();
     },
-    testJPLDNumberUsingJPMCC: function(test) {
+    testJPLDNumberUsingJPMCCFromDELocale: function(test) {
         test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
         var hints = {

@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.22.0",
+    "version": "15.0.0",
     "main": "js/index.js",
     "engines": {
         "node": ">=8 <25"
@@ -79,7 +79,7 @@
         "grunt-shell": "^4.0.0",
         "grunt-text-replace": "^0.4.0",
         "http-server": "^14.1.1",
-        "ilib-assemble": "^1.3.4",
+        "ilib-assemble": "^1.4.0",
         "ilib-common": "^1.1.7",
         "ilib-scanner": "^1.4.0",
         "ilib-webpack-loader": "^1.3.1",

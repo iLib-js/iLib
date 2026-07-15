@@ -82,7 +82,7 @@ module.exports.testunitfmt = {
         test.equal(str, "10 micrometers");
         test.done();
     },
-    testUnitFormatGetScaleDefault: function(test) {
+    testUnitFormatGetScaleDefault2: function(test) {
         test.expect(1);
         var uf = new UnitFmt();
         test.ok(uf.getScale());
@@ -2390,7 +2390,7 @@ module.exports.testunitfmt = {
         test.equal(str, "100 公頃");
         test.done();
     },
-    testUnitFormatUsezhHantMOHectare: function(test) {
+    testUnitFormatUsezhHantMYHectare: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "hectare",

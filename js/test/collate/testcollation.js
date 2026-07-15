@@ -2998,7 +2998,7 @@ module.exports.testcollation = {
         test.ok(col.compare("1 box", "2 boxes") < 0);
         test.done();
     },
-    testJSCollatorNumericWithText: function(test) {
+    testJSCollatorNumericWithText3: function(test) {
         test.expect(2);
         var col = new Collator({
             useNative: false,

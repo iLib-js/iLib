@@ -1,4 +1,0 @@
-module iLib
-
-plugin FileReader
-ILib 1.0 ILib.qml

@@ -64,12 +64,8 @@ module.exports.testglobal = {
         test.done();
     },
     testGetVersion: function(test) {
-        if (ilib._getPlatform() === "qt" ) {
-            test.done();
-            return;
-        }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,5), "14.22");
+        test.equal(ilib.getVersion().substring(0,4), "15.0");
         test.done();
     },
     testGetCldrVersion: function(test) {
@@ -965,36 +961,6 @@ module.exports.testglobal = {
 
         test.done();
     },
-    testGetLocaleSimulateQt: function(test) {
-        if (ilib._getPlatform() !== "nodejs") {
-            // only test this in nodejs
-            test.done();
-            return;
-        }
-
-        ilib._platform = "qt";
-        ilib.locale = undefined;
-
-        var loc = "";
-
-        global.Qt = {
-            locale: function() {
-                return {
-                    name: "fr-FR"
-                };
-            }
-        };
-
-        test.expect(1);
-        test.equal(ilib.getLocale(), "fr-FR");
-
-        // clean up
-        ilib._platform = undefined;
-        ilib.locale = undefined;
-        global.Qt = undefined;
-
-        test.done();
-    },
     testGetLocaleRhino: function(test) {
         if (ilib._getPlatform() !== "rhino") {
             // only test this in node
@@ -1248,7 +1214,7 @@ module.exports.testglobal = {
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
-    testExtendSubobjectsAddProps: function(test) {
+    testExtendSubobjectsAddProps2: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};

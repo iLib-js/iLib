@@ -78,7 +78,7 @@ limitations under the License.
         <copy file="LICENSE" todir="${build.export}/package" />
         <zip destfile="${build.dist}/ilib-${version}.zip"
             basedir="${build.export}"
-            includes="js/**,java/**,locale/**,qt/**"/>
+            includes="js/**,java/**,locale/**"/>
         <zip destfile="${build.dist}/ilib-${version}-doc.zip"
             basedir="${build.export}/doc"/>
         <zip destfile="${build.dist}/ilib-${version}-src.zip">
@@ -94,7 +94,7 @@ limitations under the License.
         </zip>
         <tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip"
             basedir="${build.export}"
-            includes="js/**,java/**,locale/**,qt/**"/>
+            includes="js/**,java/**,locale/**"/>
         <tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
         <tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
             <fileset dir="${build.export}/src" includes="**"/>

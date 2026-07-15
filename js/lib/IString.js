@@ -1105,8 +1105,8 @@ IString.prototype = {
      */
     substr: function(start, length) {
         var plat = ilib._getPlatform();
-        if (plat === "qt" || plat === "rhino" || plat === "trireme") {
-            // qt and rhino have a broken implementation of substr(), so
+        if (plat === "rhino" || plat === "trireme") {
+            // rhino and trireme have a broken implementation of substr(), so
             // work around it
             if (typeof(length) === "undefined") {
                 length = this.str.length - start;

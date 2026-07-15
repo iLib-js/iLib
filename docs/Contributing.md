@@ -66,7 +66,7 @@ Pull requests are expected to keep **CI green**. A **GitHub check** enforces tha
 
 ### Qt / QML
 
-Follow **[QtTest.md](QtTest.md)**.
+Qt/QML support was available up to iLib **v14.x**. For historical reference, see **[QtTest.md](QtTest.md)**.
 
 ### Note on `npm test`
 
@@ -78,7 +78,7 @@ Releases are expected to pass the full unit test suite on:
 
 - **Browsers:** Chrome, Firefox, Opera, Safari, Edge  
 - **Node.js:** multiple versions, including the **oldest supported** engine version and a **current** release  
-- **Qt** (QML / Qt Quick), per project Qt test documentation (see [QtTest.md](QtTest.md))
+- **Qt** (QML / Qt Quick) — supported up to iLib v14.x (see [QtTest.md](QtTest.md))
 
 Exact versions and job matrix may evolve; treat CI configuration in the repository as the source of truth for what runs on every PR.
 

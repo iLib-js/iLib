@@ -691,7 +691,7 @@ module.exports.testcollation_ko = {
         test.equal(0, col.compare("₩", "￦"), "₩ = ￦");
         test.done();
     },
-    testJSCollatorJamoLHalfwidthTer_ko: function(test) {
+    testJSCollatorJamoLHalfwidthQua_ko: function(test) {
         test.expect(104);
         var col = new Collator({
             locale: "ko-KR",

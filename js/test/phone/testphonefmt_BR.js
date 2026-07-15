@@ -69,7 +69,7 @@ module.exports.phonefmt_BR = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatBRInternational: function(test) {
+    testFormatBRInternationalFromCH: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("004114084567890", {locale: "pt-BR"});

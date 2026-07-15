@@ -45,7 +45,7 @@ module.exports.testname_ga = {
         test.contains(parsed, expected);
         test.done();
     },
-    testParseSimpleName_ga_IE: function(test) {
+    testParseSimpleNameWithPrefix_ga_IE: function(test) {
         test.expect(2);
         var parsed = new Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");

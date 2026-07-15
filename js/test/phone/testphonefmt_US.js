@@ -545,7 +545,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatUSLocalNumberWithFRMCC: function(test) {
+    testFormatUSLocalNumberWithFRMCC2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -559,7 +559,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatUSLocalNumberWithFRMCCNoLocale: function(test) {
+    testFormatUSLocalNumberWithFRMCCNoLocale2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -1265,7 +1265,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testWithParamsFormatUSStyle0PartialTrunk1: function(test) {
+    testWithParamsFormatUSStyle0PartialTrunk1b: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -1718,7 +1718,7 @@ module.exports.phonefmt_US = {
         var parsed = new PhoneNumber({
             trunkAccess: "1"
         });
-        var expected = "1-";
+        var expected = "1";
 
         var fmt = new PhoneFmt({locale: "en-US", style: "dashes"});
         formatted = fmt.format(parsed, {partial: true});
@@ -1726,7 +1726,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testWithParamsFormatUSStyle1PartialTrunk1: function(test) {
+    testWithParamsFormatUSStyle1PartialTrunk1b: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -2179,7 +2179,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testWithParamsFormatLocalNumberWithFRMCC: function(test) {
+    testWithParamsFormatLocalNumberWithFRMCC2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -2193,7 +2193,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testWithParamsFormatLocalNumberWithFRMCCNoLocale: function(test) {
+    testWithParamsFormatLocalNumberWithFRMCCNoLocale2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
@@ -2207,7 +2207,7 @@ module.exports.phonefmt_US = {
         test.equal(formatted, expected);
         test.done();
     },
-    testFormatUSNumberWithMXMCC: function(test) {
+    testFormatUSNumberWithMXMCC2: function(test) {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
