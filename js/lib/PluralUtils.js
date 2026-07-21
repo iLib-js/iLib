@@ -54,60 +54,42 @@ PluralUtils.plurals_default = {
  * @param {function(*)=} onLoad
  */
 PluralUtils.loadPlurals = function (sync, locale, loadParams, onLoad) {
-    var loc;
-    if (locale) {
-        loc = (typeof(locale) === 'string') ? new Locale(locale) : locale;
-    } else {
-        loc = new Locale(ilib.getLocale());
-    }
+    var loc = locale
+        ? (typeof(locale) === 'string' ? new Locale(locale) : locale)
+        : new Locale(ilib.getLocale());
     Utils.loadData({
         name: "plurals.json",
         object: "IString",
         locale: loc,
         sync: sync,
         loadParams: loadParams,
-        callback: ilib.bind(this, function(plurals) {
+        callback: function(plurals) {
             plurals = plurals || PluralUtils.plurals_default;
-            if (onLoad && typeof(onLoad) === 'function') {
+            if (typeof(onLoad) === 'function') {
                 onLoad(plurals);
             }
-        })
+        }
     });
 };
 
 /**
  * @private
  */
-PluralUtils._fncs = {
-    /**
-     * @private
-     * @param {Object} obj
-     * @return {string|undefined}
-     */
-    firstProp: function (obj) {
-        for (var p in obj) {
-            if (p && obj[p]) {
-                return p;
-            }
-        }
-        return undefined; // should never get here
-    },
-
+var fn = PluralUtils._fncs = {
     /**
      * @private
      * @param {Object} obj
      * @return {string|undefined}
      */
     firstPropRule: function (obj) {
-        if (Object.prototype.toString.call(obj) === '[object Array]') {
+        if (Array.isArray(obj)) {
             return "inrange";
-        } else if (Object.prototype.toString.call(obj) === '[object Object]') {
+        } else if (typeof(obj) === 'object') {
             for (var p in obj) {
                 if (p && obj[p]) {
                     return p;
                 }
             }
-
         }
         return undefined; // should never get here
     },
@@ -120,16 +102,10 @@ PluralUtils._fncs = {
      */
     getValue: function (obj, n) {
         if (typeof(obj) === 'object') {
-            var subrule = PluralUtils._fncs.firstPropRule(obj);
-            if (subrule === "inrange") {
-                return PluralUtils._fncs[subrule](obj, n);
-            }
-            return PluralUtils._fncs[subrule](obj[subrule], n);
+            var subrule = fn.firstPropRule(obj);
+            return subrule === "inrange" ? fn[subrule](obj, n) : fn[subrule](obj[subrule], n);
         } else if (typeof(obj) === 'string') {
-            if (typeof(n) === 'object'){
-                return n[obj];
-            }
-            return n;
+            return typeof(n) === 'object' ? n[obj] : n;
         } else {
             return obj;
         }
@@ -142,21 +118,13 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     matchRangeContinuous: function(n, range) {
-
         for (var num in range) {
-            if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
-                var obj = range[num];
-                if (typeof(obj) === 'number') {
-                    if (n === range[num]) {
-                        return true;
-                    } else if (n >= range[0] && n <= range[1]) {
-                        return true;
-                    }
-                } else if (Object.prototype.toString.call(obj) === '[object Array]') {
-                    if (n >= obj[0] && n <= obj[1]) {
-                        return true;
-                    }
-                }
+            var obj = range[num];
+            if (obj === undefined) continue;
+            if (typeof(obj) === 'number') {
+                if (n === obj || (n >= range[0] && n <= range[1])) return true;
+            } else if (Array.isArray(obj)) {
+                if (n >= obj[0] && n <= obj[1]) return true;
             }
         }
         return false;
@@ -168,58 +136,29 @@ PluralUtils._fncs = {
      * @return {Object}
      */
     calculateNumberDigits: function(number) {
-        var numberToString = number.toString();
-        var parts = [];
-        var numberDigits =  {};
-        var operandSymbol =  {};
+        var expStr = number.toExponential();
+        var expIdx = expStr.indexOf("e");
+        var exp = expIdx !== -1 ? parseInt(expStr[expIdx + 2]) : 0;
 
-        var exponentialNum = number.toExponential();
-        var exponentialIndex = exponentialNum.indexOf("e");
-        if (exponentialIndex !== -1) {
-            operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
-            operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
-        } else {
-            operandSymbol.c = 0;
-            operandSymbol.e = 0;
+        var str = number.toString();
+        var dotIdx = str.indexOf('.');
+
+        if (dotIdx === -1) {
+            return { c: exp, e: exp, n: parseInt(number, 10), i: number, v: 0, w: 0, f: 0, t: 0 };
         }
 
-        if (numberToString.indexOf('.') !== -1) { //decimal
-            parts = numberToString.split('.', 2);
-            numberDigits.integerPart = parseInt(parts[0], 10);
-            numberDigits.decimalPartLength = parts[1].length;
-            numberDigits.decimalPart = parseInt(parts[1], 10);
-
-            operandSymbol.n = parseFloat(number);
-            operandSymbol.i = numberDigits.integerPart;
-            operandSymbol.v = numberDigits.decimalPartLength;
-            operandSymbol.w = numberDigits.decimalPartLength;
-            operandSymbol.f = numberDigits.decimalPart;
-            operandSymbol.t = numberDigits.decimalPart;
-
-        } else {
-            numberDigits.integerPart = number;
-            numberDigits.decimalPartLength = 0;
-            numberDigits.decimalPart = 0;
-
-            operandSymbol.n = parseInt(number, 10);
-            operandSymbol.i = numberDigits.integerPart;
-            operandSymbol.v = 0;
-            operandSymbol.w = 0;
-            operandSymbol.f = 0;
-            operandSymbol.t = 0;
-
-        }
-        return operandSymbol
-    },
-
-    /**
-     * @private
-     * @param {number|Object} n
-     * @param {Array.<number|Array.<number>>|Object} range
-     * @return {boolean}
-     */
-    matchRange: function(n, range) {
-        return PluralUtils._fncs.matchRangeContinuous(n, range);
+        var decStr = str.slice(dotIdx + 1);
+        var decNoTrail = decStr.replace(/0+$/, '');
+        return {
+            c: exp,
+            e: exp,
+            n: parseFloat(number),
+            i: parseInt(str.slice(0, dotIdx), 10),
+            v: decStr.length,
+            w: decNoTrail.length,
+            f: parseInt(decStr, 10),
+            t: decNoTrail.length > 0 ? parseInt(decNoTrail, 10) : 0
+        };
     },
 
     /**
@@ -229,9 +168,7 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     is: function(rule, n) {
-        var left = PluralUtils._fncs.getValue(rule[0], n);
-        var right = PluralUtils._fncs.getValue(rule[1], n);
-        return left === right;
+        return fn.getValue(rule[0], n) === fn.getValue(rule[1], n);
     },
 
     /**
@@ -241,7 +178,7 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     isnot: function(rule, n) {
-        return PluralUtils._fncs.getValue(rule[0], n) !== PluralUtils._fncs.getValue(rule[1], n);
+        return fn.getValue(rule[0], n) !== fn.getValue(rule[1], n);
     },
 
     /**
@@ -252,15 +189,12 @@ PluralUtils._fncs = {
      */
     inrange: function(rule, n) {
         if (typeof(rule[0]) === 'number') {
-            if(typeof(n) === 'object') {
-                return PluralUtils._fncs.matchRange(n.n,rule);
-            }
-            return PluralUtils._fncs.matchRange(n,rule);
+            return fn.matchRangeContinuous(typeof(n) === 'object' ? n.n : n, rule);
         } else if (typeof(rule[0]) === 'undefined') {
-            var subrule = PluralUtils._fncs.firstPropRule(rule);
-            return PluralUtils._fncs[subrule](rule[subrule], n);
+            var subrule = fn.firstPropRule(rule);
+            return fn[subrule](rule[subrule], n);
         } else {
-            return PluralUtils._fncs.matchRange(PluralUtils._fncs.getValue(rule[0], n), rule[1]);
+            return fn.matchRangeContinuous(fn.getValue(rule[0], n), rule[1]);
         }
     },
 
@@ -271,7 +205,7 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     notin: function(rule, n) {
-        return !PluralUtils._fncs.matchRange(PluralUtils._fncs.getValue(rule[0], n), rule[1]);
+        return !fn.matchRangeContinuous(fn.getValue(rule[0], n), rule[1]);
     },
 
     /**
@@ -281,7 +215,7 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     within: function(rule, n) {
-        return PluralUtils._fncs.matchRangeContinuous(PluralUtils._fncs.getValue(rule[0], n), rule[1]);
+        return fn.matchRangeContinuous(fn.getValue(rule[0], n), rule[1]);
     },
 
     /**
@@ -291,7 +225,7 @@ PluralUtils._fncs = {
      * @return {number}
      */
     mod: function(rule, n) {
-        return MathUtils.mod(PluralUtils._fncs.getValue(rule[0], n), PluralUtils._fncs.getValue(rule[1], n));
+        return MathUtils.mod(fn.getValue(rule[0], n), fn.getValue(rule[1], n));
     },
 
     /**
@@ -311,13 +245,8 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     or: function(rule, n) {
-        var ruleLength = rule.length;
-        var result, i;
-        for (i=0; i < ruleLength; i++) {
-            result = PluralUtils._fncs.getValue(rule[i], n);
-            if (result) {
-                return true;
-            }
+        for (var i = 0; i < rule.length; i++) {
+            if (fn.getValue(rule[i], n)) return true;
         }
         return false;
     },
@@ -329,13 +258,8 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     and: function(rule, n) {
-        var ruleLength = rule.length;
-        var result, i;
-        for (i=0; i < ruleLength; i++) {
-            result= PluralUtils._fncs.getValue(rule[i], n);
-            if (!result) {
-                return false;
-            }
+        for (var i = 0; i < rule.length; i++) {
+            if (!fn.getValue(rule[i], n)) return false;
         }
         return true;
     },
@@ -347,30 +271,23 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     eq: function(rule, n) {
-        var valueLeft = PluralUtils._fncs.getValue(rule[0], n);
+        var valueLeft = fn.getValue(rule[0], n);
         var valueRight;
 
         if (typeof(rule[0]) === 'string') {
-            if (typeof(n) === 'object'){
+            if (typeof(n) === 'object') {
                 valueRight = n[rule[0]];
-                if (typeof(rule[1])=== 'number'){
-                    valueRight = PluralUtils._fncs.getValue(rule[1], n);
-                } else if (typeof(rule[1])=== 'object' && (PluralUtils._fncs.firstPropRule(rule[1]) === "inrange" )){
-                    valueRight = PluralUtils._fncs.getValue(rule[1], n);
+                if (typeof(rule[1]) === 'number' ||
+                        (typeof(rule[1]) === 'object' && fn.firstPropRule(rule[1]) === "inrange")) {
+                    valueRight = fn.getValue(rule[1], n);
                 }
             }
         } else {
-            if (PluralUtils._fncs.firstPropRule(rule[1]) === "inrange") { // mod
-                valueRight = PluralUtils._fncs.getValue(rule[1], valueLeft);
-            } else {
-                valueRight = PluralUtils._fncs.getValue(rule[1], n);
-            }
+            valueRight = fn.firstPropRule(rule[1]) === "inrange"
+                ? fn.getValue(rule[1], valueLeft)  // mod
+                : fn.getValue(rule[1], n);
         }
-        if(typeof(valueRight) === 'boolean') {
-            return (valueRight ? true : false);
-        } else {
-            return (valueLeft === valueRight ? true :false);
-        }
+        return typeof(valueRight) === 'boolean' ? valueRight : valueLeft === valueRight;
     },
 
     /**
@@ -380,42 +297,26 @@ PluralUtils._fncs = {
      * @return {boolean}
      */
     neq: function(rule, n) {
-        var valueLeft = PluralUtils._fncs.getValue(rule[0], n);
+        var valueLeft = fn.getValue(rule[0], n);
         var valueRight;
-        var leftRange;
-        var rightRange;
 
         if (typeof(rule[0]) === 'string') {
             valueRight = n[rule[0]];
-            if (typeof(rule[1])=== 'number'){
-                valueRight = PluralUtils._fncs.getValue(rule[1], n);
+            if (typeof(rule[1]) === 'number') {
+                valueRight = fn.getValue(rule[1], n);
             } else if (typeof(rule[1]) === 'object') {
-                leftRange = rule[1][0];
-                rightRange =  rule[1][1];
-                if (typeof(leftRange) === 'number' &&
-                    typeof(rightRange) === 'number'){
-
-                    if (valueLeft >= leftRange && valueRight <= rightRange) {
-                        return false
-                    } else {
-                        return true;
-                    }
+                var leftRange = rule[1][0];
+                var rightRange = rule[1][1];
+                if (typeof(leftRange) === 'number' && typeof(rightRange) === 'number') {
+                    return !(valueLeft >= leftRange && valueLeft <= rightRange);
                 }
             }
         } else {
-            if (PluralUtils._fncs.firstPropRule(rule[1]) === "inrange") { // mod
-                valueRight = PluralUtils._fncs.getValue(rule[1], valueLeft);
-            } else {
-                valueRight = PluralUtils._fncs.getValue(rule[1], n);
-            }
+            valueRight = fn.firstPropRule(rule[1]) === "inrange"
+                ? fn.getValue(rule[1], valueLeft)  // mod
+                : fn.getValue(rule[1], n);
         }
-
-        if(typeof(valueRight) === 'boolean') {//mod
-            return (valueRight? false : true);
-        } else {
-            return (valueLeft !== valueRight ? true :false);
-        }
-
+        return typeof(valueRight) === 'boolean' ? !valueRight : valueLeft !== valueRight;
     }
 };
 
