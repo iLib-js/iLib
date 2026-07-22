@@ -88,7 +88,27 @@ module.exports.testunitfmt_mt_MT = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "-16.666666666666668 grad Celsius");
+        var platform = ilib._getPlatform();
+        if (platform === "nodejs") {
+            var cldrVersion = Number(process.versions["cldr"]);
+            if (cldrVersion < 36) {
+                // no Intl.PluralRules support here, so iLib's own plural rules
+                // are used; the absolute value of -16.6 selects the "many"
+                // category (n mod 100 = 16, in 11..19) -> "-il grad"
+                test.equal(str, "-16.666666666666668-il grad Celsius");
+            } else {
+                test.equal(str, "-16.666666666666668 grad Celsius");
+            }
+        } else if (platform === "browser") {
+            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
+            if (cldrVersion !== undefined && cldrVersion >= 36) {
+                test.equal(str, "-16.666666666666668 grad Celsius");
+            } else {
+                test.equal(str, "-16.666666666666668-il grad Celsius");
+            }
+        } else {
+            test.equal(str, "-16.666666666666668-il grad Celsius");
+        }
         test.done();
     },
     testUnitFormatArea1_mt_MT: function(test) {
