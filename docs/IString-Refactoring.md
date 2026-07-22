@@ -63,7 +63,7 @@ IString.js  (final assembly)
 
 ## Step-by-Step Plan
 
-### Phase 1: Extract PluralUtils.js ← **current phase**
+### Phase 1: Extract PluralUtils.js ← **done**
 
 **Items to move:**
 
@@ -78,10 +78,11 @@ IString.js  (final assembly)
 - Keep `IString.loadPlurals`, `IString._fncs`, `IString.plurals_default` as backward-compatible aliases
 
 **Verification:**
-- The 3 external `IString.loadPlurals` callers work unchanged
-- `_fncs` called inside `_testChoice` continues to work
+- The 3 external `IString.loadPlurals` callers work unchanged ✓
+- `_fncs` called inside `_testChoice` continues to work ✓
+- Unit tests added for PluralUtils ([test/root/testpluralutils.js](../js/test/root/testpluralutils.js)) ✓
 
-**Expected result:** ~450 lines removed from IString.js
+**Result:** IString.js reduced from 1535 to 1158 lines (~377 removed); PluralUtils.js is 378 lines.
 
 ---
 
@@ -114,11 +115,11 @@ Object.assign(IString.prototype, IStringFmt);
 
 ## Expected Final File Sizes
 
-| File | Estimated lines |
-|------|----------------|
-| PluralUtils.js | ~460 |
-| IStringFmt.js | ~420 |
-| IString.js | ~660 |
+| File | Estimated lines | Actual (so far) |
+|------|----------------|-----------------|
+| PluralUtils.js | ~460 | 378 (done) |
+| IStringFmt.js | ~420 | — (Phase 2 pending) |
+| IString.js | ~660 | 1158 (after Phase 1; Phase 2 pending) |
 
 ---
 

@@ -25,6 +25,7 @@ module.exports.files = [
     "testlocale.js",
     "testlocaleinfo.js",
     "testlocalematch.js",
+    "testpluralutils.js",
     "testrequire.js",
     "testresources.js",
     "testscriptinfo.js",
