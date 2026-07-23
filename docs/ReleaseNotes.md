@@ -1,6 +1,22 @@
 Release Notes for Version 15
 ============================
 
+Build 036
+-------
+Published as version 15.1.0
+
+Bug Fixes:
+* Fix plural rule evaluation in the non-`Intl.PluralRules` fallback path
+  (`PluralUtils`): use the absolute value of the number for CLDR operands, parse
+  multi-digit exponents, keep large integers intact, and treat 3+ value lists as
+  sets rather than ranges.
+
+Refactoring:
+* Extract the plural rule engine (`plurals_default`, `loadPlurals`, `_fncs`) from
+  `IString.js` into a standalone `PluralUtils.js` module. `IString` retains
+  backward-compatible aliases, so the public API is unchanged.
+
+
 Build 035
 -------
 Published as version 15.0.0

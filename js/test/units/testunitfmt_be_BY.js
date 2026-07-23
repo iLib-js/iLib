@@ -1,7 +1,7 @@
 /*
  * testunitfmt_be_BY.js - test the unitfmt for be-BY
  *
- * Copyright © 2020 2022 JEDLSoft
+ * Copyright © 2020 2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -95,7 +95,10 @@ module.exports.testunitfmt_be_BY = {
         if (platform === "nodejs") {
             var cldrVersion = Number(process.versions["cldr"]);
             if (cldrVersion < 36) {
-                test.equal(str, "-16,666666666666668 градусы Цэльсія");
+                // no Intl.PluralRules support here, so iLib's own plural rules
+                // are used; the absolute value of -16.6 selects the "many"
+                // category (n mod 10 = 6, in 5..9) -> градусаў
+                test.equal(str, "-16,666666666666668 градусаў Цэльсія");
             } else {
                 test.equal(str, "-16,666666666666668 градуса Цэльсія");
             }
@@ -104,10 +107,10 @@ module.exports.testunitfmt_be_BY = {
             if (cldrVersion !== undefined && cldrVersion >= 36) {
                 test.equal(str, "-16,666666666666668 градуса Цэльсія");
             } else {
-                test.equal(str, "-16,666666666666668 градусы Цэльсія");
+                test.equal(str, "-16,666666666666668 градусаў Цэльсія");
             }
         } else {
-            test.equal(str, "-16,666666666666668 градусы Цэльсія");
+            test.equal(str, "-16,666666666666668 градусаў Цэльсія");
         }
 
 
