@@ -20,6 +20,7 @@
 module.exports.files = [
     "testclock.js",
     "testcalendar.js",
+    "testCalendarTimezone.js",
     "testdate.js",
     "testdateasync.js",
     "testdatefmt.js",
