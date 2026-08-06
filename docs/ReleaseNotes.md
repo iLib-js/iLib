@@ -1,6 +1,21 @@
 Release Notes for Version 15
 ============================
 
+Build 036
+-------
+
+Bug Fixes:
+* Updated the English country name for region code `NR` from "Nauru" to
+  "Naoero", and updated corresponding country-name strings in locale data,
+  phone resources, and related unit tests. In May 2026, the Parliament of
+  Nauru passed a constitutional amendment to change the country's official
+  English name to **Republic of Naoero**, matching the spelling in the
+  Nauruan language; the change was later finalized without a referendum.
+  See [Naoero](https://en.wikipedia.org/wiki/Naoero) for background.
+  The ISO region code (`NR`), IANA time zone id (`Pacific/Nauru`), and
+  language name for `na` are unchanged pending further official updates.
+
+
 Build 035
 -------
 Published as version 15.0.0

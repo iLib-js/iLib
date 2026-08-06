@@ -167,7 +167,7 @@
 671	country	Unknown Country	Unknown Country
 672	country	Norfolk Island	Norfolk Island, Australian Antarctic Territory
 673	country	Brunei	Brunei Darussalam
-674	country	Nauru	Nauru
+674	country	Naoero	Naoero
 675	country	Papua New Guinea	Papua New Guinea
 676	country	Tonga	Tonga
 677	country	Solomon Islands	Solomon Islands
