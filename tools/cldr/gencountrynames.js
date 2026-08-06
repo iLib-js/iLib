@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2024 JEDLSoft
+ * Copyright © 2013-2024, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,13 +69,62 @@ var HKRegionData = {
             "name": "Hong Kong SAR China"
         }
     ]
+};
+
+/**
+ * Country display-name overrides applied after reading CLDR territories.
+ * CLDR still publishes the former English short name "Nauru" for region NR;
+ * the official English name is now "Naoero" (Republic of Naoero). Keep this
+ * until upstream CLDR updates. See https://en.wikipedia.org/wiki/Naoero
+ *
+ * Map: ISO region code → preferred display name when CLDR still uses a form
+ * that embeds the old English name "Nauru".
+ */
+var countryNameExceptions = {
+    "NR": "Naoero"
+};
+
+/**
+ * Apply countryNameExceptions to a name→code map from filterCountries.
+ * Renames any key that maps to an exceptional region code and still contains
+ * the obsolete English stem "Nauru" (exact or embedded, e.g. "i-Nauru").
+ *
+ * @param {Object.<string,string>} countries name → ISO region code
+ * @return {Object.<string,string>} countries map with exceptions applied
+ */
+function applyCountryNameExceptions(countries) {
+    var name, code, newName, toRename, i;
+
+    if (!countries) {
+        return countries;
+    }
+
+    toRename = [];
+    for (name in countries) {
+        if (countries.hasOwnProperty(name)) {
+            code = countries[name];
+            if (countryNameExceptions[code] && name.indexOf("Nauru") !== -1) {
+                toRename.push(name);
+            }
+        }
+    }
+
+    for (i = 0; i < toRename.length; i++) {
+        name = toRename[i];
+        code = countries[name];
+        newName = name.replace(/Nauru/g, countryNameExceptions[code]);
+        delete countries[name];
+        countries[newName] = code;
+    }
+
+    return countries;
 }
 
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2013-2024 JEDLSoft");
+    "Copyright (c) 2013-2024, 2026 JEDLSoft");
 console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
 
@@ -108,7 +157,7 @@ function filterCountries(countries, territories) {
             }
         }
     }
-    return countries;
+    return applyCountryNameExceptions(countries);
 }
 
 function getCountryNames(localeData, pathname, locale) {
