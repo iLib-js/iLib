@@ -2,7 +2,7 @@
  * genlangreg.js - ilib tool to generate the langname and regionname json fragments from the CLDR
  * data files
  *
- * Copyright © 2013-2018, 2020, 2022 JEDLSoft
+ * Copyright © 2013-2018, 2020, 2022, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlangreg - generate language and region name data.\n" +
-    "Copyright (c) 2013-2018, 2020, 2022 JEDLSoft");
+    "Copyright (c) 2013-2018, 2020, 2022, 2026 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -63,6 +63,14 @@ var language_name = {
 };
 var region_name = {
     generated: true
+};
+
+/**
+ * English region.name overrides. CLDR still lists NR as "Nauru"; the official
+ * English short name is now "Naoero". See https://en.wikipedia.org/wiki/Naoero
+ */
+var regionNameExceptions = {
+    "NR": "Naoero"
 };
 
 var filename = "cldr-localenames-full/main/en/languages.json";
@@ -99,9 +107,10 @@ regions = regionsData.main.en.localeDisplayNames.territories;
 for (region in regions) {
     if (region.search(/[_\-0123456789]/) === -1) {
         var regdir = path.join(localeDirName, "und", region);
-        console.log(regdir + ": " + regions[region]);
+        var displayName = regionNameExceptions[region] || regions[region];
+        console.log(regdir + ": " + displayName);
         mkdirs(regdir);
-        region_name["region.name"] = regions[region];
+        region_name["region.name"] = displayName;
         region_name.generated = true;
         fs.writeFileSync(path.join(regdir, "regionname.jf"), stringify(region_name, {space: 4}), "utf-8");
     }
