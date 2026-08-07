@@ -26,6 +26,33 @@ var PluralUtils = require("./PluralUtils.js");
 var IStringFmt = {};
 
 /**
+ * Return true if the given choice-pattern limit (or one of its
+ * comma-separated parts, for multi-index choices) uses the numeric
+ * threshold/range operator syntax (">10", "<=5", "1-5", etc.).
+ * Intl.PluralRules only ever resolves a number to a CLDR plural category
+ * name (zero/one/two/few/many/other); it has no notion of a numeric
+ * threshold or range at all, so a limit using this syntax can only ever
+ * be matched by _testChoice's own parsing logic, never by the Intl path.
+ * Bare category names and plain numeric literals (e.g. "0", used as an
+ * explicit-value override alongside category names) are left alone here:
+ * those already fall through to the default choice under the Intl path
+ * exactly as before, which is the existing, intentional behavior.
+ * @private
+ * @param {string} limit
+ * @return {boolean}
+ */
+function usesNumericRangeSyntax(limit) {
+    if (limit === "") {
+        return false;
+    }
+    var parts = (limit.indexOf(",") > -1) ? limit.split(",") : [limit];
+    return parts.some(function(part) {
+        part = part.trim();
+        return part.charAt(0) === "<" || part.charAt(0) === ">" || part.indexOf("-") !== -1;
+    });
+}
+
+/**
  * Format this string instance as a message, replacing the parameters with
  * the given values.<p>
  *
@@ -370,7 +397,7 @@ IStringFmt.formatChoice = function(argIndex, params, useIntlPlural) {
         return true;
     }));
 
-    if (useIntl && this.intlPlural && (args.length === checkArgsType.length)){
+    if (useIntl && this.intlPlural && (args.length === checkArgsType.length) && !limits.some(usesNumericRangeSyntax)){
         this.cateArr = [];
         for(i = 0; i < args.length;i++) {
             var r = this.intlPlural.select(args[i]);

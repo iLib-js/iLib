@@ -242,6 +242,30 @@ module.exports.teststringfmt = {
         test.done();
     },
 
+    // --------- formatChoice: numeric-range patterns still work after setLocale ---------
+    // Intl.PluralRules only ever resolves a number to a CLDR category name
+    // (one/other/etc.), so it has no way to match numeric-range limits like
+    // ">10" or "1-5". formatChoice must fall back to _testChoice's own
+    // parsing for those, even when useIntlPlural defaults to true and
+    // this.intlPlural has been set via setLocale().
+
+    testStringFmtFormatChoiceNumericRangeStillWorksAfterSetLocale: function(test) {
+        test.expect(2);
+        var str = new IString(">10#big|#small");
+        str.setLocale("en-US", true);
+        test.equal(str.formatChoice(11, {}), "big");
+        test.equal(str.formatChoice(5, {}), "small");
+        test.done();
+    },
+
+    testStringFmtFormatChoiceMultiIndexMixedNumericRangeAndCategoryAfterSetLocale: function(test) {
+        test.expect(1);
+        var str = new IString("1-5,one#smallRangeOne|#default");
+        str.setLocale("en-US", true);
+        test.equal(str.formatChoice([3, 1], {}), "smallRangeOne");
+        test.done();
+    },
+
     // --------- setLocale / getLocale ---------
 
     testStringFmtGetLocaleDefaultsToIlibLocale: function(test) {
