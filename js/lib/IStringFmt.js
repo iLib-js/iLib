@@ -390,12 +390,9 @@ IStringFmt.formatChoice = function(argIndex, params, useIntlPlural) {
 
     var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
-    checkArgsType = args.filter(ilib.bind(this, function(item){
-        if (typeof(item) !== "number") {
-            return false;
-        }
-        return true;
-    }));
+    checkArgsType = args.filter(function(item){
+        return typeof(item) === "number";
+    });
 
     if (useIntl && this.intlPlural && (args.length === checkArgsType.length) && !limits.some(usesNumericRangeSyntax)){
         this.cateArr = [];
@@ -410,34 +407,28 @@ IStringFmt.formatChoice = function(argIndex, params, useIntlPlural) {
             }
             result = new this.constructor(strings[idx]);
         } else {
-            if (limits.length === 0) {
-                defaultCase = new this.constructor(strings[i]);
-            } else {
-                this.findOne = false;
-                this.number = -1;
+            this.findOne = false;
+            this.number = -1;
 
-                for(i = 0; !this.findOne && i < limits.length; i++){
-                    limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
+            for(i = 0; !this.findOne && i < limits.length; i++){
+                limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
-                    var compareArr = this.cateArr;
-                    if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
-                        compareArr = this.cateArr.slice(0,limitsArr.length);
-                    }
-                    limitsArr = limitsArr.map(function(item){
-                        return item.trim();
-                    })
-                    limitsArr.filter(ilib.bind(this, function(element, idx, arr){
-                        if (JSON.stringify(arr) === JSON.stringify(compareArr)){
-                            this.number = i;
-                            this.findOne = true;
-                        }
-                    }));
+                var compareArr = this.cateArr;
+                if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
+                    compareArr = this.cateArr.slice(0,limitsArr.length);
                 }
-                if (this.number === -1){
-                    this.number = limits.indexOf("");
+                limitsArr = limitsArr.map(function(item){
+                    return item.trim();
+                })
+                if (JSON.stringify(limitsArr) === JSON.stringify(compareArr)){
+                    this.number = i;
+                    this.findOne = true;
                 }
-                result = new this.constructor(strings[this.number]);
             }
+            if (this.number === -1){
+                this.number = limits.indexOf("");
+            }
+            result = new this.constructor(strings[this.number]);
         }
     } else {
         // then apply the argument index (or indices)
