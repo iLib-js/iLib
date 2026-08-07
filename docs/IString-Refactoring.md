@@ -86,7 +86,7 @@ IString.js  (final assembly)
 
 ---
 
-### Phase 2: Extract IStringFmt.js
+### Phase 2: Extract IStringFmt.js ← **done**
 
 **Items to move:**
 
@@ -105,25 +105,33 @@ var IStringFmt = require('./IStringFmt');
 Object.assign(IString.prototype, IStringFmt);
 ```
 
-**Verification:**
-- The 3 external `formatChoice` callers (DurationFmt, UnitFmt, DateFmt) work unchanged
-- The `format` → `formatChoice` internal call chain works correctly
+Also added `IString.prototype.constructor = IString;` right after the `IString.prototype = {...}` object-literal assignment. Replacing `.prototype` wholesale drops the auto-generated `constructor` property, so `formatChoice`'s internal `new this.constructor(...)` calls (used instead of a bare `IString` reference to avoid a require-time circular dependency with IStringFmt.js) resolved to `Object` instead of `IString` until this line was added.
 
-**Expected result:** ~400 additional lines removed from IString.js
+`_testChoice`'s `IString._fncs.*` / `IString.plurals_default` references became `PluralUtils._fncs.*` / `PluralUtils.plurals_default` directly, and `setLocale`'s `IString.loadPlurals(...)` call became `PluralUtils.loadPlurals(...)`, since IStringFmt.js requires PluralUtils.js itself rather than reaching back through IString's static aliases. The `Locale` require moved from IString.js to IStringFmt.js (nothing else in IString.js used it).
+
+**Verification:**
+- The 4 external `formatChoice` callers (DateFmt ×2, DurationFmt, UnitFmt) work unchanged ✓
+- The 2 external `setLocale` callers (ResBundle, UnitFmt) work unchanged ✓
+- The `format` → `formatChoice` internal call chain works correctly ✓
+- New unit tests added for the formatting mixin ([test/root/testistringfmt.js](../js/test/root/testistringfmt.js)) ✓
+- Existing suites (`teststrings.js`, `testpluralutils.js`, `teststringsasync.js`, `testdatefmt.js`, `testunitfmt.js`, `testnamefmt.js`, `testaddress.js`) pass unchanged ✓
+
+**Result:** IString.js reduced from 1158 to 712 lines (~446 removed); IStringFmt.js is 482 lines.
 
 ---
 
 ## Expected Final File Sizes
 
-| File | Estimated lines | Actual (so far) |
+| File | Estimated lines | Actual |
 |------|----------------|-----------------|
 | PluralUtils.js | ~460 | 378 (done) |
-| IStringFmt.js | ~420 | — (Phase 2 pending) |
-| IString.js | ~660 | 1158 (after Phase 1; Phase 2 pending) |
+| IStringFmt.js | ~420 | 482 (done) |
+| IString.js | ~660 | 712 (done) |
 
 ---
 
 ## Notes
 
-- `formatChoice` internally creates `new IString(strings[i])`. After the split, `IStringFmt` does not require `IString` directly, so there is no circular dependency. By the time any `IStringFmt` method executes, `IString.prototype` already has the mixin applied.
-- `_testChoice` calls `IString._fncs` (aliased to `PluralUtils._fncs`). `IStringFmt.js` can depend on `PluralUtils` directly, which is cleaner and avoids any indirect circular reference.
+- `formatChoice` internally creates `new IString(strings[i])`. After the split, `IStringFmt` does not require `IString` directly, so there is no circular dependency. Instead, `formatChoice` uses `new this.constructor(...)`, which resolves to `IString` at call time via the instance's prototype chain.
+- Because `IString.prototype` is replaced wholesale with an object literal (`IString.prototype = {...}`), the JS-engine-provided `constructor` property is lost in the process (it would otherwise point back to `IString` automatically). `IString.js` restores it explicitly with `IString.prototype.constructor = IString;` right after the object-literal assignment — this is required for `this.constructor` in `formatChoice` to resolve correctly.
+- `_testChoice` calls `PluralUtils._fncs` and `PluralUtils.plurals_default` directly (not through the `IString._fncs`/`IString.plurals_default` aliases), and `setLocale` calls `PluralUtils.loadPlurals` directly (not `IString.loadPlurals`), since `IStringFmt.js` depends on `PluralUtils` directly, which is cleaner and avoids any indirect circular reference.
