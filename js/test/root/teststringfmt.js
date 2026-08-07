@@ -66,6 +66,22 @@ module.exports.teststringfmt = {
         test.done();
     },
 
+    testStringFmtFormatValueWithDollarSignsNotTreatedAsReplacementPattern: function(test) {
+        test.expect(1);
+        var str = new IString("Code: {code}");
+        test.equal(str.format({code: "SAVE$$10"}).toString(), "Code: SAVE$$10");
+        test.done();
+    },
+
+    testStringFmtFormatParamNameNotTreatedAsRegex: function(test) {
+        test.expect(1);
+        var str = new IString("{a.b} and {aXb}");
+        var params = {};
+        params["a.b"] = "MATCHED";
+        test.equal(str.format(params).toString(), "MATCHED and {aXb}");
+        test.done();
+    },
+
     // --------- formatChoice: single index ---------
 
     testStringFmtFormatChoiceExactMatch: function(test) {
@@ -102,6 +118,13 @@ module.exports.teststringfmt = {
         test.throws(function() {
             str.formatChoice(1, {}, false);
         });
+        test.done();
+    },
+
+    testStringFmtFormatChoiceReplacementTextContainingHash: function(test) {
+        test.expect(1);
+        var str = new IString("1#Rated #1 by critics|#other");
+        test.equal(str.formatChoice(1, {}, false), "Rated #1 by critics");
         test.done();
     },
 
@@ -148,6 +171,33 @@ module.exports.teststringfmt = {
         test.expect(1);
         var str = new IString("1,1#one and one|#other");
         test.equal(str.formatChoice([1, 1], {}, false), "one and one");
+        test.done();
+    },
+
+    testStringFmtFormatChoiceMultiIndexIntlFirstMatchWins: function(test) {
+        test.expect(1);
+        var str = new IString("one,one#First match|one,one#Second match");
+        str.setLocale("en-US", true);
+        test.equal(str.formatChoice([1, 1], {}, true), "First match");
+        test.done();
+    },
+
+    testStringFmtFormatChoiceMultiIndexIntlNumberResetsAcrossCalls: function(test) {
+        test.expect(2);
+        var str = new IString("one,one#Matched|#");
+        str.setLocale("en-US", true);
+        test.equal(str.formatChoice([1, 1], {}, true), "Matched");
+        // reusing the same instance with args that no longer match "one,one"
+        // must not leak the previous call's match index
+        test.equal(str.formatChoice([2, 2], {}, true), "");
+        test.done();
+    },
+
+    testStringFmtFormatChoiceMultiIndexIntlCateArrNotTruncatedAcrossPatterns: function(test) {
+        test.expect(1);
+        var str = new IString("one,many#neverMatches|one,one,other#fullMatch|#default");
+        str.setLocale("en-US", true);
+        test.equal(str.formatChoice([1, 1, 2], {}, true), "fullMatch");
         test.done();
     },
 

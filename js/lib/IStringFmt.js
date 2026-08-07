@@ -89,8 +89,10 @@ IStringFmt.format = function (params) {
         var regex;
         for (var p in params) {
             if (typeof(params[p]) !== 'undefined') {
-                regex = new RegExp("\{"+p+"\}", "g");
-                formatted = formatted.replace(regex, params[p]);
+                regex = new RegExp("\\{" + p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\}", "g");
+                formatted = formatted.replace(regex, function() {
+                    return params[p];
+                });
             }
         }
     }
@@ -348,7 +350,7 @@ IStringFmt.formatChoice = function(argIndex, params, useIntlPlural) {
         parts = choices[i].split("#");
         if (parts.length > 2) {
             limits[i] = parts[0];
-            parts = parts.shift();
+            parts.shift();
             strings[i] = parts.join("#");
         } else if (parts.length === 2) {
             limits[i] = parts[0];
@@ -385,20 +387,22 @@ IStringFmt.formatChoice = function(argIndex, params, useIntlPlural) {
                 defaultCase = new this.constructor(strings[i]);
             } else {
                 this.findOne = false;
+                this.number = -1;
 
                 for(i = 0; !this.findOne && i < limits.length; i++){
                     limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
 
+                    var compareArr = this.cateArr;
                     if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
-                        this.cateArr = this.cateArr.slice(0,limitsArr.length);
+                        compareArr = this.cateArr.slice(0,limitsArr.length);
                     }
                     limitsArr = limitsArr.map(function(item){
                         return item.trim();
                     })
                     limitsArr.filter(ilib.bind(this, function(element, idx, arr){
-                        if (JSON.stringify(arr) === JSON.stringify(this.cateArr)){
+                        if (JSON.stringify(arr) === JSON.stringify(compareArr)){
                             this.number = i;
-                            this.fineOne = true;
+                            this.findOne = true;
                         }
                     }));
                 }
