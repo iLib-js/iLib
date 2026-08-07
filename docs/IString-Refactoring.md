@@ -113,7 +113,7 @@ Also added `IString.prototype.constructor = IString;` right after the `IString.p
 - The 4 external `formatChoice` callers (DateFmt ×2, DurationFmt, UnitFmt) work unchanged ✓
 - The 2 external `setLocale` callers (ResBundle, UnitFmt) work unchanged ✓
 - The `format` → `formatChoice` internal call chain works correctly ✓
-- New unit tests added for the formatting mixin ([test/root/testistringfmt.js](../js/test/root/testistringfmt.js)) ✓
+- New unit tests added for the formatting mixin ([test/root/teststringfmt.js](../js/test/root/teststringfmt.js)) ✓
 - Existing suites (`teststrings.js`, `testpluralutils.js`, `teststringsasync.js`, `testdatefmt.js`, `testunitfmt.js`, `testnamefmt.js`, `testaddress.js`) pass unchanged ✓
 
 **Result:** IString.js reduced from 1158 to 712 lines (~446 removed); IStringFmt.js is 482 lines.

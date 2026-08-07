@@ -29,6 +29,7 @@ module.exports.files = [
     "testrequire.js",
     "testresources.js",
     "testscriptinfo.js",
+    "teststringfmt.js",
     "teststrings.js",
     "testcharsetasync.js",
     "testcountryasync.js",

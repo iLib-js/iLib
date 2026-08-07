@@ -1,5 +1,5 @@
 /*
- * testistringfmt.js - test the formatting methods mixed into IString.prototype
+ * teststringfmt.js - test the formatting methods mixed into IString.prototype
  * from IStringFmt.js (format, formatChoice, _testChoice, setLocale, getLocale)
  *
  * Copyright © 2026, JEDLSoft
@@ -28,7 +28,7 @@ if (typeof(IString) === "undefined") {
     var IString = require("../../lib/IString.js");
 }
 
-module.exports.testistringfmt = {
+module.exports.teststringfmt = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
@@ -36,30 +36,30 @@ module.exports.testistringfmt = {
 
     // --------- format ---------
 
-    testIStringFmtFormatSubstitutesParam: function(test) {
+    testStringFmtFormatSubstitutesParam: function(test) {
         test.expect(1);
         var str = new IString("There are {num} objects.");
         test.equal(str.format({num: 12}).toString(), "There are 12 objects.");
         test.done();
     },
 
-    testIStringFmtFormatLeavesMissingParamUntouched: function(test) {
+    testStringFmtFormatLeavesMissingParamUntouched: function(test) {
         test.expect(1);
         var str = new IString("There are {num} objects in the {container}.");
         test.equal(str.format({num: 12}).toString(), "There are 12 objects in the {container}.");
         test.done();
     },
 
-    testIStringFmtFormatCanBeAppliedTwice: function(test) {
+    testStringFmtFormatCanBeAppliedTwice: function(test) {
         test.expect(1);
         var str = new IString("There are {num} objects in the {container}.");
-        var partial = str.format({num: 12});
+        var partial = new IString(str.format({num: 12}));
         var full = partial.format({container: "box"});
         test.equal(full.toString(), "There are 12 objects in the box.");
         test.done();
     },
 
-    testIStringFmtFormatNoParams: function(test) {
+    testStringFmtFormatNoParams: function(test) {
         test.expect(1);
         var str = new IString("Nothing to replace.");
         test.equal(str.format().toString(), "Nothing to replace.");
@@ -68,35 +68,35 @@ module.exports.testistringfmt = {
 
     // --------- formatChoice: single index ---------
 
-    testIStringFmtFormatChoiceExactMatch: function(test) {
+    testStringFmtFormatChoiceExactMatch: function(test) {
         test.expect(1);
         var str = new IString("0#There are no objects.|1#There is one object.|2#There are {number} objects.");
         test.equal(str.formatChoice(2, {number: 2}, false), "There are 2 objects.");
         test.done();
     },
 
-    testIStringFmtFormatChoiceDefaultCase: function(test) {
+    testStringFmtFormatChoiceDefaultCase: function(test) {
         test.expect(1);
         var str = new IString("0#There are no objects.|1#There is one object.|#There are {number} objects.");
         test.equal(str.formatChoice(22, {number: 22}, false), "There are 22 objects.");
         test.done();
     },
 
-    testIStringFmtFormatChoiceEmptyStringReturnsEmpty: function(test) {
+    testStringFmtFormatChoiceEmptyStringReturnsEmpty: function(test) {
         test.expect(1);
         var str = new IString("");
         test.equal(str.formatChoice(2, {number: 2}, false), "");
         test.done();
     },
 
-    testIStringFmtFormatChoiceNoMatchNoDefaultReturnsEmpty: function(test) {
+    testStringFmtFormatChoiceNoMatchNoDefaultReturnsEmpty: function(test) {
         test.expect(1);
         var str = new IString("0#There are no objects.|1#There is one object.");
         test.equal(str.formatChoice(5, {number: 5}, false), "");
         test.done();
     },
 
-    testIStringFmtFormatChoiceThrowsOnSyntaxError: function(test) {
+    testStringFmtFormatChoiceThrowsOnSyntaxError: function(test) {
         test.expect(1);
         var str = new IString("this has no hash separator");
         test.throws(function() {
@@ -107,35 +107,35 @@ module.exports.testistringfmt = {
 
     // --------- formatChoice: numeric range syntax ---------
 
-    testIStringFmtFormatChoiceGreaterThan: function(test) {
+    testStringFmtFormatChoiceGreaterThan: function(test) {
         test.expect(1);
         var str = new IString(">10#big|#small");
         test.equal(str.formatChoice(11, {}, false), "big");
         test.done();
     },
 
-    testIStringFmtFormatChoiceGreaterThanOrEqual: function(test) {
+    testStringFmtFormatChoiceGreaterThanOrEqual: function(test) {
         test.expect(1);
         var str = new IString(">=10#big|#small");
         test.equal(str.formatChoice(10, {}, false), "big");
         test.done();
     },
 
-    testIStringFmtFormatChoiceLessThan: function(test) {
+    testStringFmtFormatChoiceLessThan: function(test) {
         test.expect(1);
         var str = new IString("<10#small|#big");
         test.equal(str.formatChoice(5, {}, false), "small");
         test.done();
     },
 
-    testIStringFmtFormatChoiceLessThanOrEqual: function(test) {
+    testStringFmtFormatChoiceLessThanOrEqual: function(test) {
         test.expect(1);
         var str = new IString("<=10#small|#big");
         test.equal(str.formatChoice(10, {}, false), "small");
         test.done();
     },
 
-    testIStringFmtFormatChoiceRange: function(test) {
+    testStringFmtFormatChoiceRange: function(test) {
         test.expect(1);
         var str = new IString("1-5#a few|#many");
         test.equal(str.formatChoice(3, {}, false), "a few");
@@ -144,7 +144,7 @@ module.exports.testistringfmt = {
 
     // --------- formatChoice: multiple indices ---------
 
-    testIStringFmtFormatChoiceMultipleIndices: function(test) {
+    testStringFmtFormatChoiceMultipleIndices: function(test) {
         test.expect(1);
         var str = new IString("1,1#one and one|#other");
         test.equal(str.formatChoice([1, 1], {}, false), "one and one");
@@ -153,21 +153,21 @@ module.exports.testistringfmt = {
 
     // --------- formatChoice: boolean and string index types ---------
 
-    testIStringFmtFormatChoiceBooleanTrue: function(test) {
+    testStringFmtFormatChoiceBooleanTrue: function(test) {
         test.expect(1);
         var str = new IString("true#yes|false#no");
         test.equal(str.formatChoice(true, {}, false), "yes");
         test.done();
     },
 
-    testIStringFmtFormatChoiceBooleanFalse: function(test) {
+    testStringFmtFormatChoiceBooleanFalse: function(test) {
         test.expect(1);
         var str = new IString("true#yes|false#no");
         test.equal(str.formatChoice(false, {}, false), "no");
         test.done();
     },
 
-    testIStringFmtFormatChoiceStringRegexp: function(test) {
+    testStringFmtFormatChoiceStringRegexp: function(test) {
         test.expect(1);
         var str = new IString("^a.*#starts with a|#other");
         test.equal(str.formatChoice("apple", {}, false), "starts with a");
@@ -176,7 +176,7 @@ module.exports.testistringfmt = {
 
     // --------- formatChoice: locale-dependent plural classes ---------
 
-    testIStringFmtFormatChoicePluralClassOne: function(test) {
+    testStringFmtFormatChoicePluralClassOne: function(test) {
         test.expect(1);
         var str = new IString("one#singular|other#plural");
         str.setLocale("en-US", true);
@@ -184,7 +184,7 @@ module.exports.testistringfmt = {
         test.done();
     },
 
-    testIStringFmtFormatChoicePluralClassOther: function(test) {
+    testStringFmtFormatChoicePluralClassOther: function(test) {
         test.expect(1);
         var str = new IString("one#singular|other#plural");
         str.setLocale("en-US", true);
@@ -194,14 +194,14 @@ module.exports.testistringfmt = {
 
     // --------- setLocale / getLocale ---------
 
-    testIStringFmtGetLocaleDefaultsToIlibLocale: function(test) {
+    testStringFmtGetLocaleDefaultsToIlibLocale: function(test) {
         test.expect(1);
         var str = new IString("test");
         test.equal(str.getLocale(), ilib.getLocale());
         test.done();
     },
 
-    testIStringFmtSetLocaleWithString: function(test) {
+    testStringFmtSetLocaleWithString: function(test) {
         test.expect(1);
         var str = new IString("test");
         str.setLocale("ko-KR", true);
@@ -209,7 +209,7 @@ module.exports.testistringfmt = {
         test.done();
     },
 
-    testIStringFmtSetLocaleWithLocaleObject: function(test) {
+    testStringFmtSetLocaleWithLocaleObject: function(test) {
         test.expect(1);
         var str = new IString("test");
         str.setLocale(new Locale("ja-JP"), true);
@@ -217,7 +217,7 @@ module.exports.testistringfmt = {
         test.done();
     },
 
-    testIStringFmtSetLocaleThenFormatChoiceUsesNewLocale: function(test) {
+    testStringFmtSetLocaleThenFormatChoiceUsesNewLocale: function(test) {
         test.expect(1);
         var str = new IString("one#singular|other#plural");
         str.setLocale("ko-KR", true);
