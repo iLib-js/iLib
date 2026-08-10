@@ -10,6 +10,12 @@ Bug Fixes:
   (`PluralUtils`): use the absolute value of the number for CLDR operands, parse
   multi-digit exponents, keep large integers intact, and treat 3+ value lists as
   sets rather than ranges.
+* Fix `formatChoice` incorrectly ignoring numeric-range patterns after
+  `setLocale`, corrupting multi-index match state across calls, and mishandling
+  choice text containing "#".
+* Fix `format` to escape regex metacharacters in parameter names and prevent
+  replacement values containing `$&`/`$$` from being interpreted as special
+  patterns.
 
 Refactoring:
 * Extract the plural rule engine (`plurals_default`, `loadPlurals`, `_fncs`) from
