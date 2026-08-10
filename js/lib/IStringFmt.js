@@ -26,17 +26,10 @@ var PluralUtils = require("./PluralUtils.js");
 var IStringFmt = {};
 
 /**
- * Return true if the given choice-pattern limit (or one of its
- * comma-separated parts, for multi-index choices) uses the numeric
- * threshold/range operator syntax (">10", "<=5", "1-5", etc.).
- * Intl.PluralRules only ever resolves a number to a CLDR plural category
- * name (zero/one/two/few/many/other); it has no notion of a numeric
- * threshold or range at all, so a limit using this syntax can only ever
- * be matched by _testChoice's own parsing logic, never by the Intl path.
- * Bare category names and plain numeric literals (e.g. "0", used as an
- * explicit-value override alongside category names) are left alone here:
- * those already fall through to the default choice under the Intl path
- * exactly as before, which is the existing, intentional behavior.
+ * Return true if the given choice-pattern limit uses numeric threshold/range
+ * syntax (">10", "<=5", "1-5", etc.). Such limits must be matched by
+ * _testChoice's own logic since Intl.PluralRules only resolves to CLDR
+ * category names (zero/one/two/few/many/other), not numeric ranges.
  * @private
  * @param {string} limit
  * @return {boolean}
