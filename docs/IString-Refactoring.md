@@ -1,5 +1,7 @@
 # IString Refactoring Plan
 
+**Status:** Complete — both phases done.
+
 ## Goal
 
 [IString.js](../js/lib/IString.js) (~1535 lines) currently mixes three distinct responsibilities in a single file.
@@ -15,7 +17,7 @@ The goal is to split it by responsibility to improve readability and maintainabi
 
 ### External Usage
 
-- Files that `require('./IString')`: **38** (within js/lib)
+- Files that `require('./IString')`: **33** (within js/lib)
 - `IString.loadPlurals()` static callers: `ResBundle.js`, `DurationFmt.js`, `UnitFmt.js`
 - `formatChoice()` instance callers: `DurationFmt.js`, `UnitFmt.js`, `DateFmt.js`
 
@@ -41,7 +43,8 @@ IStringFmt.js  (method object, not a class)
 
 IString.js  (final assembly)
   └─ depends on: ilib, PluralUtils, IStringFmt
-  └─ Object.assign(IString.prototype, IStringFmt) to inject methods
+  └─ format/formatChoice/setLocale/getLocale kept as delegating stubs on
+     IString.prototype (JSDoc lives here; body calls IStringFmt.xxx.call(this, ...))
   └─ module.exports = IString  ← no change to public API
 ```
 
@@ -54,7 +57,7 @@ IString.js  (final assembly)
 | Existing call pattern | How it is preserved |
 |-----------------------|---------------------|
 | `require('./IString')` | IString.js exports the same class |
-| `new IString(str).formatChoice(...)` | Methods kept on prototype via mixin |
+| `new IString(str).formatChoice(...)` | Kept on prototype as a delegating stub with the original JSDoc; body calls into `IStringFmt` |
 | `IString.loadPlurals(...)` | `IString.loadPlurals = PluralUtils.loadPlurals` alias in IString.js |
 | `IString._fncs` | `IString._fncs = PluralUtils._fncs` alias in IString.js |
 | `IString.plurals_default` | `IString.plurals_default = PluralUtils.plurals_default` alias in IString.js |
@@ -88,35 +91,42 @@ IString.js  (final assembly)
 
 ### Phase 2: Extract IStringFmt.js ← **done**
 
-**Items to move:**
+**Items moved to IStringFmt.js as private implementation (no public JSDoc there):**
 
-| Item | Current location |
+| Item | Original location |
 |------|-----------------|
-| `IString.prototype.format` | IString.js:609 |
-| `IString.prototype._testChoice` | IString.js:624 |
-| `IString.prototype._isIntlPluralAvailable` | IString.js:689 |
-| `IString.prototype.formatChoice` | IString.js:852 |
-| `IString.prototype.setLocale` | IString.js:1484 |
-| `IString.prototype.getLocale` | IString.js:1508 |
+| `IStringFmt._testChoice` | IString.js:624 |
+| `IStringFmt._isIntlPluralAvailable` | IString.js:689 |
+
+The implementation of `format` (was IString.js:609), `formatChoice` (was IString.js:852), `setLocale` (was IString.js:1484), and `getLocale` (was IString.js:1508) also moved to `IStringFmt.js`. But per code review, these four are public API entry points, so their documentation stays on `IString.js` where consumers read it — only the implementation moved. Each stays on `IString.prototype` as a one-liner delegating stub carrying the full original JSDoc:
+
+```js
+// IString.js
+format: function (params) {
+    return IStringFmt.format.call(this, params);
+},
+```
+
+`IStringFmt.js` keeps the implementation with only a short `@private` pointer back to the IString.js JSDoc, so the documentation isn't duplicated in two places.
 
 **IString.js changes:**
-```js
-var IStringFmt = require('./IStringFmt');
-Object.assign(IString.prototype, IStringFmt);
-```
+- Add `var IStringFmt = require('./IStringFmt');`
+- Re-declare `format`, `formatChoice`, `setLocale`, `getLocale` on the prototype as delegating stubs (see above) instead of the earlier plan's `Object.assign(IString.prototype, IStringFmt)` mixin
 
 Also added `IString.prototype.constructor = IString;` right after the `IString.prototype = {...}` object-literal assignment. Replacing `.prototype` wholesale drops the auto-generated `constructor` property, so `formatChoice`'s internal `new this.constructor(...)` calls (used instead of a bare `IString` reference to avoid a require-time circular dependency with IStringFmt.js) resolved to `Object` instead of `IString` until this line was added.
 
 `_testChoice`'s `IString._fncs.*` / `IString.plurals_default` references became `PluralUtils._fncs.*` / `PluralUtils.plurals_default` directly, and `setLocale`'s `IString.loadPlurals(...)` call became `PluralUtils.loadPlurals(...)`, since IStringFmt.js requires PluralUtils.js itself rather than reaching back through IString's static aliases. The `Locale` require moved from IString.js to IStringFmt.js (nothing else in IString.js used it).
 
+Because `_testChoice` and `_isIntlPluralAvailable` are no longer mixed onto the prototype, `formatChoice` and `setLocale` call them as `IStringFmt._testChoice.call(this, ...)` / `IStringFmt._isIntlPluralAvailable(this.locale)` (module-internal references) rather than `this._testChoice(...)` / `this._isIntlPluralAvailable(...)`.
+
 **Verification:**
 - The 4 external `formatChoice` callers (DateFmt ×2, DurationFmt, UnitFmt) work unchanged ✓
 - The 2 external `setLocale` callers (ResBundle, UnitFmt) work unchanged ✓
 - The `format` → `formatChoice` internal call chain works correctly ✓
-- New unit tests added for the formatting mixin ([test/root/teststringfmt.js](../js/test/root/teststringfmt.js)) ✓
+- New unit tests added for the formatting delegation ([test/root/teststringfmt.js](../js/test/root/teststringfmt.js)) ✓
 - Existing suites (`teststrings.js`, `testpluralutils.js`, `teststringsasync.js`, `testdatefmt.js`, `testunitfmt.js`, `testnamefmt.js`, `testaddress.js`) pass unchanged ✓
 
-**Result:** IString.js reduced from 1158 to 712 lines (~446 removed); IStringFmt.js is 482 lines.
+**Result:** IString.js is 944 lines (public JSDoc for format/formatChoice/setLocale/getLocale restored as delegating stubs); IStringFmt.js is 284 lines (implementation only, docs trimmed to `@private` pointers).
 
 ---
 
@@ -125,13 +135,7 @@ Also added `IString.prototype.constructor = IString;` right after the `IString.p
 | File | Estimated lines | Actual |
 |------|----------------|-----------------|
 | PluralUtils.js | ~460 | 378 (done) |
-| IStringFmt.js | ~420 | 482 (done) |
-| IString.js | ~660 | 712 (done) |
+| IStringFmt.js | ~420 | 284 (done) |
+| IString.js | ~660 | 944 (done) |
 
----
-
-## Notes
-
-- `formatChoice` internally creates `new IString(strings[i])`. After the split, `IStringFmt` does not require `IString` directly, so there is no circular dependency. Instead, `formatChoice` uses `new this.constructor(...)`, which resolves to `IString` at call time via the instance's prototype chain.
-- Because `IString.prototype` is replaced wholesale with an object literal (`IString.prototype = {...}`), the JS-engine-provided `constructor` property is lost in the process (it would otherwise point back to `IString` automatically). `IString.js` restores it explicitly with `IString.prototype.constructor = IString;` right after the object-literal assignment — this is required for `this.constructor` in `formatChoice` to resolve correctly.
-- `_testChoice` calls `PluralUtils._fncs` and `PluralUtils.plurals_default` directly (not through the `IString._fncs`/`IString.plurals_default` aliases), and `setLocale` calls `PluralUtils.loadPlurals` directly (not `IString.loadPlurals`), since `IStringFmt.js` depends on `PluralUtils` directly, which is cleaner and avoids any indirect circular reference.
+IString.js and IStringFmt.js ended up further from the original estimate than Phase 1 predicted: the code-review decision to keep `format`/`formatChoice`/`setLocale`/`getLocale` documentation on `IString.js` (see Phase 2 above) moved ~250 lines of JSDoc back from IStringFmt.js to IString.js relative to a plain mixin split.
