@@ -1,6 +1,6 @@
 /*
- * teststringfmt.js - test the formatting methods mixed into IString.prototype
- * from IStringFmt.js (format, formatChoice, _testChoice, setLocale, getLocale)
+ * teststringfmt.js - test the formatting methods on IString.prototype
+ * (format, formatChoice, setLocale, getLocale) that delegate to IStringFmt.js
  *
  * Copyright © 2026, JEDLSoft
  *
