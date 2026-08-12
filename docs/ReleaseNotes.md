@@ -21,9 +21,10 @@ Refactoring:
 * Extract the plural rule engine (`plurals_default`, `loadPlurals`, `_fncs`) from
   `IString.js` into a standalone `PluralUtils.js` module. `IString` retains
   backward-compatible aliases, so the public API is unchanged.
-* Extract the formatting methods (`format`, `formatChoice`, and related helpers)
-  from `IString.js` into a standalone `IStringFmt.js` module. `IString` delegates
-  to `IStringFmt` internally, so the public API is unchanged.
+* Extract the string formatting methods (`format`, `formatChoice`, `setLocale`,
+  `getLocale`, `_testChoice`, `_isIntlPluralAvailable`) from `IString.js` into
+  a standalone `IStringFmt.js` module. Public methods stay on
+  `IString.prototype` with their original JSDoc, so the public API is unchanged.
 
 
 Build 035
