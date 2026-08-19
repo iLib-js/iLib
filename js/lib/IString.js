@@ -151,7 +151,7 @@ IString.loadPlurals = PluralUtils.loadPlurals;
 /** @private @static */
 IString._fncs = PluralUtils._fncs;
 
-IString.prototype = {
+Object.assign(IString.prototype, {
     /**
      * Return the length of this string in characters. This function defers to the regular
      * Javascript string class in order to perform the length function. Please note that this
@@ -934,11 +934,6 @@ IString.prototype = {
         }
         return this.cpLength;
     }
-};
-
-// restore the constructor reference lost when the prototype was replaced with
-// an object literal above; IStringFmt.formatChoice relies on this.constructor
-// to create new IString instances without requiring IString.js itself
-IString.prototype.constructor = IString;
+});
 
 module.exports = IString;
