@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, 2018, 2021-2023 JEDLSoft
+ * Copyright © 2012-2015, 2018, 2021-2023, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,8 @@
 // !data plurals
 
 var ilib = require("../index.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
-var Locale = require("./Locale.js");
+var PluralUtils = require("./PluralUtils.js");
+var IStringFmt = require("./IStringFmt");
 
 /**
  * @class
@@ -72,25 +71,8 @@ IString._isSurrogate = function (ch) {
     return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
 };
 
-// build in the English rule
-IString.plurals_default = {
-    "one": {
-        "and": [
-            {
-                "eq": [
-                    "i",
-                    1
-                ]
-            },
-            {
-                "eq": [
-                    "v",
-                    0
-                ]
-            }
-        ]
-    }
-};
+// backward-compatible aliases — implementation lives in PluralUtils.js
+IString.plurals_default = PluralUtils.plurals_default;
 
 /**
  * Convert a UCS-4 code point to a Javascript string. The codepoint can be any valid
@@ -164,371 +146,12 @@ IString.toCodePoint = function(str, index) {
  * @param {Object=} loadParams
  * @param {function(*)=} onLoad
  */
-IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
-    var loc;
-    if (locale) {
-        loc = (typeof(locale) === 'string') ? new Locale(locale) : locale;
-    } else {
-        loc = new Locale(ilib.getLocale());
-    }
-    var spec = loc.getLanguage();
-    Utils.loadData({
-        name: "plurals.json",
-        object: "IString",
-        locale: loc,
-        sync: sync,
-        loadParams: loadParams,
-        callback: ilib.bind(this, function(plurals) {
-            plurals = plurals || IString.plurals_default;
-            if (onLoad && typeof(onLoad) === 'function') {
-                onLoad(plurals);
-            }
-        })
-    });
-};
+IString.loadPlurals = PluralUtils.loadPlurals;
 
-/**
- * @private
- * @static
- */
-IString._fncs = {
-    /**
-     * @private
-     * @param {Object} obj
-     * @return {string|undefined}
-     */
-    firstProp: function (obj) {
-        for (var p in obj) {
-            if (p && obj[p]) {
-                return p;
-            }
-        }
-        return undefined; // should never get here
-    },
+/** @private @static */
+IString._fncs = PluralUtils._fncs;
 
-    /**
-     * @private
-     * @param {Object} obj
-     * @return {string|undefined}
-     */
-    firstPropRule: function (obj) {
-        if (Object.prototype.toString.call(obj) === '[object Array]') {
-            return "inrange";
-        } else if (Object.prototype.toString.call(obj) === '[object Object]') {
-            for (var p in obj) {
-                if (p && obj[p]) {
-                    return p;
-                }
-            }
-
-        }
-        return undefined; // should never get here
-    },
-
-    /**
-     * @private
-     * @param {Object} obj
-     * @param {number|Object} n
-     * @return {?}
-     */
-    getValue: function (obj, n) {
-        if (typeof(obj) === 'object') {
-            var subrule = IString._fncs.firstPropRule(obj);
-            if (subrule === "inrange") {
-                return IString._fncs[subrule](obj, n);
-            }
-            return IString._fncs[subrule](obj[subrule], n);
-        } else if (typeof(obj) === 'string') {
-            if (typeof(n) === 'object'){
-                return n[obj];
-            }
-            return n;
-        } else {
-            return obj;
-        }
-    },
-
-    /**
-     * @private
-     * @param {number|Object} n
-     * @param {Array.<number|Array.<number>>|Object} range
-     * @return {boolean}
-     */
-    matchRangeContinuous: function(n, range) {
-
-        for (var num in range) {
-            if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
-                var obj = range[num];
-                if (typeof(obj) === 'number') {
-                    if (n === range[num]) {
-                        return true;
-                    } else if (n >= range[0] && n <= range[1]) {
-                        return true;
-                    }
-                } else if (Object.prototype.toString.call(obj) === '[object Array]') {
-                    if (n >= obj[0] && n <= obj[1]) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    },
-
-    /**
-     * @private
-     * @param {*} number
-     * @return {Object}
-     */
-    calculateNumberDigits: function(number) {
-        var numberToString = number.toString();
-        var parts = [];
-        var numberDigits =  {};
-        var operandSymbol =  {};
-
-        var exponentialNum = number.toExponential();
-        var exponentialIndex = exponentialNum.indexOf("e");
-        if (exponentialIndex !== -1) {
-            operandSymbol.c = parseInt(exponentialNum[exponentialIndex+2]);
-            operandSymbol.e = parseInt(exponentialNum[exponentialIndex+2]);
-        } else {
-            operandSymbol.c = 0;
-            operandSymbol.e = 0;
-        }
-
-        if (numberToString.indexOf('.') !== -1) { //decimal
-            parts = numberToString.split('.', 2);
-            numberDigits.integerPart = parseInt(parts[0], 10);
-            numberDigits.decimalPartLength = parts[1].length;
-            numberDigits.decimalPart = parseInt(parts[1], 10);
-
-            operandSymbol.n = parseFloat(number);
-            operandSymbol.i = numberDigits.integerPart;
-            operandSymbol.v = numberDigits.decimalPartLength;
-            operandSymbol.w = numberDigits.decimalPartLength;
-            operandSymbol.f = numberDigits.decimalPart;
-            operandSymbol.t = numberDigits.decimalPart;
-
-        } else {
-            numberDigits.integerPart = number;
-            numberDigits.decimalPartLength = 0;
-            numberDigits.decimalPart = 0;
-
-            operandSymbol.n = parseInt(number, 10);
-            operandSymbol.i = numberDigits.integerPart;
-            operandSymbol.v = 0;
-            operandSymbol.w = 0;
-            operandSymbol.f = 0;
-            operandSymbol.t = 0;
-
-        }
-        return operandSymbol
-    },
-
-    /**
-     * @private
-     * @param {number|Object} n
-     * @param {Array.<number|Array.<number>>|Object} range
-     * @return {boolean}
-     */
-    matchRange: function(n, range) {
-        return IString._fncs.matchRangeContinuous(n, range);
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {boolean}
-     */
-    is: function(rule, n) {
-        var left = IString._fncs.getValue(rule[0], n);
-        var right = IString._fncs.getValue(rule[1], n);
-        return left === right;
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {boolean}
-     */
-    isnot: function(rule, n) {
-        return IString._fncs.getValue(rule[0], n) !== IString._fncs.getValue(rule[1], n);
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number|Object} n
-     * @return {boolean}
-     */
-    inrange: function(rule, n) {
-        if (typeof(rule[0]) === 'number') {
-            if(typeof(n) === 'object') {
-                return IString._fncs.matchRange(n.n,rule);
-            }
-            return IString._fncs.matchRange(n,rule);
-        } else if (typeof(rule[0]) === 'undefined') {
-            var subrule = IString._fncs.firstPropRule(rule);
-            return IString._fncs[subrule](rule[subrule], n);
-        } else {
-            return IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);
-        }
-    },
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {boolean}
-     */
-    notin: function(rule, n) {
-        return !IString._fncs.matchRange(IString._fncs.getValue(rule[0], n), rule[1]);
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {boolean}
-     */
-    within: function(rule, n) {
-        return IString._fncs.matchRangeContinuous(IString._fncs.getValue(rule[0], n), rule[1]);
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {number}
-     */
-    mod: function(rule, n) {
-        return MathUtils.mod(IString._fncs.getValue(rule[0], n), IString._fncs.getValue(rule[1], n));
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number} n
-     * @return {number}
-     */
-    n: function(rule, n) {
-        return n;
-    },
-
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number|Object} n
-     * @return {boolean}
-     */
-    or: function(rule, n) {
-        var ruleLength = rule.length;
-        var result, i;
-        for (i=0; i < ruleLength; i++) {
-            result = IString._fncs.getValue(rule[i], n);
-            if (result) {
-                return true;
-            }
-        }
-        return false;
-    },
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number|Object} n
-     * @return {boolean}
-     */
-    and: function(rule, n) {
-        var ruleLength = rule.length;
-        var result, i;
-        for (i=0; i < ruleLength; i++) {
-            result= IString._fncs.getValue(rule[i], n);
-            if (!result) {
-                return false;
-            }
-        }
-        return true;
-    },
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number|Object} n
-     * @return {boolean}
-     */
-    eq: function(rule, n) {
-        var valueLeft = IString._fncs.getValue(rule[0], n);
-        var valueRight;
-
-        if (typeof(rule[0]) === 'string') {
-            if (typeof(n) === 'object'){
-                valueRight = n[rule[0]];
-                if (typeof(rule[1])=== 'number'){
-                    valueRight = IString._fncs.getValue(rule[1], n);
-                } else if (typeof(rule[1])=== 'object' && (IString._fncs.firstPropRule(rule[1]) === "inrange" )){
-                    valueRight = IString._fncs.getValue(rule[1], n);
-                }
-            }
-        } else {
-            if (IString._fncs.firstPropRule(rule[1]) === "inrange") { // mod
-                valueRight = IString._fncs.getValue(rule[1], valueLeft);
-            } else {
-                valueRight = IString._fncs.getValue(rule[1], n);
-            }
-        }
-        if(typeof(valueRight) === 'boolean') {
-            return (valueRight ? true : false);
-        } else {
-            return (valueLeft === valueRight ? true :false);
-        }
-    },
-    /**
-     * @private
-     * @param {Object} rule
-     * @param {number|Object} n
-     * @return {boolean}
-     */
-    neq: function(rule, n) {
-        var valueLeft = IString._fncs.getValue(rule[0], n);
-        var valueRight;
-        var leftRange;
-        var rightRange;
-
-        if (typeof(rule[0]) === 'string') {
-            valueRight = n[rule[0]];
-            if (typeof(rule[1])=== 'number'){
-                valueRight = IString._fncs.getValue(rule[1], n);
-            } else if (typeof(rule[1]) === 'object') {
-                leftRange = rule[1][0];
-                rightRange =  rule[1][1];
-                if (typeof(leftRange) === 'number' &&
-                    typeof(rightRange) === 'number'){
-
-                    if (valueLeft >= leftRange && valueRight <= rightRange) {
-                        return false
-                    } else {
-                        return true;
-                    }
-                }
-            }
-        } else {
-            if (IString._fncs.firstPropRule(rule[1]) === "inrange") { // mod
-                valueRight = IString._fncs.getValue(rule[1], valueLeft);
-            } else {
-                valueRight = IString._fncs.getValue(rule[1], n);
-            }
-        }
-
-        if(typeof(valueRight) === 'boolean') {//mod
-            return (valueRight? false : true);
-        } else {
-            return (valueLeft !== valueRight ? true :false);
-        }
-
-    }
-};
-
-IString.prototype = {
+Object.assign(IString.prototype, {
     /**
      * Return the length of this string in characters. This function defers to the regular
      * Javascript string class in order to perform the length function. Please note that this
@@ -607,108 +230,7 @@ IString.prototype = {
      * out as possible with real values.
      */
     format: function (params) {
-        var formatted = this.str;
-        if (params) {
-            var regex;
-            for (var p in params) {
-                if (typeof(params[p]) !== 'undefined') {
-                    regex = new RegExp("\{"+p+"\}", "g");
-                    formatted = formatted.replace(regex, params[p]);
-                }
-            }
-        }
-        return formatted.toString();
-    },
-
-    /** @private */
-    _testChoice: function(index, limit) {
-        var operandValue = {};
-
-        switch (typeof(index)) {
-            case 'number':
-                operandValue = IString._fncs.calculateNumberDigits(index);
-
-                if (limit.substring(0,2) === "<=") {
-                    limit = parseFloat(limit.substring(2));
-                    return operandValue.n <= limit;
-                } else if (limit.substring(0,2) === ">=") {
-                    limit = parseFloat(limit.substring(2));
-                    return operandValue.n >= limit;
-                } else if (limit.charAt(0) === "<") {
-                    limit = parseFloat(limit.substring(1));
-                    return operandValue.n < limit;
-                } else if (limit.charAt(0) === ">") {
-                    limit = parseFloat(limit.substring(1));
-                    return operandValue.n > limit;
-                } else {
-                    this.locale = this.locale || new Locale(this.localeSpec);
-                    switch (limit) {
-                        case "zero":
-                        case "one":
-                        case "two":
-                        case "few":
-                        case "many":
-                            // CLDR locale-dependent number classes
-                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()+ "_" + this.locale.getRegion()] || ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
-                            if (ruleset) {
-                                var rule = ruleset[limit];
-                                return IString._fncs.getValue(rule, operandValue);
-                            }
-                            break;
-                        case "":
-                        case "other":
-                            // matches anything
-                            return true;
-                        default:
-                            var dash = limit.indexOf("-");
-                            if (dash !== -1) {
-                                // range
-                                var start = limit.substring(0, dash);
-                                var end = limit.substring(dash+1);
-                                return operandValue.n >= parseInt(start, 10) && operandValue.n <= parseInt(end, 10);
-                            } else {
-                                return operandValue.n === parseInt(limit, 10);
-                            }
-                    }
-                }
-                break;
-            case 'boolean':
-                return (limit === "true" && index === true) || (limit === "false" && index === false);
-
-            case 'string':
-                var regexp = new RegExp(limit, "i");
-                return regexp.test(index);
-
-            case 'object':
-                throw "syntax error: formatChoice parameter for the argument index cannot be an object";
-        }
-
-        return false;
-    },
-    /** @private */
-    _isIntlPluralAvailable: function(locale) {
-        if (typeof (locale.getVariant()) !== 'undefined'){
-            return false;
-        }
-
-        if (typeof(Intl) !== 'undefined' &&
-                typeof(Intl.PluralRules) !== 'undefined' &&
-                typeof(Intl.PluralRules.supportedLocalesOf) !== 'undefined') {
-            if (ilib._getPlatform() === 'nodejs') {
-                var version = process.versions["node"];
-                if (!version) return false;
-                var majorVersion = version.split(".")[0];
-                if (Number(majorVersion) >= 10 && (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0)) {
-                    return true;
-                }
-                return false;
-            } else if (Intl.PluralRules.supportedLocalesOf(locale.getSpec()).length > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
+        return IStringFmt.format.call(this, params);
     },
 
     /**
@@ -850,114 +372,7 @@ IString.prototype = {
      * @return {string} the formatted string
      */
     formatChoice: function(argIndex, params, useIntlPlural) {
-        var choices = this.str.split("|");
-        var limits = [];
-        var strings = [];
-        var limitsArr = [];
-        var i;
-        var parts;
-        var result = undefined;
-        var defaultCase = "";
-        var checkArgsType;
-        var useIntl = typeof(useIntlPlural) !== 'undefined' ? useIntlPlural : true;
-        if (this.str.length === 0) {
-            // nothing to do
-            return "";
-        }
-
-        // first parse all the choices
-        for (i = 0; i < choices.length; i++) {
-            parts = choices[i].split("#");
-            if (parts.length > 2) {
-                limits[i] = parts[0];
-                parts = parts.shift();
-                strings[i] = parts.join("#");
-            } else if (parts.length === 2) {
-                limits[i] = parts[0];
-                strings[i] = parts[1];
-            } else {
-                // syntax error
-                throw "syntax error in choice format pattern: " + choices[i];
-            }
-        }
-
-        var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
-
-        checkArgsType = args.filter(ilib.bind(this, function(item){
-            if (typeof(item) !== "number") {
-                return false;
-            }
-            return true;
-        }));
-
-        if (useIntl && this.intlPlural && (args.length === checkArgsType.length)){
-            this.cateArr = [];
-            for(i = 0; i < args.length;i++) {
-                var r = this.intlPlural.select(args[i]);
-                this.cateArr.push(r);
-            }
-            if (args.length === 1) {
-                var idx = limits.indexOf(this.cateArr[0]);
-                if (idx == -1) {
-                    idx = limits.indexOf("");
-                }
-                result = new IString(strings[idx]);
-            } else {
-                if (limits.length === 0) {
-                    defaultCase = new IString(strings[i]);
-                } else {
-                    this.findOne = false;
-
-                    for(i = 0; !this.findOne && i < limits.length; i++){
-                        limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
-
-                        if (limitsArr.length > 1 && (limitsArr.length < this.cateArr.length)){
-                            this.cateArr = this.cateArr.slice(0,limitsArr.length);
-                        }
-                        limitsArr = limitsArr.map(function(item){
-                            return item.trim();
-                        })
-                        limitsArr.filter(ilib.bind(this, function(element, idx, arr){
-                            if (JSON.stringify(arr) === JSON.stringify(this.cateArr)){
-                                this.number = i;
-                                this.fineOne = true;
-                            }
-                        }));
-                    }
-                    if (this.number === -1){
-                        this.number = limits.indexOf("");
-                    }
-                    result = new IString(strings[this.number]);
-                }
-            }
-        } else {
-            // then apply the argument index (or indices)
-            for (i = 0; i < limits.length; i++) {
-                if (limits[i].length === 0) {
-                    // this is default case
-                    defaultCase = new IString(strings[i]);
-                } else {
-                    limitsArr = (limits[i].indexOf(",") > -1) ? limits[i].split(",") : [limits[i]];
-
-                    var applicable = true;
-                    for (var j = 0; applicable && j < args.length && j < limitsArr.length; j++) {
-                        applicable = this._testChoice(args[j], limitsArr[j]);
-                    }
-
-                    if (applicable) {
-                        result = new IString(strings[i]);
-                        i = limits.length;
-                    }
-                }
-            }
-        }
-        if (!result) {
-            result = defaultCase || new IString("");
-        }
-
-        result = result.format(params);
-
-        return result.toString();
+        return IStringFmt.formatChoice.call(this, argIndex, params, useIntlPlural);
     },
 
     // delegates
@@ -1482,18 +897,7 @@ IString.prototype = {
      * @param {function(*)=} onLoad [optional] function to call when the loading is done
      */
     setLocale: function (locale, sync, loadParams, onLoad) {
-        if (typeof(locale) === 'object') {
-            this.locale = locale;
-        } else {
-            this.localeSpec = locale;
-            this.locale = new Locale(locale);
-        }
-
-        if (this._isIntlPluralAvailable(this.locale)){
-            this.intlPlural = new Intl.PluralRules(this.locale.getSpec());
-        }
-
-        IString.loadPlurals(typeof(sync) !== 'undefined' ? sync : true, this.locale, loadParams, onLoad);
+        return IStringFmt.setLocale.call(this, locale, sync, loadParams, onLoad);
     },
 
     /**
@@ -1506,7 +910,7 @@ IString.prototype = {
      * formats with this string
      */
     getLocale: function () {
-        return (this.locale ? this.locale.getSpec() : this.localeSpec) || ilib.getLocale();
+        return IStringFmt.getLocale.call(this);
     },
 
     /**
@@ -1530,6 +934,6 @@ IString.prototype = {
         }
         return this.cpLength;
     }
-};
+});
 
 module.exports = IString;

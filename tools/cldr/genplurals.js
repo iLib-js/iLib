@@ -160,6 +160,20 @@ function create_expr(operand_string) {
     return expr;
 }
 
+// KNOWN BUG (data-format ambiguity):
+// This encoding cannot distinguish a single range from a two-value set.
+//   "2..4" (range 2 to 4)  -> create_range returns [2,4], list length 1 -> unwrapped to [2,4]
+//   "2,4"  (set {2,4})     -> two single values [2,4]                    -> [2,4]
+// Both collapse to the identical JSON [2,4], so the range/set distinction
+// is lost. At runtime PluralUtils.matchRangeContinuous has to guess, and it
+// assumes "range" — correct for e.g. Russian (i%10 = 2..4) but wrong for the
+// few locales that use a two-value set (e.g. Scottish Gaelic: n = 2,12; n = 1,11).
+//
+// To fix properly, emit an unambiguous format (for example, always wrap ranges
+// as nested arrays [[2,4]] and keep sets flat [2,4], or tag them explicitly),
+// then update PluralUtils.matchRangeContinuous to match, and regenerate every
+// locale's plurals.json. Sets with 3+ values (e.g. [11,71,91]) and mixed
+// lists (e.g. [[3,4],9]) are already handled correctly by the runtime.
 function create_range_list(ranges_string) {
     var range_string_list;
     var range_list;
@@ -169,7 +183,7 @@ function create_range_list(ranges_string) {
         return create_range(range_string.trim());
     });
     if (1 === range_list.length)
-        return range_list[0];
+        return range_list[0];  // NOTE: unwrapping a lone range here is what creates the ambiguity above
     else
         return range_list;
 }
