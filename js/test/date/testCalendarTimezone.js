@@ -47,8 +47,6 @@ module.exports.testCalendarTimezone = {
         callback();
     },
 
-    // ===== Scenario 3: cross-calendar conversion with timezone =====
-
     // gregorian components with timezone formatted as ethiopic
     testDateFmtCrossCalGregToEthiopic_am_ET: function(test) {
         test.expect(1);
@@ -111,8 +109,6 @@ module.exports.testCalendarTimezone = {
         test.equal(fmt.format(fromUnixtime), "20/10/2016 7:00 ከሰዓት");
         test.done();
     },
-
-    // ===== Scenario 4: same calendar, different timezone =====
 
     // NY time formatted with Seoul formatter
     testDateFmtTzConvNYToSeoul_ko_KR: function(test) {
@@ -186,8 +182,6 @@ module.exports.testCalendarTimezone = {
         test.equal(fmt.format(dateUnix), "January 14, 2024 at 4:00\u202FPM");
         test.done();
     },
-
-    // ===== Scenario 5: different timezone AND different calendar =====
 
     // NY gregorian to Addis Ababa ethiopic
     testDateFmtTzCalConvNYGregToAddisEthiopic_am_ET: function(test) {
