@@ -178,8 +178,8 @@ module.exports.testCalendarTimezone = {
             timezone: "America/Los_Angeles"
         });
 
-        test.equal(fmt.format(dateSeoul), "January 14, 2024 at 4:00\u202FPM");
-        test.equal(fmt.format(dateUnix), "January 14, 2024 at 4:00\u202FPM");
+        test.equal(fmt.format(dateSeoul), "January 14, 2024 at 4:00 PM");
+        test.equal(fmt.format(dateUnix), "January 14, 2024 at 4:00 PM");
         test.done();
     },
 
