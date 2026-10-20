@@ -907,7 +907,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣');
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_ckb_IQ: function(test) {
@@ -929,7 +929,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_ckb_IQ: function(test) {
@@ -969,7 +969,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣');
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_ckb_IQ: function(test) {
@@ -991,7 +991,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣');
         test.done();
     },
     testDateFmtFullTimeComponentsS_ckb_IQ: function(test) {
@@ -1140,7 +1140,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣');
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_ckb_IQ: function(test) {
@@ -1163,7 +1163,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_ckb_IQ: function(test) {
@@ -1204,7 +1204,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣');
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_ckb_IQ: function(test) {
@@ -1227,7 +1227,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣');
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_ckb_IQ: function(test) {
@@ -1250,7 +1250,7 @@ module.exports.testdatefmt_ckb_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣');
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_ckb_IQ: function(test) {

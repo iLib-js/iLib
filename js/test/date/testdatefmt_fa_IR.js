@@ -1121,7 +1121,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_fa_IR: function(test) {
@@ -1144,7 +1144,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_fa_IR: function(test) {
@@ -1190,7 +1190,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_fa_IR: function(test) {
@@ -1213,7 +1213,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtFullTimeComponentsS_fa_IR: function(test) {
@@ -1405,7 +1405,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_fa_IR: function(test) {
@@ -1429,7 +1429,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_fa_IR: function(test) {
@@ -1477,7 +1477,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_fa_IR: function(test) {
@@ -1501,7 +1501,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_fa_IR: function(test) {
@@ -1525,7 +1525,7 @@ module.exports.testdatefmt_fa_IR = {
             second:37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰/+۰۴۳۰)");
+        test.equal(fmt.format(date), "‏۱۳:۴۵:۳۷ (+۰۳۳۰)");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_fa_IR: function(test) {
