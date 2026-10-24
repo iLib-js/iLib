@@ -944,7 +944,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 -03/-02");
+        test.equal(fmt.format(date), "13:45 -03");
         test.done();
     },
     testDateFmtBRShortTimeComponentsHMAZ: function(test) {
@@ -967,7 +967,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 -03/-02");
+        test.equal(fmt.format(date), "13:45 -03");
         test.done();
     },
     testDateFmtBRShortTimeComponentsHMSA: function(test) {
@@ -1008,7 +1008,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 -03/-02");
+        test.equal(fmt.format(date), "13:45:37 -03");
         test.done();
     },
     testDateFmtBRShortTimeComponentsHMSAZ: function(test) {
@@ -1031,7 +1031,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 -03/-02");
+        test.equal(fmt.format(date), "13:45:37 -03");
         test.done();
     },
     testDateFmtBRFullTimeComponentsS: function(test) {
@@ -1181,7 +1181,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 -03/-02");
+        test.equal(fmt.format(date), "13:45 -03");
         test.done();
     },
     testDateFmtBRFullTimeComponentsHMAZ: function(test) {
@@ -1205,7 +1205,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 -03/-02");
+        test.equal(fmt.format(date), "13:45 -03");
         test.done();
     },
     testDateFmtBRFullTimeComponentsHMSA: function(test) {
@@ -1247,7 +1247,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 -03/-02");
+        test.equal(fmt.format(date), "13:45:37 -03");
         test.done();
     },
     testDateFmtBRFullTimeComponentsHMSAZ: function(test) {
@@ -1271,7 +1271,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 -03/-02");
+        test.equal(fmt.format(date), "13:45:37 -03");
         test.done();
     },
     testDateFmtBRWithTimeZoneAndNoDST: function(test) {
@@ -1295,7 +1295,7 @@ module.exports.testdatefmt_pt_BR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 -03/-02");
+        test.equal(fmt.format(date), "13:45:37 -03");
         test.done();
     }
 };

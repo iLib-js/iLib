@@ -25,6 +25,7 @@ Refactoring:
   `getLocale`, `_testChoice`, `_isIntlPluralAvailable`) from `IString.js` into
   a standalone `IStringFmt.js` module. Public methods stay on
   `IString.prototype` with their original JSDoc, so the public API is unchanged.
+* Update to IANA time zone database 2026e
 
 
 Build 035

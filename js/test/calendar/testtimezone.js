@@ -1,7 +1,7 @@
 /*
  * testtimezone.js - test the time zone object
  *
- * Copyright © 2012-2015,2017, 2021 JEDLSoft
+ * Copyright © 2012-2015,2017, 2021, 2026 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2157,6 +2157,124 @@ module.exports.testtimezone = {
         });
         test.equal(tz.getDisplayName(gd, 'standard'), "+05");
 
+        test.done();
+    },
+
+    /**
+     * Ireland-style negative DST (IANA Eire rules): zone base is IST (+1:00);
+     * winter applies SAVE -1:00 to reach GMT. Wall times match what a correct
+     * zic emits after converting 1:00u transitions.
+     */
+    testTZNegativeDSTSavings: function(test) {
+        test.expect(2);
+        ilib.data.zoneinfo["Test/EireStyle"] = {
+            "o": "1:0",
+            "f": "IST/GMT",
+            "s": {
+                "m": 10,
+                "r": "l0",
+                "t": "2:0",
+                "v": "-1:0"
+            },
+            "e": {
+                "m": 3,
+                "r": "l0",
+                "t": "1:0"
+            }
+        };
+
+        var tz = new TimeZone({id: "Test/EireStyle"});
+        test.ok(tz !== null);
+        test.deepEqual(tz.getDSTSavings(), {h: -1});
+        test.done();
+    },
+    testTZNegativeDSTSavingsStr: function(test) {
+        test.expect(2);
+        ilib.data.zoneinfo["Test/EireStyle"] = {
+            "o": "1:0",
+            "f": "IST/GMT",
+            "s": {
+                "m": 10,
+                "r": "l0",
+                "t": "2:0",
+                "v": "-1:0"
+            },
+            "e": {
+                "m": 3,
+                "r": "l0",
+                "t": "1:0"
+            }
+        };
+
+        var tz = new TimeZone({id: "Test/EireStyle"});
+        test.ok(tz !== null);
+        test.equal(tz.getDSTSavingsStr(), "-1:0");
+        test.done();
+    },
+    testTZNegativeDSTOffsets: function(test) {
+        test.expect(6);
+        ilib.data.zoneinfo["Test/EireStyle"] = {
+            "o": "1:0",
+            "f": "IST/GMT",
+            "s": {
+                "m": 10,
+                "r": "l0",
+                "t": "2:0",
+                "v": "-1:0"
+            },
+            "e": {
+                "m": 3,
+                "r": "l0",
+                "t": "1:0"
+            }
+        };
+
+        var tz = new TimeZone({id: "Test/EireStyle"});
+        test.ok(tz !== null);
+        test.ok(tz.useDaylightTime());
+
+        // mid-winter: "daylight" (negative SAVE) in effect → UTC+0 (GMT)
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        // mid-summer: standard IST → UTC+1
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.ok(tz.inDaylightTime(jan15));
+        test.ok(!tz.inDaylightTime(jul15));
+        test.deepEqual(tz.getOffset(jan15), {h: 0});
+        test.deepEqual(tz.getOffset(jul15), {h: 1});
+        test.done();
+    },
+
+    /**
+     * Shipped Europe/Dublin follows Ireland rules: winter GMT (UTC+0),
+     * summer IST (UTC+1), via a negative SAVE of -1:00 on the base IST offset.
+     */
+    testTZDublinUseDaylightTime: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "Europe/Dublin"});
+        test.ok(tz !== null);
+        test.ok(tz.useDaylightTime());
+        test.done();
+    },
+    testTZDublinNegativeDSTSavings: function(test) {
+        test.expect(2);
+        var tz = new TimeZone({id: "Europe/Dublin"});
+        test.ok(tz !== null);
+        test.deepEqual(tz.getDSTSavings(), {h: -1});
+        test.done();
+    },
+    testTZDublinOffsets: function(test) {
+        test.expect(5);
+        var tz = new TimeZone({id: "Europe/Dublin"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.ok(tz.inDaylightTime(jan15));
+        test.ok(!tz.inDaylightTime(jul15));
+        test.deepEqual(tz.getOffset(jan15), {h: 0});
+        test.deepEqual(tz.getOffset(jul15), {h: 1});
         test.done();
     },
 };
