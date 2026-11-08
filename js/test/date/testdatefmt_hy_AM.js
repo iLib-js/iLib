@@ -963,7 +963,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_hy_AM: function(test) {
@@ -986,7 +986,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_hy_AM: function(test) {
@@ -1027,7 +1027,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_hy_AM: function(test) {
@@ -1050,7 +1050,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsS_hy_AM: function(test) {
@@ -1200,7 +1200,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_hy_AM: function(test) {
@@ -1224,7 +1224,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_hy_AM: function(test) {
@@ -1266,7 +1266,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_hy_AM: function(test) {
@@ -1290,7 +1290,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_hy_AM: function(test) {
@@ -1314,7 +1314,7 @@ module.exports.testdatefmt_hy_AM = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_hy_AM: function(test) {
