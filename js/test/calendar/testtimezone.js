@@ -2164,12 +2164,17 @@ module.exports.testtimezone = {
      * Ireland-style negative DST (IANA Eire rules): zone base is IST (+1:00);
      * winter applies SAVE -1:00 to reach GMT. Wall times match what a correct
      * zic emits after converting 1:00u transitions.
+     *
+     * inDaylightTime follows the colloquial / documented sense (summer =
+     * daylight), not the IANA SAVE window. Offsets still apply the negative
+     * SAVE only in winter so January is UTC+0 and July is UTC+1.
      */
     testTZNegativeDSTSavings: function(test) {
         test.expect(2);
         ilib.data.zoneinfo["Test/EireStyle"] = {
             "o": "1:0",
             "f": "IST/GMT",
+            "n": "GMT {c} Time",
             "s": {
                 "m": 10,
                 "r": "l0",
@@ -2193,6 +2198,7 @@ module.exports.testtimezone = {
         ilib.data.zoneinfo["Test/EireStyle"] = {
             "o": "1:0",
             "f": "IST/GMT",
+            "n": "GMT {c} Time",
             "s": {
                 "m": 10,
                 "r": "l0",
@@ -2216,6 +2222,7 @@ module.exports.testtimezone = {
         ilib.data.zoneinfo["Test/EireStyle"] = {
             "o": "1:0",
             "f": "IST/GMT",
+            "n": "GMT {c} Time",
             "s": {
                 "m": 10,
                 "r": "l0",
@@ -2233,21 +2240,50 @@ module.exports.testtimezone = {
         test.ok(tz !== null);
         test.ok(tz.useDaylightTime());
 
-        // mid-winter: "daylight" (negative SAVE) in effect → UTC+0 (GMT)
+        // mid-winter GMT (UTC+0); mid-summer IST (UTC+1)
         var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
-        // mid-summer: standard IST → UTC+1
         var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
 
-        test.ok(tz.inDaylightTime(jan15));
-        test.ok(!tz.inDaylightTime(jul15));
+        test.ok(!tz.inDaylightTime(jan15));
+        test.ok(tz.inDaylightTime(jul15));
         test.deepEqual(tz.getOffset(jan15), {h: 0});
         test.deepEqual(tz.getOffset(jul15), {h: 1});
+        test.done();
+    },
+    testTZNegativeDSTLongDisplayName: function(test) {
+        test.expect(3);
+        ilib.data.zoneinfo["Test/EireStyle"] = {
+            "o": "1:0",
+            "f": "IST/GMT",
+            "n": "GMT {c} Time",
+            "s": {
+                "m": 10,
+                "r": "l0",
+                "t": "2:0",
+                "v": "-1:0"
+            },
+            "e": {
+                "m": 3,
+                "r": "l0",
+                "t": "1:0"
+            }
+        };
+
+        var tz = new TimeZone({id: "Test/EireStyle"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "GMT Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "GMT Daylight Time");
         test.done();
     },
 
     /**
      * Shipped Europe/Dublin follows Ireland rules: winter GMT (UTC+0),
      * summer IST (UTC+1), via a negative SAVE of -1:00 on the base IST offset.
+     * Long English names must use Standard in winter and Daylight in summer.
      */
     testTZDublinUseDaylightTime: function(test) {
         test.expect(2);
@@ -2271,10 +2307,34 @@ module.exports.testtimezone = {
         var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
         var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
 
-        test.ok(tz.inDaylightTime(jan15));
-        test.ok(!tz.inDaylightTime(jul15));
+        test.ok(!tz.inDaylightTime(jan15));
+        test.ok(tz.inDaylightTime(jul15));
         test.deepEqual(tz.getOffset(jan15), {h: 0});
         test.deepEqual(tz.getOffset(jul15), {h: 1});
+        test.done();
+    },
+    testTZDublinLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "Europe/Dublin"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "GMT Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "GMT Daylight Time");
+        test.done();
+    },
+    testTZEireLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "Eire"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "GMT Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "GMT Daylight Time");
         test.done();
     },
 };
