@@ -2337,4 +2337,58 @@ module.exports.testtimezone = {
         test.equal(tz.getDisplayName(jul15, "long"), "GMT Daylight Time");
         test.done();
     },
+
+    /**
+     * POSIX factory zones (CST6CDT / EST5EDT / MST7MDT / PST8PDT) are real Zones
+     * again in tzdata 2026e. Enrichment must still supply Windows-style long
+     * names so getDisplayName(..., "long") does not fall back to GMT±offset.
+     */
+    testTZCST6CDTLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "CST6CDT"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "Central Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "Central Daylight Time");
+        test.done();
+    },
+    testTZEST5EDTLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "EST5EDT"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "Eastern Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "Eastern Daylight Time");
+        test.done();
+    },
+    testTZMST7MDTLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "MST7MDT"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "Mountain Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "Mountain Daylight Time");
+        test.done();
+    },
+    testTZPST8PDTLongDisplayName: function(test) {
+        test.expect(3);
+        var tz = new TimeZone({id: "PST8PDT"});
+        test.ok(tz !== null);
+
+        var jan15 = DateFactory({year: 2024, month: 1, day: 15, timezone: "Etc/UTC"});
+        var jul15 = DateFactory({year: 2024, month: 7, day: 15, timezone: "Etc/UTC"});
+
+        test.equal(tz.getDisplayName(jan15, "long"), "Pacific Standard Time");
+        test.equal(tz.getDisplayName(jul15, "long"), "Pacific Daylight Time");
+        test.done();
+    },
 };
