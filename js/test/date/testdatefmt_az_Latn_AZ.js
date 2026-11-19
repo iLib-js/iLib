@@ -972,7 +972,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_az_Latn_AZ: function(test) {
@@ -994,7 +994,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_az_Latn_AZ: function(test) {
@@ -1034,7 +1034,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_az_Latn_AZ: function(test) {
@@ -1056,7 +1056,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsS_az_Latn_AZ: function(test) {
@@ -1205,7 +1205,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_az_Latn_AZ: function(test) {
@@ -1228,7 +1228,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +04/+05");
+        test.equal(fmt.format(date), "13:45 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_az_Latn_AZ: function(test) {
@@ -1269,7 +1269,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_az_Latn_AZ: function(test) {
@@ -1292,7 +1292,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_az_Latn_AZ: function(test) {
@@ -1315,7 +1315,7 @@ module.exports.testdatefmt_az_Latn_AZ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +04/+05");
+        test.equal(fmt.format(date), "13:45:37 +04");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_az_Latn_AZ: function(test) {

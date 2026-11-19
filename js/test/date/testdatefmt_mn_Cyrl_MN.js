@@ -945,7 +945,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 (+08/+09)");
+        test.equal(fmt.format(date), "13:45 (+08)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMAZ_mn_Cyrl_MN: function(test) {
@@ -968,7 +968,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 (+08/+09)");
+        test.equal(fmt.format(date), "13:45 (+08)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSA_mn_Cyrl_MN: function(test) {
@@ -1009,7 +1009,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
+        test.equal(fmt.format(date), "13:45:37 (+08)");
         test.done();
     },
     testDateFmtShortTimeComponentsHMSAZ_mn_Cyrl_MN: function(test) {
@@ -1032,7 +1032,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
+        test.equal(fmt.format(date), "13:45:37 (+08)");
         test.done();
     },
     testDateFmtFullTimeComponentsS_mn_Cyrl_MN: function(test) {
@@ -1182,7 +1182,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 (+08/+09)");
+        test.equal(fmt.format(date), "13:45 (+08)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMAZ_mn_Cyrl_MN: function(test) {
@@ -1206,7 +1206,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 (+08/+09)");
+        test.equal(fmt.format(date), "13:45 (+08)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSA_mn_Cyrl_MN: function(test) {
@@ -1248,7 +1248,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
+        test.equal(fmt.format(date), "13:45:37 (+08)");
         test.done();
     },
     testDateFmtFullTimeComponentsHMSAZ_mn_Cyrl_MN: function(test) {
@@ -1272,7 +1272,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
+        test.equal(fmt.format(date), "13:45:37 (+08)");
         test.done();
     },
     testDateFmtWithTimeZoneAndNoDST_mn_Cyrl_MN: function(test) {
@@ -1296,7 +1296,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
+        test.equal(fmt.format(date), "13:45:37 (+08)");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_mn_Cyrl_MN: function(test) {

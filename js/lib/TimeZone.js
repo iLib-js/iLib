@@ -396,14 +396,16 @@ TimeZone.prototype.getDisplayName = function (date, style) {
             if (this.zone.f && this.zone.f !== "zzz") {
                 if (this.zone.f.indexOf("{c}") !== -1) {
                     var letter = "";
-                    letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c;
+                    // Abbreviation letters follow the SAVE window (s/e rules), not
+                    // the colloquial daylight flag (which inverts for negative SAVE).
+                    letter = this._inSavingsPeriod(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c;
                     temp = new IString(this.zone.f);
                     return temp.format({c: letter || ""});
                 }
                 return this.zone.f;
             }
             temp = "GMT" + this.zone.o;
-            if (this.inDaylightTime(date)) {
+            if (this._inSavingsPeriod(date)) {
                 temp += "+" + this.zone.s.v;
             }
             return temp;
@@ -437,7 +439,7 @@ TimeZone.prototype.getDisplayName = function (date, style) {
                 return this.zone.n;
             }
             temp = "GMT" + this.zone.o;
-            if (this.inDaylightTime(date)) {
+            if (this._inSavingsPeriod(date)) {
                 temp += "+" + this.zone.s.v;
             }
             return temp;
@@ -526,7 +528,10 @@ TimeZone.prototype.getOffsetMillis = function (date) {
 
     ret = this.offset;
 
-    if (date && this.inDaylightTime(date)) {
+    // Apply SAVE whenever the zoneinfo s→e window is active. For negative
+    // SAVE (e.g. Europe/Dublin) that window is winter, which is the opposite
+    // of colloquial inDaylightTime().
+    if (date && this._inSavingsPeriod(date)) {
         ret += this.dstSavings;
     }
 
@@ -545,7 +550,7 @@ TimeZone.prototype._getOffsetMillisWallTime = function (date) {
 
     ret = this.offset;
 
-    if (date && this.inDaylightTime(date, true)) {
+    if (date && this._inSavingsPeriod(date, true)) {
         ret += this.dstSavings;
     }
 
@@ -780,6 +785,12 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  * next year. This method will correctly calculate the start and end of DST for any
  * location.
  *
+ * <p>Zones with a negative IANA SAVE (notably Europe/Dublin / Eire) apply the
+ * savings in winter. For those zones this method still returns true in summer
+ * so that long display names ("… Daylight Time" / "… Standard Time") match
+ * colloquial English; offsets are adjusted via the underlying SAVE window
+ * separately.
+ *
  * @param {IDate|Object|JulianDay|Date|string|number=} date a date for which the info about daylight time is being sought,
  * or undefined to tell whether we are currently in daylight savings time
  * @param {boolean=} wallTime if true, then the given date is in wall time. If false or
@@ -788,6 +799,26 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  * otherwise.
  */
 TimeZone.prototype.inDaylightTime = function (date, wallTime) {
+    var inSavings = this._inSavingsPeriod(date, wallTime);
+    // Negative SAVE (Ireland): the s→e window is winter; colloquial daylight
+    // is the opposite season.
+    if (this.dstSavings < 0) {
+        return !inSavings;
+    }
+    return inSavings;
+};
+
+/**
+ * Returns whether the zoneinfo s→e SAVE window is active for the given date.
+ * For most zones this matches colloquial daylight time. For negative SAVE
+ * (Ireland), the window is winter and is the inverse of inDaylightTime().
+ *
+ * @private
+ * @param {IDate|Object|JulianDay|Date|string|number=} date date to check
+ * @param {boolean=} wallTime if true, date is in wall time rather than UTC
+ * @return {boolean} true if the SAVE rule is in effect
+ */
+TimeZone.prototype._inSavingsPeriod = function (date, wallTime) {
     var rd, startRd, endRd, year;
     if (date) {
         // need an IDate instance, so convert as necessary
