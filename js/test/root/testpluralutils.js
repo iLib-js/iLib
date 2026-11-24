@@ -318,7 +318,6 @@ module.exports.testpluralutils = {
 
     testCalculateNumberDigitsExponentialInteger: function(test) {
         test.expect(4);
-        // regression: n/i not mangled by parseInt for values in exponential notation
         var ops = fn.calculateNumberDigits(1e21);
         test.equal(ops.n, 1e21);
         test.equal(ops.i, 1e21);
@@ -348,6 +347,15 @@ module.exports.testpluralutils = {
         test.equal(ops.w, 7);
         test.equal(ops.f, 1);
         test.equal(ops.t, 1);
+        test.done();
+    },
+
+    testCalculateNumberDigitsExponentialSmallMultiDigitExponent: function(test) {
+        test.expect(3);
+        var ops = fn.calculateNumberDigits(1e-21);
+        test.equal(ops.i, 0);
+        test.equal(ops.v, 21);
+        test.equal(ops.f, 1);
         test.done();
     },
 
@@ -569,8 +577,6 @@ module.exports.testpluralutils = {
 
     testEqStringOperandWithRangeUsesOperand: function(test) {
         test.expect(3);
-        // regression: the range must be tested against the named operand (i),
-        // not against n. For 1.5, i = 1 is in 0..1 even though n is not.
         test.ok(fn.eq(["i", [0, 1]], fn.calculateNumberDigits(1.5)));
         test.ok(fn.eq(["i", [0, 1]], fn.calculateNumberDigits(0.5)));
         test.ok(!fn.eq(["i", [0, 1]], fn.calculateNumberDigits(2.5)));
@@ -736,7 +742,7 @@ module.exports.testpluralutils = {
         test.expect(4);
         test.equal(categorize(pluralsAk, 0), "one");
         test.equal(categorize(pluralsAk, 1), "one");
-        // regression: was "one" because 0..1 was matched as a continuous range
+        // CLDR ranges are integer-only, so 0.5 is not in 0..1
         test.equal(categorize(pluralsAk, 0.5), "other");
         test.equal(categorize(pluralsAk, 2), "other");
         test.done();
@@ -747,7 +753,7 @@ module.exports.testpluralutils = {
         test.equal(categorize(pluralsAr, 3), "few");
         test.equal(categorize(pluralsAr, 103), "few");
         test.equal(categorize(pluralsAr, 11), "many");
-        // regression: decimals were matched against the n % 100 ranges
+        // CLDR ranges are integer-only, so a decimal n % 100 is never in them
         test.equal(categorize(pluralsAr, 3.5), "other");
         test.equal(categorize(pluralsAr, 11.5), "other");
         test.equal(categorize(pluralsAr, 123.45), "other");
@@ -759,7 +765,7 @@ module.exports.testpluralutils = {
         test.equal(categorize(pluralsLt, 1), "one");
         test.equal(categorize(pluralsLt, 2), "few");
         test.equal(categorize(pluralsLt, 12), "other");
-        // regression: was "few" because 2.5 % 10 was matched against 2..9
+        // 2.5 % 10 is not in the integer range 2..9, and f != 0 makes it "many"
         test.equal(categorize(pluralsLt, 2.5), "many");
         test.equal(categorize(pluralsLt, 3.5), "many");
         test.done();
@@ -809,8 +815,7 @@ module.exports.testpluralutils = {
 
     testFrenchRulesOne: function(test) {
         test.expect(4);
-        // one: i = 0,1. Regression: 0.5 was "many" (e read as -1) and 1.5 was
-        // "other" (the range was tested against n instead of i).
+        // one: i = 0,1, tested against i, so 0.5 and 1.5 are "one"
         test.equal(categorize(pluralsFr, 0), "one");
         test.equal(categorize(pluralsFr, 0.5), "one");
         test.equal(categorize(pluralsFr, 1), "one");
@@ -823,7 +828,7 @@ module.exports.testpluralutils = {
         test.equal(categorize(pluralsFr, 2), "other");
         test.equal(categorize(pluralsFr, 2.5), "other");
         test.equal(categorize(pluralsFr, 1000000), "many");
-        // regression: was "many" because e was read as the magnitude exponent 6
+        // e is 0 for plain numbers and 1500000 is not a multiple of 1000000
         test.equal(categorize(pluralsFr, 1500000), "other");
         test.done();
     },
@@ -831,7 +836,7 @@ module.exports.testpluralutils = {
     testSpanishRules: function(test) {
         test.expect(5);
         test.equal(categorize(pluralsEs, 1), "one");
-        // regression: was "many" because e was read as -1
+        // e is 0 for plain numbers, so 0.5 is not "many"
         test.equal(categorize(pluralsEs, 0.5), "other");
         test.equal(categorize(pluralsEs, 2), "other");
         test.equal(categorize(pluralsEs, 2000000), "many");
