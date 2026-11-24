@@ -16,6 +16,11 @@ Bug Fixes:
   * Match ranges against integers only, as CLDR specifies (e.g. 0.5 is no
     longer "one" in ak, 3.5 no longer "few" in ar).
   * Compute correct operands for numbers in exponential notation (e.g. 1e-7).
+* Fix `genplurals.js` writing a two-value set (e.g. `n = 2,12`) the same way
+  as a range (`2..12`), so the set was matched as a range. Such sets are now
+  written as `[[2,2],[12,12]]`, and the plurals data was regenerated. This
+  fixes the Scottish Gaelic (gd) categories; da, ff, fr, hy, kab, lag and si
+  change only in format.
 * Fix `formatChoice` incorrectly ignoring numeric-range patterns after
   `setLocale`, corrupting multi-index match state across calls, and mishandling
   choice text containing "#".

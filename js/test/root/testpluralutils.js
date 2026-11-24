@@ -151,6 +151,14 @@ var pluralsLt = {
     }
 };
 
+// Scottish Gaelic: two-value sets (n = 1,11 and n = 2,12) as genplurals
+// writes them, each value as a one-value range
+var pluralsGd = {
+    "few": { "eq": ["n", [[3, 10], [13, 19]]] },
+    "one": { "eq": ["n", [[1, 1], [11, 11]]] },
+    "two": { "eq": ["n", [[2, 2], [12, 12]]] }
+};
+
 /**
  * Return the CLDR plural category of a number for the given ruleset.
  */
@@ -656,10 +664,21 @@ module.exports.testpluralutils = {
 
     testMatchRangeContinuousTwoValueRange: function(test) {
         test.expect(3);
-        // exactly two numbers => continuous range 2..4
+        // exactly two numbers => range 2..4
         test.ok(fn.matchRangeContinuous(3, [2, 4]));
         test.ok(fn.matchRangeContinuous(2, [2, 4]));
         test.ok(!fn.matchRangeContinuous(5, [2, 4]));
+        test.done();
+    },
+
+    testMatchRangeContinuousTwoValueSet: function(test) {
+        test.expect(4);
+        // genplurals writes the two-value set {2,12} as one-value ranges, so
+        // values between 2 and 12 must NOT match
+        test.ok(fn.matchRangeContinuous(2, [[2, 2], [12, 12]]));
+        test.ok(fn.matchRangeContinuous(12, [[2, 2], [12, 12]]));
+        test.ok(!fn.matchRangeContinuous(5, [[2, 2], [12, 12]]));
+        test.ok(!fn.matchRangeContinuous(2.5, [[2, 2], [12, 12]]));
         test.done();
     },
 
@@ -675,7 +694,7 @@ module.exports.testpluralutils = {
 
     testMatchRangeContinuousNestedRanges: function(test) {
         test.expect(4);
-        // nested arrays are continuous ranges; union of [3..10] and [13..19]
+        // nested arrays are ranges; union of 3..10 and 13..19
         test.ok(fn.matchRangeContinuous(5, [[3, 10], [13, 19]]));
         test.ok(fn.matchRangeContinuous(15, [[3, 10], [13, 19]]));
         test.ok(!fn.matchRangeContinuous(11, [[3, 10], [13, 19]]));
@@ -768,6 +787,22 @@ module.exports.testpluralutils = {
         // 2.5 % 10 is not in the integer range 2..9, and f != 0 makes it "many"
         test.equal(categorize(pluralsLt, 2.5), "many");
         test.equal(categorize(pluralsLt, 3.5), "many");
+        test.done();
+    },
+
+    testScottishGaelicRules: function(test) {
+        test.expect(10);
+        test.equal(categorize(pluralsGd, 1), "one");
+        test.equal(categorize(pluralsGd, 11), "one");
+        test.equal(categorize(pluralsGd, 2), "two");
+        test.equal(categorize(pluralsGd, 12), "two");
+        // 3..10 and 13..19 are ranges, not one/two
+        test.equal(categorize(pluralsGd, 3), "few");
+        test.equal(categorize(pluralsGd, 10), "few");
+        test.equal(categorize(pluralsGd, 13), "few");
+        test.equal(categorize(pluralsGd, 0), "other");
+        test.equal(categorize(pluralsGd, 20), "other");
+        test.equal(categorize(pluralsGd, 1.5), "other");
         test.done();
     },
 
