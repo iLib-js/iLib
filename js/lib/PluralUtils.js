@@ -114,7 +114,7 @@ var fn = PluralUtils._fncs = {
     /**
      * Test whether n falls within a CLDR range list. A range list mixes two
      * kinds of entries:
-     *   - a nested array [lo, hi] is a continuous range lo..hi (e.g. [[3,10]])
+     *   - a nested array [lo, hi] is a range lo..hi (e.g. [[3,10]])
      *   - top-level numbers are single values, EXCEPT when the list holds
      *     exactly two of them, in which case they denote a range lo..hi
      *     (e.g. [2,4] means 2..4, while [11,71,91] means the set {11,71,91}).
@@ -129,13 +129,20 @@ var fn = PluralUtils._fncs = {
      * this properly requires regenerating the data in an unambiguous format;
      * until then, affected locales rely on Intl.PluralRules where available.
      *
+     * A CLDR range a..b denotes the set of integers from a to b, so a value
+     * with a fraction (e.g. 0.5 for "n = 0..1") never falls within it. Only
+     * the continuous "within" operator matches fractional values; it passes
+     * continuous = true.
+     *
      * @private
      * @param {number|Object} n
      * @param {Array.<number|Array.<number>>|Object} range
+     * @param {boolean=} continuous true to let fractional values match a range
      * @return {boolean}
      */
-    matchRangeContinuous: function(n, range) {
-        // exactly two top-level numbers (and no nested arrays) => continuous range
+    matchRangeContinuous: function(n, range, continuous) {
+        var rangeOk = continuous || n % 1 === 0;
+        // exactly two top-level numbers (and no nested arrays) => range lo..hi
         var topNums = 0, hasNested = false;
         for (var k in range) {
             if (range[k] === undefined) continue;
@@ -149,9 +156,9 @@ var fn = PluralUtils._fncs = {
             if (obj === undefined) continue;
             if (typeof(obj) === 'number') {
                 if (n === obj) return true;
-                if (pairIsRange && n >= range[0] && n <= range[1]) return true;
+                if (pairIsRange && rangeOk && n >= range[0] && n <= range[1]) return true;
             } else if (Array.isArray(obj)) {
-                if (n >= obj[0] && n <= obj[1]) return true;
+                if (rangeOk && n >= obj[0] && n <= obj[1]) return true;
             }
         }
         return false;
@@ -168,6 +175,10 @@ var fn = PluralUtils._fncs = {
      * fallback path — modern environments use Intl.PluralRules instead (see
      * IString._isIntlPluralAvailable), which handles these cases correctly.
      *
+     * The c/e operands are the CLDR compact decimal exponent (e.g. 1.2c6 for
+     * "1.2M"), not the exponent of the number's magnitude. A plain number is
+     * never in compact notation, so c and e are always 0.
+     *
      * @private
      * @param {*} number
      * @return {Object}
@@ -176,33 +187,30 @@ var fn = PluralUtils._fncs = {
         // CLDR plural operands are defined on the absolute value of the number
         number = Math.abs(number);
 
-        var expStr = number.toExponential();
-        var expIdx = expStr.indexOf("e");
-        // read the whole exponent (including sign), not just its first digit
-        var exp = expIdx !== -1 ? parseInt(expStr.slice(expIdx + 1), 10) : 0;
-
         var str = number.toString();
-        var dotIdx = str.indexOf('.');
 
-        if (dotIdx === -1) {
+        if (number % 1 === 0 || (str.indexOf('.') === -1 && str.indexOf('e') === -1)) {
             // integer: use the number directly so large values in exponential
-            // notation (e.g. 1e21) are not mangled by parseInt
-            return { c: exp, e: exp, n: number, i: number, v: 0, w: 0, f: 0, t: 0 };
+            // notation (e.g. 1e21, 1.5e21) are not mangled by parseInt
+            return { c: 0, e: 0, n: number, i: number, v: 0, w: 0, f: 0, t: 0 };
+        }
+
+        if (str.indexOf('e') !== -1) {
+            // very small decimals print in exponential notation (1.5e-9);
+            // expand them so the digits after the decimal point are explicit
+            str = fn.expandExponential(str);
         }
 
         // Derive the fraction operands from the text after the decimal point.
-        // Two known inaccuracies here, both only affecting values that never
-        // occur in real plural contexts (see the limitation note above):
-        //   - w always equals v and t always equals f, because a JS number's
-        //     string form never carries trailing zeros (1.50 -> "1.5").
-        //   - for very small/large decimals JS uses exponential notation
-        //     (1.5e-9 -> "1.5e-9"), so decStr becomes "5e-9" and v/f are wrong.
-        //     Correct handling would require expanding the exponent first.
+        // Known inaccuracy: w always equals v and t always equals f, because a
+        // JS number's string form never carries trailing zeros (1.50 -> "1.5");
+        // see the limitation note above.
+        var dotIdx = str.indexOf('.');
         var decStr = str.slice(dotIdx + 1);
         var frac = parseInt(decStr, 10);
         return {
-            c: exp,
-            e: exp,
+            c: 0,
+            e: 0,
             n: number,
             i: parseInt(str.slice(0, dotIdx), 10),
             v: decStr.length,
@@ -210,6 +218,30 @@ var fn = PluralUtils._fncs = {
             f: frac,
             t: frac
         };
+    },
+
+    /**
+     * Expand a non-integer number string in exponential notation (e.g.
+     * "1.5e-9") into plain decimal notation ("0.0000000015"). Only fractional
+     * values reach this: a JS number of 1e21 or more is always an integer.
+     *
+     * @private
+     * @param {string} str
+     * @return {string}
+     */
+    expandExponential: function(str) {
+        var expIdx = str.indexOf('e');
+        var mantissa = str.slice(0, expIdx);
+        var exp = parseInt(str.slice(expIdx + 1), 10);
+        var dotIdx = mantissa.indexOf('.');
+        var digits = mantissa.replace('.', '');
+        // position of the decimal point within digits after shifting by exp
+        var pointPos = (dotIdx === -1 ? mantissa.length : dotIdx) + exp;
+
+        if (pointPos <= 0) {
+            return "0." + new Array(1 - pointPos).join("0") + digits;
+        }
+        return digits.slice(0, pointPos) + "." + digits.slice(pointPos);
     },
 
     /**
@@ -268,7 +300,8 @@ var fn = PluralUtils._fncs = {
      * @return {boolean}
      */
     within: function(rule, n) {
-        return fn.matchRangeContinuous(fn.getValue(rule[0], n), rule[1]);
+        // "within" is CLDR's continuous range, so fractional values may match
+        return fn.matchRangeContinuous(fn.getValue(rule[0], n), rule[1], true);
     },
 
     /**
@@ -332,7 +365,8 @@ var fn = PluralUtils._fncs = {
                 valueRight = n[rule[0]];
                 if (typeof(rule[1]) === 'number' ||
                         (typeof(rule[1]) === 'object' && fn.firstPropRule(rule[1]) === "inrange")) {
-                    valueRight = fn.getValue(rule[1], n);
+                    // test a range against the named operand (e.g. i in 0..1), not n
+                    valueRight = fn.getValue(rule[1], valueLeft);
                 }
             }
         } else {
@@ -362,7 +396,8 @@ var fn = PluralUtils._fncs = {
                     var leftRange = rule[1][0];
                     var rightRange = rule[1][1];
                     if (typeof(leftRange) === 'number' && typeof(rightRange) === 'number') {
-                        return !(valueLeft >= leftRange && valueLeft <= rightRange);
+                        // integer-only range, as in matchRangeContinuous
+                        return !(valueLeft % 1 === 0 && valueLeft >= leftRange && valueLeft <= rightRange);
                     }
                 }
             }

@@ -94,6 +94,63 @@ var pluralsBr = {
     }
 };
 
+// CLDR "many" for fr/es/it/pt/ca uses the compact exponent operand e
+var pluralsManyCompact = {
+    "or": [
+        {
+            "and": [
+                { "eq": ["e", 0] },
+                { "neq": ["i", 0] },
+                { "eq": [{ "mod": ["i", 1000000] }, 0] },
+                { "eq": ["v", 0] }
+            ]
+        },
+        { "neq": ["e", [0, 5]] }
+    ]
+};
+
+// French: one is "i = 0,1", a range tested against the i operand
+var pluralsFr = {
+    "many": pluralsManyCompact,
+    "one": { "eq": ["i", [0, 1]] }
+};
+
+var pluralsEs = {
+    "many": pluralsManyCompact,
+    "one": { "eq": ["n", 1] }
+};
+
+// Akan: one is "n = 0..1", an integer-only range
+var pluralsAk = {
+    "one": { "eq": ["n", [0, 1]] }
+};
+
+// Arabic: ranges applied to n % 100
+var pluralsAr = {
+    "few": { "eq": [{ "mod": ["n", 100] }, [3, 10]] },
+    "many": { "eq": [{ "mod": ["n", 100] }, [11, 99]] },
+    "one": { "eq": ["n", 1] },
+    "two": { "eq": ["n", 2] },
+    "zero": { "eq": ["n", 0] }
+};
+
+// Lithuanian: ranges in both eq and neq
+var pluralsLt = {
+    "few": {
+        "and": [
+            { "eq": [{ "mod": ["n", 10] }, [2, 9]] },
+            { "neq": [{ "mod": ["n", 100] }, [11, 19]] }
+        ]
+    },
+    "many": { "neq": ["f", 0] },
+    "one": {
+        "and": [
+            { "eq": [{ "mod": ["n", 10] }, 1] },
+            { "neq": [{ "mod": ["n", 100] }, [11, 19]] }
+        ]
+    }
+};
+
 /**
  * Return the CLDR plural category of a number for the given ruleset.
  */
@@ -235,32 +292,73 @@ module.exports.testpluralutils = {
         test.done();
     },
 
-    testCalculateNumberDigitsSmallExponentSingleDigit: function(test) {
-        test.expect(2);
-        // 1e-7 -> exponent is -7
-        var ops = fn.calculateNumberDigits(1e-7);
-        test.equal(ops.c, -7);
-        test.equal(ops.e, -7);
-        test.done();
-    },
-
-    testCalculateNumberDigitsSmallExponentMultiDigit: function(test) {
-        test.expect(2);
-        // regression: multi-digit exponent must be read in full, not just its first digit
-        var ops = fn.calculateNumberDigits(1e-21);
-        test.equal(ops.c, -21);
-        test.equal(ops.e, -21);
-        test.done();
-    },
-
-    testCalculateNumberDigitsLargeExponent: function(test) {
+    testCalculateNumberDigitsCompactExponentZeroForDecimal: function(test) {
         test.expect(4);
-        // regression: exponent read in full and n/i not mangled by parseInt
+        // c/e are the CLDR compact decimal exponent, not the magnitude exponent,
+        // so a plain decimal below 1 still has c = e = 0
+        var ops = fn.calculateNumberDigits(0.5);
+        test.equal(ops.c, 0);
+        test.equal(ops.e, 0);
+        var ops2 = fn.calculateNumberDigits(1e-7);
+        test.equal(ops2.c, 0);
+        test.equal(ops2.e, 0);
+        test.done();
+    },
+
+    testCalculateNumberDigitsCompactExponentZeroForLargeInteger: function(test) {
+        test.expect(4);
+        var ops = fn.calculateNumberDigits(1500000);
+        test.equal(ops.c, 0);
+        test.equal(ops.e, 0);
+        var ops2 = fn.calculateNumberDigits(1e21);
+        test.equal(ops2.c, 0);
+        test.equal(ops2.e, 0);
+        test.done();
+    },
+
+    testCalculateNumberDigitsExponentialInteger: function(test) {
+        test.expect(4);
+        // regression: n/i not mangled by parseInt for values in exponential notation
         var ops = fn.calculateNumberDigits(1e21);
-        test.equal(ops.c, 21);
-        test.equal(ops.e, 21);
         test.equal(ops.n, 1e21);
         test.equal(ops.i, 1e21);
+        test.equal(ops.v, 0);
+        test.equal(ops.f, 0);
+        test.done();
+    },
+
+    testCalculateNumberDigitsExponentialLargeWithMantissa: function(test) {
+        test.expect(4);
+        // 1.5e21 prints as "1.5e+21"; the "." must not be read as a decimal point
+        var ops = fn.calculateNumberDigits(1.5e21);
+        test.equal(ops.n, 1.5e21);
+        test.equal(ops.i, 1.5e21);
+        test.equal(ops.v, 0);
+        test.equal(ops.f, 0);
+        test.done();
+    },
+
+    testCalculateNumberDigitsExponentialSmall: function(test) {
+        test.expect(6);
+        // 1e-7 prints as "1e-7"; it is 0.0000001, so i = 0 and v = 7
+        var ops = fn.calculateNumberDigits(1e-7);
+        test.equal(ops.n, 1e-7);
+        test.equal(ops.i, 0);
+        test.equal(ops.v, 7);
+        test.equal(ops.w, 7);
+        test.equal(ops.f, 1);
+        test.equal(ops.t, 1);
+        test.done();
+    },
+
+    testCalculateNumberDigitsExponentialSmallWithMantissa: function(test) {
+        test.expect(4);
+        // 1.5e-9 prints as "1.5e-9"; it is 0.0000000015
+        var ops = fn.calculateNumberDigits(1.5e-9);
+        test.equal(ops.i, 0);
+        test.equal(ops.v, 10);
+        test.equal(ops.f, 15);
+        test.equal(ops.t, 15);
         test.done();
     },
 
@@ -469,6 +567,16 @@ module.exports.testpluralutils = {
         test.done();
     },
 
+    testEqStringOperandWithRangeUsesOperand: function(test) {
+        test.expect(3);
+        // regression: the range must be tested against the named operand (i),
+        // not against n. For 1.5, i = 1 is in 0..1 even though n is not.
+        test.ok(fn.eq(["i", [0, 1]], fn.calculateNumberDigits(1.5)));
+        test.ok(fn.eq(["i", [0, 1]], fn.calculateNumberDigits(0.5)));
+        test.ok(!fn.eq(["i", [0, 1]], fn.calculateNumberDigits(2.5)));
+        test.done();
+    },
+
     testEqNeqSymmetryWithStringOperand: function(test) {
         test.expect(2);
         // eq and neq must stay logically opposite. With a string operand and a
@@ -588,6 +696,84 @@ module.exports.testpluralutils = {
         test.done();
     },
 
+    testMatchRangeContinuousRejectsDecimal: function(test) {
+        test.expect(4);
+        // CLDR ranges (a..b) denote sets of integers, so a decimal never matches
+        test.ok(!fn.matchRangeContinuous(0.5, [0, 1]));
+        test.ok(!fn.matchRangeContinuous(3.5, [[3, 10]]));
+        test.ok(!fn.matchRangeContinuous(3.5, [[3, 4], 9]));
+        test.ok(fn.matchRangeContinuous(3, [[3, 10]]));
+        test.done();
+    },
+
+    testEqRangeRejectsDecimal: function(test) {
+        test.expect(3);
+        test.ok(!fn.eq(["n", [0, 1]], fn.calculateNumberDigits(0.5)));
+        test.ok(!fn.eq([{ "mod": ["n", 100] }, [3, 10]], fn.calculateNumberDigits(3.5)));
+        test.ok(fn.eq([{ "mod": ["n", 100] }, [3, 10]], fn.calculateNumberDigits(103)));
+        test.done();
+    },
+
+    testNeqRangeRejectsDecimal: function(test) {
+        test.expect(2);
+        // a decimal is not in the integer range 2..4, so "!=" holds
+        test.ok(fn.neq(["n", [2, 4]], fn.calculateNumberDigits(2.5)));
+        test.ok(!fn.neq(["n", [2, 4]], fn.calculateNumberDigits(3)));
+        test.done();
+    },
+
+    testWithinIsContinuous: function(test) {
+        test.expect(2);
+        // "within" is the CLDR continuous range operator, so decimals do match
+        test.ok(fn.within(["n", [0, 2]], fn.calculateNumberDigits(0.5)));
+        test.ok(!fn.within(["n", [0, 2]], fn.calculateNumberDigits(2.5)));
+        test.done();
+    },
+
+    // --------- end-to-end rule evaluation (integer-only ranges) ---------
+
+    testAkanRules: function(test) {
+        test.expect(4);
+        test.equal(categorize(pluralsAk, 0), "one");
+        test.equal(categorize(pluralsAk, 1), "one");
+        // regression: was "one" because 0..1 was matched as a continuous range
+        test.equal(categorize(pluralsAk, 0.5), "other");
+        test.equal(categorize(pluralsAk, 2), "other");
+        test.done();
+    },
+
+    testArabicRules: function(test) {
+        test.expect(6);
+        test.equal(categorize(pluralsAr, 3), "few");
+        test.equal(categorize(pluralsAr, 103), "few");
+        test.equal(categorize(pluralsAr, 11), "many");
+        // regression: decimals were matched against the n % 100 ranges
+        test.equal(categorize(pluralsAr, 3.5), "other");
+        test.equal(categorize(pluralsAr, 11.5), "other");
+        test.equal(categorize(pluralsAr, 123.45), "other");
+        test.done();
+    },
+
+    testLithuanianRules: function(test) {
+        test.expect(5);
+        test.equal(categorize(pluralsLt, 1), "one");
+        test.equal(categorize(pluralsLt, 2), "few");
+        test.equal(categorize(pluralsLt, 12), "other");
+        // regression: was "few" because 2.5 % 10 was matched against 2..9
+        test.equal(categorize(pluralsLt, 2.5), "many");
+        test.equal(categorize(pluralsLt, 3.5), "many");
+        test.done();
+    },
+
+    testExponentialDecimalRules: function(test) {
+        test.expect(2);
+        // 1e-7 is 0.0000001: i = 0 so French "one" (i = 0,1) applies,
+        // and Arabic n = 0 does not
+        test.equal(categorize(pluralsFr, 1e-7), "one");
+        test.equal(categorize(pluralsAr, 1e-7), "other");
+        test.done();
+    },
+
     testBretonRulesOne: function(test) {
         test.expect(4);
         // n%10==1 and n%100 not in {11,71,91}. Regression: 21/31/41 were
@@ -616,6 +802,40 @@ module.exports.testpluralutils = {
         test.equal(categorize(pluralsBr, 11), "other");
         test.equal(categorize(pluralsBr, 71), "other");
         test.equal(categorize(pluralsBr, 1000000), "many");
+        test.done();
+    },
+
+    // --------- end-to-end rule evaluation (French / Spanish) ---------
+
+    testFrenchRulesOne: function(test) {
+        test.expect(4);
+        // one: i = 0,1. Regression: 0.5 was "many" (e read as -1) and 1.5 was
+        // "other" (the range was tested against n instead of i).
+        test.equal(categorize(pluralsFr, 0), "one");
+        test.equal(categorize(pluralsFr, 0.5), "one");
+        test.equal(categorize(pluralsFr, 1), "one");
+        test.equal(categorize(pluralsFr, 1.5), "one");
+        test.done();
+    },
+
+    testFrenchRulesManyAndOther: function(test) {
+        test.expect(4);
+        test.equal(categorize(pluralsFr, 2), "other");
+        test.equal(categorize(pluralsFr, 2.5), "other");
+        test.equal(categorize(pluralsFr, 1000000), "many");
+        // regression: was "many" because e was read as the magnitude exponent 6
+        test.equal(categorize(pluralsFr, 1500000), "other");
+        test.done();
+    },
+
+    testSpanishRules: function(test) {
+        test.expect(5);
+        test.equal(categorize(pluralsEs, 1), "one");
+        // regression: was "many" because e was read as -1
+        test.equal(categorize(pluralsEs, 0.5), "other");
+        test.equal(categorize(pluralsEs, 2), "other");
+        test.equal(categorize(pluralsEs, 2000000), "many");
+        test.equal(categorize(pluralsEs, 1500000), "other");
         test.done();
     },
 

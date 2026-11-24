@@ -1674,7 +1674,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 0.5));
+        // CLDR "in" ranges are integer-only, so a decimal is never in range
+        test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueInRangeFalseIntegersAfter: function(test) {
@@ -1725,7 +1726,7 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
-    testRuleGetValueInRangeIntegersTrueNotInteger: function(test) {
+    testRuleGetValueInRangeIntegersFalseNotInteger: function(test) {
         test.expect(1);
         var rule = {
             inrange: [
@@ -1734,7 +1735,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 0.5));
+        // CLDR "in" ranges are integer-only, so a decimal is never in range
+        test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueInRangeIntegersTrueMany: function(test) {
@@ -1905,7 +1907,7 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
-    testRuleGetValueNotInRangeFalseNotInteger: function(test) {
+    testRuleGetValueNotInRangeTrueNotInteger: function(test) {
         test.expect(1);
         var rule = {
             notin: [
@@ -1914,7 +1916,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(!IString._fncs.getValue(rule, 0.5));
+        // CLDR "not in" ranges are integer-only, so a decimal is always "not in"
+        test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueNotInRangeFalseIntegersAfter: function(test) {
@@ -1965,7 +1968,7 @@ module.exports.teststrings = {
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
-    testRuleGetValueNotInRangeIntegersFalseNotInteger: function(test) {
+    testRuleGetValueNotInRangeIntegersTrueNotInteger: function(test) {
         test.expect(1);
         var rule = {
             notin: [
@@ -1974,7 +1977,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(!IString._fncs.getValue(rule, 0.5));
+        // CLDR "not in" ranges are integer-only, so a decimal is always "not in"
+        test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueNotInRangeIntegersTrueMany: function(test) {
@@ -2583,7 +2587,7 @@ module.exports.teststrings = {
         test.done();
     },
     testRuleComplex4: function(test) {
-        test.expect(6);
+        test.expect(7);
         var rule = {
             "and": [
                 {
@@ -2611,12 +2615,14 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 3.5));
-        test.ok(!IString._fncs.getValue(rule, 13.5));
-        test.ok(IString._fncs.getValue(rule, 23.5));
-        test.ok(IString._fncs.getValue(rule, 103.5));
-        test.ok(!IString._fncs.getValue(rule, 113.5));
-        test.ok(IString._fncs.getValue(rule, 123.5));
+        test.ok(IString._fncs.getValue(rule, 3));
+        test.ok(!IString._fncs.getValue(rule, 13));
+        test.ok(IString._fncs.getValue(rule, 23));
+        test.ok(IString._fncs.getValue(rule, 103));
+        test.ok(!IString._fncs.getValue(rule, 113));
+        test.ok(IString._fncs.getValue(rule, 123));
+        // CLDR "in" ranges are integer-only, so n % 10 = 3.5 is not in 2..4
+        test.ok(!IString._fncs.getValue(rule, 3.5));
         test.done();
     },
     testStringGetLocaleDefault: function(test) {
