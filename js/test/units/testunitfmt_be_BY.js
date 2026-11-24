@@ -90,30 +90,9 @@ module.exports.testunitfmt_be_BY = {
         });
         var str = uf.format(m1);
 
-        var platform = ilib._getPlatform();
-
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {
-                // no Intl.PluralRules support here, so iLib's own plural rules
-                // are used; the absolute value of -16.6 selects the "many"
-                // category (n mod 10 = 6, in 5..9) -> градусаў
-                test.equal(str, "-16,666666666666668 градусаў Цэльсія");
-            } else {
-                test.equal(str, "-16,666666666666668 градуса Цэльсія");
-            }
-        } else if (platform === "browser") {
-            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
-            if (cldrVersion !== undefined && cldrVersion >= 36) {
-                test.equal(str, "-16,666666666666668 градуса Цэльсія");
-            } else {
-                test.equal(str, "-16,666666666666668 градусаў Цэльсія");
-            }
-        } else {
-            test.equal(str, "-16,666666666666668 градусаў Цэльсія");
-        }
-
-
+        // -16.67 is a decimal, so it matches none of the integer ranges and
+        // falls to "other" -> градуса
+        test.equal(str, "-16,666666666666668 градуса Цэльсія");
         test.done();
     },
     testUnitFormatArea1_be_BY: function(test) {

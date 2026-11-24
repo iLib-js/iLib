@@ -3775,19 +3775,8 @@ module.exports.teststrings = {
         str.setLocale("ga-IE");
         test.ok(str !== null);
 
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) { // Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(5.2), "The items are few");
-            } else {
-                test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
-        } else {
-            test.equal(str.formatChoice(5.2), "The items are few");
-        }
+        // few is n = 3..6, an integer-only range, so 5.2 is "other"
+        test.equal(str.formatChoice(5.2), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal9: function(test) {
@@ -3924,20 +3913,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {
-                test.equal(str.formatChoice(1.5), "Default items");
-            } else {
-                test.equal(str.formatChoice(1.5), "The item is one");
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(1.5), "The item is one");
-        } else {
-            test.equal(str.formatChoice(1.5), "Default items");
-        }
-
+        // one is i = 0..1, tested against i, so 1.5 is "one"
+        test.equal(str.formatChoice(1.5), "The item is one");
         test.done();
     },
     testStringFormatChoiceDecimal23: function(test) {
@@ -4206,19 +4183,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("es-ES");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) { // Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(3.1e6), "The items are many");
-            } else {
-                test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
-        } else {
-            test.equal(str.formatChoice(3.1e6), "The items are many");
-        }
+        // e is 0 for plain numbers and 3100000 is not a multiple of 1000000
+        test.equal(str.formatChoice(3.1e6), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_es_ES2: function(test) {
@@ -4235,20 +4201,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fr-FR");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {// Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(2.1e6), "The items are many");
-            } else {
-                test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(2.1e6), "Default items");
-            //wrong result based on cldr (tested on chrome  104.0)
-        } else {
-            test.equal(str.formatChoice(2.1e6), "The items are many");
-        }
+        // e is 0 for plain numbers and 2100000 is not a multiple of 1000000
+        test.equal(str.formatChoice(2.1e6), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_fr_FR2: function(test) {
