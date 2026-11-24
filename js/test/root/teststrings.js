@@ -1674,7 +1674,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 0.5));
+        // CLDR "in" ranges are integer-only, so a decimal is never in range
+        test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueInRangeFalseIntegersAfter: function(test) {
@@ -1725,7 +1726,7 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
-    testRuleGetValueInRangeIntegersTrueNotInteger: function(test) {
+    testRuleGetValueInRangeIntegersFalseNotInteger: function(test) {
         test.expect(1);
         var rule = {
             inrange: [
@@ -1734,7 +1735,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 0.5));
+        // CLDR "in" ranges are integer-only, so a decimal is never in range
+        test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueInRangeIntegersTrueMany: function(test) {
@@ -1905,7 +1907,7 @@ module.exports.teststrings = {
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
-    testRuleGetValueNotInRangeFalseNotInteger: function(test) {
+    testRuleGetValueNotInRangeTrueNotInteger: function(test) {
         test.expect(1);
         var rule = {
             notin: [
@@ -1914,7 +1916,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(!IString._fncs.getValue(rule, 0.5));
+        // CLDR "not in" ranges are integer-only, so a decimal is always "not in"
+        test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueNotInRangeFalseIntegersAfter: function(test) {
@@ -1965,7 +1968,7 @@ module.exports.teststrings = {
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
-    testRuleGetValueNotInRangeIntegersFalseNotInteger: function(test) {
+    testRuleGetValueNotInRangeIntegersTrueNotInteger: function(test) {
         test.expect(1);
         var rule = {
             notin: [
@@ -1974,7 +1977,8 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(!IString._fncs.getValue(rule, 0.5));
+        // CLDR "not in" ranges are integer-only, so a decimal is always "not in"
+        test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     testRuleGetValueNotInRangeIntegersTrueMany: function(test) {
@@ -2583,7 +2587,7 @@ module.exports.teststrings = {
         test.done();
     },
     testRuleComplex4: function(test) {
-        test.expect(6);
+        test.expect(7);
         var rule = {
             "and": [
                 {
@@ -2611,12 +2615,14 @@ module.exports.teststrings = {
             ]
         };
 
-        test.ok(IString._fncs.getValue(rule, 3.5));
-        test.ok(!IString._fncs.getValue(rule, 13.5));
-        test.ok(IString._fncs.getValue(rule, 23.5));
-        test.ok(IString._fncs.getValue(rule, 103.5));
-        test.ok(!IString._fncs.getValue(rule, 113.5));
-        test.ok(IString._fncs.getValue(rule, 123.5));
+        test.ok(IString._fncs.getValue(rule, 3));
+        test.ok(!IString._fncs.getValue(rule, 13));
+        test.ok(IString._fncs.getValue(rule, 23));
+        test.ok(IString._fncs.getValue(rule, 103));
+        test.ok(!IString._fncs.getValue(rule, 113));
+        test.ok(IString._fncs.getValue(rule, 123));
+        // CLDR "in" ranges are integer-only, so n % 10 = 3.5 is not in 2..4
+        test.ok(!IString._fncs.getValue(rule, 3.5));
         test.done();
     },
     testStringGetLocaleDefault: function(test) {
@@ -3769,19 +3775,8 @@ module.exports.teststrings = {
         str.setLocale("ga-IE");
         test.ok(str !== null);
 
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) { // Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(5.2), "The items are few");
-            } else {
-                test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(5.2), "Default items"); // wrong result based on cldr41
-        } else {
-            test.equal(str.formatChoice(5.2), "The items are few");
-        }
+        // few is n = 3..6, an integer-only range, so 5.2 is "other"
+        test.equal(str.formatChoice(5.2), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal9: function(test) {
@@ -3918,20 +3913,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pt-BR");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {
-                test.equal(str.formatChoice(1.5), "Default items");
-            } else {
-                test.equal(str.formatChoice(1.5), "The item is one");
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(1.5), "The item is one");
-        } else {
-            test.equal(str.formatChoice(1.5), "Default items");
-        }
-
+        // one is i = 0..1, tested against i, so 1.5 is "one"
+        test.equal(str.formatChoice(1.5), "The item is one");
         test.done();
     },
     testStringFormatChoiceDecimal23: function(test) {
@@ -4200,19 +4183,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("es-ES");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) { // Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(3.1e6), "The items are many");
-            } else {
-                test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(3.1e6), "Default items"); // wrong result based on cldr41
-        } else {
-            test.equal(str.formatChoice(3.1e6), "The items are many");
-        }
+        // e is 0 for plain numbers and 3100000 is not a multiple of 1000000
+        test.equal(str.formatChoice(3.1e6), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_es_ES2: function(test) {
@@ -4229,20 +4201,8 @@ module.exports.teststrings = {
         var str = new IString("0#There are no items.|one#The item is one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fr-FR");
         test.ok(str !== null);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {// Intl.PluralRules doesn't support this locale until this version.
-                test.equal(str.formatChoice(2.1e6), "The items are many");
-            } else {
-                test.equal(str.formatChoice(2.1e6), "Default items"); // wrong result based on cldr41
-            }
-        } else if (platform === "browser") {
-            test.equal(str.formatChoice(2.1e6), "Default items");
-            //wrong result based on cldr (tested on chrome  104.0)
-        } else {
-            test.equal(str.formatChoice(2.1e6), "The items are many");
-        }
+        // e is 0 for plain numbers and 2100000 is not a multiple of 1000000
+        test.equal(str.formatChoice(2.1e6), "Default items");
         test.done();
     },
     testStringFormatChoiceDecimal_fr_FR2: function(test) {

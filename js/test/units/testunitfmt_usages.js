@@ -2629,24 +2629,8 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        var platform = ilib._getPlatform();
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {
-                test.equal(str, "3,2 кубічныя метры");
-            } else {
-                test.equal(str, "3,2 кубічнага метра");
-            }
-        } else if (platform === "browser") {
-            var cldrVersion = TestingSupport.getCLDRVersionForBrowser();
-            if (cldrVersion !== undefined && cldrVersion >= 36) {
-                test.equal(str, "3,2 кубічнага метра");
-            } else {
-                test.equal(str, "3,2 кубічныя метры");
-            }
-        } else {
-            test.equal(str, "3,2 кубічныя метры");
-        }
+        // 3.2 % 10 is not in the integer range 2..4, so it is "other"
+        test.equal(str, "3,2 кубічнага метра");
         test.done();
     },
     testUnitFormatWithUsageGasVolume: function(test) {
@@ -2769,20 +2753,8 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        var platform = ilib._getPlatform();
-
-        if (platform === "nodejs") {
-            var cldrVersion = Number(process.versions["cldr"]);
-            if (cldrVersion < 36) {
-                test.equal(str, "3,2 кубічныя метры");
-            } else {
-                test.equal(str, "3,2 кубічнага метра");
-            }
-        } else if (platform === "browser") {
-            test.equal(str, "3,2 кубічнага метра");
-        } else {
-            test.equal(str, "3,2 кубічныя метры");
-        }
+        // 3.2 % 10 is not in the integer range 2..4, so it is "other"
+        test.equal(str, "3,2 кубічнага метра");
         test.done();
     },
     testUnitFormatWithUsageWrongMeasurementType: function(test) {

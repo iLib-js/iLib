@@ -7,9 +7,15 @@ Published as version 15.1.0
 
 Bug Fixes:
 * Fix plural rule evaluation in the non-`Intl.PluralRules` fallback path
-  (`PluralUtils`): use the absolute value of the number for CLDR operands, parse
-  multi-digit exponents, keep large integers intact, and treat 3+ value lists as
-  sets rather than ranges.
+  (`PluralUtils`):
+  * Use the absolute value of the number for CLDR operands, keep large
+    integers intact, and treat 3+ value lists as sets rather than ranges.
+  * Set the `c`/`e` operands to 0 for plain numbers (they are the compact
+    decimal exponent), so 0.5 and 1500000 are no longer "many" in fr/es/it/pt/ca.
+  * Test ranges against the named operand (e.g. French `i = 0,1`), not `n`.
+  * Match ranges against integers only, as CLDR specifies (e.g. 0.5 is no
+    longer "one" in ak, 3.5 no longer "few" in ar).
+  * Compute correct operands for numbers in exponential notation (e.g. 1e-7).
 * Fix `formatChoice` incorrectly ignoring numeric-range patterns after
   `setLocale`, corrupting multi-index match state across calls, and mishandling
   choice text containing "#".
