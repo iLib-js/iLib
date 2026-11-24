@@ -119,15 +119,11 @@ var fn = PluralUtils._fncs = {
      *     exactly two of them, in which case they denote a range lo..hi
      *     (e.g. [2,4] means 2..4, while [11,71,91] means the set {11,71,91}).
      *
-     * KNOWN LIMITATION: a two-element list like [2,4] is ambiguous — it could be
-     * the range 2..4 or the set {2,4}. The plurals.json generator collapses both
-     * "2..4" and "2,4" to the same JSON [2,4] (see the note in
-     * tools/cldr/genplurals.js), so the information needed to tell them apart is
-     * already lost in the data. This function assumes "range", which is correct
-     * for the common case (e.g. Russian i%10 = 2..4) but wrong for the few
-     * locales that use a two-value set (e.g. Scottish Gaelic n = 2,12). Fixing
-     * this properly requires regenerating the data in an unambiguous format;
-     * until then, affected locales rely on Intl.PluralRules where available.
+     * A two-value set such as Scottish Gaelic "n = 2,12" is written by
+     * tools/cldr/genplurals.js as one-value ranges [[2,2],[12,12]], so it is
+     * not mistaken for the range 2..12. plurals.json data generated before
+     * that change writes it as [2,12] and is read as a range; regenerate the
+     * data to fix it.
      *
      * A CLDR range a..b denotes the set of integers from a to b, so a value
      * with a fraction (e.g. 0.5 for "n = 0..1") never falls within it. Only
